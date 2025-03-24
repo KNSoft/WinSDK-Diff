@@ -3189,6 +3189,7 @@ typedef struct _DXGKARG_OPENNATIVEFENCE
     D3DGPU_VIRTUAL_ADDRESS     CurrentValueGpuVa;                // in: Read/write mapping of the current value for the GPU in user process address space
     D3DGPU_VIRTUAL_ADDRESS     MonitoredValueGpuVa;              // in: Read/write mapping of the monitored value for the GPU in user process address space
     DXGK_OPENNATIVEFENCE_FLAGS Flags;
+    BYTE                       pPrivateDriverData[D3DDDI_NATIVE_FENCE_PDD_SIZE]; // in out: Private driver data from the user mode OpenNativeFence call, copied back to UMD
     BYTE                       Reserved[32];
 } DXGKARG_OPENNATIVEFENCE;
 

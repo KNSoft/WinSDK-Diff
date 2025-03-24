@@ -512,6 +512,34 @@ typedef struct _SCSI_PNP_REQUEST_BLOCK {
 #define POINTER_ALIGN
 #endif
 
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
+//
+// This is the STOR_ADDRESS type used by StorMQ.
+// The Controller field will contain the StorMQ controller extension known to the miniport.
+//
+
+//
+// N.B. The other legacy STOR_ADDRESS_TYPE_xxx values and structs are defined in scsi.h.
+// Any updates to STOR_ADDRESS should be put here to not introduce new dependencies on legacy
+// SCSI infrastructure.
+//
+#define STOR_ADDRESS_TYPE_NVME      0x2
+
+#define STOR_ADDR_NVME_ADDRESS_LENGTH    16
+typedef struct STOR_ADDRESS_ALIGN _STOR_ADDR_NVME {
+    _Field_range_(STOR_ADDRESS_TYPE_NVME, STOR_ADDRESS_TYPE_NVME)
+    USHORT Type;
+    USHORT Port;
+    _Field_range_(STOR_ADDR_NVME_ADDRESS_LENGTH, STOR_ADDR_NVME_ADDRESS_LENGTH)
+    ULONG AddressLength;
+    PVOID Controller;
+    ULONG NamespaceId;
+    ULONG Reserved;
+} STOR_ADDR_NVME, *PSTOR_ADDR_NVME;
+
+#endif
+
 // SRB extended data types.
 
 
@@ -6740,6 +6768,15 @@ typedef struct STOR_ADDRESS_ALIGN _STOR_ADDRESS {
 // Define different storage address types
 #define STOR_ADDRESS_TYPE_UNKNOWN   0x0
 #define STOR_ADDRESS_TYPE_BTL8      0x1
+
+//
+// The following address types are defined in srb.h to avoid introducing new
+// dependencies on the legacy SCSI infrastructure.  If there are any future updates
+// to scsi.h the following values should be treated as reserved.
+//
+// STOR_ADDRESS_TYPE_NVME           0x2
+//
+
 #define STOR_ADDRESS_TYPE_MAX       0xffff
 
 // Define 8 bit bus, target and LUN address scheme
@@ -8414,7 +8451,6 @@ StorPortGetMessageInterruptInformation(
 // ExtendedFlags1 flags
 
 #define EXTENDED_FLAG_POWER                     0x00000001
-#define EXTENDED_FLAG_NATIVE_PCIE_NVME_ENGAGED  0x00000002
 
 //
 // Configuration information structure.  Contains the information necessary
@@ -8870,7 +8906,7 @@ typedef enum _GETSGSTATUS{
 #endif
 
 //
-// Command type (and parameter) definition(s) for AdapterControl requests.
+// Control type (and parameter) definition(s) for AdapterControl requests.
 //
 // NOTE: Update STORPORT_FEATURE_TYPE when adding any new adapter control code.
 // Miniport should also explicitly claim to support any new adapter control code.
@@ -8906,6 +8942,7 @@ typedef enum _SCSI_ADAPTER_CONTROL_TYPE {
     ScsiAdapterKsrPowerDown,
     ScsiAdapterPreparePLDR,
     ScsiNvmeofAdapterOperation,
+    ScsiAdapterQueryStorMQInterface,
     ScsiAdapterControlMax,
     MakeAdapterControlTypeSizeOfUlong = 0xffffffff
 } SCSI_ADAPTER_CONTROL_TYPE, *PSCSI_ADAPTER_CONTROL_TYPE;
@@ -9076,7 +9113,35 @@ typedef struct _STOR_SERIAL_NUMBER {
 } STOR_SERIAL_NUMBER, *PSTOR_SERIAL_NUMBER;
 
 //
-// Command type (and parameter) definition(s) for UnitControl requests.
+// Control type (and parameter) definition(s) for NamespaceControl requests.
+//
+typedef enum _NVME_NAMESPACE_CONTROL_TYPE {
+    NvmeQuerySupportedNamespaceControlTypes = 0,
+    NvmeNamespaceStart,
+    NvmeNamespacePower,
+    NvmeNamespacePoFxPowerInfo,
+    NvmeNamespacePoFxPowerRequired,
+    NvmeNamespacePoFxPowerActive,
+    NvmeNamespacePoFxPowerSetFState,
+    NvmeNamespacePoFxPowerControl,
+    NvmeNamespaceRemove,
+    NvmeNamespaceSurpriseRemoval,
+    NvmeNamespaceControlMax,
+    MakeNamespaceControlTypeSizeOfUlong = 0xffffffff
+} NVME_NAMESPACE_CONTROL_TYPE, *PNVME_NAMESPACE_CONTROL_TYPE;
+
+//
+// Namespace control status values
+//
+
+typedef enum _NVME_NAMESPACE_CONTROL_STATUS {
+    NvmeNamespaceControlSuccess = 0,
+    NvmeNamespaceControlUnsuccessful,
+    NvmeNamespaceControlNotSupported,
+} NVME_NAMESPACE_CONTROL_STATUS, *PNVME_NAMESPACE_CONTROL_STATUS;
+
+//
+// Control type (and parameter) definition(s) for UnitControl requests.
 //
 
 typedef enum _SCSI_UNIT_CONTROL_TYPE {
@@ -10048,6 +10113,16 @@ HW_UNIT_CONTROL (
     );
 typedef HW_UNIT_CONTROL *PHW_UNIT_CONTROL;
 
+// Callback for namespace control
+typedef
+NVME_NAMESPACE_CONTROL_STATUS
+HW_NAMESPACE_CONTROL (
+    _In_ PVOID DeviceExtension,
+    _In_ NVME_NAMESPACE_CONTROL_TYPE ControlType,
+    _In_ PVOID Parameters
+    );
+typedef HW_NAMESPACE_CONTROL *PHW_NAMESPACE_CONTROL;
+
 
 typedef
 BOOLEAN
@@ -10297,7 +10372,14 @@ typedef enum _STORPORT_FUNCTION_CODE {
     ExtFunctionNvmeIceIoStart,
     ExtFunctionNvmeIceIoComplete,
     ExtFunctionNvmeMiniportEvent,
-    ExtFunctionNvmeMiniportTelemetry
+    ExtFunctionNvmeMiniportTelemetry,
+    ExtFunctionGetDriverProxyEndpointWrapperFromEndpoint,
+    ExtFunctionSwapDriverProxyEndpoints,
+    ExtFunctionStorMQAddController,
+    ExtFunctionStorMQRemoveController,
+    ExtFunctionNvmeIceIoStartEx,
+    ExtFunctionQueryNvmeIceSupport,
+    ExtFunctionQueueWorkItemToNode
 
 } STORPORT_FUNCTION_CODE, *PSTORPORT_FUNCTION_CODE;
 
@@ -10393,6 +10475,7 @@ typedef enum _SCSI_NOTIFICATION_TYPE {
     MarkDeviceFailedEx,
     TerminateSystemThread,
     NvmeofNotification,
+    StorMQControllerStartInitialization,
 
 
     //
@@ -10841,10 +10924,17 @@ typedef struct _HW_INITIALIZATION_DATA {
   ULONG             AddressTypeFlags;
   ULONG             Reserved1;
 
-  //
-  // Unit control callback
-  //
-  PHW_UNIT_CONTROL  HwUnitControl;
+  union {
+    //
+    // Unit control callback
+    //
+    PHW_UNIT_CONTROL HwUnitControl;
+
+    //
+    // Namespace control callback
+    //
+    PHW_NAMESPACE_CONTROL HwNamespaceControl;
+  };
 
 } HW_INITIALIZATION_DATA, *PHW_INITIALIZATION_DATA;
 
@@ -10875,6 +10965,7 @@ typedef struct _HW_INITIALIZATION_DATA {
 #define STOR_FEATURE_REPORT_INTERNAL_DATA                   0x00008000  // Indicating that the miniport driver supports reporting internal data
 #define STOR_FEATURE_EARLY_DUMP                             0x00010000  // Indicating that the miniport driver supports early crash dump generation
 #define STOR_FEATURE_NVME_ICE                               0x00020000  // Indicating that the miniport driver supports NVMe ICE.
+#define STOR_FEATURE_STORMQ_MINIPORT                        0x00040000  // Indicating that the driver is a StorMQ-style miniport
 
 
 
@@ -10994,6 +11085,16 @@ typedef struct _MINIPORT_DUMP_POINTERS {
 } MINIPORT_DUMP_POINTERS, *PMINIPORT_DUMP_POINTERS;
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -12732,6 +12833,37 @@ StorPortQueueWorkItem(
                                     WorkItemCallback,
                                     Worker,
                                     Context);
+}
+
+_IRQL_requires_max_(DISPATCH_LEVEL)
+ULONG
+FORCEINLINE
+StorPortQueueWorkItemToNode(
+    _In_ PVOID HwDeviceExtension,
+    _In_ PHW_WORKITEM WorkItemCallback,
+    _In_ PVOID Worker,
+    _In_opt_ PVOID Context,
+    _In_ ULONG Node
+    )
+{
+    ULONG Status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+    Status = StorPortExtendedFunction(ExtFunctionQueueWorkItemToNode,
+                                      HwDeviceExtension,
+                                      WorkItemCallback,
+                                      Worker,
+                                      Context,
+                                      Node);
+#else
+    UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(WorkItemCallback);
+    UNREFERENCED_PARAMETER(Worker);
+    UNREFERENCED_PARAMETER(Context);
+    UNREFERENCED_PARAMETER(Node);
+#endif
+
+    return Status;
 }
 
 _IRQL_requires_max_(DISPATCH_LEVEL)
@@ -14852,7 +14984,14 @@ typedef struct _STOR_SET_EVENT_LOGGING {
 #define STORPORT_ETW_MAX_DESCRIPTION_LENGTH    32
 #endif
 
-#if (NTDDI_VERSION >= NTDDI_WIN10_VB)
+//
+// With NVMe-OF events, IPv6 addresses can be parameters and
+// can be up to INET6_ADDRSTRLEN (46) characters long.
+//
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+#define STORPORT_ETW_MAX_PARAM_NAME_LENGTH     64
+#elif (NTDDI_VERSION >= NTDDI_WIN10_VB)
 #define STORPORT_ETW_MAX_PARAM_NAME_LENGTH     32
 #else
 #define STORPORT_ETW_MAX_PARAM_NAME_LENGTH     16
@@ -16851,10 +16990,16 @@ typedef enum _STORPORT_FEATURE_TYPE
 
 
 
+
     //
     // Reserved feature control
     //
     StorportFeatureReserved1,
+
+    //
+    // Whether ScsiAdapterQueryStorMQInterface is supported
+    //
+    StorportFeatureQueryStorMQInterface,
 
     StorportFeatureMax
 
@@ -18010,6 +18155,456 @@ Return Value:
 typedef PHYSICAL_ADDRESS SCSI_PHYSICAL_ADDRESS, *PSCSI_PHYSICAL_ADDRESS;
 
 #endif // STOR_USE_SCSI_ALIASES
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
+//
+// StorMQ-related definitions
+//
+
+#define STORMQ_SUBMISSION_QUEUE_METADATA_CONTEXT_VERSION 0x00000001
+
+//
+// For all submission queues StorMQ will allocate an array of contexts, one per queue slot, which
+// hold various metadata related to the corresponding SQ slot.  When the queue is created, the base
+// of this array will be passed to the miniport via the StorMQPropSQMetadataContext property.
+//
+typedef struct DECLSPEC_CACHEALIGN _STORMQ_SUBMISSION_QUEUE_METADATA_CONTEXT {
+
+    //
+    // Version of this structure
+    //
+    ULONG Version;
+
+    //
+    // Reserved, set to zero
+    //
+    ULONG Reserved1;
+
+    //
+    // Id of the corresponding queue
+    //
+    ULONG QueueId;
+
+    //
+    // Slot of the corresponding command
+    //
+    ULONG QueueSlot;
+
+    //
+    // For non-Read/Write commands, this field provides the virtual address of the data buffer described by the PRP
+    //
+    PVOID VirtualAddress;
+
+    //
+    // For Read/Write commands, this provides the SGL of the data buffer
+    //
+    PSTOR_SCATTER_GATHER_LIST Sgl;
+
+    //
+    // For Read/Write commands, this provides the MDL of the data buffer
+    //
+    PVOID Mdl;
+
+    //
+    // These flags provide additional context about the corresponding queue command
+    //
+    union {
+        struct {
+
+            ULONGLONG ReadWrite : 1;
+
+            ULONGLONG PagingIO : 1;
+
+            ULONGLONG Reserved : 62;
+
+        };
+        ULONGLONG AsUlonglong;
+    } Flags;
+
+} STORMQ_SUBMISSION_QUEUE_METADATA_CONTEXT, *PSTORMQ_SUBMISSION_QUEUE_METADATA_CONTEXT;
+
+//
+// When the miniport determines that completion work is pending it calls HW_STORMQ_COMPLETION_NOTIFY_WITH_CALLBACK
+// and optionally requests a callback of type HW_STORMQ_COMPLETION_CALLBACK.  This callback is executed from StorMQ's
+// DPC and is affinitized to the processor which initiated the original request.
+//
+// If there is no remaining work to be done, i.e. the CQEs are already in the shared StorMQ CQ, then this callback
+// can be omitted.
+//
+typedef
+ULONG
+HW_STORMQ_COMPLETION_CALLBACK (
+    _In_ PVOID ControllerExtension,
+    _In_ USHORT CompletionQueueId
+    );
+typedef HW_STORMQ_COMPLETION_CALLBACK *PHW_STORMQ_COMPLETION_CALLBACK;
+
+//
+// Miniports call this function when completion work is pending (e.g. from an interrupt handler).  StorMQ
+// will schedule a DPC on the optimal processor to perform the processing.  If CompletionCallback is specified
+// StorMQ will call it prior to consuming CQEs.
+//
+// SubmissionQueueId and CommandId are hints from the miniport which allow StorMQ to schedule the DPC on the
+// optimal processor.  In cases where a single completion notification may represent multiple impending CQEs
+// it is left to the miniport to provide the SQID and CommandId of a representative sample.  For example,
+// if 8 CQEs are being completed in one call and 6 are for one SQ and 2 are for other SQs, a miniport might
+// reference the former, more common SQID as its hint so that most of the completions occur on the ideal
+// processor.  This is optional, however, as in practice, reasonable performance has been observed by simply
+// using the details from the first available CQE without the overhead of considering the others.
+//
+typedef
+ULONG
+HW_STORMQ_COMPLETION_NOTIFY_WITH_CALLBACK (
+    _In_ PVOID ControllerExtension,
+    _In_ USHORT CompletionQueueId,
+    _In_ USHORT SubmissionQueueId,
+    _In_ USHORT CommandId,
+    _In_opt_ PHW_STORMQ_COMPLETION_CALLBACK CompletionCallback
+    );
+typedef HW_STORMQ_COMPLETION_NOTIFY_WITH_CALLBACK *PHW_STORMQ_COMPLETION_NOTIFY_WITH_CALLBACK;
+
+//
+// N.B. In the following two APIs, NvmePropertyOffset represents the offset (OFST) of the controller property
+// as defined in the NVMe specification.  The enum NVME_PROPERTY_OFFSET in nvme.h should be passed for this parameter.
+//
+
+//
+// Indicates that the requested property offset is not defined in the NVMe spec, but rather a StorMQ-specific value
+//
+#define STORMQ_PROPERTY_FLAG_STORMQ_SPECIFIC         0x00000001
+
+#define STORMQ_PROPERTY_QUEUE_DESCRIPTOR_VERSION     0x0001
+
+typedef struct _STORMQ_PROPERTY_QUEUE_DESCRIPTOR {
+
+    //
+    // Version of this descriptor
+    //
+    ULONG Version;
+
+    //
+    // Id of the queue
+    //
+    ULONG QueueId;
+
+    //
+    // The number of elements in the queue or array described
+    //
+    ULONG NumberOfElements;
+
+    ULONG Reserved;
+
+    struct {
+
+        //
+        // If set to 1 this descriptor applies to a submission queue, if cleared to 0 this descriptor applies to
+        // a completion queue.
+        //
+        ULONGLONG IsSubmissionQueue : 1;
+
+        ULONGLONG Reserved : 63;
+
+    } Flags;
+
+    //
+    // Virtual address of the queue component (StorMQ context array, SRB context array, etc.) described by this property
+    //
+    PVOID VirtualAddress;
+
+    //
+    // Physical address of the queue component described by this property, if applicable.
+    // This will be set for SRB context arrays, but will not be set for StorMQ context arrays.
+    //
+    STOR_PHYSICAL_ADDRESS PhysicalAddress;
+
+} STORMQ_PROPERTY_QUEUE_DESCRIPTOR, *PSTORMQ_PROPERTY_QUEUE_DESCRIPTOR;
+
+#define STORMQ_PROPERTY_AFFINITY_DESCRIPTOR_VERSION     0x0001
+
+typedef struct _STORMQ_PROPERTY_AFFINITY_DESCRIPTOR {
+
+    //
+    // Version of this descriptor
+    //
+    ULONG Version;
+
+    //
+    // Number of elements in the affinity array
+    //
+    ULONG NumberOfElements;
+
+    //
+    // Variable-sized array containing one element for each item requiring an affinity selection.
+    // Refer to the StorMQPropXxxAffinity properties which use this descriptor type for more usage details.
+    //
+    ULONG Affinity[ANYSIZE_ARRAY];
+
+} STORMQ_PROPERTY_AFFINITY_DESCRIPTOR, *PSTORMQ_PROPERTY_AFFINITY_DESCRIPTOR;
+
+typedef enum _STORMQ_PROPERTY_OFFSET {
+
+    StorMQPropQueueBase                    = 0x80000000, // StorMQ sets this property to inform the miniport of a queue's base.
+                                                         // Type: STORMQ_PROPERTY_QUEUE_DESCRIPTOR
+
+    StorMQPropSQMetadataContext            = 0x80000001, // StorMQ sets this property to inform the miniport of a queue's metadata context array.
+                                                         // This array has one element for each queue slot.
+                                                         // Type: STORMQ_PROPERTY_QUEUE_DESCRIPTOR
+
+    StorMQPropSQMiniportContextSize        = 0x80000002, // StorMQ queries this property to allow the miniport to specify a per-queue slot context size in bytes (0 indicates contexts are not needed).
+                                                         // The miniport contexts will be allocated as a contiguous array with the base guaranteed to be page-aligned.
+                                                         // If miniports require each element in the array to be page-aligned then they must specify a context size that
+                                                         // is a page multiple.
+                                                         // Type: ULONG
+
+    StorMQPropSQMiniportContext            = 0x80000003, // StorMQ sets this property to inform the miniport of a queue's miniport context array.
+                                                         // This array has one element for each queue slot.
+                                                         // Type: STORMQ_PROPERTY_QUEUE_DESCRIPTOR
+
+    StorMQPropControllerNumaAffinity       = 0x80000004, // StorMQ queries this property during controller initialization to determine NUMA node affinity.
+                                                         // For physical miniports, StorMQ will default the affinity to the node of the adapter.
+                                                         // For virtual miniports, StorMQ will default the affinity to MM_ANY_NODE_OK.
+                                                         // In cases where these defaults are not ideal, miniports can respond to this property query with an updated
+                                                         // node affinity.
+                                                         // Type: NODE_REQUIREMENT.  Miniports may return MM_ANY_NODE_OK if there is no node preference.
+
+    StorMQPropPopulatePrpEntries           = 0x80000005, // StorMQ queries this property for virtual miniports during controller initialization to determine
+                                                         // if PRP1 and PRP2 should be populated in the queued NVMe commands.  Virtual miniports which use
+                                                         // the MDL directly can return FALSE here to indicate PRP fields are not needed.  For physical
+                                                         // miniports StorMQ will always populate the PRP fields and this property will not be queried.
+                                                         // Type: BOOLEAN
+
+    StorMQPropSQLPAffinity                 = 0x80000006, // StorMQ queries this property for the I/O SQs to determine if the miniport has an LP affinity preference for each.
+                                                         // StorMQ sets this property for the I/O SQs to indicate the LP affinity (determined by StorMQ if the miniport has no preference).
+                                                         // A single descriptor will cover all of the I/O SQs and will be sized according to the established I/O SQ count.
+                                                         // The first element in the descriptor's array (index zero) will represent the first I/O SQ, i.e. SQ id 1.
+                                                         // The affinity values are the system wide indexes as returned by KeGetCurrentProcessorIndex or StorPortGetCurrentProcessorIndex.
+                                                         // Type: STORMQ_PROPERTY_AFFINITY_DESCRIPTOR
+
+    StorMQPropSQCQAffinity                 = 0x80000007, // StorMQ queries this property for the I/O SQs to determine if the miniport has a CQ affinity preference for each.
+                                                         // StorMQ sets this property for the I/O SQs to indicate the CQ affinity (determined by StorMQ if the miniport has no preference).
+                                                         // A single descriptor will cover all of the I/O SQs and will be sized according to the established I/O SQ count.
+                                                         // The first element in the descriptor's array (index zero) will represent the first I/O SQ, i.e. SQ id 1.
+                                                         // Type: STORMQ_PROPERTY_AFFINITY_DESCRIPTOR
+
+    StorMQPropCQIVAffinity                 = 0x80000008, // StorMQ queries this property for the I/O CQs to determine if the miniport has an interrupt vector affinity preference for each.
+                                                         // StorMQ sets this property for the I/O CQs to indicate the IV affinity (determined by StorMQ if the miniport has no preference).
+                                                         // A single descriptor will cover all of the I/O CQs and will be sized according to the established I/O CQ count.
+                                                         // The first element in the descriptor's array (index zero) will represent the first I/O CQ, i.e. CQ id 1.
+                                                         // Type: STORMQ_PROPERTY_AFFINITY_DESCRIPTOR
+
+} STORMQ_PROPERTY_OFFSET;
+
+typedef
+ULONG
+HW_STORMQ_QUERY_PROPERTY (
+    _In_ PVOID ControllerExtension,
+    _In_ ULONG NvmePropertyOffset,
+    _In_ ULONG PropertyLength,
+    _In_ ULONG Flags,
+    _Out_writes_bytes_(PropertyLength) PVOID PropertyBuffer
+    );
+typedef HW_STORMQ_QUERY_PROPERTY *PHW_STORMQ_QUERY_PROPERTY;
+
+typedef
+ULONG
+HW_STORMQ_SET_PROPERTY (
+    _In_ PVOID ControllerExtension,
+    _In_ ULONG NvmePropertyOffset,
+    _In_ ULONG PropertyLength,
+    _In_ ULONG Flags,
+    _In_reads_bytes_(PropertyLength) PVOID PropertyBuffer
+    );
+typedef HW_STORMQ_SET_PROPERTY *PHW_STORMQ_SET_PROPERTY;
+
+struct _STORAGE_REQUEST_BLOCK;
+
+typedef
+BOOLEAN
+HW_STORMQ_START_SRB (
+    _In_ PVOID AdapterExtension,
+    _In_ PVOID ControllerExtension,
+    _In_ struct _STORAGE_REQUEST_BLOCK *Srb
+    );
+typedef HW_STORMQ_START_SRB *PHW_STORMQ_START_SRB;
+
+#define STORMQ_MINIPORT_INTERFACE_VERSION_V1 0x0001
+
+typedef struct _STORMQ_MINIPORT_INTERFACE {
+
+    //
+    // StorMQ sets this field to the size of this structure
+    //
+    ULONG Size;
+
+    //
+    // StorMQ indicates the maximum interface version it supports
+    //
+    USHORT StorMQVersion;
+
+    //
+    // Miniport indicates the maximum interface version it supports
+    //
+    USHORT MiniportVersion;
+
+    //
+    // Various flags to configure the interface.
+    // Set by Miniport and StorMQ, depending on the feature.
+    //
+    struct {
+
+        //
+        // Set by the Miniport to indicate it wants to receive virtual addresses for each request
+        //
+        ULONGLONG ProvideVirtualAddresses : 1;
+
+        ULONGLONG Reserved : 63;
+
+    } Flags;
+
+    //
+    // The following callbacks allow StorMQ and the Miniport to directly call into one another in
+    // various performance sensitive workflows.  All callbacks must be defined unless specified
+    // otherwise below.
+    //
+
+    //
+    // StorMQ indicates its CompletionNotifyWithCallback callback
+    //
+    PHW_STORMQ_COMPLETION_NOTIFY_WITH_CALLBACK HwStorMQCompletionNotifyWithCallback;
+
+    //
+    // Miniport indicates its QueryProperty callback
+    //
+    PHW_STORMQ_QUERY_PROPERTY HwStorMQQueryProperty;
+
+    //
+    // Miniport indicates its SetProperty callback
+    //
+    PHW_STORMQ_SET_PROPERTY HwStorMQSetProperty;
+
+    //
+    // Miniport indicates its StartSrb callback
+    //
+    PHW_STORMQ_START_SRB HwStorMQStartSrb;
+
+} STORMQ_MINIPORT_INTERFACE, *PSTORMQ_MINIPORT_INTERFACE;
+
+// StorPortExtendedFunction is a polymorphic function that handles many different types of requests,
+// making it difficult to annotate in a manner that would cover all possible uses.
+// The scanning engine does not recognize the StorPortExtendedFunction wrapper as memmory allocater.
+// The scanning engine should assume the memory was acquired as asked
+// This assumption requires the suppressing the PFD warning generated (28194, 28195 - memory is not acquired and aliased before function exits)
+_Success_(return == STOR_STATUS_SUCCESS)
+ULONG
+FORCEINLINE
+#pragma warning(suppress: 6001 6101 6388 28194 28195) // because PREFast cannot see inside polymorphic function StorPortExtendedFunction()
+StorPortStorMQAddController(
+    _In_ PVOID HwAdapterExtension,
+    _In_ ULONG NumberOfBytes,
+    _Out_ _At_(*ControllerExtension,
+        _When_(return!=STOR_STATUS_SUCCESS, _Post_null_)
+        _When_(return==STOR_STATUS_SUCCESS, __drv_aliasesMem __drv_allocatesMem(Mem) _Post_notnull_
+        _Post_writable_byte_size_(NumberOfBytes)))
+    PVOID *ControllerExtension
+)
+/*
+Description:
+
+    A StorMQ miniport can call this function to add a controller to its adapter.  Each controller is able to have independent resources
+    and will be enumerated separately.
+
+Parameters:
+
+    HwAdapterExtension - The miniport's adapter extension.
+
+    NumberOfBytes - The size in bytes of the miniport's controller extension.
+
+    ControllerExtension - The allocated extension pointer.
+
+Returns:
+
+    STOR_STATUS_SUCCESS if the controller was successfully added.
+
+    STOR_STATUS_NOT_IMPLEMENTED if the API is called on the OS that not support it.
+
+    STOR_STATUS_INVALID_PARAMETER if there is an invalid parameter.
+
+*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
+    status = StorPortExtendedFunction(ExtFunctionStorMQAddController,
+                                      HwAdapterExtension,
+                                      NumberOfBytes,
+                                      ControllerExtension);
+
+#else
+
+    UNREFERENCED_PARAMETER(HwAdapterExtension);
+    UNREFERENCED_PARAMETER(NumberOfBytes);
+    UNREFERENCED_PARAMETER(ControllerExtension);
+
+#endif
+
+    return status;
+}
+
+// StorPortExtendedFunction is a polymorphic function that handles many different types of requests,
+// making it difficult to annotate in a manner that would cover all possible uses.
+// The scanning engine does not recognize the StorPortExtendedFunction wrapper as memmory allocater.
+// The scanning engine should assume the memory was acquired as asked
+// This assumption requires the suppressing the PFD warning generated (28194, 28195 - memory is not acquired and aliased before function exits)
+_Success_(return == STOR_STATUS_SUCCESS)
+ULONG
+FORCEINLINE
+#pragma warning(suppress: 6001 6101 6388 28194 28195) // because PREFast cannot see inside polymorphic function StorPortExtendedFunction()
+StorPortStorMQRemoveController(
+    _In_ PVOID HwAdapterExtension,
+    _In_ PVOID ControllerExtension
+)
+/*
+Description:
+
+    A StorMQ miniport can call this function to remove a controller from its adapter.
+
+Parameters:
+
+    HwAdapterExtension - The miniport's adapter extension.
+
+    ControllerExtension - The extension of the controller to remove.
+
+Returns:
+
+    STOR_STATUS_SUCCESS if the controller was successfully added.
+
+    STOR_STATUS_NOT_IMPLEMENTED if the API is called on the OS that not support it.
+
+    STOR_STATUS_INVALID_PARAMETER if there is an invalid parameter.
+
+*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
+    status = StorPortExtendedFunction(ExtFunctionStorMQRemoveController,
+                                      HwAdapterExtension,
+                                      ControllerExtension);
+
+#else
+
+    UNREFERENCED_PARAMETER(HwAdapterExtension);
+    UNREFERENCED_PARAMETER(ControllerExtension);
+
+#endif
+
+    return status;
+}
+
+#endif // if (NTDDI_VERSION >= NTDDI_WIN11_DT) block for StorMQ
 
 
 

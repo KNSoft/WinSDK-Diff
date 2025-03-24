@@ -7005,6 +7005,7 @@ typedef enum _DMA_SPEED {
 }DMA_SPEED, *PDMA_SPEED;
 
 // begin_wudfpwdm
+// begin_wudfwdm
 
 //
 // Define Interface reference/dereference routines for
@@ -7014,6 +7015,7 @@ typedef enum _DMA_SPEED {
 typedef VOID (*PINTERFACE_REFERENCE)(PVOID Context);
 typedef VOID (*PINTERFACE_DEREFERENCE)(PVOID Context);
 
+// end_wudfwdm
 // end_wdm end_wudfpwdm
 // begin_ntddk
 
@@ -8618,6 +8620,7 @@ typedef struct _PCI_COMMON_CONFIG {
 
 // end_ntoshvp
 
+// begin_wudfwdm
 //
 // The NT PCI Driver uses a WhichSpace parameter on its CONFIG_READ/WRITE
 // routines.   The following values are defined-
@@ -8625,6 +8628,7 @@ typedef struct _PCI_COMMON_CONFIG {
 
 #define PCI_WHICHSPACE_CONFIG               0x0
 #define PCI_WHICHSPACE_ROM                  0x52696350
+// end_wudfwdm
 
 //
 // PCI Capability IDs

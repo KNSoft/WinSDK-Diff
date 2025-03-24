@@ -114,8 +114,8 @@ typedef enum _SDCAXU_NOTIFICATION_TYPE
     // SdcaXu driver can at a later point call the EvtSetJackSelectedMode again to change the jack mode.
     SdcaXuNotificationTypeJackDetect,
 
-    // Notification after class driver has handled a Hardware Reset
-    // Class driver will perform necessary initialization before sending.
+    // Notification after class driver has handled a Function_Has_Been_Reset bit of Function_Status control.
+    // Class driver will perform necessary control restoration and initialization before sending.
     SdcaXuNotificationTypeHardwareReset,
 
     // Notification when the Commit Group Handle has either been set or cleared.
@@ -128,6 +128,19 @@ typedef enum _SDCAXU_NOTIFICATION_TYPE
     // Class driver will notify SdcaXu driver of the posture changes.
     // SdcaXu driver can decide to handle or ignore the changes accordingly.
     SdcaXuNotificationTypePosture,
+
+    // Notification after class driver has handled a Function_Needs_Initialization bit of Function_Status control.
+    // Class driver will perform function initialization writes before sending.
+    SdcaXuNotificationTypeFunctionNeedsInitialization,
+
+    // Notification after class driver has handled a UMP_Sequence_Fault bit of Function_Status control.
+    SdcaXuNotificationTypeUMPSequenceFault,
+
+    // Notification after class driver has handled a Function_Fault bit of Function_Status control.
+    SdcaXuNotificationTypeFunctionFault,
+
+    // Notification after class driver has handled a Streaming_Stopped_Abnormally bit of Function_Status control. 
+    SdcaXuNotificationTypeStreamingStoppedAbnormally,
 
     SdcaXuNotificationTypeCount
 } SDCAXU_NOTIFICATION_TYPE;

@@ -364,6 +364,9 @@ VOID
 
 DEFINE_GUID(GUID_DEVINTERFACE_I2C, 0x2564AA4F, 0xDDDB, 0x4495, 0xB4, 0x97, 0x6A, 0xD4, 0xA8, 0x41, 0x63, 0xD7);
 
+// GUID_DEVINTERFACE_I2C_VERSION_2 {15CCA904-0671-4876-9413-E302D87D887A}
+DEFINE_GUID(GUID_DEVINTERFACE_I2C_VERSION_2, 0x15CCA904, 0x671, 0x4876, 0x94, 0x13, 0xE3, 0x2, 0xD8, 0x7D, 0x88, 0x7A);
+
 //
 // GUID_DEVINTERFACE_OPM {BF4672DE-6B4E-4BE4-A325-68A91EA49C09}
 //
@@ -490,6 +493,41 @@ typedef struct _DXGK_I2C_INTERFACE {
     DXGKDDI_I2C_TRANSMIT_DATA_TO_DISPLAY  DxgkDdiI2CTransmitDataToDisplay;
     DXGKDDI_I2C_RECEIVE_DATA_FROM_DISPLAY DxgkDdiI2CReceiveDataFromDisplay;
 } DXGK_I2C_INTERFACE, *PDXGK_I2C_INTERFACE;
+
+//
+// I2C Interface v2 queried from the miniport.
+//
+
+#define DXGK_I2C_INTERFACE_VERSION_2 0x02
+
+typedef
+_Function_class_DXGK_(DXGKDDI_I2C_TRANSMIT_DATA_TO_DISPLAY)
+_IRQL_requires_DXGK_(PASSIVE_LEVEL)
+NTSTATUS
+(*DXGKDDI_I2C_TRANSMIT_AND_RECEIVE_DATA_FROM_DISPLAY)(
+    _In_ PVOID MiniportDeviceContext,
+    _In_ D3DDDI_VIDEO_PRESENT_TARGET_ID VidPnTargetId,
+    _In_ ULONG SendSevenBitI2CAddress,
+    _In_ ULONG SendDataLength,
+    _In_reads_bytes_(SendDataLength) CONST VOID* SendData,
+    ULONG ReceiveSevenBitI2CAddress,
+    ULONG ReceiveFlags,
+    ULONG ReceiveDataLength,
+    _Out_writes_bytes_(ReceiveDataLength) PVOID ReceiveData
+    );
+
+typedef struct _DXGK_I2C_INTERFACE_2 {
+    USHORT Size;
+    USHORT Version;
+    PVOID Context;
+    PINTERFACE_REFERENCE InterfaceReference;
+    PINTERFACE_DEREFERENCE InterfaceDereference;
+
+    DXGKDDI_I2C_TRANSMIT_DATA_TO_DISPLAY  DxgkDdiI2CTransmitDataToDisplay;
+    DXGKDDI_I2C_RECEIVE_DATA_FROM_DISPLAY DxgkDdiI2CReceiveDataFromDisplay;
+    DXGKDDI_I2C_TRANSMIT_AND_RECEIVE_DATA_FROM_DISPLAY DxgkDdiI2CTransmitAndReceiveDataFromDisplay;
+} DXGK_I2C_INTERFACE_2, *PDXGK_I2C_INTERFACE_2;
+
 
 //
 // OPM Interface from the miniport.

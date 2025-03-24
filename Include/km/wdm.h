@@ -8290,6 +8290,7 @@ typedef enum _DMA_SPEED {
 
 
 
+
 //
 // Define Interface reference/dereference routines for
 // Interfaces exported by IRP_MN_QUERY_INTERFACE
@@ -8297,6 +8298,7 @@ typedef enum _DMA_SPEED {
 
 typedef VOID (*PINTERFACE_REFERENCE)(PVOID Context);
 typedef VOID (*PINTERFACE_DEREFERENCE)(PVOID Context);
+
 
 //
 // Define I/O Driver error log packet structure.  This structure is filled in
@@ -32676,6 +32678,10 @@ typedef struct _DEVICE_RELATIONS {
 //     PNP_DEVICE_ASSIGNED_TO_GUEST is cleared, the notification will be sent
 //     again, this time with InPath set to FALSE.
 //
+// DeviceUsageTypeInlineCryptoEngine - Indicates that a storage device is going
+//     to be used with an inline cryptography engine, or that it will no longer
+//     be used with such an engine.
+//
 
 typedef enum _DEVICE_USAGE_NOTIFICATION_TYPE {
     DeviceUsageTypeUndefined,
@@ -32684,7 +32690,8 @@ typedef enum _DEVICE_USAGE_NOTIFICATION_TYPE {
     DeviceUsageTypeDumpFile,
     DeviceUsageTypeBoot,
     DeviceUsageTypePostDisplay,
-    DeviceUsageTypeGuestAssigned
+    DeviceUsageTypeGuestAssigned,
+    DeviceUsageTypeInlineCryptoEngine,
 } DEVICE_USAGE_NOTIFICATION_TYPE;
 
 
@@ -37109,8 +37116,6 @@ typedef enum {
     DevicePropertyContainerID = 0x16 | __string_type
 } DEVICE_REGISTRY_PROPERTY;
 
-
-
 typedef
 _Function_class_(TRANSLATE_BUS_ADDRESS)
 _IRQL_requires_same_
@@ -37145,6 +37150,8 @@ ULONG GET_SET_DEVICE_DATA (
     _In_range_(!=,0) ULONG Length
     );
 typedef GET_SET_DEVICE_DATA *PGET_SET_DEVICE_DATA;
+
+
 
 typedef enum _DEVICE_INSTALL_STATE {
     InstallStateInstalled,
@@ -37193,6 +37200,8 @@ typedef enum _DEVICE_REMOVAL_POLICY {
 
 } DEVICE_REMOVAL_POLICY, *PDEVICE_REMOVAL_POLICY;
 
+
+
 typedef struct _BUS_INTERFACE_STANDARD {
     //
     // generic interface header
@@ -37211,6 +37220,8 @@ typedef struct _BUS_INTERFACE_STANDARD {
     PGET_SET_DEVICE_DATA GetBusData;
 
 } BUS_INTERFACE_STANDARD, *PBUS_INTERFACE_STANDARD;
+
+
 
 typedef
 _Function_class_(GET_VIRTUAL_DEVICE_DATA)
@@ -37888,12 +37899,14 @@ typedef struct _NPEM_CONTROL_INTERFACE {
 } NPEM_CONTROL_INTERFACE, *PNPEM_CONTROL_INTERFACE;
 
 
+
 //
 // The following definitions are used in ACPI QueryInterface
 //
 typedef BOOLEAN (* PGPE_SERVICE_ROUTINE) (
                             PVOID,
                             PVOID);
+
 
 typedef
 _IRQL_requires_max_(DISPATCH_LEVEL)
@@ -37974,6 +37987,7 @@ typedef struct _ACPI_INTERFACE_STANDARD {
     PUNREGISTER_FOR_DEVICE_NOTIFICATIONS    UnregisterForDeviceNotifications;
 
 } ACPI_INTERFACE_STANDARD, *PACPI_INTERFACE_STANDARD;
+
 
 //
 // The following definitions are used in GUID_ACPI_INTERFACE_STANDARD2,
@@ -38084,6 +38098,7 @@ typedef struct {
     PUNREGISTER_FOR_DEVICE_NOTIFICATIONS2   UnregisterForDeviceNotifications;
 
 } ACPI_INTERFACE_STANDARD2, *PACPI_INTERFACE_STANDARD2;
+
 
 
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
@@ -43642,6 +43657,7 @@ typedef struct _PCI_COMMON_CONFIG {
 
 
 
+
 //
 // The NT PCI Driver uses a WhichSpace parameter on its CONFIG_READ/WRITE
 // routines.   The following values are defined-
@@ -43649,6 +43665,7 @@ typedef struct _PCI_COMMON_CONFIG {
 
 #define PCI_WHICHSPACE_CONFIG               0x0
 #define PCI_WHICHSPACE_ROM                  0x52696350
+
 
 //
 // PCI Capability IDs

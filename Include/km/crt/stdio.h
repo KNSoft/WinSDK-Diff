@@ -268,7 +268,12 @@ _Check_return_opt_ _CRTIMP int __cdecl _fputchar(_In_ int _Ch);
 _Check_return_opt_ _CRTIMP int __cdecl fputs(_In_z_ const char * _Str, _Inout_ FILE * _File);
 _Check_return_opt_ _CRTIMP size_t __cdecl fread(_Out_writes_bytes_(_ElementSize*_Count) void * _DstBuf, _In_ size_t _ElementSize, _In_ size_t _Count, _Inout_ FILE * _File);
 #if __STDC_WANT_SECURE_LIB__
-_Check_return_opt_ _CRTIMP size_t __cdecl fread_s(_Out_writes_bytes_(_ElementSize*_Count) void * _DstBuf, _In_ size_t _DstSize, _In_ size_t _ElementSize, _In_ size_t _Count, _Inout_ FILE * _File);
+_Check_return_opt_ _CRTIMP size_t __cdecl fread_s(
+        _Out_writes_bytes_to_(_DstSize, _ElementSize * _Count) void * _DstBuf,
+        _In_range_(>=, _ElementSize * _Count) size_t _DstSize,
+        _In_ size_t _ElementSize,
+        _In_ size_t _Count,
+        _Inout_ FILE * _File);
 #endif
 _Check_return_ _CRT_INSECURE_DEPRECATE(freopen_s) _CRTIMP FILE * __cdecl freopen(_In_z_ const char * _Filename, _In_z_ const char * _Mode, _Inout_ FILE * _File);
 #if __STDC_WANT_SECURE_LIB__
@@ -684,7 +689,12 @@ _CRTIMP void __cdecl _unlock_file(_Inout_ FILE * _File);
 _Check_return_opt_ _CRTIMP int __cdecl _fclose_nolock(_Inout_ FILE * _File);
 _Check_return_opt_ _CRTIMP int __cdecl _fflush_nolock(_Inout_opt_ FILE * _File);
 _Check_return_opt_ _CRTIMP size_t __cdecl _fread_nolock(_Out_writes_bytes_(_ElementSize*_Count) void * _DstBuf, _In_ size_t _ElementSize, _In_ size_t _Count, _Inout_ FILE * _File);
-_Check_return_opt_ _CRTIMP size_t __cdecl _fread_nolock_s(_Out_writes_bytes_(_ElementSize*_Count) void * _DstBuf, _In_ size_t _DstSize, _In_ size_t _ElementSize, _In_ size_t _Count, _Inout_ FILE * _File);
+_Check_return_opt_ _CRTIMP size_t __cdecl _fread_nolock_s(
+        _Out_writes_bytes_to_(_DstSize, _ElementSize * _Count) void * _DstBuf,
+        _In_range_(>=, _ElementSize * _Count) size_t _DstSize,
+        _In_ size_t _ElementSize,
+        _In_ size_t _Count,
+        _Inout_ FILE * _File);
 _Check_return_opt_ _CRTIMP int __cdecl _fseek_nolock(_Inout_ FILE * _File, _In_ long _Offset, _In_ int _Origin);
 _Check_return_ _CRTIMP long __cdecl _ftell_nolock(_Inout_ FILE * _File);
 _Check_return_opt_ _CRTIMP int __cdecl _fseeki64_nolock(_Inout_ FILE * _File, _In_ __int64 _Offset, _In_ int _Origin);

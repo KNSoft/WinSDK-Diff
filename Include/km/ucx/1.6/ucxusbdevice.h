@@ -168,7 +168,7 @@ typedef struct _USBDEVICE_UPDATE {
     USBDEVICE_UPDATE_FAILURE_FLAGS              FailureFlags;
     USBDEVICE_UPDATE_20_HARDWARE_LPM_PARAMETERS Usb20HardwareLpmParameters;
     USHORT                                      RootPortResumeTime;
-    BOOLEAN                                     IsNative;
+    BOOLEAN                                     Reserved;
 } USBDEVICE_UPDATE, *PUSBDEVICE_UPDATE;
 
 typedef struct _USBDEVICE_HUB_INFO {
