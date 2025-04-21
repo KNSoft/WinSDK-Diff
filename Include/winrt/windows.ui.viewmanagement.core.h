@@ -1034,6 +1034,11 @@ namespace ABI {
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
                         CoreInputViewKind_Dictation = 6,
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xf0000
+                        CoreInputViewKind_Gamepad = 7,
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xf0000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
                     };
                 } /* Core */
             } /* ViewManagement */
@@ -2018,8 +2023,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 5.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.UI.ViewManagement.Core.ICoreInputViewStatics2 interface starting with version 8.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.UI.ViewManagement.Core.ICoreInputViewStatics interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.UI.ViewManagement.Core.ICoreInputViewStatics2 interface starting with version 8.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.UI.ViewManagement.Core.ICoreInputView ** Default Interface **
@@ -3098,6 +3103,11 @@ enum __x_ABI_CWindows_CUI_CViewManagement_CCore_CCoreInputViewKind
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
     CoreInputViewKind_Dictation = 6,
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xf0000
+    CoreInputViewKind_Gamepad = 7,
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xf0000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 };
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x70000
 
@@ -4724,8 +4734,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 5.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.UI.ViewManagement.Core.ICoreInputViewStatics2 interface starting with version 8.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.UI.ViewManagement.Core.ICoreInputViewStatics interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.UI.ViewManagement.Core.ICoreInputViewStatics2 interface starting with version 8.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.UI.ViewManagement.Core.ICoreInputView ** Default Interface **

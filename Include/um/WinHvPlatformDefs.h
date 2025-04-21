@@ -360,7 +360,6 @@ typedef enum WHV_REGISTER_NAME
     WHvArm64RegisterFp                = 0x0002001D,
     WHvArm64RegisterLr                = 0x0002001E,
     WHvArm64RegisterPc                = 0x00020022,
-    WHvArm64RegisterXzr               = 0x0002FFFE,
 
     //
     // AArch64 System Register Descriptions: Floating-point registers
@@ -403,62 +402,161 @@ typedef enum WHV_REGISTER_NAME
     // AArch64 System Register Descriptions: Special-purpose registers
     //
 
-    WHvArm64RegisterCurrentEl         = 0x00021003,
-    WHvArm64RegisterDaif              = 0x00021004,
-    WHvArm64RegisterDit               = 0x00021005,
     WHvArm64RegisterPstate            = 0x00020023,
     WHvArm64RegisterElrEl1            = 0x00040015,
     WHvArm64RegisterFpcr              = 0x00040012,
     WHvArm64RegisterFpsr              = 0x00040013,
-    WHvArm64RegisterNzcv              = 0x00021006,
-    WHvArm64RegisterPan               = 0x00021007,
     WHvArm64RegisterSp                = 0x0002001F,
     WHvArm64RegisterSpEl0             = 0x00020020,
     WHvArm64RegisterSpEl1             = 0x00020021,
-    WHvArm64RegisterSpSel             = 0x00021008,
     WHvArm64RegisterSpsrEl1           = 0x00040014,
-    WHvArm64RegisterSsbs              = 0x00021009,
-    WHvArm64RegisterTco               = 0x0002100A,
-    WHvArm64RegisterUao               = 0x0002100B,
 
     //
     // AArch64 System Register Descriptions: ID Registers
     //
+    // ID registers are exposed as partition wide registers. A partition wide register can be
+    // set by the parent using WHV_ANY_VP to change the value read by a guest. ID registers
+    // have the following behavior:
+    // -Parent write with WHV_ANY_VP - sets an override to replace the default value read by a guest.
+    // -Parent read with WHV_ANY_VP - returns the override if one has been set, else the default value.
+    // -Guest write\read with WHV_ANY_VP - not allowed.
+    // -Parent\guest write\read with VP index - not allowed.
+    //
 
-    WHvArm64RegisterIdAa64Dfr0El1     = 0x00022028,
-    WHvArm64RegisterIdAa64Dfr1El1     = 0x00022029,
-    WHvArm64RegisterIdAa64Isar0El1    = 0x00022030,
-    WHvArm64RegisterIdAa64Isar1El1    = 0x00022031,
-    WHvArm64RegisterIdAa64Isar2El1    = 0x00022032,
-    WHvArm64RegisterIdAa64Mmfr0El1    = 0x00022038,
-    WHvArm64RegisterIdAa64Mmfr1El1    = 0x00022039,
-    WHvArm64RegisterIdAa64Mmfr2El1    = 0x0002203A,
-    WHvArm64RegisterIdAa64Mmfr3El1    = 0x0002203B,
-    WHvArm64RegisterIdAa64Mmfr4El1    = 0x0002203C,
-    WHvArm64RegisterIdAa64Pfr0El1     = 0x00022020,
-    WHvArm64RegisterIdAa64Pfr1El1     = 0x00022021,
-    WHvArm64RegisterIdAa64Pfr2El1     = 0x00022022,
-    WHvArm64RegisterIdAa64Smfr0El1    = 0x00022025,
-    WHvArm64RegisterIdAa64Zfr0El1     = 0x00022024,
+    WHvArm64RegisterIdMidrEl1         = 0x00022000,
+    WHvArm64RegisterIdRes01El1        = 0x00022001,
+    WHvArm64RegisterIdRes02El1        = 0x00022002,
+    WHvArm64RegisterIdRes03El1        = 0x00022003,
+    WHvArm64RegisterIdRes04El1        = 0x00022004,
+    WHvArm64RegisterIdMpidrEl1        = 0x00022005,
+    WHvArm64RegisterIdRevidrEl1       = 0x00022006,
+    WHvArm64RegisterIdRes07El1        = 0x00022007,
+    WHvArm64RegisterIdPfr0El1         = 0x00022008,
+    WHvArm64RegisterIdPfr1El1         = 0x00022009,
     WHvArm64RegisterIdDfr0El1         = 0x0002200A,
+    WHvArm64RegisterIdRes13El1        = 0x0002200B,
+    WHvArm64RegisterIdMmfr0El1        = 0x0002200C,
+    WHvArm64RegisterIdMmfr1El1        = 0x0002200D,
+    WHvArm64RegisterIdMmfr2El1        = 0x0002200E,
+    WHvArm64RegisterIdMmfr3El1        = 0x0002200F,
     WHvArm64RegisterIdIsar0El1        = 0x00022010,
     WHvArm64RegisterIdIsar1El1        = 0x00022011,
     WHvArm64RegisterIdIsar2El1        = 0x00022012,
     WHvArm64RegisterIdIsar3El1        = 0x00022013,
     WHvArm64RegisterIdIsar4El1        = 0x00022014,
     WHvArm64RegisterIdIsar5El1        = 0x00022015,
-    WHvArm64RegisterIdMmfr0El1        = 0x0002200C,
-    WHvArm64RegisterIdMmfr1El1        = 0x0002200D,
-    WHvArm64RegisterIdMmfr2El1        = 0x0002200E,
-    WHvArm64RegisterIdMmfr3El1        = 0x0002200F,
-    WHvArm64RegisterIdPfr0El1         = 0x00022008,
-    WHvArm64RegisterIdPfr1El1         = 0x00022009,
+    WHvArm64RegisterIdRes26El1        = 0x00022016,
+    WHvArm64RegisterIdRes27El1        = 0x00022017,
+    WHvArm64RegisterIdMvfr0El1        = 0x00022018,
+    WHvArm64RegisterIdMvfr1El1        = 0x00022019,
+    WHvArm64RegisterIdMvfr2El1        = 0x0002201A,
+    WHvArm64RegisterIdRes33El1        = 0x0002201B,
     WHvArm64RegisterIdPfr2El1         = 0x0002201C,
+    WHvArm64RegisterIdRes35El1        = 0x0002201D,
+    WHvArm64RegisterIdRes36El1        = 0x0002201E,
+    WHvArm64RegisterIdRes37El1        = 0x0002201F,
+    WHvArm64RegisterIdAa64Pfr0El1     = 0x00022020,
+    WHvArm64RegisterIdAa64Pfr1El1     = 0x00022021,
+    WHvArm64RegisterIdAa64Pfr2El1     = 0x00022022,
+    WHvArm64RegisterIdRes43El1        = 0x00022023,
+    WHvArm64RegisterIdAa64Zfr0El1     = 0x00022024,
+    WHvArm64RegisterIdAa64Smfr0El1    = 0x00022025,
+    WHvArm64RegisterIdRes46El1        = 0x00022026,
+    WHvArm64RegisterIdRes47El1        = 0x00022027,
+    WHvArm64RegisterIdAa64Dfr0El1     = 0x00022028,
+    WHvArm64RegisterIdAa64Dfr1El1     = 0x00022029,
+    WHvArm64RegisterIdRes52El1        = 0x0002202A,
+    WHvArm64RegisterIdRes53El1        = 0x0002202B,
+    WHvArm64RegisterIdRes54El1        = 0x0002202C,
+    WHvArm64RegisterIdRes55El1        = 0x0002202D,
+    WHvArm64RegisterIdRes56El1        = 0x0002202E,
+    WHvArm64RegisterIdRes57El1        = 0x0002202F,
+    WHvArm64RegisterIdAa64Isar0El1    = 0x00022030,
+    WHvArm64RegisterIdAa64Isar1El1    = 0x00022031,
+    WHvArm64RegisterIdAa64Isar2El1    = 0x00022032,
+    WHvArm64RegisterIdRes63El1        = 0x00022033,
+    WHvArm64RegisterIdRes64El1        = 0x00022034,
+    WHvArm64RegisterIdRes65El1        = 0x00022035,
+    WHvArm64RegisterIdRes66El1        = 0x00022036,
+    WHvArm64RegisterIdRes67El1        = 0x00022037,
+    WHvArm64RegisterIdAa64Mmfr0El1     = 0x00022038,
+    WHvArm64RegisterIdAa64Mmfr1El1    = 0x00022039,
+    WHvArm64RegisterIdAa64Mmfr2El1    = 0x0002203A,
+    WHvArm64RegisterIdAa64Mmfr3El1    = 0x0002203B,
+    WHvArm64RegisterIdAa64Mmfr4El1    = 0x0002203C,
+    WHvArm64RegisterIdRes75El1        = 0x0002203D,
+    WHvArm64RegisterIdRes76El1        = 0x0002203E,
+    WHvArm64RegisterIdRes77El1        = 0x0002203F,
+    WHvArm64RegisterIdRes80El1        = 0x00022040,
+    WHvArm64RegisterIdRes81El1        = 0x00022041,
+    WHvArm64RegisterIdRes82El1        = 0x00022042,
+    WHvArm64RegisterIdRes83El1        = 0x00022043,
+    WHvArm64RegisterIdRes84El1        = 0x00022044,
+    WHvArm64RegisterIdRes85El1        = 0x00022045,
+    WHvArm64RegisterIdRes86El1        = 0x00022046,
+    WHvArm64RegisterIdRes87El1        = 0x00022047,
+    WHvArm64RegisterIdRes90El1        = 0x00022048,
+    WHvArm64RegisterIdRes91El1        = 0x00022049,
+    WHvArm64RegisterIdRes92El1        = 0x0002204A,
+    WHvArm64RegisterIdRes93El1        = 0x0002204B,
+    WHvArm64RegisterIdRes94El1        = 0x0002204C,
+    WHvArm64RegisterIdRes95El1        = 0x0002204D,
+    WHvArm64RegisterIdRes96El1        = 0x0002204E,
+    WHvArm64RegisterIdRes97El1        = 0x0002204F,
+    WHvArm64RegisterIdRes100El1       = 0x00022050,
+    WHvArm64RegisterIdRes101El1       = 0x00022051,
+    WHvArm64RegisterIdRes102El1       = 0x00022052,
+    WHvArm64RegisterIdRes103El1       = 0x00022053,
+    WHvArm64RegisterIdRes104El1       = 0x00022054,
+    WHvArm64RegisterIdRes105El1       = 0x00022055,
+    WHvArm64RegisterIdRes106El1       = 0x00022056,
+    WHvArm64RegisterIdRes107El1       = 0x00022057,
+    WHvArm64RegisterIdRes110El1       = 0x00022058,
+    WHvArm64RegisterIdRes111El1       = 0x00022059,
+    WHvArm64RegisterIdRes112El1       = 0x0002205A,
+    WHvArm64RegisterIdRes113El1       = 0x0002205B,
+    WHvArm64RegisterIdRes114El1       = 0x0002205C,
+    WHvArm64RegisterIdRes115El1       = 0x0002205D,
+    WHvArm64RegisterIdRes116El1       = 0x0002205E,
+    WHvArm64RegisterIdRes117El1       = 0x0002205F,
+    WHvArm64RegisterIdRes120El1       = 0x00022060,
+    WHvArm64RegisterIdRes121El1       = 0x00022061,
+    WHvArm64RegisterIdRes122El1       = 0x00022062,
+    WHvArm64RegisterIdRes123El1       = 0x00022063,
+    WHvArm64RegisterIdRes124El1       = 0x00022064,
+    WHvArm64RegisterIdRes125El1       = 0x00022065,
+    WHvArm64RegisterIdRes126El1       = 0x00022066,
+    WHvArm64RegisterIdRes127El1       = 0x00022067,
+    WHvArm64RegisterIdRes130El1       = 0x00022068,
+    WHvArm64RegisterIdRes131El1       = 0x00022069,
+    WHvArm64RegisterIdRes132El1       = 0x0002206A,
+    WHvArm64RegisterIdRes133El1       = 0x0002206B,
+    WHvArm64RegisterIdRes134El1       = 0x0002206C,
+    WHvArm64RegisterIdRes135El1       = 0x0002206D,
+    WHvArm64RegisterIdRes136El1       = 0x0002206E,
+    WHvArm64RegisterIdRes137El1       = 0x0002206F,
+    WHvArm64RegisterIdRes140El1       = 0x00022070,
+    WHvArm64RegisterIdRes141El1       = 0x00022071,
+    WHvArm64RegisterIdRes142El1       = 0x00022072,
+    WHvArm64RegisterIdRes143El1       = 0x00022073,
+    WHvArm64RegisterIdRes144El1       = 0x00022074,
+    WHvArm64RegisterIdRes145El1       = 0x00022075,
+    WHvArm64RegisterIdRes146El1       = 0x00022076,
+    WHvArm64RegisterIdRes147El1       = 0x00022077,
+    WHvArm64RegisterIdRes150El1       = 0x00022078,
+    WHvArm64RegisterIdRes151El1       = 0x00022079,
+    WHvArm64RegisterIdRes152El1       = 0x0002207A,
+    WHvArm64RegisterIdRes153El1       = 0x0002207B,
+    WHvArm64RegisterIdRes154El1       = 0x0002207C,
+    WHvArm64RegisterIdRes155El1       = 0x0002207D,
+    WHvArm64RegisterIdRes156El1       = 0x0002207E,
+    WHvArm64RegisterIdRes157El1       = 0x0002207F,
 
     //
     // AArch64 System Register Descriptions: General system control registers
     //
 
+    WHvArm64RegisterActlrEl1          = 0x00040003,
     WHvArm64RegisterApdAKeyHiEl1      = 0x00040026,
     WHvArm64RegisterApdAKeyLoEl1      = 0x00040027,
     WHvArm64RegisterApdBKeyHiEl1      = 0x00040028,
@@ -469,28 +567,15 @@ typedef enum WHV_REGISTER_NAME
     WHvArm64RegisterApiAKeyLoEl1      = 0x0004002D,
     WHvArm64RegisterApiBKeyHiEl1      = 0x0004002E,
     WHvArm64RegisterApiBKeyLoEl1      = 0x0004002F,
-    WHvArm64RegisterCcsidrEl1         = 0x00040030,
-    WHvArm64RegisterCcsidr2El1        = 0x00040031,
-    WHvArm64RegisterClidrEl1          = 0x00040032,
     WHvArm64RegisterContextidrEl1     = 0x0004000D,
     WHvArm64RegisterCpacrEl1          = 0x00040004,
     WHvArm64RegisterCsselrEl1         = 0x00040035,
-    WHvArm64RegisterCtrEl0            = 0x00040036,
-    WHvArm64RegisterDczidEl0          = 0x00040038,
     WHvArm64RegisterEsrEl1            = 0x00040008,
     WHvArm64RegisterFarEl1            = 0x00040009,
-    WHvArm64RegisterIsrEl1            = 0x0004004A,
     WHvArm64RegisterMairEl1           = 0x0004000B,
     WHvArm64RegisterMidrEl1           = 0x00040051,
     WHvArm64RegisterMpidrEl1          = 0x00040001,
-    WHvArm64RegisterMvfr0El1          = 0x00040052,
-    WHvArm64RegisterMvfr1El1          = 0x00040053,
-    WHvArm64RegisterMvfr2El1          = 0x00040054,
     WHvArm64RegisterParEl1            = 0x0004000A,
-    WHvArm64RegisterRevidrEl1         = 0x00040055,
-    WHvArm64RegisterRgsrEl1           = 0x00040056,
-    WHvArm64RegisterRndr              = 0x00040057,
-    WHvArm64RegisterRndrrs            = 0x00040058,
     WHvArm64RegisterSctlrEl1          = 0x00040002,
     WHvArm64RegisterTcrEl1            = 0x00040007,
     WHvArm64RegisterTpidrEl0          = 0x00040011,
@@ -499,6 +584,7 @@ typedef enum WHV_REGISTER_NAME
     WHvArm64RegisterTtbr0El1          = 0x00040005,
     WHvArm64RegisterTtbr1El1          = 0x00040006,
     WHvArm64RegisterVbarEl1           = 0x0004000C,
+    WHvArm64RegisterZcrEl1            = 0x00040071,
 
     //
     // AArch64 System Register Descriptions: Debug Registers
@@ -653,42 +739,22 @@ typedef enum WHV_REGISTER_NAME
     WHvArm64RegisterPmovsclrEl0       = 0x00052048,
     WHvArm64RegisterPmovssetEl0       = 0x00052049,
     WHvArm64RegisterPmselrEl0         = 0x0005204A,
-    WHvArm64RegisterPmswincEl0        = 0x0005204B,
     WHvArm64RegisterPmuserenrEl0      = 0x0005204C,
-    WHvArm64RegisterPmxevcntrEl0      = 0x0005204D,
-    WHvArm64RegisterPmxevtyperEl0     = 0x0005204E,
 
     //
     // AArch64 System Register Descriptions: Generic Timer Registers
     //
 
-    WHvArm64RegisterCntfrqEl0         = 0x00058000,
     WHvArm64RegisterCntkctlEl1        = 0x00058008,
     WHvArm64RegisterCntvCtlEl0        = 0x0005800E,
     WHvArm64RegisterCntvCvalEl0       = 0x0005800F,
-    WHvArm64RegisterCntvTvalEl0       = 0x00058010,
     WHvArm64RegisterCntvctEl0         = 0x00058011,
 
     //
-    // ARM GIC (System Registers): AArch64 System Register Descriptions
+    // ARM GIC (System Registers): The GIC Redistributor
     //
 
-    WHvArm64RegisterIccAp1R0El1       = 0x00060000,
-    WHvArm64RegisterIccAp1R1El1       = 0x00060001,
-    WHvArm64RegisterIccAp1R2El1       = 0x00060002,
-    WHvArm64RegisterIccAp1R3El1       = 0x00060003,
-    WHvArm64RegisterIccAsgi1REl1      = 0x00060004,
-    WHvArm64RegisterIccBpr1El1        = 0x00060005,
-    WHvArm64RegisterIccCtlrEl1        = 0x00060006,
-    WHvArm64RegisterIccDirEl1         = 0x00060007,
-    WHvArm64RegisterIccEoir1El1       = 0x00060008,
-    WHvArm64RegisterIccHppir1El1      = 0x00060009,
-    WHvArm64RegisterIccIar1El1        = 0x0006000A,
-    WHvArm64RegisterIccIgrpen1El1     = 0x0006000B,
-    WHvArm64RegisterIccPmrEl1         = 0x0006000C,
-    WHvArm64RegisterIccRprEl1         = 0x0006000D,
-    WHvArm64RegisterIccSgi1REl1       = 0x0006000E,
-    WHvArm64RegisterIccSreEl1         = 0x0006000F,
+    WHvArm64RegisterGicrBaseGpa    = 0x00063000,
 
     // Synic registers
     WHvRegisterSint0               = 0x000A0000,
@@ -714,6 +780,34 @@ typedef enum WHV_REGISTER_NAME
     WHvRegisterEom                 = 0x000A0014,
 
     // Hypervisor defined registers
+
+    // Hypervisor synthetic CPUID leaves are exposed as partition wide registers. A partition wide
+    // register can be set by the parent using WHV_ANY_VP to change the value read by a guest. Hypervisor
+    // synthetic CPUID leaf registers have the following behavior:
+    // -Parent write with WHV_ANY_VP - sets an override to replace the default value read by a guest.
+    // -Parent read with WHV_ANY_VP - returns the override if one has been set, else the default value.
+    // -Guest write\read with WHV_ANY_VP - not allowed.
+    // -Parent\guest write with VP index - not allowed.
+    // -Parent\guest read with VP index - returns the override if one has been set, else the default value.
+    //
+    // Version
+    WHvRegisterHypervisorVersion            = 0x00000100,   // 128-bit result same as CPUID 0x40000002
+
+    // Feature Access
+    WHvRegisterPrivilegesAndFeaturesInfo    = 0x00000200,   // 128-bit result same as CPUID 0x40000003
+    WHvRegisterFeaturesInfo                 = 0x00000201,   // 128-bit result same as CPUID 0x40000004
+    WHvRegisterImplementationLimitsInfo     = 0x00000202,   // 128-bit result same as CPUID 0x40000005
+    WHvRegisterHardwareFeaturesInfo         = 0x00000203,   // 128-bit result same as CPUID 0x40000006
+    WHvRegisterCpuManagementFeaturesInfo    = 0x00000204,   // 128-bit result same as CPUID 0x40000007
+
+    // Guest Crash Registers
+    WHvRegisterGuestCrashP0        = 0x00000210,
+    WHvRegisterGuestCrashP1        = 0x00000211,
+    WHvRegisterGuestCrashP2        = 0x00000212,
+    WHvRegisterGuestCrashP3        = 0x00000213,
+    WHvRegisterGuestCrashP4        = 0x00000214,
+    WHvRegisterGuestCrashCtl       = 0x00000215,
+
     WHvRegisterVpRuntime           = 0x00090000,
 
     WHvRegisterGuestOsId           = 0x00090002,
@@ -735,6 +829,12 @@ typedef enum WHV_REGISTER_NAME
 #define WHvRegisterPendingEvent WHvRegisterPendingEvent0
 
 #endif // _ARCH_
+
+//
+// Guest physical or virtual address
+//
+typedef UINT64 WHV_GUEST_PHYSICAL_ADDRESS;
+typedef UINT64 WHV_GUEST_VIRTUAL_ADDRESS;
 
 typedef union DECLSPEC_ALIGN(16) WHV_UINT128
 {
@@ -1144,7 +1244,100 @@ typedef union WHV_X64_PENDING_DEBUG_EXCEPTION
 
 C_ASSERT(sizeof(WHV_X64_PENDING_DEBUG_EXCEPTION) == 8);
 
-#endif // defined(_AMD64_)
+#elif defined(_ARM64_)
+
+typedef enum WHV_ARM64_PENDING_EVENT_TYPE
+{
+    WHvArm64PendingEventException = 0,
+    WHvArm64PendingEventSyntheticException = 1,
+} WHV_ARM64_PENDING_EVENT_TYPE;
+
+#define WHV_ARM64_PENDING_EVENT_HEADER \
+    UINT8 EventPending      : 1; \
+    UINT8 EventType         : 3; \
+    UINT8 Reserved          : 4
+
+//
+// Provides information about a PendingEventexception.
+//
+typedef union WHV_ARM64_PENDING_EXCEPTION_EVENT
+{
+    UINT64 AsUINT64[3];
+
+    struct
+    {
+        WHV_ARM64_PENDING_EVENT_HEADER;
+        UINT8 Reserved1;
+        UINT16 Reserved2;
+        UINT32 Reserved3;
+        UINT64 EsrElx;
+        UINT64 FarElx;
+    };
+
+} WHV_ARM64_PENDING_EXCEPTION_EVENT;
+
+typedef enum WHV_ARM64_SYNTHETIC_EXCEPTION_TYPE
+{
+    WHvArm64SyntheticExceptionTypeSmc = 0x0,
+    WHvArm64SyntheticExceptionTypeSecure = 0x1,
+    WHvArm64SyntheticExceptionTypeCrashdump = 0x2,
+    WHvArm64SyntheticExceptionTypeVirtualizationFault = 0x3,
+
+    //
+    // There are only 6 bits available for exception code
+    // in the synthetic ESR.
+    //
+    WHvArm64SyntheticExceptionTypeMax = 0x3F + 1
+} WHV_ARM64_SYNTHETIC_EXCEPTION_TYPE;
+
+//
+// Provides information about a PendingEventSecureException
+//
+typedef union WHV_ARM64_PENDING_SYNTHETIC_EXCEPTION_EVENT
+{
+    UINT64 AsUINT64[2];
+    struct
+    {
+        WHV_ARM64_PENDING_EVENT_HEADER;
+        UINT8 Reserved1;
+        UINT16 Reserved2;
+
+        //
+        // Exception type.
+        //
+        UINT32 ExceptionType;
+
+        //
+        // Type-specific context.
+        //
+        UINT64 Context;
+    };
+
+} WHV_ARM64_PENDING_SYNTHETIC_EXCEPTION_EVENT;
+
+//
+// Context data for WHvRegisterPendingEvent0, WHvRegisterPendingEvent1.
+//
+typedef union WHV_ARM64_PENDING_EVENT
+{
+    struct
+    {
+        WHV_UINT128 Reg0;
+        WHV_UINT128 Reg1;
+    };
+
+    struct
+    {
+        WHV_ARM64_PENDING_EVENT_HEADER;
+        UINT8 EventData[15];
+    };
+
+    WHV_ARM64_PENDING_EXCEPTION_EVENT Exception;
+    WHV_ARM64_PENDING_SYNTHETIC_EXCEPTION_EVENT SyntheticException;
+
+} WHV_ARM64_PENDING_EVENT;
+
+#endif // _ARCH_
 
 //
 // Register values
@@ -1238,6 +1431,9 @@ typedef enum WHV_CAPABILITY_CODE
     WHvCapabilityCodeVmxTrueProcbasedCtls            = 0x0000200E,
     WHvCapabilityCodeVmxTrueExitCtls                 = 0x0000200F,
     WHvCapabilityCodeVmxTrueEntryCtls                = 0x00002010,
+#elif defined (_ARM64_)
+    WHvCapabilityCodeGicLpiIntIdBits                 = 0x00002011,
+    WHvCapabilityCodeMaxSveVectorLength              = 0x00002012,
 #endif
 } WHV_CAPABILITY_CODE;
 
@@ -1266,7 +1462,13 @@ typedef union WHV_CAPABILITY_FEATURES
         UINT64 VirtualPciDeviceSupport : 1;
         UINT64 IommuSupport : 1;
         UINT64 VpHotAddRemove : 1;
-        UINT64 Reserved : 54;
+        UINT64 DeviceAccessTracking : 1;
+#if defined(_AMD64_)
+        UINT64 ReservedX640 : 1;
+#else
+        UINT64 Arm64Support : 1;
+#endif
+        UINT64 Reserved : 52;
     };
 
     UINT64 AsUINT64;
@@ -1584,9 +1786,24 @@ typedef union WHV_ARM64_PROCESSOR_FEATURES
         // Features reported by DCZID_EL0
         //
 
-        UINT64 DzPermitted:1;             // Data zero instructions permitted.
-
-        UINT64 Reserved:17;
+        UINT64 DzPermitted:1;       // Data zero instructions permitted.
+        UINT64 Ssbs:1;              // FEAT_SSBS (Speculative Store Bypass Safe): ID_AA64PFR1_EL1.SSBS >= 0b0001
+        UINT64 SsbsRw:1;            // FEAT_SSBS2 (Speculative Store Bypass Safe):ID_AA64PFR1_EL1.SSBS >= 0b0010
+        UINT64 Reserved49:1;        // Unused
+        UINT64 Reserved50:1;        // Unused
+        UINT64 Reserved51:1;        // Unused
+        UINT64 Reserved52:1;        // Unused
+        UINT64 Csv2:1;              // FEAT_CSV2 (Cache Speculation Variant 2): ID_AA64PFR0_EL1.CSV2 >= 0b0001
+        UINT64 Csv3:1;              // FEAT_CSV3 (Cache Speculation Variant 3): ID_AA64PFR0_EL1.CSV3 >= 0b0001
+        UINT64 Sb:1;                // FEAT_SB (Speculation Barrier): ID_AA64ISAR1_EL1.SB >= 0b0001
+        UINT64 Idc:1;               // CTR_EL0.IDC == 0b1
+        UINT64 Dic:1;               // CTR_EL0.DIC == 0b1
+        UINT64 TlbiOs:1;            // FEAT_TLBIOS (TLB invalidate instructions in Outer Shareable domain): ID_AA64ISAR0_EL1.TLB >= 0b0001
+        UINT64 TlbiOsRange:1;       // FEAT_TLBIRANGE (TLB invalidate range instructions): ID_AA64ISAR0_EL1.TLB >= 0b0010
+        UINT64 FlagsM:1;            // ID_AA64ISAR0_EL1.TS >= 0b0001
+        UINT64 FlagsM2:1;           // ID_AA64ISAR0_EL1.TS >= 0b0010
+        UINT64 Bf16:1;              // FEAT_BF16 (AArch64 BFloat16 instructions): ID_AA64ISAR1_EL1.BF16 >= 0b0001
+        UINT64 Ebf16:1;             // FEAT_EBF16 (AArch64 Extended BFloat16 instructions): ID_AA64ISAR1_EL1.BF16 >= 0b0010
     };
 
     UINT64 AsUINT64;
@@ -1596,7 +1813,48 @@ typedef union WHV_ARM64_PROCESSOR_FEATURES1
 {
     struct
     {
-        UINT64 Reserved:64;
+        UINT64 SveBf16:1;       // ID_AA64ZFR0_EL1.BF16 >= 0b0001 (Second bank starts here)
+        UINT64 SveEbf16:1;      // ID_AA64ZFR0_EL1.BF16 >= 0b0010
+        UINT64 I8mm:1;          // ID_AA64ISAR1_EL1.I8MM >= 0b0001
+        UINT64 SveI8mm:1;       // ID_AA64ZFR0_EL1.I8MM >= 0b0001
+        UINT64 Frintts:1;       // ID_AA64ISAR1_EL1.FRINTTS >= 0b0001
+        UINT64 Specres:1;       // ID_AA64ISAR1_EL1.SPECRES >= 0b0001
+        UINT64 Reserved6:1;     // Not Supported
+        UINT64 Rpres:1;         // ID_AA64ISAR2_EL1.RPRES >= 0b0001
+        UINT64 Exs:1;           // ID_AA64MMFR0_EL1.ExS >= 0b0001
+        UINT64 SpecSei:1;       // ID_AA64MMFR1_EL1.SpecSEI >= 0b0001
+        UINT64 Ets:1;           // ID_AA64MMFR1_EL1.ETS >= 0b0001
+        UINT64 Afp:1;           // ID_AA64MMFR1_EL1.AFP >= 0b0001
+        UINT64 Iesb:1;          // ID_AA64MMFR2_EL1.IESB >= 0b0001
+        UINT64 Rng:1;           // ID_AA64ISAR0_EL1.RNDR >= 0b0001
+        UINT64 Lse2:1;          // ID_AA64MMFR2_EL1.AT == 0b0001U
+        UINT64 Idst:1;          // ID_AA64MMFR2_EL1.IDS == 0b0001U
+        UINT64 Reserved16:1;    // Not supported
+        UINT64 Reserved17:1;    // Not supported
+        UINT64 Reserved18:1;    // Not supported
+        UINT64 Reserved19:1;    // Not supported
+        UINT64 Reserved20:1;    // Not supported
+        UINT64 Reserved21:1;    // Not supported
+        UINT64 Ccidx:1;         // ID_AA64MMFR2_EL1.CCIDX >= 0b0001
+        UINT64 Reserved23:1;    // Not supported
+        UINT64 Reserved24:1;    // Not supported
+        UINT64 Reserved25:1;    // Unused
+        UINT64 Reserved26:1;    // Unused
+        UINT64 Reserved27:1;    // Unused
+        UINT64 Reserved28:1;    // Not supported
+        UINT64 Reserved29:1;    // Not supported
+        UINT64 Reserved30:1;    // Not supported
+        UINT64 Reserved31:1;    // Not supported
+        UINT64 Reserved32:1;    // Not supported
+        UINT64 Reserved33:1;    // Not supported
+        UINT64 Reserved34:1;    // Not supported
+        UINT64 TtCnp:1;         // ID_AA64MMFR2_EL1.CnP >= 0b0001
+        UINT64 Hpds:1;          // ID_AA64MMFR1_EL1.HPDS >= 0b0001
+        UINT64 Sve:1;           // ID_AA64PFR0_EL1.SVE >= 0b0001 && ID_AA64ZFR0_EL1.SVEver >= 0b0000
+        UINT64 SveV2:1;         // ID_AA64PFR0_EL1.SVE >= 0b0001 && ID_AA64ZFR0_EL1.SVEver >= 0b0001
+        UINT64 SveV2P1:1;       // ID_AA64PFR0_EL1.SVE >= 0b0001 && ID_AA64ZFR0_EL1.SVEver >= 0b0010
+        UINT64 SpecFpacc:1;     // ID_AA64MMFR3_EL1.Spec_FPACC >= 0b0001
+        UINT64 Reserved:13;
     };
 
     UINT64 AsUINT64;
@@ -1724,13 +1982,10 @@ typedef union WHV_SYNTHETIC_PROCESSOR_FEATURES
         // Use extended processor masks.
         UINT64 ExtendedProcessorMasks:1;
 
-#if defined(_AMD64_)
-        // HvCallFlushVirtualAddressSpace / HvCallFlushVirtualAddressList are supported.
+        // On AMD64, HvCallFlushVirtualAddressSpace / HvCallFlushVirtualAddressList are supported, on
+        // ARM64 HvCallFlushVirtualAddressSpace / HvCallFlushTlb are supported.
         UINT64 TbFlushHypercalls:1;
-#else
-        UINT64 ReservedZ25:1;
-#endif
-
+    
         // HvCallSendSyntheticClusterIpi is supported.
         UINT64 SyntheticClusterIpi:1;
 
@@ -1814,6 +2069,8 @@ C_ASSERT(sizeof(WHV_SYNTHETIC_PROCESSOR_FEATURES_BANKS) == 16);
 //
 
 typedef UINT8 WHV_VTL;
+
+#define WHV_VTL_ALL 0xF
 
 //
 // Input for targeting a specific VTL.
@@ -1982,7 +2239,10 @@ typedef enum WHV_PARTITION_PROPERTY_CODE
     WHvPartitionPropertyCodeUnimplementedMsrAction          = 0x00001010,
 #endif
     WHvPartitionPropertyCodePhysicalAddressWidth            = 0x00001011,
-    WHvPartitionPropertyCodeProcessorCount          = 0x00001fff
+#if defined(_ARM64_)
+    WHvPartitionPropertyCodeArm64IcParameters               = 0x00001012,
+#endif
+    WHvPartitionPropertyCodeProcessorCount                  = 0x00001fff,
 } WHV_PARTITION_PROPERTY_CODE;
 
 #if defined(_AMD64_)
@@ -2086,12 +2346,6 @@ C_ASSERT(sizeof(WHV_X64_MSR_EXIT_BITMAP) == 8);
 //
 // Memory Management
 //
-
-//
-// Guest physical or virtual address
-//
-typedef UINT64 WHV_GUEST_PHYSICAL_ADDRESS;
-typedef UINT64 WHV_GUEST_VIRTUAL_ADDRESS;
 
 //
 // Flags used by WHvMapGpaRange/WHvMapGpaRange2
@@ -2340,6 +2594,9 @@ typedef union WHV_CAPABILITY
     WHV_PROCESSOR_PERFMON_FEATURES ProcessorPerfmonFeatures;
     WHV_X64_MSR_EXIT_BITMAP X64MsrExitBitmap;
     UINT64 ExceptionExitBitmap;
+#elif defined (_ARM64_)
+    UINT32 GicLpiIntIdBits;
+    UINT32 MaxSveVectorLength;
 #endif
 } WHV_CAPABILITY;
 
@@ -2447,7 +2704,47 @@ typedef enum WHV_X64_LOCAL_APIC_EMULATION_MODE
     WHvX64LocalApicEmulationModeX2Apic
 } WHV_X64_LOCAL_APIC_EMULATION_MODE;
 
-#endif // defined(_AMD64_)
+#elif defined(_ARM64_)
+
+//
+// WHvPartitionPropertyCodeArm64IcParameters enumeration values.
+//
+
+typedef enum WHV_ARM64_IC_EMULATION_MODE
+{
+    WHvArm64IcEmulationModeNone = 0,
+    WHvArm64IcEmulationModeGicV3
+} WHV_ARM64_IC_EMULATION_MODE;
+
+typedef UINT32 WHV_ARM64_INTERRUPT_VECTOR;
+
+typedef struct WHV_ARM64_IC_GIC_V3_PARAMETERS
+{
+    WHV_GUEST_PHYSICAL_ADDRESS GicdBaseAddress;
+    WHV_GUEST_PHYSICAL_ADDRESS GitsTranslaterBaseAddress;
+    UINT32 Reserved;
+    UINT32 GicLpiIntIdBits;
+    WHV_ARM64_INTERRUPT_VECTOR GicPpiOverflowInterruptFromCntv;
+    WHV_ARM64_INTERRUPT_VECTOR GicPpiPerformanceMonitorsInterrupt;
+    UINT32 Reserved1[6];
+} WHV_ARM64_IC_GIC_V3_PARAMETERS;
+
+C_ASSERT(sizeof(WHV_ARM64_IC_GIC_V3_PARAMETERS) == 56);
+
+typedef struct WHV_ARM64_IC_PARAMETERS
+{
+    WHV_ARM64_IC_EMULATION_MODE EmulationMode;
+    UINT32 Reserved;
+    union
+    {
+        WHV_ARM64_IC_GIC_V3_PARAMETERS GicV3Parameters;
+    };
+
+} WHV_ARM64_IC_PARAMETERS;
+
+C_ASSERT(sizeof(WHV_ARM64_IC_PARAMETERS) == 64);
+
+#endif // _ARCH_
 
 //
 // WHvGetPartitionProperty output buffer / WHvSetPartitionProperty input buffer
@@ -2486,6 +2783,8 @@ typedef union WHV_PARTITION_PROPERTY
     WHV_MSR_ACTION_ENTRY MsrActionList[1];
     WHV_MSR_ACTION UnimplementedMsrAction;
     WHV_X64_LOCAL_APIC_EMULATION_MODE LocalApicEmulationMode;
+#elif defined(_ARM64_)
+    WHV_ARM64_IC_PARAMETERS Arm64IcParameters;
 #endif
 } WHV_PARTITION_PROPERTY;
 
@@ -2541,6 +2840,7 @@ typedef enum WHV_RUN_VP_EXIT_REASON
     WHvRunVpExitReasonInvalidVpRegisterValue = 0x80000020,
     WHvRunVpExitReasonUnsupportedFeature     = 0x80000022,
     WHvRunVpExitReasonSynicSintDeliverable   = 0x80000062,
+    WHvMessageTypeRegisterIntercept          = 0x80010006,
     WHvRunVpExitReasonArm64Reset             = 0x8001000c,
 
     // Additional exits that can be configured through partition properties
@@ -2875,6 +3175,31 @@ typedef struct WHV_SYNIC_SINT_DELIVERABLE_CONTEXT
 
 C_ASSERT(sizeof(WHV_SYNIC_SINT_DELIVERABLE_CONTEXT) == 32);
 
+//
+// Define register intercept message structure.
+//
+typedef union WHV_REGISTER_ACCESS_INFO
+{
+    WHV_REGISTER_VALUE SourceValue;
+    WHV_REGISTER_NAME DestinationRegister;
+} WHV_REGISTER_ACCESS_INFO;
+
+typedef struct WHV_REGISTER_CONTEXT
+{
+    WHV_INTERCEPT_MESSAGE_HEADER Header;
+    struct
+    {
+        UINT8 IsMemoryOp:1;
+        UINT8 Reserved:7;
+    };
+    UINT8 Reserved8;
+    UINT16 Reserved16;
+    WHV_REGISTER_NAME RegisterName;
+    WHV_REGISTER_ACCESS_INFO AccessInfo;
+} WHV_REGISTER_CONTEXT;
+
+C_ASSERT(sizeof(WHV_REGISTER_CONTEXT) == 48);
+
 typedef enum WHV_ARM64_RESET_TYPE
 {
     WHvArm64ResetTypePowerOff = 0,
@@ -3065,6 +3390,8 @@ typedef struct WHV_RUN_VP_EXIT_CONTEXT
 
 #if defined(_AMD64_)
     WHV_VP_EXIT_CONTEXT VpContext;
+#elif defined(_ARM64_)
+    UINT64 Reserved1;
 #endif
 
     union
@@ -3089,6 +3416,7 @@ typedef struct WHV_RUN_VP_EXIT_CONTEXT
 #elif defined(_ARM64_)
         WHV_UNRECOVERABLE_EXCEPTION_CONTEXT UnrecoverableException;
         WHV_INVALID_VP_REGISTER_CONTEXT InvalidVpRegister;
+        WHV_REGISTER_CONTEXT Register;
         WHV_ARM64_RESET_CONTEXT Arm64Reset;
         UINT64 AsUINT64[32];
 #endif
@@ -3101,7 +3429,7 @@ C_ASSERT(sizeof(WHV_RUN_VP_EXIT_CONTEXT) == 224);
 
 #elif defined(_ARM64_)
 
-C_ASSERT(sizeof(WHV_RUN_VP_EXIT_CONTEXT) == 264);
+C_ASSERT(sizeof(WHV_RUN_VP_EXIT_CONTEXT) == 272);
 
 #endif
 
@@ -3144,7 +3472,6 @@ C_ASSERT(sizeof(WHV_INTERRUPT_CONTROL) == 16);
 
 #elif defined(_ARM64_)
 
-// TODO ADO (46980205) - Expose hypervisor types directly.
 typedef enum WHV_INTERRUPT_TYPE
 {
     WHvArm64InterruptTypeFixed             = 0x0000,
@@ -3152,26 +3479,24 @@ typedef enum WHV_INTERRUPT_TYPE
     //
     // Maximum (exclusive) value of interrupt type.
     //
-    WHvArm64InterruptTypeMaximum           = 0x008,
+    WHvArm64InterruptTypeMaximum           = 0x0008,
 } WHV_INTERRUPT_TYPE;
 
-// TODO ADO (46980205) - Expose hypervisor types directly.
 typedef union WHV_INTERRUPT_CONTROL2
 {
     UINT64 AsUINT64;
     struct
     {
         WHV_INTERRUPT_TYPE InterruptType;
-        UINT32 LevelTriggered:1;
-        UINT32 LogicalDestinationMode:1;
+        UINT32 Reserved1:2;
         UINT32 Asserted:1;
-        UINT32 Reserved:29;
+        UINT32 Retarget:1;
+        UINT32 Reserved2:28;
     };
 } WHV_INTERRUPT_CONTROL2;
 
 C_ASSERT(sizeof(WHV_INTERRUPT_CONTROL2) == 8);
 
-// TODO ADO (46980205) - Expose hypervisor types directly.
 typedef struct WHV_INTERRUPT_CONTROL
 {
     UINT64                  TargetPartition;
@@ -3268,20 +3593,13 @@ typedef struct WHV_PROCESSOR_INTERCEPT_COUNTERS
     WHV_PROCESSOR_INTERCEPT_COUNTER PendingInterrupts;
     WHV_PROCESSOR_INTERCEPT_COUNTER NestedPageFaultIntercepts;
     WHV_PROCESSOR_INTERCEPT_COUNTER Hypercalls;
+    WHV_PROCESSOR_INTERCEPT_COUNTER Reserved[10];
 
 #endif
 
 } WHV_PROCESSOR_ACTIVITY_COUNTERS;
 
-#if defined(_AMD64_)
-
 C_ASSERT(sizeof(WHV_PROCESSOR_ACTIVITY_COUNTERS) == 224);
-
-#else
-
-C_ASSERT(sizeof(WHV_PROCESSOR_ACTIVITY_COUNTERS) == 64);
-
-#endif
 
 typedef struct WHV_PROCESSOR_EVENT_COUNTERS
 {
@@ -3340,19 +3658,37 @@ typedef enum WHV_ADVISE_GPA_RANGE_CODE
 } WHV_ADVISE_GPA_RANGE_CODE;
 
 // WHvGetVirtualProcessorState and WHvSetVirtualProcessorState types.
+#if defined(_AMD64_)
+
 typedef enum WHV_VIRTUAL_PROCESSOR_STATE_TYPE
 {
     WHvVirtualProcessorStateTypeSynicMessagePage          = 0x00000000,
     WHvVirtualProcessorStateTypeSynicEventFlagPage        = 0x00000001,
-
-#if defined(_AMD64_)
     WHvVirtualProcessorStateTypeSynicTimerState           = 0x00000002,
 
     WHvVirtualProcessorStateTypeInterruptControllerState2 = 0x00001000,
     WHvVirtualProcessorStateTypeXsaveState                = 0x00001001,
     WHvVirtualProcessorStateTypeNestedState               = 0x00001002,
-#endif
 } WHV_VIRTUAL_PROCESSOR_STATE_TYPE;
+
+#elif defined (_ARM64_)
+
+#define WHV_VIRTUAL_PROCESSOR_STATE_TYPE_PFN    (1ui32 << 31)
+#define WHV_VIRTUAL_PROCESSOR_STATE_TYPE_ANY_VP (1ui32 << 30)
+
+typedef enum WHV_VIRTUAL_PROCESSOR_STATE_TYPE
+{
+    WHvVirtualProcessorStateTypeInterruptControllerState  = 0x00000000 | WHV_VIRTUAL_PROCESSOR_STATE_TYPE_PFN,
+
+    WHvVirtualProcessorStateTypeSynicMessagePage          = 0x00000002 | WHV_VIRTUAL_PROCESSOR_STATE_TYPE_PFN,
+    WHvVirtualProcessorStateTypeSynicEventFlagPage        = 0x00000003 | WHV_VIRTUAL_PROCESSOR_STATE_TYPE_PFN,
+    WHvVirtualProcessorStateTypeSynicTimerState           = 0x00000004,
+
+    WHvVirtualProcessorStateTypeGlobalInterruptState      = 0x00000006 | WHV_VIRTUAL_PROCESSOR_STATE_TYPE_PFN | WHV_VIRTUAL_PROCESSOR_STATE_TYPE_ANY_VP,
+    WHvVirtualProcessorStateTypeSveState                  = 0x00000007 | WHV_VIRTUAL_PROCESSOR_STATE_TYPE_PFN,
+} WHV_VIRTUAL_PROCESSOR_STATE_TYPE;
+
+#endif
 
 // Data structures for WHvVirtualProcessorStateTypeNestedState
 
@@ -3596,6 +3932,101 @@ typedef union WHV_X64_NESTED_STATE
 } WHV_X64_NESTED_STATE;
 
 C_ASSERT(sizeof(WHV_X64_NESTED_STATE) == (2 * 4096));
+
+//
+// Data structures for WHvVirtualProcessorStateTypeInterruptControllerState2 and
+// WHvVirtualProcessorStateTypeGlobalInterruptState on ARM64
+//
+
+#if defined (_ARM64_)
+
+typedef struct WHV_ARM64_INTERRUPT_STATE
+{
+    struct
+    {
+        UINT8 Enabled : 1;
+        UINT8 EdgeTriggered : 1;
+        UINT8 Asserted : 1;
+        UINT8 SetPending : 1;
+        UINT8 Active : 1;
+        UINT8 Direct : 1;
+        UINT8 Reserved0 : 2;
+    };
+
+    UINT8 GicrIpriorityrConfigured;
+    UINT8 GicrIpriorityrActive;
+
+    UINT8 Reserved1;
+
+} WHV_ARM64_INTERRUPT_STATE;
+
+typedef struct WHV_ARM64_GLOBAL_INTERRUPT_STATE
+{
+    UINT32 InterruptId;
+    UINT32 ActiveVpIndex;
+
+    union
+    {
+        UINT32 TargetMpidr;
+        UINT32 TargetVpIndex;
+    };
+
+    WHV_ARM64_INTERRUPT_STATE InterruptState;
+
+} WHV_ARM64_GLOBAL_INTERRUPT_STATE;
+
+#define WHV_ARM64_GLOBAL_INTERRUPT_CONTROLLER_STATE_VERSION_CURRENT (1)
+
+typedef struct WHV_ARM64_GLOBAL_INTERRUPT_CONTROLLER_STATE
+{
+    UINT8 Version;
+    UINT8 GicVersion;
+    UINT8 Reserved0[2];
+
+    UINT32 NumInterrupts;
+    UINT64 GicdCtlrEnableGrp1A;
+
+    WHV_ARM64_GLOBAL_INTERRUPT_STATE Interrupts[ANYSIZE_ARRAY];
+
+} WHV_ARM64_GLOBAL_INTERRUPT_CONTROLLER_STATE;
+
+#define WHV_ARM64_INTERRUPT_CONTROLLER_STATE_VERSION_CURRENT (1)
+
+typedef struct WHV_ARM64_LOCAL_INTERRUPT_CONTROLLER_STATE
+{
+    UINT8 Version;
+    UINT8 GicVersion;
+    UINT8 Reserved0[6];
+
+    UINT64 IccIgrpen1El1;
+    UINT64 GicrCtlrEnableLpis;
+    UINT64 IccBpr1El1;
+    UINT64 IccPmrEl1;
+    UINT64 GicrPropbaser;
+    UINT64 GicrPendbaser;
+    UINT32 IchAp1REl2[4];
+
+    WHV_ARM64_INTERRUPT_STATE BankedInterruptState[32];
+
+} WHV_ARM64_LOCAL_INTERRUPT_CONTROLLER_STATE;
+
+//
+// Data structure for WHvVirtualProcessorStateTypeSveState
+//
+
+typedef struct WHV_ARM64_VP_STATE_SVE {
+    USHORT Version;
+    USHORT RegisterDataOffset;
+    UINT32 VectorLength;
+    UINT64 Reserved0;
+    // Starting at RegisterDataOffset:
+    // Z0-Z31
+    // P0-P15
+    // FFR
+} WHV_ARM64_VP_STATE_SVE;
+
+#endif // defined (_ARM64_)
+
 
 //
 // Synic definitions

@@ -12230,7 +12230,7 @@ typedef struct _TOKEN_LOGGING_INFORMATION {
 // Valid bits for each TOKEN_AUDIT_POLICY policy mask field.
 //
 
-#define POLICY_AUDIT_SUBCATEGORY_COUNT (59)
+#define POLICY_AUDIT_SUBCATEGORY_COUNT (60)
 
 typedef struct _TOKEN_AUDIT_POLICY {
     BYTE  PerUserPolicy[((POLICY_AUDIT_SUBCATEGORY_COUNT) >> 1) + 1];
@@ -18144,6 +18144,7 @@ typedef enum {
     SessionAllowExternalDmaDevices,
     SendSuspendResumeNotification,
     BlackBoxRecorderDirectAccessBuffer,
+    SystemPowerSourceState,
     PowerInformationLevelMaximum
 } POWER_INFORMATION_LEVEL;
 
@@ -19126,6 +19127,34 @@ typedef struct {
     DWORD               DefaultAlert1;
     DWORD               DefaultAlert2;
 } SYSTEM_BATTERY_STATE, *PSYSTEM_BATTERY_STATE;
+
+typedef struct _SYSTEM_POWER_SOURCE_STATE {
+    SYSTEM_BATTERY_STATE BatteryState;
+    DWORD                InstantaneousPeakPower;
+    DWORD                InstantaneousPeakPeriod;
+    DWORD                SustainablePeakPower;
+    DWORD                SustainablePeakPeriod;
+    DWORD                PeakPower;
+    DWORD                MaxOutputPower;
+    DWORD                MaxInputPower;
+    LONG                 BatteryRateInCurrent;
+    DWORD                BatteryVoltage;
+} SYSTEM_POWER_SOURCE_STATE, *PSYSTEM_POWER_SOURCE_STATE;
+
+//
+// N.B. SYSTEM_POWER_SOURCE_STATE extends SYSTEM_BATTERY_STATE, with BatteryState
+//      positioned at the beginning of the structure. This layout ensures that unions
+//      or structures referencing SYSTEM_BATTERY_STATE will correctly interpret
+//      BatteryState when accessing SYSTEM_POWER_SOURCE_STATE. The assertion ensures
+//      that the BatteryState field has a zero offset, confirming its position at the
+//      start of SYSTEM_POWER_SOURCE_STATE.
+//
+
+#ifndef MIDL_PASS
+
+C_ASSERT(FIELD_OFFSET(SYSTEM_POWER_SOURCE_STATE, BatteryState) == 0);
+
+#endif
 
 
 
@@ -21370,6 +21399,7 @@ typedef PIMAGE_ENCLAVE_CONFIG32         PIMAGE_ENCLAVE_CONFIG;
 #define IMAGE_ENCLAVE_MINIMUM_CONFIG_SIZE   FIELD_OFFSET(IMAGE_ENCLAVE_CONFIG, EnclaveFlags)
 
 #define IMAGE_ENCLAVE_POLICY_DEBUGGABLE     0x00000001
+#define IMAGE_ENCLAVE_POLICY_STRICT_MEMORY  0x00000002
 
 #define IMAGE_ENCLAVE_FLAG_PRIMARY_IMAGE    0x00000001
 

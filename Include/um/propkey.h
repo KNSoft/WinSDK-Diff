@@ -8310,6 +8310,14 @@ DEFINE_PROPERTYKEY(PKEY_Home_IsPinned, 0x30C8EEF4, 0xA832, 0x41E2, 0xAB, 0x32, 0
 DEFINE_PROPERTYKEY(PKEY_Home_ItemFolderPathDisplay, 0x30C8EEF4, 0xA832, 0x41E2, 0xAB, 0x32, 0xE3, 0xC3, 0xCA, 0x28, 0xFD, 0x29, 6);
 #define INIT_PKEY_Home_ItemFolderPathDisplay { { 0x30C8EEF4, 0xA832, 0x41E2, 0xAB, 0x32, 0xE3, 0xC3, 0xCA, 0x28, 0xFD, 0x29 }, 6 }
 
+//  Name:     System.Home.RecommendationActivityDate -- PKEY_Home_RecommendationActivityDate
+//  Type:     DateTime -- VT_FILETIME  (For variants: VT_DATE)
+//  FormatID: {30C8EEF4-A832-41E2-AB32-E3C3CA28FD29}, 22
+//
+//  A timestamp representative of when the relevant activity took place for a given recommendation
+DEFINE_PROPERTYKEY(PKEY_Home_RecommendationActivityDate, 0x30C8EEF4, 0xA832, 0x41E2, 0xAB, 0x32, 0xE3, 0xC3, 0xCA, 0x28, 0xFD, 0x29, 22);
+#define INIT_PKEY_Home_RecommendationActivityDate { { 0x30C8EEF4, 0xA832, 0x41E2, 0xAB, 0x32, 0xE3, 0xC3, 0xCA, 0x28, 0xFD, 0x29 }, 22 }
+
 //  Name:     System.Home.RecommendationProviderSource -- PKEY_Home_RecommendationProviderSource
 //  Type:     UInt32 -- VT_UI4
 //  FormatID: {5CA9B1CB-C69F-404B-ABC6-FD336793A6A7}, 22

@@ -148,44 +148,16 @@ extern "C" {
 //          - WEBAUTHN_CREDENTIAL_ATTESTATION                   :   6
 //          - WEBAUTHN_ASSERTION                                :   5
 
-
-// ***************************************************************************************************************************
-// DISCLAIMER: All APIs, fields, and data types introduced as part of EXPERIMENTAL_WEBAUTHN_API_VERSION_8 are unstable, may 
-// not be documented and are subject to change at any time in the future without any notice.
-// ***************************************************************************************************************************
-
-#define EXPERIMENTAL_WEBAUTHN_API_VERSION_8          1008
-// EXPERIMENTAL_WEBAUTHN_API_VERSION_8 : Delta From WEBAUTHN_API_VERSION_7
+#define WEBAUTHN_API_VERSION_8          8
+// WEBAUTHN_API_VERSION_8 : Delta From WEBAUTHN_API_VERSION_7
 //      Data Structures and their sub versions:
-//          - WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS    :   1008 (EXPERIMENTAL)
-//          - WEBAUTHN_CREDENTIAL_DETAILS                       :   1003 (EXPERIMENTAL)
-//          - WEBAUTHN_CREDENTIAL_ATTESTATION                   :   1007 (EXPERIMENTAL)
-//          - WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS      :   1008 (EXPERIMENTAL)
-//      APIs:
-//          - EXPERIMENTAL_WebAuthNIsUserVerifyingNativePlatformAuthenticatorAvailable
-//          - EXPERIMENTAL_WebAuthNPluginGetAuthenticatorState
-//          - EXPERIMENTAL_WebAuthNPluginAddAuthenticator
-//          - EXPERIMENTAL_WebAuthNPluginFreeAddAuthenticatorResponse
-//          - EXPERIMENTAL_WebAuthNPluginRemoveAuthenticator
-//          - EXPERIMENTAL_WebAuthNPluginUpdateAuthenticatorDetails
-//          - EXPERIMENTAL_WebAuthNPluginFreeUpdateAuthenticatorDetailsResponse
-//          - EXPERIMENTAL_WebAuthNPluginAuthenticatorAddCredentials
-//          - EXPERIMENTAL_WebAuthNPluginFreeAddCredentialsResponse
-//          - EXPERIMENTAL_WebAuthNPluginAuthenticatorRemoveCredentials
-//          - EXPERIMENTAL_WebAuthNPluginFreeRemoveCredentialsResponse
-//          - EXPERIMENTAL_WebAuthNPluginAuthenticatorRemoveAllCredentials
-//          - EXPERIMENTAL_WebAuthNPluginFreeRemoveAllCredentialsResponse
-//          - EXPERIMENTAL_WebAuthNPluginAuthenticatorGetAllCredentials
-//          - EXPERIMENTAL_WebAuthNPluginPerformUv
-//          - EXPERIMENTAL_WebAuthNPluginFreePerformUvResponse
-//          - EXPERIMENTAL_WebAuthNEncodeMakeCredentialResponse
-//          - EXPERIMENTAL_WebAuthNDecodeMakeCredentialRequest
-//          - EXPERIMENTAL_WebAuthNFreeDecodedMakeCredentialRequest
-//          - EXPERIMENTAL_WebAuthNDecodeGetAssertionRequest
-//          - EXPERIMENTAL_WebAuthNFreeDecodedGetAssertionRequest
-//          - EXPERIMENTAL_WebAuthNEncodeGetAssertionResponse
+//          - WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS    :   8
+//          - WEBAUTHN_CREDENTIAL_DETAILS                       :   3
+//          - WEBAUTHN_CREDENTIAL_ATTESTATION                   :   7
+//          - WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS      :   8
+//
 
-#define WEBAUTHN_API_CURRENT_VERSION    WEBAUTHN_API_VERSION_7
+#define WEBAUTHN_API_CURRENT_VERSION    WEBAUTHN_API_VERSION_8
 
 //+------------------------------------------------------------------------------------------
 // Information about an RP Entity
@@ -469,8 +441,8 @@ typedef const CTAPCBOR_HYBRID_STORAGE_LINKED_DATA *PCCTAPCBOR_HYBRID_STORAGE_LIN
 
 #define WEBAUTHN_CREDENTIAL_DETAILS_VERSION_1           1
 #define WEBAUTHN_CREDENTIAL_DETAILS_VERSION_2           2
-#define EXPERIMENTAL_WEBAUTHN_CREDENTIAL_DETAILS_VERSION_3 1003
-#define WEBAUTHN_CREDENTIAL_DETAILS_CURRENT_VERSION     WEBAUTHN_CREDENTIAL_DETAILS_VERSION_2
+#define WEBAUTHN_CREDENTIAL_DETAILS_VERSION_3           3
+#define WEBAUTHN_CREDENTIAL_DETAILS_CURRENT_VERSION     WEBAUTHN_CREDENTIAL_DETAILS_VERSION_3
 
 typedef struct _WEBAUTHN_CREDENTIAL_DETAILS {
     // Version of this structure, to allow for modifications in the future.
@@ -509,22 +481,22 @@ typedef struct _WEBAUTHN_CREDENTIAL_DETAILS {
     BOOL bBackedUp;
 
     //
-    // The following fields have been added in EXPERIMENTAL_WEBAUTHN_CREDENTIAL_DETAILS_VERSION_3
+    // The following fields have been added in WEBAUTHN_CREDENTIAL_DETAILS_VERSION_3
     //
-    PCWSTR EXPERIMENTAL_pwszAuthenticatorName;
+    PCWSTR pwszAuthenticatorName;
 
     // The logo is expected to be in the svg format
-    DWORD EXPERIMENTAL_cbAuthenticatorLogo;
+    DWORD cbAuthenticatorLogo;
 
     #ifdef __midl
-    [size_is(EXPERIMENTAL_cbAuthenticatorLogo)]
+    [size_is(cbAuthenticatorLogo)]
     #else
-    _Field_size_bytes_(EXPERIMENTAL_cbAuthenticatorLogo)
+    _Field_size_bytes_(cbAuthenticatorLogo)
     #endif
-    PBYTE EXPERIMENTAL_pbAuthenticatorLogo;
+    PBYTE pbAuthenticatorLogo;
 
     // ThirdPartyPayment Credential or not.
-    BOOL EXPERIMENTAL_bThirdPartyPayment;
+    BOOL bThirdPartyPayment;
 
 } WEBAUTHN_CREDENTIAL_DETAILS, *PWEBAUTHN_CREDENTIAL_DETAILS;
 typedef const WEBAUTHN_CREDENTIAL_DETAILS *PCWEBAUTHN_CREDENTIAL_DETAILS;
@@ -774,8 +746,8 @@ typedef const WEBAUTHN_EXTENSIONS *PCWEBAUTHN_EXTENSIONS;
 #define WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_5            5
 #define WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_6            6
 #define WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_7            7
-#define EXPERIMENTAL_WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_8 1008
-#define WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_CURRENT_VERSION      WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_7
+#define WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_8            8
+#define WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_CURRENT_VERSION      WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_8
 
 typedef struct _WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS {
     // Version of this structure, to allow for modifications in the future.
@@ -864,27 +836,27 @@ typedef struct _WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS {
     PBYTE pbJsonExt;
 
     //
-    // The following fields have been added in EXPERIMENTAL_WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_8
+    // The following fields have been added in WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_8
     //
 
     // PRF extension "eval" values which will be converted into HMAC-SECRET values according to WebAuthn Spec.
     // Set WEBAUTHN_CTAP_HMAC_SECRET_VALUES_FLAG in dwFlags above, if caller wants to provide RAW Hmac-Secret SALT values directly.
     // In that case, values provided MUST be of WEBAUTHN_CTAP_ONE_HMAC_SECRET_LENGTH size.
-    PWEBAUTHN_HMAC_SECRET_SALT EXPERIMENTAL_pPRFGlobalEval;
+    PWEBAUTHN_HMAC_SECRET_SALT pPRFGlobalEval;
 
     // PublicKeyCredentialHints (https://w3c.github.io/webauthn/#enum-hints)
-    DWORD EXPERIMENTAL_cCredentialHints;
+    DWORD cCredentialHints;
 
     #ifdef __midl
-    [size_is(EXPERIMENTAL_cCredentialHints)]
-    PCWSTR *EXPERIMENTAL_ppwszCredentialHints;
+    [size_is(cCredentialHints)]
+    PCWSTR *ppwszCredentialHints;
     #else
-    _Field_size_(EXPERIMENTAL_cCredentialHints)
-    LPCWSTR *EXPERIMENTAL_ppwszCredentialHints;
+    _Field_size_(cCredentialHints)
+    LPCWSTR *ppwszCredentialHints;
     #endif
 
     // Enable ThirdPartyPayment
-    BOOL EXPERIMENTAL_bThirdPartyPayment;
+    BOOL bThirdPartyPayment;
 
 } WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS, *PWEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS;
 typedef const WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS *PCWEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS;
@@ -901,8 +873,8 @@ typedef const WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS *PCWEBAUTHN_AUTHENT
 #define WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_5          5
 #define WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_6          6
 #define WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_7          7
-#define EXPERIMENTAL_WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_8 1008
-#define WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_CURRENT_VERSION    WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_7
+#define WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_8          8
+#define WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_CURRENT_VERSION    WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_8
 
 /*
     Information about flags.
@@ -995,18 +967,18 @@ typedef struct _WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS {
     PBYTE pbJsonExt;
 
     //
-    // The following fields have been added in EXPERIMENTAL_WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_8
+    // The following fields have been added in WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_8
     //
 
     // PublicKeyCredentialHints (https://w3c.github.io/webauthn/#enum-hints)
-    DWORD EXPERIMENTAL_cCredentialHints;
+    DWORD cCredentialHints;
 
     #ifdef __midl
-    [size_is(EXPERIMENTAL_cCredentialHints)]
-    PCWSTR *EXPERIMENTAL_ppwszCredentialHints;
+    [size_is(cCredentialHints)]
+    PCWSTR *ppwszCredentialHints;
     #else
-    _Field_size_(EXPERIMENTAL_cCredentialHints)
-    LPCWSTR *EXPERIMENTAL_ppwszCredentialHints;
+    _Field_size_(cCredentialHints)
+    LPCWSTR *ppwszCredentialHints;
     #endif
 
 } WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS,  *PWEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS;
@@ -1089,8 +1061,8 @@ typedef const WEBAUTHN_COMMON_ATTESTATION *PCWEBAUTHN_COMMON_ATTESTATION;
 #define WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_4               4
 #define WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_5               5
 #define WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_6               6
-#define EXPERIMENTAL_WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_7  1007
-#define WEBAUTHN_CREDENTIAL_ATTESTATION_CURRENT_VERSION         WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_6
+#define WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_7               7
+#define WEBAUTHN_CREDENTIAL_ATTESTATION_CURRENT_VERSION         WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_7
 
 typedef struct _WEBAUTHN_CREDENTIAL_ATTESTATION {
     // Version of this structure, to allow for modifications in the future.
@@ -1196,13 +1168,13 @@ typedef struct _WEBAUTHN_CREDENTIAL_ATTESTATION {
     PBYTE pbUnsignedExtensionOutputs;
 
     //
-    // Following fields have been added in EXPERIMENTAL_WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_7
+    // Following fields have been added in WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_7
     //
 
-    PWEBAUTHN_HMAC_SECRET_SALT EXPERIMENTAL_pHmacSecret;
+    PWEBAUTHN_HMAC_SECRET_SALT pHmacSecret;
 
     // ThirdPartyPayment Credential or not.
-    BOOL EXPERIMENTAL_bThirdPartyPayment;
+    BOOL bThirdPartyPayment;
 
 } WEBAUTHN_CREDENTIAL_ATTESTATION, *PWEBAUTHN_CREDENTIAL_ATTESTATION;
 typedef const WEBAUTHN_CREDENTIAL_ATTESTATION *PCWEBAUTHN_CREDENTIAL_ATTESTATION;
@@ -1461,6 +1433,34 @@ typedef struct _EXPERIMENTAL_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS {
 } EXPERIMENTAL_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS, *EXPERIMENTAL_PWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS;
 typedef const EXPERIMENTAL_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS *EXPERIMENTAL_PCWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS;
 
+typedef struct _EXPERIMENTAL2_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS {
+    // Authenticator Name
+    LPCWSTR pwszAuthenticatorName;
+
+    // Plugin COM ClsId
+    LPCWSTR pwszPluginClsId;
+
+    // Plugin RPID (Optional. Required for a nested WebAuthN call originating from a plugin)
+    LPCWSTR pwszPluginRpId;
+
+    // Plugin Authenticator Logo for the Light themes. base64 svg (Optional)
+    LPCWSTR pwszLightThemeLogo;
+
+    // Plugin Authenticator Logo for the Dark themes. base64 svg (Optional)
+    LPCWSTR pwszDarkThemeLogo;
+
+    // CTAP CBOR encoded authenticatorGetInfo
+    DWORD cbAuthenticatorInfo;
+    _Field_size_bytes_(cbAuthenticatorInfo)
+    PBYTE pbAuthenticatorInfo;
+
+    // List of supported RPs. Should be 0/nullptr if all RPs are supported.
+    DWORD cSupportedRpIds;
+    LPCWSTR *ppwszSupportedRpIds;
+
+} EXPERIMENTAL2_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS, *EXPERIMENTAL2_PWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS;
+typedef const EXPERIMENTAL2_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS *EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS;
+
 typedef struct _EXPERIMENTAL_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_RESPONSE {
     // Plugin operation signing Public Key - Used to sign the request in the EXPERIMENTAL_PluginPerformOperation. Refer pluginauthenticator.h.
     DWORD cbOpSignPubKey;
@@ -1474,6 +1474,12 @@ HRESULT
 WINAPI
 EXPERIMENTAL_WebAuthNPluginAddAuthenticator(
     _In_ EXPERIMENTAL_PCWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS pPluginAddAuthenticatorOptions,
+    _Outptr_result_maybenull_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_RESPONSE *ppPluginAddAuthenticatorResponse);
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginAddAuthenticator(
+    _In_ EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS pPluginAddAuthenticatorOptions,
     _Outptr_result_maybenull_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_RESPONSE *ppPluginAddAuthenticatorResponse);
 
 void
@@ -1518,10 +1524,43 @@ typedef struct _EXPERIMENTAL_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS {
 } EXPERIMENTAL_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS, *EXPERIMENTAL_PWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS;
 typedef const EXPERIMENTAL_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS *EXPERIMENTAL_PCWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS;
 
+typedef struct _EXPERIMENTAL2_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS {
+    // Authenticator Name (Optional)
+    LPCWSTR pwszAuthenticatorName;
+
+    // Plugin COM ClsId
+    LPCWSTR pwszPluginClsId;
+
+    // Plugin COM New ClsId (Optional)
+    LPCWSTR pwszNewPluginClsId;
+
+    // Plugin Authenticator Logo for the Light themes. base64 svg (Optional)
+    LPCWSTR pwszLightThemeLogo;
+
+    // Plugin Authenticator Logo for the Dark themes. base64 svg (Optional)
+    LPCWSTR pwszDarkThemeLogo;
+
+    // CTAP CBOR encoded authenticatorGetInfo (Optional)
+    DWORD cbAuthenticatorInfo;
+    _Field_size_bytes_(cbAuthenticatorInfo)
+    PBYTE pbAuthenticatorInfo;
+
+    // List of supported RPs. Should be 0/nullptr if all RPs are supported.
+    DWORD cSupportedRpIds;
+    LPCWSTR *ppwszSupportedRpIds;
+
+} EXPERIMENTAL2_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS, *EXPERIMENTAL2_PWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS;
+typedef const EXPERIMENTAL2_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS *EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS;
+
 HRESULT
 WINAPI
 EXPERIMENTAL_WebAuthNPluginUpdateAuthenticatorDetails(
     _In_ EXPERIMENTAL_PCWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS pPluginUpdateAuthenticatorDetails);
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginUpdateAuthenticatorDetails(
+    _In_ EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS pPluginUpdateAuthenticatorDetails);
 
 #endif //__midl
 

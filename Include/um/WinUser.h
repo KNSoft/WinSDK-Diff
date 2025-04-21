@@ -2398,7 +2398,7 @@ typedef struct {
 #define WM_POINTERDEVICEOUTOFRANGE      0x23A
 #endif /* WINVER >= 0x0602 */
 
-// TODO(47499024): Make public when Feature_EnhancedTouchpadStreaming is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis is enabled
 
 #if(WINVER >= 0x0601)
 #define WM_TOUCH                        0x0240
@@ -6616,7 +6616,7 @@ GetPointerFramePenInfoHistory(
     _Inout_ UINT32 *pointerCount,
     _Out_writes_opt_(*entriesCount * *pointerCount) POINTER_PEN_INFO *penInfo);
 
-// TODO(47499024): Make public when Feature_EnhancedTouchpadStreaming is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis is enabled
 
 WINUSERAPI
 BOOL
@@ -6678,7 +6678,7 @@ DestroySyntheticPointerDevice(
     _In_ HSYNTHETICPOINTERDEVICE device);
 #endif // NTDDI_VERSION >= NTDDI_WIN10_RS5
 
-// TODO(47499024): Make public when Feature_EnhancedTouchpadStreaming is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis is enabled
 
 WINUSERAPI
 BOOL
@@ -6848,7 +6848,7 @@ GetPointerInputTransform(
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
-// TODO(47499024): Make public when Feature_EnhancedTouchpadStreaming is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis is enabled
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
@@ -15559,7 +15559,7 @@ typedef struct TOUCHPAD_PARAMETERS {
 #endif // WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
-// TODO(47499024): Make public when Feature_EnhancedTouchpadStreaming is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis is enabled
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
@@ -16126,7 +16126,6 @@ RegisterForTooltipDismissNotification(HWND hWnd,
 
 
 #if(WINVER >= 0x0604)
-
 WINUSERAPI
 BOOL
 WINAPI
@@ -16142,7 +16141,7 @@ IsWindowArranged(
 WINUSERAPI
 UINT
 WINAPI
-GetCurrentMonitorTopologyId();
+GetCurrentMonitorTopologyId(VOID);
 
 #endif // NTDDI_VERSION >= NTDDI_WIN11_GE
 

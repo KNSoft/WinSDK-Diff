@@ -522,6 +522,9 @@ typedef struct _SIPAEVENT_REFS_ROLLBACK_PROTECTION_USER_PAYLOAD_HASH_DATA {
 
 #endif // NTDDI_VERSION >= NTDDI_WIN10_GE
 
+#define SIPAEVENT_VTL1_DUMP_CONFIG                      (SIPAEVENTTYPE_OSPARAMETER + \
+                                                         0x0040)
+
 //SIPAEVENTTYPE_AUHTORITY
 #define SIPAEVENT_NOAUTHORITY              (SIPAEVENTTYPE_AUTHORITY + \
                                             0x0001)

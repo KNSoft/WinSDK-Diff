@@ -830,7 +830,11 @@ typedef struct _WINHTTP_HTTP2_RECEIVE_WINDOW
 
 #define WINHTTP_OPTION_FAST_FORWARDING_RESPONSE_STATUS  209
 
-#define WINHTTP_LAST_OPTION                             WINHTTP_OPTION_FAST_FORWARDING_RESPONSE_STATUS
+#define WINHTTP_OPTION_DSCP_TAG                         210
+
+#define WINHTTP_OPTION_HTTP11_DOWNGRADE_TTL             211
+
+#define WINHTTP_LAST_OPTION                             WINHTTP_OPTION_HTTP11_DOWNGRADE_TTL
 
 #define WINHTTP_OPTION_USERNAME                         0x1000
 #define WINHTTP_OPTION_PASSWORD                         0x1001
@@ -2492,6 +2496,9 @@ typedef struct _WINHTTP_FAST_FORWARDING_STATUS
 #define WINHTTP_FEATURE_CONNECTION_STATS_V2                                  89
 #define WINHTTP_FEATURE_FAST_FORWARD_RESPONSE                                90
 #define WINHTTP_FEATURE_DISABLE_AIA_FLAG                                     91
+
+#define WINHTTP_FEATURE_DSCP_TAG                                             92
+#define WINHTTP_FEATURE_HTTP11_DOWNGRADE_TTL                                 93
 
 
 

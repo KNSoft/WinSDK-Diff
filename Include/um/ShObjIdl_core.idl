@@ -6481,6 +6481,29 @@ interface IAttachmentExecute : IUnknown
     HRESULT ClearClientState();
 }
 
+[
+    object,
+    uuid(4f2b781f-a608-4543-abf0-49c246ebbba9),  // IID_IAttachmentExecute2
+    local,
+    pointer_default(unique),
+]
+interface IAttachmentExecute2 : IAttachmentExecute
+{
+    //  Save2() - should always be called if LocalPath is in not in a temp dir
+    //      * requires valid LocalPath
+    //      * called after the file has been copied to LocalPath
+    //      * does NOT run virus scanners or other trust services to validate the file.
+    //      * may attach evidence to the LocalPath
+    HRESULT SaveNoVirusCheck();
+
+    //   SaveWithUI2() - superset of Save() that can show modal error UI, but still does not call Prompt()
+    //      * requires valid LocalPath
+    //      * called after the file has been copied to LocalPath
+    //      * does NOT run virus scanners or other trust services to validate the file.
+    //      * may attach evidence to the LocalPath
+    HRESULT SaveWithUINoVirusCheck([in, annotation("_In_")] HWND hwnd);
+}
+
 cpp_quote("#endif  // _WIN32_IE_IE60SP2")
 
 cpp_quote("#if (_WIN32_IE >= _WIN32_IE_IE60)")

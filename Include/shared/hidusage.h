@@ -8,7 +8,7 @@ Module Name:
 
 Abstract:
 
-   Public Definitions of HID USAGES for HID Usage Tables 1.4
+   Public Definitions of HID USAGES for HID Usage Tables 1.6
 
 Environment:
 

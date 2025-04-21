@@ -561,6 +561,9 @@ typedef struct _D3DKMT_FLIPMANAGER_AUXILIARYPRESENTINFO
     // than the previous present
     BOOL customDurationChanged;
 
+    // in: CPU event to signal after the flip manager processes this present
+    void* pFlipManagerProcessedEvent;
+
     // out: The adapter LUID/VidPn source of the flip output
     LUID FlipAdapterLuid;
     D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId;
@@ -843,8 +846,9 @@ typedef struct _D3DKMT_CANCEL_PRESENTS_FLAGS
 
 typedef enum D3DKMT_CANCEL_PRESENTS_OPERATION
 {
-    D3DKMT_CANCEL_PRESENTS_OPERATION_CANCEL_FROM            = 0,
-    D3DKMT_CANCEL_PRESENTS_OPERATION_REPROGRAM_INTERRUPT    = 1
+    D3DKMT_CANCEL_PRESENTS_OPERATION_CANCEL_FROM              = 0,
+    D3DKMT_CANCEL_PRESENTS_OPERATION_REPROGRAM_INTERRUPT      = 1,
+    D3DKMT_CANCEL_PRESENTS_OPERATION_FLUSH_COMPLETED_PRESENTS = 2
 } D3DKMT_CANCEL_PRESENTS_OPERATION;
 
 typedef struct _D3DKMT_CANCEL_PRESENTS
@@ -856,6 +860,7 @@ typedef struct _D3DKMT_CANCEL_PRESENTS
     D3DKMT_ALIGN64 UINT64               CancelFromPresentId;
     LUID                                CompSurfaceLuid;
     D3DKMT_ALIGN64 UINT64               BindId;
+    HANDLE                              hFlipManagerProcessedEvent;
 }D3DKMT_CANCEL_PRESENTS;
 #endif
 
