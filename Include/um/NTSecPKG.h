@@ -712,6 +712,33 @@ typedef struct _SECPKG_CALL_INFO {
 #define SECPKG_CALL_WOWX86          0x00000040
 #define SECPKG_CALL_WOWA32          0x00040000
 
+// Whenever Negotiate goes through different packages, it chooses which packages to try and if the error returned from the packages warrants a breakout. 
+// The packages themselves, however, do not know the reason why the previous packages could not handle the logon. This is good for most cases, 
+// but it's possible that package A wants package B to know why it failed so that package B can either change its behavior or log it. 
+// The ledger here is optional and controlled via LSA. The contract is simple: 
+// 1. To set the information, a package calls the LSA function LsaSetSecpkgFailureReason(). 
+// 2. To get the information, a package calls the LSA function LsaGetSecpkgFailureReason().
+
+// These enums are for special cases that might not be apparent based on the returned NTSTATUS;
+typedef enum _SECPKG_FAILURE_SPECIAL_REASON {
+    SecpkgFailureReason_Unknown = 0,    // There was an unknown failure reported.
+    SecpkgFailureReason_NoFailure,      // There was no special failure reported.
+    SecpkgFailureReason_LocalAccount,   // The client account was a local account.
+    SecpkgFailureReason_DomainAccount,  // The client account was a domain account.
+    SecpkgFailureReason_CloudAccount,   // The client account was a cloud account.
+    SecpkgFailureReason_NullTarget,     // The targetname used during InitializeSecurityContext was null.
+    SecpkgFailureReason_UnknownTarget,  // The targetname used during InitializeSecurityContext could not be resolved.
+    SecpkgFailureReason_IpAddress,      // The targetname used during InitializeSecurityContext contained an IP Address.
+    SecpkgFailureReason_DupTarget,      // The targetname used during InitializeSecurityContext has duplicates. E.g. duplicate SPS in AD. 
+    SecpkgFailureReason_NoLineOfSight,  // The secpkg needed a line-of-sight to a Domain Controller, but none could be found. 
+    SecpkgFailureReason_Loopback,       // The secpkg does not support loopback authentication.
+} SECPKG_FAILURE_SPECIAL_REASON, * PSECPKG_FAILURE_SPECIAL_REASON;
+
+typedef struct _SECPKG_FAILURE_REASON {
+    NTSTATUS Status;
+    SECPKG_FAILURE_SPECIAL_REASON Reason;
+} SECPKG_FAILURE_REASON, * PSECPKG_FAILURE_REASON;
+
 typedef struct _SECPKG_SUPPLEMENTAL_CRED {
     UNICODE_STRING PackageName;
     ULONG CredentialSize;
@@ -1423,6 +1450,17 @@ typedef NTSTATUS
     _In_opt_  BOOLEAN    ReturnToLsa
     );
 
+typedef NTSTATUS
+(NTAPI LSA_GET_SECPKG_FAILURE_REASON)(
+    _In_ const ULONG_PTR PackageID,
+    _Out_ SECPKG_FAILURE_REASON* Reason
+    );
+
+typedef NTSTATUS
+(NTAPI LSA_SET_SECPKG_FAILURE_REASON)(
+    _In_ const SECPKG_FAILURE_REASON Reason
+    );
+
 //
 // Account Access
 //
@@ -1697,6 +1735,8 @@ typedef LSA_CHECK_PROTECTED_USER_BY_TOKEN *PLSA_CHECK_PROTECTED_USER_BY_TOKEN;
 typedef LSA_QUERY_CLIENT_REQUEST *PLSA_QUERY_CLIENT_REQUEST;
 typedef LSA_GET_APP_MODE_INFO *PLSA_GET_APP_MODE_INFO;
 typedef LSA_SET_APP_MODE_INFO *PLSA_SET_APP_MODE_INFO;
+typedef LSA_GET_SECPKG_FAILURE_REASON* PLSA_GET_SECPKG_FAILURE_REASON;
+typedef LSA_SET_SECPKG_FAILURE_REASON* PLSA_SET_SECPKG_FAILURE_REASON;
 
 #ifdef _WINCRED_H_
 
@@ -1918,6 +1958,8 @@ typedef struct _LSA_SECPKG_FUNCTION_TABLE {
     PLSA_GET_APP_MODE_INFO GetAppModeInfo;
     PLSA_SET_APP_MODE_INFO SetAppModeInfo;
     PLSA_GET_CLIENT_INFO_EX GetClientInfoEx;
+    PLSA_GET_SECPKG_FAILURE_REASON GetSecpkgFailureReason;
+    PLSA_SET_SECPKG_FAILURE_REASON SetSecpkgFailureReason;
 } LSA_SECPKG_FUNCTION_TABLE, *PLSA_SECPKG_FUNCTION_TABLE;
 
 

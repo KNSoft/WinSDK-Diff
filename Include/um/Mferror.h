@@ -3434,6 +3434,7 @@ Notes:
 //
 #define MF_E_CAMERA_PRIVACY_NOT_ALLOWED  _HRESULT_TYPEDEF_(0xC00DB798L)
 
+// 47001 is MF_E_CAMERA_NOT_DSHOW_BRIDGED
 //
 // MessageId: MF_E_CAMERA_FSPROFILE_INVALID
 //
@@ -3441,7 +3442,7 @@ Notes:
 //
 // Camera profile is invalid.%0
 //
-#define MF_E_CAMERA_FSPROFILE_INVALID    _HRESULT_TYPEDEF_(0xC00DB799L)
+#define MF_E_CAMERA_FSPROFILE_INVALID    _HRESULT_TYPEDEF_(0xC00DB79AL)
 
 
 //////////////////////////////////////////////////////////////////////////////

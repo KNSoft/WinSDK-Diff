@@ -146,7 +146,8 @@ WINRT_EXPORT namespace winrt::Windows::UI::ViewManagement
         UISettingsMessageDurationChangedEventArgs(std::nullptr_t) noexcept {}
         UISettingsMessageDurationChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::UI::ViewManagement::IUISettingsMessageDurationChangedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) UIViewSettings : winrt::Windows::UI::ViewManagement::IUIViewSettings
+    struct __declspec(empty_bases) UIViewSettings : winrt::Windows::UI::ViewManagement::IUIViewSettings,
+        impl::require<UIViewSettings, winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>
     {
         UIViewSettings(std::nullptr_t) noexcept {}
         UIViewSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::UI::ViewManagement::IUIViewSettings(ptr, take_ownership_from_abi) {}

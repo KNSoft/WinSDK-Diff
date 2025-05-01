@@ -88,7 +88,7 @@
 //  API Contract Inclusion Definitions
 #if !defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
 #if !defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
-#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x10000
+#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x20000
 #endif // defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
@@ -112,6 +112,23 @@
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
+#ifndef ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Provider {
+                    interface IActionFeedbackHandler;
+                } /* Provider */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler ABI::Windows::AI::Actions::Provider::IActionFeedbackHandler
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_FWD_DEFINED__
 namespace ABI {
@@ -132,6 +149,31 @@ namespace ABI {
 // Parameterized interface forward declarations (C++)
 
 // Collection interface definitions
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                class ActionFeedback;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IActionFeedback;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIActionFeedback ABI::Windows::AI::Actions::IActionFeedback
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+
 namespace ABI {
     namespace Windows {
         namespace AI {
@@ -169,6 +211,48 @@ namespace ABI {
 #define __x_ABI_CWindows_CFoundation_CIAsyncAction ABI::Windows::Foundation::IAsyncAction
 
 #endif // ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
+
+/*
+ *
+ * Interface Windows.AI.Actions.Provider.IActionFeedbackHandler
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_Provider_IActionFeedbackHandler[] = L"Windows.AI.Actions.Provider.IActionFeedbackHandler";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Provider {
+                    MIDL_INTERFACE("a3fc3c51-a8c6-52c8-ad77-37bf3e2b565c")
+                    IActionFeedbackHandler : public IInspectable
+                    {
+                    public:
+                        virtual HRESULT STDMETHODCALLTYPE ProcessFeedbackAsync(
+                            ABI::Windows::AI::Actions::IActionInvocationContext* context,
+                            ABI::Windows::AI::Actions::IActionFeedback* feedback,
+                            ABI::Windows::Foundation::IAsyncAction** operation
+                            ) = 0;
+                    };
+
+                    MIDL_CONST_ID IID& IID_IActionFeedbackHandler = __uuidof(IActionFeedbackHandler);
+                } /* Provider */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -213,6 +297,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider;
 
 #else // !defined(__cplusplus)
 /* Forward Declarations */
+#ifndef ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_FWD_DEFINED__
 typedef interface __x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider __x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider;
@@ -222,6 +312,12 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider __x_A
 // Parameterized interface forward declarations (C)
 
 // Collection interface definitions
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIActionFeedback __x_ABI_CWindows_CAI_CActions_CIActionFeedback;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIActionInvocationContext_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIActionInvocationContext_FWD_DEFINED__
@@ -234,6 +330,79 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CIActionInvocationContext __x_AB
 typedef interface __x_ABI_CWindows_CFoundation_CIAsyncAction __x_ABI_CWindows_CFoundation_CIAsyncAction;
 
 #endif // ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
+
+/*
+ *
+ * Interface Windows.AI.Actions.Provider.IActionFeedbackHandler
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_Provider_IActionFeedbackHandler[] = L"Windows.AI.Actions.Provider.IActionFeedbackHandler";
+typedef struct __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandlerVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* ProcessFeedbackAsync)(__x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler* This,
+        __x_ABI_CWindows_CAI_CActions_CIActionInvocationContext* context,
+        __x_ABI_CWindows_CAI_CActions_CIActionFeedback* feedback,
+        __x_ABI_CWindows_CFoundation_CIAsyncAction** operation);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandlerVtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandlerVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_ProcessFeedbackAsync(This, context, feedback, operation) \
+    ((This)->lpVtbl->ProcessFeedbackAsync(This, context, feedback, operation))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *

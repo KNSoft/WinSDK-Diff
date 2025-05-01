@@ -1705,6 +1705,12 @@ typedef struct _HTTP_REQUEST_TRANSPORT_IDLE_CONNECTION_TIMEOUT_INFO
 
 } HTTP_REQUEST_TRANSPORT_IDLE_CONNECTION_TIMEOUT_INFO, *PHTTP_REQUEST_TRANSPORT_IDLE_CONNECTION_TIMEOUT_INFO;
 
+typedef struct _HTTP_REQUEST_DSCP_INFO
+{
+    BYTE DscpTag;
+
+} HTTP_REQUEST_DSCP_INFO, *PHTTP_REQUEST_DSCP_INFO;
+
 #if _WIN32_WINNT >= 0x0600
 
 //
@@ -1725,7 +1731,8 @@ typedef enum _HTTP_REQUEST_INFO_TYPE
     HttpRequestInfoTypeTcpInfoV1,
     HttpRequestInfoTypeQuicStatsV2,
     HttpRequestInfoTypeTcpInfoV2,
-    HttpRequestInfoTypeTransportIdleConnectionTimeout
+    HttpRequestInfoTypeTransportIdleConnectionTimeout,
+    HttpRequestInfoTypeDscpTag
 
 } HTTP_REQUEST_INFO_TYPE, *PHTTP_REQUEST_INFO_TYPE;
 
@@ -2784,7 +2791,9 @@ typedef enum _HTTP_REQUEST_PROPERTY
     HttpRequestPropertyQuicStreamStats,
     HttpRequestPropertyTcpInfoV2,
     HttpRequestPropertyTlsClientHello,
-    HttpRequestPropertyTransportIdleConnectionTimeout
+    HttpRequestPropertyTransportIdleConnectionTimeout,
+    HttpRequestPropertyDscpTag,
+    HttpRequestPropertyTlsCipherInfo,
 } HTTP_REQUEST_PROPERTY, *PHTTP_REQUEST_PROPERTY;
 
 typedef struct _HTTP_QUERY_REQUEST_QUALIFIER_TCP
@@ -2935,7 +2944,9 @@ typedef enum _HTTP_FEATURE_ID
     HttpFeatureCacheTlsClientHello                  = 11,
     HttpFeatureIdleConnectionTimeoutRequestProperty = 12,
     HttpFeatureDisableAiaFlag                       = 13,
-    HttpFeatureLast                                 = 14,
+    HttpFeatureDscp                                 = 14,
+    HttpFeatureQueryCipherInfo                      = 15,
+    HttpFeatureLast                                 = 16,
 
 
     HttpFeaturemax              = 0xFFFFFFFF,

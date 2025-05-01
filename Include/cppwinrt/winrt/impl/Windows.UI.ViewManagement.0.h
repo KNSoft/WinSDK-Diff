@@ -193,6 +193,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::ViewManagement
     struct IUISettingsAutoHideScrollBarsChangedEventArgs;
     struct IUISettingsMessageDurationChangedEventArgs;
     struct IUIViewSettings;
+    struct IUIViewSettingsPreferredInteractionMode;
     struct IUIViewSettingsStatics;
     struct IViewModePreferences;
     struct IViewModePreferencesStatics;
@@ -264,6 +265,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::UI::ViewManagement::IUISettingsAutoHideScrollBarsChangedEventArgs>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::ViewManagement::IUISettingsMessageDurationChangedEventArgs>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::ViewManagement::IUIViewSettings>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::ViewManagement::IUIViewSettingsStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::ViewManagement::IViewModePreferences>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::ViewManagement::IViewModePreferencesStatics>{ using type = interface_category; };
@@ -377,6 +379,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IUISettingsAutoHideScrollBarsChangedEventArgs> = L"Windows.UI.ViewManagement.IUISettingsAutoHideScrollBarsChangedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IUISettingsMessageDurationChangedEventArgs> = L"Windows.UI.ViewManagement.IUISettingsMessageDurationChangedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IUIViewSettings> = L"Windows.UI.ViewManagement.IUIViewSettings";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode> = L"Windows.UI.ViewManagement.IUIViewSettingsPreferredInteractionMode";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IUIViewSettingsStatics> = L"Windows.UI.ViewManagement.IUIViewSettingsStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IViewModePreferences> = L"Windows.UI.ViewManagement.IViewModePreferences";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IViewModePreferencesStatics> = L"Windows.UI.ViewManagement.IViewModePreferencesStatics";
@@ -426,6 +429,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IUISettingsAutoHideScrollBarsChangedEventArgs>{ 0x87AFD4B2,0x9146,0x5F02,{ 0x8F,0x6B,0x06,0xD4,0x54,0x17,0x4C,0x0F } }; // 87AFD4B2-9146-5F02-8F6B-06D454174C0F
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IUISettingsMessageDurationChangedEventArgs>{ 0x338AAD52,0x4A5D,0x5B59,{ 0x80,0x02,0xD9,0x30,0xF6,0x08,0xFD,0x6E } }; // 338AAD52-4A5D-5B59-8002-D930F608FD6E
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IUIViewSettings>{ 0xC63657F6,0x8850,0x470D,{ 0x88,0xF8,0x45,0x5E,0x16,0xEA,0x2C,0x26 } }; // C63657F6-8850-470D-88F8-455E16EA2C26
+    template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>{ 0x426DE261,0x82EC,0x5F61,{ 0xBA,0xD4,0x19,0xB2,0xD0,0xD3,0xCF,0x35 } }; // 426DE261-82EC-5F61-BAD4-19B2D0D3CF35
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IUIViewSettingsStatics>{ 0x595C97A5,0xF8F6,0x41CF,{ 0xB0,0xFB,0xAA,0xCD,0xB8,0x1F,0xD5,0xF6 } }; // 595C97A5-F8F6-41CF-B0FB-AACDB81FD5F6
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IViewModePreferences>{ 0x878FCD3A,0x0B99,0x42C9,{ 0x84,0xD0,0xD3,0xF1,0xD4,0x03,0x55,0x4B } }; // 878FCD3A-0B99-42C9-84D0-D3F1D403554B
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IViewModePreferencesStatics>{ 0x69B60A65,0x5DE5,0x40D8,{ 0x83,0x06,0x38,0x33,0xDF,0x7A,0x22,0x74 } }; // 69B60A65-5DE5-40D8-8306-3833DF7A2274
@@ -895,6 +899,15 @@ namespace winrt::impl
         struct __declspec(novtable) type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserInteractionMode(int32_t*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall GetPreferredInteractionMode(uint32_t, int32_t*, int32_t*) noexcept = 0;
+            virtual int32_t __stdcall add_PreferredInteractionModeChanged(void*, winrt::event_token*) noexcept = 0;
+            virtual int32_t __stdcall remove_PreferredInteractionModeChanged(winrt::event_token) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUIViewSettingsStatics>
@@ -1491,6 +1504,19 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::UI::ViewManagement::IUIViewSettings>
     {
         template <typename D> using type = consume_Windows_UI_ViewManagement_IUIViewSettings<D>;
+    };
+    template <typename D>
+    struct consume_Windows_UI_ViewManagement_IUIViewSettingsPreferredInteractionMode
+    {
+        auto GetPreferredInteractionMode(array_view<winrt::Windows::UI::ViewManagement::UserInteractionMode const> supportedModes) const;
+        auto PreferredInteractionModeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UIViewSettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        using PreferredInteractionModeChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode, &impl::abi_t<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>::remove_PreferredInteractionModeChanged>;
+        [[nodiscard]] PreferredInteractionModeChanged_revoker PreferredInteractionModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UIViewSettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        auto PreferredInteractionModeChanged(winrt::event_token const& token) const noexcept;
+    };
+    template <> struct consume<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>
+    {
+        template <typename D> using type = consume_Windows_UI_ViewManagement_IUIViewSettingsPreferredInteractionMode<D>;
     };
     template <typename D>
     struct consume_Windows_UI_ViewManagement_IUIViewSettingsStatics

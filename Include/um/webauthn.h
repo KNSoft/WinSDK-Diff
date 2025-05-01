@@ -398,9 +398,12 @@ typedef const WEBAUTHN_CREDENTIAL_LIST *PCWEBAUTHN_CREDENTIAL_LIST;
 // Information about linked devices
 //-------------------------------------------------------------------------------------------
 
+// Deprecated
 #define CTAPCBOR_HYBRID_STORAGE_LINKED_DATA_VERSION_1       1
+// Deprecated
 #define CTAPCBOR_HYBRID_STORAGE_LINKED_DATA_CURRENT_VERSION CTAPCBOR_HYBRID_STORAGE_LINKED_DATA_VERSION_1
 
+// Deprecated
 typedef struct _CTAPCBOR_HYBRID_STORAGE_LINKED_DATA
 {
     // Version
@@ -827,6 +830,7 @@ typedef struct _WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS {
     // The following fields have been added in WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS_VERSION_7
     //
 
+    // Deprecated
     // Optional. Linked Device Connection Info.
     PCTAPCBOR_HYBRID_STORAGE_LINKED_DATA pLinkedDevice;
 
@@ -955,6 +959,7 @@ typedef struct _WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS {
     // The following fields have been added in WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_7
     //
 
+    // Deprecated
     // Optional. Linked Device Connection Info.
     PCTAPCBOR_HYBRID_STORAGE_LINKED_DATA pLinkedDevice;
 

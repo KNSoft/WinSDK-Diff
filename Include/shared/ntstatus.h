@@ -19666,6 +19666,15 @@ Notes:
 //
 #define STATUS_FVE_PCR_BOOT_LOCK_BOUNDARY ((NTSTATUS)0xC0210051L)
 
+//
+// MessageId: STATUS_FVE_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED
+//
+// MessageText:
+//
+// BitLocker is prevented from using hardware accelerated encryption.
+//
+#define STATUS_FVE_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED ((NTSTATUS)0xC0210057L)
+
 
 //
 // FWP error codes (fwpkclnt.sys)
@@ -26808,6 +26817,15 @@ Notes:
 // The hypervisor is not protecting DMA because an IOMMU is not present or not enabled in the BIOS.
 //
 #define STATUS_VSM_DMA_PROTECTION_NOT_IN_USE ((NTSTATUS)0xC0450001L)
+
+//
+// MessageId: STATUS_VSM_KEY_CI_POLICY_ROLLBACK_DETECTED
+//
+// MessageText:
+//
+// The VSM encryption key could not be released because the minimum Code Integrity policy version was not met.
+//
+#define STATUS_VSM_KEY_CI_POLICY_ROLLBACK_DETECTED ((NTSTATUS)0xC0450002L)
 
 //
 // Application Execution (AppExec)

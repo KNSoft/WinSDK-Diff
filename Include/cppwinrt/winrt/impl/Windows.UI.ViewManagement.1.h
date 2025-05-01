@@ -331,6 +331,13 @@ WINRT_EXPORT namespace winrt::Windows::UI::ViewManagement
         IUIViewSettings(std::nullptr_t = nullptr) noexcept {}
         IUIViewSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IUIViewSettingsPreferredInteractionMode :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IUIViewSettingsPreferredInteractionMode>
+    {
+        IUIViewSettingsPreferredInteractionMode(std::nullptr_t = nullptr) noexcept {}
+        IUIViewSettingsPreferredInteractionMode(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IUIViewSettingsStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUIViewSettingsStatics>

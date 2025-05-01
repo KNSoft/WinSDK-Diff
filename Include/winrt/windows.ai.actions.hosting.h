@@ -88,7 +88,7 @@
 //  API Contract Inclusion Definitions
 #if !defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
 #if !defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
-#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x10000
+#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x20000
 #endif // defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
@@ -146,6 +146,23 @@ namespace ABI {
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Hosting {
+                    interface IActionDefinition2;
+                } /* Hosting */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2 ABI::Windows::AI::Actions::Hosting::IActionDefinition2
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo_FWD_DEFINED__
 namespace ABI {
@@ -179,6 +196,23 @@ namespace ABI {
 #define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload ABI::Windows::AI::Actions::Hosting::IActionOverload
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Hosting {
+                    interface IActionOverload2;
+                } /* Hosting */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2 ABI::Windows::AI::Actions::Hosting::IActionOverload2
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_FWD_DEFINED__
 
 // Parameterized interface forward declarations (C++)
 
@@ -238,6 +272,31 @@ namespace ABI {
     namespace Windows {
         namespace AI {
             namespace Actions {
+                class ActionFeedback;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IActionFeedback;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIActionFeedback ABI::Windows::AI::Actions::IActionFeedback
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
                 class ActionInvocationContext;
             } /* Actions */
         } /* AI */
@@ -290,6 +349,18 @@ namespace ABI {
         namespace AI {
             namespace Actions {
                 namespace Hosting {
+                    typedef enum ActionDisclaimerKind : int ActionDisclaimerKind;
+                } /* Hosting */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Hosting {
                     class ActionDefinition;
                 } /* Hosting */
             } /* Actions */
@@ -320,6 +391,35 @@ namespace ABI {
         } /* AI */
     } /* Windows */
 } /* ABI */
+
+/*
+ *
+ * Struct Windows.AI.Actions.Hosting.ActionDisclaimerKind
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Hosting {
+                    enum ActionDisclaimerKind : int
+                    {
+                        ActionDisclaimerKind_None = 0,
+                        ActionDisclaimerKind_UsesAI = 1,
+                    };
+                } /* Hosting */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -436,6 +536,57 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition
 
 /*
  *
+ * Interface Windows.AI.Actions.Hosting.IActionDefinition2
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionDefinition
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_Hosting_IActionDefinition2[] = L"Windows.AI.Actions.Hosting.IActionDefinition2";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Hosting {
+                    MIDL_INTERFACE("27283794-8014-5dc5-97e3-be19d3fa1971")
+                    IActionDefinition2 : public IInspectable
+                    {
+                    public:
+                        virtual HRESULT STDMETHODCALLTYPE get_DisplaysUI(
+                            boolean* value
+                            ) = 0;
+                        virtual HRESULT STDMETHODCALLTYPE get_DisclaimerKind(
+                            ABI::Windows::AI::Actions::Hosting::ActionDisclaimerKind* value
+                            ) = 0;
+                        virtual HRESULT STDMETHODCALLTYPE get_SchemaVersion(
+                            UINT32* value
+                            ) = 0;
+                        virtual HRESULT STDMETHODCALLTYPE get_PackageRelativeApplicationId(
+                            HSTRING* value
+                            ) = 0;
+                    };
+
+                    MIDL_CONST_ID IID& IID_IActionDefinition2 = __uuidof(IActionDefinition2);
+                } /* Hosting */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Interface Windows.AI.Actions.Hosting.IActionEntityRegistrationInfo
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
@@ -537,6 +688,53 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload;
 
 /*
  *
+ * Interface Windows.AI.Actions.Hosting.IActionOverload2
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionOverload
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_Hosting_IActionOverload2[] = L"Windows.AI.Actions.Hosting.IActionOverload2";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Hosting {
+                    MIDL_INTERFACE("57ec9906-8231-5a9e-929f-bf39e952eb93")
+                    IActionOverload2 : public IInspectable
+                    {
+                    public:
+                        virtual HRESULT STDMETHODCALLTYPE InvokeFeedbackAsync(
+                            ABI::Windows::AI::Actions::IActionInvocationContext* context,
+                            ABI::Windows::AI::Actions::IActionFeedback* feedback,
+                            ABI::Windows::Foundation::IAsyncAction** operation
+                            ) = 0;
+                        virtual HRESULT STDMETHODCALLTYPE GetSupportsFeedback(
+                            boolean* result
+                            ) = 0;
+                    };
+
+                    MIDL_CONST_ID IID& IID_IActionOverload2 = __uuidof(IActionOverload2);
+                } /* Hosting */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Class Windows.AI.Actions.Hosting.ActionCatalog
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
@@ -569,6 +767,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class implements the following interfaces:
  *    Windows.AI.Actions.Hosting.IActionDefinition ** Default Interface **
+ *    Windows.AI.Actions.Hosting.IActionDefinition2
  *    Windows.Foundation.IClosable
  *
  * Class Marshaling Behavior:  Agile - Class is agile
@@ -617,6 +816,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class implements the following interfaces:
  *    Windows.AI.Actions.Hosting.IActionOverload ** Default Interface **
+ *    Windows.AI.Actions.Hosting.IActionOverload2
  *    Windows.Foundation.IClosable
  *
  * Class Marshaling Behavior:  Agile - Class is agile
@@ -645,6 +845,12 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition __x_
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2 __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo_FWD_DEFINED__
 typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo __x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo;
@@ -656,6 +862,12 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrat
 typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload;
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2 __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_FWD_DEFINED__
 
 // Parameterized interface forward declarations (C)
 
@@ -714,6 +926,12 @@ interface __FITypedEventHandler_2_Windows__CAI__CActions__CHosting__CActionCatal
 
 typedef enum __x_ABI_CWindows_CAI_CActions_CActionEntityKind __x_ABI_CWindows_CAI_CActions_CActionEntityKind;
 
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIActionFeedback __x_ABI_CWindows_CAI_CActions_CIActionFeedback;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIActionFeedback_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIActionInvocationContext_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIActionInvocationContext_FWD_DEFINED__
 typedef interface __x_ABI_CWindows_CAI_CActions_CIActionInvocationContext __x_ABI_CWindows_CAI_CActions_CIActionInvocationContext;
@@ -731,6 +949,27 @@ typedef interface __x_ABI_CWindows_CFoundation_CIAsyncAction __x_ABI_CWindows_CF
 typedef interface __x_ABI_CWindows_CFoundation_CIClosable __x_ABI_CWindows_CFoundation_CIClosable;
 
 #endif // ____x_ABI_CWindows_CFoundation_CIClosable_FWD_DEFINED__
+
+typedef enum __x_ABI_CWindows_CAI_CActions_CHosting_CActionDisclaimerKind __x_ABI_CWindows_CAI_CActions_CHosting_CActionDisclaimerKind;
+
+/*
+ *
+ * Struct Windows.AI.Actions.Hosting.ActionDisclaimerKind
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+enum __x_ABI_CWindows_CAI_CActions_CHosting_CActionDisclaimerKind
+{
+    ActionDisclaimerKind_None = 0,
+    ActionDisclaimerKind_UsesAI = 1,
+};
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -925,6 +1164,94 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition
 
 /*
  *
+ * Interface Windows.AI.Actions.Hosting.IActionDefinition2
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionDefinition
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_Hosting_IActionDefinition2[] = L"Windows.AI.Actions.Hosting.IActionDefinition2";
+typedef struct __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2Vtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* get_DisplaysUI)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This,
+        boolean* value);
+    HRESULT (STDMETHODCALLTYPE* get_DisclaimerKind)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This,
+        enum __x_ABI_CWindows_CAI_CActions_CHosting_CActionDisclaimerKind* value);
+    HRESULT (STDMETHODCALLTYPE* get_SchemaVersion)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This,
+        UINT32* value);
+    HRESULT (STDMETHODCALLTYPE* get_PackageRelativeApplicationId)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2* This,
+        HSTRING* value);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2Vtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2Vtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_get_DisplaysUI(This, value) \
+    ((This)->lpVtbl->get_DisplaysUI(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_get_DisclaimerKind(This, value) \
+    ((This)->lpVtbl->get_DisclaimerKind(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_get_SchemaVersion(This, value) \
+    ((This)->lpVtbl->get_SchemaVersion(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_get_PackageRelativeApplicationId(This, value) \
+    ((This)->lpVtbl->get_PackageRelativeApplicationId(This, value))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition2_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Interface Windows.AI.Actions.Hosting.IActionEntityRegistrationInfo
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
@@ -1098,6 +1425,86 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload;
 
 /*
  *
+ * Interface Windows.AI.Actions.Hosting.IActionOverload2
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionOverload
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_Hosting_IActionOverload2[] = L"Windows.AI.Actions.Hosting.IActionOverload2";
+typedef struct __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2Vtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* InvokeFeedbackAsync)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2* This,
+        __x_ABI_CWindows_CAI_CActions_CIActionInvocationContext* context,
+        __x_ABI_CWindows_CAI_CActions_CIActionFeedback* feedback,
+        __x_ABI_CWindows_CFoundation_CIAsyncAction** operation);
+    HRESULT (STDMETHODCALLTYPE* GetSupportsFeedback)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2* This,
+        boolean* result);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2Vtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2Vtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_InvokeFeedbackAsync(This, context, feedback, operation) \
+    ((This)->lpVtbl->InvokeFeedbackAsync(This, context, feedback, operation))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_GetSupportsFeedback(This, result) \
+    ((This)->lpVtbl->GetSupportsFeedback(This, result))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionOverload2_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Class Windows.AI.Actions.Hosting.ActionCatalog
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
@@ -1130,6 +1537,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class implements the following interfaces:
  *    Windows.AI.Actions.Hosting.IActionDefinition ** Default Interface **
+ *    Windows.AI.Actions.Hosting.IActionDefinition2
  *    Windows.Foundation.IClosable
  *
  * Class Marshaling Behavior:  Agile - Class is agile
@@ -1178,6 +1586,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class implements the following interfaces:
  *    Windows.AI.Actions.Hosting.IActionOverload ** Default Interface **
+ *    Windows.AI.Actions.Hosting.IActionOverload2
  *    Windows.Foundation.IClosable
  *
  * Class Marshaling Behavior:  Agile - Class is agile

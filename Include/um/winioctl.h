@@ -1159,7 +1159,7 @@ typedef enum _STORAGE_PROPERTY_ID {
     StorageDeviceResiliencyProperty,
     StorageDeviceMediumProductType,
     StorageAdapterRpmbProperty,
-    StorageAdapterCryptoProperty,
+    StorageAdapterCryptoProperty,                   // Deprecated for GE or greater OS. Use StorageHwCryptoProperty.
     StorageDeviceIoCapabilityProperty = 48,
     StorageAdapterProtocolSpecificProperty,
     StorageDeviceProtocolSpecificProperty,
@@ -1181,6 +1181,7 @@ typedef enum _STORAGE_PROPERTY_ID {
     StorageStackProperty,
     StorageAdapterProtocolSpecificPropertyEx,
     StorageDeviceProtocolSpecificPropertyEx,
+    StorageHwCryptoProperty
 } STORAGE_PROPERTY_ID, *PSTORAGE_PROPERTY_ID;
 
 
@@ -1894,6 +1895,11 @@ typedef struct _STORAGE_RPMB_DESCRIPTOR {
 
 } STORAGE_RPMB_DESCRIPTOR, *PSTORAGE_RPMB_DESCRIPTOR;
 
+// begin_storport begin_privstorport
+
+#ifndef STORAGE_CRYPTO_ALGORITHMS_DEFINED
+#define STORAGE_CRYPTO_ALGORITHMS_DEFINED
+
 //
 // Output buffer for StorageAdapterCryptoProperty & PropertyStandardQuery
 //
@@ -1905,8 +1911,18 @@ typedef enum _STORAGE_CRYPTO_ALGORITHM_ID {
     StorageCryptoAlgorithmBitlockerAESCBC,
     StorageCryptoAlgorithmAESECB,
     StorageCryptoAlgorithmESSIVAESCBC,
-    StorageCryptoAlgorithmMax
+    StorageCryptoAlgorithmMax,
 
+    //
+    // Legacy compatibility algorithm names.
+    // Use the names above.
+    //
+
+    StorCryptoAlgorithmUnknown = StorageCryptoAlgorithmUnknown,
+    StorCryptoAlgorithmXTSAES = StorageCryptoAlgorithmXTSAES,
+    StorCryptoAlgorithmBitlockerAESCBC = StorageCryptoAlgorithmBitlockerAESCBC,
+    StorCryptoAlgorithmAESECB = StorageCryptoAlgorithmAESECB,
+    StorCryptoAlgorithmESSIVAESCBC = StorageCryptoAlgorithmESSIVAESCBC,
 } STORAGE_CRYPTO_ALGORITHM_ID, *PSTORAGE_CRYPTO_ALGORITHM_ID;
 
 typedef enum _STORAGE_CRYPTO_KEY_SIZE {
@@ -1915,15 +1931,33 @@ typedef enum _STORAGE_CRYPTO_KEY_SIZE {
     StorageCryptoKeySize128Bits = 1,
     StorageCryptoKeySize192Bits,
     StorageCryptoKeySize256Bits,
-    StorageCryptoKeySize512Bits
+    StorageCryptoKeySize512Bits,
+    StorageCryptoKeySizeMax,
 
+    //
+    // Legacy compatibility key size names.
+    // Use the names above.
+    //
+    StorCryptoKeySizeUnknown = StorageCryptoKeySizeUnknown,
+    StorCryptoKeySize128Bits = StorageCryptoKeySize128Bits,
+    StorCryptoKeySize192Bits = StorageCryptoKeySize192Bits,
+    StorCryptoKeySize256Bits = StorageCryptoKeySize256Bits,
+    StorCryptoKeySize512Bits = StorageCryptoKeySize512Bits,
 } STORAGE_CRYPTO_KEY_SIZE, *PSTORAGE_CRYPTO_KEY_SIZE;
+
+#endif // STORAGE_CRYPTO_ALGORITHMS_DEFINED
+
+// end_storport end_privstorport
 
 #pragma warning(push)
 #pragma warning(disable:4201) // nameless struct/unions
 
 #define STORAGE_CRYPTO_CAPABILITY_VERSION_1           1
 
+//
+// Note: Starting in Win11 24H2 and WS2025 or GE, this struct is deprecated. 
+// Use STORAGE_HW_CRYPTO_CAPABILITY.
+//
 typedef struct _STORAGE_CRYPTO_CAPABILITY {
 
     //
@@ -1969,6 +2003,38 @@ typedef struct _STORAGE_CRYPTO_CAPABILITY {
 } STORAGE_CRYPTO_CAPABILITY, *PSTORAGE_CRYPTO_CAPABILITY;
 
 #define STORAGE_CRYPTO_CAPABILITY_VERSION_2           2
+
+// begin_storport begin_privstorport
+
+#ifndef STORAGE_SECURITY_COMPLIANCE_BITMASK_DEFINED
+#define STORAGE_SECURITY_COMPLIANCE_BITMASK_DEFINED
+
+typedef union _STORAGE_SECURITY_COMPLIANCE_BITMASK {
+    struct {
+        BYTE  FIPS : 1;
+        BYTE  Reserved : 7;
+    };
+    BYTE  AsUchar;
+} STORAGE_SECURITY_COMPLIANCE_BITMASK;
+
+#endif
+
+#ifndef STORAGE_CRYPTO_KEY_TYPE_DEFINED
+#define STORAGE_CRYPTO_KEY_TYPE_DEFINED
+
+typedef union _STORAGE_CRYPTO_KEY_TYPE {
+    struct {
+        BYTE  DirectKey : 1;
+        BYTE  PlatformWrappedKey : 1;
+        BYTE  PlutonWrappedKey : 1;
+        BYTE  Reserved : 5;
+    };
+    BYTE  AsUchar;
+} STORAGE_CRYPTO_KEY_TYPE;
+
+#endif
+
+// end_storport end_privstorport
 
 typedef struct _STORAGE_CRYPTO_CAPABILITY_V2 {
 
@@ -2024,18 +2090,16 @@ typedef struct _STORAGE_CRYPTO_CAPABILITY_V2 {
     // Bitmask of compliant security standards at the algorithm level.
     //
 
-    union {
-        struct {
-            BYTE  FIPS : 1;
-            BYTE  Reserved : 7;
-        };
-        BYTE  AsUchar;
-    } SecurityComplianceBitmask;
+    STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask;
 
 } STORAGE_CRYPTO_CAPABILITY_V2, *PSTORAGE_CRYPTO_CAPABILITY_V2;
 
 #define STORAGE_CRYPTO_DESCRIPTOR_VERSION_1           1
 
+//
+// Note: Starting in Win11 24H2 and WS2025 or GE, this structure is deprecated.
+// Use STORAGE_HW_CRYPTO_DESCRIPTOR.
+//
 typedef struct _STORAGE_CRYPTO_DESCRIPTOR {
 
     //
@@ -2083,6 +2147,10 @@ typedef enum _STORAGE_ICE_TYPE {
 
 } STORAGE_ICE_TYPE, *PSTORAGE_ICE_TYPE;
 
+//
+// Note: Starting in Win11 24H2 and WS2025 or GE, this structure is deprecated. 
+// Use STORAGE_HW_CRYPTO_DESCRIPTOR.
+//
 typedef struct _STORAGE_CRYPTO_DESCRIPTOR_V2 {
 
     //
@@ -2122,22 +2190,200 @@ typedef struct _STORAGE_CRYPTO_DESCRIPTOR_V2 {
     // Bitmask of compliant security standards.
     //
 
-    union {
-        struct {
-            BYTE  FIPS : 1;
-            BYTE  Reserved : 7;
-        };
-        BYTE  AsUchar;
-    } SecurityComplianceBitmask;
+    STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
 
     //
-    // Array of Crypto Capabilities
+    // Bitmask of supported key types.
+    //
+
+    STORAGE_CRYPTO_KEY_TYPE KeyTypeBitmask;
+#endif
+
+    //
+    // Array of Crypto Capabilities.
+    // NOTE: You cannot index into this array.
+    //       Instead compute the next offset as
+    //       curCryptoCapability =
+    //          (STORAGE_CRYPTO_CAPABILITY_V2*)((PBYTE )curCryptoCapability + curCryptoCapability->Size)
     //
 
     _Field_size_(NumCryptoCapabilities) STORAGE_CRYPTO_CAPABILITY_V2 CryptoCapabilities[ANYSIZE_ARRAY];
 
 } STORAGE_CRYPTO_DESCRIPTOR_V2, *PSTORAGE_CRYPTO_DESCRIPTOR_V2;
 
+//
+// Output buffer for StorageHwCryptoProperty
+//
+
+#define STORAGE_HW_CRYPTO_CAPABILITY_VERSION_1           1
+
+typedef struct _STORAGE_HW_CRYPTO_CAPABILITY {
+
+    //
+    // To enable versioning of this structure. This shall be set
+    // to STORAGE_HW_CRYPTO_CAPABILITY_VERSION_1
+    //
+
+    DWORD Version;
+
+    //
+    // Size of this structure. This shall be set to
+    // sizeof(STORAGE_HW_CRYPTO_CAPABILITY)
+    //
+
+    DWORD Size;
+
+    //
+    // The index for this crypto capability
+    //
+
+    DWORD CryptoCapabilityIndex;
+
+    //
+    // Supported algorithm for this crypto capability
+    //
+
+    STORAGE_CRYPTO_ALGORITHM_ID AlgorithmId;
+
+    //
+    // The supported key size for this algorithm
+    //
+
+    STORAGE_CRYPTO_KEY_SIZE KeySize;
+
+    //
+    // Bitmask for the supported sizes of encryptable data blocks. When bit
+    // j is set (j=0...7), a data unit size of 512*2^j bytes is supported.
+    // Bit 0 represents 512 bytes, 1 represents 1 KB, bit 7 represents 64 KB
+    //
+
+    DWORD DataUnitSizeBitmask;
+
+    //
+    // Maximum supported initialization vector bit size. This can be 0 if
+    // this concept does not apply to the algorithm.
+    //
+
+    WORD   MaxIVBitSize;
+    WORD   Reserved;
+
+    //
+    // Bitmask of compliant security standards at the algorithm level.
+    //
+
+    STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask;
+
+} STORAGE_HW_CRYPTO_CAPABILITY, *PSTORAGE_HW_CRYPTO_CAPABILITY;
+
+#define STORAGE_HW_CRYPTO_DESCRIPTOR_VERSION_1           1
+
+typedef struct _STORAGE_HW_CRYPTO_DESCRIPTOR {
+
+    //
+    // Header.Version is set to STORAGE_HW_CRYPTO_DESCRIPTOR_VERSION_1
+    // to enable future version updates.
+    //
+    // Header.Size is set to the size of the entire buffer, including
+    // the trailing array of crypto capabilities.
+    //
+
+    STORAGE_DESCRIPTOR_HEADER Header;
+
+    //
+    // The number of keys the crypto engine supports
+    //
+
+    DWORD NumKeysSupported;
+
+    //
+    // The number of crypto capability entries. This outlines the
+    // crypto configurations the crypto engine supports.
+    //
+
+    DWORD NumCryptoCapabilities;
+
+    //
+    // Offset to an array of STORAGE_HW_CRYPTO_CAPABILITY
+    // structures from the beginning of STORAGE_HW_CRYPTO_DESCRIPTOR.
+    // Use STORAGE_HW_CRYPTO_CAPABILITY::Size to iterate through the
+    // elements.
+    //
+
+    _Field_range_(sizeof(struct _STORAGE_HW_CRYPTO_DESCRIPTOR), Header.Size)
+    DWORD OffsetToCryptoCapabilities;
+
+    //
+    // Size of each crypto capability array element.
+    //
+
+    DWORD SizeOfCryptoCapability;
+
+    //
+    // Which type of inline crypto engine this is
+    //
+
+    STORAGE_ICE_TYPE IceType;
+
+    //
+    // Bitmask of compliant security standards.
+    //
+
+    STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask;
+
+    //
+    // Bitmask of supported key types.
+    //
+
+    STORAGE_CRYPTO_KEY_TYPE KeyTypeBitmask;
+
+    //
+    // The following array exists at `OffsetToCryptoCapabilities`.
+    // Each element must be `SizeOfCryptoCapability` in size.
+    //
+    // STORAGE_HW_CRYPTO_CAPABILITY Capabilities[]
+    //
+
+} STORAGE_HW_CRYPTO_DESCRIPTOR, *PSTORAGE_HW_CRYPTO_DESCRIPTOR;
+
+FORCEINLINE
+const STORAGE_HW_CRYPTO_CAPABILITY *
+GetStorageHwCryptoCapability (
+    const STORAGE_HW_CRYPTO_DESCRIPTOR *CryptoDescriptor,
+    DWORD Index
+    )
+{
+    SIZE_T Offset = CryptoDescriptor->OffsetToCryptoCapabilities +
+                    Index * CryptoDescriptor->SizeOfCryptoCapability;
+
+#if defined(NT_ASSERT)
+    NT_ASSERT(Offset <= CryptoDescriptor->Header.Size);
+#endif
+
+    return (STORAGE_HW_CRYPTO_CAPABILITY *)((const char *)CryptoDescriptor + Offset);
+}
+
+//
+// Same as GetStorageHwCryptoCapability except returns a non const (mutable)
+// pointer. Useful when creating a storage crypto descriptor.
+//
+FORCEINLINE
+STORAGE_HW_CRYPTO_CAPABILITY *
+GetStorageHwCryptoCapabilityMut (
+    _In_reads_bytes_(CryptoDescriptor->Header.Size) STORAGE_HW_CRYPTO_DESCRIPTOR *CryptoDescriptor,
+    DWORD Index
+    )
+{
+    SIZE_T Offset = CryptoDescriptor->OffsetToCryptoCapabilities +
+                    Index * CryptoDescriptor->SizeOfCryptoCapability;
+
+#if defined(NT_ASSERT)
+    NT_ASSERT(Offset <= CryptoDescriptor->Header.Size);
+#endif
+
+    return (STORAGE_HW_CRYPTO_CAPABILITY *)((char *)CryptoDescriptor + Offset);
+}
 #pragma warning(pop)
 
 
@@ -2373,8 +2619,8 @@ typedef enum _STORAGE_PROTOCOL_NVME_DATA_TYPE {
                                 //      ProtocolDataSubValue5 - Defined in NVME_CDW15_FEATURES
                                 //      ProtocolDataSubValue6 - Namespace ID
 
-    // For NVMeDataTypeLogPageEx and NVMeDataTypeFeatureEx the namespace ID field is only used for requests sent to 
-    // an adapter or controller.  In these scenarios, the caller sets ProtocolDataSubValue6 to either 0 (NSID not used) or 
+    // For NVMeDataTypeLogPageEx and NVMeDataTypeFeatureEx the namespace ID field is only used for requests sent to
+    // an adapter or controller.  In these scenarios, the caller sets ProtocolDataSubValue6 to either 0 (NSID not used) or
     // FFFFFFFFF (request applies to all namespaces). For requests being targeted at a disk, the storage stack driver
     // will substitute in the corresponding NSID automatically.  Callers must set ProtocolDataSubValue6 to 0 for these requests.
 
@@ -6732,7 +6978,7 @@ typedef _Struct_size_bytes_(Size) struct _STORAGE_COUNTERS {
 #define STORAGE_HW_FIRMWARE_REQUEST_FLAG_FIRST_SEGMENT                  0x00000004
 
 //
-// Indicate that the existing firmware in slot should be activated immediately without 
+// Indicate that the existing firmware in slot should be activated immediately without
 // controller reset. Only valid for IOCTL_STORAGE_FIRMWARE_ACTIVATE.
 //
 #define STORAGE_HW_FIRMWARE_REQUEST_FLAG_SWITCH_TO_FIRMWARE_WITHOUT_RESET   0x10000000

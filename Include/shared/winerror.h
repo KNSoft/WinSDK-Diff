@@ -14604,6 +14604,15 @@
 //
 #define ERROR_VSM_DMA_PROTECTION_NOT_IN_USE 4561L
 
+//
+// MessageId: ERROR_VSM_KEY_CI_POLICY_ROLLBACK_DETECTED
+//
+// MessageText:
+//
+// The Virtual Secure Mode (VSM) master encryption key was not provisioned due to an inadequate CI policy.
+//
+#define ERROR_VSM_KEY_CI_POLICY_ROLLBACK_DETECTED 4562L
+
 ///////////////////////////////////////////////////
 //                                               //
 //         Platform Manifest Error Codes         //
@@ -50781,13 +50790,13 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_KEY_ROTATION_NOT_ENABLED   _HRESULT_TYPEDEF_(0x803100DFL)
 
 //
-// MessageId: FVE_E_DEVICE_NOT_JOINED
+// MessageId: FVE_E_DEVICE_NOT_JOINED_AAD
 //
 // MessageText:
 //
 // BitLocker recovery password key rotation could not be performed because the device is neither Azure AD joined nor Hybrid Azure AD joined.
 //
-#define FVE_E_DEVICE_NOT_JOINED          _HRESULT_TYPEDEF_(0x803100E0L)
+#define FVE_E_DEVICE_NOT_JOINED_AAD      _HRESULT_TYPEDEF_(0x803100E0L)
 
 //
 // MessageId: FVE_E_AAD_ENDPOINT_BUSY
@@ -50862,22 +50871,22 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_UPDATE_INVALID_CONFIG      _HRESULT_TYPEDEF_(0x803100E8L)
 
 //
-// MessageId: FVE_E_AAD_SERVER_FAIL_RETRY_AFTER
+// MessageId: FVE_E_AAD_SERVER_FAIL_RETRY_AFTER_AAD
 //
 // MessageText:
 //
 // The AAD request has failed and it has been advised to backoff to prevent throttling. Device will retry soon.
 //
-#define FVE_E_AAD_SERVER_FAIL_RETRY_AFTER _HRESULT_TYPEDEF_(0x803100E9L)
+#define FVE_E_AAD_SERVER_FAIL_RETRY_AFTER_AAD _HRESULT_TYPEDEF_(0x803100E9L)
 
 //
-// MessageId: FVE_E_AAD_SERVER_FAIL_BACKOFF
+// MessageId: FVE_E_AAD_SERVER_FAIL_BACKOFF_AAD
 //
 // MessageText:
 //
 // The AAD request has failed due to server issues and it has been advised to backoff to prevent throttling. Device will retry soon.
 //
-#define FVE_E_AAD_SERVER_FAIL_BACKOFF    _HRESULT_TYPEDEF_(0x803100EAL)
+#define FVE_E_AAD_SERVER_FAIL_BACKOFF_AAD _HRESULT_TYPEDEF_(0x803100EAL)
 
 //
 // MessageId: FVE_E_DATASET_FULL
@@ -51103,6 +51112,42 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // We couldn't save your BitLocker recovery information to your Microsoft Entra ID because the maximum number of recovery passwords have already been saved for this device. Please try again later.
 //
 #define FVE_E_EXCEED_MAX_LIMIT_RP_IN_MEID _HRESULT_TYPEDEF_(0xC0310104L)
+
+//
+// MessageId: FVE_E_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED
+//
+// MessageText:
+//
+// BitLocker is prevented from using hardware accelerated encryption.
+//
+#define FVE_E_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED _HRESULT_TYPEDEF_(0xC0310109L)
+
+//
+// MessageId: FVE_E_DEVICE_NOT_JOINED
+//
+// MessageText:
+//
+// BitLocker recovery password key rotation could not be performed because the device is neither Entra ID joined nor Hybrid Entra ID joined.
+//
+#define FVE_E_DEVICE_NOT_JOINED          _HRESULT_TYPEDEF_(0x80310110L)
+
+//
+// MessageId: FVE_E_AAD_SERVER_FAIL_RETRY_AFTER
+//
+// MessageText:
+//
+// The Entra ID request has failed and it has been advised to backoff to prevent throttling. Device will retry soon.
+//
+#define FVE_E_AAD_SERVER_FAIL_RETRY_AFTER _HRESULT_TYPEDEF_(0x80310111L)
+
+//
+// MessageId: FVE_E_AAD_SERVER_FAIL_BACKOFF
+//
+// MessageText:
+//
+// The Entra ID request has failed due to server issues and it has been advised to backoff to prevent throttling. Device will retry soon.
+//
+#define FVE_E_AAD_SERVER_FAIL_BACKOFF    _HRESULT_TYPEDEF_(0x80310112L)
 
 //
 // =======================================================
