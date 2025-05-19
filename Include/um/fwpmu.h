@@ -1024,8 +1024,52 @@ DEFINE_GUID(
 
 #endif // (NTDDI_VERSION >= NTDDI_WINTHRESHOLD)
 
-#endif // (NTDDI_VERSION >= NTDDI_WIN8)
+// B3CDD441-AF90-41BA-A745-7C6008FF2300
+DEFINE_GUID(
+   FWPM_SUBLAYER_MPSSVC_WSH,
+   0xb3cdd441,
+   0xaf90,
+   0x41ba,
+   0xa7, 0x45, 0x7c, 0x60, 0x08, 0xff, 0x23, 0x00
+);
 
+// B3CDD441-AF90-41BA-A745-7C6008FF2301
+DEFINE_GUID(
+   FWPM_SUBLAYER_MPSSVC_WF,
+   0xb3cdd441,
+   0xaf90,
+   0x41ba,
+   0xa7, 0x45, 0x7c, 0x60, 0x08, 0xff, 0x23, 0x01
+);
+
+// B3CDD441-AF90-41BA-A745-7C6008FF2302
+DEFINE_GUID(
+   FWPM_SUBLAYER_MPSSVC_QUARANTINE,
+   0xb3cdd441,
+   0xaf90,
+   0x41ba,
+   0xa7, 0x45, 0x7c, 0x60, 0x08, 0xff, 0x23, 0x02
+);
+
+// 09A47E38-FA97-471B-B12318BCD7E65071
+DEFINE_GUID(
+   FWPM_SUBLAYER_MPSSVC_EDP,
+   0x09a47e38,
+   0xfa97,
+   0x471b,
+   0xb1, 0x23, 0x18, 0xbc, 0xd7, 0xe6, 0x50, 0x71
+);
+
+// 1EC6C7E1-FDD9-478A-B55F-FF8BA1D2C17D
+DEFINE_GUID(
+   FWPM_SUBLAYER_MPSSVC_TENANT_RESTRICTIONS,
+   0x1ec6c7e1,
+   0xfdd9,
+   0x478a,
+   0xb5, 0x5f, 0xff, 0x8b, 0xa1, 0xd2, 0xc1, 0x7d
+);
+
+#endif // (NTDDI_VERSION >= NTDDI_WIN8)
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -2060,6 +2104,15 @@ DEFINE_GUID(
    0x9b, 0x98, 0x31, 0xd4, 0x58, 0x2f, 0x33, 0x61
 );
 
+// d58efb76-aab7-4148-a87e-9581134129b9
+DEFINE_GUID(
+   FWPM_CONDITION_RPC_OPNUM, 
+   0xd58efb76,
+   0xaab7,
+   0x4148,
+   0xa8, 0x7e, 0x95, 0x81, 0x13, 0x41, 0x29, 0xb9
+);
+
 // e31180a8-bbbd-4d14-a65e-7157b06233bb
 DEFINE_GUID(
     FWPM_CONDITION_PROCESS_WITH_RPC_IF_UUID,
@@ -2427,8 +2480,43 @@ DEFINE_GUID(
    0x432d,
    0xbe, 0xd3, 0x44, 0x1a, 0xe5, 0x0e, 0x63, 0xc3
 );
-#endif // (NTDDI_VERSION >= NTDDI_WIN8)
 
+// 4b153735-1049-4480-aab4-d1b9bdc03710
+DEFINE_GUID(
+   FWPM_PROVIDER_MPSSVC_WSH,
+   0x4b153735,
+   0x1049,
+   0x4480,
+   0xaa, 0xb4, 0xd1, 0xb9, 0xbd, 0xc0, 0x37, 0x10
+);
+
+// decc16ca-3f33-4346-be1e-8fb4ae0f3d62
+DEFINE_GUID(
+   FWPM_PROVIDER_MPSSVC_WF,
+   0xdecc16ca,
+   0x3f33,
+   0x4346,
+   0xbe, 0x1e, 0x8f, 0xb4, 0xae, 0x0f, 0x3d, 0x62
+);
+
+// a90296f7-46b8-4457-8f84-b05e05d3c622
+DEFINE_GUID(
+   FWPM_PROVIDER_MPSSVC_EDP,
+   0xa90296f7,
+   0x46b8,
+   0x4457,
+   0x8f, 0x84, 0xb0, 0x5e, 0x05, 0xd3, 0xc6, 0x22
+);
+
+// d0718ff9-44da-4f50-9dc2-c963a4247613
+DEFINE_GUID(
+   FWPM_PROVIDER_MPSSVC_TENANT_RESTRICTIONS,
+   0xd0718ff9,
+   0x44da,
+   0x4f50,
+   0x9d, 0xc2, 0xc9, 0x63, 0xa4, 0x24, 0x76, 0x13
+);
+#endif // (NTDDI_VERSION >= NTDDI_WIN8)
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -5010,6 +5098,39 @@ FwpmNetEventSubscribe4(
    );
 
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_VB)
+///////////////////////////////////////////////////////////////////////////////
+//
+// Functions for Tracking Dynamic Keyword Changes
+//
+///////////////////////////////////////////////////////////////////////////////
+#define FWPM_NOTIFY_ADDRESSES_AUTO_RESOLVE 0x01ui64
+#define FWPM_NOTIFY_ADDRESSES_NON_AUTO_RESOLVE 0x02ui64
+#define FWPM_NOTIFY_ADDRESSES_ALL (FWPM_NOTIFY_ADDRESSES_AUTO_RESOLVE | FWPM_NOTIFY_ADDRESSES_NON_AUTO_RESOLVE)
+#define FWPM_NOTIFY_GRANULAR 0x04ui64
+
+typedef void (CALLBACK *FWPM_DYNAMIC_KEYWORD_CALLBACK0)(
+                           _Inout_ void* notification,
+                           _Inout_ void* context
+                           );
+
+DWORD
+WINAPI
+FwpmDynamicKeywordSubscribe0(
+   _In_ DWORD flags,
+   _In_ FWPM_DYNAMIC_KEYWORD_CALLBACK0 callback,
+   _In_opt_ void* context,
+   _Out_ HANDLE* subscriptionHandle
+   );
+
+DWORD
+WINAPI
+FwpmDynamicKeywordUnsubscribe0(
+   _In_ HANDLE subscriptionHandle
+   );
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_VB)
 
 
 #if (NTDDI_VERSION >= NTDDI_WIN7)

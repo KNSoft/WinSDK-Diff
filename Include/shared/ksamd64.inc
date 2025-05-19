@@ -67,6 +67,13 @@ KAPC_RECORD_FLAGS_CHECK_ALERT equ 00001H
 
 
 ;
+;  Apc Callback Data Structure Offset Definitions
+;
+
+AcdContextRecord equ 00008H
+KAPC_CALLBACK_DATA_LENGTH equ 00020H
+
+;
 ;  Bug Check Code Definitions
 ;
 
@@ -1084,8 +1091,8 @@ PbMinorVersion equ 00088H
 PbMajorVersion equ 0008AH
 PbBuildType equ 0008CH
 PbCpuVendor equ 0008DH
-PbCoresPerPhysicalProcessor equ 0008EH
-PbLogicalProcessorsPerCore equ 0008FH
+PbCoresPerPhysicalProcessor equ 00098H
+PbLogicalProcessorsPerCore equ 0009CH
 PbApicMask equ 000DCH
 PbCFlushSize equ 000E8H
 PbAcpiReserved equ 000E0H
@@ -1152,7 +1159,7 @@ PbExceptionDispatchCount equ 07EB0H
 PbVendorString equ 08590H
 ProcessorBlockLength equ 0AF00H
 PbShadowFlags equ 08E98H
-PbTrappedSecurityDomain equ 000F0H
+PbTrappedSecurityDomain equ 006D8H
 
 ;
 ;  Time Fields (TIME_FIELDS) Structure Offset Definitions

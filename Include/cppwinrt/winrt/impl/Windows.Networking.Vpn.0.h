@@ -17,6 +17,7 @@ namespace winrt::Windows::Foundation::Collections
     template <typename T> struct IIterable;
     template <typename T> struct IVectorView;
     template <typename T> struct IVector;
+    struct ValueSet;
 }
 namespace winrt::Windows::Networking
 {
@@ -145,6 +146,8 @@ namespace winrt::Windows::Networking::Vpn
     struct IVpnChannel;
     struct IVpnChannel2;
     struct IVpnChannel4;
+    struct IVpnChannel5;
+    struct IVpnChannel6;
     struct IVpnChannelActivityEventArgs;
     struct IVpnChannelActivityStateChangedArgs;
     struct IVpnChannelConfiguration;
@@ -166,6 +169,8 @@ namespace winrt::Windows::Networking::Vpn
     struct IVpnDomainNameInfo;
     struct IVpnDomainNameInfo2;
     struct IVpnDomainNameInfoFactory;
+    struct IVpnForegroundActivatedEventArgs;
+    struct IVpnForegroundActivationOperation;
     struct IVpnInterfaceId;
     struct IVpnInterfaceIdFactory;
     struct IVpnManagementAgent;
@@ -209,6 +214,8 @@ namespace winrt::Windows::Networking::Vpn
     struct VpnCustomTextBox;
     struct VpnDomainNameAssignment;
     struct VpnDomainNameInfo;
+    struct VpnForegroundActivatedEventArgs;
+    struct VpnForegroundActivationOperation;
     struct VpnInterfaceId;
     struct VpnManagementAgent;
     struct VpnNamespaceAssignment;
@@ -243,6 +250,14 @@ namespace winrt::impl
         using type = interface_category;
     };
     template <> struct category<Windows::Networking::Vpn::IVpnChannel4>
+    {
+        using type = interface_category;
+    };
+    template <> struct category<Windows::Networking::Vpn::IVpnChannel5>
+    {
+        using type = interface_category;
+    };
+    template <> struct category<Windows::Networking::Vpn::IVpnChannel6>
     {
         using type = interface_category;
     };
@@ -327,6 +342,14 @@ namespace winrt::impl
         using type = interface_category;
     };
     template <> struct category<Windows::Networking::Vpn::IVpnDomainNameInfoFactory>
+    {
+        using type = interface_category;
+    };
+    template <> struct category<Windows::Networking::Vpn::IVpnForegroundActivatedEventArgs>
+    {
+        using type = interface_category;
+    };
+    template <> struct category<Windows::Networking::Vpn::IVpnForegroundActivationOperation>
     {
         using type = interface_category;
     };
@@ -502,6 +525,14 @@ namespace winrt::impl
     {
         using type = class_category;
     };
+    template <> struct category<Windows::Networking::Vpn::VpnForegroundActivatedEventArgs>
+    {
+        using type = class_category;
+    };
+    template <> struct category<Windows::Networking::Vpn::VpnForegroundActivationOperation>
+    {
+        using type = class_category;
+    };
     template <> struct category<Windows::Networking::Vpn::VpnInterfaceId>
     {
         using type = class_category;
@@ -630,6 +661,14 @@ namespace winrt::impl
     {
         static constexpr auto & value{ L"Windows.Networking.Vpn.IVpnChannel4" };
     };
+    template <> struct name<Windows::Networking::Vpn::IVpnChannel5>
+    {
+        static constexpr auto & value{ L"Windows.Networking.Vpn.IVpnChannel5" };
+    };
+    template <> struct name<Windows::Networking::Vpn::IVpnChannel6>
+    {
+        static constexpr auto & value{ L"Windows.Networking.Vpn.IVpnChannel6" };
+    };
     template <> struct name<Windows::Networking::Vpn::IVpnChannelActivityEventArgs>
     {
         static constexpr auto & value{ L"Windows.Networking.Vpn.IVpnChannelActivityEventArgs" };
@@ -713,6 +752,14 @@ namespace winrt::impl
     template <> struct name<Windows::Networking::Vpn::IVpnDomainNameInfoFactory>
     {
         static constexpr auto & value{ L"Windows.Networking.Vpn.IVpnDomainNameInfoFactory" };
+    };
+    template <> struct name<Windows::Networking::Vpn::IVpnForegroundActivatedEventArgs>
+    {
+        static constexpr auto & value{ L"Windows.Networking.Vpn.IVpnForegroundActivatedEventArgs" };
+    };
+    template <> struct name<Windows::Networking::Vpn::IVpnForegroundActivationOperation>
+    {
+        static constexpr auto & value{ L"Windows.Networking.Vpn.IVpnForegroundActivationOperation" };
     };
     template <> struct name<Windows::Networking::Vpn::IVpnInterfaceId>
     {
@@ -886,6 +933,14 @@ namespace winrt::impl
     {
         static constexpr auto & value{ L"Windows.Networking.Vpn.VpnDomainNameInfo" };
     };
+    template <> struct name<Windows::Networking::Vpn::VpnForegroundActivatedEventArgs>
+    {
+        static constexpr auto & value{ L"Windows.Networking.Vpn.VpnForegroundActivatedEventArgs" };
+    };
+    template <> struct name<Windows::Networking::Vpn::VpnForegroundActivationOperation>
+    {
+        static constexpr auto & value{ L"Windows.Networking.Vpn.VpnForegroundActivationOperation" };
+    };
     template <> struct name<Windows::Networking::Vpn::VpnInterfaceId>
     {
         static constexpr auto & value{ L"Windows.Networking.Vpn.VpnInterfaceId" };
@@ -1014,6 +1069,14 @@ namespace winrt::impl
     {
         static constexpr guid value{ 0xD7266EDE,0x2937,0x419D,{ 0x95,0x70,0x48,0x6A,0xEB,0xB8,0x18,0x03 } };
     };
+    template <> struct guid_storage<Windows::Networking::Vpn::IVpnChannel5>
+    {
+        static constexpr guid value{ 0xDE7A0992,0x8384,0x4FBC,{ 0x88,0x2C,0x1F,0xD2,0x31,0x24,0xCD,0x3B } };
+    };
+    template <> struct guid_storage<Windows::Networking::Vpn::IVpnChannel6>
+    {
+        static constexpr guid value{ 0x55843696,0xBD63,0x49C5,{ 0xAB,0xCA,0x5D,0xA7,0x78,0x85,0x55,0x1A } };
+    };
     template <> struct guid_storage<Windows::Networking::Vpn::IVpnChannelActivityEventArgs>
     {
         static constexpr guid value{ 0xA36C88F2,0xAFDC,0x4775,{ 0x85,0x5D,0xD4,0xAC,0x0A,0x35,0xFC,0x55 } };
@@ -1097,6 +1160,14 @@ namespace winrt::impl
     template <> struct guid_storage<Windows::Networking::Vpn::IVpnDomainNameInfoFactory>
     {
         static constexpr guid value{ 0x2507BB75,0x028F,0x4688,{ 0x8D,0x3A,0xC4,0x53,0x1D,0xF3,0x7D,0xA8 } };
+    };
+    template <> struct guid_storage<Windows::Networking::Vpn::IVpnForegroundActivatedEventArgs>
+    {
+        static constexpr guid value{ 0x85B465B0,0xCADB,0x4D70,{ 0xAC,0x92,0x54,0x3A,0x24,0xDC,0x9E,0xBC } };
+    };
+    template <> struct guid_storage<Windows::Networking::Vpn::IVpnForegroundActivationOperation>
+    {
+        static constexpr guid value{ 0x9E010D57,0xF17A,0x4BD5,{ 0x9B,0x6D,0xF9,0x84,0xF1,0x29,0x7D,0x3C } };
     };
     template <> struct guid_storage<Windows::Networking::Vpn::IVpnInterfaceId>
     {
@@ -1270,6 +1341,14 @@ namespace winrt::impl
     {
         using type = Windows::Networking::Vpn::IVpnDomainNameInfo;
     };
+    template <> struct default_interface<Windows::Networking::Vpn::VpnForegroundActivatedEventArgs>
+    {
+        using type = Windows::Networking::Vpn::IVpnForegroundActivatedEventArgs;
+    };
+    template <> struct default_interface<Windows::Networking::Vpn::VpnForegroundActivationOperation>
+    {
+        using type = Windows::Networking::Vpn::IVpnForegroundActivationOperation;
+    };
     template <> struct default_interface<Windows::Networking::Vpn::VpnInterfaceId>
     {
         using type = Windows::Networking::Vpn::IVpnInterfaceId;
@@ -1393,6 +1472,23 @@ namespace winrt::impl
             virtual int32_t __stdcall StartReconnectingTransport(void*, void*) noexcept = 0;
             virtual int32_t __stdcall GetSlotTypeForTransportContext(void*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_CurrentRequestTransportContext(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<Windows::Networking::Vpn::IVpnChannel5>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall AppendVpnReceivePacketBuffer(void*) noexcept = 0;
+            virtual int32_t __stdcall AppendVpnSendPacketBuffer(void*) noexcept = 0;
+            virtual int32_t __stdcall FlushVpnReceivePacketBuffers() noexcept = 0;
+            virtual int32_t __stdcall FlushVpnSendPacketBuffers() noexcept = 0;
+        };
+    };
+    template <> struct abi<Windows::Networking::Vpn::IVpnChannel6>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall ActivateForeground(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<Windows::Networking::Vpn::IVpnChannelActivityEventArgs>
@@ -1578,6 +1674,22 @@ namespace winrt::impl
         struct __declspec(novtable) type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVpnDomainNameInfo(void*, int32_t, void*, void*, void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<Windows::Networking::Vpn::IVpnForegroundActivatedEventArgs>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_ProfileName(void**) noexcept = 0;
+            virtual int32_t __stdcall get_SharedContext(void**) noexcept = 0;
+            virtual int32_t __stdcall get_ActivationOperation(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<Windows::Networking::Vpn::IVpnForegroundActivationOperation>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall Complete(void*) noexcept = 0;
         };
     };
     template <> struct abi<Windows::Networking::Vpn::IVpnInterfaceId>
@@ -1936,6 +2048,27 @@ namespace winrt::impl
         template <typename D> using type = consume_Windows_Networking_Vpn_IVpnChannel4<D>;
     };
     template <typename D>
+    struct consume_Windows_Networking_Vpn_IVpnChannel5
+    {
+        auto AppendVpnReceivePacketBuffer(Windows::Networking::Vpn::VpnPacketBuffer const& decapsulatedPacketBuffer) const;
+        auto AppendVpnSendPacketBuffer(Windows::Networking::Vpn::VpnPacketBuffer const& encapsulatedPacketBuffer) const;
+        auto FlushVpnReceivePacketBuffers() const;
+        auto FlushVpnSendPacketBuffers() const;
+    };
+    template <> struct consume<Windows::Networking::Vpn::IVpnChannel5>
+    {
+        template <typename D> using type = consume_Windows_Networking_Vpn_IVpnChannel5<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Networking_Vpn_IVpnChannel6
+    {
+        auto ActivateForeground(param::hstring const& packageRelativeAppId, Windows::Foundation::Collections::ValueSet const& sharedContext) const;
+    };
+    template <> struct consume<Windows::Networking::Vpn::IVpnChannel6>
+    {
+        template <typename D> using type = consume_Windows_Networking_Vpn_IVpnChannel6<D>;
+    };
+    template <typename D>
     struct consume_Windows_Networking_Vpn_IVpnChannelActivityEventArgs
     {
         [[nodiscard]] auto Type() const;
@@ -2161,6 +2294,26 @@ namespace winrt::impl
     template <> struct consume<Windows::Networking::Vpn::IVpnDomainNameInfoFactory>
     {
         template <typename D> using type = consume_Windows_Networking_Vpn_IVpnDomainNameInfoFactory<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Networking_Vpn_IVpnForegroundActivatedEventArgs
+    {
+        [[nodiscard]] auto ProfileName() const;
+        [[nodiscard]] auto SharedContext() const;
+        [[nodiscard]] auto ActivationOperation() const;
+    };
+    template <> struct consume<Windows::Networking::Vpn::IVpnForegroundActivatedEventArgs>
+    {
+        template <typename D> using type = consume_Windows_Networking_Vpn_IVpnForegroundActivatedEventArgs<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Networking_Vpn_IVpnForegroundActivationOperation
+    {
+        auto Complete(Windows::Foundation::Collections::ValueSet const& result) const;
+    };
+    template <> struct consume<Windows::Networking::Vpn::IVpnForegroundActivationOperation>
+    {
+        template <typename D> using type = consume_Windows_Networking_Vpn_IVpnForegroundActivationOperation<D>;
     };
     template <typename D>
     struct consume_Windows_Networking_Vpn_IVpnInterfaceId

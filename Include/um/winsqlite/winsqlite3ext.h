@@ -12,8 +12,8 @@
 ** This header file defines the SQLite interface for use by
 ** shared libraries that want to be imported as extensions into
 ** an SQLite instance.  Shared libraries that intend to be loaded
-** as extensions by SQLite should #include this file instead of
-** sqlite3.h.
+** as extensions by SQLite should #include this file instead of 
+** winsqlite3.h.
 */
 #ifndef SQLITE3EXT_H
 #define SQLITE3EXT_H
@@ -295,6 +295,7 @@ struct sqlite3_api_routines {
   char *(SQLITE_APICALL *expanded_sql)(sqlite3_stmt*);
 #endif /* NTDDI_VERSION >= NTDDI_WIN10_RS2 */
 #if NTDDI_VERSION >= NTDDI_WIN10_RS3
+  /* Version 3.18.0 and later */
   void (SQLITE_APICALL *set_last_insert_rowid)(sqlite3*,sqlite3_int64);
 #endif /* NTDDI_VERSION >= NTDDI_WIN10_RS3 */
 #if NTDDI_VERSION >= NTDDI_WIN10_RS4
@@ -343,6 +344,52 @@ struct sqlite3_api_routines {
   int (SQLITE_APICALL *stmt_isexplain)(sqlite3_stmt*);
   int (SQLITE_APICALL *value_frombind)(sqlite3_value*);
 #endif /* NTDDI_VERSION >= NTDDI_WIN10_VB */
+#if NTDDI_VERSION >= NTDDI_WIN10_CO
+  /* Version 3.30.0 and later */
+  int (SQLITE_APICALL *drop_modules)(sqlite3*,const char**);
+  /* Version 3.31.0 and later */
+  sqlite3_int64 (SQLITE_APICALL *hard_heap_limit64)(sqlite3_int64);
+  const char *(SQLITE_APICALL *uri_key)(const char*,int);
+  const char *(SQLITE_APICALL *filename_database)(const char*);
+  const char *(SQLITE_APICALL *filename_journal)(const char*);
+  const char *(SQLITE_APICALL *filename_wal)(const char*);
+  /* Version 3.32.0 and later */
+  _SQLITE_FILENAME_NONCONST(SQLITE_APICALL *create_filename)(const char*,const char*,const char*,
+                           int,const char**);
+  void (SQLITE_APICALL *free_filename)(_SQLITE_FILENAME_NONCONST);
+  sqlite3_file *(SQLITE_APICALL *database_file_object)(const char*);
+  /* Version 3.34.0 and later */
+  int (SQLITE_APICALL *txn_state)(sqlite3*,const char*);
+#endif /* NTDDI_VERSION >= NTDDI_WIN10_CO */
+#if NTDDI_VERSION >= NTDDI_WIN11_ZN
+  /* Version 3.36.1 and later */
+  sqlite3_int64 (SQLITE_APICALL *changes64)(sqlite3*);
+  sqlite3_int64 (SQLITE_APICALL *total_changes64)(sqlite3*);
+  /* Version 3.37.0 and later */
+  int (SQLITE_APICALL *autovacuum_pages)(sqlite3*,
+     unsigned int(SQLITE_CALLBACK *)(void*,const char*,unsigned int,unsigned int,unsigned int),
+     void*, void(SQLITE_CALLBACK *)(void*));
+  /* Version 3.38.0 and later */
+  int (SQLITE_APICALL *error_offset)(sqlite3*);
+  int (SQLITE_APICALL *vtab_rhs_value)(sqlite3_index_info*,int,sqlite3_value**);
+  int (SQLITE_APICALL *vtab_distinct)(sqlite3_index_info*);
+  int (SQLITE_APICALL *vtab_in)(sqlite3_index_info*,int,int);
+  int (SQLITE_APICALL *vtab_in_first)(sqlite3_value*,sqlite3_value**);
+  int (SQLITE_APICALL *vtab_in_next)(sqlite3_value*,sqlite3_value**);
+  /* Version 3.39.0 and later */
+  int (SQLITE_APICALL *deserialize)(sqlite3*,const char*,unsigned char*,
+                     sqlite3_int64,sqlite3_int64,unsigned);
+  unsigned char *(SQLITE_APICALL *serialize)(sqlite3*,const char *,sqlite3_int64*,
+                              unsigned int);
+  const char *(SQLITE_APICALL *db_name)(sqlite3*,int);
+  /* Version 3.40.0 and later */
+  int (SQLITE_APICALL *value_encoding)(sqlite3_value*);
+#endif /* NTDDI_VERSION >= NTDDI_WIN11_ZN */
+#if NTDDI_VERSION >= NTDDI_WIN11_DT
+  int (SQLITE_APICALL *is_interrupted)(sqlite3*);
+  /* Version 3.43.0 and later */
+  int (SQLITE_APICALL *stmt_explain)(sqlite3_stmt*,int);
+#endif /* NTDDI_VERSION >= NTDDI_WIN11_DT */
 };
 
 #if NTDDI_VERSION >= NTDDI_WIN10_RS2
@@ -610,6 +657,7 @@ typedef int (SQLITE_APICALL *sqlite3_loadext_entry)(
 #define sqlite3_expanded_sql           sqlite3_api->expanded_sql
 #endif /* NTDDI_VERSION >= NTDDI_WIN10_RS2 */
 #if NTDDI_VERSION >= NTDDI_WIN10_RS3
+/* Version 3.18.0 and later */
 #define sqlite3_set_last_insert_rowid  sqlite3_api->set_last_insert_rowid
 #endif /* NTDDI_VERSION >= NTDDI_WIN10_RS3 */
 #if NTDDI_VERSION >= NTDDI_WIN10_RS4
@@ -649,21 +697,65 @@ typedef int (SQLITE_APICALL *sqlite3_loadext_entry)(
 /* Version 3.26.0 and later */
 #define sqlite3_normalized_sql         sqlite3_api->normalized_sql
 /* Version 3.28.0 and later */
-#define sqlite3_stmt_isexplain         sqlite3_api->isexplain
-#define sqlite3_value_frombind         sqlite3_api->frombind
+#define sqlite3_stmt_isexplain         sqlite3_api->stmt_isexplain
+#define sqlite3_value_frombind         sqlite3_api->value_frombind
 #endif /* NTDDI_VERSION >= NTDDI_WIN10_VB */
+#if NTDDI_VERSION >= NTDDI_WIN10_CO
+/* Version 3.30.0 and later */
+#define sqlite3_drop_modules           sqlite3_api->drop_modules
+/* Version 3.31.0 and later */
+#define sqlite3_hard_heap_limit64      sqlite3_api->hard_heap_limit64
+#define sqlite3_uri_key                sqlite3_api->uri_key
+#define sqlite3_filename_database      sqlite3_api->filename_database
+#define sqlite3_filename_journal       sqlite3_api->filename_journal
+#define sqlite3_filename_wal           sqlite3_api->filename_wal
+/* Version 3.32.0 and later */
+#define sqlite3_create_filename        sqlite3_api->create_filename
+#define sqlite3_free_filename          sqlite3_api->free_filename
+#define sqlite3_database_file_object   sqlite3_api->database_file_object
+/* Version 3.34.0 and later */
+#define sqlite3_txn_state              sqlite3_api->txn_state
+#endif /* NTDDI_VERSION >= NTDDI_WIN10_CO */
+#if NTDDI_VERSION >= NTDDI_WIN11_ZN
+/* Version 3.36.1 and later */
+#define sqlite3_changes64              sqlite3_api->changes64
+#define sqlite3_total_changes64        sqlite3_api->total_changes64
+/* Version 3.37.0 and later */
+#define sqlite3_autovacuum_pages       sqlite3_api->autovacuum_pages
+/* Version 3.38.0 and later */
+#define sqlite3_error_offset           sqlite3_api->error_offset
+#define sqlite3_vtab_rhs_value         sqlite3_api->vtab_rhs_value
+#define sqlite3_vtab_distinct          sqlite3_api->vtab_distinct
+#define sqlite3_vtab_in                sqlite3_api->vtab_in
+#define sqlite3_vtab_in_first          sqlite3_api->vtab_in_first
+#define sqlite3_vtab_in_next           sqlite3_api->vtab_in_next
+/* Version 3.39.0 and later */
+#ifndef SQLITE_OMIT_DESERIALIZE
+#define sqlite3_deserialize            sqlite3_api->deserialize
+#define sqlite3_serialize              sqlite3_api->serialize
+#endif
+#define sqlite3_db_name                sqlite3_api->db_name
+/* Version 3.40.0 and later */
+#define sqlite3_value_encoding         sqlite3_api->value_encoding
+#endif /* NTDDI_VERSION >= NTDDI_WIN11_ZN */
+#if NTDDI_VERSION >= NTDDI_WIN11_DT
+/* Version 3.41.0 and later */
+#define sqlite3_is_interrupted         sqlite3_api->is_interrupted
+/* Version 3.43.0 and later */
+#define sqlite3_stmt_explain           sqlite3_api->stmt_explain
+#endif /* NTDDI_VERSION >= NTDDI_WIN11_DT */
 #endif /* !defined(SQLITE_CORE) && !defined(SQLITE_OMIT_LOAD_EXTENSION) */
 
 #if !defined(SQLITE_CORE) && !defined(SQLITE_OMIT_LOAD_EXTENSION)
-/* This case when the file really is being compiled as a loadable
-** extension */
+  /* This case when the file really is being compiled as a loadable 
+  ** extension */
 # define SQLITE_EXTENSION_INIT1     const sqlite3_api_routines *sqlite3_api=0;
 # define SQLITE_EXTENSION_INIT2(v)  sqlite3_api=v;
 # define SQLITE_EXTENSION_INIT3     \
     extern const sqlite3_api_routines *sqlite3_api;
 #else
-/* This case when the file is being statically linked into the
-** application */
+  /* This case when the file is being statically linked into the 
+  ** application */
 # define SQLITE_EXTENSION_INIT1     /*no-op*/
 # define SQLITE_EXTENSION_INIT2(v)  (void)v; /* unused parameter */
 # define SQLITE_EXTENSION_INIT3     /*no-op*/

@@ -65,6 +65,10 @@ cpp_quote("#define FWPS_FILTER_FLAG_SILENT_MODE     (0x0010)")
 // Do not initiate IPsec acquire, if packet matches a IPsec policy from a filter with this flag
 cpp_quote("#define FWPS_FILTER_FLAG_IPSEC_NO_ACQUIRE_INITIATE (0x0020)")
 
+// The flag is reserved
+cpp_quote("#define FWPS_FILTER_FLAG_RESERVED0 (0x0040)")
+// The flag is reserved
+cpp_quote("#define FWPS_FILTER_FLAG_RESERVED1 (0x0080)")
 
 typedef struct FWPM_PROVIDER_CONTEXT0_ FWPM_PROVIDER_CONTEXT0;
 

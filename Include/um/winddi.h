@@ -1684,6 +1684,11 @@ typedef struct _PATHOBJ
     ULONG   cCurves;
 } PATHOBJ;
 
+#define SURFOBJ_GET_HDEV(pso)               ((pso)->hdev)
+#define SURFOBJ_SET_HDEV(pso, hdevNew)      ((pso)->hdev = (hdevNew))
+#define SURFOBJ_GET_DHPDEV(pso)              ((pso)->dhpdev)
+#define SURFOBJ_SET_DHPDEV(pso, dhpdevNew)   ((pso)->dhpdev = (dhpdevNew))
+
 typedef struct _SURFOBJ
 {
     DHSURF  dhsurf;

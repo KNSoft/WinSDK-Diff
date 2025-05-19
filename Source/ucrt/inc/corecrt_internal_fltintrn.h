@@ -103,6 +103,15 @@ enum class __acrt_has_trailing_digits
     no_trailing
 };
 
+// Precision is the number of digits after the decimal point, but
+// this has different implications for how many digits need to be
+// generated based upon how the number will be formatted.
+enum class __acrt_precision_style
+{
+    fixed,      // 123.456 %f style requires '3' precision to generate 6 digits to format "123.456".
+    scientific  // 123.456 %e style requires '5' precision to generate 6 digits to format "1.23456e+02".
+};
+
 // This rounding mode is used to know if we are using functions like gcvt vs printf
 enum class __acrt_rounding_mode
 {
@@ -199,11 +208,12 @@ errno_t __cdecl __acrt_fp_strflt_to_string(
     );
 
 __acrt_has_trailing_digits __cdecl __acrt_fltout(
-    _In_                         _CRT_DOUBLE value,
-    _In_                         unsigned    precision,
-    _Out_                        STRFLT      result,
-    _Out_writes_z_(buffer_count) char*       buffer,
-    _In_                         size_t      buffer_count
+    _In_                         _CRT_DOUBLE            value,
+    _In_                         unsigned               precision,
+    _In_                         __acrt_precision_style precision_style,
+    _Out_                        STRFLT                 result,
+    _Out_writes_z_(buffer_count) char*                  buffer,
+    _In_                         size_t                 buffer_count
     );
 
 _CRT_END_C_HEADER

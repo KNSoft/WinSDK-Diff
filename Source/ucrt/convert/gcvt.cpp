@@ -46,6 +46,7 @@ extern "C" errno_t __cdecl _gcvt_s(
     __acrt_fltout(
         reinterpret_cast<_CRT_DOUBLE const&>(value),
         precision,
+        __acrt_precision_style::fixed,
         &strflt,
         result_string,
         restricted_count);

@@ -142,6 +142,11 @@ extern "C" {
 // License of user is in bad state blocking enrollment (user still needs to call admin)
 #define MENROLL_E_USERLICENSE                             MAKE_HRESULT(SEVERITY_ERROR, DEVICE_ENROLLER_FACILITY_CODE, 24)
 
+// The server responded with a custom error string, see DeviceManagement-Enterprise-Diagnostics for details
+#ifndef MENROLL_E_CUSTOMSERVERERROR
+#define MENROLL_E_CUSTOMSERVERERROR                     MAKE_HRESULT(SEVERITY_ERROR, DEVICE_ENROLLER_FACILITY_CODE, 50)
+#endif
+
 // The server rejected the Enrollment Data, the server may not be configured correctly
 #define MENROLL_E_ENROLLMENTDATAINVALID                   MAKE_HRESULT(SEVERITY_ERROR, DEVICE_ENROLLER_FACILITY_CODE, 25)
 
@@ -417,10 +422,34 @@ HRESULT indicating success or failure.
 HRESULT WINAPI
 RegisterDeviceWithManagementUsingAADDeviceCredentials2(_In_opt_ PCWSTR MDMApplicationID);
 
+/*++
+
+Routine Description:
+
+This function is used to register a MDM enrolled device to Mmpc synchronously.
+It will get MMPC information, including authentication device token from AAD
+
+Arguments:
+
+    cchEnrollmentId   Unique ID of the enrollment used to first enroll the device.
+                      This information will be used to perform the Dual Enrollment.
+
+Return Value:
+
+HRESULT indicating success or failure.
+
+--*/
+HRESULT WINAPI
+RegisterDeviceDualEnrollMmpcUsingAADDeviceCredentials(
+    _In_z_ LPCWSTR parentEnrollmentId,
+    _In_ DWORD cchEnrollmentId,
+    _Out_writes_(cchEnrollmentId) LPWSTR pszEnrollmentId
+    );
 
 /*++
 
 Routine Description:
+
 
     This function is used to register a device with the MDM service synchronously.
 

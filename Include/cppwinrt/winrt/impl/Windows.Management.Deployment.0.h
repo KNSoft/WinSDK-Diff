@@ -100,6 +100,7 @@ namespace winrt::Windows::Management::Deployment
         UsePreference = 3,
     };
     struct IAddPackageOptions;
+    struct IAddPackageOptions2;
     struct IDeploymentResult;
     struct IDeploymentResult2;
     struct IPackageManager;
@@ -116,7 +117,9 @@ namespace winrt::Windows::Management::Deployment
     struct IPackageVolume;
     struct IPackageVolume2;
     struct IRegisterPackageOptions;
+    struct IRegisterPackageOptions2;
     struct IStagePackageOptions;
+    struct IStagePackageOptions2;
     struct AddPackageOptions;
     struct DeploymentResult;
     struct PackageManager;
@@ -130,6 +133,10 @@ namespace winrt::Windows::Management::Deployment
 namespace winrt::impl
 {
     template <> struct category<Windows::Management::Deployment::IAddPackageOptions>
+    {
+        using type = interface_category;
+    };
+    template <> struct category<Windows::Management::Deployment::IAddPackageOptions2>
     {
         using type = interface_category;
     };
@@ -197,7 +204,15 @@ namespace winrt::impl
     {
         using type = interface_category;
     };
+    template <> struct category<Windows::Management::Deployment::IRegisterPackageOptions2>
+    {
+        using type = interface_category;
+    };
     template <> struct category<Windows::Management::Deployment::IStagePackageOptions>
+    {
+        using type = interface_category;
+    };
+    template <> struct category<Windows::Management::Deployment::IStagePackageOptions2>
     {
         using type = interface_category;
     };
@@ -281,6 +296,10 @@ namespace winrt::impl
     {
         static constexpr auto & value{ L"Windows.Management.Deployment.IAddPackageOptions" };
     };
+    template <> struct name<Windows::Management::Deployment::IAddPackageOptions2>
+    {
+        static constexpr auto & value{ L"Windows.Management.Deployment.IAddPackageOptions2" };
+    };
     template <> struct name<Windows::Management::Deployment::IDeploymentResult>
     {
         static constexpr auto & value{ L"Windows.Management.Deployment.IDeploymentResult" };
@@ -345,9 +364,17 @@ namespace winrt::impl
     {
         static constexpr auto & value{ L"Windows.Management.Deployment.IRegisterPackageOptions" };
     };
+    template <> struct name<Windows::Management::Deployment::IRegisterPackageOptions2>
+    {
+        static constexpr auto & value{ L"Windows.Management.Deployment.IRegisterPackageOptions2" };
+    };
     template <> struct name<Windows::Management::Deployment::IStagePackageOptions>
     {
         static constexpr auto & value{ L"Windows.Management.Deployment.IStagePackageOptions" };
+    };
+    template <> struct name<Windows::Management::Deployment::IStagePackageOptions2>
+    {
+        static constexpr auto & value{ L"Windows.Management.Deployment.IStagePackageOptions2" };
     };
     template <> struct name<Windows::Management::Deployment::AddPackageOptions>
     {
@@ -429,6 +456,10 @@ namespace winrt::impl
     {
         static constexpr guid value{ 0x05CEE018,0xF68F,0x422B,{ 0x95,0xA4,0x66,0x67,0x9E,0xC7,0x7F,0xC0 } };
     };
+    template <> struct guid_storage<Windows::Management::Deployment::IAddPackageOptions2>
+    {
+        static constexpr guid value{ 0xEE515828,0xBF33,0x40F7,{ 0x84,0xAF,0x1B,0x6F,0xAD,0x29,0x19,0xD7 } };
+    };
     template <> struct guid_storage<Windows::Management::Deployment::IDeploymentResult>
     {
         static constexpr guid value{ 0x2563B9AE,0xB77D,0x4C1F,{ 0x8A,0x7B,0x20,0xE6,0xAD,0x51,0x5E,0xF3 } };
@@ -493,9 +524,17 @@ namespace winrt::impl
     {
         static constexpr guid value{ 0x677112A7,0x50D4,0x496C,{ 0x84,0x15,0x06,0x02,0xB4,0xC6,0xD3,0xBF } };
     };
+    template <> struct guid_storage<Windows::Management::Deployment::IRegisterPackageOptions2>
+    {
+        static constexpr guid value{ 0x3DFA9743,0x86FF,0x4A11,{ 0xBC,0x93,0x43,0x4E,0xB6,0xBE,0x3A,0x0B } };
+    };
     template <> struct guid_storage<Windows::Management::Deployment::IStagePackageOptions>
     {
         static constexpr guid value{ 0x0B110C9C,0xB95D,0x4C56,{ 0xBD,0x36,0x6D,0x65,0x68,0x00,0xD0,0x6B } };
+    };
+    template <> struct guid_storage<Windows::Management::Deployment::IStagePackageOptions2>
+    {
+        static constexpr guid value{ 0x990C4CCC,0x6226,0x4192,{ 0xBA,0x92,0x79,0x87,0x5F,0xCE,0x0D,0x9C } };
     };
     template <> struct default_interface<Windows::Management::Deployment::AddPackageOptions>
     {
@@ -563,6 +602,15 @@ namespace winrt::impl
             virtual int32_t __stdcall put_AllowUnsigned(bool) noexcept = 0;
             virtual int32_t __stdcall get_DeferRegistrationWhenPackagesAreInUse(bool*) noexcept = 0;
             virtual int32_t __stdcall put_DeferRegistrationWhenPackagesAreInUse(bool) noexcept = 0;
+        };
+    };
+    template <> struct abi<Windows::Management::Deployment::IAddPackageOptions2>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_ExpectedDigests(void**) noexcept = 0;
+            virtual int32_t __stdcall get_LimitToExistingPackages(bool*) noexcept = 0;
+            virtual int32_t __stdcall put_LimitToExistingPackages(bool) noexcept = 0;
         };
     };
     template <> struct abi<Windows::Management::Deployment::IDeploymentResult>
@@ -775,6 +823,13 @@ namespace winrt::impl
             virtual int32_t __stdcall put_DeferRegistrationWhenPackagesAreInUse(bool) noexcept = 0;
         };
     };
+    template <> struct abi<Windows::Management::Deployment::IRegisterPackageOptions2>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_ExpectedDigests(void**) noexcept = 0;
+        };
+    };
     template <> struct abi<Windows::Management::Deployment::IStagePackageOptions>
     {
         struct __declspec(novtable) type : inspectable_abi
@@ -801,6 +856,13 @@ namespace winrt::impl
             virtual int32_t __stdcall put_StageInPlace(bool) noexcept = 0;
             virtual int32_t __stdcall get_AllowUnsigned(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowUnsigned(bool) noexcept = 0;
+        };
+    };
+    template <> struct abi<Windows::Management::Deployment::IStagePackageOptions2>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_ExpectedDigests(void**) noexcept = 0;
         };
     };
     template <typename D>
@@ -840,6 +902,17 @@ namespace winrt::impl
     template <> struct consume<Windows::Management::Deployment::IAddPackageOptions>
     {
         template <typename D> using type = consume_Windows_Management_Deployment_IAddPackageOptions<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Management_Deployment_IAddPackageOptions2
+    {
+        [[nodiscard]] auto ExpectedDigests() const;
+        [[nodiscard]] auto LimitToExistingPackages() const;
+        auto LimitToExistingPackages(bool value) const;
+    };
+    template <> struct consume<Windows::Management::Deployment::IAddPackageOptions2>
+    {
+        template <typename D> using type = consume_Windows_Management_Deployment_IAddPackageOptions2<D>;
     };
     template <typename D>
     struct consume_Windows_Management_Deployment_IDeploymentResult
@@ -1084,6 +1157,15 @@ namespace winrt::impl
         template <typename D> using type = consume_Windows_Management_Deployment_IRegisterPackageOptions<D>;
     };
     template <typename D>
+    struct consume_Windows_Management_Deployment_IRegisterPackageOptions2
+    {
+        [[nodiscard]] auto ExpectedDigests() const;
+    };
+    template <> struct consume<Windows::Management::Deployment::IRegisterPackageOptions2>
+    {
+        template <typename D> using type = consume_Windows_Management_Deployment_IRegisterPackageOptions2<D>;
+    };
+    template <typename D>
     struct consume_Windows_Management_Deployment_IStagePackageOptions
     {
         [[nodiscard]] auto DependencyPackageUris() const;
@@ -1112,6 +1194,15 @@ namespace winrt::impl
     template <> struct consume<Windows::Management::Deployment::IStagePackageOptions>
     {
         template <typename D> using type = consume_Windows_Management_Deployment_IStagePackageOptions<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Management_Deployment_IStagePackageOptions2
+    {
+        [[nodiscard]] auto ExpectedDigests() const;
+    };
+    template <> struct consume<Windows::Management::Deployment::IStagePackageOptions2>
+    {
+        template <typename D> using type = consume_Windows_Management_Deployment_IStagePackageOptions2<D>;
     };
     struct struct_Windows_Management_Deployment_DeploymentProgress
     {

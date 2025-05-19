@@ -21,7 +21,8 @@ namespace winrt::Windows::Management::Deployment
     {
         return !(left == right);
     }
-    struct __declspec(empty_bases) AddPackageOptions : Windows::Management::Deployment::IAddPackageOptions
+    struct __declspec(empty_bases) AddPackageOptions : Windows::Management::Deployment::IAddPackageOptions,
+        impl::require<AddPackageOptions, Windows::Management::Deployment::IAddPackageOptions2>
     {
         AddPackageOptions(std::nullptr_t) noexcept {}
         AddPackageOptions(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Management::Deployment::IAddPackageOptions(ptr, take_ownership_from_abi) {}
@@ -73,13 +74,15 @@ namespace winrt::Windows::Management::Deployment
         PackageVolume(std::nullptr_t) noexcept {}
         PackageVolume(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Management::Deployment::IPackageVolume(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) RegisterPackageOptions : Windows::Management::Deployment::IRegisterPackageOptions
+    struct __declspec(empty_bases) RegisterPackageOptions : Windows::Management::Deployment::IRegisterPackageOptions,
+        impl::require<RegisterPackageOptions, Windows::Management::Deployment::IRegisterPackageOptions2>
     {
         RegisterPackageOptions(std::nullptr_t) noexcept {}
         RegisterPackageOptions(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Management::Deployment::IRegisterPackageOptions(ptr, take_ownership_from_abi) {}
         RegisterPackageOptions();
     };
-    struct __declspec(empty_bases) StagePackageOptions : Windows::Management::Deployment::IStagePackageOptions
+    struct __declspec(empty_bases) StagePackageOptions : Windows::Management::Deployment::IStagePackageOptions,
+        impl::require<StagePackageOptions, Windows::Management::Deployment::IStagePackageOptions2>
     {
         StagePackageOptions(std::nullptr_t) noexcept {}
         StagePackageOptions(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Management::Deployment::IStagePackageOptions(ptr, take_ownership_from_abi) {}

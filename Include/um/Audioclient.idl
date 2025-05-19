@@ -555,6 +555,7 @@ interface IAudioClient : IUnknown
     //  IAudioSessionControl
     //  ISimpleAudioVolume
     //  IChannelAudioVolume
+    //  IAudioClientDuckingControl
     //
     HRESULT GetService([in, annotation("_In_")] REFIID riid, [out, iid_is(riid), annotation("_Out_")] void **ppv);
 
@@ -1258,6 +1259,43 @@ interface ISimpleAudioVolume : IUnknown
     HRESULT GetMute([out, annotation("_Out_")] BOOL *pbMute);
 
 }
+
+typedef [v1_enum] enum AUDIO_DUCKING_OPTIONS
+{
+    AUDIO_DUCKING_OPTIONS_DEFAULT = 0x00,
+    AUDIO_DUCKING_OPTIONS_DO_NOT_DUCK_OTHER_STREAMS = 0x01
+} AUDIO_DUCKING_OPTIONS;
+cpp_quote("DEFINE_ENUM_FLAG_OPERATORS(AUDIO_DUCKING_OPTIONS);")
+
+//-----------------------------------------------------------------------------
+// Description: IAudioClientDuckingControl interface
+// Use IAudioClient::GetService to obtain this interface.
+//
+[
+    object,
+    uuid(C789D381-A28C-4168-B28F-D3A837924DC3),
+    pointer_default(unique),
+    local
+]
+interface IAudioClientDuckingControl : IUnknown
+{
+    //-------------------------------------------------------------------------
+    // Description:
+    //
+    // Set the AUDIO_DUCKING_OPTIONS_DO_NOT_DUCK_OTHER_STREAMS flag to disable any
+    // ducking that may be caused by the current stream.
+    // Specifying AUDIO_DUCKING_OPTIONS_DEFAULT lets Windows control if
+    // this stream should cause any other streams to be ducked.
+    //
+    // Return values:
+    //
+    // S_OK Successful completion.
+    //
+    //
+
+    HRESULT SetDuckingOptionsForCurrentStream([in] AUDIO_DUCKING_OPTIONS options);
+}
+
 cpp_quote("#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */")
 
 //////////////////////////////////////////////////////////////////////////////

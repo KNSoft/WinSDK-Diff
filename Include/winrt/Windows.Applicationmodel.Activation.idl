@@ -703,7 +703,13 @@ namespace Windows
                 [contract(Windows.Foundation.UniversalApiContract, 5.0)]
                 CommandLineLaunch                   = 1021,
                 [contract(Windows.Foundation.UniversalApiContract, 6.0)]
-                BarcodeScannerProvider              = 1022
+                BarcodeScannerProvider              = 1022,
+                [contract(Windows.Foundation.UniversalApiContract, 10.0)]
+                PrintSupportJobUI                   = 1023,
+                [contract(Windows.Foundation.UniversalApiContract, 10.0)]
+                PrintSupportSettingsUI              = 1024,
+                [contract(Windows.Foundation.UniversalApiContract, 10.0)]
+                VpnForeground                       = 1025
             };
 
             [contract(Windows.Foundation.UniversalApiContract, 1.0)]

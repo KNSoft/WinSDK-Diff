@@ -152,6 +152,10 @@ extern "C" {
 
 #define FILE_FLAG_OPEN_REQUIRING_OPLOCK 0x00040000
 
+#if defined(NTDDI_WIN10_VB) && (NTDDI_VERSION >= NTDDI_WIN10_VB)
+#define FILE_FLAG_IGNORE_IMPERSONATED_DEVICEMAP 0x00020000
+#endif
+
 #endif
 
 
@@ -3501,6 +3505,10 @@ typedef enum _PROC_THREAD_ATTRIBUTE_NUM {
 #endif
 #if (NTDDI_VERSION >= NTDDI_WIN10_MN)
     ProcThreadAttributeMitigationAuditPolicy        = 24,
+    ProcThreadAttributeMachineType                  = 25,
+#endif
+#if (NTDDI_VERSION >= NTDDI_WIN10_VB)
+    ProcThreadAttributeComponentFilter              = 26,
 #endif
 } PROC_THREAD_ATTRIBUTE_NUM;
 #endif
@@ -3830,6 +3838,28 @@ typedef enum _PROC_THREAD_ATTRIBUTE_NUM {
 #define PROCESS_CREATION_MITIGATION_POLICY2_CET_DYNAMIC_APIS_OUT_OF_PROC_ONLY_ALWAYS_OFF   (0x00000002ui64 << 48)
 #define PROCESS_CREATION_MITIGATION_POLICY2_CET_DYNAMIC_APIS_OUT_OF_PROC_ONLY_RESERVED     (0x00000003ui64 << 48)
 
+//
+// Define the restrict core sharing policy options.
+//
+
+#define PROCESS_CREATION_MITIGATION_POLICY2_RESTRICT_CORE_SHARING_MASK                     (0x00000003ui64 << 52)
+#define PROCESS_CREATION_MITIGATION_POLICY2_RESTRICT_CORE_SHARING_DEFER                    (0x00000000ui64 << 52)
+#define PROCESS_CREATION_MITIGATION_POLICY2_RESTRICT_CORE_SHARING_ALWAYS_ON                (0x00000001ui64 << 52)
+#define PROCESS_CREATION_MITIGATION_POLICY2_RESTRICT_CORE_SHARING_ALWAYS_OFF               (0x00000002ui64 << 52)
+#define PROCESS_CREATION_MITIGATION_POLICY2_RESTRICT_CORE_SHARING_RESERVED                 (0x00000003ui64 << 52)
+
+//
+// Define FSCTL system call disable options.  FSCTL system call disable
+// prevents a process from making NtFsControlFile calls.
+//
+
+#define PROCESS_CREATION_MITIGATION_POLICY2_FSCTL_SYSTEM_CALL_DISABLE_MASK                 (0x00000003ui64 << 56)
+#define PROCESS_CREATION_MITIGATION_POLICY2_FSCTL_SYSTEM_CALL_DISABLE_DEFER                (0x00000000ui64 << 56)
+#define PROCESS_CREATION_MITIGATION_POLICY2_FSCTL_SYSTEM_CALL_DISABLE_ALWAYS_ON            (0x00000001ui64 << 56)
+#define PROCESS_CREATION_MITIGATION_POLICY2_FSCTL_SYSTEM_CALL_DISABLE_ALWAYS_OFF           (0x00000002ui64 << 56)
+#define PROCESS_CREATION_MITIGATION_POLICY2_FSCTL_SYSTEM_CALL_DISABLE_RESERVED             (0x00000003ui64 << 56)
+
+
 #endif // _WIN32_WINNT_WINTHRESHOLD
 #endif // _WIN32_WINNT_WINBLUE
 #endif // _WIN32_WINNT_WIN8
@@ -3894,6 +3924,13 @@ typedef enum _PROC_THREAD_ATTRIBUTE_NUM {
 
 
 #endif // NTDDI_WIN10_19H1
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_VB)
+
+#define PROC_THREAD_ATTRIBUTE_COMPONENT_FILTER \
+    ProcThreadAttributeValue (ProcThreadAttributeComponentFilter, FALSE, TRUE, FALSE)
+
+#endif
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_MN)
 
@@ -9044,6 +9081,10 @@ typedef struct _FILE_ID_EXTD_DIR_INFO {
 #define RPI_FLAG_SMB2_SHARECAP_SCALEOUT                0x00000020
 #define RPI_FLAG_SMB2_SHARECAP_CLUSTER                 0x00000040
 #endif
+
+// Protocol specific SMB2 share flags
+
+#define RPI_SMB2_SHAREFLAG_ENCRYPT_DATA           0x00000001
 
 // Protocol specific SMB2 server capability flags.
 

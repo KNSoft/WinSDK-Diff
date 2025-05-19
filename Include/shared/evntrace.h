@@ -473,9 +473,19 @@ typedef ULONG64 TRACEHANDLE, *PTRACEHANDLE;
 
 #define EVENT_TRACE_CONTROL_FLUSH           3       // Flushes all the buffers
 
+//
+// Supported for RS5 and above.
+//
+
 #define EVENT_TRACE_CONTROL_INCREMENT_FILE  4       // Causes a session with EVENT_TRACE_FILE_MODE_NEWFILE
                                                     // to switch to the next file before the automatic 
                                                     // switching criteria is met
+
+//
+// Supported for Vibranium and above.
+//
+
+#define EVENT_TRACE_CONTROL_CONVERT_TO_REALTIME  5  // Transitions from file mode tracing to real-time.
 
 //
 // Flags used by WMI Trace Message

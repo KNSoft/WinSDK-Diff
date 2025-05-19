@@ -10,6 +10,17 @@
 #include "winrt/impl/Windows.Storage.Provider.1.h"
 namespace winrt::Windows::Storage::Provider
 {
+    struct StorageProviderKnownFolderSyncRequestedHandler : Windows::Foundation::IUnknown
+    {
+        StorageProviderKnownFolderSyncRequestedHandler(std::nullptr_t = nullptr) noexcept {}
+        StorageProviderKnownFolderSyncRequestedHandler(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IUnknown(ptr, take_ownership_from_abi) {}
+        template <typename L> StorageProviderKnownFolderSyncRequestedHandler(L lambda);
+        template <typename F> StorageProviderKnownFolderSyncRequestedHandler(F* function);
+        template <typename O, typename M> StorageProviderKnownFolderSyncRequestedHandler(O* object, M method);
+        template <typename O, typename M> StorageProviderKnownFolderSyncRequestedHandler(com_ptr<O>&& object, M method);
+        template <typename O, typename M> StorageProviderKnownFolderSyncRequestedHandler(weak_ref<O>&& object, M method);
+        auto operator()(Windows::Storage::Provider::StorageProviderKnownFolderSyncRequestArgs const& args) const;
+    };
     struct CachedFileUpdater
     {
         CachedFileUpdater() = delete;
@@ -71,6 +82,41 @@ namespace winrt::Windows::Storage::Provider
         StorageProviderItemPropertyDefinition(std::nullptr_t) noexcept {}
         StorageProviderItemPropertyDefinition(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Storage::Provider::IStorageProviderItemPropertyDefinition(ptr, take_ownership_from_abi) {}
         StorageProviderItemPropertyDefinition();
+    };
+    struct __declspec(empty_bases) StorageProviderKnownFolderEntry : Windows::Storage::Provider::IStorageProviderKnownFolderEntry
+    {
+        StorageProviderKnownFolderEntry(std::nullptr_t) noexcept {}
+        StorageProviderKnownFolderEntry(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Storage::Provider::IStorageProviderKnownFolderEntry(ptr, take_ownership_from_abi) {}
+        StorageProviderKnownFolderEntry();
+    };
+    struct __declspec(empty_bases) StorageProviderKnownFolderSyncInfo : Windows::Storage::Provider::IStorageProviderKnownFolderSyncInfo
+    {
+        StorageProviderKnownFolderSyncInfo(std::nullptr_t) noexcept {}
+        StorageProviderKnownFolderSyncInfo(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Storage::Provider::IStorageProviderKnownFolderSyncInfo(ptr, take_ownership_from_abi) {}
+        StorageProviderKnownFolderSyncInfo();
+    };
+    struct __declspec(empty_bases) StorageProviderKnownFolderSyncRequestArgs : Windows::Storage::Provider::IStorageProviderKnownFolderSyncRequestArgs
+    {
+        StorageProviderKnownFolderSyncRequestArgs(std::nullptr_t) noexcept {}
+        StorageProviderKnownFolderSyncRequestArgs(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Storage::Provider::IStorageProviderKnownFolderSyncRequestArgs(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) StorageProviderMoreInfoUI : Windows::Storage::Provider::IStorageProviderMoreInfoUI
+    {
+        StorageProviderMoreInfoUI(std::nullptr_t) noexcept {}
+        StorageProviderMoreInfoUI(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Storage::Provider::IStorageProviderMoreInfoUI(ptr, take_ownership_from_abi) {}
+        StorageProviderMoreInfoUI();
+    };
+    struct __declspec(empty_bases) StorageProviderQuotaUI : Windows::Storage::Provider::IStorageProviderQuotaUI
+    {
+        StorageProviderQuotaUI(std::nullptr_t) noexcept {}
+        StorageProviderQuotaUI(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Storage::Provider::IStorageProviderQuotaUI(ptr, take_ownership_from_abi) {}
+        StorageProviderQuotaUI();
+    };
+    struct __declspec(empty_bases) StorageProviderStatusUI : Windows::Storage::Provider::IStorageProviderStatusUI
+    {
+        StorageProviderStatusUI(std::nullptr_t) noexcept {}
+        StorageProviderStatusUI(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Storage::Provider::IStorageProviderStatusUI(ptr, take_ownership_from_abi) {}
+        StorageProviderStatusUI();
     };
     struct __declspec(empty_bases) StorageProviderSyncRootInfo : Windows::Storage::Provider::IStorageProviderSyncRootInfo,
         impl::require<StorageProviderSyncRootInfo, Windows::Storage::Provider::IStorageProviderSyncRootInfo2, Windows::Storage::Provider::IStorageProviderSyncRootInfo3>

@@ -96,6 +96,7 @@ extern "C" errno_t __cdecl _fcvt_s(
     __acrt_fltout(
         reinterpret_cast<_CRT_DOUBLE const&>(value),
         _countof(result_string),
+        __acrt_precision_style::fixed,
         &strflt,
         result_string,
         _countof(result_string));
@@ -128,6 +129,7 @@ extern "C" char* __cdecl _fcvt(
     __acrt_fltout(
         reinterpret_cast<_CRT_DOUBLE const&>(value),
         _countof(result_string),
+        __acrt_precision_style::fixed,
         &strflt,
         result_string,
         _countof(result_string));
@@ -180,6 +182,7 @@ extern "C" errno_t __cdecl _ecvt_s(
     __acrt_fltout(
         reinterpret_cast<_CRT_DOUBLE const&>(value),
         _countof(result_string),
+        __acrt_precision_style::fixed,
         &strflt,
         result_string,
         _countof(result_string));

@@ -10204,6 +10204,15 @@ Notes:
 #define STATUS_CASE_SENSITIVE_PATH       ((NTSTATUS)0xC00004BAL)
 
 //
+// MessageId: STATUS_UNTRUSTED_MOUNT_POINT
+//
+// MessageText:
+//
+// The path cannot be traversed because it contains an untrusted mount point.
+//
+#define STATUS_UNTRUSTED_MOUNT_POINT     ((NTSTATUS)0xC00004BCL)
+
+//
 // MessageId: STATUS_HAS_SYSTEM_CRITICAL_FILES
 //
 // MessageText:
@@ -10422,6 +10431,15 @@ Notes:
 // The target thread is not currently running.
 //
 #define STATUS_THREAD_NOT_RUNNING        ((NTSTATUS)0xC0000516L)    // winnt
+
+//
+// MessageId: STATUS_FS_METADATA_INCONSISTENT
+//
+// MessageText:
+//
+// The file system encountered a metadata file with inconsistent data.
+//
+#define STATUS_FS_METADATA_INCONSISTENT  ((NTSTATUS)0xC0000518L)
 
 
 //     **** New SYSTEM error codes can be inserted here ****
@@ -11374,6 +11392,51 @@ Notes:
 //
 #define STATUS_INCORRECT_ACCOUNT_TYPE    ((NTSTATUS)0xC000A089L)
 
+//
+// MessageId: STATUS_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The local account policy modification request was rejected because the policy is controlled by a regional authority.
+//
+#define STATUS_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED ((NTSTATUS)0xC000A08AL)
+
+//
+// MessageId: STATUS_POLICY_CONTROLLED_ACCOUNT
+//
+// MessageText:
+//
+// The account is controlled by external policy and cannot be modified.
+//
+#define STATUS_POLICY_CONTROLLED_ACCOUNT ((NTSTATUS)0xC000A08BL)
+
+//
+// MessageId: STATUS_LAPS_LEGACY_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the legacy LAPS schema needs to be added to Active Directory.
+//
+#define STATUS_LAPS_LEGACY_SCHEMA_MISSING ((NTSTATUS)0xC000A08CL)
+
+//
+// MessageId: STATUS_LAPS_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the Windows LAPS schema needs to be added to Active Directory.
+//
+#define STATUS_LAPS_SCHEMA_MISSING       ((NTSTATUS)0xC000A08DL)
+
+//
+// MessageId: STATUS_LAPS_ENCRYPTION_REQUIRES_2016_DFL
+//
+// MessageText:
+//
+// The Local Administrator Password Solution encrypted password update operation failed because Active Directory is not yet running at the minimum required domain functional level (2016).
+//
+#define STATUS_LAPS_ENCRYPTION_REQUIRES_2016_DFL ((NTSTATUS)0xC000A08EL)
+
 /*++
 
  MessageId's 0xa100 - 0xa120 (inclusive) are for the SMB Hash Generation Service.
@@ -12056,6 +12119,15 @@ Notes:
 // Dehydration of the cloud file is disallowed by the cloud sync provider.
 //
 #define STATUS_CLOUD_FILE_DEHYDRATION_DISALLOWED ((NTSTATUS)0xC000CF20L)
+
+//
+// MessageId: STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT
+//
+// MessageText:
+//
+// The cloud provider failed to acknowledge a message before the time-out expired.
+//
+#define STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT ((NTSTATUS)0xC000CF21L)
 
 /*++
 

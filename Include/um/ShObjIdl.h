@@ -746,6 +746,13 @@ typedef interface IStorageProviderBanners IStorageProviderBanners;
 #endif 	/* __IStorageProviderBanners_FWD_DEFINED__ */
 
 
+#ifndef __IStorageProviderCopyHook_FWD_DEFINED__
+#define __IStorageProviderCopyHook_FWD_DEFINED__
+typedef interface IStorageProviderCopyHook IStorageProviderCopyHook;
+
+#endif 	/* __IStorageProviderCopyHook_FWD_DEFINED__ */
+
+
 /* header files for imported files */
 #include "objidl.h"
 #include "oleidl.h"
@@ -7814,6 +7821,108 @@ EXTERN_C const IID IID_IStorageProviderBanners;
 /* [local] */ 
 
 #endif // NTDDI_WIN10_RS4
+
+
+extern RPC_IF_HANDLE __MIDL_itf_shobjidl_0000_0054_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shobjidl_0000_0054_v0_0_s_ifspec;
+
+#ifndef __IStorageProviderCopyHook_INTERFACE_DEFINED__
+#define __IStorageProviderCopyHook_INTERFACE_DEFINED__
+
+/* interface IStorageProviderCopyHook */
+/* [uuid][object] */ 
+
+
+EXTERN_C const IID IID_IStorageProviderCopyHook;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("7bf992a9-af7a-4dba-b2e5-4d080b1ecbc6")
+    IStorageProviderCopyHook : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE CopyCallback( 
+            /* [unique][in] */ __RPC__in_opt HWND hwnd,
+            /* [in] */ UINT operation,
+            /* [in] */ UINT flags,
+            /* [string][in] */ __RPC__in_string LPCWSTR srcFile,
+            /* [in] */ DWORD srcAttribs,
+            /* [string][unique][in] */ __RPC__in_opt_string LPCWSTR destFile,
+            /* [in] */ DWORD destAttribs,
+            /* [out] */ __RPC__out UINT *result) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IStorageProviderCopyHookVtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IStorageProviderCopyHook * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IStorageProviderCopyHook * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IStorageProviderCopyHook * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *CopyCallback )( 
+            __RPC__in IStorageProviderCopyHook * This,
+            /* [unique][in] */ __RPC__in_opt HWND hwnd,
+            /* [in] */ UINT operation,
+            /* [in] */ UINT flags,
+            /* [string][in] */ __RPC__in_string LPCWSTR srcFile,
+            /* [in] */ DWORD srcAttribs,
+            /* [string][unique][in] */ __RPC__in_opt_string LPCWSTR destFile,
+            /* [in] */ DWORD destAttribs,
+            /* [out] */ __RPC__out UINT *result);
+        
+        END_INTERFACE
+    } IStorageProviderCopyHookVtbl;
+
+    interface IStorageProviderCopyHook
+    {
+        CONST_VTBL struct IStorageProviderCopyHookVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IStorageProviderCopyHook_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IStorageProviderCopyHook_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IStorageProviderCopyHook_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IStorageProviderCopyHook_CopyCallback(This,hwnd,operation,flags,srcFile,srcAttribs,destFile,destAttribs,result)	\
+    ( (This)->lpVtbl -> CopyCallback(This,hwnd,operation,flags,srcFile,srcAttribs,destFile,destAttribs,result) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IStorageProviderCopyHook_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_shobjidl_0000_0055 */
+/* [local] */ 
+
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
 #if _MSC_VER >= 1200
@@ -7821,8 +7930,8 @@ EXTERN_C const IID IID_IStorageProviderBanners;
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_shobjidl_0000_0054_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_shobjidl_0000_0054_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shobjidl_0000_0055_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shobjidl_0000_0055_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

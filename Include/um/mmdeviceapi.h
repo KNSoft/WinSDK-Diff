@@ -1149,6 +1149,8 @@ STDAPI ActivateAudioInterfaceAsync(
     _In_ IActivateAudioInterfaceCompletionHandler *completionHandler,
     _COM_Outptr_ IActivateAudioInterfaceAsyncOperation **activationOperation
     );
+// The AUDIOCLIENT_ACTIVATION_PARAMS structure can be used when creating an IAudioClient.
+// It is defined in AudioClientActivationParams.h
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
 #pragma endregion
 #pragma region Desktop Family

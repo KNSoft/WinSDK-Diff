@@ -54,7 +54,7 @@ namespace winrt::Windows::Networking::Connectivity
         ConnectionCost(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Networking::Connectivity::IConnectionCost(ptr, take_ownership_from_abi) {}
     };
     struct __declspec(empty_bases) ConnectionProfile : Windows::Networking::Connectivity::IConnectionProfile,
-        impl::require<ConnectionProfile, Windows::Networking::Connectivity::IConnectionProfile2, Windows::Networking::Connectivity::IConnectionProfile3, Windows::Networking::Connectivity::IConnectionProfile4, Windows::Networking::Connectivity::IConnectionProfile5>
+        impl::require<ConnectionProfile, Windows::Networking::Connectivity::IConnectionProfile2, Windows::Networking::Connectivity::IConnectionProfile3, Windows::Networking::Connectivity::IConnectionProfile4, Windows::Networking::Connectivity::IConnectionProfile5, Windows::Networking::Connectivity::IConnectionProfile6>
     {
         ConnectionProfile(std::nullptr_t) noexcept {}
         ConnectionProfile(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Networking::Connectivity::IConnectionProfile(ptr, take_ownership_from_abi) {}

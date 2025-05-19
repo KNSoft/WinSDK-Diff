@@ -50,6 +50,12 @@ namespace winrt::Windows::Networking::Connectivity
         PerDay = 2,
         Total = 3,
     };
+    enum class DomainAuthenticationKind : int32_t
+    {
+        None = 0,
+        Ldap = 1,
+        Tls = 2,
+    };
     enum class DomainConnectivityLevel : int32_t
     {
         None = 0,
@@ -163,6 +169,7 @@ namespace winrt::Windows::Networking::Connectivity
     struct IConnectionProfile3;
     struct IConnectionProfile4;
     struct IConnectionProfile5;
+    struct IConnectionProfile6;
     struct IConnectionProfileFilter;
     struct IConnectionProfileFilter2;
     struct IConnectionProfileFilter3;
@@ -257,6 +264,10 @@ namespace winrt::impl
         using type = interface_category;
     };
     template <> struct category<Windows::Networking::Connectivity::IConnectionProfile5>
+    {
+        using type = interface_category;
+    };
+    template <> struct category<Windows::Networking::Connectivity::IConnectionProfile6>
     {
         using type = interface_category;
     };
@@ -480,6 +491,10 @@ namespace winrt::impl
     {
         using type = enum_category;
     };
+    template <> struct category<Windows::Networking::Connectivity::DomainAuthenticationKind>
+    {
+        using type = enum_category;
+    };
     template <> struct category<Windows::Networking::Connectivity::DomainConnectivityLevel>
     {
         using type = enum_category;
@@ -571,6 +586,10 @@ namespace winrt::impl
     template <> struct name<Windows::Networking::Connectivity::IConnectionProfile5>
     {
         static constexpr auto & value{ L"Windows.Networking.Connectivity.IConnectionProfile5" };
+    };
+    template <> struct name<Windows::Networking::Connectivity::IConnectionProfile6>
+    {
+        static constexpr auto & value{ L"Windows.Networking.Connectivity.IConnectionProfile6" };
     };
     template <> struct name<Windows::Networking::Connectivity::IConnectionProfileFilter>
     {
@@ -792,6 +811,10 @@ namespace winrt::impl
     {
         static constexpr auto & value{ L"Windows.Networking.Connectivity.DataUsageGranularity" };
     };
+    template <> struct name<Windows::Networking::Connectivity::DomainAuthenticationKind>
+    {
+        static constexpr auto & value{ L"Windows.Networking.Connectivity.DomainAuthenticationKind" };
+    };
     template <> struct name<Windows::Networking::Connectivity::DomainConnectivityLevel>
     {
         static constexpr auto & value{ L"Windows.Networking.Connectivity.DomainConnectivityLevel" };
@@ -883,6 +906,10 @@ namespace winrt::impl
     template <> struct guid_storage<Windows::Networking::Connectivity::IConnectionProfile5>
     {
         static constexpr guid value{ 0x85361EC7,0x9C73,0x4BE0,{ 0x8F,0x14,0x57,0x8E,0xEC,0x71,0xEE,0x0E } };
+    };
+    template <> struct guid_storage<Windows::Networking::Connectivity::IConnectionProfile6>
+    {
+        static constexpr guid value{ 0xDC27DFE2,0x7A6F,0x5D0E,{ 0x95,0x89,0x2F,0xE2,0xE5,0xB6,0xF9,0xAA } };
     };
     template <> struct guid_storage<Windows::Networking::Connectivity::IConnectionProfileFilter>
     {
@@ -1192,6 +1219,13 @@ namespace winrt::impl
         {
             virtual int32_t __stdcall get_CanDelete(bool*) noexcept = 0;
             virtual int32_t __stdcall TryDeleteAsync(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<Windows::Networking::Connectivity::IConnectionProfile6>
+    {
+        struct __declspec(novtable) type : inspectable_abi
+        {
+            virtual int32_t __stdcall IsDomainAuthenticatedBy(int32_t, bool*) noexcept = 0;
         };
     };
     template <> struct abi<Windows::Networking::Connectivity::IConnectionProfileFilter>
@@ -1576,6 +1610,15 @@ namespace winrt::impl
     template <> struct consume<Windows::Networking::Connectivity::IConnectionProfile5>
     {
         template <typename D> using type = consume_Windows_Networking_Connectivity_IConnectionProfile5<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Networking_Connectivity_IConnectionProfile6
+    {
+        auto IsDomainAuthenticatedBy(Windows::Networking::Connectivity::DomainAuthenticationKind const& kind) const;
+    };
+    template <> struct consume<Windows::Networking::Connectivity::IConnectionProfile6>
+    {
+        template <typename D> using type = consume_Windows_Networking_Connectivity_IConnectionProfile6<D>;
     };
     template <typename D>
     struct consume_Windows_Networking_Connectivity_IConnectionProfileFilter

@@ -892,6 +892,7 @@ typedef enum _SRBEXDATATYPE {
     SrbExDataTypePower,
     SrbExDataTypePnP,
     SrbExDataTypeIoInfo = 0x80,
+    SrbExDataTypePassthroughDirect = 0xa0,
     SrbExDataTypeMSReservedStart = 0xf0000000,
     SrbExDataTypeReserved = 0xffffffff
 } SRBEXDATATYPE, *PSRBEXDATATYPE;
@@ -923,6 +924,7 @@ typedef struct SRB_ALIGN _SRBEX_DATA_BIDIRECTIONAL {
     _Field_size_bytes_full_(DataInTransferLength)
     PVOID POINTER_ALIGN DataInBuffer;
 } SRBEX_DATA_BIDIRECTIONAL, *PSRBEX_DATA_BIDIRECTIONAL;
+
 
 // SRB_FUNCTION_EXECUTE_SCSI for up to 16 byte CDBs
 #define SRBEX_DATA_SCSI_CDB16_LENGTH ((20 * sizeof(UCHAR)) + sizeof(ULONG) + sizeof(PVOID))

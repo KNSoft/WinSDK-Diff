@@ -1365,15 +1365,32 @@ typedef struct _HTTP_RESPONSE_HEADERS
 typedef enum _HTTP_DELEGATE_REQUEST_PROPERTY_ID
 {
     DelegateRequestReservedProperty,
-
+    DelegateRequestDelegateUrlProperty,
 } HTTP_DELEGATE_REQUEST_PROPERTY_ID, *PHTTP_DELEGATE_REQUEST_PROPERTY_ID;
 
 typedef struct _HTTP_DELEGATE_REQUEST_PROPERTY_INFO
 {
-    HTTP_DELEGATE_REQUEST_PROPERTY_ID ProperyId;
+    HTTP_DELEGATE_REQUEST_PROPERTY_ID PropertyId;
     ULONG PropertyInfoLength;
     PVOID PropertyInfo;
 } HTTP_DELEGATE_REQUEST_PROPERTY_INFO, *PHTTP_DELEGATE_REQUEST_PROPERTY_INFO;
+
+//
+// Properties that can be passed down with IOCTL_HTTP_CREATE_REQUEST_QUEUE_EX
+//
+
+typedef enum _HTTP_CREATE_REQUEST_QUEUE_PROPERTY_ID
+{
+    CreateRequestQueueExternalIdProperty = 1,
+    CreateRequestQueueMax
+} HTTP_CREATE_REQUEST_QUEUE_PROPERTY_ID, *PHTTP_CREATE_REQUEST_QUEUE_PROPERTY_ID;
+
+typedef struct _HTTP_CREATE_REQUEST_QUEUE_PROPERTY_INFO
+{
+    HTTP_CREATE_REQUEST_QUEUE_PROPERTY_ID PropertyId;
+    ULONG PropertyInfoLength;
+    PVOID PropertyInfo;
+} HTTP_CREATE_REQUEST_QUEUE_PROPERTY_INFO, *PHTTP_CREATE_REQUEST_QUEUE_PROPERTY_INFO;
 
 //
 // Structure defining format of transport address. Use pLocalAddress->sa_family
@@ -2265,6 +2282,7 @@ typedef enum _HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE
     ExParamTypeHttp2Window,
     ExParamTypeHttp2SettingsLimits,
     ExParamTypeHttpPerformance,
+    ExParamTypeTlsRestrictions,
     ExParamTypeMax
 } HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE, *PHTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE;
 
@@ -2320,6 +2338,12 @@ typedef struct _HTTP_PERFORMANCE_PARAM
 
 } HTTP_PERFORMANCE_PARAM, *PHTTP_PERFORMANCE_PARAM;
 
+typedef struct _HTTP_TLS_RESTRICTIONS_PARAM
+{
+    ULONG RestrictionCount;
+    PVOID TlsRestrictions;
+} HTTP_TLS_RESTRICTIONS_PARAM, *PHTTP_TLS_RESTRICTIONS_PARAM;
+
 //
 // This defines the exteded params for the ssl config record.
 //
@@ -2347,6 +2371,7 @@ typedef struct _HTTP_SERVICE_CONFIG_SSL_PARAM_EX
         HTTP2_WINDOW_SIZE_PARAM Http2WindowSizeParam;
         HTTP2_SETTINGS_LIMITS_PARAM Http2SettingsLimitsParam;
         HTTP_PERFORMANCE_PARAM HttpPerformanceParam;
+        HTTP_TLS_RESTRICTIONS_PARAM HttpTlsRestrictionsParam;
     };
 } HTTP_SERVICE_CONFIG_SSL_PARAM_EX, *PHTTP_SERVICE_CONFIG_SSL_PARAM_EX;
 
@@ -2651,6 +2676,18 @@ typedef struct _HTTP_REQUEST_PROPERTY_SNI
     WCHAR Hostname[HTTP_REQUEST_PROPERTY_SNI_HOST_MAX_LENGTH + 1];
     ULONG Flags;
 } HTTP_REQUEST_PROPERTY_SNI, *PHTTP_REQUEST_PROPERTY_SNI;
+
+typedef enum _HTTP_FEATURE_ID
+{
+    HttpFeatureUnknown = 0,
+    HttpFeatureResponseTrailers = 1,
+    HttpFeatureApiTimings       = 2,
+    HttpFeatureDelegateEx       = 3,
+
+
+    HttpFeaturemax = 0xFFFFFFFF,
+
+} HTTP_FEATURE_ID, *PHTTP_FEATURE_ID;
 
 
 //
@@ -3085,6 +3122,12 @@ WINAPI
 HttpWaitForDemandStart(
     IN HANDLE RequestQueueHandle,
     IN LPOVERLAPPED Overlapped OPTIONAL
+    );
+
+BOOL
+WINAPI
+HttpIsFeatureSupported(
+    _In_ HTTP_FEATURE_ID FeatureId
     );
 
 

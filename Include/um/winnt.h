@@ -10748,6 +10748,10 @@ typedef enum _SECURITY_IMPERSONATION_LEVEL {
                                        TOKEN_QUERY  |\
                                        TOKEN_QUERY_SOURCE )
 
+#define TOKEN_TRUST_ALLOWED_MASK    (TOKEN_TRUST_CONSTRAINT_MASK |\
+                                    TOKEN_DUPLICATE              |\
+                                    TOKEN_IMPERSONATE)
+
 #if (NTDDI_VERSION >= NTDDI_WIN8)
 
 #define TOKEN_ACCESS_PSEUDO_HANDLE_WIN8 (TOKEN_QUERY | TOKEN_QUERY_SOURCE)
@@ -11567,6 +11571,18 @@ typedef struct _WOW64_ARCHITECTURE_INFORMATION {
 
 
 //
+// Disable Component Filter information
+//
+
+#define COMPONENT_KTM           0x01
+#define COMPONENT_VALID_FLAGS   (COMPONENT_KTM)
+
+typedef struct _COMPONENT_FILTER {
+    DWORD ComponentFlags;
+} COMPONENT_FILTER, *PCOMPONENT_FILTER;
+
+
+//
 // Page/memory priorities.
 //
 
@@ -11718,6 +11734,8 @@ typedef enum _PROCESS_MITIGATION_POLICY {
     ProcessChildProcessPolicy,
     ProcessSideChannelIsolationPolicy,
     ProcessUserShadowStackPolicy,
+    ProcessRedirectionTrustPolicy,
+    ProcessActivationContextTrustPolicy,
     MaxProcessMitigationPolicy
 } PROCESS_MITIGATION_POLICY, *PPROCESS_MITIGATION_POLICY;
 
@@ -11768,7 +11786,9 @@ typedef struct _PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY {
         struct {
             DWORD DisallowWin32kSystemCalls : 1;
             DWORD AuditDisallowWin32kSystemCalls : 1;
-            DWORD ReservedFlags : 30;
+            DWORD DisallowFsctlSystemCalls : 1;
+            DWORD AuditDisallowFsctlSystemCalls : 1;
+            DWORD ReservedFlags : 28;
         } DUMMYSTRUCTNAME;
     } DUMMYUNIONNAME;
 } PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY, *PPROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY;
@@ -11961,6 +11981,27 @@ typedef struct _PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY {
         } DUMMYSTRUCTNAME;
     } DUMMYUNIONNAME;
 } PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY, *PPROCESS_MITIGATION_USER_SHADOW_STACK_POLICY;
+
+typedef struct _PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY {
+    union {
+        DWORD Flags;
+        struct {
+            DWORD EnforceRedirectionTrust : 1;
+            DWORD AuditRedirectionTrust : 1;
+            DWORD ReservedFlags : 30;
+        } DUMMYSTRUCTNAME;
+    } DUMMYUNIONNAME;
+} PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY, *PPROCESS_MITIGATION_REDIRECTION_TRUST_POLICY;
+
+typedef struct _PROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY {
+    union {
+        DWORD Flags;
+        struct {
+            DWORD AssemblyManifestRedirectionTrust : 1;
+            DWORD ReservedFlags : 31;
+        } DUMMYSTRUCTNAME;
+    } DUMMYUNIONNAME;
+} PROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY, *PPROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY;
 
 
 typedef struct _JOBOBJECT_BASIC_ACCOUNTING_INFORMATION {
@@ -13517,6 +13558,15 @@ typedef struct _REPARSE_GUID_DATA_BUFFER {
                            )
 
 //
+// Macro to determine whether a reparse point tag corresponds to a reserved
+// tag owned by Microsoft.
+//
+
+#define IsReparseTagReserved(_tag) (               \
+                           ((_tag) & 0x40000000)   \
+                           )
+
+//
 // Macro to determine whether a reparse point tag is a name surrogate
 //
 
@@ -13533,6 +13583,7 @@ typedef struct _REPARSE_GUID_DATA_BUFFER {
                            ((_tag) & 0x10000000)   \
                            )
 
+#define IO_REPARSE_TAG_RESERVED_INVALID         (0xC0008000L)       
 #define IO_REPARSE_TAG_MOUNT_POINT              (0xA0000003L)       
 #define IO_REPARSE_TAG_HSM                      (0xC0000004L)       
 #define IO_REPARSE_TAG_HSM2                     (0x80000006L)       

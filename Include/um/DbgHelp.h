@@ -1728,6 +1728,8 @@ SymGetOmaps(
 typedef enum {
     SYMOPT_EX_DISABLEACCESSTIMEUPDATE, // Disable File Last Access Time on Symbols
     SYMOPT_EX_LASTVALIDDEBUGDIRECTORY, // For entries with multiple debug directories: prefer the last to the first
+    SYMOPT_EX_NOIMPLICITPATTERNSEARCH, // For SymEnum* APIs: never implicitly run a pattern search without explicit pattern characters
+    SYMOPT_EX_NEVERLOADSYMBOLS,        // Never try to load and parse symbols
     SYMOPT_EX_MAX                      // Unused
 } IMAGEHLP_EXTENDED_OPTIONS;
 

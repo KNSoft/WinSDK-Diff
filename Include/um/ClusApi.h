@@ -379,6 +379,7 @@ typedef enum {
     ClusGroupTypeVMReplicaCoordinator        = 120,
     ClusGroupTypeCrossClusterOrchestrator = 121,
     ClusGroupTypeInfrastructureFileServer = 122,
+    ClusGroupTypeCoreSddc           = 123,
     ClusGroupTypeUnknown            = 9999
 } CLUSGROUP_TYPE, *PCLUSGROUP_TYPE;
 

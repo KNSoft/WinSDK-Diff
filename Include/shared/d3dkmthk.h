@@ -1238,6 +1238,7 @@ typedef struct _D3DKMT_RENDER
     UINT                            PrivateDriverDataSize;      // in: size of private driver data. _ADVSCH_
 } D3DKMT_RENDER;
 
+
 typedef enum _D3DKMT_STANDARDALLOCATIONTYPE
 {
     D3DKMT_STANDARDALLOCATIONTYPE_EXISTINGHEAP = 1,
@@ -1299,7 +1300,9 @@ typedef struct _D3DKMT_CREATEALLOCATIONFLAGS
     UINT    ExistingSection             :  1;    // 0x00020000  // in: Use Section Handle instead of SysMem in D3DDI_ALLOCATIONINFO2
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_6)
     UINT    AllowNotZeroed              :  1;    // 0x00040000  // in: indicate zeroed pages are not required
-    UINT    Reserved                    : 13;    // 0xFFF80000
+    UINT    Reserved2_7                 :  1;    // 0x00080000  
+    UINT    NoKmdAccess                 :  1;    // 0x00100000  // in: KMD is not notified about the allocation
+    UINT    Reserved                    : 11;    // 0xFFE00000
 #else
     UINT    Reserved                    : 14;    // 0xFFFD0000
 #endif //(DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_6)
@@ -1882,8 +1885,6 @@ typedef struct _D3DKMT_GET_DEVICE_VIDPN_OWNERSHIP_INFO
 
 #endif // DXGKDDI_INTERFACE_VERSION_WDDM2_2
 
-#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_4)
-
 typedef struct _D3DKMT_BLOCKLIST_INFO
 {
     UINT Size;
@@ -1941,8 +1942,6 @@ typedef struct _D3DKMT_GPUVERSION
     WCHAR           BiosVersion[DXGK_MAX_GPUVERSION_NAME_LENGTH];     //out: The gpu bios version
     WCHAR           GpuArchitecture[DXGK_MAX_GPUVERSION_NAME_LENGTH]; //out: The gpu architectures name.
 } D3DKMT_GPUVERSION;
-
-#endif // DXGKDDI_INTERFACE_VERSION_WDDM2_4
 
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_6)
 
@@ -2950,6 +2949,565 @@ typedef struct _D3DKMT_ESCAPE
     UINT                PrivateDriverDataSize;  // in: size of escape data
     D3DKMT_HANDLE       hContext;               // in: context handle [Optional]
 } D3DKMT_ESCAPE;
+
+//
+// begin D3DKMT_QUERYSTATISTICS
+//
+
+typedef enum _D3DKMT_QUERYRESULT_PREEMPTION_ATTEMPT_RESULT
+{
+    D3DKMT_PreemptionAttempt                               = 0,
+    D3DKMT_PreemptionAttemptSuccess                        = 1,
+    D3DKMT_PreemptionAttemptMissNoCommand                  = 2,
+    D3DKMT_PreemptionAttemptMissNotEnabled                 = 3,
+    D3DKMT_PreemptionAttemptMissNextFence                  = 4,
+    D3DKMT_PreemptionAttemptMissPagingCommand              = 5,
+    D3DKMT_PreemptionAttemptMissSplittedCommand            = 6,
+    D3DKMT_PreemptionAttemptMissFenceCommand               = 7,
+    D3DKMT_PreemptionAttemptMissRenderPendingFlip          = 8,
+    D3DKMT_PreemptionAttemptMissNotMakingProgress          = 9,
+    D3DKMT_PreemptionAttemptMissLessPriority               = 10,
+    D3DKMT_PreemptionAttemptMissRemainingQuantum           = 11,
+    D3DKMT_PreemptionAttemptMissRemainingPreemptionQuantum = 12,
+    D3DKMT_PreemptionAttemptMissAlreadyPreempting          = 13,
+    D3DKMT_PreemptionAttemptMissGlobalBlock                = 14,
+    D3DKMT_PreemptionAttemptMissAlreadyRunning             = 15,
+    D3DKMT_PreemptionAttemptStatisticsMax                  = 16,
+} D3DKMT_QUERYRESULT_PREEMPTION_ATTEMPT_RESULT;
+
+//
+// WOW will not allow enum member as array length, so define it as a constant
+//
+#define D3DKMT_QUERYRESULT_PREEMPTION_ATTEMPT_RESULT_MAX 16
+C_ASSERT(D3DKMT_QUERYRESULT_PREEMPTION_ATTEMPT_RESULT_MAX == D3DKMT_PreemptionAttemptStatisticsMax);
+
+//
+// Command packet type
+//
+typedef enum _D3DKMT_QUERYSTATISTICS_DMA_PACKET_TYPE {
+    D3DKMT_ClientRenderBuffer       = 0, // (Dma packet) should be 0 base.
+    D3DKMT_ClientPagingBuffer       = 1, // (Dma packet)
+    D3DKMT_SystemPagingBuffer       = 2, // (Dma packet)
+    D3DKMT_SystemPreemptionBuffer   = 3, // (Dma packet)
+    D3DKMT_DmaPacketTypeMax         = 4
+} D3DKMT_QUERYSTATISTICS_DMA_PACKET_TYPE;
+
+//
+// WOW will not allow enum member as array length, so define it as a constant
+//
+#define D3DKMT_QUERYSTATISTICS_DMA_PACKET_TYPE_MAX 4
+C_ASSERT(D3DKMT_QUERYSTATISTICS_DMA_PACKET_TYPE_MAX == D3DKMT_DmaPacketTypeMax);
+
+typedef enum _D3DKMT_QUERYSTATISTICS_QUEUE_PACKET_TYPE {
+    D3DKMT_RenderCommandBuffer      = 0, // (Queue Packet) should be 0 base.
+    D3DKMT_DeferredCommandBuffer    = 1, // (Queue Packet)
+    D3DKMT_SystemCommandBuffer      = 2, // (Queue Packet)
+    D3DKMT_MmIoFlipCommandBuffer    = 3, // (Queue Packet)
+    D3DKMT_WaitCommandBuffer        = 4, // (Queue Packet)
+    D3DKMT_SignalCommandBuffer      = 5, // (Queue Packet)
+    D3DKMT_DeviceCommandBuffer      = 6, // (Queue Packet)
+    D3DKMT_SoftwareCommandBuffer    = 7, // (Queue Packet)
+    D3DKMT_QueuePacketTypeMax       = 8
+} D3DKMT_QUERYSTATISTICS_QUEUE_PACKET_TYPE;
+
+//
+// WOW will not allow enum member as array length, so define it as a constant
+//
+#define D3DKMT_QUERYSTATISTICS_QUEUE_PACKET_TYPE_MAX 8
+C_ASSERT(D3DKMT_QUERYSTATISTICS_QUEUE_PACKET_TYPE_MAX == D3DKMT_QueuePacketTypeMax);
+
+typedef enum _D3DKMT_QUERYSTATISTICS_ALLOCATION_PRIORITY_CLASS
+{
+    D3DKMT_AllocationPriorityClassMinimum = 0,
+    D3DKMT_AllocationPriorityClassLow = 1,
+    D3DKMT_AllocationPriorityClassNormal = 2,
+    D3DKMT_AllocationPriorityClassHigh = 3,
+    D3DKMT_AllocationPriorityClassMaximum = 4,
+    D3DKMT_MaxAllocationPriorityClass = 5
+} D3DKMT_QUERYSTATISTICS_ALLOCATION_PRIORITY_CLASS;
+
+//
+// WOW will not allow enum member as array length, so define it as a constant
+//
+
+#define D3DKMT_QUERYSTATISTICS_ALLOCATION_PRIORITY_CLASS_MAX 5
+C_ASSERT(D3DKMT_QUERYSTATISTICS_ALLOCATION_PRIORITY_CLASS_MAX == D3DKMT_MaxAllocationPriorityClass);
+
+//
+// Allocation segment preference set can contain 5 preferences
+//
+#define D3DKMT_QUERYSTATISTICS_SEGMENT_PREFERENCE_MAX 5
+
+typedef struct _D3DKMT_QUERYSTATISTICS_COUNTER
+{
+    ULONG Count;
+    ULONGLONG Bytes;
+} D3DKMT_QUERYSTATISTICS_COUNTER;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_DMA_PACKET_TYPE_INFORMATION {
+    ULONG PacketSubmited;
+    ULONG PacketCompleted;
+    ULONG PacketPreempted;
+    ULONG PacketFaulted;
+} D3DKMT_QUERYSTATISTICS_DMA_PACKET_TYPE_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_QUEUE_PACKET_TYPE_INFORMATION {
+    ULONG  PacketSubmited;
+    ULONG  PacketCompleted;
+} D3DKMT_QUERYSTATISTICS_QUEUE_PACKET_TYPE_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PACKET_INFORMATION {
+  D3DKMT_QUERYSTATISTICS_QUEUE_PACKET_TYPE_INFORMATION QueuePacket[D3DKMT_QUERYSTATISTICS_QUEUE_PACKET_TYPE_MAX];  //Size = D3DKMT_QueuePacketTypeMax
+  D3DKMT_QUERYSTATISTICS_DMA_PACKET_TYPE_INFORMATION   DmaPacket[D3DKMT_QUERYSTATISTICS_DMA_PACKET_TYPE_MAX];    //Size = D3DKMT_DmaPacketTypeMax
+} D3DKMT_QUERYSTATISTICS_PACKET_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PREEMPTION_INFORMATION {
+    ULONG PreemptionCounter[D3DKMT_QUERYRESULT_PREEMPTION_ATTEMPT_RESULT_MAX];
+} D3DKMT_QUERYSTATISTICS_PREEMPTION_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PROCESS_NODE_INFORMATION {
+    LARGE_INTEGER                                 RunningTime;          // Running time in micro-second.
+    ULONG                                         ContextSwitch;
+    D3DKMT_QUERYSTATISTICS_PREEMPTION_INFORMATION PreemptionStatistics;
+    D3DKMT_QUERYSTATISTICS_PACKET_INFORMATION     PacketStatistics;
+    UINT64                                        Reserved[8];
+} D3DKMT_QUERYSTATISTICS_PROCESS_NODE_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_NODE_INFORMATION {
+    D3DKMT_QUERYSTATISTICS_PROCESS_NODE_INFORMATION GlobalInformation; //Global statistics
+    D3DKMT_QUERYSTATISTICS_PROCESS_NODE_INFORMATION SystemInformation; //Statistics for system thread
+    D3DKMT_NODE_PERFDATA                            NodePerfData;
+    UINT64                                          Reserved[8];
+} D3DKMT_QUERYSTATISTICS_NODE_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PROCESS_VIDPNSOURCE_INFORMATION {
+    ULONG  Frame;          // both by Blt and Flip.
+    ULONG  CancelledFrame; // by restart (flip only).
+    ULONG  QueuedPresent;  // queued present.
+    UINT64 IsVSyncEnabled;
+    UINT64 Reserved[7];
+} D3DKMT_QUERYSTATISTICS_PROCESS_VIDPNSOURCE_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_VIDPNSOURCE_INFORMATION {
+    D3DKMT_QUERYSTATISTICS_PROCESS_VIDPNSOURCE_INFORMATION GlobalInformation;   //Global statistics
+    D3DKMT_QUERYSTATISTICS_PROCESS_VIDPNSOURCE_INFORMATION SystemInformation;   //Statistics for system thread
+    UINT64 Reserved[8];
+} D3DKMT_QUERYSTATISTICS_VIDPNSOURCE_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_REFERENCE_DMA_BUFFER
+{
+    ULONG NbCall;
+    ULONG NbAllocationsReferenced;
+    ULONG MaxNbAllocationsReferenced;
+    ULONG NbNULLReference;
+    ULONG NbWriteReference;
+    ULONG NbRenamedAllocationsReferenced;
+    ULONG NbIterationSearchingRenamedAllocation;
+    ULONG NbLockedAllocationReferenced;
+    ULONG NbAllocationWithValidPrepatchingInfoReferenced;
+    ULONG NbAllocationWithInvalidPrepatchingInfoReferenced;
+    ULONG NbDMABufferSuccessfullyPrePatched;
+    ULONG NbPrimariesReferencesOverflow;
+    ULONG NbAllocationWithNonPreferredResources;
+    ULONG NbAllocationInsertedInMigrationTable;
+} D3DKMT_QUERYSTATSTICS_REFERENCE_DMA_BUFFER;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_RENAMING
+{
+    ULONG NbAllocationsRenamed;
+    ULONG NbAllocationsShrinked;
+    ULONG NbRenamedBuffer;
+    ULONG MaxRenamingListLength;
+    ULONG NbFailuresDueToRenamingLimit;
+    ULONG NbFailuresDueToCreateAllocation;
+    ULONG NbFailuresDueToOpenAllocation;
+    ULONG NbFailuresDueToLowResource;
+    ULONG NbFailuresDueToNonRetiredLimit;
+} D3DKMT_QUERYSTATSTICS_RENAMING;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_PREPRATION
+{
+    ULONG BroadcastStall;
+    ULONG NbDMAPrepared;
+    ULONG NbDMAPreparedLongPath;
+    ULONG ImmediateHighestPreparationPass;
+    D3DKMT_QUERYSTATISTICS_COUNTER AllocationsTrimmed;
+} D3DKMT_QUERYSTATSTICS_PREPRATION;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_PAGING_FAULT
+{
+    D3DKMT_QUERYSTATISTICS_COUNTER Faults;
+    D3DKMT_QUERYSTATISTICS_COUNTER FaultsFirstTimeAccess;
+    D3DKMT_QUERYSTATISTICS_COUNTER FaultsReclaimed;
+    D3DKMT_QUERYSTATISTICS_COUNTER FaultsMigration;
+    D3DKMT_QUERYSTATISTICS_COUNTER FaultsIncorrectResource;
+    D3DKMT_QUERYSTATISTICS_COUNTER FaultsLostContent;
+    D3DKMT_QUERYSTATISTICS_COUNTER FaultsEvicted;
+    D3DKMT_QUERYSTATISTICS_COUNTER AllocationsMEM_RESET;
+    D3DKMT_QUERYSTATISTICS_COUNTER AllocationsUnresetSuccess;
+    D3DKMT_QUERYSTATISTICS_COUNTER AllocationsUnresetFail;
+    ULONG AllocationsUnresetSuccessRead;
+    ULONG AllocationsUnresetFailRead;
+
+    D3DKMT_QUERYSTATISTICS_COUNTER Evictions;
+    D3DKMT_QUERYSTATISTICS_COUNTER EvictionsDueToPreparation;
+    D3DKMT_QUERYSTATISTICS_COUNTER EvictionsDueToLock;
+    D3DKMT_QUERYSTATISTICS_COUNTER EvictionsDueToClose;
+    D3DKMT_QUERYSTATISTICS_COUNTER EvictionsDueToPurge;
+    D3DKMT_QUERYSTATISTICS_COUNTER EvictionsDueToSuspendCPUAccess;
+} D3DKMT_QUERYSTATSTICS_PAGING_FAULT;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_PAGING_TRANSFER
+{
+    ULONGLONG BytesFilled;
+    ULONGLONG BytesDiscarded;
+    ULONGLONG BytesMappedIntoAperture;
+    ULONGLONG BytesUnmappedFromAperture;
+    ULONGLONG BytesTransferredFromMdlToMemory;
+    ULONGLONG BytesTransferredFromMemoryToMdl;
+    ULONGLONG BytesTransferredFromApertureToMemory;
+    ULONGLONG BytesTransferredFromMemoryToAperture;
+} D3DKMT_QUERYSTATSTICS_PAGING_TRANSFER;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_SWIZZLING_RANGE
+{
+    ULONG NbRangesAcquired;
+    ULONG NbRangesReleased;
+} D3DKMT_QUERYSTATSTICS_SWIZZLING_RANGE;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_LOCKS
+{
+    ULONG NbLocks;
+    ULONG NbLocksWaitFlag;
+    ULONG NbLocksDiscardFlag;
+    ULONG NbLocksNoOverwrite;
+    ULONG NbLocksNoReadSync;
+    ULONG NbLocksLinearization;
+    ULONG NbComplexLocks;
+} D3DKMT_QUERYSTATSTICS_LOCKS;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_ALLOCATIONS
+{
+    D3DKMT_QUERYSTATISTICS_COUNTER Created;
+    D3DKMT_QUERYSTATISTICS_COUNTER Destroyed;
+    D3DKMT_QUERYSTATISTICS_COUNTER Opened;
+    D3DKMT_QUERYSTATISTICS_COUNTER Closed;
+    D3DKMT_QUERYSTATISTICS_COUNTER MigratedSuccess;
+    D3DKMT_QUERYSTATISTICS_COUNTER MigratedFail;
+    D3DKMT_QUERYSTATISTICS_COUNTER MigratedAbandoned;
+} D3DKMT_QUERYSTATSTICS_ALLOCATIONS;
+
+typedef struct _D3DKMT_QUERYSTATSTICS_TERMINATIONS
+{
+    //
+    // We separate shared / nonshared because for nonshared we know that every alloc
+    // terminated will lead cause a global alloc destroyed, but not for nonshared.
+    //
+    D3DKMT_QUERYSTATISTICS_COUNTER TerminatedShared;
+    D3DKMT_QUERYSTATISTICS_COUNTER TerminatedNonShared;
+    D3DKMT_QUERYSTATISTICS_COUNTER DestroyedShared;
+    D3DKMT_QUERYSTATISTICS_COUNTER DestroyedNonShared;
+} D3DKMT_QUERYSTATSTICS_TERMINATIONS;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_ADAPTER_INFORMATION_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT64 NumberOfMemoryGroups : 2;
+            UINT64 SupportsDemotion     : 1;
+            UINT64 Reserved             :61;
+        };
+        UINT64 Value;
+    };
+} D3DKMT_QUERYSTATISTICS_ADAPTER_INFORMATION_FLAGS;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_ADAPTER_INFORMATION
+{
+    ULONG NbSegments;
+    ULONG NodeCount;
+    ULONG VidPnSourceCount;
+
+    ULONG VSyncEnabled;
+    ULONG TdrDetectedCount;
+
+    LONGLONG ZeroLengthDmaBuffers;
+    ULONGLONG RestartedPeriod;
+
+    D3DKMT_QUERYSTATSTICS_REFERENCE_DMA_BUFFER ReferenceDmaBuffer;
+    D3DKMT_QUERYSTATSTICS_RENAMING Renaming;
+    D3DKMT_QUERYSTATSTICS_PREPRATION Preparation;
+    D3DKMT_QUERYSTATSTICS_PAGING_FAULT PagingFault;
+    D3DKMT_QUERYSTATSTICS_PAGING_TRANSFER PagingTransfer;
+    D3DKMT_QUERYSTATSTICS_SWIZZLING_RANGE SwizzlingRange;
+    D3DKMT_QUERYSTATSTICS_LOCKS Locks;
+    D3DKMT_QUERYSTATSTICS_ALLOCATIONS Allocations;
+    D3DKMT_QUERYSTATSTICS_TERMINATIONS Terminations;
+
+    D3DKMT_QUERYSTATISTICS_ADAPTER_INFORMATION_FLAGS Flags;
+    UINT64 Reserved[7];
+} D3DKMT_QUERYSTATISTICS_ADAPTER_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PHYSICAL_ADAPTER_INFORMATION
+{
+    D3DKMT_ADAPTER_PERFDATA      AdapterPerfData;
+    D3DKMT_ADAPTER_PERFDATACAPS  AdapterPerfDataCaps;
+    D3DKMT_GPUVERSION            GpuVersion;
+} D3DKMT_QUERYSTATISTICS_PHYSICAL_ADAPTER_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_SYSTEM_MEMORY
+{
+    ULONGLONG BytesAllocated;
+    ULONGLONG BytesReserved;
+    ULONG SmallAllocationBlocks;
+    ULONG LargeAllocationBlocks;
+    ULONGLONG WriteCombinedBytesAllocated;
+    ULONGLONG WriteCombinedBytesReserved;
+    ULONGLONG CachedBytesAllocated;
+    ULONGLONG CachedBytesReserved;
+    ULONGLONG SectionBytesAllocated;
+    ULONGLONG SectionBytesReserved;
+    ULONGLONG BytesZeroed;
+} D3DKMT_QUERYSTATISTICS_SYSTEM_MEMORY;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PROCESS_INFORMATION
+{
+    ULONG NodeCount;
+    ULONG VidPnSourceCount;
+
+    D3DKMT_QUERYSTATISTICS_SYSTEM_MEMORY SystemMemory;
+
+    UINT64 Reserved[7];
+} D3DKMT_QUERYSTATISTICS_PROCESS_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_DMA_BUFFER
+{
+    D3DKMT_QUERYSTATISTICS_COUNTER Size;
+    ULONG AllocationListBytes;
+    ULONG PatchLocationListBytes;
+} D3DKMT_QUERYSTATISTICS_DMA_BUFFER;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_COMMITMENT_DATA
+{
+    UINT64          TotalBytesEvictedFromProcess;
+    UINT64          BytesBySegmentPreference[D3DKMT_QUERYSTATISTICS_SEGMENT_PREFERENCE_MAX];
+} D3DKMT_QUERYSTATISTICS_COMMITMENT_DATA;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_POLICY
+{
+    ULONGLONG PreferApertureForRead[D3DKMT_QUERYSTATISTICS_ALLOCATION_PRIORITY_CLASS_MAX];
+    ULONGLONG PreferAperture[D3DKMT_QUERYSTATISTICS_ALLOCATION_PRIORITY_CLASS_MAX];
+    ULONGLONG MemResetOnPaging;
+    ULONGLONG RemovePagesFromWorkingSetOnPaging;
+    ULONGLONG MigrationEnabled;
+} D3DKMT_QUERYSTATISTICS_POLICY;
+
+// Process interference counters indicate how much this process GPU workload interferes with packets
+// attempting to preempt it. 9 buckets will be exposed based on how long preemption took:
+// [0] 100 microseconds <= preemption time < 250 microseconds
+// [1] 250 microseconds <= preemption time < 500 microseconds
+// [2] 500 microseconds <= preemption time < 1 milliseconds
+// [3] 1 milliseconds   <= preemption time < 2.5 milliseconds
+// [4] 2.5 milliseconds <= preemption time < 5 milliseconds
+// [5] 5 milliseconds   <= preemption time < 10 milliseconds
+// [6] 10 milliseconds  <= preemption time < 25 milliseconds
+// [7] 25 milliseconds  <= preemption time < 50 milliseconds
+// [8] 50 milliseconds  <= preemption time
+//
+#define D3DKMT_QUERYSTATISTICS_PROCESS_INTERFERENCE_BUCKET_COUNT 9
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PROCESS_INTERFERENCE_COUNTERS
+{
+    UINT64 InterferenceCount[D3DKMT_QUERYSTATISTICS_PROCESS_INTERFERENCE_BUCKET_COUNT];
+} D3DKMT_QUERYSTATISTICS_PROCESS_INTERFERENCE_COUNTERS;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PROCESS_ADAPTER_INFORMATION
+{
+    ULONG NbSegments;
+    ULONG NodeCount;
+    ULONG VidPnSourceCount;
+
+    //
+    // Virtual address space used by vidmm for this process
+    //
+    ULONG VirtualMemoryUsage;
+
+    D3DKMT_QUERYSTATISTICS_DMA_BUFFER DmaBuffer;
+    D3DKMT_QUERYSTATISTICS_COMMITMENT_DATA CommitmentData;
+    D3DKMT_QUERYSTATISTICS_POLICY _Policy;
+
+    D3DKMT_QUERYSTATISTICS_PROCESS_INTERFERENCE_COUNTERS ProcessInterferenceCounters;
+} D3DKMT_QUERYSTATISTICS_PROCESS_ADAPTER_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_MEMORY
+{
+    ULONGLONG TotalBytesEvicted;
+    ULONG AllocsCommitted;
+    ULONG AllocsResident;
+} D3DKMT_QUERYSTATISTICS_MEMORY;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_SEGMENT_INFORMATION
+{
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WIN8)
+    ULONGLONG CommitLimit;
+    ULONGLONG BytesCommitted;
+    ULONGLONG BytesResident;
+#else
+    ULONG CommitLimit;
+    ULONG BytesCommitted;
+    ULONG BytesResident;
+#endif
+
+    D3DKMT_QUERYSTATISTICS_MEMORY Memory;
+
+    //
+    // Boolean, whether this is an aperture segment
+    //
+    ULONG Aperture;
+
+    //
+    // Breakdown of bytes evicted by priority class
+    //
+    ULONGLONG TotalBytesEvictedByPriority[D3DKMT_QUERYSTATISTICS_ALLOCATION_PRIORITY_CLASS_MAX];   //Size = D3DKMT_MaxAllocationPriorityClass
+
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WIN8)
+    UINT64 SystemMemoryEndAddress;
+    struct
+    {
+        UINT64 PreservedDuringStandby : 1;
+        UINT64 PreservedDuringHibernate : 1;
+        UINT64 PartiallyPreservedDuringHibernate : 1;
+        UINT64 Reserved : 61;
+    } PowerFlags;
+
+    UINT64 Reserved[6];
+#else
+    UINT64 Reserved[8];
+#endif
+} D3DKMT_QUERYSTATISTICS_SEGMENT_INFORMATION;
+
+//
+// Video memory statistics.
+//
+typedef struct _D3DKMT_QUERYSTATISTICS_VIDEO_MEMORY
+{
+    ULONG AllocsCommitted;
+    D3DKMT_QUERYSTATISTICS_COUNTER AllocsResidentInP[D3DKMT_QUERYSTATISTICS_SEGMENT_PREFERENCE_MAX];
+    D3DKMT_QUERYSTATISTICS_COUNTER AllocsResidentInNonPreferred;
+    ULONGLONG TotalBytesEvictedDueToPreparation;
+} D3DKMT_QUERYSTATISTICS_VIDEO_MEMORY;
+
+//
+// VidMM Policies
+//
+typedef struct _D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_POLICY
+{
+    ULONGLONG UseMRU;
+} D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_POLICY;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_INFORMATION
+{
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WIN8)
+    ULONGLONG BytesCommitted;
+    ULONGLONG MaximumWorkingSet;
+    ULONGLONG MinimumWorkingSet;
+
+    ULONG NbReferencedAllocationEvictedInPeriod;
+#else
+    ULONG BytesCommitted;
+    ULONG NbReferencedAllocationEvictedInPeriod;
+    ULONG MaximumWorkingSet;
+    ULONG MinimumWorkingSet;
+#endif
+
+    D3DKMT_QUERYSTATISTICS_VIDEO_MEMORY VideoMemory;
+    D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_POLICY _Policy;
+
+    UINT64 Reserved[8];
+} D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_INFORMATION;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_GROUP_INFORMATION
+{
+    UINT64 Budget;
+    UINT64 Requested;
+    UINT64 Usage;
+    UINT64 Demoted[D3DKMT_QUERYSTATISTICS_ALLOCATION_PRIORITY_CLASS_MAX];
+} D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_GROUP_INFORMATION;
+
+typedef enum _D3DKMT_QUERYSTATISTICS_TYPE
+{
+    D3DKMT_QUERYSTATISTICS_ADAPTER                = 0,
+    D3DKMT_QUERYSTATISTICS_PROCESS                = 1,
+    D3DKMT_QUERYSTATISTICS_PROCESS_ADAPTER        = 2,
+    D3DKMT_QUERYSTATISTICS_SEGMENT                = 3,
+    D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT        = 4,
+    D3DKMT_QUERYSTATISTICS_NODE                   = 5,
+    D3DKMT_QUERYSTATISTICS_PROCESS_NODE           = 6,
+    D3DKMT_QUERYSTATISTICS_VIDPNSOURCE            = 7,
+    D3DKMT_QUERYSTATISTICS_PROCESS_VIDPNSOURCE    = 8,
+    D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_GROUP  = 9,
+    D3DKMT_QUERYSTATISTICS_PHYSICAL_ADAPTER       = 10,
+} D3DKMT_QUERYSTATISTICS_TYPE;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_QUERY_SEGMENT
+{
+    ULONG SegmentId; // in: id of node to get statistics for
+} D3DKMT_QUERYSTATISTICS_QUERY_SEGMENT;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_QUERY_NODE
+{
+    ULONG NodeId;
+} D3DKMT_QUERYSTATISTICS_QUERY_NODE;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_QUERY_VIDPNSOURCE
+{
+    ULONG VidPnSourceId; // in: id of segment to get statistics for
+} D3DKMT_QUERYSTATISTICS_QUERY_VIDPNSOURCE;
+
+typedef struct _D3DKMT_QUERYSTATISTICS_QUERY_PHYSICAL_ADAPTER
+{
+    ULONG PhysicalAdapterIndex;
+} D3DKMT_QUERYSTATISTICS_QUERY_PHYSICAL_ADAPTER;
+
+typedef union _D3DKMT_QUERYSTATISTICS_RESULT
+{
+    D3DKMT_QUERYSTATISTICS_ADAPTER_INFORMATION AdapterInformation;                          // out: result of D3DKMT_QUERYSTATISTICS_ADAPTER query
+    D3DKMT_QUERYSTATISTICS_PHYSICAL_ADAPTER_INFORMATION PhysAdapterInformation;             // out: result of D3DKMT_QUERYSTATISTICS_PHYSICAL_ADAPTER query
+    D3DKMT_QUERYSTATISTICS_SEGMENT_INFORMATION SegmentInformation;                          // out: result of D3DKMT_QUERYSTATISTICS_SEGMENT query
+    D3DKMT_QUERYSTATISTICS_NODE_INFORMATION NodeInformation;                                // out: result of D3DKMT_QUERYSTATISTICS_NODE query
+    D3DKMT_QUERYSTATISTICS_VIDPNSOURCE_INFORMATION VidPnSourceInformation;                  // out: result of D3DKMT_QUERYSTATISTICS_VIDPNSOURCE query
+    D3DKMT_QUERYSTATISTICS_PROCESS_INFORMATION ProcessInformation;                          // out: result of D3DKMT_QUERYSTATISTICS_PROCESS query
+    D3DKMT_QUERYSTATISTICS_PROCESS_ADAPTER_INFORMATION ProcessAdapterInformation;           // out: result of D3DKMT_QUERYSTATISTICS_PROCESS_ADAPTER query
+    D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_INFORMATION ProcessSegmentInformation;           // out: result of D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT query
+    D3DKMT_QUERYSTATISTICS_PROCESS_NODE_INFORMATION ProcessNodeInformation;                 // out: result of D3DKMT_QUERYSTATISTICS_PROCESS_NODE query
+    D3DKMT_QUERYSTATISTICS_PROCESS_VIDPNSOURCE_INFORMATION ProcessVidPnSourceInformation;   // out: result of D3DKMT_QUERYSTATISTICS_PROCESS_VIDPNSOURCE query
+    D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_GROUP_INFORMATION ProcessSegmentGroupInformation;// out: result of D3DKMT_QUERYSTATISTICS_PROCESS_SEGMENT_GROUP query
+} D3DKMT_QUERYSTATISTICS_RESULT;
+
+typedef struct _D3DKMT_QUERYSTATISTICS
+{
+    D3DKMT_QUERYSTATISTICS_TYPE   Type;        // in: type of data requested
+    LUID                          AdapterLuid; // in: adapter to get export / statistics from
+    HANDLE                        hProcess;    // in: process to get statistics for, if required for this query type
+    D3DKMT_QUERYSTATISTICS_RESULT QueryResult; // out: requested data
+
+    union
+    {
+        D3DKMT_QUERYSTATISTICS_QUERY_SEGMENT QuerySegment;                // in: id of segment to get statistics for
+        D3DKMT_QUERYSTATISTICS_QUERY_SEGMENT QueryProcessSegment;         // in: id of segment to get statistics for
+        D3DKMT_MEMORY_SEGMENT_GROUP QueryProcessSegmentGroup;             // in: id of segment group to get statistics for
+        D3DKMT_QUERYSTATISTICS_QUERY_NODE QueryNode;                      // in: id of node to get statistics for
+        D3DKMT_QUERYSTATISTICS_QUERY_NODE QueryProcessNode;               // in: id of node to get statistics for
+        D3DKMT_QUERYSTATISTICS_QUERY_VIDPNSOURCE QueryVidPnSource;        // in: id of vidpnsource to get statistics for
+        D3DKMT_QUERYSTATISTICS_QUERY_VIDPNSOURCE QueryProcessVidPnSource; // in: id of vidpnsource to get statistics for
+        D3DKMT_QUERYSTATISTICS_QUERY_PHYSICAL_ADAPTER QueryPhysAdapter;   // in: id of physical adapter to get statistics for
+    };
+} D3DKMT_QUERYSTATISTICS;
+
+//
+// end D3DKMT_QUERYSTATISTICS
+//
 
 
 typedef enum _D3DKMT_VIDPNSOURCEOWNER_TYPE
@@ -3976,7 +4534,8 @@ typedef struct _D3DKMT_SUBMITCOMMANDFLAGS
 {
     UINT    NullRendering           :  1;  // 0x00000001
     UINT    PresentRedirected       :  1;  // 0x00000002
-    UINT    Reserved                : 30;  // 0xFFFFFFFC
+    UINT    NoKmdAccess             :  1;  // 0x00000004
+    UINT    Reserved                : 29;  // 0xFFFFFFF8
 } D3DKMT_SUBMITCOMMANDFLAGS;
 
 typedef struct _D3DKMT_SUBMITCOMMAND
@@ -4405,6 +4964,7 @@ typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_OPENADAPTERFROMDEVICENAME)(
 typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_CLOSEADAPTER)(_In_ CONST D3DKMT_CLOSEADAPTER*);
 typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_GETSHAREDPRIMARYHANDLE)(_Inout_ D3DKMT_GETSHAREDPRIMARYHANDLE*);
 typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_ESCAPE)(_In_ CONST D3DKMT_ESCAPE*);
+typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_QUERYSTATISTICS)(_In_ CONST D3DKMT_QUERYSTATISTICS*);
 typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_SETVIDPNSOURCEOWNER)(_In_ CONST D3DKMT_SETVIDPNSOURCEOWNER*);
 typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_GETPRESENTHISTORY)(_Inout_ D3DKMT_GETPRESENTHISTORY*);
 typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_CREATEOVERLAY)(_Inout_ D3DKMT_CREATEOVERLAY*);
@@ -4642,6 +5202,7 @@ EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTOpenAdapterFromDeviceName(_Inout
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTCloseAdapter(_In_ CONST D3DKMT_CLOSEADAPTER*);
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTGetSharedPrimaryHandle(_Inout_ D3DKMT_GETSHAREDPRIMARYHANDLE*);
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTEscape(_In_ CONST D3DKMT_ESCAPE*);
+EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTQueryStatistics(_In_ CONST D3DKMT_QUERYSTATISTICS*);
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTSetVidPnSourceOwner(_In_ CONST D3DKMT_SETVIDPNSOURCEOWNER*);
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTGetPresentHistory(_Inout_ D3DKMT_GETPRESENTHISTORY*);
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTGetPresentQueueEvent(_In_ D3DKMT_HANDLE hAdapter, _Inout_ HANDLE*);

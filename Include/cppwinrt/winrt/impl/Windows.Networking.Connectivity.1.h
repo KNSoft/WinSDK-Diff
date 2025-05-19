@@ -79,6 +79,13 @@ namespace winrt::Windows::Networking::Connectivity
         IConnectionProfile5(std::nullptr_t = nullptr) noexcept {}
         IConnectionProfile5(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IConnectionProfile6 :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IConnectionProfile6>
+    {
+        IConnectionProfile6(std::nullptr_t = nullptr) noexcept {}
+        IConnectionProfile6(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IConnectionProfileFilter :
         Windows::Foundation::IInspectable,
         impl::consume_t<IConnectionProfileFilter>

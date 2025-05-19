@@ -1793,6 +1793,7 @@ typedef enum FWPS_FIELDS_RPC_UM_
    FWPS_FIELD_RPC_UM_PIPE,
    FWPS_FIELD_RPC_UM_REMOTE_ADDR_V4,
    FWPS_FIELD_RPC_UM_REMOTE_ADDR_V6,
+   FWPS_FIELD_RPC_UM_RPC_OPNUM,
    FWPS_FIELD_RPC_UM_MAX
 } FWPS_FIELDS_RPC_UM;
 
@@ -1968,6 +1969,7 @@ typedef enum {
     IpDiscardTooManyDecapsulations,
     IpDiscardAdministrativelyProhibited, // Blocked, ICMP should be sent.
     IpDiscardBadChecksum,
+    IpDiscardFirstFragmentIncomplete,
 
     IpDiscardReceivePathMax = 127,
 

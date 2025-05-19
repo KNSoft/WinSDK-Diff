@@ -230,7 +230,8 @@ typedef enum _NETLOGON_LOGON_INFO_CLASS {
     NetlogonGenericInformation,
     NetlogonInteractiveTransitiveInformation,
     NetlogonNetworkTransitiveInformation,
-    NetlogonServiceTransitiveInformation
+    NetlogonServiceTransitiveInformation,
+    NetlogonTicketLogonInformation,
 } NETLOGON_LOGON_INFO_CLASS;
 
 typedef struct _NETLOGON_LOGON_IDENTITY_INFO {

@@ -625,7 +625,11 @@
 #define FwpmSystemPortsUnsubscribe FwpmSystemPortsUnsubscribe0
 #endif
 
-
+#if (NTDDI_VERSION >= NTDDI_WIN10_VB)
+#define FWPM_DYNAMIC_KEYWORD_CALLBACK FWPM_DYNAMIC_KEYWORD_CALLBACK0
+#define FwpmDynamicKeywordSubscribe FwpmDynamicKeywordSubscribe0
+#define FwpmDynamicKeywordUnsubscribe FwpmDynamicUnsubscribe0
+#endif
 
 #if (NTDDI_VERSION >= NTDDI_WIN8)
 #define IPSEC_KEY_MANAGER_KEY_DICTATION_CHECK IPSEC_KEY_MANAGER_KEY_DICTATION_CHECK0

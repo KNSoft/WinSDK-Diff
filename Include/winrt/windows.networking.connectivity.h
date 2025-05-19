@@ -280,6 +280,21 @@ namespace ABI {
 
 #endif // ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_FWD_DEFINED__
+#define ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace Networking {
+            namespace Connectivity {
+                interface IConnectionProfile6;
+            } /* Connectivity */
+        } /* Networking */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6 ABI::Windows::Networking::Connectivity::IConnectionProfile6
+
+#endif // ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfileFilter_FWD_DEFINED__
 #define ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfileFilter_FWD_DEFINED__
 namespace ABI {
@@ -2545,6 +2560,16 @@ namespace ABI {
     namespace Windows {
         namespace Networking {
             namespace Connectivity {
+                typedef enum DomainAuthenticationKind : int DomainAuthenticationKind;
+            } /* Connectivity */
+        } /* Networking */
+    } /* Windows */
+} /* ABI */
+
+namespace ABI {
+    namespace Windows {
+        namespace Networking {
+            namespace Connectivity {
                 typedef enum DomainConnectivityLevel : int DomainConnectivityLevel;
             } /* Connectivity */
         } /* Networking */
@@ -2865,6 +2890,30 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x10000
+
+/*
+ *
+ * Struct Windows.Networking.Connectivity.DomainAuthenticationKind
+ *
+ * Introduced to Windows.Foundation.UniversalApiContract in version 10.0
+ *
+ */
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xa0000
+namespace ABI {
+    namespace Windows {
+        namespace Networking {
+            namespace Connectivity {
+                enum DomainAuthenticationKind : int
+                {
+                    DomainAuthenticationKind_None = 0,
+                    DomainAuthenticationKind_Ldap = 1,
+                    DomainAuthenticationKind_Tls = 2,
+                };
+            } /* Connectivity */
+        } /* Networking */
+    } /* Windows */
+} /* ABI */
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xa0000
 
 /*
  *
@@ -3726,6 +3775,43 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5;
 #endif /* !defined(____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x70000
+
+/*
+ *
+ * Interface Windows.Networking.Connectivity.IConnectionProfile6
+ *
+ * Introduced to Windows.Foundation.UniversalApiContract in version 10.0
+ *
+ * Interface is a part of the implementation of type Windows.Networking.Connectivity.ConnectionProfile
+ *
+ */
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xa0000
+#if !defined(____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Networking_Connectivity_IConnectionProfile6[] = L"Windows.Networking.Connectivity.IConnectionProfile6";
+namespace ABI {
+    namespace Windows {
+        namespace Networking {
+            namespace Connectivity {
+                MIDL_INTERFACE("dc27dfe2-7a6f-5d0e-9589-2fe2e5b6f9aa")
+                IConnectionProfile6 : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE IsDomainAuthenticatedBy(
+                        ABI::Windows::Networking::Connectivity::DomainAuthenticationKind kind,
+                        boolean* result
+                        ) = 0;
+                };
+
+                extern MIDL_CONST_ID IID& IID_IConnectionProfile6 = _uuidof(IConnectionProfile6);
+            } /* Connectivity */
+        } /* Networking */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6;
+#endif /* !defined(____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_INTERFACE_DEFINED__) */
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xa0000
 
 /*
  *
@@ -4977,6 +5063,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *    Windows.Networking.Connectivity.IConnectionProfile3
  *    Windows.Networking.Connectivity.IConnectionProfile4
  *    Windows.Networking.Connectivity.IConnectionProfile5
+ *    Windows.Networking.Connectivity.IConnectionProfile6
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
@@ -5215,8 +5302,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Networking.Connectivity.INetworkInformationStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Networking.Connectivity.INetworkInformationStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Networking.Connectivity.INetworkInformationStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
@@ -5473,6 +5560,12 @@ typedef interface __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile
 typedef interface __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5 __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5;
 
 #endif // ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_FWD_DEFINED__
+#define ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6 __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6;
+
+#endif // ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfileFilter_FWD_DEFINED__
 #define ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfileFilter_FWD_DEFINED__
@@ -9937,6 +10030,8 @@ typedef enum __x_ABI_CWindows_CNetworking_CConnectivity_CCellularApnAuthenticati
 
 typedef enum __x_ABI_CWindows_CNetworking_CConnectivity_CDataUsageGranularity __x_ABI_CWindows_CNetworking_CConnectivity_CDataUsageGranularity;
 
+typedef enum __x_ABI_CWindows_CNetworking_CConnectivity_CDomainAuthenticationKind __x_ABI_CWindows_CNetworking_CConnectivity_CDomainAuthenticationKind;
+
 typedef enum __x_ABI_CWindows_CNetworking_CConnectivity_CDomainConnectivityLevel __x_ABI_CWindows_CNetworking_CConnectivity_CDomainConnectivityLevel;
 
 typedef enum __x_ABI_CWindows_CNetworking_CConnectivity_CNetworkAuthenticationType __x_ABI_CWindows_CNetworking_CConnectivity_CNetworkAuthenticationType;
@@ -10011,6 +10106,22 @@ enum __x_ABI_CWindows_CNetworking_CConnectivity_CDataUsageGranularity
     DataUsageGranularity_Total = 3,
 };
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x10000
+
+/*
+ *
+ * Struct Windows.Networking.Connectivity.DomainAuthenticationKind
+ *
+ * Introduced to Windows.Foundation.UniversalApiContract in version 10.0
+ *
+ */
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xa0000
+enum __x_ABI_CWindows_CNetworking_CConnectivity_CDomainAuthenticationKind
+{
+    DomainAuthenticationKind_None = 0,
+    DomainAuthenticationKind_Ldap = 1,
+    DomainAuthenticationKind_Tls = 2,
+};
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xa0000
 
 /*
  *
@@ -11195,6 +11306,76 @@ interface __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5
 EXTERN_C const IID IID___x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5;
 #endif /* !defined(____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile5_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x70000
+
+/*
+ *
+ * Interface Windows.Networking.Connectivity.IConnectionProfile6
+ *
+ * Introduced to Windows.Foundation.UniversalApiContract in version 10.0
+ *
+ * Interface is a part of the implementation of type Windows.Networking.Connectivity.ConnectionProfile
+ *
+ */
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xa0000
+#if !defined(____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Networking_Connectivity_IConnectionProfile6[] = L"Windows.Networking.Connectivity.IConnectionProfile6";
+typedef struct __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6Vtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* IsDomainAuthenticatedBy)(__x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6* This,
+        enum __x_ABI_CWindows_CNetworking_CConnectivity_CDomainAuthenticationKind kind,
+        boolean* result);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6Vtbl;
+
+interface __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6
+{
+    CONST_VTBL struct __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6Vtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_IsDomainAuthenticatedBy(This, kind, result) \
+    ((This)->lpVtbl->IsDomainAuthenticatedBy(This, kind, result))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6;
+#endif /* !defined(____x_ABI_CWindows_CNetworking_CConnectivity_CIConnectionProfile6_INTERFACE_DEFINED__) */
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xa0000
 
 /*
  *
@@ -13466,6 +13647,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *    Windows.Networking.Connectivity.IConnectionProfile3
  *    Windows.Networking.Connectivity.IConnectionProfile4
  *    Windows.Networking.Connectivity.IConnectionProfile5
+ *    Windows.Networking.Connectivity.IConnectionProfile6
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
@@ -13704,8 +13886,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Networking.Connectivity.INetworkInformationStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Networking.Connectivity.INetworkInformationStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Networking.Connectivity.INetworkInformationStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *

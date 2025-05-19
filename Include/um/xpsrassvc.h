@@ -92,8 +92,9 @@ extern "C"{
 //
 //----------------------------------------------------------------------------
 #include <winapifamily.h>
-#pragma region Desktop Family
-#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
+#pragma region App Partition
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
+DEFINE_GUID(CLSID_XPSRASTERIZER_FACTORY, 0x503E79BF, 0x1D09, 0x4764, 0x9D, 0x72, 0x1E, 0xB0, 0xC6, 0x59, 0x67, 0xC6);
 
 
 extern RPC_IF_HANDLE __MIDL_itf_xpsrassvc_0000_0000_v0_0_c_ifspec;
@@ -602,7 +603,7 @@ EXTERN_C const IID IID_IXpsRasterizationFactory2;
 /* [local] */ 
 
 #endif // (NTDDI >= NTDDI_WINTHRESHOLD)
-#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
 #pragma endregion
 
 

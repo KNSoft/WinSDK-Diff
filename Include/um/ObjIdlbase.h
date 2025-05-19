@@ -438,6 +438,13 @@ typedef interface IAgileReference IAgileReference;
 #endif 	/* __IAgileReference_FWD_DEFINED__ */
 
 
+#ifndef __ISupportAllowLowerTrustActivation_FWD_DEFINED__
+#define __ISupportAllowLowerTrustActivation_FWD_DEFINED__
+typedef interface ISupportAllowLowerTrustActivation ISupportAllowLowerTrustActivation;
+
+#endif 	/* __ISupportAllowLowerTrustActivation_FWD_DEFINED__ */
+
+
 /* header files for imported files */
 #include "unknwnbase.h"
 
@@ -7820,6 +7827,88 @@ EXTERN_C const IID IID_IAgileReference;
 EXTERN_C const GUID  IID_ICallbackWithNoReentrancyToApplicationSTA;
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM | WINAPI_PARTITION_GAMES) */
 #pragma endregion
+#pragma region Application Family or OneCore Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM | WINAPI_PARTITION_GAMES)
+
+
+extern RPC_IF_HANDLE __MIDL_itf_objidlbase_0000_0053_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_objidlbase_0000_0053_v0_0_s_ifspec;
+
+#ifndef __ISupportAllowLowerTrustActivation_INTERFACE_DEFINED__
+#define __ISupportAllowLowerTrustActivation_INTERFACE_DEFINED__
+
+/* interface ISupportAllowLowerTrustActivation */
+/* [uuid][object][local] */ 
+
+
+EXTERN_C const IID IID_ISupportAllowLowerTrustActivation;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("e9956ef2-3828-4b4b-8fa9-7db61dee4954")
+    ISupportAllowLowerTrustActivation : public IUnknown
+    {
+    public:
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ISupportAllowLowerTrustActivationVtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ISupportAllowLowerTrustActivation * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ISupportAllowLowerTrustActivation * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ISupportAllowLowerTrustActivation * This);
+        
+        END_INTERFACE
+    } ISupportAllowLowerTrustActivationVtbl;
+
+    interface ISupportAllowLowerTrustActivation
+    {
+        CONST_VTBL struct ISupportAllowLowerTrustActivationVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ISupportAllowLowerTrustActivation_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ISupportAllowLowerTrustActivation_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ISupportAllowLowerTrustActivation_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ISupportAllowLowerTrustActivation_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_objidlbase_0000_0054 */
+/* [local] */ 
+
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM | WINAPI_PARTITION_GAMES) */
+#pragma endregion
 #define _OBJIDLBASE_
 #endif
 #if ( _MSC_VER >= 800 )
@@ -7831,8 +7920,8 @@ EXTERN_C const GUID  IID_ICallbackWithNoReentrancyToApplicationSTA;
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_objidlbase_0000_0053_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_objidlbase_0000_0053_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_objidlbase_0000_0054_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_objidlbase_0000_0054_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

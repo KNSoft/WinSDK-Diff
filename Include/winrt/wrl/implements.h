@@ -1515,6 +1515,8 @@ private:
 #define UnknownInterlockedCompareExchangePointer InterlockedCompareExchangePointer
 #define UnknownInterlockedCompareExchangePointerForIncrement InterlockedCompareExchangePointer
 #define UnknownInterlockedCompareExchangePointerForRelease InterlockedCompareExchangePointer
+#define UnknownInterlockedCompareExchangeForIncrement InterlockedCompareExchange
+#define UnknownInterlockedCompareExchangeForRelease InterlockedCompareExchange
 
 #elif defined(_ARM_)
 
@@ -1524,6 +1526,8 @@ private:
 #define UnknownInterlockedCompareExchangePointer InterlockedCompareExchangePointer
 #define UnknownInterlockedCompareExchangePointerForIncrement InterlockedCompareExchangePointerNoFence
 #define UnknownInterlockedCompareExchangePointerForRelease InterlockedCompareExchangePointerRelease
+#define UnknownInterlockedCompareExchangeForIncrement InterlockedCompareExchangeNoFence
+#define UnknownInterlockedCompareExchangeForRelease InterlockedCompareExchangeRelease
 
 #elif defined(_ARM64_)
 
@@ -1533,6 +1537,8 @@ private:
 #define UnknownInterlockedCompareExchangePointer InterlockedCompareExchangePointer
 #define UnknownInterlockedCompareExchangePointerForIncrement InterlockedCompareExchangePointerNoFence
 #define UnknownInterlockedCompareExchangePointerForRelease InterlockedCompareExchangePointerRelease
+#define UnknownInterlockedCompareExchangeForIncrement InterlockedCompareExchangeNoFence
+#define UnknownInterlockedCompareExchangeForRelease InterlockedCompareExchangeRelease
 
 #else
 
@@ -1553,6 +1559,37 @@ class __declspec(novtable) RuntimeClassImpl;
 #pragma warning(push)
 // PREFast cannot see through template instantiation for AsIID()
 #pragma warning(disable: 6388)
+
+// Reference counting functions that check overflow. If overflow is detected, ref count value will stop at LONG_MAX, and the object being
+// reference-counted will be leaked.
+inline unsigned long SafeUnknownIncrementReference(long volatile &refcount) throw()
+{
+    long oldValue = refcount;
+    while (oldValue != LONG_MAX && (UnknownInterlockedCompareExchangeForIncrement(&refcount, oldValue + 1, oldValue) != oldValue))
+    {
+        oldValue = refcount;
+    }
+
+    if (oldValue != LONG_MAX)
+    {
+        return oldValue + 1;
+    }
+    else
+    {
+        return LONG_MAX;
+    }
+}
+
+inline unsigned long SafeUnknownDecrementReference(long volatile &refcount) throw()
+{
+    long oldValue = refcount;
+    while (oldValue != LONG_MAX && (UnknownInterlockedCompareExchangeForRelease(&refcount, oldValue - 1, oldValue) != oldValue))
+    {
+        oldValue = refcount;
+    }
+
+    return oldValue - 1;
+}
 
 template <class RuntimeClassFlagsT, bool implementsWeakReferenceSource, bool implementsFtmBase, typename ...TInterfaces>
 class __declspec(novtable) RuntimeClassImpl<RuntimeClassFlagsT, implementsWeakReferenceSource, false, implementsFtmBase, TInterfaces...> :
@@ -1616,7 +1653,7 @@ protected:
 #ifdef _PERF_COUNTERS
         IncrementAddRefCount();
 #endif
-        return UnknownIncrementReference(&refcount_);
+        return SafeUnknownIncrementReference(refcount_);
     }
 
     unsigned long InternalRelease() throw()
@@ -1626,7 +1663,7 @@ protected:
 #endif
         // A release fence is required to ensure all guarded memory accesses are
         // complete before any thread can begin destroying the object.
-        unsigned long newValue = UnknownDecrementReference(&refcount_);
+        unsigned long newValue = SafeUnknownDecrementReference(refcount_);
         if (newValue == 0)
         {
             // An acquire fence is required before object destruction to ensure
@@ -1778,7 +1815,7 @@ protected:
 #ifdef _PERF_COUNTERS
         IncrementAddRefCount();
 #endif
-        return UnknownIncrementReference(&refcount_);
+        return SafeUnknownIncrementReference(refcount_);
     }
 
     unsigned long InternalRelease() throw()
@@ -1788,7 +1825,7 @@ protected:
 #endif
         // A release fence is required to ensure all guarded memory accesses are
         // complete before any thread can begin destroying the object.
-        unsigned long newValue = UnknownDecrementReference(&refcount_);
+        unsigned long newValue = SafeUnknownDecrementReference(refcount_);
         if (newValue == 0)
         {
             // An acquire fence is required before object destruction to ensure
@@ -1820,14 +1857,14 @@ public:
 
     unsigned long IncrementStrongReference() throw()
     {
-        return UnknownIncrementReference(&strongRefCount_);
+        return SafeUnknownIncrementReference(strongRefCount_);
     }
 
     unsigned long DecrementStrongReference() throw()
     {
         // A release fence is required to ensure all guarded memory accesses are
         // complete before any thread can begin destroying the object.
-        unsigned long newValue = UnknownDecrementReference(&strongRefCount_);
+        unsigned long newValue = SafeUnknownDecrementReference(strongRefCount_);
         if (newValue == 0)
         {
             // An acquire fence is required before object destruction to ensure
@@ -2281,6 +2318,11 @@ unsigned long RuntimeClassImpl<RuntimeClassFlagsT, true, true, false, I0, TInter
     {
         if (!IsValueAPointerToWeakReference(currentValue.rawValue))
         {
+            if (static_cast<long>(currentValue.refCount) == LONG_MAX)
+            {
+                return LONG_MAX;
+            }
+
             UINT_PTR updateValue = currentValue.refCount + 1;
 
 #ifdef __WRL_UNITTEST__
@@ -2316,6 +2358,11 @@ unsigned long RuntimeClassImpl<RuntimeClassFlagsT, true, true, false, I0, TInter
     {
         if (!IsValueAPointerToWeakReference(currentValue.rawValue))
         {
+            if (static_cast<long>(currentValue.refCount) == LONG_MAX)
+            {
+                return LONG_MAX - 1;
+            }
+
             UINT_PTR updateValue = currentValue.refCount - 1;
 
 #ifdef __WRL_UNITTEST__

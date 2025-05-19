@@ -527,12 +527,11 @@ typedef struct _D3DDDI_ESCAPEFLAGS
     };
 } D3DDDI_ESCAPEFLAGS;
 
-#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_5)
-
 typedef enum _D3DDDI_DRIVERESCAPETYPE
 {
     D3DDDI_DRIVERESCAPETYPE_TRANSLATEALLOCATIONHANDLE   = 0,
     D3DDDI_DRIVERESCAPETYPE_TRANSLATERESOURCEHANDLE     = 1,
+    D3DDDI_DRIVERESCAPETYPE_CPUEVENTUSAGE               = 2,
     D3DDDI_DRIVERESCAPETYPE_MAX,
 } D3DDDI_DRIVERESCAPETYPE;
 
@@ -548,7 +547,13 @@ typedef struct _D3DDDI_DRIVERESCAPE_TRANSLATERESOURCEHANDLE
      D3DKMT_HANDLE            hResource;
 } D3DDDI_DRIVERESCAPE_TRANSLATERESOURCEHANDLE;
 
-#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_5)
+typedef struct _D3DDDI_DRIVERESCAPE_CPUEVENTUSAGE
+{
+    D3DDDI_DRIVERESCAPETYPE EscapeType;
+    D3DKMT_HANDLE           hSyncObject;
+    UINT64                  hKmdCpuEvent;
+    UINT                    Usage[8];
+} D3DDDI_DRIVERESCAPE_CPUEVENTUSAGE;
 
 typedef struct _D3DDDI_CREATECONTEXTFLAGS
 {
@@ -565,7 +570,8 @@ typedef struct _D3DDDI_CREATECONTEXTFLAGS
 #if ((DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_3) || \
      (D3D_UMD_INTERFACE_VERSION >= D3D_UMD_INTERFACE_VERSION_WDDM2_3_1))
             UINT    HwQueueSupported    : 1;      // 0x00000010
-            UINT    Reserved            :27;      // 0xFFFFFFE0
+            UINT    NoKmdAccess         : 1;      // 0x00000020
+            UINT    Reserved            :26;      // 0xFFFFFFC0
 #else
             UINT    Reserved            :28;      // 0xFFFFFFF0
 #endif // DXGKDDI_INTERFACE_VERSION
@@ -602,7 +608,8 @@ typedef struct _D3DDDI_CREATEHWQUEUEFLAGS
             UINT    DisableGpuTimeout   : 1;      // 0x00000001
             UINT    NoBroadcastSignal   : 1;      // 0x00000002
             UINT    NoBroadcastWait     : 1;      // 0x00000004
-            UINT    Reserved            :29;      // 0xFFFFFFF8
+            UINT    NoKmdAccess         : 1;      // 0x00000008
+            UINT    Reserved            :28;      // 0xFFFFFFF0
         };
         UINT Value;
     };
@@ -1532,8 +1539,9 @@ typedef struct D3DDDI_UPDATEALLOCPROPERTY_FLAGS
     {
         struct
         {
-            UINT AccessedPhysically : 1;    // The new value for AccessedPhysically on an allocation
-            UINT Reserved : 31;
+            UINT AccessedPhysically :  1; // The new value for AccessedPhysically on an allocation
+            UINT Unmoveable         :  1; // Indicates an allocation cannot be moved while pinned in a memory segment
+            UINT Reserved           : 30;
         };
         UINT Value;
     };
@@ -1553,10 +1561,11 @@ typedef struct D3DDDI_UPDATEALLOCPROPERTY
     {
         struct
         {                
-            UINT SetAccessedPhysically : 1;     // [in] When set to 1, will set AccessedPhysically to new value
-            UINT SetSupportedSegmentSet : 1;    // [in] When set to 1, will set SupportedSegmentSet to new value
-            UINT SetPreferredSegment : 1;       // [in] When set to 1, will set PreferredSegment to new value
-            UINT Reserved : 29;
+            UINT SetAccessedPhysically  :  1; // [in] When set to 1, will set AccessedPhysically to new value
+            UINT SetSupportedSegmentSet :  1; // [in] When set to 1, will set SupportedSegmentSet to new value
+            UINT SetPreferredSegment    :  1; // [in] When set to 1, will set PreferredSegment to new value
+            UINT SetUnmoveable          :  1; // [in] When set to 1, will set Unmoveable to new value
+            UINT Reserved               : 28;
         };
         UINT PropertyMaskValue;
     };
@@ -1661,7 +1670,8 @@ typedef struct _D3DDDI_SYNCHRONIZATIONOBJECT_FLAGS
             // When this is set, the fence is always stored as a 64-bit value (regardless of adapter caps)
             UINT NoGPUAccess                                    :  1;
 
-            UINT Reserved                                       : 23;
+            UINT SignalByKmd                                    :  1;
+            UINT Reserved                                       : 22;
 
 #else
             UINT Reserved                                       : 28;

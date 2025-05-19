@@ -64,6 +64,13 @@ namespace winrt::Windows::System::Profile
         IKnownRetailInfoPropertiesStatics(std::nullptr_t = nullptr) noexcept {}
         IKnownRetailInfoPropertiesStatics(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IPlatformAutomaticAppSignInManagerStatics :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IPlatformAutomaticAppSignInManagerStatics>
+    {
+        IPlatformAutomaticAppSignInManagerStatics(std::nullptr_t = nullptr) noexcept {}
+        IPlatformAutomaticAppSignInManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IPlatformDiagnosticsAndUsageDataSettingsStatics :
         Windows::Foundation::IInspectable,
         impl::consume_t<IPlatformDiagnosticsAndUsageDataSettingsStatics>

@@ -658,6 +658,9 @@ cpp_quote("    _In_ IActivateAudioInterfaceCompletionHandler *completionHandler,
 cpp_quote("    _COM_Outptr_ IActivateAudioInterfaceAsyncOperation **activationOperation")
 cpp_quote("    );")
 
+cpp_quote("// The AUDIOCLIENT_ACTIVATION_PARAMS structure can be used when creating an IAudioClient.")
+cpp_quote("// It is defined in AudioClientActivationParams.h")
+
 cpp_quote("#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */")
 #pragma endregion
 

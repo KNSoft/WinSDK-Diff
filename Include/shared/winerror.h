@@ -154,6 +154,8 @@
 #define FACILITY_USER_MODE_SECURITY_CORE 232
 #define FACILITY_USERMODE_LICENSING      234
 #define FACILITY_SOS                     160
+#define FACILITY_OCP_UPDATE_AGENT        173
+#define FACILITY_DUC_UPDATE_AGENT        174
 #define FACILITY_DEBUGGERS               176
 #define FACILITY_SPP                     256
 #define FACILITY_RESTORE                 256
@@ -171,6 +173,7 @@
 #define FACILITY_DEPLOYMENT_SERVICES_MULTICAST_CLIENT 290
 #define FACILITY_DEPLOYMENT_SERVICES_CONTENT_PROVIDER 293
 #define FACILITY_LINGUISTIC_SERVICES     305
+#define FACILITY_PRODUCT_LIFECYCLE_UPDATE_GUI 307
 #define FACILITY_AUDIOSTREAMING          1094
 #define FACILITY_TTD                     1490
 #define FACILITY_ACCELERATOR             1536
@@ -3322,6 +3325,15 @@
 //
 #define ERROR_DLP_POLICY_DENIES_OPERATION 446L
 
+//
+// MessageId: ERROR_UNTRUSTED_MOUNT_POINT
+//
+// MessageText:
+//
+// The path cannot be traversed because it contains an untrusted mount point.
+//
+#define ERROR_UNTRUSTED_MOUNT_POINT      448L
+
 // Data Loss Prevention error code to suppress showing UX/error message. Still adding error text for consistency.
 //
 // MessageId: ERROR_DLP_POLICY_SILENTLY_FAIL
@@ -3452,6 +3464,15 @@
 #define ERROR_CIMFS_IMAGE_CORRUPT        470L
 
 //
+// MessageId: ERROR_CLOUD_FILE_US_MESSAGE_TIMEOUT
+//
+// MessageText:
+//
+// The cloud provider failed to acknowledge a message before the time-out expired.
+//
+#define ERROR_CLOUD_FILE_US_MESSAGE_TIMEOUT 475L
+
+//
 // **** Available SYSTEM error codes ****
 //
 //
@@ -3537,6 +3558,15 @@
 // User profile cannot be loaded.
 //
 #define ERROR_USER_PROFILE_LOAD          500L
+
+//
+// MessageId: ERROR_FS_METADATA_INCONSISTENT
+//
+// MessageText:
+//
+// The file system encountered a metadata file with inconsistent data.
+//
+#define ERROR_FS_METADATA_INCONSISTENT   510L
 
 //
 // **** Available SYSTEM error codes ****
@@ -6072,6 +6102,18 @@
 // An attempt was made to access protected memory in violation of its secure access policy.
 //
 #define ERROR_ENCLAVE_VIOLATION          815L
+
+//
+// MessageId: ERROR_LINUX_SUBSYSTEM_UPDATE_REQUIRED_LIFTED_REQUIRED
+//
+// MessageText:
+//
+// The inbox version of the Windows Subsystem For Linux has been disabled by group policy.
+// To install WSL from the store, run 'wsl.exe --update'.
+// Installing WSL from the Microsoft Store will give you the latest WSL updates, faster.
+// For more information please visit https://aka.ms/wslstoreinfo
+//
+#define ERROR_LINUX_SUBSYSTEM_UPDATE_REQUIRED_LIFTED_REQUIRED 820L
 
 //
 // **** Available SYSTEM error codes ****
@@ -21692,6 +21734,60 @@
 //
 #define ERROR_DS_VALUE_KEY_NOT_UNIQUE    8650L
 
+//
+// MessageId: ERROR_DS_PER_ATTRIBUTE_AUTHZ_FAILED_DURING_ADD
+//
+// MessageText:
+//
+// The add object operation failed because the caller was not authorized to add one or more attributes included in the request.
+//
+#define ERROR_DS_PER_ATTRIBUTE_AUTHZ_FAILED_DURING_ADD 8652L
+
+//
+// MessageId: ERROR_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The local account policy modification request was rejected because the policy is controlled by a regional authority.
+//
+#define ERROR_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED 8653L
+
+//
+// MessageId: ERROR_POLICY_CONTROLLED_ACCOUNT
+//
+// MessageText:
+//
+// The account is controlled by external policy and cannot be modified.
+//
+#define ERROR_POLICY_CONTROLLED_ACCOUNT  8654L
+
+//
+// MessageId: ERROR_LAPS_LEGACY_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the legacy LAPS schema needs to be added to Active Directory.
+//
+#define ERROR_LAPS_LEGACY_SCHEMA_MISSING 8655L
+
+//
+// MessageId: ERROR_LAPS_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the Windows LAPS schema needs to be added to Active Directory.
+//
+#define ERROR_LAPS_SCHEMA_MISSING        8656L
+
+//
+// MessageId: ERROR_LAPS_ENCRYPTION_REQUIRES_2016_DFL
+//
+// MessageText:
+//
+// The Local Administrator Password Solution encrypted password update operation failed because Active Directory is not yet running at the minimum required domain functional level (2016).
+//
+#define ERROR_LAPS_ENCRYPTION_REQUIRES_2016_DFL 8657L
+
 
 ///////////////////////////////////////////////////
 //                                                /
@@ -28647,6 +28743,15 @@
 //
 #define ERROR_INSTALL_FULLTRUST_HOSTRUNTIME_REQUIRES_MAIN_PACKAGE_FULLTRUST_CAPABILITY 15663L
 
+//
+// MessageId: ERROR_PACKAGE_NOT_REGISTERED_FOR_USER
+//
+// MessageText:
+//
+// The application cannot be started for the target user.  Please have the user explicitly install this package.
+//
+#define ERROR_PACKAGE_NOT_REGISTERED_FOR_USER 15664L
+
 //////////////////////////
 //                      //
 // AppModel Error Codes //
@@ -30666,6 +30771,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // There was an error in a Windows GDI call while converting the DIB to a bitmap.
 //
 #define CONVERT10_E_STG_DIB_TO_BITMAP    _HRESULT_TYPEDEF_(0x800401C6L)
+
+//
+// MessageId: CONVERT10_E_OLELINK_DISABLED
+//
+// MessageText:
+//
+// OLE Links in OLESTREAM are disabled while converting the OLESTREAM to IStorage
+//
+#define CONVERT10_E_OLELINK_DISABLED     _HRESULT_TYPEDEF_(0x800401C7L)
 
 #define CLIPBRD_E_FIRST        0x800401D0L
 #define CLIPBRD_E_LAST         0x800401DFL
@@ -33253,6 +33367,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // The encryptionExclusionFileList file is invalid.
 //
 #define APPX_E_INVALID_ENCRYPTION_EXCLUSION_FILE_LIST _HRESULT_TYPEDEF_(0x80080216L)
+
+//
+// MessageId: APPX_E_DIGEST_MISMATCH
+//
+// MessageText:
+//
+// The expected digest value did not match the actual digest value of the content.
+//
+#define APPX_E_DIGEST_MISMATCH           _HRESULT_TYPEDEF_(0x80080219L)
 
 //
 // Codes 0x0300-0x030f are reserved for background task error codes.
@@ -37927,6 +38050,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define CERTSRV_E_PENDING_CLIENT_RESPONSE _HRESULT_TYPEDEF_(0x80094820L)
 
 //
+// MessageId: CERTSRV_E_SEC_EXT_DIRECTORY_SID_REQUIRED
+//
+// MessageText:
+//
+// The Active Directory SID is unavailable and cannot be added to the custom security extension.
+//
+#define CERTSRV_E_SEC_EXT_DIRECTORY_SID_REQUIRED _HRESULT_TYPEDEF_(0x80094821L)
+
+//
 // The range 0x5000-0x51ff is reserved for XENROLL errors.
 //
 //
@@ -41022,6 +41154,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // COM+ partitions are currently disabled.
 //
 #define COMADMIN_E_PARTITIONS_DISABLED   _HRESULT_TYPEDEF_(0x80110824L)
+
+//
+// MessageId: MENROLL_E_CUSTOMSERVERERROR
+//
+// MessageText:
+//
+// The server responded with a custom error string, see DeviceManagement-Enterprise-Diagnostics for details.
+//
+#define MENROLL_E_CUSTOMSERVERERROR      _HRESULT_TYPEDEF_(0x80180032L)
 
 //
 // FACILITY_WER
@@ -49074,6 +49215,69 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define FVE_E_AAD_ENDPOINT_BUSY          _HRESULT_TYPEDEF_(0x803100E1L)
 
 //
+// MessageId: FVE_E_PREDICTED_TPM_PROTECTOR_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Adding BitLocker predicted TPM based protector is not supported.
+//
+#define FVE_E_PREDICTED_TPM_PROTECTOR_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E5L)
+
+//
+// MessageId: FVE_E_SETUP_TPM_CALLBACK_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Registeration for TPM callback is not supported.
+//
+#define FVE_E_SETUP_TPM_CALLBACK_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E6L)
+
+//
+// MessageId: FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Creating new TPM context is not supported.
+//
+#define FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E7L)
+
+//
+// MessageId: FVE_E_UPDATE_INVALID_CONFIG
+//
+// MessageText:
+//
+// The Secure Boot update was not applied due to a known incompatibility with the current BitLocker configuration.
+//
+#define FVE_E_UPDATE_INVALID_CONFIG      _HRESULT_TYPEDEF_(0x803100E8L)
+
+//
+// MessageId: FVE_E_METADATA_FULL
+//
+// MessageText:
+//
+// This operation cannot be completed because BitLocker Drive Encryption metadata area is full. Consider removing unnecessary key protectors for this drive.
+//
+#define FVE_E_METADATA_FULL              _HRESULT_TYPEDEF_(0x803100ECL)
+
+//
+// MessageId: FVE_E_ENTRY_ALREADY_EXISTS
+//
+// MessageText:
+//
+// The operation failed because an entry with the given ID already exists.
+//
+#define FVE_E_ENTRY_ALREADY_EXISTS       _HRESULT_TYPEDEF_(0x803100F2L)
+
+//
+// MessageId: FVE_E_ENTRY_NOT_FOUND
+//
+// MessageText:
+//
+// The operation failed because an entry with the given ID was not found.
+//
+#define FVE_E_ENTRY_NOT_FOUND            _HRESULT_TYPEDEF_(0x803100F3L)
+
+//
 // =======================================================
 // Windows Filtering Platform Error Messages
 // =======================================================
@@ -56914,6 +57118,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // The blob provided was created for a different version of the driver, and must be re-created.
 //
 #define D3D12_ERROR_DRIVER_VERSION_MISMATCH _HRESULT_TYPEDEF_(0x887E0002L)
+
+//
+// MessageId: D3D12_ERROR_INVALID_REDIST
+//
+// MessageText:
+//
+// The D3D12 SDK version configuration of the host exe is invalid.
+//
+#define D3D12_ERROR_INVALID_REDIST       _HRESULT_TYPEDEF_(0x887E0003L)
 
 
 //

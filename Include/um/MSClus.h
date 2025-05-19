@@ -980,6 +980,7 @@ enum __MIDL___MIDL_itf_msclus_0000_0000_0001
         ClusGroupTypeVMReplicaCoordinator	= 120,
         ClusGroupTypeCrossClusterOrchestrator	= 121,
         ClusGroupTypeInfrastructureFileServer	= 122,
+        ClusGroupTypeCoreSddc	= 123,
         ClusGroupTypeUnknown	= 9999
     } 	CLUSGROUP_TYPE;
 

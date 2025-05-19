@@ -277,6 +277,12 @@ namespace winrt::impl
         check_hresult(WINRT_IMPL_SHIM(Windows::Networking::Connectivity::IConnectionProfile5)->TryDeleteAsync(&operation));
         return Windows::Foundation::IAsyncOperation<Windows::Networking::Connectivity::ConnectionProfileDeleteStatus>{ operation, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_Networking_Connectivity_IConnectionProfile6<D>::IsDomainAuthenticatedBy(Windows::Networking::Connectivity::DomainAuthenticationKind const& kind) const
+    {
+        bool result;
+        check_hresult(WINRT_IMPL_SHIM(Windows::Networking::Connectivity::IConnectionProfile6)->IsDomainAuthenticatedBy(static_cast<int32_t>(kind), &result));
+        return result;
+    }
     template <typename D> auto consume_Windows_Networking_Connectivity_IConnectionProfileFilter<D>::IsConnected(bool value) const
     {
         check_hresult(WINRT_IMPL_SHIM(Windows::Networking::Connectivity::IConnectionProfileFilter)->put_IsConnected(value));
@@ -1179,6 +1185,17 @@ namespace winrt::impl
             clear_abi(operation);
             typename D::abi_guard guard(this->shim());
             *operation = detach_from<Windows::Foundation::IAsyncOperation<Windows::Networking::Connectivity::ConnectionProfileDeleteStatus>>(this->shim().TryDeleteAsync());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+    template <typename D>
+    struct produce<D, Windows::Networking::Connectivity::IConnectionProfile6> : produce_base<D, Windows::Networking::Connectivity::IConnectionProfile6>
+    {
+        int32_t __stdcall IsDomainAuthenticatedBy(int32_t kind, bool* result) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<bool>(this->shim().IsDomainAuthenticatedBy(*reinterpret_cast<Windows::Networking::Connectivity::DomainAuthenticationKind const*>(&kind)));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -2146,6 +2163,7 @@ namespace std
     template<> struct hash<winrt::Windows::Networking::Connectivity::IConnectionProfile3> : winrt::impl::hash_base<winrt::Windows::Networking::Connectivity::IConnectionProfile3> {};
     template<> struct hash<winrt::Windows::Networking::Connectivity::IConnectionProfile4> : winrt::impl::hash_base<winrt::Windows::Networking::Connectivity::IConnectionProfile4> {};
     template<> struct hash<winrt::Windows::Networking::Connectivity::IConnectionProfile5> : winrt::impl::hash_base<winrt::Windows::Networking::Connectivity::IConnectionProfile5> {};
+    template<> struct hash<winrt::Windows::Networking::Connectivity::IConnectionProfile6> : winrt::impl::hash_base<winrt::Windows::Networking::Connectivity::IConnectionProfile6> {};
     template<> struct hash<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter> : winrt::impl::hash_base<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter> {};
     template<> struct hash<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter2> : winrt::impl::hash_base<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter2> {};
     template<> struct hash<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter3> : winrt::impl::hash_base<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter3> {};

@@ -115,12 +115,82 @@ namespace winrt::Windows::Storage::Provider
         IStorageProviderItemPropertySource(std::nullptr_t = nullptr) noexcept {}
         IStorageProviderItemPropertySource(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IStorageProviderKnownFolderEntry :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderKnownFolderEntry>
+    {
+        IStorageProviderKnownFolderEntry(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderKnownFolderEntry(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderKnownFolderSyncInfo :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderKnownFolderSyncInfo>
+    {
+        IStorageProviderKnownFolderSyncInfo(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderKnownFolderSyncInfo(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderKnownFolderSyncInfoSource :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderKnownFolderSyncInfoSource>
+    {
+        IStorageProviderKnownFolderSyncInfoSource(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderKnownFolderSyncInfoSource(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderKnownFolderSyncInfoSourceFactory :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderKnownFolderSyncInfoSourceFactory>
+    {
+        IStorageProviderKnownFolderSyncInfoSourceFactory(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderKnownFolderSyncInfoSourceFactory(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderKnownFolderSyncRequestArgs :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderKnownFolderSyncRequestArgs>
+    {
+        IStorageProviderKnownFolderSyncRequestArgs(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderKnownFolderSyncRequestArgs(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderMoreInfoUI :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderMoreInfoUI>
+    {
+        IStorageProviderMoreInfoUI(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderMoreInfoUI(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IStorageProviderPropertyCapabilities :
         Windows::Foundation::IInspectable,
         impl::consume_t<IStorageProviderPropertyCapabilities>
     {
         IStorageProviderPropertyCapabilities(std::nullptr_t = nullptr) noexcept {}
         IStorageProviderPropertyCapabilities(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderQuotaUI :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderQuotaUI>
+    {
+        IStorageProviderQuotaUI(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderQuotaUI(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderStatusUI :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderStatusUI>
+    {
+        IStorageProviderStatusUI(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderStatusUI(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderStatusUISource :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderStatusUISource>
+    {
+        IStorageProviderStatusUISource(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderStatusUISource(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderStatusUISourceFactory :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderStatusUISourceFactory>
+    {
+        IStorageProviderStatusUISourceFactory(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderStatusUISourceFactory(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct __declspec(empty_bases) IStorageProviderSyncRootInfo :
         Windows::Foundation::IInspectable,
@@ -156,6 +226,13 @@ namespace winrt::Windows::Storage::Provider
     {
         IStorageProviderSyncRootManagerStatics2(std::nullptr_t = nullptr) noexcept {}
         IStorageProviderSyncRootManagerStatics2(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IStorageProviderUICommand :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IStorageProviderUICommand>
+    {
+        IStorageProviderUICommand(std::nullptr_t = nullptr) noexcept {}
+        IStorageProviderUICommand(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct __declspec(empty_bases) IStorageProviderUriSource :
         Windows::Foundation::IInspectable,

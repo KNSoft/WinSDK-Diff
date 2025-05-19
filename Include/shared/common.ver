@@ -32,6 +32,7 @@
 /****************************************************************
     When updating the copy right year Please Make sure you also update the
     constant VER_LEGALCOPYRIGHT_STR_WITH_YEARS below
+    Note VER_LEGALCOPYRIGHT_YEARS and VER_LEGALCOPYRIGHT_STR_WITH_YEARS is deprecated
 *****************************************************************/
 #ifndef VER_LEGALCOPYRIGHT_YEARS
 #define VER_LEGALCOPYRIGHT_YEARS    "2020"

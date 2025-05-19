@@ -55,6 +55,13 @@ typedef interface IPrintWorkflowXpsReceiver IPrintWorkflowXpsReceiver;
 #endif 	/* __IPrintWorkflowXpsReceiver_FWD_DEFINED__ */
 
 
+#ifndef __IPrintWorkflowXpsReceiver2_FWD_DEFINED__
+#define __IPrintWorkflowXpsReceiver2_FWD_DEFINED__
+typedef interface IPrintWorkflowXpsReceiver2 IPrintWorkflowXpsReceiver2;
+
+#endif 	/* __IPrintWorkflowXpsReceiver2_FWD_DEFINED__ */
+
+
 #ifndef __IPrintWorkflowObjectModelSourceFileContentNative_FWD_DEFINED__
 #define __IPrintWorkflowObjectModelSourceFileContentNative_FWD_DEFINED__
 typedef interface IPrintWorkflowObjectModelSourceFileContentNative IPrintWorkflowObjectModelSourceFileContentNative;
@@ -232,6 +239,126 @@ EXTERN_C const IID IID_IPrintWorkflowXpsReceiver;
 
 
 #endif 	/* __IPrintWorkflowXpsReceiver_INTERFACE_DEFINED__ */
+
+
+#ifndef __IPrintWorkflowXpsReceiver2_INTERFACE_DEFINED__
+#define __IPrintWorkflowXpsReceiver2_INTERFACE_DEFINED__
+
+/* interface IPrintWorkflowXpsReceiver2 */
+/* [unique][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IPrintWorkflowXpsReceiver2;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("023BCC0C-DFAB-4A61-B074-490C6995580D")
+    IPrintWorkflowXpsReceiver2 : public IPrintWorkflowXpsReceiver
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE Failed( 
+            /* [in] */ HRESULT XpsError) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IPrintWorkflowXpsReceiver2Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetDocumentSequencePrintTicket )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This,
+            /* [in] */ __RPC__in_opt IStream *documentSequencePrintTicket);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetDocumentSequenceUri )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This,
+            /* [in] */ __RPC__in PCWSTR documentSequenceUri);
+        
+        HRESULT ( STDMETHODCALLTYPE *AddDocumentData )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This,
+            /* [in] */ UINT32 documentId,
+            /* [in] */ __RPC__in_opt IStream *documentPrintTicket,
+            /* [in] */ __RPC__in PCWSTR documentUri);
+        
+        HRESULT ( STDMETHODCALLTYPE *AddPage )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This,
+            /* [in] */ UINT32 documentId,
+            /* [in] */ UINT32 pageId,
+            /* [in] */ __RPC__in_opt IXpsOMPageReference *pageReference,
+            /* [in] */ __RPC__in PCWSTR pageUri);
+        
+        HRESULT ( STDMETHODCALLTYPE *Close )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *Failed )( 
+            __RPC__in IPrintWorkflowXpsReceiver2 * This,
+            /* [in] */ HRESULT XpsError);
+        
+        END_INTERFACE
+    } IPrintWorkflowXpsReceiver2Vtbl;
+
+    interface IPrintWorkflowXpsReceiver2
+    {
+        CONST_VTBL struct IPrintWorkflowXpsReceiver2Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IPrintWorkflowXpsReceiver2_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IPrintWorkflowXpsReceiver2_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IPrintWorkflowXpsReceiver2_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IPrintWorkflowXpsReceiver2_SetDocumentSequencePrintTicket(This,documentSequencePrintTicket)	\
+    ( (This)->lpVtbl -> SetDocumentSequencePrintTicket(This,documentSequencePrintTicket) ) 
+
+#define IPrintWorkflowXpsReceiver2_SetDocumentSequenceUri(This,documentSequenceUri)	\
+    ( (This)->lpVtbl -> SetDocumentSequenceUri(This,documentSequenceUri) ) 
+
+#define IPrintWorkflowXpsReceiver2_AddDocumentData(This,documentId,documentPrintTicket,documentUri)	\
+    ( (This)->lpVtbl -> AddDocumentData(This,documentId,documentPrintTicket,documentUri) ) 
+
+#define IPrintWorkflowXpsReceiver2_AddPage(This,documentId,pageId,pageReference,pageUri)	\
+    ( (This)->lpVtbl -> AddPage(This,documentId,pageId,pageReference,pageUri) ) 
+
+#define IPrintWorkflowXpsReceiver2_Close(This)	\
+    ( (This)->lpVtbl -> Close(This) ) 
+
+
+#define IPrintWorkflowXpsReceiver2_Failed(This,XpsError)	\
+    ( (This)->lpVtbl -> Failed(This,XpsError) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IPrintWorkflowXpsReceiver2_INTERFACE_DEFINED__ */
 
 
 #ifndef __IPrintWorkflowObjectModelSourceFileContentNative_INTERFACE_DEFINED__

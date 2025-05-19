@@ -229,15 +229,15 @@ static errno_t __cdecl fp_format_e(
     // To ensure that we get enough digits, we require a total of precision + 1 digits,
     // to account for the digit placed to the left of the decimal point when all digits are fractional.
     _strflt strflt;
-    unsigned const displayed_digits_count = precision + 1; // +1 for digit to left of decimal point
 
-    // Restrict buffer size because we know exactly how much space is needed to display %e formatted floating point numbers.
-    // With this change, we can optimize the %e path to not calculate precision past where will be displayed without
-    // modifying the binary interface of __acrt_fltout, which will calculate all digits that would be needed by %f formatting.
-    size_t const calculated_digits_count = displayed_digits_count + 1; // +1 to calculate the value after last displayed digit (for rounding)
-    size_t const scratch_buffer_restricted_count = min(calculated_digits_count + 1, scratch_buffer_count); // +1 for null terminator
-
-    __acrt_has_trailing_digits const trailing_digits = __acrt_fltout(*reinterpret_cast<_CRT_DOUBLE const*>(argument), displayed_digits_count, &strflt, scratch_buffer, scratch_buffer_restricted_count);
+    __acrt_has_trailing_digits const trailing_digits = __acrt_fltout(
+        *reinterpret_cast<_CRT_DOUBLE const*>(argument),
+        precision + 1,
+        __acrt_precision_style::scientific,
+        &strflt,
+        scratch_buffer,
+        scratch_buffer_count
+        );
 
     errno_t const e = __acrt_fp_strflt_to_string(
         result_buffer + (strflt.sign == '-') + (precision > 0),
@@ -260,7 +260,6 @@ static errno_t __cdecl fp_format_e(
 
 static bool fe_to_nearest(double const* const argument, unsigned __int64 const mask, short const maskpos)
 {
-
     using floating_traits = __acrt_floating_type_traits<double>;
     using components_type = floating_traits::components_type;
     components_type const* const components = reinterpret_cast<components_type const*>(argument);
@@ -300,7 +299,6 @@ static bool fe_to_nearest(double const* const argument, unsigned __int64 const m
 
 static bool should_round_up(double const* const argument, unsigned __int64 const mask, short const maskpos, __acrt_rounding_mode const rounding_mode)
 {
-
     using floating_traits = __acrt_floating_type_traits<double>;
     using components_type = floating_traits::components_type;
     components_type const* const components = reinterpret_cast<components_type const*>(argument);
@@ -359,7 +357,9 @@ static errno_t __cdecl fp_format_a(
     using components_type = floating_traits::components_type;
 
     if (precision < 0)
+    {
         precision = 0;
+    }
 
     result_buffer[0] = '\0';
 
@@ -662,7 +662,14 @@ static errno_t __cdecl fp_format_f(
     ) throw()
 {
     _strflt strflt{};
-    __acrt_has_trailing_digits const trailing_digits = __acrt_fltout(*reinterpret_cast<_CRT_DOUBLE const*>(argument), precision, &strflt, scratch_buffer, scratch_buffer_count);
+    __acrt_has_trailing_digits const trailing_digits = __acrt_fltout(
+        *reinterpret_cast<_CRT_DOUBLE const*>(argument),
+        precision,
+        __acrt_precision_style::fixed,
+        &strflt,
+        scratch_buffer,
+        scratch_buffer_count
+        );
 
     errno_t const e = __acrt_fp_strflt_to_string(
         result_buffer + (strflt.sign == '-'),
@@ -709,7 +716,18 @@ static errno_t __cdecl fp_format_g(
 ) throw()
 {
     _strflt strflt{};
-    __acrt_has_trailing_digits const trailing_digits = __acrt_fltout(*reinterpret_cast<_CRT_DOUBLE const*>(argument), precision, &strflt, scratch_buffer, scratch_buffer_count);
+
+    // Generate digits as though we will use %f formatting, then decide based on the result
+    // whether to use %f or %e formatting. %f always requires more generated digits than %e,
+    // so generating them all now will avoid generating more later (generation isn't resumable).
+    __acrt_has_trailing_digits const trailing_digits = __acrt_fltout(
+        *reinterpret_cast<_CRT_DOUBLE const*>(argument),
+        precision,
+        __acrt_precision_style::fixed,
+        &strflt,
+        scratch_buffer,
+        scratch_buffer_count
+        );
 
     size_t const minus_sign_length = strflt.sign == '-' ? 1 : 0;
 
