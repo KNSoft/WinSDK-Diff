@@ -4712,6 +4712,7 @@ typedef enum _KERB_PROTOCOL_MESSAGE_TYPE {
     KerbRetrieveKeyTabMessage,
     KerbRefreshPolicyMessage,
     KerbPrintCloudKerberosDebugMessage,
+    KerbNetworkTicketLogonMessage,
 #endif
 } KERB_PROTOCOL_MESSAGE_TYPE, *PKERB_PROTOCOL_MESSAGE_TYPE;
 

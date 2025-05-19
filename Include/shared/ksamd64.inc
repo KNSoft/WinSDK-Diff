@@ -1142,7 +1142,7 @@ PbExceptionDispatchCount equ 08170H
 PbVendorString equ 08990H
 ProcessorBlockLength equ 0BF00H
 PbShadowFlags equ 09E98H
-PbTrappedSecurityDomain equ 000F0H
+PbTrappedSecurityDomain equ 006D8H
 PbKernelShadowStackInitial equ 09428H
 
 ;

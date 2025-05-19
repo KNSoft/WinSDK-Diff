@@ -2113,6 +2113,25 @@ NetErrorLogWrite (
      * %n%nFor more information about why this was denied, please visit  https://go.microsoft.com/fwlink/?linkid=2209514.
      */
 
+#define NETLOG_NetlogonKerberosTicketLogonUnexpectedFailure (ERRLOG2_BASE + 142)
+    /*
+     * The Netlogon service encountered an unexpected error when processing a Kerberos Network Ticket Logon request. For more information, please visit https://go.microsoft.com/fwlink/?linkid=2261497. 
+     * %n%n
+     * Service Ticket Account: %1%n
+     * Service Ticket Domain: %2%n
+     * Workstation Name: %3%n
+     * Status: %4%n
+     */
+
+#define NETLOG_NetlogonKerberosTicketLogonUnpatched (ERRLOG2_BASE + 143)
+    /*
+     * The Netlogon service failed to forward a Kerberos Network Ticket Logon request to the Domain Controller %1. For more information, please visit https://go.microsoft.com/fwlink/?linkid=2261497. 
+     * %n%n
+     * Service Ticket Account: %2%n
+     * Service Ticket Domain: %3%n
+     * Workstation Name: %4%n
+     */
+
 #ifdef __cplusplus
 }
 #endif

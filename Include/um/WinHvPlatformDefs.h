@@ -227,13 +227,19 @@ typedef union WHV_PROCESSOR_FEATURES1
         UINT64 FSRepStosb : 1;
         UINT64 FSRepCmpsb : 1;
         UINT64 TsxLdTrkSupport : 1;
-        UINT64 Reserved5 : 41;
+        UINT64 RsvdZ23_42 : 20;
+        UINT64 BhiNoSupport : 1;
+        UINT64 BhiDisSupport : 1;
+        UINT64 Reserved45_47 : 3;
+        UINT64 RfdsNoSupport : 1;
+        UINT64 RfdsClearSupport : 1;
+        UINT64 Reserved50_63 : 14;
     };
 
     UINT64 AsUINT64;
 } WHV_PROCESSOR_FEATURES1;
 
-C_ASSERT(sizeof(WHV_PROCESSOR_FEATURES1) == 8);
+C_ASSERT(sizeof(WHV_PROCESSOR_FEATURES1) == sizeof(UINT64));
 
 #define WHV_PROCESSOR_FEATURES_BANKS_COUNT 2
 

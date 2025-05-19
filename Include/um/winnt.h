@@ -434,11 +434,15 @@ typedef void * POINTER_64 PVOID64;
 #define NTAPI
 #endif
 
+// end_ntminiport end_ntminitape
+
 #if !defined(_M_CEE_PURE)
 #define NTAPI_INLINE    NTAPI
 #else
 #define NTAPI_INLINE
 #endif
+
+// begin_ntminiport begin_ntminitape
 
 //
 // Define API decoration for direct importing system DLL references.
@@ -454,9 +458,7 @@ typedef void * POINTER_64 PVOID64;
 #else
 #define NTSYSCALLAPI DECLSPEC_ADDRSAFE
 #endif
-
 #endif
-
 
 //
 // Basics
@@ -16504,6 +16506,22 @@ DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_PERF, 0x619b7505, 0x3b, 0x4e82, 0x
 // {619b7505-003b-4e82-b7a6-4dd29c300972}
 //
 DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_PERF_1, 0x619b7505, 0x3b, 0x4e82, 0xb7, 0xa6, 0x4d, 0xd2, 0x9c, 0x30, 0x9, 0x72);
+
+//
+// Specifies the energy/performance preference to use in response to latency
+// sensitivity hints.
+//
+// {4B70F900-CDD9-4e66-AA26-AE8417F98173}
+//
+DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_EPP, 0x4b70f900, 0xcdd9, 0x4e66, 0xaa, 0x26, 0xae, 0x84, 0x17, 0xf9, 0x81, 0x73);
+
+//
+// Specifies the energy/performance preference to use in response to latency
+// sensitivity hints for Processor Power Efficiency Class 1.
+//
+// {4B70F900-CDD9-4e66-AA26-AE8417F98174}
+//
+DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_EPP_1, 0x4b70f900, 0xcdd9, 0x4e66, 0xaa, 0x26, 0xae, 0x84, 0x17, 0xf9, 0x81, 0x74);
 
 //
 // Specifies the minimum unparked processors when a latency hint is active

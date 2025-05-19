@@ -1683,8 +1683,8 @@ typedef enum _HTTP_REQUEST_INFO_TYPE
     HttpRequestInfoTypeTcpInfoV0,
     HttpRequestInfoTypeRequestSizing,
     HttpRequestInfoTypeQuicStats,
-    HttpRequestInfoTypeTcpInfoV1
-
+    HttpRequestInfoTypeTcpInfoV1,
+    HttpRequestInfoTypeQuicStatsV2
 } HTTP_REQUEST_INFO_TYPE, *PHTTP_REQUEST_INFO_TYPE;
 
 typedef struct _HTTP_REQUEST_INFO
@@ -2440,6 +2440,7 @@ typedef struct _HTTP_SERVICE_CONFIG_SSL_PARAM_EX
 #define HTTP_SERVICE_CONFIG_SSL_FLAG_DISABLE_TLS12              0x00001000
 #define HTTP_SERVICE_CONFIG_SSL_FLAG_ENABLE_CLIENT_CORRELATION  0x00002000
 #define HTTP_SERVICE_CONFIG_SSL_FLAG_DISABLE_SESSION_ID         0x00004000
+#define HTTP_SERVICE_CONFIG_SSL_FLAG_ENABLE_CACHE_CLIENT_HELLO  0x00008000
 
 
 //
@@ -2691,7 +2692,11 @@ typedef enum _HTTP_REQUEST_PROPERTY
     HttpRequestPropertySni,
     HttpRequestPropertyStreamError,
     HttpRequestPropertyWskApiTimings,
-    HttpRequestPropertyQuicApiTimings
+    HttpRequestPropertyQuicApiTimings,
+    HttpRequestPropertyQuicStatsV2,
+    HttpRequestPropertyQuicStreamStats,
+    HttpRequestPropertyReserved1,
+    HttpRequestPropertyTlsClientHello
 } HTTP_REQUEST_PROPERTY, *PHTTP_REQUEST_PROPERTY;
 
 typedef struct _HTTP_QUERY_REQUEST_QUALIFIER_TCP
@@ -2828,12 +2833,13 @@ typedef struct _HTTP_QUIC_STREAM_REQUEST_STATS
 
 typedef enum _HTTP_FEATURE_ID
 {
-    HttpFeatureUnknown          = 0,
-    HttpFeatureResponseTrailers = 1,
-    HttpFeatureApiTimings       = 2,
-    HttpFeatureDelegateEx       = 3,
-    HttpFeatureHttp3            = 4,
-    HttpFeatureLast             = 5,
+    HttpFeatureUnknown             = 0,
+    HttpFeatureResponseTrailers    = 1,
+    HttpFeatureApiTimings          = 2,
+    HttpFeatureDelegateEx          = 3,
+    HttpFeatureHttp3               = 4,
+    HttpFeatureCacheTlsClientHello = 11,
+    HttpFeatureLast                = 12,
 
 
     HttpFeaturemax              = 0xFFFFFFFF,

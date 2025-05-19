@@ -485,9 +485,7 @@ typedef void * POINTER_64 PVOID64;
 #endif
 
 // end_wudfwdm
-// end_ntminiport end_ntndis end_ntminitape
-
-// begin_winnt begin_ntndis
+// begin_winnt
 
 #if (_MSC_VER >= 800) || defined(_STDCALL_SUPPORTED)
 #define NTAPI __stdcall
@@ -497,11 +495,15 @@ typedef void * POINTER_64 PVOID64;
 #define NTAPI
 #endif
 
+// end_ntminiport end_ntminitape
+
 #if !defined(_M_CEE_PURE)
 #define NTAPI_INLINE    NTAPI
 #else
 #define NTAPI_INLINE
 #endif
+
+// begin_ntminiport begin_ntminitape
 
 //
 // Define API decoration for direct importing system DLL references.
@@ -517,12 +519,7 @@ typedef void * POINTER_64 PVOID64;
 #else
 #define NTSYSCALLAPI DECLSPEC_ADDRSAFE
 #endif
-
 #endif
-
-// end_winnt end_ntndis
-
-// begin_winnt begin_ntminiport begin_ntndis begin_ntminitape
 
 //
 // Basics

@@ -26218,6 +26218,15 @@ Notes:
 #define STATUS_NETWORK_AUTHENTICATION_PROMPT_CANCELED ((NTSTATUS)0xC05D0004L)
 
 //
+// MessageId: STATUS_SMB_TLS_ACCESS_DENIED
+//
+// MessageText:
+//
+// The SMB client was denied access to the SMB server during mutual authentication.
+//
+#define STATUS_SMB_TLS_ACCESS_DENIED     ((NTSTATUS)0xC05D0009L)
+
+//
 // Embedded Security Core
 //
 // Reserved id values 0x0001 - 0x00FF
@@ -26449,6 +26458,146 @@ Notes:
 // The QUIC connection failed to negotiate a compatible ALPN.
 //
 #define STATUS_QUIC_ALPN_NEG_FAILURE     ((NTSTATUS)0xC0240007L)
+
+//
+// MessageId: STATUS_QUIC_STREAM_LIMIT_REACHED
+//
+// MessageText:
+//
+// The QUIC connection failed because there are not enough streams available.
+//
+#define STATUS_QUIC_STREAM_LIMIT_REACHED ((NTSTATUS)0xC0240008L)
+
+//
+// MessageId: STATUS_QUIC_ALPN_IN_USE
+//
+// MessageText:
+//
+// The QUIC connection failed because the ALPN is in use.
+//
+#define STATUS_QUIC_ALPN_IN_USE          ((NTSTATUS)0xC0240009L)
+
+
+//
+// QUIC TLS
+//
+
+//
+// MessageId: STATUS_QUIC_TLS_UNEXPECTED_MESSAGE
+//
+// MessageText:
+//
+// The QUIC connection encountered an unexpected message during TLS.
+//
+#define STATUS_QUIC_TLS_UNEXPECTED_MESSAGE ((NTSTATUS)0xC024010AL)
+
+//
+// MessageId: STATUS_QUIC_TLS_BAD_CERTIFICATE
+//
+// MessageText:
+//
+// The QUIC connection encountered a bad certificate during TLS.
+//
+#define STATUS_QUIC_TLS_BAD_CERTIFICATE  ((NTSTATUS)0xC024012AL)
+
+//
+// MessageId: STATUS_QUIC_TLS_UNSUPPORTED_CERTIFICATE
+//
+// MessageText:
+//
+// The QUIC connection encountered an unsupported certificate during TLS.
+//
+#define STATUS_QUIC_TLS_UNSUPPORTED_CERTIFICATE ((NTSTATUS)0xC024012BL)
+
+//
+// MessageId: STATUS_QUIC_TLS_CERTIFICATE_REVOKED
+//
+// MessageText:
+//
+// The QUIC connection encountered a revoked certificate during TLS.
+//
+#define STATUS_QUIC_TLS_CERTIFICATE_REVOKED ((NTSTATUS)0xC024012CL)
+
+//
+// MessageId: STATUS_QUIC_TLS_CERTIFICATE_EXPIRED
+//
+// MessageText:
+//
+// The QUIC connection encountered an expired certificate during TLS.
+//
+#define STATUS_QUIC_TLS_CERTIFICATE_EXPIRED ((NTSTATUS)0xC024012DL)
+
+//
+// MessageId: STATUS_QUIC_TLS_CERTIFICATE_UNKNOWN
+//
+// MessageText:
+//
+// The QUIC connection encountered an unknown certificate during TLS.
+//
+#define STATUS_QUIC_TLS_CERTIFICATE_UNKNOWN ((NTSTATUS)0xC024012EL)
+
+//
+// MessageId: STATUS_QUIC_TLS_ILLEGAL_PARAMETER
+//
+// MessageText:
+//
+// The QUIC connection encountered an illegal parameter during TLS.
+//
+#define STATUS_QUIC_TLS_ILLEGAL_PARAMETER ((NTSTATUS)0xC024012FL)
+
+//
+// MessageId: STATUS_QUIC_TLS_UNKNOWN_CA
+//
+// MessageText:
+//
+// The QUIC connection encountered a certificate with an unkown certificate authority during TLS.
+//
+#define STATUS_QUIC_TLS_UNKNOWN_CA       ((NTSTATUS)0xC0240130L)
+
+//
+// MessageId: STATUS_QUIC_TLS_ACCESS_DENIED
+//
+// MessageText:
+//
+// The QUIC connection attempt was denied by the peer during TLS.
+//
+#define STATUS_QUIC_TLS_ACCESS_DENIED    ((NTSTATUS)0xC0240131L)
+
+//
+// MessageId: STATUS_QUIC_TLS_INSUFFICIENT_SECURITY
+//
+// MessageText:
+//
+// The QUIC connection security was insufficient during TLS.
+//
+#define STATUS_QUIC_TLS_INSUFFICIENT_SECURITY ((NTSTATUS)0xC0240147L)
+
+//
+// MessageId: STATUS_QUIC_TLS_INTERNAL_ERROR
+//
+// MessageText:
+//
+// The QUIC connection encountered an internal error during TLS.
+//
+#define STATUS_QUIC_TLS_INTERNAL_ERROR   ((NTSTATUS)0xC0240150L)
+
+//
+// MessageId: STATUS_QUIC_TLS_USER_CANCELED
+//
+// MessageText:
+//
+// The QUIC connection was canceled by the user during TLS.
+//
+#define STATUS_QUIC_TLS_USER_CANCELED    ((NTSTATUS)0xC024015AL)
+
+//
+// MessageId: STATUS_QUIC_TLS_CERTIFICATE_REQUIRED
+//
+// MessageText:
+//
+// The QUIC connection required a certificate during TLS.
+//
+#define STATUS_QUIC_TLS_CERTIFICATE_REQUIRED ((NTSTATUS)0xC0240174L)
 
 
 //

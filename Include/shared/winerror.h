@@ -6449,6 +6449,18 @@
 #define ERROR_SECTION_DIRECT_MAP_ONLY    819L
 
 //
+// MessageId: ERROR_LINUX_SUBSYSTEM_UPDATE_REQUIRED_LIFTED_REQUIRED
+//
+// MessageText:
+//
+// The inbox version of the Windows Subsystem For Linux has been disabled by group policy.
+// To install WSL from the store, run 'wsl.exe --update'.
+// Installing WSL from the Microsoft Store will give you the latest WSL updates, faster.
+// For more information please visit https://aka.ms/wslstoreinfo
+//
+#define ERROR_LINUX_SUBSYSTEM_UPDATE_REQUIRED_LIFTED_REQUIRED 820L
+
+//
 // **** Available SYSTEM error codes ****
 //
 //
@@ -50517,6 +50529,24 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_METADATA_FULL              _HRESULT_TYPEDEF_(0x803100ECL)
 
 //
+// MessageId: FVE_E_ENTRY_ALREADY_EXISTS
+//
+// MessageText:
+//
+// The operation failed because an entry with the given ID already exists.
+//
+#define FVE_E_ENTRY_ALREADY_EXISTS       _HRESULT_TYPEDEF_(0x803100F2L)
+
+//
+// MessageId: FVE_E_ENTRY_NOT_FOUND
+//
+// MessageText:
+//
+// The operation failed because an entry with the given ID was not found.
+//
+#define FVE_E_ENTRY_NOT_FOUND            _HRESULT_TYPEDEF_(0x803100F3L)
+
+//
 // =======================================================
 // Windows Filtering Platform Error Messages
 // =======================================================
@@ -62614,6 +62644,24 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define ERROR_SMB_NO_SIGNING_ALGORITHM_OVERLAP _HRESULT_TYPEDEF_(0xC05D0002L)
 
 //
+// MessageId: ERROR_SMB_CERT_NO_PRIVATE_KEY
+//
+// MessageText:
+//
+// The certificate does not have a private key.
+//
+#define ERROR_SMB_CERT_NO_PRIVATE_KEY    _HRESULT_TYPEDEF_(0xC05D0006L)
+
+//
+// MessageId: ERROR_SMB_TLS_ACCESS_DENIED
+//
+// MessageText:
+//
+// The SMB client was denied access to the SMB server during mutual authentication.
+//
+#define ERROR_SMB_TLS_ACCESS_DENIED      _HRESULT_TYPEDEF_(0xC05D0007L)
+
+//
 // WININET.DLL errors - propagated as HRESULT's using FACILITY=WIN32
 //
 //
@@ -64971,6 +65019,146 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // The QUIC connection failed to negotiate a compatible ALPN.
 //
 #define ERROR_QUIC_ALPN_NEG_FAILURE      _HRESULT_TYPEDEF_(0x80410007L)
+
+//
+// MessageId: ERROR_QUIC_STREAM_LIMIT_REACHED
+//
+// MessageText:
+//
+// The QUIC connection failed because there are not enough streams available.
+//
+#define ERROR_QUIC_STREAM_LIMIT_REACHED  _HRESULT_TYPEDEF_(0x80410008L)
+
+//
+// MessageId: ERROR_QUIC_ALPN_IN_USE
+//
+// MessageText:
+//
+// The QUIC connection failed because the ALPN is in use.
+//
+#define ERROR_QUIC_ALPN_IN_USE           _HRESULT_TYPEDEF_(0x80410009L)
+
+
+//
+// QUIC TLS
+//
+
+//
+// MessageId: ERROR_QUIC_TLS_UNEXPECTED_MESSAGE
+//
+// MessageText:
+//
+// The QUIC connection encountered an unexpected message during TLS.
+//
+#define ERROR_QUIC_TLS_UNEXPECTED_MESSAGE _HRESULT_TYPEDEF_(0x8041010AL)
+
+//
+// MessageId: ERROR_QUIC_TLS_BAD_CERTIFICATE
+//
+// MessageText:
+//
+// The QUIC connection encountered a bad certificate during TLS.
+//
+#define ERROR_QUIC_TLS_BAD_CERTIFICATE   _HRESULT_TYPEDEF_(0x8041012AL)
+
+//
+// MessageId: ERROR_QUIC_TLS_UNSUPPORTED_CERTIFICATE
+//
+// MessageText:
+//
+// The QUIC connection encountered an unsupported certificate during TLS.
+//
+#define ERROR_QUIC_TLS_UNSUPPORTED_CERTIFICATE _HRESULT_TYPEDEF_(0x8041012BL)
+
+//
+// MessageId: ERROR_QUIC_TLS_CERTIFICATE_REVOKED
+//
+// MessageText:
+//
+// The QUIC connection encountered a revoked certificate during TLS.
+//
+#define ERROR_QUIC_TLS_CERTIFICATE_REVOKED _HRESULT_TYPEDEF_(0x8041012CL)
+
+//
+// MessageId: ERROR_QUIC_TLS_CERTIFICATE_EXPIRED
+//
+// MessageText:
+//
+// The QUIC connection encountered an expired certificate during TLS.
+//
+#define ERROR_QUIC_TLS_CERTIFICATE_EXPIRED _HRESULT_TYPEDEF_(0x8041012DL)
+
+//
+// MessageId: ERROR_QUIC_TLS_CERTIFICATE_UNKNOWN
+//
+// MessageText:
+//
+// The QUIC connection encountered an unknown certificate during TLS.
+//
+#define ERROR_QUIC_TLS_CERTIFICATE_UNKNOWN _HRESULT_TYPEDEF_(0x8041012EL)
+
+//
+// MessageId: ERROR_QUIC_TLS_ILLEGAL_PARAMETER
+//
+// MessageText:
+//
+// The QUIC connection encountered an illegal parameter during TLS.
+//
+#define ERROR_QUIC_TLS_ILLEGAL_PARAMETER _HRESULT_TYPEDEF_(0x8041012FL)
+
+//
+// MessageId: ERROR_QUIC_TLS_UNKNOWN_CA
+//
+// MessageText:
+//
+// The QUIC connection encountered a certificate with an unkown certificate authority during TLS.
+//
+#define ERROR_QUIC_TLS_UNKNOWN_CA        _HRESULT_TYPEDEF_(0x80410130L)
+
+//
+// MessageId: ERROR_QUIC_TLS_ACCESS_DENIED
+//
+// MessageText:
+//
+// The QUIC connection attempt was denied by the peer during TLS.
+//
+#define ERROR_QUIC_TLS_ACCESS_DENIED     _HRESULT_TYPEDEF_(0x80410131L)
+
+//
+// MessageId: ERROR_QUIC_TLS_INSUFFICIENT_SECURITY
+//
+// MessageText:
+//
+// The QUIC connection security was insufficient during TLS.
+//
+#define ERROR_QUIC_TLS_INSUFFICIENT_SECURITY _HRESULT_TYPEDEF_(0x80410147L)
+
+//
+// MessageId: ERROR_QUIC_TLS_INTERNAL_ERROR
+//
+// MessageText:
+//
+// The QUIC connection encountered an internal error during TLS.
+//
+#define ERROR_QUIC_TLS_INTERNAL_ERROR    _HRESULT_TYPEDEF_(0x80410150L)
+
+//
+// MessageId: ERROR_QUIC_TLS_USER_CANCELED
+//
+// MessageText:
+//
+// The QUIC connection was canceled by the user during TLS.
+//
+#define ERROR_QUIC_TLS_USER_CANCELED     _HRESULT_TYPEDEF_(0x8041015AL)
+
+//
+// MessageId: ERROR_QUIC_TLS_CERTIFICATE_REQUIRED
+//
+// MessageText:
+//
+// The QUIC connection required a certificate during TLS.
+//
+#define ERROR_QUIC_TLS_CERTIFICATE_REQUIRED _HRESULT_TYPEDEF_(0x80410174L)
 
 
 //
