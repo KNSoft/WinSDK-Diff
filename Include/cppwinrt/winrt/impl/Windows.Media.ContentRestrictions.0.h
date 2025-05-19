@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,12 +8,12 @@
 #define WINRT_Windows_Media_ContentRestrictions_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -78,7 +78,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::ContentRestrictions::RatedContentRestrictions>{ using type = winrt::Windows::Media::ContentRestrictions::IRatedContentRestrictions; };
     template <> struct abi<winrt::Windows::Media::ContentRestrictions::IContentRestrictionsBrowsePolicy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GeographicRegion(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxBrowsableAgeRating(void**) noexcept = 0;
@@ -87,7 +87,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::ContentRestrictions::IRatedContentDescription>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall put_Id(void*) noexcept = 0;
@@ -103,14 +103,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::ContentRestrictions::IRatedContentDescriptionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::ContentRestrictions::IRatedContentRestrictions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetBrowsePolicyAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetRestrictionLevelAsync(void*, void**) noexcept = 0;
@@ -121,7 +121,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::ContentRestrictions::IRatedContentRestrictionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithMaxAgeRating(uint32_t, void**) noexcept = 0;
         };
@@ -172,7 +172,7 @@ namespace winrt::impl
         auto RequestContentAccessAsync(winrt::Windows::Media::ContentRestrictions::RatedContentDescription const& RatedContentDescription) const;
         auto RestrictionsChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using RestrictionsChanged_revoker = impl::event_revoker<winrt::Windows::Media::ContentRestrictions::IRatedContentRestrictions, &impl::abi_t<winrt::Windows::Media::ContentRestrictions::IRatedContentRestrictions>::remove_RestrictionsChanged>;
-        [[nodiscard]] RestrictionsChanged_revoker RestrictionsChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto RestrictionsChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto RestrictionsChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::ContentRestrictions::IRatedContentRestrictions>

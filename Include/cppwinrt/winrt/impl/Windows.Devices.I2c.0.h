@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -80,7 +80,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::I2c::I2cDevice>{ using type = winrt::Windows::Devices::I2c::II2cDevice; };
     template <> struct abi<winrt::Windows::Devices::I2c::II2cConnectionSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SlaveAddress(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_SlaveAddress(int32_t) noexcept = 0;
@@ -92,21 +92,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::I2c::II2cConnectionSettingsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::I2c::II2cController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDevice(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::I2c::II2cControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetControllersAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
@@ -114,7 +114,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::I2c::II2cDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConnectionSettings(void**) noexcept = 0;
@@ -128,7 +128,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::I2c::II2cDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorFromFriendlyName(void*, void**) noexcept = 0;

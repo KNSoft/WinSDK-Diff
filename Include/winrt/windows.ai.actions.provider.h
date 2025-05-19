@@ -88,7 +88,7 @@
 //  API Contract Inclusion Definitions
 #if !defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
 #if !defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
-#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x20000
+#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x40000
 #endif // defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
@@ -218,10 +218,7 @@ namespace ABI {
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__
@@ -252,7 +249,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -260,10 +256,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackH
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_INTERFACE_DEFINED__
@@ -293,7 +286,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #else // !defined(__cplusplus)
 /* Forward Declarations */
@@ -337,10 +329,7 @@ typedef interface __x_ABI_CWindows_CFoundation_CIAsyncAction __x_ABI_CWindows_CF
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 2.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__
@@ -402,7 +391,6 @@ interface __x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackHandler_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -410,10 +398,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionFeedbackH
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_INTERFACE_DEFINED__
@@ -474,7 +459,6 @@ interface __x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CProvider_CIActionProvider_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #endif // defined(__cplusplus)
 #pragma pop_macro("MIDL_CONST_ID")

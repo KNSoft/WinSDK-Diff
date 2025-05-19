@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,8 +16,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct HResult;
     struct IAsyncAction;
     struct IClosable;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -617,21 +617,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Audio::SpatialAudioFormatConfiguration>{ using type = winrt::Windows::Media::Audio::ISpatialAudioFormatConfiguration; };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioDeviceInputNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioDeviceOutputNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioEffectsPackConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EffectsPackId(void**) noexcept = 0;
@@ -642,7 +642,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioEffectsPackConfigurationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForDeviceId(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall IsDeviceIdSupported(void*, void*, bool*) noexcept = 0;
@@ -650,7 +650,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioFileInputNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_PlaybackSpeedFactor(double) noexcept = 0;
             virtual int32_t __stdcall get_PlaybackSpeedFactor(double*) noexcept = 0;
@@ -670,7 +670,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioFileOutputNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_File(void**) noexcept = 0;
             virtual int32_t __stdcall get_FileEncodingProfile(void**) noexcept = 0;
@@ -679,14 +679,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioFrameCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioFrameInputNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_PlaybackSpeedFactor(double) noexcept = 0;
             virtual int32_t __stdcall get_PlaybackSpeedFactor(double*) noexcept = 0;
@@ -701,14 +701,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioFrameOutputNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFrame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraph>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFrameInputNode(void**) noexcept = 0;
             virtual int32_t __stdcall CreateFrameInputNodeWithFormat(void*, void**) noexcept = 0;
@@ -742,7 +742,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraph2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFrameInputNodeWithFormatAndEmitter(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateDeviceInputNodeWithFormatAndEmitterOnDeviceAsync(int32_t, void*, void*, void*, void**) noexcept = 0;
@@ -753,7 +753,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraph3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMediaSourceAudioInputNodeAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateMediaSourceAudioInputNodeWithEmitterAsync(void*, void*, void**) noexcept = 0;
@@ -761,7 +761,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraphConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Destination(void**) noexcept = 0;
             virtual int32_t __stdcall put_Gain(double) noexcept = 0;
@@ -770,7 +770,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraphSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EncodingProperties(void**) noexcept = 0;
             virtual int32_t __stdcall put_EncodingProperties(void*) noexcept = 0;
@@ -788,7 +788,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraphSettings2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_MaxPlaybackSpeedFactor(double) noexcept = 0;
             virtual int32_t __stdcall get_MaxPlaybackSpeedFactor(double*) noexcept = 0;
@@ -796,28 +796,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraphSettingsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraphStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioGraphUnrecoverableErrorOccurredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioInputNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OutgoingConnections(void**) noexcept = 0;
             virtual int32_t __stdcall AddOutgoingConnection(void*) noexcept = 0;
@@ -827,14 +827,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioInputNode2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Emitter(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EffectDefinitions(void**) noexcept = 0;
             virtual int32_t __stdcall put_OutgoingGain(double) noexcept = 0;
@@ -851,7 +851,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall put_Position(winrt::Windows::Foundation::Numerics::float3) noexcept = 0;
@@ -872,7 +872,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SpatialAudioModel(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_SpatialAudioModel(int32_t) noexcept = 0;
@@ -880,7 +880,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitterConeProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InnerAngle(double*) noexcept = 0;
             virtual int32_t __stdcall get_OuterAngle(double*) noexcept = 0;
@@ -889,7 +889,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitterDecayModel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MinGain(double*) noexcept = 0;
@@ -899,7 +899,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitterDecayModelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateNatural(double, double, double, double, void**) noexcept = 0;
             virtual int32_t __stdcall CreateCustom(double, double, void**) noexcept = 0;
@@ -907,14 +907,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAudioNodeEmitter(void*, void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitterNaturalDecayModelProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnityGainDistance(double*) noexcept = 0;
             virtual int32_t __stdcall get_CutoffDistance(double*) noexcept = 0;
@@ -922,7 +922,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitterShape>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ConeProperties(void**) noexcept = 0;
@@ -930,7 +930,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeEmitterShapeStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCone(double, double, double, void**) noexcept = 0;
             virtual int32_t __stdcall CreateOmnidirectional(void**) noexcept = 0;
@@ -938,7 +938,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeListener>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall put_Position(winrt::Windows::Foundation::Numerics::float3) noexcept = 0;
@@ -952,7 +952,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioNodeWithListener>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Listener(void*) noexcept = 0;
             virtual int32_t __stdcall get_Listener(void**) noexcept = 0;
@@ -960,7 +960,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioPlaybackConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Start() noexcept = 0;
             virtual int32_t __stdcall StartAsync(void**) noexcept = 0;
@@ -974,7 +974,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioPlaybackConnectionOpenResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -982,7 +982,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioPlaybackConnectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall TryCreateFromId(void*, void**) noexcept = 0;
@@ -990,7 +990,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioStateMonitor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SoundLevelChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SoundLevelChanged(winrt::event_token) noexcept = 0;
@@ -999,7 +999,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IAudioStateMonitorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForRenderMonitoring(void**) noexcept = 0;
             virtual int32_t __stdcall CreateForRenderMonitoringWithCategory(int32_t, void**) noexcept = 0;
@@ -1013,7 +1013,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioDeviceInputNodeResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DeviceInputNode(void**) noexcept = 0;
@@ -1021,14 +1021,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioDeviceInputNodeResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioDeviceOutputNodeResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DeviceOutputNode(void**) noexcept = 0;
@@ -1036,14 +1036,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioDeviceOutputNodeResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioFileInputNodeResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_FileInputNode(void**) noexcept = 0;
@@ -1051,14 +1051,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioFileInputNodeResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioFileOutputNodeResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_FileOutputNode(void**) noexcept = 0;
@@ -1066,14 +1066,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioFileOutputNodeResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioGraphResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Graph(void**) noexcept = 0;
@@ -1081,14 +1081,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateAudioGraphResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateMediaSourceAudioInputNodeResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Node(void**) noexcept = 0;
@@ -1096,14 +1096,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ICreateMediaSourceAudioInputNodeResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IEchoEffectDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WetDryMix(double) noexcept = 0;
             virtual int32_t __stdcall get_WetDryMix(double*) noexcept = 0;
@@ -1115,14 +1115,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IEchoEffectDefinitionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IEqualizerBand>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Bandwidth(double*) noexcept = 0;
             virtual int32_t __stdcall put_Bandwidth(double) noexcept = 0;
@@ -1134,28 +1134,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IEqualizerEffectDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Bands(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IEqualizerEffectDefinitionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IFrameInputNodeQuantumStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequiredSamples(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ILimiterEffectDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Release(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_Release(uint32_t*) noexcept = 0;
@@ -1165,14 +1165,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ILimiterEffectDefinitionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::IMediaSourceAudioInputNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_PlaybackSpeedFactor(double) noexcept = 0;
             virtual int32_t __stdcall get_PlaybackSpeedFactor(double*) noexcept = 0;
@@ -1192,7 +1192,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IReverbEffectDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WetDryMix(double) noexcept = 0;
             virtual int32_t __stdcall get_WetDryMix(double*) noexcept = 0;
@@ -1244,21 +1244,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::IReverbEffectDefinitionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ISetDefaultSpatialAudioFormatResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ISpatialAudioDeviceConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsSpatialAudioSupported(bool*) noexcept = 0;
@@ -1272,14 +1272,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ISpatialAudioDeviceConfigurationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForDeviceId(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ISpatialAudioFormatConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportLicenseChangedAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ReportConfigurationChangedAsync(void*, void**) noexcept = 0;
@@ -1289,14 +1289,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ISpatialAudioFormatConfigurationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Audio::ISpatialAudioFormatSubtypeStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WindowsSonic(void**) noexcept = 0;
             virtual int32_t __stdcall get_DolbyAtmosForHeadphones(void**) noexcept = 0;
@@ -1308,7 +1308,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Audio::ISpatialAudioFormatSubtypeStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DTSXForHomeTheater(void**) noexcept = 0;
         };
@@ -1339,7 +1339,7 @@ namespace winrt::impl
         [[nodiscard]] auto Status() const;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioEffectsPackConfiguration, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioEffectsPackConfiguration, &impl::abi_t<winrt::Windows::Media::Audio::IAudioEffectsPackConfiguration>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioEffectsPackConfiguration, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioEffectsPackConfiguration, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Audio::IAudioEffectsPackConfiguration>
@@ -1373,7 +1373,7 @@ namespace winrt::impl
         [[nodiscard]] auto SourceFile() const;
         auto FileCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFileInputNode, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using FileCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioFileInputNode, &impl::abi_t<winrt::Windows::Media::Audio::IAudioFileInputNode>::remove_FileCompleted>;
-        [[nodiscard]] FileCompleted_revoker FileCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFileInputNode, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto FileCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFileInputNode, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto FileCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Audio::IAudioFileInputNode>
@@ -1410,11 +1410,11 @@ namespace winrt::impl
         [[nodiscard]] auto QueuedSampleCount() const;
         auto AudioFrameCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFrameInputNode, winrt::Windows::Media::Audio::AudioFrameCompletedEventArgs> const& handler) const;
         using AudioFrameCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioFrameInputNode, &impl::abi_t<winrt::Windows::Media::Audio::IAudioFrameInputNode>::remove_AudioFrameCompleted>;
-        [[nodiscard]] AudioFrameCompleted_revoker AudioFrameCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFrameInputNode, winrt::Windows::Media::Audio::AudioFrameCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto AudioFrameCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFrameInputNode, winrt::Windows::Media::Audio::AudioFrameCompletedEventArgs> const& handler) const;
         auto AudioFrameCompleted(winrt::event_token const& token) const noexcept;
         auto QuantumStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFrameInputNode, winrt::Windows::Media::Audio::FrameInputNodeQuantumStartedEventArgs> const& handler) const;
         using QuantumStarted_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioFrameInputNode, &impl::abi_t<winrt::Windows::Media::Audio::IAudioFrameInputNode>::remove_QuantumStarted>;
-        [[nodiscard]] QuantumStarted_revoker QuantumStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFrameInputNode, winrt::Windows::Media::Audio::FrameInputNodeQuantumStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto QuantumStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioFrameInputNode, winrt::Windows::Media::Audio::FrameInputNodeQuantumStartedEventArgs> const& handler) const;
         auto QuantumStarted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Audio::IAudioFrameInputNode>
@@ -1451,15 +1451,15 @@ namespace winrt::impl
         auto ResetAllNodes() const;
         auto QuantumStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using QuantumStarted_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioGraph, &impl::abi_t<winrt::Windows::Media::Audio::IAudioGraph>::remove_QuantumStarted>;
-        [[nodiscard]] QuantumStarted_revoker QuantumStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto QuantumStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto QuantumStarted(winrt::event_token const& token) const noexcept;
         auto QuantumProcessed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using QuantumProcessed_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioGraph, &impl::abi_t<winrt::Windows::Media::Audio::IAudioGraph>::remove_QuantumProcessed>;
-        [[nodiscard]] QuantumProcessed_revoker QuantumProcessed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto QuantumProcessed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto QuantumProcessed(winrt::event_token const& token) const noexcept;
         auto UnrecoverableErrorOccurred(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Media::Audio::AudioGraphUnrecoverableErrorOccurredEventArgs> const& handler) const;
         using UnrecoverableErrorOccurred_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioGraph, &impl::abi_t<winrt::Windows::Media::Audio::IAudioGraph>::remove_UnrecoverableErrorOccurred>;
-        [[nodiscard]] UnrecoverableErrorOccurred_revoker UnrecoverableErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Media::Audio::AudioGraphUnrecoverableErrorOccurredEventArgs> const& handler) const;
+        [[nodiscard]] auto UnrecoverableErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioGraph, winrt::Windows::Media::Audio::AudioGraphUnrecoverableErrorOccurredEventArgs> const& handler) const;
         auto UnrecoverableErrorOccurred(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto CompletedQuantumCount() const;
         [[nodiscard]] auto EncodingProperties() const;
@@ -1745,7 +1745,7 @@ namespace winrt::impl
         auto OpenAsync() const;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioPlaybackConnection, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioPlaybackConnection, &impl::abi_t<winrt::Windows::Media::Audio::IAudioPlaybackConnection>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioPlaybackConnection, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioPlaybackConnection, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Audio::IAudioPlaybackConnection>
@@ -1777,7 +1777,7 @@ namespace winrt::impl
     {
         auto SoundLevelChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioStateMonitor, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SoundLevelChanged_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IAudioStateMonitor, &impl::abi_t<winrt::Windows::Media::Audio::IAudioStateMonitor>::remove_SoundLevelChanged>;
-        [[nodiscard]] SoundLevelChanged_revoker SoundLevelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioStateMonitor, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SoundLevelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::AudioStateMonitor, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SoundLevelChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto SoundLevel() const;
     };
@@ -2017,7 +2017,7 @@ namespace winrt::impl
         [[nodiscard]] auto MediaSource() const;
         auto MediaSourceCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::MediaSourceAudioInputNode, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using MediaSourceCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Audio::IMediaSourceAudioInputNode, &impl::abi_t<winrt::Windows::Media::Audio::IMediaSourceAudioInputNode>::remove_MediaSourceCompleted>;
-        [[nodiscard]] MediaSourceCompleted_revoker MediaSourceCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::MediaSourceAudioInputNode, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto MediaSourceCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::MediaSourceAudioInputNode, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto MediaSourceCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Audio::IMediaSourceAudioInputNode>
@@ -2107,7 +2107,7 @@ namespace winrt::impl
         auto SetDefaultSpatialAudioFormatAsync(param::hstring const& subtype) const;
         auto ConfigurationChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::SpatialAudioDeviceConfiguration, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ConfigurationChanged_revoker = impl::event_revoker<winrt::Windows::Media::Audio::ISpatialAudioDeviceConfiguration, &impl::abi_t<winrt::Windows::Media::Audio::ISpatialAudioDeviceConfiguration>::remove_ConfigurationChanged>;
-        [[nodiscard]] ConfigurationChanged_revoker ConfigurationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::SpatialAudioDeviceConfiguration, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ConfigurationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Audio::SpatialAudioDeviceConfiguration, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ConfigurationChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Audio::ISpatialAudioDeviceConfiguration>

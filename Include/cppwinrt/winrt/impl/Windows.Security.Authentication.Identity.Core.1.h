@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,42 +9,42 @@
 #include "winrt/impl/Windows.Security.Authentication.Identity.Core.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Identity::Core
 {
-    struct __declspec(empty_bases) IMicrosoftAccountMultiFactorAuthenticationManager :
+    struct WINRT_IMPL_EMPTY_BASES IMicrosoftAccountMultiFactorAuthenticationManager :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMicrosoftAccountMultiFactorAuthenticationManager>
     {
         IMicrosoftAccountMultiFactorAuthenticationManager(std::nullptr_t = nullptr) noexcept {}
         IMicrosoftAccountMultiFactorAuthenticationManager(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMicrosoftAccountMultiFactorAuthenticatorStatics :
+    struct WINRT_IMPL_EMPTY_BASES IMicrosoftAccountMultiFactorAuthenticatorStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMicrosoftAccountMultiFactorAuthenticatorStatics>
     {
         IMicrosoftAccountMultiFactorAuthenticatorStatics(std::nullptr_t = nullptr) noexcept {}
         IMicrosoftAccountMultiFactorAuthenticatorStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMicrosoftAccountMultiFactorGetSessionsResult :
+    struct WINRT_IMPL_EMPTY_BASES IMicrosoftAccountMultiFactorGetSessionsResult :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMicrosoftAccountMultiFactorGetSessionsResult>
     {
         IMicrosoftAccountMultiFactorGetSessionsResult(std::nullptr_t = nullptr) noexcept {}
         IMicrosoftAccountMultiFactorGetSessionsResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMicrosoftAccountMultiFactorOneTimeCodedInfo :
+    struct WINRT_IMPL_EMPTY_BASES IMicrosoftAccountMultiFactorOneTimeCodedInfo :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMicrosoftAccountMultiFactorOneTimeCodedInfo>
     {
         IMicrosoftAccountMultiFactorOneTimeCodedInfo(std::nullptr_t = nullptr) noexcept {}
         IMicrosoftAccountMultiFactorOneTimeCodedInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMicrosoftAccountMultiFactorSessionInfo :
+    struct WINRT_IMPL_EMPTY_BASES IMicrosoftAccountMultiFactorSessionInfo :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMicrosoftAccountMultiFactorSessionInfo>
     {
         IMicrosoftAccountMultiFactorSessionInfo(std::nullptr_t = nullptr) noexcept {}
         IMicrosoftAccountMultiFactorSessionInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo :
+    struct WINRT_IMPL_EMPTY_BASES IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo>
     {

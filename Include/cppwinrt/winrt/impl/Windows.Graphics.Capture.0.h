@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics
 {
@@ -149,7 +149,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Capture::GraphicsCaptureSession>{ using type = winrt::Windows::Graphics::Capture::IGraphicsCaptureSession; };
     template <> struct abi<winrt::Windows::Graphics::Capture::IDirect3D11CaptureFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Surface(void**) noexcept = 0;
             virtual int32_t __stdcall get_SystemRelativeTime(int64_t*) noexcept = 0;
@@ -158,7 +158,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IDirect3D11CaptureFrame2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DirtyRegions(void**) noexcept = 0;
             virtual int32_t __stdcall get_DirtyRegionMode(int32_t*) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IDirect3D11CaptureFramePool>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Recreate(void*, int32_t, int32_t, struct struct_Windows_Graphics_SizeInt32) noexcept = 0;
             virtual int32_t __stdcall TryGetNextFrame(void**) noexcept = 0;
@@ -178,28 +178,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IDirect3D11CaptureFramePoolStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, int32_t, int32_t, struct struct_Windows_Graphics_SizeInt32, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IDirect3D11CaptureFramePoolStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFreeThreaded(void*, int32_t, int32_t, struct struct_Windows_Graphics_SizeInt32, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureAccessStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Size(struct struct_Windows_Graphics_SizeInt32*) noexcept = 0;
@@ -209,14 +209,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromVisual(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureItemStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateFromWindowId(struct struct_Windows_UI_WindowId, void**) noexcept = 0;
             virtual int32_t __stdcall TryCreateFromDisplayId(struct struct_Windows_Graphics_DisplayId, void**) noexcept = 0;
@@ -224,21 +224,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCapturePicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PickSingleItemAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartCapture() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureSession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCursorCaptureEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsCursorCaptureEnabled(bool) noexcept = 0;
@@ -246,7 +246,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureSession3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBorderRequired(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsBorderRequired(bool) noexcept = 0;
@@ -254,7 +254,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureSession4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DirtyRegionMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DirtyRegionMode(int32_t) noexcept = 0;
@@ -262,7 +262,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureSession5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinUpdateInterval(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_MinUpdateInterval(int64_t) noexcept = 0;
@@ -270,7 +270,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureSession6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IncludeSecondaryWindows(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IncludeSecondaryWindows(bool) noexcept = 0;
@@ -278,7 +278,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Capture::IGraphicsCaptureSessionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
         };
@@ -311,7 +311,7 @@ namespace winrt::impl
         auto TryGetNextFrame() const;
         auto FrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Capture::Direct3D11CaptureFramePool, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using FrameArrived_revoker = impl::event_revoker<winrt::Windows::Graphics::Capture::IDirect3D11CaptureFramePool, &impl::abi_t<winrt::Windows::Graphics::Capture::IDirect3D11CaptureFramePool>::remove_FrameArrived>;
-        [[nodiscard]] FrameArrived_revoker FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Capture::Direct3D11CaptureFramePool, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Capture::Direct3D11CaptureFramePool, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto FrameArrived(winrt::event_token const& token) const noexcept;
         auto CreateCaptureSession(winrt::Windows::Graphics::Capture::GraphicsCaptureItem const& item) const;
         [[nodiscard]] auto DispatcherQueue() const;
@@ -354,7 +354,7 @@ namespace winrt::impl
         [[nodiscard]] auto Size() const;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Capture::GraphicsCaptureItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Graphics::Capture::IGraphicsCaptureItem, &impl::abi_t<winrt::Windows::Graphics::Capture::IGraphicsCaptureItem>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Capture::GraphicsCaptureItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Capture::GraphicsCaptureItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Capture::IGraphicsCaptureItem>

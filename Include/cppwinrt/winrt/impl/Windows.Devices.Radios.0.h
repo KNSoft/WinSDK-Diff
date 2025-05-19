@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Radios
 {
@@ -58,7 +58,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Radios::Radio>{ using type = winrt::Windows::Devices::Radios::IRadio; };
     template <> struct abi<winrt::Windows::Devices::Radios::IRadio>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetStateAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall add_StateChanged(void*, winrt::event_token*) noexcept = 0;
@@ -70,7 +70,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Radios::IRadioStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetRadiosAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -84,7 +84,7 @@ namespace winrt::impl
         auto SetStateAsync(winrt::Windows::Devices::Radios::RadioState const& value) const;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Radios::Radio, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Radios::IRadio, &impl::abi_t<winrt::Windows::Devices::Radios::IRadio>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Radios::Radio, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Radios::Radio, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StateChanged(winrt::event_token const& eventCookie) const noexcept;
         [[nodiscard]] auto State() const;
         [[nodiscard]] auto Name() const;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,12 +15,12 @@ WINRT_EXPORT namespace winrt::Windows::System::Diagnostics::Telemetry
         static auto Register(param::hstring const& id);
         static auto Register(param::hstring const& id, winrt::Windows::System::Diagnostics::Telemetry::PlatformTelemetryRegistrationSettings const& settings);
     };
-    struct __declspec(empty_bases) PlatformTelemetryRegistrationResult : winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationResult
+    struct WINRT_IMPL_EMPTY_BASES PlatformTelemetryRegistrationResult : winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationResult
     {
         PlatformTelemetryRegistrationResult(std::nullptr_t) noexcept {}
         PlatformTelemetryRegistrationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) PlatformTelemetryRegistrationSettings : winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationSettings
+    struct WINRT_IMPL_EMPTY_BASES PlatformTelemetryRegistrationSettings : winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationSettings
     {
         PlatformTelemetryRegistrationSettings(std::nullptr_t) noexcept {}
         PlatformTelemetryRegistrationSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationSettings(ptr, take_ownership_from_abi) {}

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,13 +10,13 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TResult, typename TProgress> struct __declspec(empty_bases) IAsyncOperationWithProgress;
-    template <typename TResult> struct __declspec(empty_bases) IAsyncOperation;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TResult, typename TProgress> struct WINRT_IMPL_EMPTY_BASES IAsyncOperationWithProgress;
+    template <typename TResult> struct WINRT_IMPL_EMPTY_BASES IAsyncOperation;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -192,6 +192,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Sms
     struct SmsEncodedLength;
     struct SmsDeviceStatusChangedEventHandler;
     struct SmsMessageReceivedEventHandler;
+    struct LegacySmsApiContract;
 }
 namespace winrt::impl
 {
@@ -327,6 +328,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Sms::ISmsWapMessage> = L"Windows.Devices.Sms.ISmsWapMessage";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Sms::SmsDeviceStatusChangedEventHandler> = L"Windows.Devices.Sms.SmsDeviceStatusChangedEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Sms::SmsMessageReceivedEventHandler> = L"Windows.Devices.Sms.SmsMessageReceivedEventHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Sms::LegacySmsApiContract> = L"Windows.Devices.Sms.LegacySmsApiContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Sms::ISmsAppMessage>{ 0xE8BB8494,0xD3A0,0x4A0A,{ 0x86,0xD7,0x29,0x10,0x33,0xA8,0xCF,0x54 } }; // E8BB8494-D3A0-4A0A-86D7-291033A8CF54
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Sms::ISmsBinaryMessage>{ 0x5BF4E813,0x3B53,0x4C6E,{ 0xB6,0x1A,0xD8,0x6A,0x63,0x75,0x56,0x50 } }; // 5BF4E813-3B53-4C6E-B61A-D86A63755650
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Sms::ISmsBroadcastMessage>{ 0x75AEBBF1,0xE4B7,0x4874,{ 0xA0,0x9C,0x29,0x56,0xE5,0x92,0xF9,0x57 } }; // 75AEBBF1-E4B7-4874-A09C-2956E592F957
@@ -383,7 +385,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Sms::SmsWapMessage>{ using type = winrt::Windows::Devices::Sms::ISmsWapMessage; };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsAppMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_To(void**) noexcept = 0;
@@ -411,7 +413,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsBinaryMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Format(int32_t) noexcept = 0;
@@ -421,7 +423,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsBroadcastMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_To(void**) noexcept = 0;
@@ -437,7 +439,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendMessageAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CalculateLength(void*, struct struct_Windows_Devices_Sms_SmsEncodedLength*) noexcept = 0;
@@ -453,7 +455,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsDevice2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SmscAddress(void**) noexcept = 0;
             virtual int32_t __stdcall put_SmscAddress(void*) noexcept = 0;
@@ -470,7 +472,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsDevice2Statics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromId(void*, void**) noexcept = 0;
@@ -480,7 +482,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsDeviceMessageStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DeleteMessageAsync(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall DeleteMessagesAsync(int32_t, void**) noexcept = 0;
@@ -491,7 +493,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -500,14 +502,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsDeviceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromNetworkAccountIdAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsFilterRule>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MessageType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ImsiPrefixes(void**) noexcept = 0;
@@ -527,14 +529,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsFilterRuleFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFilterRule(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsFilterRules>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActionType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Rules(void**) noexcept = 0;
@@ -542,14 +544,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsFilterRulesFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFilterRules(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MessageClass(int32_t*) noexcept = 0;
@@ -557,7 +559,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsMessageBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MessageType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
@@ -568,7 +570,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsMessageReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextMessage(void**) noexcept = 0;
             virtual int32_t __stdcall get_BinaryMessage(void**) noexcept = 0;
@@ -576,7 +578,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsMessageReceivedTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MessageType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_TextMessage(void**) noexcept = 0;
@@ -591,7 +593,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsMessageRegistration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall Unregister() noexcept = 0;
@@ -601,7 +603,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsMessageRegistrationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllRegistrations(void**) noexcept = 0;
             virtual int32_t __stdcall Register(void*, void*, void**) noexcept = 0;
@@ -609,7 +611,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsReceivedEventDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_MessageIndex(uint32_t*) noexcept = 0;
@@ -617,7 +619,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsReceivedEventDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MessageClass(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_BinaryMessage(void**) noexcept = 0;
@@ -625,7 +627,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsSendMessageResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSuccessful(bool*) noexcept = 0;
             virtual int32_t __stdcall get_MessageReferenceNumbers(void**) noexcept = 0;
@@ -638,7 +640,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsStatusMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_To(void**) noexcept = 0;
             virtual int32_t __stdcall get_From(void**) noexcept = 0;
@@ -651,7 +653,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsTextMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_PartReferenceId(uint32_t*) noexcept = 0;
@@ -670,7 +672,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsTextMessage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_To(void**) noexcept = 0;
@@ -692,7 +694,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsTextMessageStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromBinaryMessage(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FromBinaryData(int32_t, uint32_t, uint8_t*, void**) noexcept = 0;
@@ -700,7 +702,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsVoicemailMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_To(void**) noexcept = 0;
@@ -710,7 +712,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::ISmsWapMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_To(void**) noexcept = 0;
@@ -723,14 +725,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sms::SmsDeviceStatusChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sms::SmsMessageReceivedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -806,11 +808,11 @@ namespace winrt::impl
         [[nodiscard]] auto DeviceStatus() const;
         auto SmsMessageReceived(winrt::Windows::Devices::Sms::SmsMessageReceivedEventHandler const& eventHandler) const;
         using SmsMessageReceived_revoker = impl::event_revoker<winrt::Windows::Devices::Sms::ISmsDevice, &impl::abi_t<winrt::Windows::Devices::Sms::ISmsDevice>::remove_SmsMessageReceived>;
-        [[nodiscard]] SmsMessageReceived_revoker SmsMessageReceived(auto_revoke_t, winrt::Windows::Devices::Sms::SmsMessageReceivedEventHandler const& eventHandler) const;
+        [[nodiscard]] auto SmsMessageReceived(auto_revoke_t, winrt::Windows::Devices::Sms::SmsMessageReceivedEventHandler const& eventHandler) const;
         auto SmsMessageReceived(winrt::event_token const& eventCookie) const noexcept;
         auto SmsDeviceStatusChanged(winrt::Windows::Devices::Sms::SmsDeviceStatusChangedEventHandler const& eventHandler) const;
         using SmsDeviceStatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sms::ISmsDevice, &impl::abi_t<winrt::Windows::Devices::Sms::ISmsDevice>::remove_SmsDeviceStatusChanged>;
-        [[nodiscard]] SmsDeviceStatusChanged_revoker SmsDeviceStatusChanged(auto_revoke_t, winrt::Windows::Devices::Sms::SmsDeviceStatusChangedEventHandler const& eventHandler) const;
+        [[nodiscard]] auto SmsDeviceStatusChanged(auto_revoke_t, winrt::Windows::Devices::Sms::SmsDeviceStatusChangedEventHandler const& eventHandler) const;
         auto SmsDeviceStatusChanged(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sms::ISmsDevice>
@@ -831,7 +833,7 @@ namespace winrt::impl
         auto SendMessageAndGetResultAsync(winrt::Windows::Devices::Sms::ISmsMessageBase const& message) const;
         auto DeviceStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sms::SmsDevice2, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using DeviceStatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sms::ISmsDevice2, &impl::abi_t<winrt::Windows::Devices::Sms::ISmsDevice2>::remove_DeviceStatusChanged>;
-        [[nodiscard]] DeviceStatusChanged_revoker DeviceStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sms::SmsDevice2, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto DeviceStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sms::SmsDevice2, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto DeviceStatusChanged(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sms::ISmsDevice2>
@@ -990,7 +992,7 @@ namespace winrt::impl
         auto Unregister() const;
         auto MessageReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sms::SmsMessageRegistration, winrt::Windows::Devices::Sms::SmsMessageReceivedTriggerDetails> const& eventHandler) const;
         using MessageReceived_revoker = impl::event_revoker<winrt::Windows::Devices::Sms::ISmsMessageRegistration, &impl::abi_t<winrt::Windows::Devices::Sms::ISmsMessageRegistration>::remove_MessageReceived>;
-        [[nodiscard]] MessageReceived_revoker MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sms::SmsMessageRegistration, winrt::Windows::Devices::Sms::SmsMessageReceivedTriggerDetails> const& eventHandler) const;
+        [[nodiscard]] auto MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sms::SmsMessageRegistration, winrt::Windows::Devices::Sms::SmsMessageReceivedTriggerDetails> const& eventHandler) const;
         auto MessageReceived(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sms::ISmsMessageRegistration>

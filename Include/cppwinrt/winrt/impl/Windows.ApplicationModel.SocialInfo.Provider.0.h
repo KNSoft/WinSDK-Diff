@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -48,7 +48,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::SocialInfo::Provider::SocialFeedUpdater>{ using type = winrt::Windows::ApplicationModel::SocialInfo::Provider::ISocialFeedUpdater; };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::Provider::ISocialDashboardItemUpdater>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OwnerRemoteId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
@@ -63,7 +63,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::Provider::ISocialFeedUpdater>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OwnerRemoteId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -73,7 +73,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::Provider::ISocialInfoProviderManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSocialFeedUpdaterAsync(int32_t, int32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateDashboardItemUpdaterAsync(void*, void**) noexcept = 0;

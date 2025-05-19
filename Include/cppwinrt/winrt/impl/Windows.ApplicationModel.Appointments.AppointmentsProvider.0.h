@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -52,7 +52,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider::ReplaceAppointmentOperation>{ using type = winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider::IReplaceAppointmentOperation; };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider::IAddAppointmentOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentInformation(void**) noexcept = 0;
             virtual int32_t __stdcall get_SourcePackageFamilyName(void**) noexcept = 0;
@@ -64,7 +64,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider::IAppointmentsProviderLaunchActionVerbsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AddAppointment(void**) noexcept = 0;
             virtual int32_t __stdcall get_ReplaceAppointment(void**) noexcept = 0;
@@ -74,14 +74,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider::IAppointmentsProviderLaunchActionVerbsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShowAppointmentDetails(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider::IRemoveAppointmentOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentId(void**) noexcept = 0;
             virtual int32_t __stdcall get_InstanceStartDate(void**) noexcept = 0;
@@ -94,7 +94,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider::IReplaceAppointmentOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppointmentInformation(void**) noexcept = 0;

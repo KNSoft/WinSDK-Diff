@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -18,12 +18,12 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Store::LicenseManagemen
         static auto GetSatisfactionInfosAsync(param::async_iterable<hstring> const& contentIds, param::async_iterable<hstring> const& keyIds);
         static auto RefreshLicensesAsync(winrt::Windows::ApplicationModel::Store::LicenseManagement::LicenseRefreshOption const& refreshOption);
     };
-    struct __declspec(empty_bases) LicenseSatisfactionInfo : winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionInfo
+    struct WINRT_IMPL_EMPTY_BASES LicenseSatisfactionInfo : winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionInfo
     {
         LicenseSatisfactionInfo(std::nullptr_t) noexcept {}
         LicenseSatisfactionInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionInfo(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) LicenseSatisfactionResult : winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionResult
+    struct WINRT_IMPL_EMPTY_BASES LicenseSatisfactionResult : winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionResult
     {
         LicenseSatisfactionResult(std::nullptr_t) noexcept {}
         LicenseSatisfactionResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionResult(ptr, take_ownership_from_abi) {}

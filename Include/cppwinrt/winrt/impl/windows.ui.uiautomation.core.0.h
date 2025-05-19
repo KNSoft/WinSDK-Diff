@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::UIAutomation
 {
@@ -128,7 +128,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::UIAutomation::Core::RemoteAutomationWindow>{ using type = winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationWindow; };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::IAutomationRemoteOperationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -139,14 +139,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::ICoreAutomationConnectionBoundObjectProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsComThreadingRequired(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::ICoreAutomationRegistrarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterAnnotationType(winrt::guid, struct struct_Windows_UI_UIAutomation_Core_AutomationAnnotationTypeRegistration*) noexcept = 0;
             virtual int32_t __stdcall UnregisterAnnotationType(struct struct_Windows_UI_UIAutomation_Core_AutomationAnnotationTypeRegistration) noexcept = 0;
@@ -154,7 +154,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::ICoreAutomationRemoteOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsOpcodeSupported(uint32_t, bool*) noexcept = 0;
             virtual int32_t __stdcall ImportElement(struct struct_Windows_UI_UIAutomation_Core_AutomationRemoteOperationOperandId, void*) noexcept = 0;
@@ -165,14 +165,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::ICoreAutomationRemoteOperation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ImportConnectionBoundObject(struct struct_Windows_UI_UIAutomation_Core_AutomationRemoteOperationOperandId, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::ICoreAutomationRemoteOperationContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetOperand(struct struct_Windows_UI_UIAutomation_Core_AutomationRemoteOperationOperandId, void**) noexcept = 0;
             virtual int32_t __stdcall SetOperand(struct struct_Windows_UI_UIAutomation_Core_AutomationRemoteOperationOperandId, void*) noexcept = 0;
@@ -181,7 +181,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::ICoreAutomationRemoteOperationExtensionProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CallExtension(winrt::guid, void*, uint32_t, struct struct_Windows_UI_UIAutomation_Core_AutomationRemoteOperationOperandId*) noexcept = 0;
             virtual int32_t __stdcall IsExtensionSupported(winrt::guid, bool*) noexcept = 0;
@@ -189,7 +189,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationClientSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Start() noexcept = 0;
             virtual int32_t __stdcall Stop() noexcept = 0;
@@ -203,7 +203,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationClientSessionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstance2(void*, winrt::guid, void**) noexcept = 0;
@@ -211,7 +211,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationConnectionRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalPipeName(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemoteProcessId(uint32_t*) noexcept = 0;
@@ -219,21 +219,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationDisconnectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalPipeName(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationServerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportSession(winrt::guid) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationWindow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutomationProvider(void**) noexcept = 0;
             virtual int32_t __stdcall UnregisterAsync(void**) noexcept = 0;
@@ -323,11 +323,11 @@ namespace winrt::impl
         [[nodiscard]] auto SessionId() const;
         auto ConnectionRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::UIAutomation::Core::RemoteAutomationClientSession, winrt::Windows::UI::UIAutomation::Core::RemoteAutomationConnectionRequestedEventArgs> const& handler) const;
         using ConnectionRequested_revoker = impl::event_revoker<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationClientSession, &impl::abi_t<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationClientSession>::remove_ConnectionRequested>;
-        [[nodiscard]] ConnectionRequested_revoker ConnectionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::UIAutomation::Core::RemoteAutomationClientSession, winrt::Windows::UI::UIAutomation::Core::RemoteAutomationConnectionRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ConnectionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::UIAutomation::Core::RemoteAutomationClientSession, winrt::Windows::UI::UIAutomation::Core::RemoteAutomationConnectionRequestedEventArgs> const& handler) const;
         auto ConnectionRequested(winrt::event_token const& token) const noexcept;
         auto Disconnected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::UIAutomation::Core::RemoteAutomationClientSession, winrt::Windows::UI::UIAutomation::Core::RemoteAutomationDisconnectedEventArgs> const& handler) const;
         using Disconnected_revoker = impl::event_revoker<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationClientSession, &impl::abi_t<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationClientSession>::remove_Disconnected>;
-        [[nodiscard]] Disconnected_revoker Disconnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::UIAutomation::Core::RemoteAutomationClientSession, winrt::Windows::UI::UIAutomation::Core::RemoteAutomationDisconnectedEventArgs> const& handler) const;
+        [[nodiscard]] auto Disconnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::UIAutomation::Core::RemoteAutomationClientSession, winrt::Windows::UI::UIAutomation::Core::RemoteAutomationDisconnectedEventArgs> const& handler) const;
         auto Disconnected(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::UIAutomation::Core::IRemoteAutomationClientSession>

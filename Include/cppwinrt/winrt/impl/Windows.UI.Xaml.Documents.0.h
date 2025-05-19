@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,12 +10,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Core
 {
@@ -433,7 +433,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Documents::Underline>{ using type = winrt::Windows::UI::Xaml::Documents::IUnderline; };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IBlock>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextAlignment(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_TextAlignment(int32_t) noexcept = 0;
@@ -447,7 +447,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IBlock2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalTextAlignment(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_HorizontalTextAlignment(int32_t) noexcept = 0;
@@ -455,14 +455,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IBlockFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IBlockStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextAlignmentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_LineHeightProperty(void**) noexcept = 0;
@@ -472,26 +472,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IBlockStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalTextAlignmentProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IBold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IContactContentLinkProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IContentLink>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Info(void**) noexcept = 0;
             virtual int32_t __stdcall put_Info(void*) noexcept = 0;
@@ -533,7 +533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IContentLinkInvokedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentLinkInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
@@ -542,26 +542,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IContentLinkProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IContentLinkProviderCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IContentLinkProviderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IContentLinkStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CursorProperty(void**) noexcept = 0;
@@ -581,7 +581,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IGlyphs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnicodeString(void**) noexcept = 0;
             virtual int32_t __stdcall put_UnicodeString(void*) noexcept = 0;
@@ -603,7 +603,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IGlyphs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsColorFontEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsColorFontEnabled(bool) noexcept = 0;
@@ -613,7 +613,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IGlyphsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnicodeStringProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IndicesProperty(void**) noexcept = 0;
@@ -627,7 +627,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IGlyphsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsColorFontEnabledProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ColorFontPaletteIndexProperty(void**) noexcept = 0;
@@ -635,7 +635,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlink>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NavigateUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_NavigateUri(void*) noexcept = 0;
@@ -645,7 +645,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlink2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnderlineStyle(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_UnderlineStyle(int32_t) noexcept = 0;
@@ -653,7 +653,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlink3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XYFocusLeft(void**) noexcept = 0;
             virtual int32_t __stdcall put_XYFocusLeft(void*) noexcept = 0;
@@ -669,7 +669,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlink4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FocusState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_XYFocusUpNavigationStrategy(int32_t*) noexcept = 0;
@@ -689,7 +689,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlink5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTabStop(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsTabStop(bool) noexcept = 0;
@@ -699,27 +699,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlinkClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlinkStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NavigateUriProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlinkStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnderlineStyleProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlinkStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XYFocusLeftProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_XYFocusRightProperty(void**) noexcept = 0;
@@ -730,7 +730,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlinkStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FocusStateProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_XYFocusUpNavigationStrategyProperty(void**) noexcept = 0;
@@ -741,7 +741,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IHyperlinkStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTabStopProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TabIndexProperty(void**) noexcept = 0;
@@ -749,20 +749,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IInline>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IInlineFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IInlineUIContainer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Child(void**) noexcept = 0;
             virtual int32_t __stdcall put_Child(void*) noexcept = 0;
@@ -770,19 +770,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IItalic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ILineBreak>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IParagraph>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Inlines(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextIndent(double*) noexcept = 0;
@@ -791,20 +791,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IParagraphStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextIndentProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IPlaceContentLinkProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IRun>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -814,14 +814,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IRunStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FlowDirectionProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ISpan>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Inlines(void**) noexcept = 0;
             virtual int32_t __stdcall put_Inlines(void*) noexcept = 0;
@@ -829,14 +829,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ISpanFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_FontSize(double*) noexcept = 0;
@@ -864,7 +864,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElement2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsTextScaleFactorEnabled(bool) noexcept = 0;
@@ -872,7 +872,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElement3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowFocusOnInteraction(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowFocusOnInteraction(bool) noexcept = 0;
@@ -884,7 +884,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElement4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextDecorations(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_TextDecorations(uint32_t) noexcept = 0;
@@ -908,7 +908,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElement5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XamlRoot(void**) noexcept = 0;
             virtual int32_t __stdcall put_XamlRoot(void*) noexcept = 0;
@@ -916,20 +916,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElementFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElementOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnDisconnectVisualChildren() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontSizeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FontFamilyProperty(void**) noexcept = 0;
@@ -943,14 +943,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElementStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElementStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowFocusOnInteractionProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_AccessKeyProperty(void**) noexcept = 0;
@@ -959,7 +959,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextElementStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextDecorationsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsAccessKeyScopeProperty(void**) noexcept = 0;
@@ -971,7 +971,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextHighlighter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Ranges(void**) noexcept = 0;
             virtual int32_t __stdcall get_Foreground(void**) noexcept = 0;
@@ -982,26 +982,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextHighlighterBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextHighlighterBaseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextHighlighterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextHighlighterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ForegroundProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_BackgroundProperty(void**) noexcept = 0;
@@ -1009,7 +1009,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITextPointer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Parent(void**) noexcept = 0;
             virtual int32_t __stdcall get_VisualParent(void**) noexcept = 0;
@@ -1021,13 +1021,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITypography>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::ITypographyStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnnotationAlternatesProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetAnnotationAlternates(void*, int32_t*) noexcept = 0;
@@ -1162,7 +1162,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Documents::IUnderline>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
@@ -1272,15 +1272,15 @@ namespace winrt::impl
         auto TabIndex(int32_t value) const;
         auto Invoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::ContentLink, winrt::Windows::UI::Xaml::Documents::ContentLinkInvokedEventArgs> const& handler) const;
         using Invoked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::IContentLink, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::IContentLink>::remove_Invoked>;
-        [[nodiscard]] Invoked_revoker Invoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::ContentLink, winrt::Windows::UI::Xaml::Documents::ContentLinkInvokedEventArgs> const& handler) const;
+        [[nodiscard]] auto Invoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::ContentLink, winrt::Windows::UI::Xaml::Documents::ContentLinkInvokedEventArgs> const& handler) const;
         auto Invoked(winrt::event_token const& token) const noexcept;
         auto GotFocus(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using GotFocus_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::IContentLink, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::IContentLink>::remove_GotFocus>;
-        [[nodiscard]] GotFocus_revoker GotFocus(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto GotFocus(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto GotFocus(winrt::event_token const& token) const noexcept;
         auto LostFocus(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using LostFocus_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::IContentLink, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::IContentLink>::remove_LostFocus>;
-        [[nodiscard]] LostFocus_revoker LostFocus(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto LostFocus(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto LostFocus(winrt::event_token const& token) const noexcept;
         auto Focus(winrt::Windows::UI::Xaml::FocusState const& value) const;
     };
@@ -1415,7 +1415,7 @@ namespace winrt::impl
         auto NavigateUri(winrt::Windows::Foundation::Uri const& value) const;
         auto Click(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::Hyperlink, winrt::Windows::UI::Xaml::Documents::HyperlinkClickEventArgs> const& handler) const;
         using Click_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::IHyperlink, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::IHyperlink>::remove_Click>;
-        [[nodiscard]] Click_revoker Click(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::Hyperlink, winrt::Windows::UI::Xaml::Documents::HyperlinkClickEventArgs> const& handler) const;
+        [[nodiscard]] auto Click(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::Hyperlink, winrt::Windows::UI::Xaml::Documents::HyperlinkClickEventArgs> const& handler) const;
         auto Click(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Documents::IHyperlink>
@@ -1464,11 +1464,11 @@ namespace winrt::impl
         auto XYFocusRightNavigationStrategy(winrt::Windows::UI::Xaml::Input::XYFocusNavigationStrategy const& value) const;
         auto GotFocus(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using GotFocus_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::IHyperlink4, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::IHyperlink4>::remove_GotFocus>;
-        [[nodiscard]] GotFocus_revoker GotFocus(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto GotFocus(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto GotFocus(winrt::event_token const& token) const noexcept;
         auto LostFocus(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using LostFocus_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::IHyperlink4, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::IHyperlink4>::remove_LostFocus>;
-        [[nodiscard]] LostFocus_revoker LostFocus(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto LostFocus(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto LostFocus(winrt::event_token const& token) const noexcept;
         auto Focus(winrt::Windows::UI::Xaml::FocusState const& value) const;
     };
@@ -1732,15 +1732,15 @@ namespace winrt::impl
         auto KeyTipVerticalOffset(double value) const;
         auto AccessKeyDisplayRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyDisplayRequestedEventArgs> const& handler) const;
         using AccessKeyDisplayRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::ITextElement4, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::ITextElement4>::remove_AccessKeyDisplayRequested>;
-        [[nodiscard]] AccessKeyDisplayRequested_revoker AccessKeyDisplayRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyDisplayRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto AccessKeyDisplayRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyDisplayRequestedEventArgs> const& handler) const;
         auto AccessKeyDisplayRequested(winrt::event_token const& token) const noexcept;
         auto AccessKeyDisplayDismissed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyDisplayDismissedEventArgs> const& handler) const;
         using AccessKeyDisplayDismissed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::ITextElement4, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::ITextElement4>::remove_AccessKeyDisplayDismissed>;
-        [[nodiscard]] AccessKeyDisplayDismissed_revoker AccessKeyDisplayDismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyDisplayDismissedEventArgs> const& handler) const;
+        [[nodiscard]] auto AccessKeyDisplayDismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyDisplayDismissedEventArgs> const& handler) const;
         auto AccessKeyDisplayDismissed(winrt::event_token const& token) const noexcept;
         auto AccessKeyInvoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyInvokedEventArgs> const& handler) const;
         using AccessKeyInvoked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Documents::ITextElement4, &impl::abi_t<winrt::Windows::UI::Xaml::Documents::ITextElement4>::remove_AccessKeyInvoked>;
-        [[nodiscard]] AccessKeyInvoked_revoker AccessKeyInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyInvokedEventArgs> const& handler) const;
+        [[nodiscard]] auto AccessKeyInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Documents::TextElement, winrt::Windows::UI::Xaml::Input::AccessKeyInvokedEventArgs> const& handler) const;
         auto AccessKeyInvoked(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Documents::ITextElement4>

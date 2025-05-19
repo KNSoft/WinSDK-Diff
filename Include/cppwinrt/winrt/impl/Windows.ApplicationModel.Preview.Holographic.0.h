@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -43,7 +43,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Preview::Holographic::HolographicKeyboardPlacementOverridePreview>{ using type = winrt::Windows::ApplicationModel::Preview::Holographic::IHolographicKeyboardPlacementOverridePreview; };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Holographic::IHolographicApplicationPreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsCurrentViewPresentedOnHolographicDisplay(bool*) noexcept = 0;
             virtual int32_t __stdcall IsHolographicActivation(void*, bool*) noexcept = 0;
@@ -51,7 +51,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Holographic::IHolographicKeyboardPlacementOverridePreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetPlacementOverride(void*, winrt::Windows::Foundation::Numerics::float3, winrt::Windows::Foundation::Numerics::float3) noexcept = 0;
             virtual int32_t __stdcall SetPlacementOverrideWithMaxSize(void*, winrt::Windows::Foundation::Numerics::float3, winrt::Windows::Foundation::Numerics::float3, winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -60,7 +60,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Holographic::IHolographicKeyboardPlacementOverridePreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,7 +16,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics
 {
@@ -262,7 +262,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Miracast::MiracastTransmitter>{ using type = winrt::Windows::Media::Miracast::IMiracastTransmitter; };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiver>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultSettings(void**) noexcept = 0;
             virtual int32_t __stdcall GetCurrentSettings(void**) noexcept = 0;
@@ -281,7 +281,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverApplySettingsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -289,7 +289,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Disconnect(int32_t) noexcept = 0;
             virtual int32_t __stdcall DisconnectWithMessage(int32_t, void*) noexcept = 0;
@@ -305,7 +305,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverConnectionCreatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Connection(void**) noexcept = 0;
             virtual int32_t __stdcall get_Pin(void**) noexcept = 0;
@@ -314,7 +314,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverCursorImageChannel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_MaxImageSize(struct struct_Windows_Graphics_SizeInt32*) noexcept = 0;
@@ -328,7 +328,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverCursorImageChannelSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -338,14 +338,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverDisconnectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Connection(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverGameControllerDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransmitInput(bool*) noexcept = 0;
             virtual int32_t __stdcall put_TransmitInput(bool) noexcept = 0;
@@ -359,7 +359,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverInputDevices>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Keyboard(void**) noexcept = 0;
             virtual int32_t __stdcall get_GameController(void**) noexcept = 0;
@@ -367,7 +367,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverKeyboardDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransmitInput(bool*) noexcept = 0;
             virtual int32_t __stdcall put_TransmitInput(bool) noexcept = 0;
@@ -379,7 +379,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverMediaSourceCreatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Connection(void**) noexcept = 0;
             virtual int32_t __stdcall get_MediaSource(void**) noexcept = 0;
@@ -389,7 +389,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ConnectionCreated(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ConnectionCreated(winrt::event_token) noexcept = 0;
@@ -407,7 +407,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverSessionStartResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -415,7 +415,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FriendlyName(void**) noexcept = 0;
             virtual int32_t __stdcall put_FriendlyName(void*) noexcept = 0;
@@ -431,7 +431,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ListeningStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_WiFiStatus(int32_t*) noexcept = 0;
@@ -442,7 +442,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverStreamControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetVideoStreamSettings(void**) noexcept = 0;
             virtual int32_t __stdcall GetVideoStreamSettingsAsync(void**) noexcept = 0;
@@ -454,7 +454,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastReceiverVideoStreamSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Size(struct struct_Windows_Graphics_SizeInt32*) noexcept = 0;
             virtual int32_t __stdcall put_Size(struct struct_Windows_Graphics_SizeInt32) noexcept = 0;
@@ -464,7 +464,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Miracast::IMiracastTransmitter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -487,7 +487,7 @@ namespace winrt::impl
         auto GetStatusAsync() const;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiver, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Media::Miracast::IMiracastReceiver, &impl::abi_t<winrt::Windows::Media::Miracast::IMiracastReceiver>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiver, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiver, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
         auto CreateSession(winrt::Windows::ApplicationModel::Core::CoreApplicationView const& view) const;
         auto CreateSessionAsync(winrt::Windows::ApplicationModel::Core::CoreApplicationView const& view) const;
@@ -546,11 +546,11 @@ namespace winrt::impl
         [[nodiscard]] auto ImageStream() const;
         auto ImageStreamChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverCursorImageChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ImageStreamChanged_revoker = impl::event_revoker<winrt::Windows::Media::Miracast::IMiracastReceiverCursorImageChannel, &impl::abi_t<winrt::Windows::Media::Miracast::IMiracastReceiverCursorImageChannel>::remove_ImageStreamChanged>;
-        [[nodiscard]] ImageStreamChanged_revoker ImageStreamChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverCursorImageChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ImageStreamChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverCursorImageChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ImageStreamChanged(winrt::event_token const& token) const noexcept;
         auto PositionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverCursorImageChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PositionChanged_revoker = impl::event_revoker<winrt::Windows::Media::Miracast::IMiracastReceiverCursorImageChannel, &impl::abi_t<winrt::Windows::Media::Miracast::IMiracastReceiverCursorImageChannel>::remove_PositionChanged>;
-        [[nodiscard]] PositionChanged_revoker PositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverCursorImageChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverCursorImageChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PositionChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Miracast::IMiracastReceiverCursorImageChannel>
@@ -589,7 +589,7 @@ namespace winrt::impl
         auto Mode(winrt::Windows::Media::Miracast::MiracastReceiverGameControllerDeviceUsageMode const& value) const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverGameControllerDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::Media::Miracast::IMiracastReceiverGameControllerDevice, &impl::abi_t<winrt::Windows::Media::Miracast::IMiracastReceiverGameControllerDevice>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverGameControllerDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverGameControllerDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Miracast::IMiracastReceiverGameControllerDevice>
@@ -615,7 +615,7 @@ namespace winrt::impl
         [[nodiscard]] auto IsTransmittingInput() const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverKeyboardDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::Media::Miracast::IMiracastReceiverKeyboardDevice, &impl::abi_t<winrt::Windows::Media::Miracast::IMiracastReceiverKeyboardDevice>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverKeyboardDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverKeyboardDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Miracast::IMiracastReceiverKeyboardDevice>
@@ -639,15 +639,15 @@ namespace winrt::impl
     {
         auto ConnectionCreated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverConnectionCreatedEventArgs> const& handler) const;
         using ConnectionCreated_revoker = impl::event_revoker<winrt::Windows::Media::Miracast::IMiracastReceiverSession, &impl::abi_t<winrt::Windows::Media::Miracast::IMiracastReceiverSession>::remove_ConnectionCreated>;
-        [[nodiscard]] ConnectionCreated_revoker ConnectionCreated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverConnectionCreatedEventArgs> const& handler) const;
+        [[nodiscard]] auto ConnectionCreated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverConnectionCreatedEventArgs> const& handler) const;
         auto ConnectionCreated(winrt::event_token const& token) const noexcept;
         auto MediaSourceCreated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverMediaSourceCreatedEventArgs> const& handler) const;
         using MediaSourceCreated_revoker = impl::event_revoker<winrt::Windows::Media::Miracast::IMiracastReceiverSession, &impl::abi_t<winrt::Windows::Media::Miracast::IMiracastReceiverSession>::remove_MediaSourceCreated>;
-        [[nodiscard]] MediaSourceCreated_revoker MediaSourceCreated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverMediaSourceCreatedEventArgs> const& handler) const;
+        [[nodiscard]] auto MediaSourceCreated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverMediaSourceCreatedEventArgs> const& handler) const;
         auto MediaSourceCreated(winrt::event_token const& token) const noexcept;
         auto Disconnected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverDisconnectedEventArgs> const& handler) const;
         using Disconnected_revoker = impl::event_revoker<winrt::Windows::Media::Miracast::IMiracastReceiverSession, &impl::abi_t<winrt::Windows::Media::Miracast::IMiracastReceiverSession>::remove_Disconnected>;
-        [[nodiscard]] Disconnected_revoker Disconnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverDisconnectedEventArgs> const& handler) const;
+        [[nodiscard]] auto Disconnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Miracast::MiracastReceiverSession, winrt::Windows::Media::Miracast::MiracastReceiverDisconnectedEventArgs> const& handler) const;
         auto Disconnected(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto AllowConnectionTakeover() const;
         auto AllowConnectionTakeover(bool value) const;

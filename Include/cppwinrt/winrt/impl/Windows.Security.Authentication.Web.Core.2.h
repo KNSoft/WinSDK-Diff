@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,29 +12,29 @@
 #include "winrt/impl/Windows.Security.Authentication.Web.Core.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web::Core
 {
-    struct __declspec(empty_bases) FindAllAccountsResult : winrt::Windows::Security::Authentication::Web::Core::IFindAllAccountsResult
+    struct WINRT_IMPL_EMPTY_BASES FindAllAccountsResult : winrt::Windows::Security::Authentication::Web::Core::IFindAllAccountsResult
     {
         FindAllAccountsResult(std::nullptr_t) noexcept {}
         FindAllAccountsResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IFindAllAccountsResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) WebAccountEventArgs : winrt::Windows::Security::Authentication::Web::Core::IWebAccountEventArgs
+    struct WINRT_IMPL_EMPTY_BASES WebAccountEventArgs : winrt::Windows::Security::Authentication::Web::Core::IWebAccountEventArgs
     {
         WebAccountEventArgs(std::nullptr_t) noexcept {}
         WebAccountEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IWebAccountEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) WebAccountMonitor : winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor,
+    struct WINRT_IMPL_EMPTY_BASES WebAccountMonitor : winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor,
         impl::require<WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor2>
     {
         WebAccountMonitor(std::nullptr_t) noexcept {}
         WebAccountMonitor(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) WebAuthenticationAddAccountResponse : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResponse
+    struct WINRT_IMPL_EMPTY_BASES WebAuthenticationAddAccountResponse : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResponse
     {
         WebAuthenticationAddAccountResponse(std::nullptr_t) noexcept {}
         WebAuthenticationAddAccountResponse(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResponse(ptr, take_ownership_from_abi) {}
         explicit WebAuthenticationAddAccountResponse(winrt::Windows::Security::Credentials::WebAccount const& webAccount);
     };
-    struct __declspec(empty_bases) WebAuthenticationAddAccountResult : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResult
+    struct WINRT_IMPL_EMPTY_BASES WebAuthenticationAddAccountResult : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResult
     {
         WebAuthenticationAddAccountResult(std::nullptr_t) noexcept {}
         WebAuthenticationAddAccountResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResult(ptr, take_ownership_from_abi) {}
@@ -58,20 +58,20 @@ WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web::Core
         static auto FindSystemAccountProviderAsync(param::hstring const& webAccountProviderId, param::hstring const& authority, winrt::Windows::System::User const& user);
         static auto AddAccountWithTransferTokenAsync(winrt::Windows::Security::Authentication::Web::Core::WebAuthenticationTransferTokenRequest const& request);
     };
-    struct __declspec(empty_bases) WebAuthenticationTransferTokenRequest : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationTransferTokenRequest
+    struct WINRT_IMPL_EMPTY_BASES WebAuthenticationTransferTokenRequest : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationTransferTokenRequest
     {
         WebAuthenticationTransferTokenRequest(std::nullptr_t) noexcept {}
         WebAuthenticationTransferTokenRequest(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationTransferTokenRequest(ptr, take_ownership_from_abi) {}
         WebAuthenticationTransferTokenRequest(winrt::Windows::Security::Credentials::WebAccountProvider const& provider, param::hstring const& transferToken);
         WebAuthenticationTransferTokenRequest(winrt::Windows::Security::Credentials::WebAccountProvider const& provider, param::hstring const& transferToken, param::hstring const& correlationId);
     };
-    struct __declspec(empty_bases) WebProviderError : winrt::Windows::Security::Authentication::Web::Core::IWebProviderError
+    struct WINRT_IMPL_EMPTY_BASES WebProviderError : winrt::Windows::Security::Authentication::Web::Core::IWebProviderError
     {
         WebProviderError(std::nullptr_t) noexcept {}
         WebProviderError(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IWebProviderError(ptr, take_ownership_from_abi) {}
         WebProviderError(uint32_t errorCode, param::hstring const& errorMessage);
     };
-    struct __declspec(empty_bases) WebTokenRequest : winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequest,
+    struct WINRT_IMPL_EMPTY_BASES WebTokenRequest : winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequest,
         impl::require<WebTokenRequest, winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequest2, winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequest3>
     {
         WebTokenRequest(std::nullptr_t) noexcept {}
@@ -81,12 +81,12 @@ WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web::Core
         explicit WebTokenRequest(winrt::Windows::Security::Credentials::WebAccountProvider const& provider);
         WebTokenRequest(winrt::Windows::Security::Credentials::WebAccountProvider const& provider, param::hstring const& scope);
     };
-    struct __declspec(empty_bases) WebTokenRequestResult : winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequestResult
+    struct WINRT_IMPL_EMPTY_BASES WebTokenRequestResult : winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequestResult
     {
         WebTokenRequestResult(std::nullptr_t) noexcept {}
         WebTokenRequestResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequestResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) WebTokenResponse : winrt::Windows::Security::Authentication::Web::Core::IWebTokenResponse
+    struct WINRT_IMPL_EMPTY_BASES WebTokenResponse : winrt::Windows::Security::Authentication::Web::Core::IWebTokenResponse
     {
         WebTokenResponse(std::nullptr_t) noexcept {}
         WebTokenResponse(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::Core::IWebTokenResponse(ptr, take_ownership_from_abi) {}

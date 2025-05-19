@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::WindowManagement
@@ -55,20 +55,20 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Core::Preview::SystemNavigationManagerPreview>{ using type = winrt::Windows::UI::Core::Preview::ISystemNavigationManagerPreview; };
     template <> struct abi<winrt::Windows::UI::Core::Preview::ICoreAppWindowPreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::Preview::ICoreAppWindowPreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetIdFromWindow(void*, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::Preview::ISystemNavigationCloseRequestedPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -77,7 +77,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::Preview::ISystemNavigationManagerPreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CloseRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CloseRequested(winrt::event_token) noexcept = 0;
@@ -85,7 +85,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::Preview::ISystemNavigationManagerPreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
@@ -123,7 +123,7 @@ namespace winrt::impl
     {
         auto CloseRequested(winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Core::Preview::SystemNavigationCloseRequestedPreviewEventArgs> const& handler) const;
         using CloseRequested_revoker = impl::event_revoker<winrt::Windows::UI::Core::Preview::ISystemNavigationManagerPreview, &impl::abi_t<winrt::Windows::UI::Core::Preview::ISystemNavigationManagerPreview>::remove_CloseRequested>;
-        [[nodiscard]] CloseRequested_revoker CloseRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Core::Preview::SystemNavigationCloseRequestedPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto CloseRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Core::Preview::SystemNavigationCloseRequestedPreviewEventArgs> const& handler) const;
         auto CloseRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::Preview::ISystemNavigationManagerPreview>

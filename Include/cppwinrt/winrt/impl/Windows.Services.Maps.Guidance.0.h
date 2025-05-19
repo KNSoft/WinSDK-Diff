@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -17,7 +17,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Services::Maps
 {
@@ -255,7 +255,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Services::Maps::Guidance::GuidanceUpdatedEventArgs>{ using type = winrt::Windows::Services::Maps::Guidance::IGuidanceUpdatedEventArgs; };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceAudioNotificationRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioNotification(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AudioFilePaths(void**) noexcept = 0;
@@ -264,7 +264,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceLaneInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LaneMarkers(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsOnRoute(bool*) noexcept = 0;
@@ -272,7 +272,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceManeuver>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartLocation(void**) noexcept = 0;
             virtual int32_t __stdcall get_DistanceFromRouteStart(int32_t*) noexcept = 0;
@@ -290,7 +290,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceMapMatchedCoordinate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
             virtual int32_t __stdcall get_CurrentHeading(double*) noexcept = 0;
@@ -301,7 +301,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartNavigating(void*) noexcept = 0;
             virtual int32_t __stdcall StartSimulating(void*, int32_t) noexcept = 0;
@@ -335,7 +335,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AudioNotificationRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AudioNotificationRequested(winrt::event_token) noexcept = 0;
@@ -345,28 +345,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigatorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrent(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigatorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseAppProvidedVoice(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceReroutedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Route(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceRoadSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RoadName(void**) noexcept = 0;
             virtual int32_t __stdcall get_ShortRoadName(void**) noexcept = 0;
@@ -381,14 +381,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceRoadSegment2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsScenic(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceRoadSignpost>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExitNumber(void**) noexcept = 0;
             virtual int32_t __stdcall get_Exit(void**) noexcept = 0;
@@ -399,7 +399,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceRoute>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Duration(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Distance(int32_t*) noexcept = 0;
@@ -412,7 +412,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceRouteStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CanCreateFromMapRoute(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall TryCreateFromMapRoute(void*, void**) noexcept = 0;
@@ -420,7 +420,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceTelemetryCollector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Enabled(bool) noexcept = 0;
@@ -433,14 +433,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceTelemetryCollectorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrent(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::Guidance::IGuidanceUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NextManeuver(void**) noexcept = 0;
@@ -528,31 +528,31 @@ namespace winrt::impl
         auto AudioNotifications(winrt::Windows::Services::Maps::Guidance::GuidanceAudioNotifications const& value) const;
         auto GuidanceUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceUpdatedEventArgs> const& handler) const;
         using GuidanceUpdated_revoker = impl::event_revoker<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator, &impl::abi_t<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator>::remove_GuidanceUpdated>;
-        [[nodiscard]] GuidanceUpdated_revoker GuidanceUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto GuidanceUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceUpdatedEventArgs> const& handler) const;
         auto GuidanceUpdated(winrt::event_token const& token) const noexcept;
         auto DestinationReached(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DestinationReached_revoker = impl::event_revoker<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator, &impl::abi_t<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator>::remove_DestinationReached>;
-        [[nodiscard]] DestinationReached_revoker DestinationReached(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DestinationReached(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DestinationReached(winrt::event_token const& token) const noexcept;
         auto Rerouting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Rerouting_revoker = impl::event_revoker<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator, &impl::abi_t<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator>::remove_Rerouting>;
-        [[nodiscard]] Rerouting_revoker Rerouting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Rerouting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Rerouting(winrt::event_token const& token) const noexcept;
         auto Rerouted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceReroutedEventArgs> const& handler) const;
         using Rerouted_revoker = impl::event_revoker<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator, &impl::abi_t<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator>::remove_Rerouted>;
-        [[nodiscard]] Rerouted_revoker Rerouted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceReroutedEventArgs> const& handler) const;
+        [[nodiscard]] auto Rerouted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceReroutedEventArgs> const& handler) const;
         auto Rerouted(winrt::event_token const& token) const noexcept;
         auto RerouteFailed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using RerouteFailed_revoker = impl::event_revoker<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator, &impl::abi_t<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator>::remove_RerouteFailed>;
-        [[nodiscard]] RerouteFailed_revoker RerouteFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto RerouteFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto RerouteFailed(winrt::event_token const& token) const noexcept;
         auto UserLocationLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using UserLocationLost_revoker = impl::event_revoker<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator, &impl::abi_t<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator>::remove_UserLocationLost>;
-        [[nodiscard]] UserLocationLost_revoker UserLocationLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto UserLocationLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto UserLocationLost(winrt::event_token const& token) const noexcept;
         auto UserLocationRestored(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using UserLocationRestored_revoker = impl::event_revoker<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator, &impl::abi_t<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator>::remove_UserLocationRestored>;
-        [[nodiscard]] UserLocationRestored_revoker UserLocationRestored(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto UserLocationRestored(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto UserLocationRestored(winrt::event_token const& token) const noexcept;
         auto SetGuidanceVoice(int32_t voiceId, param::hstring const& voiceFolder) const;
         auto UpdateUserLocation(winrt::Windows::Devices::Geolocation::Geocoordinate const& userLocation) const;
@@ -567,7 +567,7 @@ namespace winrt::impl
     {
         auto AudioNotificationRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceAudioNotificationRequestedEventArgs> const& value) const;
         using AudioNotificationRequested_revoker = impl::event_revoker<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator2, &impl::abi_t<winrt::Windows::Services::Maps::Guidance::IGuidanceNavigator2>::remove_AudioNotificationRequested>;
-        [[nodiscard]] AudioNotificationRequested_revoker AudioNotificationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceAudioNotificationRequestedEventArgs> const& value) const;
+        [[nodiscard]] auto AudioNotificationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::Guidance::GuidanceNavigator, winrt::Windows::Services::Maps::Guidance::GuidanceAudioNotificationRequestedEventArgs> const& value) const;
         auto AudioNotificationRequested(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto IsGuidanceAudioMuted() const;
         auto IsGuidanceAudioMuted(bool value) const;

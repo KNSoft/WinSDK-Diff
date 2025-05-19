@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -44,7 +44,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Diagnostics::Telemetry::PlatformTelemetryRegistrationSettings>{ using type = winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationSettings; };
     template <> struct abi<winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryClientStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Register(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RegisterWithSettings(void*, void*, void**) noexcept = 0;
@@ -52,14 +52,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::Telemetry::IPlatformTelemetryRegistrationSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StorageSize(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_StorageSize(uint32_t) noexcept = 0;

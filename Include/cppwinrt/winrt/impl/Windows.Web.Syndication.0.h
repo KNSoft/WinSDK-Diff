@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -200,7 +200,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Web::Syndication::SyndicationText>{ using type = winrt::Windows::Web::Syndication::ISyndicationText; };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationAttribute>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -212,14 +212,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationAttributeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationAttribute(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationCategory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
             virtual int32_t __stdcall put_Label(void*) noexcept = 0;
@@ -231,7 +231,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationCategoryFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationCategory(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateSyndicationCategoryEx(void*, void*, void*, void**) noexcept = 0;
@@ -239,7 +239,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationClient>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerCredential(void**) noexcept = 0;
             virtual int32_t __stdcall put_ServerCredential(void*) noexcept = 0;
@@ -257,14 +257,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationClientFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationClient(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_SourceUri(void*) noexcept = 0;
@@ -272,7 +272,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationContentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationContent(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateSyndicationContentWithSourceUri(void*, void**) noexcept = 0;
@@ -280,14 +280,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationErrorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStatus(int32_t, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationFeed>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Authors(void**) noexcept = 0;
             virtual int32_t __stdcall get_Categories(void**) noexcept = 0;
@@ -321,14 +321,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationFeedFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationFeed(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationGenerator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -340,14 +340,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationGeneratorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationGenerator(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Authors(void**) noexcept = 0;
             virtual int32_t __stdcall get_Categories(void**) noexcept = 0;
@@ -381,14 +381,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationItem(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationLink>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Length(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Length(uint32_t) noexcept = 0;
@@ -406,7 +406,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationLinkFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationLink(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateSyndicationLinkEx(void*, void*, void*, void*, uint32_t, void**) noexcept = 0;
@@ -414,7 +414,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NodeName(void**) noexcept = 0;
             virtual int32_t __stdcall put_NodeName(void*) noexcept = 0;
@@ -433,14 +433,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationNodeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationNode(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationPerson>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Email(void**) noexcept = 0;
             virtual int32_t __stdcall put_Email(void*) noexcept = 0;
@@ -452,7 +452,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationPersonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationPerson(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateSyndicationPersonEx(void*, void*, void*, void**) noexcept = 0;
@@ -460,7 +460,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationText>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -472,7 +472,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Syndication::ISyndicationTextFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSyndicationText(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateSyndicationTextEx(void*, int32_t, void**) noexcept = 0;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,20 +13,20 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
@@ -534,6 +534,7 @@ WINRT_EXPORT namespace winrt::Windows::System
     struct UserPicker;
     struct UserWatcher;
     struct DispatcherQueueHandler;
+    struct SystemManagementContract;
 }
 namespace winrt::impl
 {
@@ -841,6 +842,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::System::IUserStatics2> = L"Windows.System.IUserStatics2";
     template <> inline constexpr auto& name_v<winrt::Windows::System::IUserWatcher> = L"Windows.System.IUserWatcher";
     template <> inline constexpr auto& name_v<winrt::Windows::System::DispatcherQueueHandler> = L"Windows.System.DispatcherQueueHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::System::SystemManagementContract> = L"Windows.System.SystemManagementContract";
     template <> inline constexpr guid guid_v<winrt::Windows::System::IAppActivationResult>{ 0x6B528900,0xF46E,0x4EB0,{ 0xAA,0x6C,0x38,0xAF,0x55,0x7C,0xF9,0xED } }; // 6B528900-F46E-4EB0-AA6C-38AF557CF9ED
     template <> inline constexpr guid guid_v<winrt::Windows::System::IAppDiagnosticInfo>{ 0xE348A69A,0x8889,0x4CA3,{ 0xBE,0x07,0xD5,0xFF,0xFF,0x5F,0x08,0x04 } }; // E348A69A-8889-4CA3-BE07-D5FFFF5F0804
     template <> inline constexpr guid guid_v<winrt::Windows::System::IAppDiagnosticInfo2>{ 0xDF46FBD7,0x191A,0x446C,{ 0x94,0x73,0x8F,0xBC,0x23,0x74,0xA3,0x54 } }; // DF46FBD7-191A-446C-9473-8FBC2374A354
@@ -961,7 +963,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::UserWatcher>{ using type = winrt::Windows::System::IUserWatcher; };
     template <> struct abi<winrt::Windows::System::IAppActivationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_AppResourceGroupInfo(void**) noexcept = 0;
@@ -969,14 +971,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppDiagnosticInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IAppDiagnosticInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetResourceGroups(void**) noexcept = 0;
             virtual int32_t __stdcall CreateResourceGroupWatcher(void**) noexcept = 0;
@@ -984,21 +986,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppDiagnosticInfo3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IAppDiagnosticInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestInfoAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IAppDiagnosticInfoStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWatcher(void**) noexcept = 0;
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
@@ -1009,7 +1011,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppDiagnosticInfoWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Added(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Added(winrt::event_token) noexcept = 0;
@@ -1026,21 +1028,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppDiagnosticInfoWatcherEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppDiagnosticInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IAppExecutionStateChangeResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IAppMemoryReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrivateCommitUsage(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_PeakPrivateCommitUsage(uint64_t*) noexcept = 0;
@@ -1050,14 +1052,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppMemoryReport2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExpectedTotalCommitLimit(uint64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IAppMemoryUsageLimitChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldLimit(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewLimit(uint64_t*) noexcept = 0;
@@ -1065,7 +1067,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppResourceGroupBackgroundTaskReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TaskId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -1075,7 +1077,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppResourceGroupInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InstanceId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_IsShared(bool*) noexcept = 0;
@@ -1087,7 +1089,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppResourceGroupInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartSuspendAsync(void**) noexcept = 0;
             virtual int32_t __stdcall StartResumeAsync(void**) noexcept = 0;
@@ -1096,7 +1098,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppResourceGroupInfoWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Added(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Added(winrt::event_token) noexcept = 0;
@@ -1115,7 +1117,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppResourceGroupInfoWatcherEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppDiagnosticInfos(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppResourceGroupInfo(void**) noexcept = 0;
@@ -1123,7 +1125,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppResourceGroupInfoWatcherExecutionStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppDiagnosticInfos(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppResourceGroupInfo(void**) noexcept = 0;
@@ -1131,7 +1133,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppResourceGroupMemoryReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommitUsageLimit(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_CommitUsageLevel(int32_t*) noexcept = 0;
@@ -1141,7 +1143,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppResourceGroupStateReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExecutionState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_EnergyQuotaState(int32_t*) noexcept = 0;
@@ -1149,7 +1151,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerHost>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -1157,7 +1159,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerHost2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -1165,14 +1167,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerHostFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerRegistration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -1182,7 +1184,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerRegistration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAllHosts(void**) noexcept = 0;
             virtual int32_t __stdcall UpdateHosts(void*) noexcept = 0;
@@ -1191,7 +1193,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerRegistrationManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall TryGetRegistration(void*, void**) noexcept = 0;
@@ -1199,14 +1201,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerRegistrationManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageFamilyName(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerRegistrationManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -1214,7 +1216,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IAppUriHandlerRegistrationManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForPackage(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetForPackageForUser(void*, void*, void**) noexcept = 0;
@@ -1222,14 +1224,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IDateTimeSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetSystemDateTime(int64_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IDispatcherQueue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTimer(void**) noexcept = 0;
             virtual int32_t __stdcall TryEnqueue(void*, bool*) noexcept = 0;
@@ -1242,14 +1244,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IDispatcherQueue2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasThreadAccess(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IDispatcherQueueController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DispatcherQueue(void**) noexcept = 0;
             virtual int32_t __stdcall ShutdownQueueAsync(void**) noexcept = 0;
@@ -1257,28 +1259,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IDispatcherQueueControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateOnDedicatedThread(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IDispatcherQueueShutdownStartingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IDispatcherQueueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentThread(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IDispatcherQueueTimer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Interval(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_Interval(int64_t) noexcept = 0;
@@ -1293,14 +1295,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IFolderLauncherOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsToSelect(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IKnownUserPropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_FirstName(void**) noexcept = 0;
@@ -1315,14 +1317,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IKnownUserPropertiesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AgeEnforcementRegion(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::ILaunchUriResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Result(void**) noexcept = 0;
@@ -1330,7 +1332,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TreatAsUntrusted(bool*) noexcept = 0;
             virtual int32_t __stdcall put_TreatAsUntrusted(bool) noexcept = 0;
@@ -1349,7 +1351,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetApplicationPackageFamilyName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetApplicationPackageFamilyName(void*) noexcept = 0;
@@ -1359,7 +1361,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherOptions3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IgnoreAppUriHandlers(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IgnoreAppUriHandlers(bool) noexcept = 0;
@@ -1367,7 +1369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherOptions4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LimitPickerToCurrentAppAndAppUriHandlers(bool*) noexcept = 0;
             virtual int32_t __stdcall put_LimitPickerToCurrentAppAndAppUriHandlers(bool) noexcept = 0;
@@ -1375,7 +1377,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchFileAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LaunchFileWithOptionsAsync(void*, void*, void**) noexcept = 0;
@@ -1385,7 +1387,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchUriForResultsAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall LaunchUriForResultsWithDataAsync(void*, void*, void*, void**) noexcept = 0;
@@ -1401,7 +1403,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchFolderAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LaunchFolderWithOptionsAsync(void*, void*, void**) noexcept = 0;
@@ -1409,7 +1411,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall QueryAppUriSupportAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall QueryAppUriSupportWithPackageFamilyNameAsync(void*, void*, void**) noexcept = 0;
@@ -1423,7 +1425,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchFolderPathAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LaunchFolderPathWithOptionsAsync(void*, void*, void**) noexcept = 0;
@@ -1433,7 +1435,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherUIOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InvocationPoint(void**) noexcept = 0;
             virtual int32_t __stdcall put_InvocationPoint(void*) noexcept = 0;
@@ -1445,7 +1447,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ILauncherViewOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredRemainingView(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DesiredRemainingView(int32_t) noexcept = 0;
@@ -1453,7 +1455,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IMemoryManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppMemoryUsage(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AppMemoryUsageLimit(uint64_t*) noexcept = 0;
@@ -1468,7 +1470,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IMemoryManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAppMemoryReport(void**) noexcept = 0;
             virtual int32_t __stdcall GetProcessMemoryReport(void**) noexcept = 0;
@@ -1476,21 +1478,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IMemoryManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TrySetAppMemoryUsageLimit(uint64_t, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IMemoryManagerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExpectedAppMemoryUsageLimit(uint64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IProcessLauncherOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StandardInput(void**) noexcept = 0;
             virtual int32_t __stdcall put_StandardInput(void*) noexcept = 0;
@@ -1504,14 +1506,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IProcessLauncherResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExitCode(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IProcessLauncherStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RunToCompletionAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall RunToCompletionAsyncWithOptions(void*, void*, void*, void**) noexcept = 0;
@@ -1519,7 +1521,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IProcessMemoryReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrivateWorkingSetUsage(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_TotalWorkingSetUsage(uint64_t*) noexcept = 0;
@@ -1527,14 +1529,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IProtocolForResultsOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportCompleted(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IRemoteLauncherOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FallbackUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_FallbackUri(void*) noexcept = 0;
@@ -1543,7 +1545,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IRemoteLauncherStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchUriAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall LaunchUriWithOptionsAsync(void*, void*, void*, void**) noexcept = 0;
@@ -1552,7 +1554,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IShutdownManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall BeginShutdown(int32_t, int64_t) noexcept = 0;
             virtual int32_t __stdcall CancelShutdown() noexcept = 0;
@@ -1560,7 +1562,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IShutdownManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsPowerStateSupported(int32_t, bool*) noexcept = 0;
             virtual int32_t __stdcall EnterPowerState(int32_t) noexcept = 0;
@@ -1569,7 +1571,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ITimeZoneSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentTimeZoneDisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedTimeZoneDisplayNames(void**) noexcept = 0;
@@ -1579,14 +1581,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::ITimeZoneSettingsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AutoUpdateTimeZoneAsync(int64_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NonRoamableId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AuthenticationStatus(int32_t*) noexcept = 0;
@@ -1598,21 +1600,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IUser2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CheckUserAgeConsentGroupAsync(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IUserAuthenticationStatusChangeDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IUserAuthenticationStatusChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -1622,21 +1624,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IUserChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IUserChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangedPropertyKinds(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IUserDeviceAssociationChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_NewUser(void**) noexcept = 0;
@@ -1645,7 +1647,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IUserDeviceAssociationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindUserFromDeviceId(void*, void**) noexcept = 0;
             virtual int32_t __stdcall add_UserDeviceAssociationChanged(void*, winrt::event_token*) noexcept = 0;
@@ -1654,7 +1656,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IUserPicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowGuestAccounts(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowGuestAccounts(bool) noexcept = 0;
@@ -1665,14 +1667,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IUserPickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IUserStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWatcher(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
@@ -1683,14 +1685,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::IUserStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::IUserWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Start() noexcept = 0;
@@ -1713,7 +1715,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::DispatcherQueueHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke() noexcept = 0;
         };
@@ -1783,19 +1785,19 @@ namespace winrt::impl
     {
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::System::AppDiagnosticInfoWatcherEventArgs> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::System::IAppDiagnosticInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppDiagnosticInfoWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::System::AppDiagnosticInfoWatcherEventArgs> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::System::AppDiagnosticInfoWatcherEventArgs> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::System::AppDiagnosticInfoWatcherEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::System::IAppDiagnosticInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppDiagnosticInfoWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::System::AppDiagnosticInfoWatcherEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::System::AppDiagnosticInfoWatcherEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::System::IAppDiagnosticInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppDiagnosticInfoWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::System::IAppDiagnosticInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppDiagnosticInfoWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppDiagnosticInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;
@@ -1896,23 +1898,23 @@ namespace winrt::impl
     {
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherEventArgs> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::System::IAppResourceGroupInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppResourceGroupInfoWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherEventArgs> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherEventArgs> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::System::IAppResourceGroupInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppResourceGroupInfoWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::System::IAppResourceGroupInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppResourceGroupInfoWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::System::IAppResourceGroupInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppResourceGroupInfoWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         auto ExecutionStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherExecutionStateChangedEventArgs> const& handler) const;
         using ExecutionStateChanged_revoker = impl::event_revoker<winrt::Windows::System::IAppResourceGroupInfoWatcher, &impl::abi_t<winrt::Windows::System::IAppResourceGroupInfoWatcher>::remove_ExecutionStateChanged>;
-        [[nodiscard]] ExecutionStateChanged_revoker ExecutionStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherExecutionStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ExecutionStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::AppResourceGroupInfoWatcher, winrt::Windows::System::AppResourceGroupInfoWatcherExecutionStateChangedEventArgs> const& handler) const;
         auto ExecutionStateChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;
@@ -2072,11 +2074,11 @@ namespace winrt::impl
         auto TryEnqueue(winrt::Windows::System::DispatcherQueuePriority const& priority, winrt::Windows::System::DispatcherQueueHandler const& callback) const;
         auto ShutdownStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueue, winrt::Windows::System::DispatcherQueueShutdownStartingEventArgs> const& handler) const;
         using ShutdownStarting_revoker = impl::event_revoker<winrt::Windows::System::IDispatcherQueue, &impl::abi_t<winrt::Windows::System::IDispatcherQueue>::remove_ShutdownStarting>;
-        [[nodiscard]] ShutdownStarting_revoker ShutdownStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueue, winrt::Windows::System::DispatcherQueueShutdownStartingEventArgs> const& handler) const;
+        [[nodiscard]] auto ShutdownStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueue, winrt::Windows::System::DispatcherQueueShutdownStartingEventArgs> const& handler) const;
         auto ShutdownStarting(winrt::event_token const& token) const noexcept;
         auto ShutdownCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueue, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ShutdownCompleted_revoker = impl::event_revoker<winrt::Windows::System::IDispatcherQueue, &impl::abi_t<winrt::Windows::System::IDispatcherQueue>::remove_ShutdownCompleted>;
-        [[nodiscard]] ShutdownCompleted_revoker ShutdownCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueue, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ShutdownCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueue, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ShutdownCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::IDispatcherQueue>
@@ -2141,7 +2143,7 @@ namespace winrt::impl
         auto Stop() const;
         auto Tick(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueueTimer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Tick_revoker = impl::event_revoker<winrt::Windows::System::IDispatcherQueueTimer, &impl::abi_t<winrt::Windows::System::IDispatcherQueueTimer>::remove_Tick>;
-        [[nodiscard]] Tick_revoker Tick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueueTimer, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Tick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::DispatcherQueueTimer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Tick(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::IDispatcherQueueTimer>
@@ -2346,15 +2348,15 @@ namespace winrt::impl
         [[nodiscard]] auto AppMemoryUsageLevel() const;
         auto AppMemoryUsageIncreased(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AppMemoryUsageIncreased_revoker = impl::event_revoker<winrt::Windows::System::IMemoryManagerStatics, &impl::abi_t<winrt::Windows::System::IMemoryManagerStatics>::remove_AppMemoryUsageIncreased>;
-        [[nodiscard]] AppMemoryUsageIncreased_revoker AppMemoryUsageIncreased(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AppMemoryUsageIncreased(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AppMemoryUsageIncreased(winrt::event_token const& token) const noexcept;
         auto AppMemoryUsageDecreased(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AppMemoryUsageDecreased_revoker = impl::event_revoker<winrt::Windows::System::IMemoryManagerStatics, &impl::abi_t<winrt::Windows::System::IMemoryManagerStatics>::remove_AppMemoryUsageDecreased>;
-        [[nodiscard]] AppMemoryUsageDecreased_revoker AppMemoryUsageDecreased(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AppMemoryUsageDecreased(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AppMemoryUsageDecreased(winrt::event_token const& token) const noexcept;
         auto AppMemoryUsageLimitChanging(winrt::Windows::Foundation::EventHandler<winrt::Windows::System::AppMemoryUsageLimitChangingEventArgs> const& handler) const;
         using AppMemoryUsageLimitChanging_revoker = impl::event_revoker<winrt::Windows::System::IMemoryManagerStatics, &impl::abi_t<winrt::Windows::System::IMemoryManagerStatics>::remove_AppMemoryUsageLimitChanging>;
-        [[nodiscard]] AppMemoryUsageLimitChanging_revoker AppMemoryUsageLimitChanging(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::System::AppMemoryUsageLimitChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto AppMemoryUsageLimitChanging(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::System::AppMemoryUsageLimitChangingEventArgs> const& handler) const;
         auto AppMemoryUsageLimitChanging(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::IMemoryManagerStatics>
@@ -2586,7 +2588,7 @@ namespace winrt::impl
         auto FindUserFromDeviceId(param::hstring const& deviceId) const;
         auto UserDeviceAssociationChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::System::UserDeviceAssociationChangedEventArgs> const& handler) const;
         using UserDeviceAssociationChanged_revoker = impl::event_revoker<winrt::Windows::System::IUserDeviceAssociationStatics, &impl::abi_t<winrt::Windows::System::IUserDeviceAssociationStatics>::remove_UserDeviceAssociationChanged>;
-        [[nodiscard]] UserDeviceAssociationChanged_revoker UserDeviceAssociationChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::System::UserDeviceAssociationChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto UserDeviceAssociationChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::System::UserDeviceAssociationChangedEventArgs> const& handler) const;
         auto UserDeviceAssociationChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::IUserDeviceAssociationStatics>
@@ -2645,31 +2647,31 @@ namespace winrt::impl
         auto Stop() const;
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::System::IUserWatcher, &impl::abi_t<winrt::Windows::System::IUserWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::System::IUserWatcher, &impl::abi_t<winrt::Windows::System::IUserWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::System::IUserWatcher, &impl::abi_t<winrt::Windows::System::IUserWatcher>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto AuthenticationStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
         using AuthenticationStatusChanged_revoker = impl::event_revoker<winrt::Windows::System::IUserWatcher, &impl::abi_t<winrt::Windows::System::IUserWatcher>::remove_AuthenticationStatusChanged>;
-        [[nodiscard]] AuthenticationStatusChanged_revoker AuthenticationStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AuthenticationStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserChangedEventArgs> const& handler) const;
         auto AuthenticationStatusChanged(winrt::event_token const& token) const noexcept;
         auto AuthenticationStatusChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserAuthenticationStatusChangingEventArgs> const& handler) const;
         using AuthenticationStatusChanging_revoker = impl::event_revoker<winrt::Windows::System::IUserWatcher, &impl::abi_t<winrt::Windows::System::IUserWatcher>::remove_AuthenticationStatusChanging>;
-        [[nodiscard]] AuthenticationStatusChanging_revoker AuthenticationStatusChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserAuthenticationStatusChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto AuthenticationStatusChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::System::UserAuthenticationStatusChangingEventArgs> const& handler) const;
         auto AuthenticationStatusChanging(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::System::IUserWatcher, &impl::abi_t<winrt::Windows::System::IUserWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::System::IUserWatcher, &impl::abi_t<winrt::Windows::System::IUserWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::UserWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::IUserWatcher>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,8 +10,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct HResult;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
@@ -105,6 +105,7 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
     struct WindowsUpdateProgressChangedEventArgs;
     struct WindowsUpdateRestartRequestOptions;
     struct WindowsUpdateScanCompletedEventArgs;
+    struct WindowsUpdateContract;
 }
 namespace winrt::impl
 {
@@ -186,6 +187,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptions> = L"Windows.Management.Update.IWindowsUpdateRestartRequestOptions";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptionsFactory> = L"Windows.Management.Update.IWindowsUpdateRestartRequestOptionsFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateScanCompletedEventArgs> = L"Windows.Management.Update.IWindowsUpdateScanCompletedEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateContract> = L"Windows.Management.Update.WindowsUpdateContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IPreviewBuildsManager>{ 0xFA07DD61,0x7E4F,0x59F7,{ 0x7C,0x9F,0xDE,0xF9,0x05,0x1C,0x5F,0x62 } }; // FA07DD61-7E4F-59F7-7C9F-DEF9051C5F62
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IPreviewBuildsManagerStatics>{ 0x3E422887,0xB112,0x5A70,{ 0x7D,0xA1,0x97,0xD7,0x8D,0x32,0xAA,0x29 } }; // 3E422887-B112-5A70-7DA1-97D78D32AA29
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IPreviewBuildsState>{ 0xA2F2903E,0xB223,0x5F63,{ 0x75,0x46,0x3E,0x8E,0xAC,0x07,0x0A,0x2E } }; // A2F2903E-B223-5F63-7546-3E8EAC070A2E
@@ -224,7 +226,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsUpdateScanCompletedEventArgs>{ using type = winrt::Windows::Management::Update::IWindowsUpdateScanCompletedEventArgs; };
     template <> struct abi<winrt::Windows::Management::Update::IPreviewBuildsManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ArePreviewBuildsAllowed(bool*) noexcept = 0;
             virtual int32_t __stdcall put_ArePreviewBuildsAllowed(bool) noexcept = 0;
@@ -234,7 +236,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IPreviewBuildsManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
@@ -242,14 +244,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IPreviewBuildsState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProviderId(void**) noexcept = 0;
             virtual int32_t __stdcall get_UpdateId(void**) noexcept = 0;
@@ -279,7 +281,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateActionCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Update(void**) noexcept = 0;
             virtual int32_t __stdcall get_Action(void**) noexcept = 0;
@@ -289,7 +291,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateActionProgress>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Action(void**) noexcept = 0;
             virtual int32_t __stdcall get_Progress(double*) noexcept = 0;
@@ -297,7 +299,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateActionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
@@ -307,7 +309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateAdministrator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAdministratorScan() noexcept = 0;
             virtual int32_t __stdcall ApproveWindowsUpdateAction(void*, void*) noexcept = 0;
@@ -319,7 +321,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateAdministratorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetRegisteredAdministrator(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RegisterForAdministration(void*, uint32_t, int32_t*) noexcept = 0;
@@ -331,7 +333,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateApprovalData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Seeker(void**) noexcept = 0;
             virtual int32_t __stdcall put_Seeker(void*) noexcept = 0;
@@ -347,7 +349,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateAttentionRequiredInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Timestamp(void**) noexcept = 0;
@@ -355,7 +357,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateAttentionRequiredReasonChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Update(void**) noexcept = 0;
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
@@ -363,7 +365,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateGetAdministratorResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Administrator(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -371,7 +373,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProviderId(void**) noexcept = 0;
             virtual int32_t __stdcall get_UpdateId(void**) noexcept = 0;
@@ -385,7 +387,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ScanningStateChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ScanningStateChanged(winrt::event_token) noexcept = 0;
@@ -410,14 +412,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateProgressChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Update(void**) noexcept = 0;
             virtual int32_t __stdcall get_ActionProgress(void**) noexcept = 0;
@@ -425,7 +427,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -445,14 +447,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void*, int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateScanCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProviderId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
@@ -654,27 +656,27 @@ namespace winrt::impl
     {
         auto ScanningStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ScanningStateChanged_revoker = impl::event_revoker<winrt::Windows::Management::Update::IWindowsUpdateManager, &impl::abi_t<winrt::Windows::Management::Update::IWindowsUpdateManager>::remove_ScanningStateChanged>;
-        [[nodiscard]] ScanningStateChanged_revoker ScanningStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ScanningStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ScanningStateChanged(winrt::event_token const& token) const noexcept;
         auto WorkingStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using WorkingStateChanged_revoker = impl::event_revoker<winrt::Windows::Management::Update::IWindowsUpdateManager, &impl::abi_t<winrt::Windows::Management::Update::IWindowsUpdateManager>::remove_WorkingStateChanged>;
-        [[nodiscard]] WorkingStateChanged_revoker WorkingStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto WorkingStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto WorkingStateChanged(winrt::event_token const& token) const noexcept;
         auto ProgressChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateProgressChangedEventArgs> const& handler) const;
         using ProgressChanged_revoker = impl::event_revoker<winrt::Windows::Management::Update::IWindowsUpdateManager, &impl::abi_t<winrt::Windows::Management::Update::IWindowsUpdateManager>::remove_ProgressChanged>;
-        [[nodiscard]] ProgressChanged_revoker ProgressChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateProgressChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ProgressChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateProgressChangedEventArgs> const& handler) const;
         auto ProgressChanged(winrt::event_token const& token) const noexcept;
         auto AttentionRequiredReasonChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateAttentionRequiredReasonChangedEventArgs> const& handler) const;
         using AttentionRequiredReasonChanged_revoker = impl::event_revoker<winrt::Windows::Management::Update::IWindowsUpdateManager, &impl::abi_t<winrt::Windows::Management::Update::IWindowsUpdateManager>::remove_AttentionRequiredReasonChanged>;
-        [[nodiscard]] AttentionRequiredReasonChanged_revoker AttentionRequiredReasonChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateAttentionRequiredReasonChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AttentionRequiredReasonChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateAttentionRequiredReasonChangedEventArgs> const& handler) const;
         auto AttentionRequiredReasonChanged(winrt::event_token const& token) const noexcept;
         auto ActionCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateActionCompletedEventArgs> const& handler) const;
         using ActionCompleted_revoker = impl::event_revoker<winrt::Windows::Management::Update::IWindowsUpdateManager, &impl::abi_t<winrt::Windows::Management::Update::IWindowsUpdateManager>::remove_ActionCompleted>;
-        [[nodiscard]] ActionCompleted_revoker ActionCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateActionCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto ActionCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateActionCompletedEventArgs> const& handler) const;
         auto ActionCompleted(winrt::event_token const& token) const noexcept;
         auto ScanCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateScanCompletedEventArgs> const& handler) const;
         using ScanCompleted_revoker = impl::event_revoker<winrt::Windows::Management::Update::IWindowsUpdateManager, &impl::abi_t<winrt::Windows::Management::Update::IWindowsUpdateManager>::remove_ScanCompleted>;
-        [[nodiscard]] ScanCompleted_revoker ScanCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateScanCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto ScanCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Update::WindowsUpdateManager, winrt::Windows::Management::Update::WindowsUpdateScanCompletedEventArgs> const& handler) const;
         auto ScanCompleted(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto IsScanning() const;
         [[nodiscard]] auto IsWorking() const;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -20,7 +20,7 @@ WINRT_EXPORT namespace winrt::Windows::Globalization
         [[nodiscard]] static auto ManifestLanguages();
         static auto GetLanguagesForUser(winrt::Windows::System::User const& user);
     };
-    struct __declspec(empty_bases) Calendar : winrt::Windows::Globalization::ICalendar,
+    struct WINRT_IMPL_EMPTY_BASES Calendar : winrt::Windows::Globalization::ICalendar,
         impl::require<Calendar, winrt::Windows::Globalization::ITimeZoneOnCalendar>
     {
         Calendar(std::nullptr_t) noexcept {}
@@ -55,7 +55,7 @@ WINRT_EXPORT namespace winrt::Windows::Globalization
         [[nodiscard]] static auto TwelveHour();
         [[nodiscard]] static auto TwentyFourHour();
     };
-    struct __declspec(empty_bases) CurrencyAmount : winrt::Windows::Globalization::ICurrencyAmount
+    struct WINRT_IMPL_EMPTY_BASES CurrencyAmount : winrt::Windows::Globalization::ICurrencyAmount
     {
         CurrencyAmount(std::nullptr_t) noexcept {}
         CurrencyAmount(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Globalization::ICurrencyAmount(ptr, take_ownership_from_abi) {}
@@ -227,7 +227,7 @@ WINRT_EXPORT namespace winrt::Windows::Globalization
         [[nodiscard]] static auto STN();
         [[nodiscard]] static auto VES();
     };
-    struct __declspec(empty_bases) GeographicRegion : winrt::Windows::Globalization::IGeographicRegion
+    struct WINRT_IMPL_EMPTY_BASES GeographicRegion : winrt::Windows::Globalization::IGeographicRegion
     {
         GeographicRegion(std::nullptr_t) noexcept {}
         GeographicRegion(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Globalization::IGeographicRegion(ptr, take_ownership_from_abi) {}
@@ -235,7 +235,7 @@ WINRT_EXPORT namespace winrt::Windows::Globalization
         explicit GeographicRegion(param::hstring const& geographicRegionCode);
         static auto IsSupported(param::hstring const& geographicRegionCode);
     };
-    struct __declspec(empty_bases) JapanesePhoneme : winrt::Windows::Globalization::IJapanesePhoneme
+    struct WINRT_IMPL_EMPTY_BASES JapanesePhoneme : winrt::Windows::Globalization::IJapanesePhoneme
     {
         JapanesePhoneme(std::nullptr_t) noexcept {}
         JapanesePhoneme(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Globalization::IJapanesePhoneme(ptr, take_ownership_from_abi) {}
@@ -246,7 +246,7 @@ WINRT_EXPORT namespace winrt::Windows::Globalization
         static auto GetWords(param::hstring const& input);
         static auto GetWords(param::hstring const& input, bool monoRuby);
     };
-    struct __declspec(empty_bases) Language : winrt::Windows::Globalization::ILanguage,
+    struct WINRT_IMPL_EMPTY_BASES Language : winrt::Windows::Globalization::ILanguage,
         impl::require<Language, winrt::Windows::Globalization::ILanguageExtensionSubtags, winrt::Windows::Globalization::ILanguage2, winrt::Windows::Globalization::ILanguage3>
     {
         Language(std::nullptr_t) noexcept {}

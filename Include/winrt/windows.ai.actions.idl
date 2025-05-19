@@ -86,6 +86,8 @@ namespace Windows
 
             interface IActionEntityFactory3;
 
+            interface IActionEntityFactory4;
+
             interface IActionEntityFactoryFactory;
 
             interface IActionFeedback;
@@ -99,6 +101,8 @@ namespace Windows
             interface IActionRuntime;
 
             interface IActionRuntime2;
+
+            interface IActionRuntime3;
 
             interface IActionRuntimeFactory;
 
@@ -187,13 +191,12 @@ namespace Windows
     {
         namespace Actions
         {
-            [contractversion(2.0)]
+            [contractversion(4.0)]
             apicontract ActionsContract
             {
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             enum ActionEntityKind
             {
                 None          = 0,
@@ -202,21 +205,18 @@ namespace Windows
                 Photo         = 3,
                 Text          = 4,
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-                [experimental]
                 StreamingText = 5,
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-                [experimental]
                 RemoteFile    = 6,
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)]
+                [contract(Windows.AI.Actions.ActionsContract, 3.0)]
                 [experimental]
                 Table         = 7,
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)]
+                [contract(Windows.AI.Actions.ActionsContract, 3.0)]
                 [experimental]
                 Contact       = 8
             };
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             enum ActionEntityTextFormat
             {
                 Plain    = 0,
@@ -224,7 +224,6 @@ namespace Windows
             };
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             enum ActionFeedbackKind
             {
                 Positive = 0,
@@ -232,7 +231,6 @@ namespace Windows
             };
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             enum ActionInvocationHelpKind
             {
                 None    = 0,
@@ -241,7 +239,6 @@ namespace Windows
             };
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             enum ActionInvocationResult
             {
                 Success      = 0,
@@ -251,7 +248,6 @@ namespace Windows
             };
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             enum RemoteFileKind
             {
                 Document = 0,
@@ -261,7 +257,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntity)]
-            [experimental]
             [uuid(445E700F-2122-5668-9A16-4CAB2982C5F4)]
             interface IActionEntity : IInspectable
             {
@@ -271,7 +266,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntity)]
-            [experimental]
             [uuid(98FE136D-DD3A-58C1-AF76-FEB4E19DCE9E)]
             interface IActionEntity2 : IInspectable
             {
@@ -280,7 +274,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntityDisplayInfo)]
-            [experimental]
             [uuid(057A9EDE-03E1-55C6-ACBA-C7056216735A)]
             interface IActionEntityDisplayInfo : IInspectable
             {
@@ -289,7 +282,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntity)]
-            [experimental]
             [uuid(9CB752A0-5BF8-5BE2-916E-B00EFF80088D)]
             interface IActionEntityFactory : IInspectable
             {
@@ -297,7 +289,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntityFactory)]
-            [experimental]
             [uuid(EA2FB6A5-EC6D-5180-9D30-BC663B84E7B8)]
             interface IActionEntityFactory2 : IInspectable
             {
@@ -309,20 +300,26 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntityFactory)]
-            [experimental]
-            [uuid(0DA98E70-B335-5B9D-8422-78252AD97F12)]
+            [uuid(4910E689-00B5-56BB-9C65-0FCC76215283)]
             interface IActionEntityFactory3 : IInspectable
             {
                 HRESULT CreateRemoteFileEntity([in] HSTRING sourceId, [in] Windows.AI.Actions.RemoteFileKind fileKind, [in] Windows.Foundation.Uri* sourceUri, [in] HSTRING fileId, [in] HSTRING contentType, [in] HSTRING driveId, [in] HSTRING accountId, [in] HSTRING extension, [out] [retval] Windows.AI.Actions.RemoteFileActionEntity** result);
                 [overload("CreateTextEntity")] HRESULT CreateTextEntityWithTextFormat([in] HSTRING text, [in] Windows.AI.Actions.ActionEntityTextFormat textFormat, [out] [retval] Windows.AI.Actions.TextActionEntity** result);
                 HRESULT CreateStreamingTextActionEntityWriter([in] Windows.AI.Actions.ActionEntityTextFormat textFormat, [out] [retval] Windows.AI.Actions.StreamingTextActionEntityWriter** result);
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 3.0)]
+            [exclusiveto(Windows.AI.Actions.ActionEntityFactory)]
+            [experimental]
+            [uuid(332EDA05-DE0E-5A58-B318-A2AD771F013D)]
+            interface IActionEntityFactory4 : IInspectable
+            {
                 HRESULT CreateTableEntity([in] UINT32 __dataSize, [in] [size_is(__dataSize)] HSTRING* data, [in] UINT32 columnCount, [out] [retval] Windows.AI.Actions.TableActionEntity** result);
                 HRESULT CreateContactEntity([in] Windows.ApplicationModel.Contacts.Contact* contact, [out] [retval] Windows.AI.Actions.ContactActionEntity** result);
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntityFactory)]
-            [experimental]
             [uuid(C9147D8F-88A0-5EC0-A564-47E2A1081412)]
             interface IActionEntityFactoryFactory : IInspectable
             {
@@ -330,7 +327,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.ActionFeedback)]
-            [experimental]
             [uuid(A12EE7AB-2454-56C9-BBDF-C089457FBC5E)]
             interface IActionFeedback : IInspectable
             {
@@ -339,13 +335,10 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionInvocationContext)]
-            [experimental]
-            [uuid(7E9E9D04-8781-5F29-AA99-2458ACA89C70)]
+            [uuid(C32B622E-86E1-5EBA-9661-605910104978)]
             interface IActionInvocationContext : IInspectable
             {
-                [propget] HRESULT ActionName([out] [retval] HSTRING* value);
                 [propget] HRESULT EntityFactory([out] [retval] Windows.AI.Actions.ActionEntityFactory** value);
-                [propget] HRESULT InvokerPackageFamilyName([out] [retval] HSTRING* value);
                 HRESULT SetInputEntity([in] HSTRING inputName, [in] Windows.AI.Actions.ActionEntity* inputValue);
                 HRESULT GetInputEntities([out] UINT32* __resultSize, [out] [retval] [size_is(, *__resultSize)] Windows.AI.Actions.NamedActionEntity*** result);
                 HRESULT SetOutputEntity([in] HSTRING outputName, [in] Windows.AI.Actions.ActionEntity* outputValue);
@@ -358,7 +351,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.ActionInvocationContext)]
-            [experimental]
             [uuid(7C843086-9279-5BCD-8F2E-D15121E7A827)]
             interface IActionInvocationContext2 : IInspectable
             {
@@ -370,7 +362,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.ActionInvocationHelpDetails)]
-            [experimental]
             [uuid(5430F272-078F-5722-8F7D-90CF8DDD595E)]
             interface IActionInvocationHelpDetails : IInspectable
             {
@@ -388,7 +379,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionRuntime)]
-            [experimental]
             [uuid(206EFA2C-C909-508A-B4B0-9482BE96DB9C)]
             interface IActionRuntime : IInspectable
             {
@@ -399,27 +389,33 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.ActionRuntime)]
-            [experimental]
-            [uuid(06FD15CB-9675-55E8-A220-5D817D33DBC4)]
+            [uuid(2DA4D2C0-E593-5350-8143-15BB24F63411)]
             interface IActionRuntime2 : IInspectable
             {
-                HRESULT CreateInvocationContextWithWindowId([in] HSTRING actionId, [in] Windows.UI.WindowId invokerWindowId, [out] [retval] Windows.AI.Actions.ActionInvocationContext** result);
                 HRESULT CreateActionFeedback([in] Windows.AI.Actions.ActionFeedbackKind feedbackKind, [out] [retval] Windows.AI.Actions.ActionFeedback** result);
                 HRESULT SetActionAvailability([in] HSTRING actionId, [in] boolean isAvailable);
                 HRESULT GetActionAvailability([in] HSTRING actionId, [out] [retval] boolean* result);
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 3.0)]
+            [exclusiveto(Windows.AI.Actions.ActionRuntime)]
+            [experimental]
+            [uuid(F020C3C0-CAEC-5928-AD00-81069B80FBC1)]
+            interface IActionRuntime3 : IInspectable
+            {
+                HRESULT CreateInvocationContextWithWindowId([in] HSTRING actionId, [in] Windows.UI.WindowId invokerWindowId, [out] [retval] Windows.AI.Actions.ActionInvocationContext** result);
                 HRESULT GetActionEntityById([in] HSTRING entityId, [out] [retval] Windows.AI.Actions.ActionEntity** result);
                 [propget] HRESULT LatestSupportedSchemaVersion([out] [retval] UINT32* value);
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionRuntime)]
-            [experimental]
             [uuid(D3F366E9-8DC9-50A0-8040-E5C14FA609D6)]
             interface IActionRuntimeFactory : IInspectable
             {
             }
 
-            [contract(Windows.AI.Actions.ActionsContract, 2.0)]
+            [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [exclusiveto(Windows.AI.Actions.ContactActionEntity)]
             [experimental]
             [uuid(458C3E07-5892-5485-BD9B-8F7A540C9501)]
@@ -430,7 +426,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.DocumentActionEntity)]
-            [experimental]
             [uuid(56715297-960B-59FF-AF4B-ECE1098B2E36)]
             interface IDocumentActionEntity : IInspectable
             {
@@ -439,7 +434,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.FileActionEntity)]
-            [experimental]
             [uuid(F20AB43F-4C80-5904-BD42-3E6248BABFCF)]
             interface IFileActionEntity : IInspectable
             {
@@ -448,7 +442,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.NamedActionEntity)]
-            [experimental]
             [uuid(1AAEBEEF-435B-5A0D-8182-05FE4DD47712)]
             interface INamedActionEntity : IInspectable
             {
@@ -460,7 +453,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.PhotoActionEntity)]
-            [experimental]
             [uuid(425123B3-20EF-51A6-B35F-8414384765C5)]
             interface IPhotoActionEntity : IInspectable
             {
@@ -469,7 +461,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.RemoteFileActionEntity)]
-            [experimental]
             [uuid(A5D8EC21-A2BD-545A-ABFC-D7AA79FD0B81)]
             interface IRemoteFileActionEntity : IInspectable
             {
@@ -485,7 +476,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.StreamingTextActionEntity)]
-            [experimental]
             [uuid(44CD8A16-ABC9-5703-B4BF-6FE8B7A802FD)]
             interface IStreamingTextActionEntity : IInspectable
             {
@@ -498,7 +488,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.StreamingTextActionEntityTextChangedArgs)]
-            [experimental]
             [uuid(2C62011F-3E06-588B-A3BD-D726BD82FB13)]
             interface IStreamingTextActionEntityTextChangedArgs : IInspectable
             {
@@ -508,7 +497,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.StreamingTextActionEntityWriter)]
-            [experimental]
             [uuid(6BCE2F76-A8AF-5FF2-833C-108737BA0F42)]
             interface IStreamingTextActionEntityWriter : IInspectable
             {
@@ -517,7 +505,7 @@ namespace Windows
                 HRESULT SetText([in] HSTRING text);
             }
 
-            [contract(Windows.AI.Actions.ActionsContract, 2.0)]
+            [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [exclusiveto(Windows.AI.Actions.TableActionEntity)]
             [experimental]
             [uuid(0F252CDB-BA24-5DBB-9D17-1B300773D141)]
@@ -530,7 +518,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.TextActionEntity)]
-            [experimental]
             [uuid(3C4EC25F-5ADB-5F73-B8F3-080FBEADD612)]
             interface ITextActionEntity : IInspectable
             {
@@ -539,7 +526,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
             [exclusiveto(Windows.AI.Actions.TextActionEntity)]
-            [experimental]
             [uuid(7C500889-CF08-51E7-BECA-F0BBC7A7486C)]
             interface ITextActionEntity2 : IInspectable
             {
@@ -548,78 +534,73 @@ namespace Windows
 
             [composable(Windows.AI.Actions.IActionEntityFactory, public, Windows.AI.Actions.ActionsContract, 1.0)]
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.IActionEntity;
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)] [experimental] interface Windows.AI.Actions.IActionEntity2;
+                [default] interface Windows.AI.Actions.IActionEntity;
+                [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.IActionEntity2;
                 interface Windows.Foundation.IClosable;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass ActionEntityDisplayInfo
             {
-                [default] [experimental] interface Windows.AI.Actions.IActionEntityDisplayInfo;
+                [default] interface Windows.AI.Actions.IActionEntityDisplayInfo;
                 interface Windows.Foundation.IClosable;
             }
 
             [composable(Windows.AI.Actions.IActionEntityFactoryFactory, public, Windows.AI.Actions.ActionsContract, 1.0)]
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass ActionEntityFactory
             {
-                [default] [experimental] interface Windows.AI.Actions.IActionEntityFactory2;
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)] [experimental] interface Windows.AI.Actions.IActionEntityFactory3;
+                [default] interface Windows.AI.Actions.IActionEntityFactory2;
+                [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.IActionEntityFactory3;
+                [contract(Windows.AI.Actions.ActionsContract, 3.0)] [experimental] interface Windows.AI.Actions.IActionEntityFactory4;
                 interface Windows.Foundation.IClosable;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass ActionFeedback
             {
-                [default] [experimental] interface Windows.AI.Actions.IActionFeedback;
+                [default] interface Windows.AI.Actions.IActionFeedback;
                 interface Windows.Foundation.IClosable;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass ActionInvocationContext
             {
-                [default] [experimental] interface Windows.AI.Actions.IActionInvocationContext;
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)] [experimental] interface Windows.AI.Actions.IActionInvocationContext2;
+                [default] interface Windows.AI.Actions.IActionInvocationContext;
+                [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.IActionInvocationContext2;
                 interface Windows.Foundation.IClosable;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass ActionInvocationHelpDetails
             {
-                [default] [experimental] interface Windows.AI.Actions.IActionInvocationHelpDetails;
+                [default] interface Windows.AI.Actions.IActionInvocationHelpDetails;
                 interface Windows.Foundation.IClosable;
             }
 
             [composable(Windows.AI.Actions.IActionRuntimeFactory, public, Windows.AI.Actions.ActionsContract, 1.0)]
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass ActionRuntime
             {
-                [default] [experimental] interface Windows.AI.Actions.IActionRuntime;
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)] [experimental] interface Windows.AI.Actions.IActionRuntime2;
+                [default] interface Windows.AI.Actions.IActionRuntime;
+                [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.IActionRuntime2;
+                [contract(Windows.AI.Actions.ActionsContract, 3.0)] [experimental] interface Windows.AI.Actions.IActionRuntime3;
                 interface Windows.Foundation.IClosable;
             }
 
-            [contract(Windows.AI.Actions.ActionsContract, 2.0)]
+            [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
@@ -629,77 +610,69 @@ namespace Windows
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass DocumentActionEntity : Windows.AI.Actions.ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.IDocumentActionEntity;
+                [default] interface Windows.AI.Actions.IDocumentActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass FileActionEntity : Windows.AI.Actions.ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.IFileActionEntity;
+                [default] interface Windows.AI.Actions.IFileActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass NamedActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.INamedActionEntity;
+                [default] interface Windows.AI.Actions.INamedActionEntity;
                 interface Windows.Foundation.IClosable;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass PhotoActionEntity : Windows.AI.Actions.ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.IPhotoActionEntity;
+                [default] interface Windows.AI.Actions.IPhotoActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass RemoteFileActionEntity : Windows.AI.Actions.ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.IRemoteFileActionEntity;
+                [default] interface Windows.AI.Actions.IRemoteFileActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass StreamingTextActionEntity : Windows.AI.Actions.ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.IStreamingTextActionEntity;
+                [default] interface Windows.AI.Actions.IStreamingTextActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass StreamingTextActionEntityTextChangedArgs
             {
-                [default] [experimental] interface Windows.AI.Actions.IStreamingTextActionEntityTextChangedArgs;
+                [default] interface Windows.AI.Actions.IStreamingTextActionEntityTextChangedArgs;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass StreamingTextActionEntityWriter
             {
-                [default] [experimental] interface Windows.AI.Actions.IStreamingTextActionEntityWriter;
+                [default] interface Windows.AI.Actions.IStreamingTextActionEntityWriter;
                 interface Windows.Foundation.IClosable;
             }
 
-            [contract(Windows.AI.Actions.ActionsContract, 2.0)]
+            [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
@@ -709,13 +682,12 @@ namespace Windows
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass TextActionEntity : Windows.AI.Actions.ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.ITextActionEntity;
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)] [experimental] interface Windows.AI.Actions.ITextActionEntity2;
+                [default] interface Windows.AI.Actions.ITextActionEntity;
+                [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.ITextActionEntity2;
             }
         }
     }

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,14 +9,14 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct HResult;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking::Sockets
 {
@@ -343,7 +343,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Web::Http::HttpTransportInformation>{ using type = winrt::Windows::Web::Http::IHttpTransportInformation; };
     template <> struct abi<winrt::Windows::Web::Http::IHttpBufferContentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromBuffer(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBufferWithOffset(void*, uint32_t, uint32_t, void**) noexcept = 0;
@@ -351,7 +351,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpClient>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DeleteAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetAsync(void*, void**) noexcept = 0;
@@ -368,7 +368,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpClient2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryDeleteAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryGetAsync(void*, void**) noexcept = 0;
@@ -384,7 +384,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpClient3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultPrivacyAnnotation(void**) noexcept = 0;
             virtual int32_t __stdcall put_DefaultPrivacyAnnotation(void*) noexcept = 0;
@@ -392,14 +392,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpClientFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Headers(void**) noexcept = 0;
             virtual int32_t __stdcall BufferAllAsync(void**) noexcept = 0;
@@ -412,7 +412,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpCookie>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Domain(void**) noexcept = 0;
@@ -429,14 +429,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpCookieFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpCookieManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetCookie(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall SetCookieWithThirdParty(void*, bool, bool*) noexcept = 0;
@@ -446,14 +446,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpFormUrlEncodedContentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpGetBufferResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_RequestMessage(void**) noexcept = 0;
@@ -464,7 +464,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpGetInputStreamResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_RequestMessage(void**) noexcept = 0;
@@ -475,7 +475,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpGetStringResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_RequestMessage(void**) noexcept = 0;
@@ -486,21 +486,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpMethod>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Method(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpMethodFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpMethodStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Delete(void**) noexcept = 0;
             virtual int32_t __stdcall get_Get(void**) noexcept = 0;
@@ -513,14 +513,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpMultipartContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Add(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpMultipartContentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithSubtype(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithSubtypeAndBoundary(void*, void*, void**) noexcept = 0;
@@ -528,7 +528,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpMultipartFormDataContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Add(void*) noexcept = 0;
             virtual int32_t __stdcall AddWithName(void*, void*) noexcept = 0;
@@ -537,14 +537,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpMultipartFormDataContentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithBoundary(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpRequestMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -559,7 +559,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpRequestMessage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrivacyAnnotation(void**) noexcept = 0;
             virtual int32_t __stdcall put_PrivacyAnnotation(void*) noexcept = 0;
@@ -567,14 +567,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpRequestMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpRequestResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_RequestMessage(void**) noexcept = 0;
@@ -584,7 +584,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpResponseMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -605,21 +605,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpResponseMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpStreamContentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromInputStream(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpStringContentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromString(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromStringWithEncoding(void*, int32_t, void**) noexcept = 0;
@@ -628,7 +628,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::IHttpTransportInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerCertificate(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServerCertificateErrorSeverity(int32_t*) noexcept = 0;

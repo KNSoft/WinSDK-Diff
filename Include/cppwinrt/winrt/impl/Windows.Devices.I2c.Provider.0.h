@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -58,14 +58,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::I2c::Provider::ProviderI2cConnectionSettings>{ using type = winrt::Windows::Devices::I2c::Provider::IProviderI2cConnectionSettings; };
     template <> struct abi<winrt::Windows::Devices::I2c::Provider::II2cControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceProvider(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::I2c::Provider::II2cDeviceProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall Write(uint32_t, uint8_t*) noexcept = 0;
@@ -78,14 +78,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::I2c::Provider::II2cProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetControllersAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::I2c::Provider::IProviderI2cConnectionSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SlaveAddress(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_SlaveAddress(int32_t) noexcept = 0;

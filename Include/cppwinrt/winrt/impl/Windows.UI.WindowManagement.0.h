@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,11 +11,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -243,7 +243,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::WindowManagement::WindowingEnvironmentRemovedEventArgs>{ using type = winrt::Windows::UI::WindowManagement::IWindowingEnvironmentRemovedEventArgs; };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall get_DispatcherQueue(void**) noexcept = 0;
@@ -278,7 +278,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DidAvailableWindowPresentationsChange(bool*) noexcept = 0;
             virtual int32_t __stdcall get_DidDisplayRegionsChange(bool*) noexcept = 0;
@@ -292,7 +292,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowCloseRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
@@ -301,21 +301,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DragRegionVisuals(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowFrameStyle>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFrameStyle(int32_t*) noexcept = 0;
             virtual int32_t __stdcall SetFrameStyle(int32_t) noexcept = 0;
@@ -323,7 +323,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowPlacement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayRegion(void**) noexcept = 0;
             virtual int32_t __stdcall get_Offset(winrt::Windows::Foundation::Point*) noexcept = 0;
@@ -332,20 +332,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowPresentationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowPresentationConfigurationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetConfiguration(void**) noexcept = 0;
             virtual int32_t __stdcall IsPresentationSupported(int32_t, bool*) noexcept = 0;
@@ -355,7 +355,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ClearAllPersistedState() noexcept = 0;
@@ -364,7 +364,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowTitleBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundColor(void**) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundColor(void*) noexcept = 0;
@@ -398,14 +398,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowTitleBarOcclusion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OccludingRect(winrt::Windows::Foundation::Rect*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IAppWindowTitleBarVisibility>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPreferredVisibility(int32_t*) noexcept = 0;
             virtual int32_t __stdcall SetPreferredVisibility(int32_t) noexcept = 0;
@@ -413,19 +413,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::ICompactOverlayPresentationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IDefaultPresentationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IDisplayRegion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayMonitorDeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsVisible(bool*) noexcept = 0;
@@ -438,7 +438,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IFullScreenPresentationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsExclusive(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsExclusive(bool) noexcept = 0;
@@ -446,14 +446,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IWindowServicesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAllTopLevelWindowIds(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IWindowingEnvironment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -464,27 +464,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IWindowingEnvironmentAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WindowingEnvironment(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IWindowingEnvironmentChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IWindowingEnvironmentRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WindowingEnvironment(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WindowManagement::IWindowingEnvironmentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAll(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllWithKind(int32_t, void**) noexcept = 0;
@@ -518,15 +518,15 @@ namespace winrt::impl
         auto TryShowAsync() const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowChangedEventArgs> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::UI::WindowManagement::IAppWindow, &impl::abi_t<winrt::Windows::UI::WindowManagement::IAppWindow>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowChangedEventArgs> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::UI::WindowManagement::IAppWindow, &impl::abi_t<winrt::Windows::UI::WindowManagement::IAppWindow>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto CloseRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowCloseRequestedEventArgs> const& handler) const;
         using CloseRequested_revoker = impl::event_revoker<winrt::Windows::UI::WindowManagement::IAppWindow, &impl::abi_t<winrt::Windows::UI::WindowManagement::IAppWindow>::remove_CloseRequested>;
-        [[nodiscard]] CloseRequested_revoker CloseRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowCloseRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto CloseRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::AppWindow, winrt::Windows::UI::WindowManagement::AppWindowCloseRequestedEventArgs> const& handler) const;
         auto CloseRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::WindowManagement::IAppWindow>
@@ -720,7 +720,7 @@ namespace winrt::impl
         [[nodiscard]] auto WindowingEnvironment() const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::DisplayRegion, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::UI::WindowManagement::IDisplayRegion, &impl::abi_t<winrt::Windows::UI::WindowManagement::IDisplayRegion>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::DisplayRegion, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::DisplayRegion, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::WindowManagement::IDisplayRegion>
@@ -754,7 +754,7 @@ namespace winrt::impl
         auto GetDisplayRegions() const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::WindowingEnvironment, winrt::Windows::UI::WindowManagement::WindowingEnvironmentChangedEventArgs> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::UI::WindowManagement::IWindowingEnvironment, &impl::abi_t<winrt::Windows::UI::WindowManagement::IWindowingEnvironment>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::WindowingEnvironment, winrt::Windows::UI::WindowManagement::WindowingEnvironmentChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WindowManagement::WindowingEnvironment, winrt::Windows::UI::WindowManagement::WindowingEnvironmentChangedEventArgs> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::WindowManagement::IWindowingEnvironment>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.UI.WindowManagement.Preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::WindowManagement::Preview
 {
-    struct __declspec(empty_bases) WindowManagementPreview : winrt::Windows::UI::WindowManagement::Preview::IWindowManagementPreview
+    struct WINRT_IMPL_EMPTY_BASES WindowManagementPreview : winrt::Windows::UI::WindowManagement::Preview::IWindowManagementPreview
     {
         WindowManagementPreview(std::nullptr_t) noexcept {}
         WindowManagementPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::UI::WindowManagement::Preview::IWindowManagementPreview(ptr, take_ownership_from_abi) {}

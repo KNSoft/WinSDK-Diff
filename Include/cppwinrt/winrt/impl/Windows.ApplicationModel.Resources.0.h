@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -53,35 +53,35 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Resources::ResourceLoader>{ using type = winrt::Windows::ApplicationModel::Resources::IResourceLoader; };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::IResourceLoader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetString(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::IResourceLoader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStringForUri(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::IResourceLoaderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateResourceLoaderByName(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::IResourceLoaderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStringForReference(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::IResourceLoaderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall GetForCurrentViewWithName(void*, void**) noexcept = 0;
@@ -91,14 +91,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::IResourceLoaderStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUIContext(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::IResourceLoaderStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultPriPath(void*, void**) noexcept = 0;
         };

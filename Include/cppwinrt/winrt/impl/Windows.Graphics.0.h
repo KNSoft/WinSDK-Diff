@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -32,7 +32,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::IGeometrySource2D>{ 0xCAFF7902,0x670C,0x4181,{ 0xA6,0x24,0xDA,0x97,0x72,0x03,0xB8,0x45 } }; // CAFF7902-670C-4181-A624-DA977203B845
     template <> struct abi<winrt::Windows::Graphics::IGeometrySource2D>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };

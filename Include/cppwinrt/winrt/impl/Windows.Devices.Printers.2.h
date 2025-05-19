@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,12 +12,12 @@
 #include "winrt/impl/Windows.Devices.Printers.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
-    struct __declspec(empty_bases) IppAttributeError : winrt::Windows::Devices::Printers::IIppAttributeError
+    struct WINRT_IMPL_EMPTY_BASES IppAttributeError : winrt::Windows::Devices::Printers::IIppAttributeError
     {
         IppAttributeError(std::nullptr_t) noexcept {}
         IppAttributeError(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppAttributeError(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IppAttributeValue : winrt::Windows::Devices::Printers::IIppAttributeValue
+    struct WINRT_IMPL_EMPTY_BASES IppAttributeValue : winrt::Windows::Devices::Printers::IIppAttributeValue
     {
         IppAttributeValue(std::nullptr_t) noexcept {}
         IppAttributeValue(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppAttributeValue(ptr, take_ownership_from_abi) {}
@@ -61,13 +61,13 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         static auto CreateMimeMedia(param::hstring const& value);
         static auto CreateMimeMediaArray(param::iterable<hstring> const& values);
     };
-    struct __declspec(empty_bases) IppIntegerRange : winrt::Windows::Devices::Printers::IIppIntegerRange
+    struct WINRT_IMPL_EMPTY_BASES IppIntegerRange : winrt::Windows::Devices::Printers::IIppIntegerRange
     {
         IppIntegerRange(std::nullptr_t) noexcept {}
         IppIntegerRange(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppIntegerRange(ptr, take_ownership_from_abi) {}
         IppIntegerRange(int32_t start, int32_t end);
     };
-    struct __declspec(empty_bases) IppPrintDevice : winrt::Windows::Devices::Printers::IIppPrintDevice,
+    struct WINRT_IMPL_EMPTY_BASES IppPrintDevice : winrt::Windows::Devices::Printers::IIppPrintDevice,
         impl::require<IppPrintDevice, winrt::Windows::Devices::Printers::IIppPrintDevice2, winrt::Windows::Devices::Printers::IIppPrintDevice3, winrt::Windows::Devices::Printers::IIppPrintDevice4>
     {
         IppPrintDevice(std::nullptr_t) noexcept {}
@@ -77,59 +77,59 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         static auto FromPrinterName(param::hstring const& printerName);
         static auto IsIppPrinter(param::hstring const& printerName);
     };
-    struct __declspec(empty_bases) IppResolution : winrt::Windows::Devices::Printers::IIppResolution
+    struct WINRT_IMPL_EMPTY_BASES IppResolution : winrt::Windows::Devices::Printers::IIppResolution
     {
         IppResolution(std::nullptr_t) noexcept {}
         IppResolution(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppResolution(ptr, take_ownership_from_abi) {}
         IppResolution(int32_t width, int32_t height, winrt::Windows::Devices::Printers::IppResolutionUnit const& unit);
     };
-    struct __declspec(empty_bases) IppSetAttributesResult : winrt::Windows::Devices::Printers::IIppSetAttributesResult
+    struct WINRT_IMPL_EMPTY_BASES IppSetAttributesResult : winrt::Windows::Devices::Printers::IIppSetAttributesResult
     {
         IppSetAttributesResult(std::nullptr_t) noexcept {}
         IppSetAttributesResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppSetAttributesResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IppTextWithLanguage : winrt::Windows::Devices::Printers::IIppTextWithLanguage
+    struct WINRT_IMPL_EMPTY_BASES IppTextWithLanguage : winrt::Windows::Devices::Printers::IIppTextWithLanguage
     {
         IppTextWithLanguage(std::nullptr_t) noexcept {}
         IppTextWithLanguage(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppTextWithLanguage(ptr, take_ownership_from_abi) {}
         IppTextWithLanguage(param::hstring const& language, param::hstring const& text);
     };
-    struct __declspec(empty_bases) PageConfigurationSettings : winrt::Windows::Devices::Printers::IPageConfigurationSettings
+    struct WINRT_IMPL_EMPTY_BASES PageConfigurationSettings : winrt::Windows::Devices::Printers::IPageConfigurationSettings
     {
         PageConfigurationSettings(std::nullptr_t) noexcept {}
         PageConfigurationSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPageConfigurationSettings(ptr, take_ownership_from_abi) {}
         PageConfigurationSettings();
     };
-    struct __declspec(empty_bases) PdlPassthroughProvider : winrt::Windows::Devices::Printers::IPdlPassthroughProvider
+    struct WINRT_IMPL_EMPTY_BASES PdlPassthroughProvider : winrt::Windows::Devices::Printers::IPdlPassthroughProvider
     {
         PdlPassthroughProvider(std::nullptr_t) noexcept {}
         PdlPassthroughProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPdlPassthroughProvider(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) PdlPassthroughTarget : winrt::Windows::Devices::Printers::IPdlPassthroughTarget,
+    struct WINRT_IMPL_EMPTY_BASES PdlPassthroughTarget : winrt::Windows::Devices::Printers::IPdlPassthroughTarget,
         impl::require<PdlPassthroughTarget, winrt::Windows::Foundation::IClosable>
     {
         PdlPassthroughTarget(std::nullptr_t) noexcept {}
         PdlPassthroughTarget(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPdlPassthroughTarget(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) Print3DDevice : winrt::Windows::Devices::Printers::IPrint3DDevice
+    struct WINRT_IMPL_EMPTY_BASES Print3DDevice : winrt::Windows::Devices::Printers::IPrint3DDevice
     {
         Print3DDevice(std::nullptr_t) noexcept {}
         Print3DDevice(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPrint3DDevice(ptr, take_ownership_from_abi) {}
         static auto FromIdAsync(param::hstring const& deviceId);
         static auto GetDeviceSelector();
     };
-    struct __declspec(empty_bases) PrintSchema : winrt::Windows::Devices::Printers::IPrintSchema
+    struct WINRT_IMPL_EMPTY_BASES PrintSchema : winrt::Windows::Devices::Printers::IPrintSchema
     {
         PrintSchema(std::nullptr_t) noexcept {}
         PrintSchema(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPrintSchema(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) VirtualPrinterInstallationParameters : winrt::Windows::Devices::Printers::IVirtualPrinterInstallationParameters
+    struct WINRT_IMPL_EMPTY_BASES VirtualPrinterInstallationParameters : winrt::Windows::Devices::Printers::IVirtualPrinterInstallationParameters
     {
         VirtualPrinterInstallationParameters(std::nullptr_t) noexcept {}
         VirtualPrinterInstallationParameters(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IVirtualPrinterInstallationParameters(ptr, take_ownership_from_abi) {}
         VirtualPrinterInstallationParameters();
     };
-    struct __declspec(empty_bases) VirtualPrinterInstallationResult : winrt::Windows::Devices::Printers::IVirtualPrinterInstallationResult
+    struct WINRT_IMPL_EMPTY_BASES VirtualPrinterInstallationResult : winrt::Windows::Devices::Printers::IVirtualPrinterInstallationResult
     {
         VirtualPrinterInstallationResult(std::nullptr_t) noexcept {}
         VirtualPrinterInstallationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IVirtualPrinterInstallationResult(ptr, take_ownership_from_abi) {}
@@ -146,7 +146,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         static auto RemoveVirtualPrinterAsync(param::hstring const& printerName);
         static auto RemoveVirtualPrinterForAllUsersAsync(param::hstring const& printerName);
     };
-    struct __declspec(empty_bases) VirtualPrinterSupportedFormat : winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat
+    struct WINRT_IMPL_EMPTY_BASES VirtualPrinterSupportedFormat : winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat
     {
         VirtualPrinterSupportedFormat(std::nullptr_t) noexcept {}
         VirtualPrinterSupportedFormat(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat(ptr, take_ownership_from_abi) {}

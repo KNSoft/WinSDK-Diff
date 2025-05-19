@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -39,7 +39,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Globalization::Fonts::LanguageFontGroup>{ using type = winrt::Windows::Globalization::Fonts::ILanguageFontGroup; };
     template <> struct abi<winrt::Windows::Globalization::Fonts::ILanguageFont>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontFamily(void**) noexcept = 0;
             virtual int32_t __stdcall get_FontWeight(struct struct_Windows_UI_Text_FontWeight*) noexcept = 0;
@@ -50,7 +50,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::Fonts::ILanguageFontGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UITextFont(void**) noexcept = 0;
             virtual int32_t __stdcall get_UIHeadingFont(void**) noexcept = 0;
@@ -67,7 +67,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::Fonts::ILanguageFontGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateLanguageFontGroup(void*, void**) noexcept = 0;
         };

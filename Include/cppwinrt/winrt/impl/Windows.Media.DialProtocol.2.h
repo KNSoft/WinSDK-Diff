@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,17 +10,17 @@
 #include "winrt/impl/Windows.Media.DialProtocol.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::DialProtocol
 {
-    struct __declspec(empty_bases) DialApp : winrt::Windows::Media::DialProtocol::IDialApp
+    struct WINRT_IMPL_EMPTY_BASES DialApp : winrt::Windows::Media::DialProtocol::IDialApp
     {
         DialApp(std::nullptr_t) noexcept {}
         DialApp(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::DialProtocol::IDialApp(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DialAppStateDetails : winrt::Windows::Media::DialProtocol::IDialAppStateDetails
+    struct WINRT_IMPL_EMPTY_BASES DialAppStateDetails : winrt::Windows::Media::DialProtocol::IDialAppStateDetails
     {
         DialAppStateDetails(std::nullptr_t) noexcept {}
         DialAppStateDetails(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::DialProtocol::IDialAppStateDetails(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DialDevice : winrt::Windows::Media::DialProtocol::IDialDevice,
+    struct WINRT_IMPL_EMPTY_BASES DialDevice : winrt::Windows::Media::DialProtocol::IDialDevice,
         impl::require<DialDevice, winrt::Windows::Media::DialProtocol::IDialDevice2>
     {
         DialDevice(std::nullptr_t) noexcept {}
@@ -29,28 +29,28 @@ WINRT_EXPORT namespace winrt::Windows::Media::DialProtocol
         static auto FromIdAsync(param::hstring const& value);
         static auto DeviceInfoSupportsDialAsync(winrt::Windows::Devices::Enumeration::DeviceInformation const& device);
     };
-    struct __declspec(empty_bases) DialDevicePicker : winrt::Windows::Media::DialProtocol::IDialDevicePicker
+    struct WINRT_IMPL_EMPTY_BASES DialDevicePicker : winrt::Windows::Media::DialProtocol::IDialDevicePicker
     {
         DialDevicePicker(std::nullptr_t) noexcept {}
         DialDevicePicker(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::DialProtocol::IDialDevicePicker(ptr, take_ownership_from_abi) {}
         DialDevicePicker();
     };
-    struct __declspec(empty_bases) DialDevicePickerFilter : winrt::Windows::Media::DialProtocol::IDialDevicePickerFilter
+    struct WINRT_IMPL_EMPTY_BASES DialDevicePickerFilter : winrt::Windows::Media::DialProtocol::IDialDevicePickerFilter
     {
         DialDevicePickerFilter(std::nullptr_t) noexcept {}
         DialDevicePickerFilter(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::DialProtocol::IDialDevicePickerFilter(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DialDeviceSelectedEventArgs : winrt::Windows::Media::DialProtocol::IDialDeviceSelectedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES DialDeviceSelectedEventArgs : winrt::Windows::Media::DialProtocol::IDialDeviceSelectedEventArgs
     {
         DialDeviceSelectedEventArgs(std::nullptr_t) noexcept {}
         DialDeviceSelectedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::DialProtocol::IDialDeviceSelectedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DialDisconnectButtonClickedEventArgs : winrt::Windows::Media::DialProtocol::IDialDisconnectButtonClickedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES DialDisconnectButtonClickedEventArgs : winrt::Windows::Media::DialProtocol::IDialDisconnectButtonClickedEventArgs
     {
         DialDisconnectButtonClickedEventArgs(std::nullptr_t) noexcept {}
         DialDisconnectButtonClickedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::DialProtocol::IDialDisconnectButtonClickedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DialReceiverApp : winrt::Windows::Media::DialProtocol::IDialReceiverApp,
+    struct WINRT_IMPL_EMPTY_BASES DialReceiverApp : winrt::Windows::Media::DialProtocol::IDialReceiverApp,
         impl::require<DialReceiverApp, winrt::Windows::Media::DialProtocol::IDialReceiverApp2>
     {
         DialReceiverApp(std::nullptr_t) noexcept {}

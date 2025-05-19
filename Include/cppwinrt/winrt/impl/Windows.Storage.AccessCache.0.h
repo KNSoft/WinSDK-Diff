@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,11 +9,11 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -93,14 +93,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::AccessCache::StorageItemMostRecentlyUsedList>{ using type = winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList; };
     template <> struct abi<winrt::Windows::Storage::AccessCache::IItemRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemovedEntry(struct struct_Windows_Storage_AccessCache_AccessListEntry*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::AccessCache::IStorageApplicationPermissionsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FutureAccessList(void**) noexcept = 0;
             virtual int32_t __stdcall get_MostRecentlyUsedList(void**) noexcept = 0;
@@ -108,7 +108,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::AccessCache::IStorageApplicationPermissionsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFutureAccessListForUser(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetMostRecentlyUsedListForUser(void*, void**) noexcept = 0;
@@ -116,7 +116,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::AccessCache::IStorageItemAccessList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddOverloadDefaultMetadata(void*, void**) noexcept = 0;
             virtual int32_t __stdcall Add(void*, void*, void**) noexcept = 0;
@@ -138,7 +138,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ItemRemoved(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ItemRemoved(winrt::event_token) noexcept = 0;
@@ -146,7 +146,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddWithMetadataAndVisibility(void*, void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall AddOrReplaceWithMetadataAndVisibility(void*, void*, void*, int32_t) noexcept = 0;
@@ -210,7 +210,7 @@ namespace winrt::impl
     {
         auto ItemRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::AccessCache::StorageItemMostRecentlyUsedList, winrt::Windows::Storage::AccessCache::ItemRemovedEventArgs> const& handler) const;
         using ItemRemoved_revoker = impl::event_revoker<winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList, &impl::abi_t<winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList>::remove_ItemRemoved>;
-        [[nodiscard]] ItemRemoved_revoker ItemRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::AccessCache::StorageItemMostRecentlyUsedList, winrt::Windows::Storage::AccessCache::ItemRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::AccessCache::StorageItemMostRecentlyUsedList, winrt::Windows::Storage::AccessCache::ItemRemovedEventArgs> const& handler) const;
         auto ItemRemoved(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList>

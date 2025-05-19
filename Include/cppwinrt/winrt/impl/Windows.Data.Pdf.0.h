@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -76,7 +76,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Data::Pdf::PdfPageRenderOptions>{ using type = winrt::Windows::Data::Pdf::IPdfPageRenderOptions; };
     template <> struct abi<winrt::Windows::Data::Pdf::IPdfDocument>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPage(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall get_PageCount(uint32_t*) noexcept = 0;
@@ -85,7 +85,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Pdf::IPdfDocumentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadFromFileAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LoadFromFileWithPasswordAsync(void*, void*, void**) noexcept = 0;
@@ -95,7 +95,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Pdf::IPdfPage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RenderToStreamAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RenderWithOptionsToStreamAsync(void*, void*, void**) noexcept = 0;
@@ -109,7 +109,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Pdf::IPdfPageDimensions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaBox(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall get_CropBox(winrt::Windows::Foundation::Rect*) noexcept = 0;
@@ -120,7 +120,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Pdf::IPdfPageRenderOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceRect(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall put_SourceRect(winrt::Windows::Foundation::Rect) noexcept = 0;

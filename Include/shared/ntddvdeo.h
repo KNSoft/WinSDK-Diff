@@ -97,6 +97,8 @@ struct INDIRECT_DISPLAY_INFO
 	ULONG Flags;
 	ULONG NumMonitors;
 	ULONG DisplayAdapterTargetBase;
+    ULONG DriverVersionMajor;
+    ULONG DriverVersionMinor;
 };
 
 #define INDIRECT_DISPLAY_INFO_FLAGS_CREATED_IDDCX_ADAPTER 0x1  // This indirect display device created a IddCx adapter

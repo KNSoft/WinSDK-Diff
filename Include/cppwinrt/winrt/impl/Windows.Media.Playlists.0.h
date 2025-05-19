@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -27,6 +27,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::Playlists
     struct IPlaylist;
     struct IPlaylistStatics;
     struct Playlist;
+    struct PlaylistsContract;
 }
 namespace winrt::impl
 {
@@ -38,12 +39,13 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Playlists::PlaylistFormat> = L"Windows.Media.Playlists.PlaylistFormat";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Playlists::IPlaylist> = L"Windows.Media.Playlists.IPlaylist";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Playlists::IPlaylistStatics> = L"Windows.Media.Playlists.IPlaylistStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::Playlists::PlaylistsContract> = L"Windows.Media.Playlists.PlaylistsContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Playlists::IPlaylist>{ 0x803736F5,0xCF44,0x4D97,{ 0x83,0xB3,0x7A,0x08,0x9E,0x9A,0xB6,0x63 } }; // 803736F5-CF44-4D97-83B3-7A089E9AB663
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Playlists::IPlaylistStatics>{ 0xC5C331CD,0x81F9,0x4FF3,{ 0x95,0xB9,0x70,0xB6,0xFF,0x04,0x6B,0x68 } }; // C5C331CD-81F9-4FF3-95B9-70B6FF046B68
     template <> struct default_interface<winrt::Windows::Media::Playlists::Playlist>{ using type = winrt::Windows::Media::Playlists::IPlaylist; };
     template <> struct abi<winrt::Windows::Media::Playlists::IPlaylist>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Files(void**) noexcept = 0;
             virtual int32_t __stdcall SaveAsync(void**) noexcept = 0;
@@ -53,7 +55,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playlists::IPlaylistStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadAsync(void*, void**) noexcept = 0;
         };

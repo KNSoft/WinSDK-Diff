@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::UI
@@ -97,14 +97,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopInfo>{ using type = winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfo; };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IPerformLocalActionRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Action(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetConnectionStatus(int32_t) noexcept = 0;
             virtual int32_t __stdcall SwitchToLocalSession() noexcept = 0;
@@ -112,21 +112,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PerformLocalActionFromRemote(int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForLaunchUri(void*, struct struct_Windows_UI_WindowId, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionRemoteInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportSwitched() noexcept = 0;
             virtual int32_t __stdcall add_SwitchToLocalSessionRequested(void*, winrt::event_token*) noexcept = 0;
@@ -137,7 +137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionRemoteInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSwitchSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall GetForLaunchUri(void*, void**) noexcept = 0;
@@ -145,7 +145,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
@@ -153,14 +153,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesktopInfos(void**) noexcept = 0;
             virtual int32_t __stdcall IsSwitchToLocalSessionEnabled(bool*) noexcept = 0;
@@ -209,11 +209,11 @@ namespace winrt::impl
         auto ReportSwitched() const;
         auto SwitchToLocalSessionRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SwitchToLocalSessionRequested_revoker = impl::event_revoker<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionRemoteInfo, &impl::abi_t<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionRemoteInfo>::remove_SwitchToLocalSessionRequested>;
-        [[nodiscard]] SwitchToLocalSessionRequested_revoker SwitchToLocalSessionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SwitchToLocalSessionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SwitchToLocalSessionRequested(winrt::event_token const& token) const noexcept;
         auto PerformLocalActionRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo, winrt::Windows::System::RemoteDesktop::Provider::PerformLocalActionRequestedEventArgs> const& handler) const;
         using PerformLocalActionRequested_revoker = impl::event_revoker<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionRemoteInfo, &impl::abi_t<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionRemoteInfo>::remove_PerformLocalActionRequested>;
-        [[nodiscard]] PerformLocalActionRequested_revoker PerformLocalActionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo, winrt::Windows::System::RemoteDesktop::Provider::PerformLocalActionRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto PerformLocalActionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo, winrt::Windows::System::RemoteDesktop::Provider::PerformLocalActionRequestedEventArgs> const& handler) const;
         auto PerformLocalActionRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionRemoteInfo>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -52,7 +52,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Pwm::PwmPin>{ using type = winrt::Windows::Devices::Pwm::IPwmPin; };
     template <> struct abi<winrt::Windows::Devices::Pwm::IPwmController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PinCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ActualFrequency(double*) noexcept = 0;
@@ -64,21 +64,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Pwm::IPwmControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetControllersAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Pwm::IPwmControllerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Pwm::IPwmControllerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorFromFriendlyName(void*, void**) noexcept = 0;
@@ -87,7 +87,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Pwm::IPwmPin>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Controller(void**) noexcept = 0;
             virtual int32_t __stdcall GetActiveDutyCyclePercentage(double*) noexcept = 0;

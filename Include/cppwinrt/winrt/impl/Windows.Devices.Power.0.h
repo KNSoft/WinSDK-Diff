@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,9 +8,9 @@
 #define WINRT_Windows_Devices_Power_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::System::Power
 {
@@ -28,6 +28,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Power
     struct BatteryReport;
     struct PowerGridData;
     struct PowerGridForecast;
+    struct PowerGridApiContract;
 }
 namespace winrt::impl
 {
@@ -51,6 +52,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Power::IPowerGridData> = L"Windows.Devices.Power.IPowerGridData";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Power::IPowerGridForecast> = L"Windows.Devices.Power.IPowerGridForecast";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Power::IPowerGridForecastStatics> = L"Windows.Devices.Power.IPowerGridForecastStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Power::PowerGridApiContract> = L"Windows.Devices.Power.PowerGridApiContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Power::IBattery>{ 0xBC894FC6,0x0072,0x47C8,{ 0x8B,0x5D,0x61,0x4A,0xAA,0x7A,0x43,0x7E } }; // BC894FC6-0072-47C8-8B5D-614AAA7A437E
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Power::IBatteryReport>{ 0xC9858C3A,0x4E13,0x420A,{ 0xA8,0xD0,0x24,0xF1,0x8F,0x39,0x54,0x01 } }; // C9858C3A-4E13-420A-A8D0-24F18F395401
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Power::IBatteryStatics>{ 0x79CD72B6,0x9E5E,0x4452,{ 0xBE,0xA6,0xDF,0xCD,0x54,0x1E,0x59,0x7F } }; // 79CD72B6-9E5E-4452-BEA6-DFCD541E597F
@@ -63,7 +65,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Power::PowerGridForecast>{ using type = winrt::Windows::Devices::Power::IPowerGridForecast; };
     template <> struct abi<winrt::Windows::Devices::Power::IBattery>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall GetReport(void**) noexcept = 0;
@@ -73,7 +75,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Power::IBatteryReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChargeRateInMilliwatts(void**) noexcept = 0;
             virtual int32_t __stdcall get_DesignCapacityInMilliwattHours(void**) noexcept = 0;
@@ -84,7 +86,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Power::IBatteryStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AggregateBattery(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -93,7 +95,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Power::IPowerGridData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Severity(double*) noexcept = 0;
             virtual int32_t __stdcall get_IsLowUserExperienceImpact(bool*) noexcept = 0;
@@ -101,7 +103,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Power::IPowerGridForecast>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_BlockDuration(int64_t*) noexcept = 0;
@@ -110,7 +112,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Power::IPowerGridForecastStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForecast(void**) noexcept = 0;
             virtual int32_t __stdcall add_ForecastUpdated(void*, winrt::event_token*) noexcept = 0;
@@ -124,7 +126,7 @@ namespace winrt::impl
         auto GetReport() const;
         auto ReportUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Power::Battery, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ReportUpdated_revoker = impl::event_revoker<winrt::Windows::Devices::Power::IBattery, &impl::abi_t<winrt::Windows::Devices::Power::IBattery>::remove_ReportUpdated>;
-        [[nodiscard]] ReportUpdated_revoker ReportUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Power::Battery, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ReportUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Power::Battery, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ReportUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Power::IBattery>
@@ -182,7 +184,7 @@ namespace winrt::impl
         auto GetForecast() const;
         auto ForecastUpdated(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ForecastUpdated_revoker = impl::event_revoker<winrt::Windows::Devices::Power::IPowerGridForecastStatics, &impl::abi_t<winrt::Windows::Devices::Power::IPowerGridForecastStatics>::remove_ForecastUpdated>;
-        [[nodiscard]] ForecastUpdated_revoker ForecastUpdated(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ForecastUpdated(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ForecastUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Power::IPowerGridForecastStatics>

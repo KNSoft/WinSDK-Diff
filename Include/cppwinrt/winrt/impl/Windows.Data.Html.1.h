@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 #include "winrt/impl/Windows.Data.Html.0.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Html
 {
-    struct __declspec(empty_bases) IHtmlUtilities :
+    struct WINRT_IMPL_EMPTY_BASES IHtmlUtilities :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IHtmlUtilities>
     {

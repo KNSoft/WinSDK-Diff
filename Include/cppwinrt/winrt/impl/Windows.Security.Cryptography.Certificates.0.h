@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,7 +12,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
 {
@@ -367,7 +367,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Cryptography::Certificates::UserCertificateStore>{ using type = winrt::Windows::Security::Cryptography::Certificates::IUserCertificateStore; };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall BuildChainAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall BuildChainWithParametersAsync(void*, void*, void**) noexcept = 0;
@@ -388,7 +388,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificate2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSecurityDeviceBound(bool*) noexcept = 0;
             virtual int32_t __stdcall get_KeyUsages(void**) noexcept = 0;
@@ -400,7 +400,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificate3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPerUser(bool*) noexcept = 0;
             virtual int32_t __stdcall get_StoreName(void**) noexcept = 0;
@@ -409,7 +409,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateChain>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Validate(int32_t*) noexcept = 0;
             virtual int32_t __stdcall ValidateWithParameters(void*, int32_t*) noexcept = 0;
@@ -418,7 +418,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateEnrollmentManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateRequestAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall InstallCertificateAsync(void*, uint32_t, void**) noexcept = 0;
@@ -427,7 +427,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateEnrollmentManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserCertificateEnrollmentManager(void**) noexcept = 0;
             virtual int32_t __stdcall ImportPfxDataToKspAsync(void*, void*, int32_t, int32_t, uint32_t, void*, void*, void**) noexcept = 0;
@@ -435,14 +435,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateEnrollmentManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ImportPfxDataToKspWithParametersAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateExtension>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ObjectId(void**) noexcept = 0;
             virtual int32_t __stdcall put_ObjectId(void*) noexcept = 0;
@@ -455,14 +455,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCertificate(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateKeyUsages>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EncipherOnly(bool*) noexcept = 0;
             virtual int32_t __stdcall put_EncipherOnly(bool) noexcept = 0;
@@ -484,7 +484,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateQuery>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnhancedKeyUsages(void**) noexcept = 0;
             virtual int32_t __stdcall get_IssuerName(void**) noexcept = 0;
@@ -499,7 +499,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateQuery2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IncludeDuplicates(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IncludeDuplicates(bool) noexcept = 0;
@@ -511,7 +511,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateRequestProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Subject(void**) noexcept = 0;
             virtual int32_t __stdcall put_Subject(void*) noexcept = 0;
@@ -535,7 +535,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateRequestProperties2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SmartcardReaderName(void**) noexcept = 0;
             virtual int32_t __stdcall put_SmartcardReaderName(void*) noexcept = 0;
@@ -547,7 +547,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateRequestProperties3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurveName(void**) noexcept = 0;
             virtual int32_t __stdcall put_CurveName(void*) noexcept = 0;
@@ -563,7 +563,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateRequestProperties4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SuppressedDefaults(void**) noexcept = 0;
             virtual int32_t __stdcall get_SubjectAlternativeName(void**) noexcept = 0;
@@ -572,7 +572,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Add(void*) noexcept = 0;
             virtual int32_t __stdcall Delete(void*) noexcept = 0;
@@ -580,14 +580,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateStore2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateStoresStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllWithQueryAsync(void*, void**) noexcept = 0;
@@ -598,14 +598,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICertificateStoresStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetUserStoreByName(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IChainBuildingParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnhancedKeyUsages(void**) noexcept = 0;
             virtual int32_t __stdcall get_ValidationTimestamp(int64_t*) noexcept = 0;
@@ -623,7 +623,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IChainValidationParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CertificateChainPolicy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_CertificateChainPolicy(int32_t) noexcept = 0;
@@ -633,7 +633,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICmsAttachedSignature>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Certificates(void**) noexcept = 0;
             virtual int32_t __stdcall get_Content(uint32_t* __valueSize, uint8_t**) noexcept = 0;
@@ -643,21 +643,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICmsAttachedSignatureFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCmsAttachedSignature(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICmsAttachedSignatureStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GenerateSignatureAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICmsDetachedSignature>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Certificates(void**) noexcept = 0;
             virtual int32_t __stdcall get_Signers(void**) noexcept = 0;
@@ -666,21 +666,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICmsDetachedSignatureFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCmsDetachedSignature(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICmsDetachedSignatureStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GenerateSignatureAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICmsSignerInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Certificate(void**) noexcept = 0;
             virtual int32_t __stdcall put_Certificate(void*) noexcept = 0;
@@ -691,7 +691,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ICmsTimestampInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SigningCertificate(void**) noexcept = 0;
             virtual int32_t __stdcall get_Certificates(void**) noexcept = 0;
@@ -700,7 +700,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IKeyAlgorithmNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Rsa(void**) noexcept = 0;
             virtual int32_t __stdcall get_Dsa(void**) noexcept = 0;
@@ -714,7 +714,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IKeyAlgorithmNamesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Ecdsa(void**) noexcept = 0;
             virtual int32_t __stdcall get_Ecdh(void**) noexcept = 0;
@@ -722,7 +722,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IKeyAttestationHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DecryptTpmAttestationCredentialAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetTpmAttestationCredentialId(void*, void**) noexcept = 0;
@@ -730,14 +730,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IKeyAttestationHelperStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DecryptTpmAttestationCredentialWithContainerNameAsync(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IKeyStorageProviderNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SoftwareKeyStorageProvider(void**) noexcept = 0;
             virtual int32_t __stdcall get_SmartcardKeyStorageProvider(void**) noexcept = 0;
@@ -746,14 +746,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IKeyStorageProviderNamesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PassportKeyStorageProvider(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IPfxImportParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Exportable(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Exportable(int32_t) noexcept = 0;
@@ -773,7 +773,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IStandardCertificateStoreNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Personal(void**) noexcept = 0;
             virtual int32_t __stdcall get_TrustedRootCertificationAuthorities(void**) noexcept = 0;
@@ -782,7 +782,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ISubjectAlternativeNameInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailName(void**) noexcept = 0;
             virtual int32_t __stdcall get_IPAddress(void**) noexcept = 0;
@@ -794,7 +794,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::ISubjectAlternativeNameInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailNames(void**) noexcept = 0;
             virtual int32_t __stdcall get_IPAddresses(void**) noexcept = 0;
@@ -807,7 +807,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IUserCertificateEnrollmentManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateRequestAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall InstallCertificateAsync(void*, uint32_t, void**) noexcept = 0;
@@ -817,14 +817,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IUserCertificateEnrollmentManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ImportPfxDataToKspWithParametersAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Certificates::IUserCertificateStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAddAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestDeleteAsync(void*, void**) noexcept = 0;

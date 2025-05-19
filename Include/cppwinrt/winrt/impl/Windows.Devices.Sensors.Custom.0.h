@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Sensors::Custom
 {
@@ -54,7 +54,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Sensors::Custom::CustomSensorReadingChangedEventArgs>{ using type = winrt::Windows::Devices::Sensors::Custom::ICustomSensorReadingChangedEventArgs; };
     template <> struct abi<winrt::Windows::Devices::Sensors::Custom::ICustomSensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinimumReportInterval(uint32_t*) noexcept = 0;
@@ -67,7 +67,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::Custom::ICustomSensor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -76,7 +76,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::Custom::ICustomSensorReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -84,21 +84,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::Custom::ICustomSensorReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::Custom::ICustomSensorReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::Custom::ICustomSensorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -114,7 +114,7 @@ namespace winrt::impl
         [[nodiscard]] auto DeviceId() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Custom::CustomSensor, winrt::Windows::Devices::Sensors::Custom::CustomSensorReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::Custom::ICustomSensor, &impl::abi_t<winrt::Windows::Devices::Sensors::Custom::ICustomSensor>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Custom::CustomSensor, winrt::Windows::Devices::Sensors::Custom::CustomSensorReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Custom::CustomSensor, winrt::Windows::Devices::Sensors::Custom::CustomSensorReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::Custom::ICustomSensor>

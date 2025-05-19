@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -18,7 +18,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
     struct IPropertySet;
     struct ValueSet;
 }
@@ -155,7 +155,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Perception::Provider::PerceptionVideoFrameAllocator>{ using type = winrt::Windows::Devices::Perception::Provider::IPerceptionVideoFrameAllocator; };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IKnownPerceptionFrameKindStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(void**) noexcept = 0;
             virtual int32_t __stdcall get_Depth(void**) noexcept = 0;
@@ -164,21 +164,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionControlGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameProviderIds(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionControlGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionCorrelation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
@@ -187,42 +187,42 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionCorrelationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, winrt::Windows::Foundation::Numerics::float3, winrt::Windows::Foundation::Numerics::quaternion, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionCorrelationGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RelativeLocations(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionCorrelationGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionFaceAuthenticationGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameProviderIds(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionFaceAuthenticationGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RelativeTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_RelativeTime(int64_t) noexcept = 0;
@@ -232,7 +232,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionFrameProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameProviderInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_Available(bool*) noexcept = 0;
@@ -244,7 +244,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionFrameProviderInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall put_Id(void*) noexcept = 0;
@@ -260,14 +260,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionFrameProviderManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFrameProvider(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionFrameProviderManagerServiceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterFrameProviderInfo(void*, void*) noexcept = 0;
             virtual int32_t __stdcall UnregisterFrameProviderInfo(void*, void*) noexcept = 0;
@@ -283,7 +283,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionPropertyChangeRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -294,7 +294,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionVideoFrameAllocator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AllocateFrame(void**) noexcept = 0;
             virtual int32_t __stdcall CopyFromVideoFrame(void*, void**) noexcept = 0;
@@ -302,21 +302,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::IPerceptionVideoFrameAllocatorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, int32_t, winrt::Windows::Foundation::Size, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::PerceptionStartFaceAuthenticationHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::Provider::PerceptionStopFaceAuthenticationHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };

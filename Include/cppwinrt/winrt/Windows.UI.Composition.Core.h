@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_UI_Composition_Core_H
 #define WINRT_Windows_UI_Composition_Core_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.230511.6"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.230511.6"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
 #include "winrt/Windows.UI.Composition.h"
 #include "winrt/impl/Windows.Foundation.2.h"
 #include "winrt/impl/Windows.UI.Composition.2.h"
@@ -18,32 +18,92 @@ namespace winrt::impl
     template <typename D> auto consume_Windows_UI_Composition_Core_ICompositorController<D>::Compositor() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::UI::Composition::Core::ICompositorController)->get_Compositor(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Composition::Core::ICompositorController>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Composition::Core::ICompositorController, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Compositor(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)this;
+            check_hresult(_winrt_abi_type->get_Compositor(&value));
+        }
         return winrt::Windows::UI::Composition::Compositor{ value, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_UI_Composition_Core_ICompositorController<D>::Commit() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::UI::Composition::Core::ICompositorController)->Commit());
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Composition::Core::ICompositorController>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Composition::Core::ICompositorController, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->Commit());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)this;
+            check_hresult(_winrt_abi_type->Commit());
+        }
     }
     template <typename D> auto consume_Windows_UI_Composition_Core_ICompositorController<D>::EnsurePreviousCommitCompletedAsync() const
     {
         void* operation{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::UI::Composition::Core::ICompositorController)->EnsurePreviousCommitCompletedAsync(&operation));
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Composition::Core::ICompositorController>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Composition::Core::ICompositorController, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->EnsurePreviousCommitCompletedAsync(&operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)this;
+            check_hresult(_winrt_abi_type->EnsurePreviousCommitCompletedAsync(&operation));
+        }
         return winrt::Windows::Foundation::IAsyncAction{ operation, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_UI_Composition_Core_ICompositorController<D>::CommitNeeded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::Core::CompositorController, winrt::Windows::Foundation::IInspectable> const& handler) const
     {
         winrt::event_token token{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::UI::Composition::Core::ICompositorController)->add_CommitNeeded(*(void**)(&handler), put_abi(token)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Composition::Core::ICompositorController>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Composition::Core::ICompositorController, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_CommitNeeded(*(void**)(&handler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)this;
+            check_hresult(_winrt_abi_type->add_CommitNeeded(*(void**)(&handler), put_abi(token)));
+        }
         return token;
     }
-    template <typename D> typename consume_Windows_UI_Composition_Core_ICompositorController<D>::CommitNeeded_revoker consume_Windows_UI_Composition_Core_ICompositorController<D>::CommitNeeded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::Core::CompositorController, winrt::Windows::Foundation::IInspectable> const& handler) const
+    template <typename D> auto consume_Windows_UI_Composition_Core_ICompositorController<D>::CommitNeeded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::Core::CompositorController, winrt::Windows::Foundation::IInspectable> const& handler) const
     {
         return impl::make_event_revoker<D, CommitNeeded_revoker>(this, CommitNeeded(handler));
     }
     template <typename D> auto consume_Windows_UI_Composition_Core_ICompositorController<D>::CommitNeeded(winrt::event_token const& token) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::UI::Composition::Core::ICompositorController)->remove_CommitNeeded(impl::bind_in(token));
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Composition::Core::ICompositorController>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Composition::Core::ICompositorController, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_CommitNeeded(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>**)this;
+            _winrt_abi_type->remove_CommitNeeded(impl::bind_in(token));
+        }
     }
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>

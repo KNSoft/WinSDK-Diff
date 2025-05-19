@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_Globalization_NumberFormatting_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Globalization::NumberFormatting
 {
@@ -140,7 +140,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Globalization::NumberFormatting::SignificantDigitsNumberRounder>{ using type = winrt::Windows::Globalization::NumberFormatting::INumberRounder; };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::ICurrencyFormatter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Currency(void**) noexcept = 0;
             virtual int32_t __stdcall put_Currency(void*) noexcept = 0;
@@ -148,7 +148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::ICurrencyFormatter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -157,7 +157,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::ICurrencyFormatterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCurrencyFormatterCode(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateCurrencyFormatterCodeContext(void*, void*, void*, void**) noexcept = 0;
@@ -165,14 +165,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::IDecimalFormatterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDecimalFormatter(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::IIncrementNumberRounder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RoundingAlgorithm(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_RoundingAlgorithm(int32_t) noexcept = 0;
@@ -182,7 +182,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::INumberFormatter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FormatInt(int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall FormatUInt(uint64_t, void**) noexcept = 0;
@@ -191,7 +191,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::INumberFormatter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FormatInt(int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall FormatUInt(uint64_t, void**) noexcept = 0;
@@ -200,7 +200,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::INumberFormatterOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Languages(void**) noexcept = 0;
             virtual int32_t __stdcall get_GeographicRegion(void**) noexcept = 0;
@@ -220,7 +220,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::INumberParser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseInt(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ParseUInt(void*, void**) noexcept = 0;
@@ -229,7 +229,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::INumberRounder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RoundInt32(int32_t, int32_t*) noexcept = 0;
             virtual int32_t __stdcall RoundUInt32(uint32_t, uint32_t*) noexcept = 0;
@@ -241,7 +241,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::INumberRounderOption>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NumberRounder(void**) noexcept = 0;
             virtual int32_t __stdcall put_NumberRounder(void*) noexcept = 0;
@@ -249,7 +249,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::INumeralSystemTranslator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Languages(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResolvedLanguage(void**) noexcept = 0;
@@ -260,28 +260,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::INumeralSystemTranslatorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::IPercentFormatterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePercentFormatter(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::IPermilleFormatterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePermilleFormatter(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::ISignedZeroOption>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsZeroSigned(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsZeroSigned(bool) noexcept = 0;
@@ -289,7 +289,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::ISignificantDigitsNumberRounder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RoundingAlgorithm(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_RoundingAlgorithm(int32_t) noexcept = 0;
@@ -299,7 +299,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::NumberFormatting::ISignificantDigitsOption>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SignificantDigits(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_SignificantDigits(int32_t) noexcept = 0;

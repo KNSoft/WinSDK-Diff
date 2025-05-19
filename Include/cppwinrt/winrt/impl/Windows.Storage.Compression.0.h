@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -53,7 +53,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::Compression::Decompressor>{ using type = winrt::Windows::Storage::Compression::IDecompressor; };
     template <> struct abi<winrt::Windows::Storage::Compression::ICompressor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FinishAsync(void**) noexcept = 0;
             virtual int32_t __stdcall DetachStream(void**) noexcept = 0;
@@ -61,7 +61,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Compression::ICompressorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCompressor(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateCompressorEx(void*, int32_t, uint32_t, void**) noexcept = 0;
@@ -69,14 +69,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Compression::IDecompressor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DetachStream(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Compression::IDecompressorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDecompressor(void*, void**) noexcept = 0;
         };

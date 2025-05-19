@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -103,7 +103,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Web::UI::Interop::WebViewControlProcessOptions>{ using type = winrt::Windows::Web::UI::Interop::IWebViewControlProcessOptions; };
     template <> struct abi<winrt::Windows::Web::UI::Interop::IWebViewControlAcceleratorKeyPressedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EventType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_VirtualKey(int32_t*) noexcept = 0;
@@ -115,14 +115,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::UI::Interop::IWebViewControlMoveFocusRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::UI::Interop::IWebViewControlProcess>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProcessId(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_EnterpriseId(void**) noexcept = 0;
@@ -136,14 +136,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::UI::Interop::IWebViewControlProcessFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithOptions(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::UI::Interop::IWebViewControlProcessOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_EnterpriseId(void*) noexcept = 0;
             virtual int32_t __stdcall get_EnterpriseId(void**) noexcept = 0;
@@ -153,7 +153,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::UI::Interop::IWebViewControlSite>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Process(void**) noexcept = 0;
             virtual int32_t __stdcall put_Scale(double) noexcept = 0;
@@ -172,7 +172,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::UI::Interop::IWebViewControlSite2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_GotFocus(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_GotFocus(winrt::event_token) noexcept = 0;
@@ -214,7 +214,7 @@ namespace winrt::impl
         auto Terminate() const;
         auto ProcessExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControlProcess, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ProcessExited_revoker = impl::event_revoker<winrt::Windows::Web::UI::Interop::IWebViewControlProcess, &impl::abi_t<winrt::Windows::Web::UI::Interop::IWebViewControlProcess>::remove_ProcessExited>;
-        [[nodiscard]] ProcessExited_revoker ProcessExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControlProcess, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ProcessExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControlProcess, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ProcessExited(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Web::UI::Interop::IWebViewControlProcess>
@@ -256,11 +256,11 @@ namespace winrt::impl
         auto MoveFocus(winrt::Windows::Web::UI::Interop::WebViewControlMoveFocusReason const& reason) const;
         auto MoveFocusRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Web::UI::Interop::WebViewControlMoveFocusRequestedEventArgs> const& handler) const;
         using MoveFocusRequested_revoker = impl::event_revoker<winrt::Windows::Web::UI::Interop::IWebViewControlSite, &impl::abi_t<winrt::Windows::Web::UI::Interop::IWebViewControlSite>::remove_MoveFocusRequested>;
-        [[nodiscard]] MoveFocusRequested_revoker MoveFocusRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Web::UI::Interop::WebViewControlMoveFocusRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto MoveFocusRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Web::UI::Interop::WebViewControlMoveFocusRequestedEventArgs> const& handler) const;
         auto MoveFocusRequested(winrt::event_token const& token) const noexcept;
         auto AcceleratorKeyPressed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Web::UI::Interop::WebViewControlAcceleratorKeyPressedEventArgs> const& handler) const;
         using AcceleratorKeyPressed_revoker = impl::event_revoker<winrt::Windows::Web::UI::Interop::IWebViewControlSite, &impl::abi_t<winrt::Windows::Web::UI::Interop::IWebViewControlSite>::remove_AcceleratorKeyPressed>;
-        [[nodiscard]] AcceleratorKeyPressed_revoker AcceleratorKeyPressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Web::UI::Interop::WebViewControlAcceleratorKeyPressedEventArgs> const& handler) const;
+        [[nodiscard]] auto AcceleratorKeyPressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Web::UI::Interop::WebViewControlAcceleratorKeyPressedEventArgs> const& handler) const;
         auto AcceleratorKeyPressed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Web::UI::Interop::IWebViewControlSite>
@@ -272,11 +272,11 @@ namespace winrt::impl
     {
         auto GotFocus(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using GotFocus_revoker = impl::event_revoker<winrt::Windows::Web::UI::Interop::IWebViewControlSite2, &impl::abi_t<winrt::Windows::Web::UI::Interop::IWebViewControlSite2>::remove_GotFocus>;
-        [[nodiscard]] GotFocus_revoker GotFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto GotFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto GotFocus(winrt::event_token const& token) const noexcept;
         auto LostFocus(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using LostFocus_revoker = impl::event_revoker<winrt::Windows::Web::UI::Interop::IWebViewControlSite2, &impl::abi_t<winrt::Windows::Web::UI::Interop::IWebViewControlSite2>::remove_LostFocus>;
-        [[nodiscard]] LostFocus_revoker LostFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto LostFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::UI::Interop::WebViewControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto LostFocus(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Web::UI::Interop::IWebViewControlSite2>

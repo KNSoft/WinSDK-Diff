@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
@@ -227,7 +227,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Media::Imaging::XamlRenderingBackgroundTask>{ using type = winrt::Windows::UI::Xaml::Media::Imaging::IXamlRenderingBackgroundTask; };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CreateOptions(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_CreateOptions(uint32_t) noexcept = 0;
@@ -247,7 +247,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DecodePixelType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DecodePixelType(int32_t) noexcept = 0;
@@ -255,7 +255,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAnimatedBitmap(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsPlaying(bool*) noexcept = 0;
@@ -267,14 +267,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithUriSource(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImageStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CreateOptionsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_UriSourceProperty(void**) noexcept = 0;
@@ -284,14 +284,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImageStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DecodePixelTypeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImageStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAnimatedBitmapProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsPlayingProperty(void**) noexcept = 0;
@@ -300,7 +300,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelWidth(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PixelHeight(int32_t*) noexcept = 0;
@@ -310,14 +310,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelWidthProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PixelHeightProperty(void**) noexcept = 0;
@@ -325,7 +325,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IDownloadProgressEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Progress(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Progress(int32_t) noexcept = 0;
@@ -333,7 +333,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IRenderTargetBitmap>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelWidth(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PixelHeight(int32_t*) noexcept = 0;
@@ -344,7 +344,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IRenderTargetBitmapStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelWidthProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PixelHeightProperty(void**) noexcept = 0;
@@ -352,20 +352,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::ISoftwareBitmapSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetBitmapAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::ISurfaceImageSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::ISurfaceImageSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithDimensions(int32_t, int32_t, void*, void**, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithDimensionsAndOpacity(int32_t, int32_t, bool, void*, void**, void**) noexcept = 0;
@@ -373,7 +373,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UriSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_UriSource(void*) noexcept = 0;
@@ -390,7 +390,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithUriSource(void*, void*, void**, void**) noexcept = 0;
@@ -398,20 +398,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSourceFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSourceOpenedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UriSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_RasterizePixelWidthProperty(void**) noexcept = 0;
@@ -420,13 +420,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IVirtualSurfaceImageSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IVirtualSurfaceImageSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithDimensions(int32_t, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithDimensionsAndOpacity(int32_t, int32_t, bool, void**) noexcept = 0;
@@ -434,7 +434,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IWriteableBitmap>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelBuffer(void**) noexcept = 0;
             virtual int32_t __stdcall Invalidate() noexcept = 0;
@@ -442,34 +442,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IWriteableBitmapFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithDimensions(int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IXamlRenderingBackgroundTask>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IXamlRenderingBackgroundTaskFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::IXamlRenderingBackgroundTaskOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnRun(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Imaging::DownloadProgressEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -487,15 +487,15 @@ namespace winrt::impl
         auto DecodePixelHeight(int32_t value) const;
         auto DownloadProgress(winrt::Windows::UI::Xaml::Media::Imaging::DownloadProgressEventHandler const& handler) const;
         using DownloadProgress_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage, &impl::abi_t<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage>::remove_DownloadProgress>;
-        [[nodiscard]] DownloadProgress_revoker DownloadProgress(auto_revoke_t, winrt::Windows::UI::Xaml::Media::Imaging::DownloadProgressEventHandler const& handler) const;
+        [[nodiscard]] auto DownloadProgress(auto_revoke_t, winrt::Windows::UI::Xaml::Media::Imaging::DownloadProgressEventHandler const& handler) const;
         auto DownloadProgress(winrt::event_token const& token) const noexcept;
         auto ImageOpened(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using ImageOpened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage, &impl::abi_t<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage>::remove_ImageOpened>;
-        [[nodiscard]] ImageOpened_revoker ImageOpened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto ImageOpened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto ImageOpened(winrt::event_token const& token) const noexcept;
         auto ImageFailed(winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
         using ImageFailed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage, &impl::abi_t<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage>::remove_ImageFailed>;
-        [[nodiscard]] ImageFailed_revoker ImageFailed(auto_revoke_t, winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
+        [[nodiscard]] auto ImageFailed(auto_revoke_t, winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
         auto ImageFailed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Media::Imaging::IBitmapImage>
@@ -669,11 +669,11 @@ namespace winrt::impl
         auto RasterizePixelHeight(double value) const;
         auto Opened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSource, winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSourceOpenedEventArgs> const& handler) const;
         using Opened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSource, &impl::abi_t<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSource>::remove_Opened>;
-        [[nodiscard]] Opened_revoker Opened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSource, winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSourceOpenedEventArgs> const& handler) const;
+        [[nodiscard]] auto Opened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSource, winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSourceOpenedEventArgs> const& handler) const;
         auto Opened(winrt::event_token const& token) const noexcept;
         auto OpenFailed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSource, winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSourceFailedEventArgs> const& handler) const;
         using OpenFailed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSource, &impl::abi_t<winrt::Windows::UI::Xaml::Media::Imaging::ISvgImageSource>::remove_OpenFailed>;
-        [[nodiscard]] OpenFailed_revoker OpenFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSource, winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSourceFailedEventArgs> const& handler) const;
+        [[nodiscard]] auto OpenFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSource, winrt::Windows::UI::Xaml::Media::Imaging::SvgImageSourceFailedEventArgs> const& handler) const;
         auto OpenFailed(winrt::event_token const& token) const noexcept;
         auto SetSourceAsync(winrt::Windows::Storage::Streams::IRandomAccessStream const& streamSource) const;
     };

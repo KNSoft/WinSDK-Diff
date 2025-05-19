@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -161,6 +161,7 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing3D
     struct Printing3DTextureResource;
     struct Printing3DBufferDescription;
     struct Print3DTaskSourceRequestedHandler;
+    struct Printing3DContract;
 }
 namespace winrt::impl
 {
@@ -318,6 +319,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing3D::IPrinting3DTexture2CoordMaterialGroupFactory> = L"Windows.Graphics.Printing3D.IPrinting3DTexture2CoordMaterialGroupFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing3D::IPrinting3DTextureResource> = L"Windows.Graphics.Printing3D.IPrinting3DTextureResource";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing3D::Print3DTaskSourceRequestedHandler> = L"Windows.Graphics.Printing3D.Print3DTaskSourceRequestedHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing3D::Printing3DContract> = L"Windows.Graphics.Printing3D.Printing3DContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing3D::IPrint3DManager>{ 0x4D2FCB0A,0x7366,0x4971,{ 0x8B,0xD5,0x17,0xC4,0xE3,0xE8,0xC6,0xC0 } }; // 4D2FCB0A-7366-4971-8BD5-17C4E3E8C6C0
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing3D::IPrint3DManagerStatics>{ 0x0EF1CAFE,0xA9AD,0x4C08,{ 0xA9,0x17,0x1D,0x1F,0x86,0x3E,0xAB,0xCB } }; // 0EF1CAFE-A9AD-4C08-A917-1D1F863EABCB
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing3D::IPrint3DTask>{ 0x8CE3D080,0x2118,0x4C28,{ 0x80,0xDE,0xF4,0x26,0xD7,0x01,0x91,0xAE } }; // 8CE3D080-2118-4C28-80DE-F426D70191AE
@@ -388,7 +390,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Printing3D::Printing3DTextureResource>{ using type = winrt::Windows::Graphics::Printing3D::IPrinting3DTextureResource; };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrint3DManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_TaskRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_TaskRequested(winrt::event_token) noexcept = 0;
@@ -396,7 +398,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrint3DManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall ShowPrintUIAsync(void**) noexcept = 0;
@@ -404,7 +406,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrint3DTask>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall add_Submitting(void*, winrt::event_token*) noexcept = 0;
@@ -417,7 +419,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrint3DTaskCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Completion(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedStatus(int32_t*) noexcept = 0;
@@ -425,35 +427,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrint3DTaskRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTask(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrint3DTaskRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrint3DTaskSourceChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrint3DTaskSourceRequestedArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetSource(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3D3MFPackage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SaveAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrintTicket(void**) noexcept = 0;
@@ -469,7 +471,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3D3MFPackage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Compression(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Compression(int32_t) noexcept = 0;
@@ -477,14 +479,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3D3MFPackageStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DBaseMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -494,7 +496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DBaseMaterialGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Bases(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaterialGroupId(uint32_t*) noexcept = 0;
@@ -502,14 +504,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DBaseMaterialGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DBaseMaterialStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Abs(void**) noexcept = 0;
             virtual int32_t __stdcall get_Pla(void**) noexcept = 0;
@@ -517,7 +519,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DColorMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Value(uint32_t) noexcept = 0;
@@ -525,7 +527,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DColorMaterial2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -533,7 +535,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DColorMaterialGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Colors(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaterialGroupId(uint32_t*) noexcept = 0;
@@ -541,14 +543,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DColorMaterialGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DComponent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mesh(void**) noexcept = 0;
             virtual int32_t __stdcall put_Mesh(void*) noexcept = 0;
@@ -565,7 +567,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DComponentWithMatrix>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Component(void**) noexcept = 0;
             virtual int32_t __stdcall put_Component(void*) noexcept = 0;
@@ -575,14 +577,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DCompositeMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Values(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DCompositeMaterialGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Composites(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaterialGroupId(uint32_t*) noexcept = 0;
@@ -591,7 +593,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DCompositeMaterialGroup2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BaseMaterialGroup(void**) noexcept = 0;
             virtual int32_t __stdcall put_BaseMaterialGroup(void*) noexcept = 0;
@@ -599,14 +601,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DCompositeMaterialGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DFaceReductionOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxReductionArea(double*) noexcept = 0;
             virtual int32_t __stdcall put_MaxReductionArea(double) noexcept = 0;
@@ -618,7 +620,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BaseGroups(void**) noexcept = 0;
             virtual int32_t __stdcall get_ColorGroups(void**) noexcept = 0;
@@ -629,7 +631,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DMesh>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VertexCount(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_VertexCount(uint32_t) noexcept = 0;
@@ -658,7 +660,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DMeshVerificationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsValid(bool*) noexcept = 0;
             virtual int32_t __stdcall get_NonmanifoldTriangles(void**) noexcept = 0;
@@ -667,7 +669,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DModel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Unit(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Unit(int32_t) noexcept = 0;
@@ -688,7 +690,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DModel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryPartialRepairAsync(void**) noexcept = 0;
             virtual int32_t __stdcall TryPartialRepairWithTimeAsync(int64_t, void**) noexcept = 0;
@@ -700,7 +702,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DModelTexture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextureResource(void**) noexcept = 0;
             virtual int32_t __stdcall put_TextureResource(void*) noexcept = 0;
@@ -712,14 +714,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DMultiplePropertyMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaterialIndices(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DMultiplePropertyMaterialGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MultipleProperties(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaterialGroupIndices(void**) noexcept = 0;
@@ -728,14 +730,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DMultiplePropertyMaterialGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DTexture2CoordMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Texture(void**) noexcept = 0;
             virtual int32_t __stdcall put_Texture(void*) noexcept = 0;
@@ -747,7 +749,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DTexture2CoordMaterialGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Texture2Coords(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaterialGroupId(uint32_t*) noexcept = 0;
@@ -755,7 +757,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DTexture2CoordMaterialGroup2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Texture(void**) noexcept = 0;
             virtual int32_t __stdcall put_Texture(void*) noexcept = 0;
@@ -763,14 +765,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DTexture2CoordMaterialGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::IPrinting3DTextureResource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextureData(void**) noexcept = 0;
             virtual int32_t __stdcall put_TextureData(void*) noexcept = 0;
@@ -780,7 +782,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing3D::Print3DTaskSourceRequestedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -790,7 +792,7 @@ namespace winrt::impl
     {
         auto TaskRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DManager, winrt::Windows::Graphics::Printing3D::Print3DTaskRequestedEventArgs> const& eventHandler) const;
         using TaskRequested_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing3D::IPrint3DManager, &impl::abi_t<winrt::Windows::Graphics::Printing3D::IPrint3DManager>::remove_TaskRequested>;
-        [[nodiscard]] TaskRequested_revoker TaskRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DManager, winrt::Windows::Graphics::Printing3D::Print3DTaskRequestedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto TaskRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DManager, winrt::Windows::Graphics::Printing3D::Print3DTaskRequestedEventArgs> const& eventHandler) const;
         auto TaskRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing3D::IPrint3DManager>
@@ -813,15 +815,15 @@ namespace winrt::impl
         [[nodiscard]] auto Source() const;
         auto Submitting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using Submitting_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing3D::IPrint3DTask, &impl::abi_t<winrt::Windows::Graphics::Printing3D::IPrint3DTask>::remove_Submitting>;
-        [[nodiscard]] Submitting_revoker Submitting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto Submitting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto Submitting(winrt::event_token const& eventCookie) const noexcept;
         auto Completed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Graphics::Printing3D::Print3DTaskCompletedEventArgs> const& eventHandler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing3D::IPrint3DTask, &impl::abi_t<winrt::Windows::Graphics::Printing3D::IPrint3DTask>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Graphics::Printing3D::Print3DTaskCompletedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Graphics::Printing3D::Print3DTaskCompletedEventArgs> const& eventHandler) const;
         auto Completed(winrt::event_token const& eventCookie) const noexcept;
         auto SourceChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Graphics::Printing3D::Print3DTaskSourceChangedEventArgs> const& eventHandler) const;
         using SourceChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing3D::IPrint3DTask, &impl::abi_t<winrt::Windows::Graphics::Printing3D::IPrint3DTask>::remove_SourceChanged>;
-        [[nodiscard]] SourceChanged_revoker SourceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Graphics::Printing3D::Print3DTaskSourceChangedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto SourceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing3D::Print3DTask, winrt::Windows::Graphics::Printing3D::Print3DTaskSourceChangedEventArgs> const& eventHandler) const;
         auto SourceChanged(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing3D::IPrint3DTask>

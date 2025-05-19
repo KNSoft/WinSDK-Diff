@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.Networking.PushNotifications.1.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::PushNotifications
 {
-    struct __declspec(empty_bases) PushNotificationChannel : winrt::Windows::Networking::PushNotifications::IPushNotificationChannel
+    struct WINRT_IMPL_EMPTY_BASES PushNotificationChannel : winrt::Windows::Networking::PushNotifications::IPushNotificationChannel
     {
         PushNotificationChannel(std::nullptr_t) noexcept {}
         PushNotificationChannel(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Networking::PushNotifications::IPushNotificationChannel(ptr, take_ownership_from_abi) {}
@@ -26,26 +26,26 @@ WINRT_EXPORT namespace winrt::Windows::Networking::PushNotifications
         static auto GetDefault();
         static auto ChannelsRevoked(winrt::Windows::Foundation::EventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannelsRevokedEventArgs> const& handler);
         using ChannelsRevoked_revoker = impl::factory_event_revoker<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics4, &impl::abi_t<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics4>::remove_ChannelsRevoked>;
-        [[nodiscard]] static ChannelsRevoked_revoker ChannelsRevoked(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannelsRevokedEventArgs> const& handler);
+        [[nodiscard]] static auto ChannelsRevoked(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannelsRevokedEventArgs> const& handler);
         static auto ChannelsRevoked(winrt::event_token const& token);
     };
-    struct __declspec(empty_bases) PushNotificationChannelManagerForUser : winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerForUser,
+    struct WINRT_IMPL_EMPTY_BASES PushNotificationChannelManagerForUser : winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerForUser,
         impl::require<PushNotificationChannelManagerForUser, winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerForUser2>
     {
         PushNotificationChannelManagerForUser(std::nullptr_t) noexcept {}
         PushNotificationChannelManagerForUser(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerForUser(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) PushNotificationChannelsRevokedEventArgs : winrt::Windows::Networking::PushNotifications::IPushNotificationChannelsRevokedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES PushNotificationChannelsRevokedEventArgs : winrt::Windows::Networking::PushNotifications::IPushNotificationChannelsRevokedEventArgs
     {
         PushNotificationChannelsRevokedEventArgs(std::nullptr_t) noexcept {}
         PushNotificationChannelsRevokedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Networking::PushNotifications::IPushNotificationChannelsRevokedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) PushNotificationReceivedEventArgs : winrt::Windows::Networking::PushNotifications::IPushNotificationReceivedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES PushNotificationReceivedEventArgs : winrt::Windows::Networking::PushNotifications::IPushNotificationReceivedEventArgs
     {
         PushNotificationReceivedEventArgs(std::nullptr_t) noexcept {}
         PushNotificationReceivedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Networking::PushNotifications::IPushNotificationReceivedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) RawNotification : winrt::Windows::Networking::PushNotifications::IRawNotification,
+    struct WINRT_IMPL_EMPTY_BASES RawNotification : winrt::Windows::Networking::PushNotifications::IRawNotification,
         impl::require<RawNotification, winrt::Windows::Networking::PushNotifications::IRawNotification2, winrt::Windows::Networking::PushNotifications::IRawNotification3>
     {
         RawNotification(std::nullptr_t) noexcept {}

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -21,7 +21,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct IAsyncAction;
     struct Point;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
 {
@@ -97,7 +97,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::CoreDropOperationTargetRequestedEventArgs>{ using type = winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDropOperationTargetRequestedEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragDropManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_TargetRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_TargetRequested(winrt::event_token) noexcept = 0;
@@ -107,14 +107,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragDropManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall get_Modifiers(uint32_t*) noexcept = 0;
@@ -123,14 +123,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowedOperations(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall SetPointerId(uint32_t) noexcept = 0;
@@ -143,7 +143,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragOperation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowedOperations(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_AllowedOperations(uint32_t) noexcept = 0;
@@ -151,7 +151,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragUIOverride>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetContentFromSoftwareBitmap(void*) noexcept = 0;
             virtual int32_t __stdcall SetContentFromSoftwareBitmapWithAnchorPoint(void*, winrt::Windows::Foundation::Point) noexcept = 0;
@@ -168,7 +168,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDropOperationTarget>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall EnterAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall OverAsync(void*, void*, void**) noexcept = 0;
@@ -178,7 +178,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDropOperationTargetRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetTarget(void*) noexcept = 0;
         };
@@ -188,7 +188,7 @@ namespace winrt::impl
     {
         auto TargetRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::CoreDragDropManager, winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::CoreDropOperationTargetRequestedEventArgs> const& value) const;
         using TargetRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragDropManager, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragDropManager>::remove_TargetRequested>;
-        [[nodiscard]] TargetRequested_revoker TargetRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::CoreDragDropManager, winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::CoreDropOperationTargetRequestedEventArgs> const& value) const;
+        [[nodiscard]] auto TargetRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::CoreDragDropManager, winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::CoreDropOperationTargetRequestedEventArgs> const& value) const;
         auto TargetRequested(winrt::event_token const& value) const noexcept;
         [[nodiscard]] auto AreConcurrentOperationsEnabled() const;
         auto AreConcurrentOperationsEnabled(bool value) const;

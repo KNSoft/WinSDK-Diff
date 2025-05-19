@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -20,7 +20,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::ProtectedPrint::IWindowsProtectedPrintInfoStatics>{ 0xA7D212F3,0x4168,0x5485,{ 0x98,0xAB,0xD8,0x9D,0x04,0x60,0x3B,0x40 } }; // A7D212F3-4168-5485-98AB-D89D04603B40
     template <> struct abi<winrt::Windows::Graphics::Printing::ProtectedPrint::IWindowsProtectedPrintInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsProtectedPrintEnabled(bool*) noexcept = 0;
         };

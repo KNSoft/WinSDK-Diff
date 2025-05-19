@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -133,7 +133,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::Input::Custom::XusbGameControllerProvider>{ using type = winrt::Windows::Gaming::Input::Custom::IXusbGameControllerProvider; };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::ICustomGameControllerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateGameController(void*, void**) noexcept = 0;
             virtual int32_t __stdcall OnGameControllerAdded(void*) noexcept = 0;
@@ -142,7 +142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IGameControllerFactoryManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterCustomFactoryForGipInterface(void*, winrt::guid) noexcept = 0;
             virtual int32_t __stdcall RegisterCustomFactoryForHardwareId(void*, uint16_t, uint16_t) noexcept = 0;
@@ -151,14 +151,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IGameControllerFactoryManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetFactoryControllerFromGameController(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IGameControllerInputSink>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnInputResumed(uint64_t) noexcept = 0;
             virtual int32_t __stdcall OnInputSuspended(uint64_t) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IGameControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FirmwareVersionInfo(struct struct_Windows_Gaming_Input_Custom_GameControllerVersionInfo*) noexcept = 0;
             virtual int32_t __stdcall get_HardwareProductId(uint16_t*) noexcept = 0;
@@ -177,7 +177,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IGipFirmwareUpdateResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedErrorCode(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_FinalComponentId(uint32_t*) noexcept = 0;
@@ -186,7 +186,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IGipGameControllerInputSink>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnKeyReceived(uint64_t, uint8_t, bool) noexcept = 0;
             virtual int32_t __stdcall OnMessageReceived(uint64_t, int32_t, uint8_t, uint8_t, uint32_t, uint8_t*) noexcept = 0;
@@ -194,7 +194,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IGipGameControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendMessage(int32_t, uint8_t, uint32_t, uint8_t*) noexcept = 0;
             virtual int32_t __stdcall SendReceiveMessage(int32_t, uint8_t, uint32_t, uint8_t*, uint32_t, uint8_t*) noexcept = 0;
@@ -203,14 +203,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IHidGameControllerInputSink>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnInputReportReceived(uint64_t, uint8_t, uint32_t, uint8_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IHidGameControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UsageId(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_UsagePage(uint16_t*) noexcept = 0;
@@ -221,14 +221,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IXusbGameControllerInputSink>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnInputReceived(uint64_t, uint8_t, uint32_t, uint8_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Custom::IXusbGameControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetVibration(double, double) noexcept = 0;
         };

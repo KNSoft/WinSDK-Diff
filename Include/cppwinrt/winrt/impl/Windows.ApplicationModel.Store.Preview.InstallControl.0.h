@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct HResult;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Management::Deployment
 {
@@ -197,7 +197,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::GetEntitlementResult>{ using type = winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IGetEntitlementResult; };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductId(void**) noexcept = 0;
             virtual int32_t __stdcall get_PackageFamilyName(void**) noexcept = 0;
@@ -215,7 +215,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CancelWithTelemetry(void*) noexcept = 0;
             virtual int32_t __stdcall PauseWithTelemetry(void*) noexcept = 0;
@@ -224,7 +224,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Children(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemOperationsMightAffectOtherItems(bool*) noexcept = 0;
@@ -232,7 +232,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LaunchAfterInstall(bool*) noexcept = 0;
             virtual int32_t __stdcall put_LaunchAfterInstall(bool) noexcept = 0;
@@ -240,7 +240,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PinToDesktopAfterInstall(bool*) noexcept = 0;
             virtual int32_t __stdcall put_PinToDesktopAfterInstall(bool) noexcept = 0;
@@ -256,7 +256,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppInstallItems(void**) noexcept = 0;
             virtual int32_t __stdcall Cancel(void*) noexcept = 0;
@@ -281,7 +281,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAppInstallWithTelemetryAsync(void*, void*, bool, bool, void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall UpdateAppByPackageFamilyNameWithTelemetryAsync(void*, void*, void**) noexcept = 0;
@@ -295,7 +295,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartProductInstallAsync(void*, void*, void*, void*, bool, bool, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall StartProductInstallForUserAsync(void*, void*, void*, void*, void*, bool, bool, void*, void*, void**) noexcept = 0;
@@ -309,7 +309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFreeUserEntitlementAsync(void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetFreeUserEntitlementForUserAsync(void*, void*, void*, void*, void**) noexcept = 0;
@@ -318,14 +318,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppInstallItemsWithGroupSupport(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SearchForAllUpdatesWithUpdateOptionsAsync(void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall SearchForAllUpdatesWithUpdateOptionsForUserAsync(void*, void*, void*, void*, void**) noexcept = 0;
@@ -339,21 +339,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanInstallForAllUsers(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManagerItemEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CatalogId(void**) noexcept = 0;
             virtual int32_t __stdcall put_CatalogId(void*) noexcept = 0;
@@ -371,7 +371,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PinToDesktopAfterInstall(bool*) noexcept = 0;
             virtual int32_t __stdcall put_PinToDesktopAfterInstall(bool) noexcept = 0;
@@ -395,7 +395,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InstallState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DownloadSizeInBytes(uint64_t*) noexcept = 0;
@@ -406,7 +406,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallStatus2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall get_ReadyForLaunch(bool*) noexcept = 0;
@@ -414,14 +414,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallStatus3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsStaged(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppUpdateOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CatalogId(void**) noexcept = 0;
             virtual int32_t __stdcall put_CatalogId(void*) noexcept = 0;
@@ -431,7 +431,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppUpdateOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutomaticallyDownloadAndInstallUpdateIfFound(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AutomaticallyDownloadAndInstallUpdateIfFound(bool) noexcept = 0;
@@ -439,14 +439,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IGetEntitlementResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IGetEntitlementResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAlreadyOwned(bool*) noexcept = 0;
             virtual int32_t __stdcall get_OrderId(void**) noexcept = 0;
@@ -467,11 +467,11 @@ namespace winrt::impl
         auto Restart() const;
         auto Completed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem, &impl::abi_t<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Completed(winrt::event_token const& token) const noexcept;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem, &impl::abi_t<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem>
@@ -536,11 +536,11 @@ namespace winrt::impl
         auto Restart(param::hstring const& productId) const;
         auto ItemCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManager, winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManagerItemEventArgs> const& handler) const;
         using ItemCompleted_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager, &impl::abi_t<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager>::remove_ItemCompleted>;
-        [[nodiscard]] ItemCompleted_revoker ItemCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManager, winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManagerItemEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManager, winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManagerItemEventArgs> const& handler) const;
         auto ItemCompleted(winrt::event_token const& token) const noexcept;
         auto ItemStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManager, winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManagerItemEventArgs> const& handler) const;
         using ItemStatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager, &impl::abi_t<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallManager>::remove_ItemStatusChanged>;
-        [[nodiscard]] ItemStatusChanged_revoker ItemStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManager, winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManagerItemEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManager, winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AppInstallManagerItemEventArgs> const& handler) const;
         auto ItemStatusChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto AutoUpdateSetting() const;
         auto AutoUpdateSetting(winrt::Windows::ApplicationModel::Store::Preview::InstallControl::AutoUpdateSetting const& value) const;

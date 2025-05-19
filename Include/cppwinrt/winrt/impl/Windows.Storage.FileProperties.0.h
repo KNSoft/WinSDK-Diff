@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -17,8 +17,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -163,7 +163,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::FileProperties::VideoProperties>{ using type = winrt::Windows::Storage::FileProperties::IVideoProperties; };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IBasicProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Size(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_DateModified(int64_t*) noexcept = 0;
@@ -172,7 +172,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IDocumentProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Author(void**) noexcept = 0;
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
@@ -184,7 +184,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IGeotagHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetGeotagAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall SetGeotagFromGeolocatorAsync(void*, void*, void**) noexcept = 0;
@@ -193,7 +193,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IImageProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Rating(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Rating(uint32_t) noexcept = 0;
@@ -216,7 +216,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IMusicProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Album(void**) noexcept = 0;
             virtual int32_t __stdcall put_Album(void*) noexcept = 0;
@@ -247,7 +247,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IStorageItemContentProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetMusicPropertiesAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetVideoPropertiesAsync(void**) noexcept = 0;
@@ -257,7 +257,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IStorageItemExtraProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RetrievePropertiesAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall SavePropertiesAsync(void*, void**) noexcept = 0;
@@ -266,7 +266,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IThumbnailProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OriginalWidth(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_OriginalHeight(uint32_t*) noexcept = 0;
@@ -276,7 +276,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::FileProperties::IVideoProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Rating(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Rating(uint32_t) noexcept = 0;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,12 +15,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Credentials
 {
@@ -432,28 +432,28 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Enumeration::EnclosureLocation>{ using type = winrt::Windows::Devices::Enumeration::IEnclosureLocation; };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceAccessChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceAccessChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceAccessChangedEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserPromptRequired(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceAccessInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AccessChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AccessChanged(winrt::event_token) noexcept = 0;
@@ -462,14 +462,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceAccessInformation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserPromptRequired(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceAccessInformationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromId(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromDeviceClassId(winrt::guid, void**) noexcept = 0;
@@ -478,27 +478,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceConnectionChangeTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceDisconnectButtonClickedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceEnumerationSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -513,7 +513,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Pairing(void**) noexcept = 0;
@@ -521,7 +521,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationCustomPairing>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PairAsync(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall PairWithProtectionLevelAsync(uint32_t, int32_t, void**) noexcept = 0;
@@ -532,7 +532,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationCustomPairing2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddPairingSetMember(void*) noexcept = 0;
             virtual int32_t __stdcall add_PairingSetMembersRequested(void*, winrt::event_token*) noexcept = 0;
@@ -541,7 +541,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationPairing>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPaired(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanPair(bool*) noexcept = 0;
@@ -551,7 +551,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationPairing2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProtectionLevel(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Custom(void**) noexcept = 0;
@@ -561,21 +561,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationPairingStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryRegisterForAllInboundPairingRequests(uint32_t, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationPairingStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryRegisterForAllInboundPairingRequestsWithProtectionLevel(uint32_t, int32_t, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromIdAsyncAdditionalProperties(void*, void*, void**) noexcept = 0;
@@ -591,7 +591,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAqsFilterFromDeviceClass(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromIdAsyncWithKindAndAdditionalProperties(void*, void*, int32_t, void**) noexcept = 0;
@@ -601,7 +601,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromIdAsyncWithAdditionalPropertiesKindAndSettings(void*, void*, int32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsyncWithAqsFilterAdditionalPropertiesKindAndSettings(void*, void*, int32_t, void*, void**) noexcept = 0;
@@ -610,7 +610,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationUpdate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -618,14 +618,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceInformationUpdate2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePairingRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceInformation(void**) noexcept = 0;
             virtual int32_t __stdcall get_PairingKind(uint32_t*) noexcept = 0;
@@ -637,21 +637,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePairingRequestedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AcceptWithPasswordCredential(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePairingRequestedEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AcceptWithAddress(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePairingResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ProtectionLevelUsed(int32_t*) noexcept = 0;
@@ -659,7 +659,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePairingSetMembersRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ParentDeviceInformation(void**) noexcept = 0;
@@ -668,13 +668,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePairingSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Filter(void**) noexcept = 0;
             virtual int32_t __stdcall get_Appearance(void**) noexcept = 0;
@@ -695,7 +695,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePickerAppearance>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -715,7 +715,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDevicePickerFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedDeviceClasses(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedDeviceSelectors(void**) noexcept = 0;
@@ -723,21 +723,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceSelectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedDevice(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceUnpairingResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Added(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Added(winrt::event_token) noexcept = 0;
@@ -756,14 +756,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceWatcher2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetBackgroundTrigger(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceWatcherEvent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DeviceInformation(void**) noexcept = 0;
@@ -772,14 +772,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IDeviceWatcherTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceWatcherEvents(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IEnclosureLocation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InDock(bool*) noexcept = 0;
             virtual int32_t __stdcall get_InLid(bool*) noexcept = 0;
@@ -788,7 +788,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::IEnclosureLocation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RotationAngleInDegreesClockwise(uint32_t*) noexcept = 0;
         };
@@ -825,7 +825,7 @@ namespace winrt::impl
     {
         auto AccessChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceAccessInformation, winrt::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs> const& handler) const;
         using AccessChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDeviceAccessInformation, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDeviceAccessInformation>::remove_AccessChanged>;
-        [[nodiscard]] AccessChanged_revoker AccessChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceAccessInformation, winrt::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AccessChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceAccessInformation, winrt::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs> const& handler) const;
         auto AccessChanged(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto CurrentStatus() const;
     };
@@ -914,7 +914,7 @@ namespace winrt::impl
         auto PairAsync(winrt::Windows::Devices::Enumeration::DevicePairingKinds const& pairingKindsSupported, winrt::Windows::Devices::Enumeration::DevicePairingProtectionLevel const& minProtectionLevel, winrt::Windows::Devices::Enumeration::IDevicePairingSettings const& devicePairingSettings) const;
         auto PairingRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceInformationCustomPairing, winrt::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs> const& handler) const;
         using PairingRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDeviceInformationCustomPairing, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDeviceInformationCustomPairing>::remove_PairingRequested>;
-        [[nodiscard]] PairingRequested_revoker PairingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceInformationCustomPairing, winrt::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto PairingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceInformationCustomPairing, winrt::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs> const& handler) const;
         auto PairingRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Enumeration::IDeviceInformationCustomPairing>
@@ -927,7 +927,7 @@ namespace winrt::impl
         auto AddPairingSetMember(winrt::Windows::Devices::Enumeration::DeviceInformation const& device) const;
         auto PairingSetMembersRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceInformationCustomPairing, winrt::Windows::Devices::Enumeration::DevicePairingSetMembersRequestedEventArgs> const& handler) const;
         using PairingSetMembersRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDeviceInformationCustomPairing2, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDeviceInformationCustomPairing2>::remove_PairingSetMembersRequested>;
-        [[nodiscard]] PairingSetMembersRequested_revoker PairingSetMembersRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceInformationCustomPairing, winrt::Windows::Devices::Enumeration::DevicePairingSetMembersRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto PairingSetMembersRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceInformationCustomPairing, winrt::Windows::Devices::Enumeration::DevicePairingSetMembersRequestedEventArgs> const& handler) const;
         auto PairingSetMembersRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Enumeration::IDeviceInformationCustomPairing2>
@@ -1105,15 +1105,15 @@ namespace winrt::impl
         [[nodiscard]] auto RequestedProperties() const;
         auto DeviceSelected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Devices::Enumeration::DeviceSelectedEventArgs> const& handler) const;
         using DeviceSelected_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDevicePicker, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDevicePicker>::remove_DeviceSelected>;
-        [[nodiscard]] DeviceSelected_revoker DeviceSelected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Devices::Enumeration::DeviceSelectedEventArgs> const& handler) const;
+        [[nodiscard]] auto DeviceSelected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Devices::Enumeration::DeviceSelectedEventArgs> const& handler) const;
         auto DeviceSelected(winrt::event_token const& token) const noexcept;
         auto DisconnectButtonClicked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs> const& handler) const;
         using DisconnectButtonClicked_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDevicePicker, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDevicePicker>::remove_DisconnectButtonClicked>;
-        [[nodiscard]] DisconnectButtonClicked_revoker DisconnectButtonClicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs> const& handler) const;
+        [[nodiscard]] auto DisconnectButtonClicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs> const& handler) const;
         auto DisconnectButtonClicked(winrt::event_token const& token) const noexcept;
         auto DevicePickerDismissed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DevicePickerDismissed_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDevicePicker, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDevicePicker>::remove_DevicePickerDismissed>;
-        [[nodiscard]] DevicePickerDismissed_revoker DevicePickerDismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DevicePickerDismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DevicePickerDismissed(winrt::event_token const& token) const noexcept;
         auto Show(winrt::Windows::Foundation::Rect const& selection) const;
         auto Show(winrt::Windows::Foundation::Rect const& selection, winrt::Windows::UI::Popups::Placement const& placement) const;
@@ -1181,23 +1181,23 @@ namespace winrt::impl
     {
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformation> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDeviceWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDeviceWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformation> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformation> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformationUpdate> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDeviceWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDeviceWatcher>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformationUpdate> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformationUpdate> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformationUpdate> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDeviceWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDeviceWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformationUpdate> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Devices::Enumeration::DeviceInformationUpdate> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDeviceWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDeviceWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::IDeviceWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::IDeviceWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::DeviceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;

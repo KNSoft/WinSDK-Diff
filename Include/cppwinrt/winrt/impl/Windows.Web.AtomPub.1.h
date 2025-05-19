@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@
 #include "winrt/impl/Windows.Web.AtomPub.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web::AtomPub
 {
-    struct __declspec(empty_bases) IAtomPubClient :
+    struct WINRT_IMPL_EMPTY_BASES IAtomPubClient :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAtomPubClient>,
         impl::require<winrt::Windows::Web::AtomPub::IAtomPubClient, winrt::Windows::Web::Syndication::ISyndicationClient>
@@ -18,14 +18,14 @@ WINRT_EXPORT namespace winrt::Windows::Web::AtomPub
         IAtomPubClient(std::nullptr_t = nullptr) noexcept {}
         IAtomPubClient(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IAtomPubClientFactory :
+    struct WINRT_IMPL_EMPTY_BASES IAtomPubClientFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAtomPubClientFactory>
     {
         IAtomPubClientFactory(std::nullptr_t = nullptr) noexcept {}
         IAtomPubClientFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IResourceCollection :
+    struct WINRT_IMPL_EMPTY_BASES IResourceCollection :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IResourceCollection>,
         impl::require<winrt::Windows::Web::AtomPub::IResourceCollection, winrt::Windows::Web::Syndication::ISyndicationNode>
@@ -33,7 +33,7 @@ WINRT_EXPORT namespace winrt::Windows::Web::AtomPub
         IResourceCollection(std::nullptr_t = nullptr) noexcept {}
         IResourceCollection(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IServiceDocument :
+    struct WINRT_IMPL_EMPTY_BASES IServiceDocument :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IServiceDocument>,
         impl::require<winrt::Windows::Web::AtomPub::IServiceDocument, winrt::Windows::Web::Syndication::ISyndicationNode>
@@ -41,7 +41,7 @@ WINRT_EXPORT namespace winrt::Windows::Web::AtomPub
         IServiceDocument(std::nullptr_t = nullptr) noexcept {}
         IServiceDocument(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWorkspace :
+    struct WINRT_IMPL_EMPTY_BASES IWorkspace :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWorkspace>,
         impl::require<winrt::Windows::Web::AtomPub::IWorkspace, winrt::Windows::Web::Syndication::ISyndicationNode>

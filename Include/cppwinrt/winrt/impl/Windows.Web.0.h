@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -88,14 +88,14 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Web::IWebErrorStatics>{ 0xFE616766,0xBF27,0x4064,{ 0x87,0xB7,0x65,0x63,0xBB,0x11,0xCE,0x2E } }; // FE616766-BF27-4064-87B7-6563BB11CE2E
     template <> struct abi<winrt::Windows::Web::IUriToStreamResolver>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UriToStreamAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::IWebErrorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStatus(int32_t, int32_t*) noexcept = 0;
         };

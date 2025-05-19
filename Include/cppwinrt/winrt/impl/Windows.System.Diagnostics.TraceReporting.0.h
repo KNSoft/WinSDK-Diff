@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_System_Diagnostics_TraceReporting_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename K, typename V> struct __declspec(empty_bases) IMapView;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMapView;
 }
 WINRT_EXPORT namespace winrt::Windows::System::Diagnostics::TraceReporting
 {
@@ -86,7 +86,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Diagnostics::TraceReporting::PlatformDiagnosticTraceRuntimeInfo>{ using type = winrt::Windows::System::Diagnostics::TraceReporting::IPlatformDiagnosticTraceRuntimeInfo; };
     template <> struct abi<winrt::Windows::System::Diagnostics::TraceReporting::IPlatformDiagnosticActionsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsScenarioEnabled(winrt::guid, bool*) noexcept = 0;
             virtual int32_t __stdcall TryEscalateScenario(winrt::guid, int32_t, void*, bool, bool, void*, bool*) noexcept = 0;
@@ -100,7 +100,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::TraceReporting::IPlatformDiagnosticTraceInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ScenarioId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_ProfileHash(uint64_t*) noexcept = 0;
@@ -112,7 +112,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::TraceReporting::IPlatformDiagnosticTraceRuntimeInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RuntimeFileTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_EtwRuntimeFileTime(int64_t*) noexcept = 0;

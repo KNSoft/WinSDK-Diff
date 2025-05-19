@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -64,7 +64,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Haptics::VibrationDevice>{ using type = winrt::Windows::Devices::Haptics::IVibrationDevice; };
     template <> struct abi<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Click(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_BuzzContinuous(uint16_t*) noexcept = 0;
@@ -75,7 +75,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BrushContinuous(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_ChiselMarkerContinuous(uint16_t*) noexcept = 0;
@@ -91,7 +91,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Haptics::ISimpleHapticsController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedFeedback(void**) noexcept = 0;
@@ -108,7 +108,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Haptics::ISimpleHapticsControllerFeedback>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Waveform(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_Duration(int64_t*) noexcept = 0;
@@ -116,7 +116,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Haptics::IVibrationDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_SimpleHapticsController(void**) noexcept = 0;
@@ -124,7 +124,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Haptics::IVibrationDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;

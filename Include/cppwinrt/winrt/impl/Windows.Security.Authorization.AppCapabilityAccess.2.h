@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.Security.Authorization.AppCapabilityAccess.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authorization::AppCapabilityAccess
 {
-    struct __declspec(empty_bases) AppCapability : winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapability,
+    struct WINRT_IMPL_EMPTY_BASES AppCapability : winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapability,
         impl::require<AppCapability, winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapability2>
     {
         AppCapability(std::nullptr_t) noexcept {}
@@ -21,7 +21,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::Authorization::AppCapabilityAcc
         static auto Create(param::hstring const& capabilityName);
         static auto CreateWithProcessIdForUser(winrt::Windows::System::User const& user, param::hstring const& capabilityName, uint32_t pid);
     };
-    struct __declspec(empty_bases) AppCapabilityAccessChangedEventArgs : winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapabilityAccessChangedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES AppCapabilityAccessChangedEventArgs : winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapabilityAccessChangedEventArgs
     {
         AppCapabilityAccessChangedEventArgs(std::nullptr_t) noexcept {}
         AppCapabilityAccessChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapabilityAccessChangedEventArgs(ptr, take_ownership_from_abi) {}

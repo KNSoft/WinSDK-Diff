@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,12 +13,12 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration::Pnp
 {
@@ -74,7 +74,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher>{ using type = winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher; };
     template <> struct abi<winrt::Windows::Devices::Enumeration::Pnp::IPnpObject>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
@@ -84,7 +84,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromIdAsync(int32_t, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsync(int32_t, void*, void**) noexcept = 0;
@@ -95,7 +95,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectUpdate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
@@ -104,7 +104,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Added(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Added(winrt::event_token) noexcept = 0;
@@ -162,23 +162,23 @@ namespace winrt::impl
     {
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObject> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObject> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObject> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObjectUpdate> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObjectUpdate> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObjectUpdate> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObjectUpdate> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObjectUpdate> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Devices::Enumeration::Pnp::PnpObjectUpdate> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher, &impl::abi_t<winrt::Windows::Devices::Enumeration::Pnp::IPnpObjectWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Enumeration::Pnp::PnpObjectWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;

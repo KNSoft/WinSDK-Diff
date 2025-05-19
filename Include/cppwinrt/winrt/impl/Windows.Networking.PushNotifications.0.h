@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,9 +8,9 @@
 #define WINRT_Windows_Networking_PushNotifications_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -114,7 +114,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::PushNotifications::RawNotification>{ using type = winrt::Windows::Networking::PushNotifications::IRawNotification; };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationChannel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExpirationTime(int64_t*) noexcept = 0;
@@ -125,7 +125,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePushNotificationChannelForApplicationAsync(void**) noexcept = 0;
             virtual int32_t __stdcall CreatePushNotificationChannelForApplicationAsyncWithId(void*, void**) noexcept = 0;
@@ -135,7 +135,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerForUser2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithId(void*, void*, void*, void**) noexcept = 0;
@@ -143,7 +143,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePushNotificationChannelForApplicationAsync(void**) noexcept = 0;
             virtual int32_t __stdcall CreatePushNotificationChannelForApplicationAsyncWithId(void*, void**) noexcept = 0;
@@ -152,21 +152,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ChannelsRevoked(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ChannelsRevoked(winrt::event_token) noexcept = 0;
@@ -174,13 +174,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelsRevokedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IPushNotificationReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
@@ -193,14 +193,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IRawNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IRawNotification2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Headers(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChannelId(void**) noexcept = 0;
@@ -208,7 +208,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::PushNotifications::IRawNotification3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentBytes(void**) noexcept = 0;
         };
@@ -221,7 +221,7 @@ namespace winrt::impl
         auto Close() const;
         auto PushNotificationReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannel, winrt::Windows::Networking::PushNotifications::PushNotificationReceivedEventArgs> const& handler) const;
         using PushNotificationReceived_revoker = impl::event_revoker<winrt::Windows::Networking::PushNotifications::IPushNotificationChannel, &impl::abi_t<winrt::Windows::Networking::PushNotifications::IPushNotificationChannel>::remove_PushNotificationReceived>;
-        [[nodiscard]] PushNotificationReceived_revoker PushNotificationReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannel, winrt::Windows::Networking::PushNotifications::PushNotificationReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto PushNotificationReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannel, winrt::Windows::Networking::PushNotifications::PushNotificationReceivedEventArgs> const& handler) const;
         auto PushNotificationReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::PushNotifications::IPushNotificationChannel>
@@ -284,7 +284,7 @@ namespace winrt::impl
     {
         auto ChannelsRevoked(winrt::Windows::Foundation::EventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannelsRevokedEventArgs> const& handler) const;
         using ChannelsRevoked_revoker = impl::event_revoker<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics4, &impl::abi_t<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics4>::remove_ChannelsRevoked>;
-        [[nodiscard]] ChannelsRevoked_revoker ChannelsRevoked(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannelsRevokedEventArgs> const& handler) const;
+        [[nodiscard]] auto ChannelsRevoked(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Networking::PushNotifications::PushNotificationChannelsRevokedEventArgs> const& handler) const;
         auto ChannelsRevoked(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::PushNotifications::IPushNotificationChannelManagerStatics4>

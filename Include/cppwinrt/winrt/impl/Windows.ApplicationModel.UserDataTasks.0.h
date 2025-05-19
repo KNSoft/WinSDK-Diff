@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,8 +10,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -236,7 +236,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::UserDataTasks::UserDataTaskStore>{ using type = winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskStore; };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTask>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_ListId(void**) noexcept = 0;
@@ -269,14 +269,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskBatch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tasks(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_UserDataAccountId(void**) noexcept = 0;
@@ -301,7 +301,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskListLimitedWriteOperations>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCompleteTaskAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryCreateOrUpdateTaskAsync(void*, void**) noexcept = 0;
@@ -311,7 +311,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskListSyncManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LastAttemptedSyncTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_LastAttemptedSyncTime(int64_t) noexcept = 0;
@@ -326,7 +326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -334,7 +334,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -342,7 +342,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskQueryOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SortProperty(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_SortProperty(int32_t) noexcept = 0;
@@ -352,14 +352,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskRecurrenceProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Unit(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Unit(int32_t) noexcept = 0;
@@ -381,7 +381,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskRegenerationProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Unit(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Unit(int32_t) noexcept = 0;
@@ -395,7 +395,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateListAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateListInAccountAsync(void*, void*, void**) noexcept = 0;
@@ -498,7 +498,7 @@ namespace winrt::impl
         auto SyncAsync() const;
         auto SyncStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserDataTasks::UserDataTaskListSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SyncStatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskListSyncManager, &impl::abi_t<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskListSyncManager>::remove_SyncStatusChanged>;
-        [[nodiscard]] SyncStatusChanged_revoker SyncStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserDataTasks::UserDataTaskListSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SyncStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserDataTasks::UserDataTaskListSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SyncStatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTaskListSyncManager>

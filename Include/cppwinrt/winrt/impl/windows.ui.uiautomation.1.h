@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,28 +9,28 @@
 #include "winrt/impl/Windows.UI.UIAutomation.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::UIAutomation
 {
-    struct __declspec(empty_bases) IAutomationConnection :
+    struct WINRT_IMPL_EMPTY_BASES IAutomationConnection :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAutomationConnection>
     {
         IAutomationConnection(std::nullptr_t = nullptr) noexcept {}
         IAutomationConnection(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IAutomationConnectionBoundObject :
+    struct WINRT_IMPL_EMPTY_BASES IAutomationConnectionBoundObject :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAutomationConnectionBoundObject>
     {
         IAutomationConnectionBoundObject(std::nullptr_t = nullptr) noexcept {}
         IAutomationConnectionBoundObject(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IAutomationElement :
+    struct WINRT_IMPL_EMPTY_BASES IAutomationElement :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAutomationElement>
     {
         IAutomationElement(std::nullptr_t = nullptr) noexcept {}
         IAutomationElement(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IAutomationTextRange :
+    struct WINRT_IMPL_EMPTY_BASES IAutomationTextRange :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAutomationTextRange>
     {

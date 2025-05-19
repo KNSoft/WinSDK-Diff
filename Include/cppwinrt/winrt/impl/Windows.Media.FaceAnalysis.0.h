@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -56,14 +56,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::FaceAnalysis::FaceTracker>{ using type = winrt::Windows::Media::FaceAnalysis::IFaceTracker; };
     template <> struct abi<winrt::Windows::Media::FaceAnalysis::IDetectedFace>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FaceBox(struct struct_Windows_Graphics_Imaging_BitmapBounds*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::FaceAnalysis::IFaceDetector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DetectFacesAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall DetectFacesWithSearchAreaAsync(void*, struct struct_Windows_Graphics_Imaging_BitmapBounds, void**) noexcept = 0;
@@ -75,7 +75,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::FaceAnalysis::IFaceDetectorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetSupportedBitmapPixelFormats(void**) noexcept = 0;
@@ -85,7 +85,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::FaceAnalysis::IFaceTracker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProcessNextFrameAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_MinDetectableFaceSize(struct struct_Windows_Graphics_Imaging_BitmapSize*) noexcept = 0;
@@ -96,7 +96,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::FaceAnalysis::IFaceTrackerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetSupportedBitmapPixelFormats(void**) noexcept = 0;

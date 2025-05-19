@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,19 +9,19 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct HResult;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Media::Playback
 {
@@ -1054,7 +1054,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Media::XamlLight>{ using type = winrt::Windows::UI::Xaml::Media::IXamlLight; };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IAcrylicBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSource(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundSource(int32_t) noexcept = 0;
@@ -1070,7 +1070,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IAcrylicBrush2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TintLuminosityOpacity(void**) noexcept = 0;
             virtual int32_t __stdcall put_TintLuminosityOpacity(void*) noexcept = 0;
@@ -1078,14 +1078,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IAcrylicBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IAcrylicBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TintColorProperty(void**) noexcept = 0;
@@ -1096,14 +1096,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IAcrylicBrushStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TintLuminosityOpacityProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IArcSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_Point(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1119,7 +1119,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IArcSegmentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_SizeProperty(void**) noexcept = 0;
@@ -1130,7 +1130,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IBezierSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point1(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_Point1(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1142,7 +1142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IBezierSegmentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point1Property(void**) noexcept = 0;
             virtual int32_t __stdcall get_Point2Property(void**) noexcept = 0;
@@ -1151,13 +1151,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IBitmapCache>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Opacity(double*) noexcept = 0;
             virtual int32_t __stdcall put_Opacity(double) noexcept = 0;
@@ -1169,21 +1169,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IBrushOverrides2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PopulatePropertyInfoOverride(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OpacityProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TransformProperty(void**) noexcept = 0;
@@ -1192,20 +1192,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ICacheMode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ICacheModeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ICompositeTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterX(double*) noexcept = 0;
             virtual int32_t __stdcall put_CenterX(double) noexcept = 0;
@@ -1229,7 +1229,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ICompositeTransformStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterXProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CenterYProperty(void**) noexcept = 0;
@@ -1244,13 +1244,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ICompositionTarget>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Rendering(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Rendering(winrt::event_token) noexcept = 0;
@@ -1260,7 +1260,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Rendered(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Rendered(winrt::event_token) noexcept = 0;
@@ -1268,7 +1268,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IEllipseGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Center(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_Center(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1280,7 +1280,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IEllipseGeometryStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_RadiusXProperty(void**) noexcept = 0;
@@ -1289,28 +1289,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IFontFamily>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IFontFamilyFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithName(void*, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IFontFamilyStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XamlAutoFontFamily(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGeneralTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Inverse(void**) noexcept = 0;
             virtual int32_t __stdcall TransformPoint(winrt::Windows::Foundation::Point, winrt::Windows::Foundation::Point*) noexcept = 0;
@@ -1320,14 +1320,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGeneralTransformFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGeneralTransformOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InverseCore(void**) noexcept = 0;
             virtual int32_t __stdcall TryTransformCore(winrt::Windows::Foundation::Point, winrt::Windows::Foundation::Point*, bool*) noexcept = 0;
@@ -1336,7 +1336,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Transform(void**) noexcept = 0;
             virtual int32_t __stdcall put_Transform(void*) noexcept = 0;
@@ -1345,13 +1345,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGeometryFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGeometryGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FillRule(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_FillRule(int32_t) noexcept = 0;
@@ -1361,7 +1361,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGeometryGroupStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FillRuleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChildrenProperty(void**) noexcept = 0;
@@ -1369,7 +1369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGeometryStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Empty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StandardFlatteningTolerance(double*) noexcept = 0;
@@ -1378,7 +1378,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGradientBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SpreadMethod(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_SpreadMethod(int32_t) noexcept = 0;
@@ -1392,14 +1392,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGradientBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGradientBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SpreadMethodProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MappingModeProperty(void**) noexcept = 0;
@@ -1409,7 +1409,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGradientStop>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -1419,7 +1419,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IGradientStopStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ColorProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OffsetProperty(void**) noexcept = 0;
@@ -1427,7 +1427,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IImageBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ImageSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_ImageSource(void*) noexcept = 0;
@@ -1439,26 +1439,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IImageBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ImageSourceProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IImageSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IImageSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILineGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartPoint(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_StartPoint(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1468,7 +1468,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILineGeometryStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartPointProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_EndPointProperty(void**) noexcept = 0;
@@ -1476,7 +1476,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILineSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_Point(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1484,14 +1484,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILineSegmentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILinearGradientBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartPoint(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_StartPoint(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1501,14 +1501,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILinearGradientBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithGradientStopCollectionAndAngle(void*, double, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILinearGradientBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartPointProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_EndPointProperty(void**) noexcept = 0;
@@ -1516,14 +1516,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILoadedImageSourceLoadCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILoadedImageSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DecodedPhysicalSize(winrt::Windows::Foundation::Size*) noexcept = 0;
             virtual int32_t __stdcall get_DecodedSize(winrt::Windows::Foundation::Size*) noexcept = 0;
@@ -1534,7 +1534,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ILoadedImageSurfaceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartLoadFromUriWithSize(void*, winrt::Windows::Foundation::Size, void**) noexcept = 0;
             virtual int32_t __stdcall StartLoadFromUri(void*, void**) noexcept = 0;
@@ -1544,7 +1544,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IMatrix3DProjection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProjectionMatrix(struct struct_Windows_UI_Xaml_Media_Media3D_Matrix3D*) noexcept = 0;
             virtual int32_t __stdcall put_ProjectionMatrix(struct struct_Windows_UI_Xaml_Media_Media3D_Matrix3D) noexcept = 0;
@@ -1552,20 +1552,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IMatrix3DProjectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProjectionMatrixProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IMatrixHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IMatrixHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Identity(struct struct_Windows_UI_Xaml_Media_Matrix*) noexcept = 0;
             virtual int32_t __stdcall FromElements(double, double, double, double, double, double, struct struct_Windows_UI_Xaml_Media_Matrix*) noexcept = 0;
@@ -1575,7 +1575,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IMatrixTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Matrix(struct struct_Windows_UI_Xaml_Media_Matrix*) noexcept = 0;
             virtual int32_t __stdcall put_Matrix(struct struct_Windows_UI_Xaml_Media_Matrix) noexcept = 0;
@@ -1583,14 +1583,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IMatrixTransformStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MatrixProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IMediaTransportControlsThumbnailRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetThumbnailImage(void*) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -1598,21 +1598,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPartialMediaFailureDetectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StreamKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPartialMediaFailureDetectedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPathFigure>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Segments(void**) noexcept = 0;
             virtual int32_t __stdcall put_Segments(void*) noexcept = 0;
@@ -1626,7 +1626,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPathFigureStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SegmentsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StartPointProperty(void**) noexcept = 0;
@@ -1636,7 +1636,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPathGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FillRule(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_FillRule(int32_t) noexcept = 0;
@@ -1646,7 +1646,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPathGeometryStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FillRuleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FiguresProperty(void**) noexcept = 0;
@@ -1654,19 +1654,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPathSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPathSegmentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPlaneProjection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalOffsetX(double*) noexcept = 0;
             virtual int32_t __stdcall put_LocalOffsetX(double) noexcept = 0;
@@ -1697,7 +1697,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPlaneProjectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalOffsetXProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_LocalOffsetYProperty(void**) noexcept = 0;
@@ -1716,7 +1716,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPolyBezierSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Points(void**) noexcept = 0;
             virtual int32_t __stdcall put_Points(void*) noexcept = 0;
@@ -1724,14 +1724,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPolyBezierSegmentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointsProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPolyLineSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Points(void**) noexcept = 0;
             virtual int32_t __stdcall put_Points(void*) noexcept = 0;
@@ -1739,14 +1739,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPolyLineSegmentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointsProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPolyQuadraticBezierSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Points(void**) noexcept = 0;
             virtual int32_t __stdcall put_Points(void*) noexcept = 0;
@@ -1754,27 +1754,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IPolyQuadraticBezierSegmentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointsProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IProjection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IProjectionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IQuadraticBezierSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point1(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_Point1(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1784,7 +1784,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IQuadraticBezierSegmentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point1Property(void**) noexcept = 0;
             virtual int32_t __stdcall get_Point2Property(void**) noexcept = 0;
@@ -1792,13 +1792,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRateChangedRoutedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRectangleGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Rect(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall put_Rect(winrt::Windows::Foundation::Rect) noexcept = 0;
@@ -1806,54 +1806,54 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRectangleGeometryStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RectProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRenderedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameDuration(int64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRenderingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RenderingTime(int64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRevealBackgroundBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRevealBackgroundBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRevealBorderBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRevealBorderBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRevealBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -1865,14 +1865,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRevealBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRevealBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ColorProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TargetThemeProperty(void**) noexcept = 0;
@@ -1884,7 +1884,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRotateTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterX(double*) noexcept = 0;
             virtual int32_t __stdcall put_CenterX(double) noexcept = 0;
@@ -1896,7 +1896,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IRotateTransformStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterXProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CenterYProperty(void**) noexcept = 0;
@@ -1905,7 +1905,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IScaleTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterX(double*) noexcept = 0;
             virtual int32_t __stdcall put_CenterX(double) noexcept = 0;
@@ -1919,7 +1919,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IScaleTransformStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterXProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CenterYProperty(void**) noexcept = 0;
@@ -1929,19 +1929,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IShadow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IShadowFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ISkewTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterX(double*) noexcept = 0;
             virtual int32_t __stdcall put_CenterX(double) noexcept = 0;
@@ -1955,7 +1955,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ISkewTransformStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterXProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CenterYProperty(void**) noexcept = 0;
@@ -1965,7 +1965,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ISolidColorBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -1973,35 +1973,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ISolidColorBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithColor(struct struct_Windows_UI_Color, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ISolidColorBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ColorProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IThemeShadow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Receivers(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IThemeShadowFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITileBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlignmentX(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_AlignmentX(int32_t) noexcept = 0;
@@ -2013,14 +2013,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITileBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITileBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlignmentXProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_AlignmentYProperty(void**) noexcept = 0;
@@ -2029,7 +2029,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITimelineMarker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Time(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_Time(int64_t) noexcept = 0;
@@ -2041,7 +2041,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITimelineMarkerRoutedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Marker(void**) noexcept = 0;
             virtual int32_t __stdcall put_Marker(void*) noexcept = 0;
@@ -2049,7 +2049,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITimelineMarkerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TimeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TypeProperty(void**) noexcept = 0;
@@ -2058,19 +2058,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITransformFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITransformGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Children(void**) noexcept = 0;
             virtual int32_t __stdcall put_Children(void*) noexcept = 0;
@@ -2079,14 +2079,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITransformGroupStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChildrenProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITranslateTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_X(double*) noexcept = 0;
             virtual int32_t __stdcall put_X(double) noexcept = 0;
@@ -2096,7 +2096,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::ITranslateTransformStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_YProperty(void**) noexcept = 0;
@@ -2104,13 +2104,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IVisualTreeHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IVisualTreeHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindElementsInHostCoordinatesPoint(winrt::Windows::Foundation::Point, void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindElementsInHostCoordinatesRect(winrt::Windows::Foundation::Rect, void*, void**) noexcept = 0;
@@ -2124,21 +2124,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IVisualTreeHelperStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetOpenPopups(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IVisualTreeHelperStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetOpenPopupsForXamlRoot(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlCompositionBrushBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FallbackColor(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_FallbackColor(struct struct_Windows_UI_Color) noexcept = 0;
@@ -2146,14 +2146,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlCompositionBrushBaseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlCompositionBrushBaseOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnConnected() noexcept = 0;
             virtual int32_t __stdcall OnDisconnected() noexcept = 0;
@@ -2161,7 +2161,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlCompositionBrushBaseProtected>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompositionBrush(void**) noexcept = 0;
             virtual int32_t __stdcall put_CompositionBrush(void*) noexcept = 0;
@@ -2169,27 +2169,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlCompositionBrushBaseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FallbackColorProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlLight>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlLightFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlLightOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetId(void**) noexcept = 0;
             virtual int32_t __stdcall OnConnected(void*) noexcept = 0;
@@ -2198,7 +2198,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlLightProtected>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompositionLight(void**) noexcept = 0;
             virtual int32_t __stdcall put_CompositionLight(void*) noexcept = 0;
@@ -2206,7 +2206,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::IXamlLightStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddTargetElement(void*, void*) noexcept = 0;
             virtual int32_t __stdcall RemoveTargetElement(void*, void*) noexcept = 0;
@@ -2216,14 +2216,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::RateChangedRoutedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::TimelineMarkerRoutedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -2467,11 +2467,11 @@ namespace winrt::impl
     {
         auto Rendering(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Rendering_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics, &impl::abi_t<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics>::remove_Rendering>;
-        [[nodiscard]] Rendering_revoker Rendering(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Rendering(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Rendering(winrt::event_token const& token) const noexcept;
         auto SurfaceContentsLost(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SurfaceContentsLost_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics, &impl::abi_t<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics>::remove_SurfaceContentsLost>;
-        [[nodiscard]] SurfaceContentsLost_revoker SurfaceContentsLost(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SurfaceContentsLost(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SurfaceContentsLost(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics>
@@ -2483,7 +2483,7 @@ namespace winrt::impl
     {
         auto Rendered(winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Media::RenderedEventArgs> const& handler) const;
         using Rendered_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics3, &impl::abi_t<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics3>::remove_Rendered>;
-        [[nodiscard]] Rendered_revoker Rendered(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Media::RenderedEventArgs> const& handler) const;
+        [[nodiscard]] auto Rendered(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Media::RenderedEventArgs> const& handler) const;
         auto Rendered(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Media::ICompositionTargetStatics3>
@@ -2692,11 +2692,11 @@ namespace winrt::impl
         auto ImageSource(winrt::Windows::UI::Xaml::Media::ImageSource const& value) const;
         auto ImageFailed(winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
         using ImageFailed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::IImageBrush, &impl::abi_t<winrt::Windows::UI::Xaml::Media::IImageBrush>::remove_ImageFailed>;
-        [[nodiscard]] ImageFailed_revoker ImageFailed(auto_revoke_t, winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
+        [[nodiscard]] auto ImageFailed(auto_revoke_t, winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
         auto ImageFailed(winrt::event_token const& token) const noexcept;
         auto ImageOpened(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using ImageOpened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::IImageBrush, &impl::abi_t<winrt::Windows::UI::Xaml::Media::IImageBrush>::remove_ImageOpened>;
-        [[nodiscard]] ImageOpened_revoker ImageOpened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto ImageOpened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto ImageOpened(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Media::IImageBrush>
@@ -2817,7 +2817,7 @@ namespace winrt::impl
         [[nodiscard]] auto NaturalSize() const;
         auto LoadCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::LoadedImageSurface, winrt::Windows::UI::Xaml::Media::LoadedImageSourceLoadCompletedEventArgs> const& handler) const;
         using LoadCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::ILoadedImageSurface, &impl::abi_t<winrt::Windows::UI::Xaml::Media::ILoadedImageSurface>::remove_LoadCompleted>;
-        [[nodiscard]] LoadCompleted_revoker LoadCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::LoadedImageSurface, winrt::Windows::UI::Xaml::Media::LoadedImageSourceLoadCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto LoadCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::LoadedImageSurface, winrt::Windows::UI::Xaml::Media::LoadedImageSourceLoadCompletedEventArgs> const& handler) const;
         auto LoadCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Media::ILoadedImageSurface>

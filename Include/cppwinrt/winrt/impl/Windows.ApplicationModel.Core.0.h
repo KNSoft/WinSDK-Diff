@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -22,10 +22,10 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Activation
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IGetActivationFactory;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -180,7 +180,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Core::UnhandledErrorDetectedEventArgs>{ using type = winrt::Windows::ApplicationModel::Core::IUnhandledErrorDetectedEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IAppListEntry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayInfo(void**) noexcept = 0;
             virtual int32_t __stdcall LaunchAsync(void**) noexcept = 0;
@@ -188,28 +188,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IAppListEntry2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppUserModelId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IAppListEntry3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchForUserAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IAppListEntry4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplication>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall add_Suspending(void*, winrt::event_token*) noexcept = 0;
@@ -224,7 +224,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplication2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_BackgroundActivated(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_BackgroundActivated(winrt::event_token) noexcept = 0;
@@ -237,7 +237,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplication3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestRestartAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestRestartForUserAsync(void*, void*, void**) noexcept = 0;
@@ -245,7 +245,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationExit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Exit() noexcept = 0;
             virtual int32_t __stdcall add_Exiting(void*, winrt::event_token*) noexcept = 0;
@@ -254,7 +254,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationUnhandledError>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_UnhandledErrorDetected(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_UnhandledErrorDetected(winrt::event_token) noexcept = 0;
@@ -262,7 +262,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationUseCount>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IncrementApplicationUseCount() noexcept = 0;
             virtual int32_t __stdcall DecrementApplicationUseCount() noexcept = 0;
@@ -270,7 +270,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CoreWindow(void**) noexcept = 0;
             virtual int32_t __stdcall add_Activated(void*, winrt::event_token*) noexcept = 0;
@@ -281,14 +281,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Dispatcher(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationView3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsComponent(bool*) noexcept = 0;
             virtual int32_t __stdcall get_TitleBar(void**) noexcept = 0;
@@ -298,21 +298,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationView5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationView6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DispatcherQueue(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreApplicationViewTitleBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ExtendViewIntoTitleBar(bool) noexcept = 0;
             virtual int32_t __stdcall get_ExtendViewIntoTitleBar(bool*) noexcept = 0;
@@ -328,7 +328,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreImmersiveApplication>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Views(void**) noexcept = 0;
             virtual int32_t __stdcall CreateNewView(void*, void*, void**) noexcept = 0;
@@ -337,21 +337,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreImmersiveApplication2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateNewViewFromMainView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::ICoreImmersiveApplication3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateNewViewWithViewSource(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IFrameworkView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Initialize(void*) noexcept = 0;
             virtual int32_t __stdcall SetWindow(void*) noexcept = 0;
@@ -362,21 +362,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IFrameworkViewSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IHostedViewClosingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IUnhandledError>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall Propagate() noexcept = 0;
@@ -384,7 +384,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Core::IUnhandledErrorDetectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnhandledError(void**) noexcept = 0;
         };
@@ -432,11 +432,11 @@ namespace winrt::impl
         [[nodiscard]] auto Id() const;
         auto Suspending(winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::SuspendingEventArgs> const& handler) const;
         using Suspending_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplication, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplication>::remove_Suspending>;
-        [[nodiscard]] Suspending_revoker Suspending(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::SuspendingEventArgs> const& handler) const;
+        [[nodiscard]] auto Suspending(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::SuspendingEventArgs> const& handler) const;
         auto Suspending(winrt::event_token const& token) const noexcept;
         auto Resuming(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Resuming_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplication, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplication>::remove_Resuming>;
-        [[nodiscard]] Resuming_revoker Resuming(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Resuming(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Resuming(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Properties() const;
         auto GetCurrentView() const;
@@ -452,15 +452,15 @@ namespace winrt::impl
     {
         auto BackgroundActivated(winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::Activation::BackgroundActivatedEventArgs> const& handler) const;
         using BackgroundActivated_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplication2, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplication2>::remove_BackgroundActivated>;
-        [[nodiscard]] BackgroundActivated_revoker BackgroundActivated(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::Activation::BackgroundActivatedEventArgs> const& handler) const;
+        [[nodiscard]] auto BackgroundActivated(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::Activation::BackgroundActivatedEventArgs> const& handler) const;
         auto BackgroundActivated(winrt::event_token const& token) const noexcept;
         auto LeavingBackground(winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::LeavingBackgroundEventArgs> const& handler) const;
         using LeavingBackground_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplication2, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplication2>::remove_LeavingBackground>;
-        [[nodiscard]] LeavingBackground_revoker LeavingBackground(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::LeavingBackgroundEventArgs> const& handler) const;
+        [[nodiscard]] auto LeavingBackground(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::LeavingBackgroundEventArgs> const& handler) const;
         auto LeavingBackground(winrt::event_token const& token) const noexcept;
         auto EnteredBackground(winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::EnteredBackgroundEventArgs> const& handler) const;
         using EnteredBackground_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplication2, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplication2>::remove_EnteredBackground>;
-        [[nodiscard]] EnteredBackground_revoker EnteredBackground(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::EnteredBackgroundEventArgs> const& handler) const;
+        [[nodiscard]] auto EnteredBackground(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::EnteredBackgroundEventArgs> const& handler) const;
         auto EnteredBackground(winrt::event_token const& token) const noexcept;
         auto EnablePrelaunch(bool value) const;
     };
@@ -484,7 +484,7 @@ namespace winrt::impl
         auto Exit() const;
         auto Exiting(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Exiting_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplicationExit, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplicationExit>::remove_Exiting>;
-        [[nodiscard]] Exiting_revoker Exiting(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Exiting(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Exiting(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Core::ICoreApplicationExit>
@@ -496,7 +496,7 @@ namespace winrt::impl
     {
         auto UnhandledErrorDetected(winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::Core::UnhandledErrorDetectedEventArgs> const& handler) const;
         using UnhandledErrorDetected_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplicationUnhandledError, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplicationUnhandledError>::remove_UnhandledErrorDetected>;
-        [[nodiscard]] UnhandledErrorDetected_revoker UnhandledErrorDetected(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::Core::UnhandledErrorDetectedEventArgs> const& handler) const;
+        [[nodiscard]] auto UnhandledErrorDetected(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::Core::UnhandledErrorDetectedEventArgs> const& handler) const;
         auto UnhandledErrorDetected(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Core::ICoreApplicationUnhandledError>
@@ -519,7 +519,7 @@ namespace winrt::impl
         [[nodiscard]] auto CoreWindow() const;
         auto Activated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationView, winrt::Windows::ApplicationModel::Activation::IActivatedEventArgs> const& handler) const;
         using Activated_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplicationView, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplicationView>::remove_Activated>;
-        [[nodiscard]] Activated_revoker Activated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationView, winrt::Windows::ApplicationModel::Activation::IActivatedEventArgs> const& handler) const;
+        [[nodiscard]] auto Activated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationView, winrt::Windows::ApplicationModel::Activation::IActivatedEventArgs> const& handler) const;
         auto Activated(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto IsMain() const;
         [[nodiscard]] auto IsHosted() const;
@@ -544,7 +544,7 @@ namespace winrt::impl
         [[nodiscard]] auto TitleBar() const;
         auto HostedViewClosing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationView, winrt::Windows::ApplicationModel::Core::HostedViewClosingEventArgs> const& handler) const;
         using HostedViewClosing_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplicationView3, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplicationView3>::remove_HostedViewClosing>;
-        [[nodiscard]] HostedViewClosing_revoker HostedViewClosing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationView, winrt::Windows::ApplicationModel::Core::HostedViewClosingEventArgs> const& handler) const;
+        [[nodiscard]] auto HostedViewClosing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationView, winrt::Windows::ApplicationModel::Core::HostedViewClosingEventArgs> const& handler) const;
         auto HostedViewClosing(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Core::ICoreApplicationView3>
@@ -579,12 +579,12 @@ namespace winrt::impl
         [[nodiscard]] auto Height() const;
         auto LayoutMetricsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationViewTitleBar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using LayoutMetricsChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplicationViewTitleBar, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplicationViewTitleBar>::remove_LayoutMetricsChanged>;
-        [[nodiscard]] LayoutMetricsChanged_revoker LayoutMetricsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationViewTitleBar, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto LayoutMetricsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationViewTitleBar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto LayoutMetricsChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto IsVisible() const;
         auto IsVisibleChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationViewTitleBar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsVisibleChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Core::ICoreApplicationViewTitleBar, &impl::abi_t<winrt::Windows::ApplicationModel::Core::ICoreApplicationViewTitleBar>::remove_IsVisibleChanged>;
-        [[nodiscard]] IsVisibleChanged_revoker IsVisibleChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationViewTitleBar, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsVisibleChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Core::CoreApplicationViewTitleBar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsVisibleChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Core::ICoreApplicationViewTitleBar>

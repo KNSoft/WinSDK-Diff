@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -254,7 +254,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Import::PhotoImportVideoSegment>{ using type = winrt::Windows::Media::Import::IPhotoImportVideoSegment; };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportDeleteImportedItemsFromSourceResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall get_HasSucceeded(bool*) noexcept = 0;
@@ -273,7 +273,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportFindItemsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall get_HasSucceeded(bool*) noexcept = 0;
@@ -312,14 +312,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportFindItemsResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddItemsInDateRangeToSelection(int64_t, int64_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportImportItemsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall get_HasSucceeded(bool*) noexcept = 0;
@@ -339,7 +339,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemKey(uint64_t*) noexcept = 0;
@@ -358,21 +358,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportItemImportedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ImportedItem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupportedAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllSourcesAsync(void**) noexcept = 0;
@@ -381,7 +381,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Stage(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
@@ -392,14 +392,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportSelectionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSelectionEmpty(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall get_SessionId(winrt::guid*) noexcept = 0;
@@ -416,7 +416,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportSession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_SubfolderDateFormat(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_SubfolderDateFormat(int32_t*) noexcept = 0;
@@ -426,7 +426,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportSidecar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_SizeInBytes(uint64_t*) noexcept = 0;
@@ -435,7 +435,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -458,7 +458,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FromFolderAsync(void*, void**) noexcept = 0;
@@ -466,7 +466,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportStorageMedium>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
@@ -480,7 +480,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Import::IPhotoImportVideoSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_SizeInBytes(uint64_t*) noexcept = 0;
@@ -543,12 +543,12 @@ namespace winrt::impl
         [[nodiscard]] auto SelectedTotalSizeInBytes() const;
         auto SelectionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Import::PhotoImportFindItemsResult, winrt::Windows::Media::Import::PhotoImportSelectionChangedEventArgs> const& value) const;
         using SelectionChanged_revoker = impl::event_revoker<winrt::Windows::Media::Import::IPhotoImportFindItemsResult, &impl::abi_t<winrt::Windows::Media::Import::IPhotoImportFindItemsResult>::remove_SelectionChanged>;
-        [[nodiscard]] SelectionChanged_revoker SelectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Import::PhotoImportFindItemsResult, winrt::Windows::Media::Import::PhotoImportSelectionChangedEventArgs> const& value) const;
+        [[nodiscard]] auto SelectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Import::PhotoImportFindItemsResult, winrt::Windows::Media::Import::PhotoImportSelectionChangedEventArgs> const& value) const;
         auto SelectionChanged(winrt::event_token const& token) const noexcept;
         auto ImportItemsAsync() const;
         auto ItemImported(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Import::PhotoImportFindItemsResult, winrt::Windows::Media::Import::PhotoImportItemImportedEventArgs> const& value) const;
         using ItemImported_revoker = impl::event_revoker<winrt::Windows::Media::Import::IPhotoImportFindItemsResult, &impl::abi_t<winrt::Windows::Media::Import::IPhotoImportFindItemsResult>::remove_ItemImported>;
-        [[nodiscard]] ItemImported_revoker ItemImported(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Import::PhotoImportFindItemsResult, winrt::Windows::Media::Import::PhotoImportItemImportedEventArgs> const& value) const;
+        [[nodiscard]] auto ItemImported(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Import::PhotoImportFindItemsResult, winrt::Windows::Media::Import::PhotoImportItemImportedEventArgs> const& value) const;
         auto ItemImported(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Import::IPhotoImportFindItemsResult>

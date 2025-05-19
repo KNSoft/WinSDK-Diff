@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,12 +10,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
     struct IPropertySet;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::FileProperties
@@ -581,7 +581,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::UserDataPaths>{ using type = winrt::Windows::Storage::IUserDataPaths; };
     template <> struct abi<winrt::Windows::Storage::IAppDataPaths>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cookies(void**) noexcept = 0;
             virtual int32_t __stdcall get_Desktop(void**) noexcept = 0;
@@ -596,7 +596,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IAppDataPathsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
@@ -604,7 +604,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IApplicationData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Version(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall SetVersionAsync(uint32_t, void*, void**) noexcept = 0;
@@ -623,14 +623,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IApplicationData2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalCacheFolder(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IApplicationData3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPublisherCacheFolder(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ClearPublisherCacheFolderAsync(void*, void**) noexcept = 0;
@@ -639,7 +639,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IApplicationDataContainer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Locality(int32_t*) noexcept = 0;
@@ -651,21 +651,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IApplicationDataStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IApplicationDataStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUserAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::ICachedFileManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DeferUpdates(void*) noexcept = 0;
             virtual int32_t __stdcall CompleteUpdatesAsync(void*, void**) noexcept = 0;
@@ -673,7 +673,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IDownloadsFolderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFileAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFolderAsync(void*, void**) noexcept = 0;
@@ -683,7 +683,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IDownloadsFolderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFileForUserAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFolderForUserAsync(void*, void*, void**) noexcept = 0;
@@ -693,7 +693,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IFileIOStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadTextAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ReadTextWithEncodingAsync(void*, int32_t, void**) noexcept = 0;
@@ -714,28 +714,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IKnownFoldersCameraRollStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CameraRoll(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IKnownFoldersPlaylistsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Playlists(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IKnownFoldersSavedPicturesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SavedPictures(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IKnownFoldersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MusicLibrary(void**) noexcept = 0;
             virtual int32_t __stdcall get_PicturesLibrary(void**) noexcept = 0;
@@ -748,7 +748,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IKnownFoldersStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Objects3D(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppCaptures(void**) noexcept = 0;
@@ -757,14 +757,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IKnownFoldersStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFolderForUserAsync(void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IKnownFoldersStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall RequestAccessForUserAsync(void*, int32_t, void**) noexcept = 0;
@@ -773,7 +773,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IPathIOStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadTextAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ReadTextWithEncodingAsync(void*, int32_t, void**) noexcept = 0;
@@ -794,14 +794,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ISetVersionDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::ISetVersionRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentVersion(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DesiredVersion(uint32_t*) noexcept = 0;
@@ -810,7 +810,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FileType(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContentType(void**) noexcept = 0;
@@ -828,7 +828,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFile2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenWithOptionsAsync(int32_t, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall OpenTransactedWriteWithOptionsAsync(uint32_t, void**) noexcept = 0;
@@ -836,14 +836,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFilePropertiesWithAvailability>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAvailable(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFileStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFileFromPathAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetFileFromApplicationUriAsync(void*, void**) noexcept = 0;
@@ -855,14 +855,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFileStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFileFromPathForUserAsync(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFolder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFileAsyncOverloadDefaultOptions(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFileAsync(void*, int32_t, void**) noexcept = 0;
@@ -878,35 +878,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFolder2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetItemAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFolder3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetChangeTracker(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFolderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFolderFromPathAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageFolderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFolderFromPathForUserAsync(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RenameAsyncOverloadDefaultOptions(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RenameAsync(void*, int32_t, void**) noexcept = 0;
@@ -922,7 +922,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetParentAsync(void**) noexcept = 0;
             virtual int32_t __stdcall IsEqual(void*, bool*) noexcept = 0;
@@ -930,7 +930,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageItemProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetThumbnailAsyncOverloadDefaultSizeDefaultOptions(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetThumbnailAsyncOverloadDefaultOptions(int32_t, uint32_t, void**) noexcept = 0;
@@ -943,7 +943,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageItemProperties2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetScaledImageAsThumbnailAsyncOverloadDefaultSizeDefaultOptions(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetScaledImageAsThumbnailAsyncOverloadDefaultOptions(int32_t, uint32_t, void**) noexcept = 0;
@@ -952,14 +952,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageItemPropertiesWithProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Provider(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibrary>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAddFolderAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RequestRemoveFolderAsync(void*, void**) noexcept = 0;
@@ -971,21 +971,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibrary2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeTracker(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibrary3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AreFolderSuggestionsAvailableAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryChange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
@@ -996,7 +996,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryChangeReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
             virtual int32_t __stdcall AcceptChangesAsync(void**) noexcept = 0;
@@ -1004,14 +1004,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryChangeReader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetLastChangeId(uint64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryChangeTracker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetChangeReader(void**) noexcept = 0;
             virtual int32_t __stdcall Enable() noexcept = 0;
@@ -1020,7 +1020,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryChangeTracker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall EnableWithOptions(void*) noexcept = 0;
             virtual int32_t __stdcall Disable() noexcept = 0;
@@ -1028,7 +1028,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryChangeTrackerOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TrackChangeDetails(bool*) noexcept = 0;
             virtual int32_t __stdcall put_TrackChangeDetails(bool) noexcept = 0;
@@ -1036,34 +1036,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryLastChangeId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryLastChangeIdStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Unknown(uint64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetLibraryAsync(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageLibraryStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetLibraryForUserAsync(void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -1071,14 +1071,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStorageProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsPropertySupportedForPartialFileAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::IStorageStreamTransaction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Stream(void**) noexcept = 0;
             virtual int32_t __stdcall CommitAsync(void**) noexcept = 0;
@@ -1086,21 +1086,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IStreamedFileDataRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FailAndClose(int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::ISystemAudioProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EncodingBitrate(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::ISystemDataPaths>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Fonts(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProgramData(void**) noexcept = 0;
@@ -1122,14 +1122,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ISystemDataPathsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::ISystemGPSProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LatitudeDecimal(void**) noexcept = 0;
             virtual int32_t __stdcall get_LongitudeDecimal(void**) noexcept = 0;
@@ -1137,7 +1137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ISystemImageProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalSize(void**) noexcept = 0;
             virtual int32_t __stdcall get_VerticalSize(void**) noexcept = 0;
@@ -1145,7 +1145,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ISystemMediaProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Duration(void**) noexcept = 0;
             virtual int32_t __stdcall get_Producer(void**) noexcept = 0;
@@ -1157,7 +1157,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ISystemMusicProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlbumArtist(void**) noexcept = 0;
             virtual int32_t __stdcall get_AlbumTitle(void**) noexcept = 0;
@@ -1171,7 +1171,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ISystemPhotoProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CameraManufacturer(void**) noexcept = 0;
             virtual int32_t __stdcall get_CameraModel(void**) noexcept = 0;
@@ -1182,7 +1182,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ISystemProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Author(void**) noexcept = 0;
             virtual int32_t __stdcall get_Comment(void**) noexcept = 0;
@@ -1201,7 +1201,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ISystemVideoProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Director(void**) noexcept = 0;
             virtual int32_t __stdcall get_FrameHeight(void**) noexcept = 0;
@@ -1212,7 +1212,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IUserDataPaths>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CameraRoll(void**) noexcept = 0;
             virtual int32_t __stdcall get_Cookies(void**) noexcept = 0;
@@ -1237,7 +1237,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::IUserDataPathsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
@@ -1245,14 +1245,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::ApplicationDataSetVersionHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::StreamedFileDataRequestedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -1298,7 +1298,7 @@ namespace winrt::impl
         [[nodiscard]] auto TemporaryFolder() const;
         auto DataChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::ApplicationData, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DataChanged_revoker = impl::event_revoker<winrt::Windows::Storage::IApplicationData, &impl::abi_t<winrt::Windows::Storage::IApplicationData>::remove_DataChanged>;
-        [[nodiscard]] DataChanged_revoker DataChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::ApplicationData, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DataChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::ApplicationData, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DataChanged(winrt::event_token const& token) const noexcept;
         auto SignalDataChanged() const;
         [[nodiscard]] auto RoamingStorageQuota() const;
@@ -1720,7 +1720,7 @@ namespace winrt::impl
         [[nodiscard]] auto SaveFolder() const;
         auto DefinitionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::StorageLibrary, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DefinitionChanged_revoker = impl::event_revoker<winrt::Windows::Storage::IStorageLibrary, &impl::abi_t<winrt::Windows::Storage::IStorageLibrary>::remove_DefinitionChanged>;
-        [[nodiscard]] DefinitionChanged_revoker DefinitionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::StorageLibrary, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DefinitionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::StorageLibrary, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DefinitionChanged(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Storage::IStorageLibrary>

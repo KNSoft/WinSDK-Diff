@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,13 +12,13 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::UI
 {
@@ -216,6 +216,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::ViewManagement
     struct UISettingsMessageDurationChangedEventArgs;
     struct UIViewSettings;
     struct ViewModePreferences;
+    struct ViewManagementViewScalingContract;
 }
 namespace winrt::impl
 {
@@ -383,6 +384,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IUIViewSettingsStatics> = L"Windows.UI.ViewManagement.IUIViewSettingsStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IViewModePreferences> = L"Windows.UI.ViewManagement.IViewModePreferences";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::IViewModePreferencesStatics> = L"Windows.UI.ViewManagement.IViewModePreferencesStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::ViewManagement::ViewManagementViewScalingContract> = L"Windows.UI.ViewManagement.ViewManagementViewScalingContract";
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IAccessibilitySettings>{ 0xFE0E8147,0xC4C0,0x4562,{ 0xB9,0x62,0x13,0x27,0xB5,0x2A,0xD5,0xB9 } }; // FE0E8147-C4C0-4562-B962-1327B52AD5B9
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IActivationViewSwitcher>{ 0xDCA71BB6,0x7350,0x492B,{ 0xAA,0xC7,0xC8,0xA1,0x3D,0x72,0x24,0xAD } }; // DCA71BB6-7350-492B-AAC7-C8A13D7224AD
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ViewManagement::IApplicationView>{ 0xD222D519,0x4361,0x451E,{ 0x96,0xC4,0x60,0xF4,0xF9,0x74,0x2D,0xB0 } }; // D222D519-4361-451E-96C4-60F4F9742DB0
@@ -452,7 +454,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::ViewManagement::ViewModePreferences>{ using type = winrt::Windows::UI::ViewManagement::IViewModePreferences; };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IAccessibilitySettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HighContrast(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HighContrastScheme(void**) noexcept = 0;
@@ -462,7 +464,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IActivationViewSwitcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowAsStandaloneAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ShowAsStandaloneWithSizePreferenceAsync(int32_t, int32_t, void**) noexcept = 0;
@@ -471,7 +473,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Orientation(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AdjacentToLeftDisplayEdge(bool*) noexcept = 0;
@@ -489,7 +491,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SuppressSystemOverlays(bool*) noexcept = 0;
             virtual int32_t __stdcall put_SuppressSystemOverlays(bool) noexcept = 0;
@@ -502,7 +504,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationView3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TitleBar(void**) noexcept = 0;
             virtual int32_t __stdcall get_FullScreenSystemOverlayMode(int32_t*) noexcept = 0;
@@ -517,7 +519,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationView4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall IsViewModeSupported(int32_t, bool*) noexcept = 0;
@@ -528,7 +530,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationView7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PersistedStateId(void**) noexcept = 0;
             virtual int32_t __stdcall put_PersistedStateId(void*) noexcept = 0;
@@ -536,7 +538,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationView9>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WindowingEnvironment(void**) noexcept = 0;
             virtual int32_t __stdcall GetDisplayRegions(void**) noexcept = 0;
@@ -544,41 +546,41 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewConsolidatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsUserInitiated(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewConsolidatedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAppInitiated(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewFullscreenStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryUnsnapToFullscreen(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewInteropStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetApplicationViewIdForWindow(void*, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewScaling>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewScalingStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisableLayoutScaling(bool*) noexcept = 0;
             virtual int32_t __stdcall TrySetDisableLayoutScaling(bool, bool*) noexcept = 0;
@@ -586,7 +588,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryUnsnap(bool*) noexcept = 0;
@@ -594,7 +596,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall get_TerminateAppOnFinalViewClose(bool*) noexcept = 0;
@@ -603,7 +605,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PreferredLaunchWindowingMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_PreferredLaunchWindowingMode(int32_t) noexcept = 0;
@@ -613,7 +615,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ClearAllPersistedState() noexcept = 0;
             virtual int32_t __stdcall ClearPersistedState(void*) noexcept = 0;
@@ -621,7 +623,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewSwitcherStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DisableShowingMainViewOnActivation() noexcept = 0;
             virtual int32_t __stdcall TryShowAsStandaloneAsync(int32_t, void**) noexcept = 0;
@@ -635,14 +637,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewSwitcherStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DisableSystemViewActivationPolicy() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewSwitcherStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryShowAsViewModeAsync(int32_t, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall TryShowAsViewModeWithPreferencesAsync(int32_t, int32_t, void*, void**) noexcept = 0;
@@ -650,7 +652,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewTitleBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ForegroundColor(void*) noexcept = 0;
             virtual int32_t __stdcall get_ForegroundColor(void**) noexcept = 0;
@@ -680,7 +682,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewTransferContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ViewId(int32_t) noexcept = 0;
@@ -688,21 +690,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewTransferContextStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataPackageFormatId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IApplicationViewWithContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UIContext(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IInputPane>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Showing(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Showing(winrt::event_token) noexcept = 0;
@@ -713,7 +715,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IInputPane2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryShow(bool*) noexcept = 0;
             virtual int32_t __stdcall TryHide(bool*) noexcept = 0;
@@ -721,7 +723,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IInputPaneControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Visible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Visible(bool) noexcept = 0;
@@ -729,21 +731,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IInputPaneStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IInputPaneStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUIContext(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IInputPaneVisibilityEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OccludedRect(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall put_EnsuredFocusedElementInView(bool) noexcept = 0;
@@ -752,7 +754,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IProjectionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartProjectingAsync(int32_t, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall SwapDisplaysForViewsAsync(int32_t, int32_t, void**) noexcept = 0;
@@ -764,7 +766,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IProjectionManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartProjectingWithDeviceInfoAsync(int32_t, int32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestStartProjectingAsync(int32_t, int32_t, winrt::Windows::Foundation::Rect, void**) noexcept = 0;
@@ -774,7 +776,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IStatusBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowAsync(void**) noexcept = 0;
             virtual int32_t __stdcall HideAsync(void**) noexcept = 0;
@@ -794,7 +796,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IStatusBarProgressIndicator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowAsync(void**) noexcept = 0;
             virtual int32_t __stdcall HideAsync(void**) noexcept = 0;
@@ -806,14 +808,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IStatusBarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HandPreference(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_CursorSize(winrt::Windows::Foundation::Size*) noexcept = 0;
@@ -832,7 +834,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettings2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextScaleFactor(double*) noexcept = 0;
             virtual int32_t __stdcall add_TextScaleFactorChanged(void*, winrt::event_token*) noexcept = 0;
@@ -841,7 +843,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettings3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetColorValue(int32_t, struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall add_ColorValuesChanged(void*, winrt::event_token*) noexcept = 0;
@@ -850,7 +852,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettings4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AdvancedEffectsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall add_AdvancedEffectsEnabledChanged(void*, winrt::event_token*) noexcept = 0;
@@ -859,7 +861,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettings5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutoHideScrollBars(bool*) noexcept = 0;
             virtual int32_t __stdcall add_AutoHideScrollBarsChanged(void*, winrt::event_token*) noexcept = 0;
@@ -868,7 +870,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettings6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AnimationsEnabledChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AnimationsEnabledChanged(winrt::event_token) noexcept = 0;
@@ -878,32 +880,32 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettingsAnimationsEnabledChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettingsAutoHideScrollBarsChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUISettingsMessageDurationChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUIViewSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserInteractionMode(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPreferredInteractionMode(uint32_t, int32_t*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_PreferredInteractionModeChanged(void*, winrt::event_token*) noexcept = 0;
@@ -912,14 +914,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IUIViewSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IViewModePreferences>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewSizePreference(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ViewSizePreference(int32_t) noexcept = 0;
@@ -929,7 +931,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::IViewModePreferencesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDefault(int32_t, void**) noexcept = 0;
         };
@@ -941,7 +943,7 @@ namespace winrt::impl
         [[nodiscard]] auto HighContrastScheme() const;
         auto HighContrastChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::AccessibilitySettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using HighContrastChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IAccessibilitySettings, &impl::abi_t<winrt::Windows::UI::ViewManagement::IAccessibilitySettings>::remove_HighContrastChanged>;
-        [[nodiscard]] HighContrastChanged_revoker HighContrastChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::AccessibilitySettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto HighContrastChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::AccessibilitySettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto HighContrastChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IAccessibilitySettings>
@@ -974,7 +976,7 @@ namespace winrt::impl
         [[nodiscard]] auto Id() const;
         auto Consolidated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::ApplicationView, winrt::Windows::UI::ViewManagement::ApplicationViewConsolidatedEventArgs> const& handler) const;
         using Consolidated_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IApplicationView, &impl::abi_t<winrt::Windows::UI::ViewManagement::IApplicationView>::remove_Consolidated>;
-        [[nodiscard]] Consolidated_revoker Consolidated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::ApplicationView, winrt::Windows::UI::ViewManagement::ApplicationViewConsolidatedEventArgs> const& handler) const;
+        [[nodiscard]] auto Consolidated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::ApplicationView, winrt::Windows::UI::ViewManagement::ApplicationViewConsolidatedEventArgs> const& handler) const;
         auto Consolidated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IApplicationView>
@@ -989,7 +991,7 @@ namespace winrt::impl
         [[nodiscard]] auto VisibleBounds() const;
         auto VisibleBoundsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::ApplicationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using VisibleBoundsChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IApplicationView2, &impl::abi_t<winrt::Windows::UI::ViewManagement::IApplicationView2>::remove_VisibleBoundsChanged>;
-        [[nodiscard]] VisibleBoundsChanged_revoker VisibleBoundsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::ApplicationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto VisibleBoundsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::ApplicationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto VisibleBoundsChanged(winrt::event_token const& token) const noexcept;
         auto SetDesiredBoundsMode(winrt::Windows::UI::ViewManagement::ApplicationViewBoundsMode const& boundsMode) const;
         [[nodiscard]] auto DesiredBoundsMode() const;
@@ -1245,11 +1247,11 @@ namespace winrt::impl
     {
         auto Showing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::InputPane, winrt::Windows::UI::ViewManagement::InputPaneVisibilityEventArgs> const& handler) const;
         using Showing_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IInputPane, &impl::abi_t<winrt::Windows::UI::ViewManagement::IInputPane>::remove_Showing>;
-        [[nodiscard]] Showing_revoker Showing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::InputPane, winrt::Windows::UI::ViewManagement::InputPaneVisibilityEventArgs> const& handler) const;
+        [[nodiscard]] auto Showing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::InputPane, winrt::Windows::UI::ViewManagement::InputPaneVisibilityEventArgs> const& handler) const;
         auto Showing(winrt::event_token const& token) const noexcept;
         auto Hiding(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::InputPane, winrt::Windows::UI::ViewManagement::InputPaneVisibilityEventArgs> const& handler) const;
         using Hiding_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IInputPane, &impl::abi_t<winrt::Windows::UI::ViewManagement::IInputPane>::remove_Hiding>;
-        [[nodiscard]] Hiding_revoker Hiding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::InputPane, winrt::Windows::UI::ViewManagement::InputPaneVisibilityEventArgs> const& handler) const;
+        [[nodiscard]] auto Hiding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::InputPane, winrt::Windows::UI::ViewManagement::InputPaneVisibilityEventArgs> const& handler) const;
         auto Hiding(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto OccludedRect() const;
     };
@@ -1315,7 +1317,7 @@ namespace winrt::impl
         [[nodiscard]] auto ProjectionDisplayAvailable() const;
         auto ProjectionDisplayAvailableChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ProjectionDisplayAvailableChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IProjectionManagerStatics, &impl::abi_t<winrt::Windows::UI::ViewManagement::IProjectionManagerStatics>::remove_ProjectionDisplayAvailableChanged>;
-        [[nodiscard]] ProjectionDisplayAvailableChanged_revoker ProjectionDisplayAvailableChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ProjectionDisplayAvailableChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ProjectionDisplayAvailableChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IProjectionManagerStatics>
@@ -1349,11 +1351,11 @@ namespace winrt::impl
         [[nodiscard]] auto OccludedRect() const;
         auto Showing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::StatusBar, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using Showing_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IStatusBar, &impl::abi_t<winrt::Windows::UI::ViewManagement::IStatusBar>::remove_Showing>;
-        [[nodiscard]] Showing_revoker Showing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::StatusBar, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto Showing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::StatusBar, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto Showing(winrt::event_token const& token) const noexcept;
         auto Hiding(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::StatusBar, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using Hiding_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IStatusBar, &impl::abi_t<winrt::Windows::UI::ViewManagement::IStatusBar>::remove_Hiding>;
-        [[nodiscard]] Hiding_revoker Hiding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::StatusBar, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto Hiding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::StatusBar, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto Hiding(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IStatusBar>
@@ -1410,7 +1412,7 @@ namespace winrt::impl
         [[nodiscard]] auto TextScaleFactor() const;
         auto TextScaleFactorChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using TextScaleFactorChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IUISettings2, &impl::abi_t<winrt::Windows::UI::ViewManagement::IUISettings2>::remove_TextScaleFactorChanged>;
-        [[nodiscard]] TextScaleFactorChanged_revoker TextScaleFactorChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto TextScaleFactorChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto TextScaleFactorChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IUISettings2>
@@ -1423,7 +1425,7 @@ namespace winrt::impl
         auto GetColorValue(winrt::Windows::UI::ViewManagement::UIColorType const& desiredColor) const;
         auto ColorValuesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ColorValuesChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IUISettings3, &impl::abi_t<winrt::Windows::UI::ViewManagement::IUISettings3>::remove_ColorValuesChanged>;
-        [[nodiscard]] ColorValuesChanged_revoker ColorValuesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ColorValuesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ColorValuesChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IUISettings3>
@@ -1436,7 +1438,7 @@ namespace winrt::impl
         [[nodiscard]] auto AdvancedEffectsEnabled() const;
         auto AdvancedEffectsEnabledChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AdvancedEffectsEnabledChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IUISettings4, &impl::abi_t<winrt::Windows::UI::ViewManagement::IUISettings4>::remove_AdvancedEffectsEnabledChanged>;
-        [[nodiscard]] AdvancedEffectsEnabledChanged_revoker AdvancedEffectsEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AdvancedEffectsEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AdvancedEffectsEnabledChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IUISettings4>
@@ -1449,7 +1451,7 @@ namespace winrt::impl
         [[nodiscard]] auto AutoHideScrollBars() const;
         auto AutoHideScrollBarsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsAutoHideScrollBarsChangedEventArgs> const& handler) const;
         using AutoHideScrollBarsChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IUISettings5, &impl::abi_t<winrt::Windows::UI::ViewManagement::IUISettings5>::remove_AutoHideScrollBarsChanged>;
-        [[nodiscard]] AutoHideScrollBarsChanged_revoker AutoHideScrollBarsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsAutoHideScrollBarsChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AutoHideScrollBarsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsAutoHideScrollBarsChangedEventArgs> const& handler) const;
         auto AutoHideScrollBarsChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IUISettings5>
@@ -1461,11 +1463,11 @@ namespace winrt::impl
     {
         auto AnimationsEnabledChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsAnimationsEnabledChangedEventArgs> const& handler) const;
         using AnimationsEnabledChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IUISettings6, &impl::abi_t<winrt::Windows::UI::ViewManagement::IUISettings6>::remove_AnimationsEnabledChanged>;
-        [[nodiscard]] AnimationsEnabledChanged_revoker AnimationsEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsAnimationsEnabledChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AnimationsEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsAnimationsEnabledChangedEventArgs> const& handler) const;
         auto AnimationsEnabledChanged(winrt::event_token const& token) const noexcept;
         auto MessageDurationChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsMessageDurationChangedEventArgs> const& handler) const;
         using MessageDurationChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IUISettings6, &impl::abi_t<winrt::Windows::UI::ViewManagement::IUISettings6>::remove_MessageDurationChanged>;
-        [[nodiscard]] MessageDurationChanged_revoker MessageDurationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsMessageDurationChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto MessageDurationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UISettings, winrt::Windows::UI::ViewManagement::UISettingsMessageDurationChangedEventArgs> const& handler) const;
         auto MessageDurationChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IUISettings6>
@@ -1511,7 +1513,7 @@ namespace winrt::impl
         auto GetPreferredInteractionMode(array_view<winrt::Windows::UI::ViewManagement::UserInteractionMode const> supportedModes) const;
         auto PreferredInteractionModeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UIViewSettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PreferredInteractionModeChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode, &impl::abi_t<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>::remove_PreferredInteractionModeChanged>;
-        [[nodiscard]] PreferredInteractionModeChanged_revoker PreferredInteractionModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UIViewSettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PreferredInteractionModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::UIViewSettings, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PreferredInteractionModeChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::IUIViewSettingsPreferredInteractionMode>

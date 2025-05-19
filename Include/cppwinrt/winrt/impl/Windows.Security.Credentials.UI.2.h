@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,13 +16,13 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials::UI
         static auto PickAsync(param::hstring const& targetName, param::hstring const& message);
         static auto PickAsync(param::hstring const& targetName, param::hstring const& message, param::hstring const& caption);
     };
-    struct __declspec(empty_bases) CredentialPickerOptions : winrt::Windows::Security::Credentials::UI::ICredentialPickerOptions
+    struct WINRT_IMPL_EMPTY_BASES CredentialPickerOptions : winrt::Windows::Security::Credentials::UI::ICredentialPickerOptions
     {
         CredentialPickerOptions(std::nullptr_t) noexcept {}
         CredentialPickerOptions(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Credentials::UI::ICredentialPickerOptions(ptr, take_ownership_from_abi) {}
         CredentialPickerOptions();
     };
-    struct __declspec(empty_bases) CredentialPickerResults : winrt::Windows::Security::Credentials::UI::ICredentialPickerResults
+    struct WINRT_IMPL_EMPTY_BASES CredentialPickerResults : winrt::Windows::Security::Credentials::UI::ICredentialPickerResults
     {
         CredentialPickerResults(std::nullptr_t) noexcept {}
         CredentialPickerResults(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Credentials::UI::ICredentialPickerResults(ptr, take_ownership_from_abi) {}

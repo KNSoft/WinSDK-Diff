@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Sensors
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::System::Preview
 {
@@ -61,7 +61,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Preview::TwoPanelHingedDevicePosturePreviewReadingChangedEventArgs>{ using type = winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreviewReadingChangedEventArgs; };
     template <> struct abi<winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentPostureAsync(void**) noexcept = 0;
             virtual int32_t __stdcall add_PostureChanged(void*, winrt::event_token*) noexcept = 0;
@@ -70,7 +70,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreviewReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_HingeState(int32_t*) noexcept = 0;
@@ -82,14 +82,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreviewReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
         };
@@ -100,7 +100,7 @@ namespace winrt::impl
         auto GetCurrentPostureAsync() const;
         auto PostureChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Preview::TwoPanelHingedDevicePosturePreview, winrt::Windows::System::Preview::TwoPanelHingedDevicePosturePreviewReadingChangedEventArgs> const& handler) const;
         using PostureChanged_revoker = impl::event_revoker<winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreview, &impl::abi_t<winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreview>::remove_PostureChanged>;
-        [[nodiscard]] PostureChanged_revoker PostureChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Preview::TwoPanelHingedDevicePosturePreview, winrt::Windows::System::Preview::TwoPanelHingedDevicePosturePreviewReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PostureChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Preview::TwoPanelHingedDevicePosturePreview, winrt::Windows::System::Preview::TwoPanelHingedDevicePosturePreviewReadingChangedEventArgs> const& handler) const;
         auto PostureChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreview>

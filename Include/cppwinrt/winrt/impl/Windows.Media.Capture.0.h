@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,12 +15,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct IAsyncAction;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
     struct IPropertySet;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::DirectX::Direct3D11
@@ -599,6 +599,11 @@ WINRT_EXPORT namespace winrt::Windows::Media::Capture
     struct WhiteBalanceGain;
     struct MediaCaptureFailedEventHandler;
     struct RecordLimitationExceededEventHandler;
+    struct AppBroadcastContract;
+    struct AppCaptureContract;
+    struct AppCaptureMetadataContract;
+    struct CameraCaptureUIContract;
+    struct GameBarContract;
 }
 namespace winrt::impl
 {
@@ -1058,6 +1063,11 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Capture::IVideoStreamConfiguration> = L"Windows.Media.Capture.IVideoStreamConfiguration";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Capture::MediaCaptureFailedEventHandler> = L"Windows.Media.Capture.MediaCaptureFailedEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Capture::RecordLimitationExceededEventHandler> = L"Windows.Media.Capture.RecordLimitationExceededEventHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::Capture::AppBroadcastContract> = L"Windows.Media.Capture.AppBroadcastContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::Capture::AppCaptureContract> = L"Windows.Media.Capture.AppCaptureContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::Capture::AppCaptureMetadataContract> = L"Windows.Media.Capture.AppCaptureMetadataContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::Capture::CameraCaptureUIContract> = L"Windows.Media.Capture.CameraCaptureUIContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::Capture::GameBarContract> = L"Windows.Media.Capture.GameBarContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Capture::IAdvancedCapturedPhoto>{ 0xF072728B,0xB292,0x4491,{ 0x9D,0x41,0x99,0x80,0x7A,0x55,0x0B,0xBF } }; // F072728B-B292-4491-9D41-99807A550BBF
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Capture::IAdvancedCapturedPhoto2>{ 0x18CF6CD8,0xCFFE,0x42D8,{ 0x81,0x04,0x01,0x7B,0xB3,0x18,0xF4,0xA1 } }; // 18CF6CD8-CFFE-42D8-8104-017BB318F4A1
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Capture::IAdvancedPhotoCapture>{ 0x83FFAAFA,0x6667,0x44DC,{ 0x97,0x3C,0xA6,0xBC,0xE5,0x96,0xAA,0x0F } }; // 83FFAAFA-6667-44DC-973C-A6BCE596AA0F
@@ -1240,7 +1250,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Capture::VideoStreamConfiguration>{ using type = winrt::Windows::Media::Capture::IVideoStreamConfiguration; };
     template <> struct abi<winrt::Windows::Media::Capture::IAdvancedCapturedPhoto>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
@@ -1249,14 +1259,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAdvancedCapturedPhoto2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameBoundsRelativeToReferencePhoto(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAdvancedPhotoCapture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CaptureAsync(void**) noexcept = 0;
             virtual int32_t __stdcall CaptureWithContextAsync(void*, void**) noexcept = 0;
@@ -1269,7 +1279,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_PlugInState(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_PlugInState(int32_t*) noexcept = 0;
@@ -1289,7 +1299,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_BroadcastTitle(void*) noexcept = 0;
             virtual int32_t __stdcall get_BroadcastLanguage(void**) noexcept = 0;
@@ -1306,7 +1316,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceSignInInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SignInState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_OAuthRequestUri(void*) noexcept = 0;
@@ -1322,7 +1332,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceSignInInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_UserNameChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_UserNameChanged(winrt::event_token) noexcept = 0;
@@ -1330,7 +1340,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StreamState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DesiredVideoEncodingBitrate(uint64_t) noexcept = 0;
@@ -1350,14 +1360,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportProblemWithStream() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastCameraCaptureStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ErrorCode(uint32_t*) noexcept = 0;
@@ -1365,7 +1375,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastGlobalSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBroadcastEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsDisabledByPolicy(bool*) noexcept = 0;
@@ -1395,7 +1405,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastHeartbeatRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
@@ -1403,7 +1413,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetGlobalSettings(void**) noexcept = 0;
             virtual int32_t __stdcall ApplyGlobalSettings(void*) noexcept = 0;
@@ -1413,7 +1423,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastMicrophoneCaptureStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ErrorCode(uint32_t*) noexcept = 0;
@@ -1421,7 +1431,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPlugIn>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProviderSettings(void**) noexcept = 0;
@@ -1431,7 +1441,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPlugInManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBroadcastProviderAvailable(bool*) noexcept = 0;
             virtual int32_t __stdcall get_PlugInList(void**) noexcept = 0;
@@ -1441,7 +1451,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPlugInManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -1449,14 +1459,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPlugInStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlugInState(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StopPreview() noexcept = 0;
             virtual int32_t __stdcall get_PreviewState(int32_t*) noexcept = 0;
@@ -1468,7 +1478,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPreviewStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PreviewState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ErrorCode(uint32_t*) noexcept = 0;
@@ -1476,7 +1486,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPreviewStreamReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoWidth(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_VideoHeight(uint32_t*) noexcept = 0;
@@ -1490,7 +1500,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPreviewStreamVideoFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoHeader(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoBuffer(void**) noexcept = 0;
@@ -1498,7 +1508,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastPreviewStreamVideoHeader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AbsoluteTimestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_RelativeTimestamp(int64_t*) noexcept = 0;
@@ -1508,7 +1518,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastProviderSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DefaultBroadcastTitle(void*) noexcept = 0;
             virtual int32_t __stdcall get_DefaultBroadcastTitle(void**) noexcept = 0;
@@ -1528,7 +1538,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastServices>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CaptureTargetType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_CaptureTargetType(int32_t) noexcept = 0;
@@ -1549,7 +1559,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastSignInStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SignInState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Result(int32_t*) noexcept = 0;
@@ -1557,7 +1567,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCaptureTargetRunning(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ViewerCount(uint32_t*) noexcept = 0;
@@ -1598,7 +1608,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastStreamAudioFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioHeader(void**) noexcept = 0;
             virtual int32_t __stdcall get_AudioBuffer(void**) noexcept = 0;
@@ -1606,7 +1616,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastStreamAudioHeader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AbsoluteTimestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_RelativeTimestamp(int64_t*) noexcept = 0;
@@ -1617,7 +1627,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastStreamReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioChannels(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AudioSampleRate(uint32_t*) noexcept = 0;
@@ -1636,14 +1646,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastStreamStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StreamState(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastStreamVideoFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoHeader(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoBuffer(void**) noexcept = 0;
@@ -1651,7 +1661,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastStreamVideoHeader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AbsoluteTimestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_RelativeTimestamp(int64_t*) noexcept = 0;
@@ -1663,21 +1673,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundService(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppBroadcastViewerCountChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewerCount(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCapture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCapturingAudio(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsCapturingVideo(bool*) noexcept = 0;
@@ -1687,7 +1697,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureAlternateShortcutKeys>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ToggleGameBarKey(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_ToggleGameBarKey(int32_t*) noexcept = 0;
@@ -1713,7 +1723,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureAlternateShortcutKeys2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ToggleMicrophoneCaptureKey(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_ToggleMicrophoneCaptureKey(int32_t*) noexcept = 0;
@@ -1723,7 +1733,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureAlternateShortcutKeys3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ToggleCameraCaptureKey(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_ToggleCameraCaptureKey(int32_t*) noexcept = 0;
@@ -1737,21 +1747,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureDurationGeneratedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Duration(int64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureFileGeneratedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_File(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentSettings(void**) noexcept = 0;
             virtual int32_t __stdcall ApplySettings(void*) noexcept = 0;
@@ -1759,7 +1769,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureMetadataWriter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddStringEvent(void*, void*, int32_t) noexcept = 0;
             virtual int32_t __stdcall AddInt32Event(void*, int32_t, int32_t) noexcept = 0;
@@ -1776,7 +1786,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureMicrophoneCaptureStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ErrorCode(uint32_t*) noexcept = 0;
@@ -1784,7 +1794,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureRecordOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StopRecording() noexcept = 0;
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
@@ -1802,7 +1812,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureRecordingStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ErrorCode(uint32_t*) noexcept = 0;
@@ -1810,7 +1820,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureServices>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Record(void**) noexcept = 0;
             virtual int32_t __stdcall RecordTimeSpan(int64_t, int64_t, void**) noexcept = 0;
@@ -1820,7 +1830,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_AppCaptureDestinationFolder(void*) noexcept = 0;
             virtual int32_t __stdcall get_AppCaptureDestinationFolder(void**) noexcept = 0;
@@ -1862,7 +1872,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureSettings2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsGpuConstrained(bool*) noexcept = 0;
             virtual int32_t __stdcall get_AlternateShortcutKeys(void**) noexcept = 0;
@@ -1870,7 +1880,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureSettings3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsMicrophoneCaptureEnabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsMicrophoneCaptureEnabled(bool*) noexcept = 0;
@@ -1878,7 +1888,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureSettings4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsMicrophoneCaptureEnabledByDefault(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsMicrophoneCaptureEnabledByDefault(bool*) noexcept = 0;
@@ -1892,7 +1902,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureSettings5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsEchoCancellationEnabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsEchoCancellationEnabled(bool*) noexcept = 0;
@@ -1902,7 +1912,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTargetRunning(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsHistoricalCaptureEnabled(bool*) noexcept = 0;
@@ -1919,21 +1929,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IAppCaptureStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetAllowedAsync(bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICameraCaptureUI>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PhotoSettings(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoSettings(void**) noexcept = 0;
@@ -1942,7 +1952,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICameraCaptureUIPhotoCaptureSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Format(int32_t) noexcept = 0;
@@ -1958,7 +1968,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICameraCaptureUIVideoCaptureSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Format(int32_t) noexcept = 0;
@@ -1972,14 +1982,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICameraOptionsUIStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Show(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICapturedFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Width(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Height(uint32_t*) noexcept = 0;
@@ -1987,7 +1997,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICapturedFrame2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ControlValues(void**) noexcept = 0;
             virtual int32_t __stdcall get_BitmapProperties(void**) noexcept = 0;
@@ -1995,7 +2005,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICapturedFrameControlValues>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Exposure(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExposureCompensation(void**) noexcept = 0;
@@ -2010,7 +2020,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICapturedFrameControlValues2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FocusState(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsoDigitalGain(void**) noexcept = 0;
@@ -2021,14 +2031,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICapturedFrameWithSoftwareBitmap>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SoftwareBitmap(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::ICapturedPhoto>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
             virtual int32_t __stdcall get_Thumbnail(void**) noexcept = 0;
@@ -2036,7 +2046,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IGameBarServices>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetCapturePolicy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall EnableCapture() noexcept = 0;
@@ -2051,7 +2061,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IGameBarServicesCommandEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Command(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Origin(int32_t*) noexcept = 0;
@@ -2059,7 +2069,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IGameBarServicesManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_GameBarServicesCreated(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_GameBarServicesCreated(winrt::event_token) noexcept = 0;
@@ -2067,21 +2077,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IGameBarServicesManagerGameBarServicesCreatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GameBarServices(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IGameBarServicesManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IGameBarServicesTargetInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppId(void**) noexcept = 0;
@@ -2091,7 +2101,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ILowLagMediaRecording>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAsync(void**) noexcept = 0;
             virtual int32_t __stdcall StopAsync(void**) noexcept = 0;
@@ -2100,7 +2110,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ILowLagMediaRecording2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PauseAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ResumeAsync(void**) noexcept = 0;
@@ -2108,7 +2118,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ILowLagMediaRecording3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PauseWithResultAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall StopWithResultAsync(void**) noexcept = 0;
@@ -2116,7 +2126,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ILowLagPhotoCapture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CaptureAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FinishAsync(void**) noexcept = 0;
@@ -2124,7 +2134,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::ILowLagPhotoSequenceCapture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAsync(void**) noexcept = 0;
             virtual int32_t __stdcall StopAsync(void**) noexcept = 0;
@@ -2135,7 +2145,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCapture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InitializeAsync(void**) noexcept = 0;
             virtual int32_t __stdcall InitializeWithSettingsAsync(void*, void**) noexcept = 0;
@@ -2167,7 +2177,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCapture2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PrepareLowLagRecordToStorageFileAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall PrepareLowLagRecordToStreamAsync(void*, void*, void**) noexcept = 0;
@@ -2180,7 +2190,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCapture3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PrepareVariablePhotoSequenceCaptureAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall add_FocusChanged(void*, winrt::event_token*) noexcept = 0;
@@ -2191,7 +2201,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCapture4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddAudioEffectAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall AddVideoEffectAsync(void*, int32_t, void**) noexcept = 0;
@@ -2210,7 +2220,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCapture5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RemoveEffectAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall PauseRecordWithResultAsync(int32_t, void**) noexcept = 0;
@@ -2223,7 +2233,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCapture6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CaptureDeviceExclusiveControlStatusChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CaptureDeviceExclusiveControlStatusChanged(winrt::event_token) noexcept = 0;
@@ -2232,14 +2242,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCapture7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateRelativePanelWatcher(int32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureDeviceExclusiveControlStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -2247,7 +2257,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
             virtual int32_t __stdcall get_Code(uint32_t*) noexcept = 0;
@@ -2255,14 +2265,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureFocusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FocusState(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureInitializationSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_AudioDeviceId(void*) noexcept = 0;
             virtual int32_t __stdcall get_AudioDeviceId(void**) noexcept = 0;
@@ -2276,7 +2286,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureInitializationSettings2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_MediaCategory(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_MediaCategory(int32_t*) noexcept = 0;
@@ -2286,7 +2296,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureInitializationSettings3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_AudioSource(void*) noexcept = 0;
             virtual int32_t __stdcall get_AudioSource(void**) noexcept = 0;
@@ -2296,7 +2306,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureInitializationSettings4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoProfile(void**) noexcept = 0;
             virtual int32_t __stdcall put_VideoProfile(void*) noexcept = 0;
@@ -2310,7 +2320,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureInitializationSettings5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceGroup(void**) noexcept = 0;
             virtual int32_t __stdcall put_SourceGroup(void*) noexcept = 0;
@@ -2322,7 +2332,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureInitializationSettings6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlwaysPlaySystemShutterSound(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AlwaysPlaySystemShutterSound(bool) noexcept = 0;
@@ -2330,7 +2340,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureInitializationSettings7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceUriPasswordCredential(void**) noexcept = 0;
             virtual int32_t __stdcall put_DeviceUriPasswordCredential(void*) noexcept = 0;
@@ -2340,7 +2350,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCapturePauseResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LastFrame(void**) noexcept = 0;
             virtual int32_t __stdcall get_RecordDuration(int64_t*) noexcept = 0;
@@ -2348,7 +2358,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureRelativePanelWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RelativePanel(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_Changed(void*, winrt::event_token*) noexcept = 0;
@@ -2359,7 +2369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioDeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoDeviceId(void**) noexcept = 0;
@@ -2370,7 +2380,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureSettings2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConcurrentRecordAndPhotoSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ConcurrentRecordAndPhotoSequenceSupported(bool*) noexcept = 0;
@@ -2384,14 +2394,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureSettings3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Direct3D11Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsVideoProfileSupported(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall FindAllVideoProfiles(void*, void**) noexcept = 0;
@@ -2401,7 +2411,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureStopResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LastFrame(void**) noexcept = 0;
             virtual int32_t __stdcall get_RecordDuration(int64_t*) noexcept = 0;
@@ -2409,7 +2419,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureVideoPreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartPreviewAsync(void**) noexcept = 0;
             virtual int32_t __stdcall StartPreviewToCustomSinkAsync(void*, void*, void**) noexcept = 0;
@@ -2419,7 +2429,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureVideoProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoDeviceId(void**) noexcept = 0;
@@ -2431,7 +2441,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureVideoProfile2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameSourceInfos(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -2439,7 +2449,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureVideoProfileMediaDescription>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Width(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Height(uint32_t*) noexcept = 0;
@@ -2450,7 +2460,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IMediaCaptureVideoProfileMediaDescription2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Subtype(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -2458,7 +2468,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IOptionalReferencePhotoCapturedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
             virtual int32_t __stdcall get_Context(void**) noexcept = 0;
@@ -2466,7 +2476,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IPhotoCapturedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
             virtual int32_t __stdcall get_Thumbnail(void**) noexcept = 0;
@@ -2475,7 +2485,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IPhotoConfirmationCapturedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
             virtual int32_t __stdcall get_CaptureTimeOffset(int64_t*) noexcept = 0;
@@ -2483,7 +2493,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::IVideoStreamConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputProperties(void**) noexcept = 0;
             virtual int32_t __stdcall get_OutputProperties(void**) noexcept = 0;
@@ -2491,14 +2501,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::MediaCaptureFailedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::RecordLimitationExceededEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -2530,11 +2540,11 @@ namespace winrt::impl
         auto CaptureAsync(winrt::Windows::Foundation::IInspectable const& context) const;
         auto OptionalReferencePhotoCaptured(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AdvancedPhotoCapture, winrt::Windows::Media::Capture::OptionalReferencePhotoCapturedEventArgs> const& handler) const;
         using OptionalReferencePhotoCaptured_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAdvancedPhotoCapture, &impl::abi_t<winrt::Windows::Media::Capture::IAdvancedPhotoCapture>::remove_OptionalReferencePhotoCaptured>;
-        [[nodiscard]] OptionalReferencePhotoCaptured_revoker OptionalReferencePhotoCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AdvancedPhotoCapture, winrt::Windows::Media::Capture::OptionalReferencePhotoCapturedEventArgs> const& handler) const;
+        [[nodiscard]] auto OptionalReferencePhotoCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AdvancedPhotoCapture, winrt::Windows::Media::Capture::OptionalReferencePhotoCapturedEventArgs> const& handler) const;
         auto OptionalReferencePhotoCaptured(winrt::event_token const& token) const noexcept;
         auto AllPhotosCaptured(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AdvancedPhotoCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AllPhotosCaptured_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAdvancedPhotoCapture, &impl::abi_t<winrt::Windows::Media::Capture::IAdvancedPhotoCapture>::remove_AllPhotosCaptured>;
-        [[nodiscard]] AllPhotosCaptured_revoker AllPhotosCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AdvancedPhotoCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AllPhotosCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AdvancedPhotoCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AllPhotosCaptured(winrt::event_token const& token) const noexcept;
         auto FinishAsync() const;
     };
@@ -2558,7 +2568,7 @@ namespace winrt::impl
         auto TerminateBroadcast(winrt::Windows::Media::Capture::AppBroadcastTerminationReason const& reason, uint32_t providerSpecificReason) const;
         auto HeartbeatRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Media::Capture::AppBroadcastHeartbeatRequestedEventArgs> const& handler) const;
         using HeartbeatRequested_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService>::remove_HeartbeatRequested>;
-        [[nodiscard]] HeartbeatRequested_revoker HeartbeatRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Media::Capture::AppBroadcastHeartbeatRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto HeartbeatRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Media::Capture::AppBroadcastHeartbeatRequestedEventArgs> const& handler) const;
         auto HeartbeatRequested(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto TitleId() const;
     };
@@ -2576,15 +2586,15 @@ namespace winrt::impl
         auto BroadcastChannel(param::hstring const& value) const;
         auto BroadcastTitleChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using BroadcastTitleChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService2, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService2>::remove_BroadcastTitleChanged>;
-        [[nodiscard]] BroadcastTitleChanged_revoker BroadcastTitleChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto BroadcastTitleChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto BroadcastTitleChanged(winrt::event_token const& token) const noexcept;
         auto BroadcastLanguageChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using BroadcastLanguageChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService2, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService2>::remove_BroadcastLanguageChanged>;
-        [[nodiscard]] BroadcastLanguageChanged_revoker BroadcastLanguageChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto BroadcastLanguageChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto BroadcastLanguageChanged(winrt::event_token const& token) const noexcept;
         auto BroadcastChannelChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using BroadcastChannelChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService2, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService2>::remove_BroadcastChannelChanged>;
-        [[nodiscard]] BroadcastChannelChanged_revoker BroadcastChannelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto BroadcastChannelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundService, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto BroadcastChannelChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppBroadcastBackgroundService2>
@@ -2604,7 +2614,7 @@ namespace winrt::impl
         [[nodiscard]] auto UserName() const;
         auto SignInStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceSignInInfo, winrt::Windows::Media::Capture::AppBroadcastSignInStateChangedEventArgs> const& handler) const;
         using SignInStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceSignInInfo, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceSignInInfo>::remove_SignInStateChanged>;
-        [[nodiscard]] SignInStateChanged_revoker SignInStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceSignInInfo, winrt::Windows::Media::Capture::AppBroadcastSignInStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SignInStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceSignInInfo, winrt::Windows::Media::Capture::AppBroadcastSignInStateChangedEventArgs> const& handler) const;
         auto SignInStateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceSignInInfo>
@@ -2616,7 +2626,7 @@ namespace winrt::impl
     {
         auto UserNameChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceSignInInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using UserNameChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceSignInInfo2, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceSignInInfo2>::remove_UserNameChanged>;
-        [[nodiscard]] UserNameChanged_revoker UserNameChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceSignInInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto UserNameChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceSignInInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto UserNameChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceSignInInfo2>
@@ -2636,15 +2646,15 @@ namespace winrt::impl
         [[nodiscard]] auto BroadcastStreamReader() const;
         auto StreamStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Media::Capture::AppBroadcastStreamStateChangedEventArgs> const& handler) const;
         using StreamStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo>::remove_StreamStateChanged>;
-        [[nodiscard]] StreamStateChanged_revoker StreamStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Media::Capture::AppBroadcastStreamStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StreamStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Media::Capture::AppBroadcastStreamStateChangedEventArgs> const& handler) const;
         auto StreamStateChanged(winrt::event_token const& token) const noexcept;
         auto VideoEncodingResolutionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using VideoEncodingResolutionChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo>::remove_VideoEncodingResolutionChanged>;
-        [[nodiscard]] VideoEncodingResolutionChanged_revoker VideoEncodingResolutionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto VideoEncodingResolutionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto VideoEncodingResolutionChanged(winrt::event_token const& token) const noexcept;
         auto VideoEncodingBitrateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using VideoEncodingBitrateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo>::remove_VideoEncodingBitrateChanged>;
-        [[nodiscard]] VideoEncodingBitrateChanged_revoker VideoEncodingBitrateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto VideoEncodingBitrateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastBackgroundServiceStreamInfo, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto VideoEncodingBitrateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppBroadcastBackgroundServiceStreamInfo>
@@ -2785,7 +2795,7 @@ namespace winrt::impl
         [[nodiscard]] auto ErrorCode() const;
         auto PreviewStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastPreview, winrt::Windows::Media::Capture::AppBroadcastPreviewStateChangedEventArgs> const& value) const;
         using PreviewStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastPreview, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastPreview>::remove_PreviewStateChanged>;
-        [[nodiscard]] PreviewStateChanged_revoker PreviewStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastPreview, winrt::Windows::Media::Capture::AppBroadcastPreviewStateChangedEventArgs> const& value) const;
+        [[nodiscard]] auto PreviewStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastPreview, winrt::Windows::Media::Capture::AppBroadcastPreviewStateChangedEventArgs> const& value) const;
         auto PreviewStateChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto PreviewStreamReader() const;
     };
@@ -2814,7 +2824,7 @@ namespace winrt::impl
         auto TryGetNextVideoFrame() const;
         auto VideoFrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastPreviewStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
         using VideoFrameArrived_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastPreviewStreamReader, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastPreviewStreamReader>::remove_VideoFrameArrived>;
-        [[nodiscard]] VideoFrameArrived_revoker VideoFrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastPreviewStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto VideoFrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastPreviewStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto VideoFrameArrived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppBroadcastPreviewStreamReader>
@@ -2926,27 +2936,27 @@ namespace winrt::impl
         [[nodiscard]] auto TerminationReasonPlugInSpecific() const;
         auto ViewerCountChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastViewerCountChangedEventArgs> const& value) const;
         using ViewerCountChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastState, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastState>::remove_ViewerCountChanged>;
-        [[nodiscard]] ViewerCountChanged_revoker ViewerCountChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastViewerCountChangedEventArgs> const& value) const;
+        [[nodiscard]] auto ViewerCountChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastViewerCountChangedEventArgs> const& value) const;
         auto ViewerCountChanged(winrt::event_token const& token) const noexcept;
         auto MicrophoneCaptureStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastMicrophoneCaptureStateChangedEventArgs> const& value) const;
         using MicrophoneCaptureStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastState, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastState>::remove_MicrophoneCaptureStateChanged>;
-        [[nodiscard]] MicrophoneCaptureStateChanged_revoker MicrophoneCaptureStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastMicrophoneCaptureStateChangedEventArgs> const& value) const;
+        [[nodiscard]] auto MicrophoneCaptureStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastMicrophoneCaptureStateChangedEventArgs> const& value) const;
         auto MicrophoneCaptureStateChanged(winrt::event_token const& token) const noexcept;
         auto CameraCaptureStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastCameraCaptureStateChangedEventArgs> const& value) const;
         using CameraCaptureStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastState, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastState>::remove_CameraCaptureStateChanged>;
-        [[nodiscard]] CameraCaptureStateChanged_revoker CameraCaptureStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastCameraCaptureStateChangedEventArgs> const& value) const;
+        [[nodiscard]] auto CameraCaptureStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastCameraCaptureStateChangedEventArgs> const& value) const;
         auto CameraCaptureStateChanged(winrt::event_token const& token) const noexcept;
         auto PlugInStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastPlugInStateChangedEventArgs> const& handler) const;
         using PlugInStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastState, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastState>::remove_PlugInStateChanged>;
-        [[nodiscard]] PlugInStateChanged_revoker PlugInStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastPlugInStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PlugInStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastPlugInStateChangedEventArgs> const& handler) const;
         auto PlugInStateChanged(winrt::event_token const& token) const noexcept;
         auto StreamStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastStreamStateChangedEventArgs> const& handler) const;
         using StreamStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastState, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastState>::remove_StreamStateChanged>;
-        [[nodiscard]] StreamStateChanged_revoker StreamStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastStreamStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StreamStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Media::Capture::AppBroadcastStreamStateChangedEventArgs> const& handler) const;
         auto StreamStateChanged(winrt::event_token const& token) const noexcept;
         auto CaptureTargetClosed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Foundation::IInspectable> const& value) const;
         using CaptureTargetClosed_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastState, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastState>::remove_CaptureTargetClosed>;
-        [[nodiscard]] CaptureTargetClosed_revoker CaptureTargetClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto CaptureTargetClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastState, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto CaptureTargetClosed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppBroadcastState>
@@ -2990,11 +3000,11 @@ namespace winrt::impl
         auto TryGetNextVideoFrame() const;
         auto AudioFrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
         using AudioFrameArrived_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastStreamReader, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastStreamReader>::remove_AudioFrameArrived>;
-        [[nodiscard]] AudioFrameArrived_revoker AudioFrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto AudioFrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto AudioFrameArrived(winrt::event_token const& token) const noexcept;
         auto VideoFrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
         using VideoFrameArrived_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppBroadcastStreamReader, &impl::abi_t<winrt::Windows::Media::Capture::IAppBroadcastStreamReader>::remove_VideoFrameArrived>;
-        [[nodiscard]] VideoFrameArrived_revoker VideoFrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto VideoFrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppBroadcastStreamReader, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto VideoFrameArrived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppBroadcastStreamReader>
@@ -3059,7 +3069,7 @@ namespace winrt::impl
         [[nodiscard]] auto IsCapturingVideo() const;
         auto CapturingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CapturingChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppCapture, &impl::abi_t<winrt::Windows::Media::Capture::IAppCapture>::remove_CapturingChanged>;
-        [[nodiscard]] CapturingChanged_revoker CapturingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CapturingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CapturingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppCapture>
@@ -3164,7 +3174,7 @@ namespace winrt::impl
         [[nodiscard]] auto RemainingStorageBytesAvailable() const;
         auto MetadataPurged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureMetadataWriter, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using MetadataPurged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppCaptureMetadataWriter, &impl::abi_t<winrt::Windows::Media::Capture::IAppCaptureMetadataWriter>::remove_MetadataPurged>;
-        [[nodiscard]] MetadataPurged_revoker MetadataPurged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureMetadataWriter, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto MetadataPurged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureMetadataWriter, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto MetadataPurged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppCaptureMetadataWriter>
@@ -3192,15 +3202,15 @@ namespace winrt::impl
         [[nodiscard]] auto IsFileTruncated() const;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureRecordingStateChangedEventArgs> const& value) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppCaptureRecordOperation, &impl::abi_t<winrt::Windows::Media::Capture::IAppCaptureRecordOperation>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureRecordingStateChangedEventArgs> const& value) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureRecordingStateChangedEventArgs> const& value) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
         auto DurationGenerated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureDurationGeneratedEventArgs> const& value) const;
         using DurationGenerated_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppCaptureRecordOperation, &impl::abi_t<winrt::Windows::Media::Capture::IAppCaptureRecordOperation>::remove_DurationGenerated>;
-        [[nodiscard]] DurationGenerated_revoker DurationGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureDurationGeneratedEventArgs> const& value) const;
+        [[nodiscard]] auto DurationGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureDurationGeneratedEventArgs> const& value) const;
         auto DurationGenerated(winrt::event_token const& token) const noexcept;
         auto FileGenerated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureFileGeneratedEventArgs> const& value) const;
         using FileGenerated_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppCaptureRecordOperation, &impl::abi_t<winrt::Windows::Media::Capture::IAppCaptureRecordOperation>::remove_FileGenerated>;
-        [[nodiscard]] FileGenerated_revoker FileGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureFileGeneratedEventArgs> const& value) const;
+        [[nodiscard]] auto FileGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureRecordOperation, winrt::Windows::Media::Capture::AppCaptureFileGeneratedEventArgs> const& value) const;
         auto FileGenerated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppCaptureRecordOperation>
@@ -3333,11 +3343,11 @@ namespace winrt::impl
         [[nodiscard]] auto MicrophoneCaptureError() const;
         auto MicrophoneCaptureStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureState, winrt::Windows::Media::Capture::AppCaptureMicrophoneCaptureStateChangedEventArgs> const& value) const;
         using MicrophoneCaptureStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppCaptureState, &impl::abi_t<winrt::Windows::Media::Capture::IAppCaptureState>::remove_MicrophoneCaptureStateChanged>;
-        [[nodiscard]] MicrophoneCaptureStateChanged_revoker MicrophoneCaptureStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureState, winrt::Windows::Media::Capture::AppCaptureMicrophoneCaptureStateChangedEventArgs> const& value) const;
+        [[nodiscard]] auto MicrophoneCaptureStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureState, winrt::Windows::Media::Capture::AppCaptureMicrophoneCaptureStateChangedEventArgs> const& value) const;
         auto MicrophoneCaptureStateChanged(winrt::event_token const& token) const noexcept;
         auto CaptureTargetClosed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureState, winrt::Windows::Foundation::IInspectable> const& value) const;
         using CaptureTargetClosed_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IAppCaptureState, &impl::abi_t<winrt::Windows::Media::Capture::IAppCaptureState>::remove_CaptureTargetClosed>;
-        [[nodiscard]] CaptureTargetClosed_revoker CaptureTargetClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureState, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto CaptureTargetClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::AppCaptureState, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto CaptureTargetClosed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IAppCaptureState>
@@ -3497,7 +3507,7 @@ namespace winrt::impl
         [[nodiscard]] auto AppCaptureServices() const;
         auto CommandReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::GameBarServices, winrt::Windows::Media::Capture::GameBarServicesCommandEventArgs> const& value) const;
         using CommandReceived_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IGameBarServices, &impl::abi_t<winrt::Windows::Media::Capture::IGameBarServices>::remove_CommandReceived>;
-        [[nodiscard]] CommandReceived_revoker CommandReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::GameBarServices, winrt::Windows::Media::Capture::GameBarServicesCommandEventArgs> const& value) const;
+        [[nodiscard]] auto CommandReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::GameBarServices, winrt::Windows::Media::Capture::GameBarServicesCommandEventArgs> const& value) const;
         auto CommandReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IGameBarServices>
@@ -3519,7 +3529,7 @@ namespace winrt::impl
     {
         auto GameBarServicesCreated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::GameBarServicesManager, winrt::Windows::Media::Capture::GameBarServicesManagerGameBarServicesCreatedEventArgs> const& value) const;
         using GameBarServicesCreated_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IGameBarServicesManager, &impl::abi_t<winrt::Windows::Media::Capture::IGameBarServicesManager>::remove_GameBarServicesCreated>;
-        [[nodiscard]] GameBarServicesCreated_revoker GameBarServicesCreated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::GameBarServicesManager, winrt::Windows::Media::Capture::GameBarServicesManagerGameBarServicesCreatedEventArgs> const& value) const;
+        [[nodiscard]] auto GameBarServicesCreated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::GameBarServicesManager, winrt::Windows::Media::Capture::GameBarServicesManagerGameBarServicesCreatedEventArgs> const& value) const;
         auto GameBarServicesCreated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IGameBarServicesManager>
@@ -3605,7 +3615,7 @@ namespace winrt::impl
         auto FinishAsync() const;
         auto PhotoCaptured(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::LowLagPhotoSequenceCapture, winrt::Windows::Media::Capture::PhotoCapturedEventArgs> const& handler) const;
         using PhotoCaptured_revoker = impl::event_revoker<winrt::Windows::Media::Capture::ILowLagPhotoSequenceCapture, &impl::abi_t<winrt::Windows::Media::Capture::ILowLagPhotoSequenceCapture>::remove_PhotoCaptured>;
-        [[nodiscard]] PhotoCaptured_revoker PhotoCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::LowLagPhotoSequenceCapture, winrt::Windows::Media::Capture::PhotoCapturedEventArgs> const& handler) const;
+        [[nodiscard]] auto PhotoCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::LowLagPhotoSequenceCapture, winrt::Windows::Media::Capture::PhotoCapturedEventArgs> const& handler) const;
         auto PhotoCaptured(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::ILowLagPhotoSequenceCapture>
@@ -3630,11 +3640,11 @@ namespace winrt::impl
         auto GetEncoderProperty(winrt::Windows::Media::Capture::MediaStreamType const& mediaStreamType, winrt::guid const& propertyId) const;
         auto Failed(winrt::Windows::Media::Capture::MediaCaptureFailedEventHandler const& errorEventHandler) const;
         using Failed_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IMediaCapture, &impl::abi_t<winrt::Windows::Media::Capture::IMediaCapture>::remove_Failed>;
-        [[nodiscard]] Failed_revoker Failed(auto_revoke_t, winrt::Windows::Media::Capture::MediaCaptureFailedEventHandler const& errorEventHandler) const;
+        [[nodiscard]] auto Failed(auto_revoke_t, winrt::Windows::Media::Capture::MediaCaptureFailedEventHandler const& errorEventHandler) const;
         auto Failed(winrt::event_token const& eventCookie) const noexcept;
         auto RecordLimitationExceeded(winrt::Windows::Media::Capture::RecordLimitationExceededEventHandler const& recordLimitationExceededEventHandler) const;
         using RecordLimitationExceeded_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IMediaCapture, &impl::abi_t<winrt::Windows::Media::Capture::IMediaCapture>::remove_RecordLimitationExceeded>;
-        [[nodiscard]] RecordLimitationExceeded_revoker RecordLimitationExceeded(auto_revoke_t, winrt::Windows::Media::Capture::RecordLimitationExceededEventHandler const& recordLimitationExceededEventHandler) const;
+        [[nodiscard]] auto RecordLimitationExceeded(auto_revoke_t, winrt::Windows::Media::Capture::RecordLimitationExceededEventHandler const& recordLimitationExceededEventHandler) const;
         auto RecordLimitationExceeded(winrt::event_token const& eventCookie) const noexcept;
         [[nodiscard]] auto MediaCaptureSettings() const;
         [[nodiscard]] auto AudioDeviceController() const;
@@ -3671,11 +3681,11 @@ namespace winrt::impl
         auto PrepareVariablePhotoSequenceCaptureAsync(winrt::Windows::Media::MediaProperties::ImageEncodingProperties const& type) const;
         auto FocusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::MediaCaptureFocusChangedEventArgs> const& handler) const;
         using FocusChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IMediaCapture3, &impl::abi_t<winrt::Windows::Media::Capture::IMediaCapture3>::remove_FocusChanged>;
-        [[nodiscard]] FocusChanged_revoker FocusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::MediaCaptureFocusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto FocusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::MediaCaptureFocusChangedEventArgs> const& handler) const;
         auto FocusChanged(winrt::event_token const& token) const noexcept;
         auto PhotoConfirmationCaptured(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::PhotoConfirmationCapturedEventArgs> const& handler) const;
         using PhotoConfirmationCaptured_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IMediaCapture3, &impl::abi_t<winrt::Windows::Media::Capture::IMediaCapture3>::remove_PhotoConfirmationCaptured>;
-        [[nodiscard]] PhotoConfirmationCaptured_revoker PhotoConfirmationCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::PhotoConfirmationCapturedEventArgs> const& handler) const;
+        [[nodiscard]] auto PhotoConfirmationCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::PhotoConfirmationCapturedEventArgs> const& handler) const;
         auto PhotoConfirmationCaptured(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::IMediaCapture3>
@@ -3691,14 +3701,14 @@ namespace winrt::impl
         auto ResumeRecordAsync() const;
         auto CameraStreamStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CameraStreamStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IMediaCapture4, &impl::abi_t<winrt::Windows::Media::Capture::IMediaCapture4>::remove_CameraStreamStateChanged>;
-        [[nodiscard]] CameraStreamStateChanged_revoker CameraStreamStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CameraStreamStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CameraStreamStateChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto CameraStreamState() const;
         auto GetPreviewFrameAsync() const;
         auto GetPreviewFrameAsync(winrt::Windows::Media::VideoFrame const& destination) const;
         auto ThermalStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ThermalStatusChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IMediaCapture4, &impl::abi_t<winrt::Windows::Media::Capture::IMediaCapture4>::remove_ThermalStatusChanged>;
-        [[nodiscard]] ThermalStatusChanged_revoker ThermalStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ThermalStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ThermalStatusChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto ThermalStatus() const;
         auto PrepareAdvancedPhotoCaptureAsync(winrt::Windows::Media::MediaProperties::ImageEncodingProperties const& encodingProperties) const;
@@ -3727,7 +3737,7 @@ namespace winrt::impl
     {
         auto CaptureDeviceExclusiveControlStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::MediaCaptureDeviceExclusiveControlStatusChangedEventArgs> const& handler) const;
         using CaptureDeviceExclusiveControlStatusChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IMediaCapture6, &impl::abi_t<winrt::Windows::Media::Capture::IMediaCapture6>::remove_CaptureDeviceExclusiveControlStatusChanged>;
-        [[nodiscard]] CaptureDeviceExclusiveControlStatusChanged_revoker CaptureDeviceExclusiveControlStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::MediaCaptureDeviceExclusiveControlStatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto CaptureDeviceExclusiveControlStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCapture, winrt::Windows::Media::Capture::MediaCaptureDeviceExclusiveControlStatusChangedEventArgs> const& handler) const;
         auto CaptureDeviceExclusiveControlStatusChanged(winrt::event_token const& token) const noexcept;
         auto CreateMultiSourceFrameReaderAsync(param::async_iterable<winrt::Windows::Media::Capture::Frames::MediaFrameSource> const& inputSources) const;
     };
@@ -3881,7 +3891,7 @@ namespace winrt::impl
         [[nodiscard]] auto RelativePanel() const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCaptureRelativePanelWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::Media::Capture::IMediaCaptureRelativePanelWatcher, &impl::abi_t<winrt::Windows::Media::Capture::IMediaCaptureRelativePanelWatcher>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCaptureRelativePanelWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::MediaCaptureRelativePanelWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
         auto Start() const;
         auto Stop() const;

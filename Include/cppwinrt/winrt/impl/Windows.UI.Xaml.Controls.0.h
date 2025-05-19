@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -24,21 +24,21 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Search
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IObservableVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IObservableVector;
     struct IPropertySet;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Globalization
 {
@@ -5662,7 +5662,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Controls::WrapGrid>{ using type = winrt::Windows::UI::Xaml::Controls::IWrapGrid; };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAnchorRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Anchor(void**) noexcept = 0;
             virtual int32_t __stdcall put_Anchor(void*) noexcept = 0;
@@ -5671,7 +5671,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOpen(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsOpen(bool) noexcept = 0;
@@ -5685,7 +5685,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBar2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClosedDisplayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ClosedDisplayMode(int32_t) noexcept = 0;
@@ -5693,7 +5693,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBar3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TemplateSettings(void**) noexcept = 0;
             virtual int32_t __stdcall add_Opening(void*, winrt::event_token*) noexcept = 0;
@@ -5704,7 +5704,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBar4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LightDismissOverlayMode(int32_t) noexcept = 0;
@@ -5712,7 +5712,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
             virtual int32_t __stdcall put_Label(void*) noexcept = 0;
@@ -5722,7 +5722,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarButton3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LabelPosition(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LabelPosition(int32_t) noexcept = 0;
@@ -5730,7 +5730,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarButton4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyboardAcceleratorTextOverride(void**) noexcept = 0;
             virtual int32_t __stdcall put_KeyboardAcceleratorTextOverride(void*) noexcept = 0;
@@ -5738,21 +5738,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarButton5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TemplateSettings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LabelProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IconProperty(void**) noexcept = 0;
@@ -5761,7 +5761,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarButtonStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LabelPositionProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsInOverflowProperty(void**) noexcept = 0;
@@ -5770,27 +5770,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarButtonStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyboardAcceleratorTextOverrideProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarElementContainer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarElementContainerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarElementContainerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCompactProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsInOverflowProperty(void**) noexcept = 0;
@@ -5799,14 +5799,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnClosed(void*) noexcept = 0;
             virtual int32_t __stdcall OnOpened(void*) noexcept = 0;
@@ -5814,7 +5814,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarOverrides3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnClosing(void*) noexcept = 0;
             virtual int32_t __stdcall OnOpening(void*) noexcept = 0;
@@ -5822,27 +5822,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarSeparator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarSeparatorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarSeparatorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCompactProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarSeparatorStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsInOverflowProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_DynamicOverflowOrderProperty(void**) noexcept = 0;
@@ -5850,7 +5850,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOpenProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsStickyProperty(void**) noexcept = 0;
@@ -5858,21 +5858,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClosedDisplayModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarToggleButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
             virtual int32_t __stdcall put_Label(void*) noexcept = 0;
@@ -5882,7 +5882,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarToggleButton3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LabelPosition(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LabelPosition(int32_t) noexcept = 0;
@@ -5890,7 +5890,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarToggleButton4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyboardAcceleratorTextOverride(void**) noexcept = 0;
             virtual int32_t __stdcall put_KeyboardAcceleratorTextOverride(void*) noexcept = 0;
@@ -5898,21 +5898,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarToggleButton5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TemplateSettings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarToggleButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarToggleButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LabelProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IconProperty(void**) noexcept = 0;
@@ -5921,7 +5921,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarToggleButtonStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LabelPositionProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsInOverflowProperty(void**) noexcept = 0;
@@ -5930,14 +5930,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAppBarToggleButtonStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyboardAcceleratorTextOverrideProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxSuggestionListHeight(double*) noexcept = 0;
             virtual int32_t __stdcall put_MaxSuggestionListHeight(double) noexcept = 0;
@@ -5965,7 +5965,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryIcon(void**) noexcept = 0;
             virtual int32_t __stdcall put_QueryIcon(void*) noexcept = 0;
@@ -5975,7 +5975,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LightDismissOverlayMode(int32_t) noexcept = 0;
@@ -5983,7 +5983,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
             virtual int32_t __stdcall put_Description(void*) noexcept = 0;
@@ -5991,7 +5991,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBoxQuerySubmittedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryText(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChosenSuggestion(void**) noexcept = 0;
@@ -5999,7 +5999,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBoxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxSuggestionListHeightProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsSuggestionListOpenProperty(void**) noexcept = 0;
@@ -6014,35 +6014,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBoxStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryIconProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBoxStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBoxStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DescriptionProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBoxSuggestionChosenEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedItem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBoxTextChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Reason(int32_t) noexcept = 0;
@@ -6051,14 +6051,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBoxTextChangedEventArgsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReasonProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBackClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -6066,7 +6066,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBitmapIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UriSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_UriSource(void*) noexcept = 0;
@@ -6074,7 +6074,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBitmapIcon2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShowAsMonochrome(bool*) noexcept = 0;
             virtual int32_t __stdcall put_ShowAsMonochrome(bool) noexcept = 0;
@@ -6082,14 +6082,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBitmapIconFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBitmapIconSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UriSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_UriSource(void*) noexcept = 0;
@@ -6099,14 +6099,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBitmapIconSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBitmapIconSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UriSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ShowAsMonochromeProperty(void**) noexcept = 0;
@@ -6114,21 +6114,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBitmapIconStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UriSourceProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBitmapIconStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShowAsMonochromeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBorder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BorderBrush(void**) noexcept = 0;
             virtual int32_t __stdcall put_BorderBrush(void*) noexcept = 0;
@@ -6148,7 +6148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBorder2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizing(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundSizing(int32_t) noexcept = 0;
@@ -6158,7 +6158,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBorderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BorderBrushProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_BorderThicknessProperty(void**) noexcept = 0;
@@ -6170,34 +6170,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IBorderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizingProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IButtonStaticsWithFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FlyoutProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IButtonWithFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Flyout(void**) noexcept = 0;
             virtual int32_t __stdcall put_Flyout(void*) noexcept = 0;
@@ -6205,7 +6205,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Date(void**) noexcept = 0;
             virtual int32_t __stdcall put_Date(void*) noexcept = 0;
@@ -6253,7 +6253,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LightDismissOverlayMode(int32_t) noexcept = 0;
@@ -6261,7 +6261,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
             virtual int32_t __stdcall put_Description(void*) noexcept = 0;
@@ -6269,7 +6269,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarDatePickerDateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NewDate(void**) noexcept = 0;
             virtual int32_t __stdcall get_OldDate(void**) noexcept = 0;
@@ -6277,14 +6277,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarDatePickerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarDatePickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DateProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsCalendarOpenProperty(void**) noexcept = 0;
@@ -6306,21 +6306,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarDatePickerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarDatePickerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DescriptionProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CalendarIdentifier(void**) noexcept = 0;
             virtual int32_t __stdcall put_CalendarIdentifier(void*) noexcept = 0;
@@ -6432,7 +6432,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedDisabledBorderBrush(void**) noexcept = 0;
             virtual int32_t __stdcall put_SelectedDisabledBorderBrush(void*) noexcept = 0;
@@ -6486,7 +6486,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarViewDayItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBlackout(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsBlackout(bool) noexcept = 0;
@@ -6496,7 +6496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarViewDayItemChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InRecycleQueue(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
@@ -6507,14 +6507,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarViewDayItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarViewDayItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBlackoutProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_DateProperty(void**) noexcept = 0;
@@ -6522,14 +6522,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarViewSelectedDatesChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AddedDates(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemovedDates(void**) noexcept = 0;
@@ -6537,7 +6537,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CalendarIdentifierProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_DayOfWeekFormatProperty(void**) noexcept = 0;
@@ -6594,7 +6594,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICalendarViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedDisabledBorderBrushProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TodaySelectedInnerBorderBrushProperty(void**) noexcept = 0;
@@ -6624,27 +6624,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICandidateWindowBoundsChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Bounds(winrt::Windows::Foundation::Rect*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICanvas>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICanvasFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICanvasStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LeftProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetLeft(void*, double*) noexcept = 0;
@@ -6659,7 +6659,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICaptureElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall put_Source(void*) noexcept = 0;
@@ -6669,7 +6669,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICaptureElementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StretchProperty(void**) noexcept = 0;
@@ -6677,20 +6677,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICheckBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICheckBoxFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IChoosingGroupHeaderContainerEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GroupHeaderContainer(void**) noexcept = 0;
             virtual int32_t __stdcall put_GroupHeaderContainer(void*) noexcept = 0;
@@ -6700,7 +6700,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IChoosingItemContainerEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
@@ -6712,7 +6712,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICleanUpVirtualizedItemEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
             virtual int32_t __stdcall get_UIElement(void**) noexcept = 0;
@@ -6722,7 +6722,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IColorChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldColor(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall get_NewColor(struct struct_Windows_UI_Color*) noexcept = 0;
@@ -6730,7 +6730,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IColorPicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -6776,14 +6776,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IColorPickerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IColorPickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ColorProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PreviousColorProperty(void**) noexcept = 0;
@@ -6808,7 +6808,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IColumnDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Width(struct struct_Windows_UI_Xaml_GridLength*) noexcept = 0;
             virtual int32_t __stdcall put_Width(struct struct_Windows_UI_Xaml_GridLength) noexcept = 0;
@@ -6821,7 +6821,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IColumnDefinitionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WidthProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxWidthProperty(void**) noexcept = 0;
@@ -6830,7 +6830,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDropDownOpen(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsDropDownOpen(bool) noexcept = 0;
@@ -6849,7 +6849,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBox2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -6861,7 +6861,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBox3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LightDismissOverlayMode(int32_t) noexcept = 0;
@@ -6871,7 +6871,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBox4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionChangedTrigger(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_SelectionChangedTrigger(int32_t) noexcept = 0;
@@ -6879,7 +6879,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBox5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlaceholderForeground(void**) noexcept = 0;
             virtual int32_t __stdcall put_PlaceholderForeground(void*) noexcept = 0;
@@ -6887,7 +6887,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBox6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsEditable(bool) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
@@ -6902,27 +6902,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnDropDownClosed(void*) noexcept = 0;
             virtual int32_t __stdcall OnDropDownOpened(void*) noexcept = 0;
@@ -6930,7 +6930,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDropDownOpenProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxDropDownHeightProperty(void**) noexcept = 0;
@@ -6938,7 +6938,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -6947,7 +6947,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayModeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsTextSearchEnabledProperty(void**) noexcept = 0;
@@ -6955,21 +6955,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionChangedTriggerProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlaceholderForegroundProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxStatics6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEditableProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextProperty(void**) noexcept = 0;
@@ -6979,7 +6979,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IComboBoxTextSubmittedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
@@ -6988,7 +6988,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryCommands(void**) noexcept = 0;
             virtual int32_t __stdcall get_SecondaryCommands(void**) noexcept = 0;
@@ -6996,7 +6996,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBar2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommandBarOverflowPresenterStyle(void**) noexcept = 0;
             virtual int32_t __stdcall put_CommandBarOverflowPresenterStyle(void*) noexcept = 0;
@@ -7005,7 +7005,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBar3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultLabelPosition(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DefaultLabelPosition(int32_t) noexcept = 0;
@@ -7019,7 +7019,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCompact(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsCompact(bool) noexcept = 0;
@@ -7027,7 +7027,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarElement2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsInOverflow(bool*) noexcept = 0;
             virtual int32_t __stdcall get_DynamicOverflowOrder(int32_t*) noexcept = 0;
@@ -7036,14 +7036,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryCommands(void**) noexcept = 0;
             virtual int32_t __stdcall get_SecondaryCommands(void**) noexcept = 0;
@@ -7051,27 +7051,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarFlyoutFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarOverflowPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarOverflowPresenterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryCommandsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_SecondaryCommandsProperty(void**) noexcept = 0;
@@ -7079,14 +7079,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommandBarOverflowPresenterStyleProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ICommandBarStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultLabelPositionProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OverflowButtonVisibilityProperty(void**) noexcept = 0;
@@ -7095,7 +7095,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContainerContentChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemContainer(void**) noexcept = 0;
             virtual int32_t __stdcall get_InRecycleQueue(bool*) noexcept = 0;
@@ -7110,7 +7110,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -7124,21 +7124,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentTemplateRoot(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentControlFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentControlOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnContentChanged(void*, void*) noexcept = 0;
             virtual int32_t __stdcall OnContentTemplateChanged(void*, void*) noexcept = 0;
@@ -7147,7 +7147,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContentTemplateProperty(void**) noexcept = 0;
@@ -7157,7 +7157,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialog>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -7197,7 +7197,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialog2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CloseButtonText(void**) noexcept = 0;
             virtual int32_t __stdcall put_CloseButtonText(void*) noexcept = 0;
@@ -7219,21 +7219,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialog3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowAsyncWithPlacement(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogButtonClickDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogButtonClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
@@ -7242,21 +7242,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Result(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogClosingDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogClosingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Result(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
@@ -7266,20 +7266,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogOpenedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TitleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TitleTemplateProperty(void**) noexcept = 0;
@@ -7296,7 +7296,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentDialogStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CloseButtonTextProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CloseButtonCommandProperty(void**) noexcept = 0;
@@ -7309,7 +7309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentLinkChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ContentLinkInfo(void**) noexcept = 0;
@@ -7318,7 +7318,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -7346,7 +7346,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OpticalMarginAlignment(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_OpticalMarginAlignment(int32_t) noexcept = 0;
@@ -7356,7 +7356,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenter3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsTextScaleFactorEnabled(bool) noexcept = 0;
@@ -7364,7 +7364,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenter4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextWrapping(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_TextWrapping(int32_t) noexcept = 0;
@@ -7392,7 +7392,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenter5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundTransition(void**) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundTransition(void*) noexcept = 0;
@@ -7402,14 +7402,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenterOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnContentTemplateChanged(void*, void*) noexcept = 0;
             virtual int32_t __stdcall OnContentTemplateSelectorChanged(void*, void*) noexcept = 0;
@@ -7417,7 +7417,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContentTemplateProperty(void**) noexcept = 0;
@@ -7434,7 +7434,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenterStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OpticalMarginAlignmentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextLineBoundsProperty(void**) noexcept = 0;
@@ -7442,14 +7442,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenterStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenterStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextWrappingProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxLinesProperty(void**) noexcept = 0;
@@ -7466,14 +7466,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContentPresenterStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizingProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IContextMenuEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -7483,7 +7483,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontSize(double*) noexcept = 0;
             virtual int32_t __stdcall put_FontSize(double) noexcept = 0;
@@ -7530,7 +7530,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsTextScaleFactorEnabled(bool) noexcept = 0;
@@ -7538,7 +7538,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControl3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseSystemFocusVisuals(bool*) noexcept = 0;
             virtual int32_t __stdcall put_UseSystemFocusVisuals(bool) noexcept = 0;
@@ -7546,7 +7546,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControl4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFocusEngagementEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsFocusEngagementEnabled(bool) noexcept = 0;
@@ -7573,7 +7573,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControl5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultStyleResourceUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_DefaultStyleResourceUri(void*) noexcept = 0;
@@ -7581,7 +7581,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControl7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizing(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundSizing(int32_t) noexcept = 0;
@@ -7591,14 +7591,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnPointerEntered(void*) noexcept = 0;
             virtual int32_t __stdcall OnPointerPressed(void*) noexcept = 0;
@@ -7629,7 +7629,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlOverrides6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnPreviewKeyDown(void*) noexcept = 0;
             virtual int32_t __stdcall OnPreviewKeyUp(void*) noexcept = 0;
@@ -7638,7 +7638,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlProtected>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultStyleKey(void**) noexcept = 0;
             virtual int32_t __stdcall put_DefaultStyleKey(void*) noexcept = 0;
@@ -7647,7 +7647,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontSizeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FontFamilyProperty(void**) noexcept = 0;
@@ -7673,14 +7673,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseSystemFocusVisualsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsTemplateFocusTargetProperty(void**) noexcept = 0;
@@ -7690,7 +7690,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFocusEngagementEnabledProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsFocusEngagedProperty(void**) noexcept = 0;
@@ -7704,7 +7704,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultStyleResourceUriProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsTemplateKeyTipTargetProperty(void**) noexcept = 0;
@@ -7714,7 +7714,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlStatics7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizingProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CornerRadiusProperty(void**) noexcept = 0;
@@ -7722,7 +7722,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IControlTemplate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetType(struct struct_Windows_UI_Xaml_Interop_TypeName*) noexcept = 0;
             virtual int32_t __stdcall put_TargetType(struct struct_Windows_UI_Xaml_Interop_TypeName) noexcept = 0;
@@ -7730,42 +7730,42 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDataTemplateSelector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectTemplate(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDataTemplateSelector2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectTemplateForItem(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDataTemplateSelectorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDataTemplateSelectorOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectTemplateCore(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDataTemplateSelectorOverrides2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectTemplateForItemCore(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldDate(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewDate(int64_t*) noexcept = 0;
@@ -7773,7 +7773,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -7807,7 +7807,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePicker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LightDismissOverlayMode(int32_t) noexcept = 0;
@@ -7815,7 +7815,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePicker3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedDate(void**) noexcept = 0;
             virtual int32_t __stdcall put_SelectedDate(void*) noexcept = 0;
@@ -7825,14 +7825,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CalendarIdentifier(void**) noexcept = 0;
             virtual int32_t __stdcall put_CalendarIdentifier(void*) noexcept = 0;
@@ -7855,7 +7855,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyout2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DayFormat(void**) noexcept = 0;
             virtual int32_t __stdcall put_DayFormat(void*) noexcept = 0;
@@ -7867,7 +7867,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyoutItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryText(void**) noexcept = 0;
             virtual int32_t __stdcall put_PrimaryText(void*) noexcept = 0;
@@ -7877,7 +7877,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyoutItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryTextProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_SecondaryTextProperty(void**) noexcept = 0;
@@ -7885,13 +7885,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyoutPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyoutPresenter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultShadowEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsDefaultShadowEnabled(bool) noexcept = 0;
@@ -7899,14 +7899,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyoutPresenterStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultShadowEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyoutStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CalendarIdentifierProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_DateProperty(void**) noexcept = 0;
@@ -7919,7 +7919,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyoutStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DayFormatProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MonthFormatProperty(void**) noexcept = 0;
@@ -7928,7 +7928,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerSelectedValueChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldDate(void**) noexcept = 0;
             virtual int32_t __stdcall get_NewDate(void**) noexcept = 0;
@@ -7936,7 +7936,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -7955,21 +7955,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedDateProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDatePickerValueChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldDate(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewDate(int64_t*) noexcept = 0;
@@ -7977,7 +7977,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDragItemsCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
             virtual int32_t __stdcall get_DropResult(uint32_t*) noexcept = 0;
@@ -7985,7 +7985,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDragItemsStartingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
@@ -7995,46 +7995,46 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDropDownButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDropDownButtonAutomationPeer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDropDownButtonAutomationPeerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDropDownButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IDynamicOverflowItemsChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Action(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlipView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlipView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseTouchAnimationsForAllNavigation(bool*) noexcept = 0;
             virtual int32_t __stdcall put_UseTouchAnimationsForAllNavigation(bool) noexcept = 0;
@@ -8042,34 +8042,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlipViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlipViewItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlipViewItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlipViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseTouchAnimationsForAllNavigationProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -8079,20 +8079,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlyoutFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlyoutPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlyoutPresenter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultShadowEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsDefaultShadowEnabled(bool) noexcept = 0;
@@ -8100,21 +8100,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlyoutPresenterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlyoutPresenterStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultShadowEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFlyoutStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FlyoutPresenterStyleProperty(void**) noexcept = 0;
@@ -8122,19 +8122,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFocusDisengagedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFocusEngagedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFocusEngagedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -8142,7 +8142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Glyph(void**) noexcept = 0;
             virtual int32_t __stdcall put_Glyph(void*) noexcept = 0;
@@ -8158,7 +8158,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIcon2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsTextScaleFactorEnabled(bool) noexcept = 0;
@@ -8166,7 +8166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIcon3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MirroredWhenRightToLeft(bool*) noexcept = 0;
             virtual int32_t __stdcall put_MirroredWhenRightToLeft(bool) noexcept = 0;
@@ -8174,14 +8174,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIconFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIconSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Glyph(void**) noexcept = 0;
             virtual int32_t __stdcall put_Glyph(void*) noexcept = 0;
@@ -8201,14 +8201,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIconSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIconSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GlyphProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FontSizeProperty(void**) noexcept = 0;
@@ -8221,7 +8221,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIconStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GlyphProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FontSizeProperty(void**) noexcept = 0;
@@ -8232,21 +8232,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIconStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFontIconStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MirroredWhenRightToLeftProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CacheSize(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_CacheSize(int32_t) noexcept = 0;
@@ -8273,7 +8273,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrame2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackStack(void**) noexcept = 0;
             virtual int32_t __stdcall get_ForwardStack(void**) noexcept = 0;
@@ -8282,21 +8282,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrame3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GoBack(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrame4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetNavigationStateWithNavigationControl(void*, bool) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrame5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsNavigationStackEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsNavigationStackEnabled(bool) noexcept = 0;
@@ -8305,14 +8305,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrameFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CacheSizeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanGoBackProperty(void**) noexcept = 0;
@@ -8324,7 +8324,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrameStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackStackProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ForwardStackProperty(void**) noexcept = 0;
@@ -8332,14 +8332,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IFrameStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsNavigationStackEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGrid>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RowDefinitions(void**) noexcept = 0;
             virtual int32_t __stdcall get_ColumnDefinitions(void**) noexcept = 0;
@@ -8347,7 +8347,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGrid2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BorderBrush(void**) noexcept = 0;
             virtual int32_t __stdcall put_BorderBrush(void*) noexcept = 0;
@@ -8361,7 +8361,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGrid3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RowSpacing(double*) noexcept = 0;
             virtual int32_t __stdcall put_RowSpacing(double) noexcept = 0;
@@ -8371,7 +8371,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGrid4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizing(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundSizing(int32_t) noexcept = 0;
@@ -8379,14 +8379,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RowProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetRow(void*, int32_t*) noexcept = 0;
@@ -8404,7 +8404,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BorderBrushProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_BorderThicknessProperty(void**) noexcept = 0;
@@ -8414,7 +8414,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RowSpacingProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ColumnSpacingProperty(void**) noexcept = 0;
@@ -8422,67 +8422,67 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizingProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridViewHeaderItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridViewHeaderItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridViewItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TemplateSettings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGridViewItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGroupItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGroupItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGroupStyle>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Panel(void**) noexcept = 0;
             virtual int32_t __stdcall put_Panel(void*) noexcept = 0;
@@ -8500,7 +8500,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGroupStyle2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderContainerStyle(void**) noexcept = 0;
             virtual int32_t __stdcall put_HeaderContainerStyle(void*) noexcept = 0;
@@ -8508,47 +8508,47 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGroupStyleFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGroupStyleSelector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectGroupStyle(void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGroupStyleSelectorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IGroupStyleSelectorOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectGroupStyleCore(void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingPanelClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingPanelOpenedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlacementTarget(void**) noexcept = 0;
             virtual int32_t __stdcall put_PlacementTarget(void*) noexcept = 0;
@@ -8567,7 +8567,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSwitchToKeyboardEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsSwitchToKeyboardEnabled(bool) noexcept = 0;
@@ -8585,21 +8585,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingViewCandidatesChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CandidatesSessionId(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlacementTargetProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PlacementAlignmentProperty(void**) noexcept = 0;
@@ -8609,7 +8609,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSwitchToKeyboardEnabledProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsCommandBarOpenProperty(void**) noexcept = 0;
@@ -8617,13 +8617,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHandwritingViewTextSubmittedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHub>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -8645,14 +8645,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHubFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHubSection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -8666,21 +8666,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHubSectionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHubSectionHeaderClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Section(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHubSectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -8690,7 +8690,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHubStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -8703,7 +8703,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHyperlinkButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NavigateUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_NavigateUri(void*) noexcept = 0;
@@ -8711,21 +8711,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHyperlinkButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IHyperlinkButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NavigateUriProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Foreground(void**) noexcept = 0;
             virtual int32_t __stdcall put_Foreground(void*) noexcept = 0;
@@ -8733,20 +8733,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconElementFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconElementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ForegroundProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Foreground(void**) noexcept = 0;
             virtual int32_t __stdcall put_Foreground(void*) noexcept = 0;
@@ -8754,7 +8754,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconSourceElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IconSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_IconSource(void*) noexcept = 0;
@@ -8762,34 +8762,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconSourceElementFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconSourceElementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IconSourceProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIconSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ForegroundProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IImage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall put_Source(void*) noexcept = 0;
@@ -8806,21 +8806,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IImage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsCastingSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IImage3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAlphaMask(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IImageStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StretchProperty(void**) noexcept = 0;
@@ -8830,21 +8830,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkCanvas>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InkPresenter(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkCanvasFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InitialControls(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_InitialControls(int32_t) noexcept = 0;
@@ -8870,7 +8870,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbar2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsStencilButtonChecked(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsStencilButtonChecked(bool) noexcept = 0;
@@ -8885,7 +8885,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbar3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetInkPresenter(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetInkPresenter(void*) noexcept = 0;
@@ -8893,27 +8893,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarBallpointPenButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarBallpointPenButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomPen>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInkDrawingAttributes(void*, double, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomPenButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CustomPen(void**) noexcept = 0;
             virtual int32_t __stdcall put_CustomPen(void*) noexcept = 0;
@@ -8923,14 +8923,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomPenButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomPenButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CustomPenProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConfigurationContentProperty(void**) noexcept = 0;
@@ -8938,34 +8938,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomPenFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomPenOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInkDrawingAttributesCore(void*, double, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomToggleButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomToggleButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomToolButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConfigurationContent(void**) noexcept = 0;
             virtual int32_t __stdcall put_ConfigurationContent(void*) noexcept = 0;
@@ -8973,27 +8973,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomToolButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarCustomToolButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConfigurationContentProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarEraserButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarEraserButton2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsClearAllVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsClearAllVisible(bool) noexcept = 0;
@@ -9001,28 +9001,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarEraserButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarEraserButtonStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsClearAllVisibleProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarFlyoutItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Kind(int32_t) noexcept = 0;
@@ -9036,14 +9036,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarFlyoutItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarFlyoutItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KindProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsCheckedProperty(void**) noexcept = 0;
@@ -9051,20 +9051,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarHighlighterButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarHighlighterButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarIsStencilButtonCheckedChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StencilButton(void**) noexcept = 0;
             virtual int32_t __stdcall get_StencilKind(int32_t*) noexcept = 0;
@@ -9072,7 +9072,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarMenuButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MenuKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsExtensionGlyphShown(bool*) noexcept = 0;
@@ -9081,20 +9081,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarMenuButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarMenuButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsExtensionGlyphShownProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarPenButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Palette(void**) noexcept = 0;
             virtual int32_t __stdcall put_Palette(void*) noexcept = 0;
@@ -9111,13 +9111,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarPenButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarPenButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PaletteProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinStrokeWidthProperty(void**) noexcept = 0;
@@ -9129,62 +9129,62 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarPenConfigurationControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PenButton(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarPenConfigurationControlFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarPenConfigurationControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PenButtonProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarPencilButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarPencilButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarRulerButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Ruler(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarRulerButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarRulerButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RulerProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InitialControlsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChildrenProperty(void**) noexcept = 0;
@@ -9196,7 +9196,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsStencilButtonCheckedProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ButtonFlyoutPlacementProperty(void**) noexcept = 0;
@@ -9205,14 +9205,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetInkPresenterProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarStencilButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Ruler(void**) noexcept = 0;
             virtual int32_t __stdcall get_Protractor(void**) noexcept = 0;
@@ -9226,14 +9226,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarStencilButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarStencilButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RulerProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProtractorProperty(void**) noexcept = 0;
@@ -9244,20 +9244,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarToggleButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ToggleKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarToggleButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarToolButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ToolKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsExtensionGlyphShown(bool*) noexcept = 0;
@@ -9266,40 +9266,40 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarToolButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInkToolbarToolButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsExtensionGlyphShownProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IInsertionPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetInsertionIndexes(winrt::Windows::Foundation::Point, int32_t*, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IIsTextTrimmedChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClickedItem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemContainerGenerator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ItemsChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ItemsChanged(winrt::event_token) noexcept = 0;
@@ -9321,7 +9321,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemContainerMapping>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ItemFromContainer(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ContainerFromItem(void*, void**) noexcept = 0;
@@ -9331,7 +9331,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_ItemsSource(void*) noexcept = 0;
@@ -9359,28 +9359,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsPanelRoot(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsControl3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GroupHeaderContainerFromItemContainer(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsControlFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsControlOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsItemItsOwnContainerOverride(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall GetContainerForItemOverride(void**) noexcept = 0;
@@ -9396,7 +9396,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemTemplateProperty(void**) noexcept = 0;
@@ -9414,13 +9414,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsPanelTemplate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsPickedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AddedItems(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemovedItems(void**) noexcept = 0;
@@ -9428,7 +9428,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -9442,7 +9442,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsPresenter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Footer(void**) noexcept = 0;
             virtual int32_t __stdcall put_Footer(void*) noexcept = 0;
@@ -9454,7 +9454,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsPresenterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -9464,7 +9464,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsPresenterStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FooterProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FooterTemplateProperty(void**) noexcept = 0;
@@ -9473,7 +9473,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsStackPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GroupPadding(struct struct_Windows_UI_Xaml_Thickness*) noexcept = 0;
             virtual int32_t __stdcall put_GroupPadding(struct struct_Windows_UI_Xaml_Thickness) noexcept = 0;
@@ -9494,7 +9494,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsStackPanel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreStickyGroupHeadersEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AreStickyGroupHeadersEnabled(bool) noexcept = 0;
@@ -9502,7 +9502,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsStackPanelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GroupPaddingProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OrientationProperty(void**) noexcept = 0;
@@ -9512,14 +9512,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsStackPanelStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreStickyGroupHeadersEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsWrapGrid>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GroupPadding(struct struct_Windows_UI_Xaml_Thickness*) noexcept = 0;
             virtual int32_t __stdcall put_GroupPadding(struct struct_Windows_UI_Xaml_Thickness) noexcept = 0;
@@ -9544,7 +9544,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsWrapGrid2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreStickyGroupHeadersEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AreStickyGroupHeadersEnabled(bool) noexcept = 0;
@@ -9552,7 +9552,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsWrapGridStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GroupPaddingProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OrientationProperty(void**) noexcept = 0;
@@ -9565,14 +9565,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IItemsWrapGridStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreStickyGroupHeadersEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedItems(void**) noexcept = 0;
             virtual int32_t __stdcall get_SelectionMode(int32_t*) noexcept = 0;
@@ -9583,7 +9583,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListBox2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SingleSelectionFollowsFocus(bool*) noexcept = 0;
             virtual int32_t __stdcall put_SingleSelectionFollowsFocus(bool) noexcept = 0;
@@ -9591,41 +9591,41 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListBoxFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListBoxItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListBoxItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListBoxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListBoxStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SingleSelectionFollowsFocusProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListPickerFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_ItemsSource(void*) noexcept = 0;
@@ -9651,13 +9651,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListPickerFlyoutPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListPickerFlyoutStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemTemplateProperty(void**) noexcept = 0;
@@ -9671,13 +9671,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedItems(void**) noexcept = 0;
             virtual int32_t __stdcall get_SelectionMode(int32_t*) noexcept = 0;
@@ -9714,7 +9714,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBase2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShowsScrollingPlaceholders(bool*) noexcept = 0;
             virtual int32_t __stdcall put_ShowsScrollingPlaceholders(bool) noexcept = 0;
@@ -9731,7 +9731,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBase3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReorderMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ReorderMode(int32_t) noexcept = 0;
@@ -9739,7 +9739,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBase4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedRanges(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsMultiSelectCheckBoxEnabled(bool*) noexcept = 0;
@@ -9756,7 +9756,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBase5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SingleSelectionFollowsFocus(bool*) noexcept = 0;
             virtual int32_t __stdcall put_SingleSelectionFollowsFocus(bool) noexcept = 0;
@@ -9765,7 +9765,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBase6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryStartConnectedAnimationAsync(void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall PrepareConnectedAnimation(void*, void*, void*, void**) noexcept = 0;
@@ -9773,26 +9773,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBaseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBaseHeaderItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBaseHeaderItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBaseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionModeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsSwipeEnabledProperty(void**) noexcept = 0;
@@ -9812,7 +9812,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBaseStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShowsScrollingPlaceholdersProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FooterProperty(void**) noexcept = 0;
@@ -9822,68 +9822,68 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBaseStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReorderModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBaseStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsMultiSelectCheckBoxEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewBaseStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SingleSelectionFollowsFocusProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewHeaderItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewHeaderItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TemplateSettings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewPersistenceHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IListViewPersistenceHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetRelativeScrollPosition(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall SetRelativeScrollPositionAsync(void*, void*, void*, void**) noexcept = 0;
@@ -9891,7 +9891,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PosterSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_PosterSource(void*) noexcept = 0;
@@ -9977,7 +9977,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaElement2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreTransportControlsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AreTransportControlsEnabled(bool) noexcept = 0;
@@ -9992,7 +9992,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaElement3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransportControls(void**) noexcept = 0;
             virtual int32_t __stdcall put_TransportControls(void*) noexcept = 0;
@@ -10004,7 +10004,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaElementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PosterSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_SourceProperty(void**) noexcept = 0;
@@ -10043,7 +10043,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaElementStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreTransportControlsEnabledProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StretchProperty(void**) noexcept = 0;
@@ -10053,7 +10053,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaPlayerElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall put_Source(void*) noexcept = 0;
@@ -10075,14 +10075,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaPlayerElementFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaPlayerElementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_AreTransportControlsEnabledProperty(void**) noexcept = 0;
@@ -10095,7 +10095,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaPlayerPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaPlayer(void**) noexcept = 0;
             virtual int32_t __stdcall put_MediaPlayer(void*) noexcept = 0;
@@ -10107,14 +10107,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaPlayerPresenterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaPlayerPresenterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaPlayerProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StretchProperty(void**) noexcept = 0;
@@ -10123,7 +10123,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControls>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFullWindowButtonVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsFullWindowButtonVisible(bool) noexcept = 0;
@@ -10163,7 +10163,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControls2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSkipForwardButtonVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsSkipForwardButtonVisible(bool) noexcept = 0;
@@ -10185,7 +10185,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControls3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShowAndHideAutomatically(bool*) noexcept = 0;
             virtual int32_t __stdcall put_ShowAndHideAutomatically(bool) noexcept = 0;
@@ -10199,7 +10199,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControls4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCompactOverlayButtonVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsCompactOverlayButtonVisible(bool) noexcept = 0;
@@ -10209,20 +10209,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControlsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControlsHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControlsHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DropoutOrderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetDropoutOrder(void*, void**) noexcept = 0;
@@ -10231,7 +10231,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControlsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFullWindowButtonVisibleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsFullWindowEnabledProperty(void**) noexcept = 0;
@@ -10254,7 +10254,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControlsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSkipForwardButtonVisibleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsSkipForwardEnabledProperty(void**) noexcept = 0;
@@ -10267,7 +10267,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControlsStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShowAndHideAutomaticallyProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsRepeatEnabledProperty(void**) noexcept = 0;
@@ -10276,7 +10276,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMediaTransportControlsStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCompactOverlayButtonVisibleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsCompactOverlayEnabledProperty(void**) noexcept = 0;
@@ -10284,21 +10284,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuBarFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuBarItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -10307,27 +10307,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuBarItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuBarItemFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuBarItemFlyoutFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuBarItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TitleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemsProperty(void**) noexcept = 0;
@@ -10335,14 +10335,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuBarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
             virtual int32_t __stdcall get_MenuFlyoutPresenterStyle(void**) noexcept = 0;
@@ -10351,21 +10351,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyout2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowAt(void*, winrt::Windows::Foundation::Point) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -10379,7 +10379,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Icon(void**) noexcept = 0;
             virtual int32_t __stdcall put_Icon(void*) noexcept = 0;
@@ -10387,7 +10387,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItem3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyboardAcceleratorTextOverride(void**) noexcept = 0;
             virtual int32_t __stdcall put_KeyboardAcceleratorTextOverride(void*) noexcept = 0;
@@ -10396,26 +10396,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItemBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItemBaseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CommandProperty(void**) noexcept = 0;
@@ -10424,34 +10424,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItemStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IconProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItemStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyboardAcceleratorTextOverrideProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutPresenter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TemplateSettings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutPresenter3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultShadowEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsDefaultShadowEnabled(bool) noexcept = 0;
@@ -10459,41 +10459,41 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutPresenterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutPresenterStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultShadowEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutSeparator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutSeparatorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MenuFlyoutPresenterStyleProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutSubItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
@@ -10502,7 +10502,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutSubItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Icon(void**) noexcept = 0;
             virtual int32_t __stdcall put_Icon(void*) noexcept = 0;
@@ -10510,28 +10510,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutSubItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutSubItemStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IconProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Navigate(struct struct_Windows_UI_Xaml_Interop_TypeName, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPaneOpen(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsPaneOpen(bool) noexcept = 0;
@@ -10586,7 +10586,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBackButtonVisible(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_IsBackButtonVisible(int32_t) noexcept = 0;
@@ -10608,7 +10608,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationView3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PaneDisplayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_PaneDisplayMode(int32_t) noexcept = 0;
@@ -10631,27 +10631,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewBackRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewDisplayModeChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayMode(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Icon(void**) noexcept = 0;
             virtual int32_t __stdcall put_Icon(void*) noexcept = 0;
@@ -10660,7 +10660,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectsOnInvoked(bool*) noexcept = 0;
             virtual int32_t __stdcall put_SelectsOnInvoked(bool) noexcept = 0;
@@ -10668,39 +10668,39 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemBaseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemHeader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemHeaderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemInvokedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InvokedItem(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsSettingsInvoked(bool*) noexcept = 0;
@@ -10708,7 +10708,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemInvokedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InvokedItemContainer(void**) noexcept = 0;
             virtual int32_t __stdcall get_RecommendedNavigationTransitionInfo(void**) noexcept = 0;
@@ -10716,20 +10716,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemSeparator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemSeparatorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IconProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CompactPaneLengthProperty(void**) noexcept = 0;
@@ -10737,27 +10737,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewItemStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectsOnInvokedProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewListFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewPaneClosingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
@@ -10765,7 +10765,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewSelectionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedItem(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsSettingsSelected(bool*) noexcept = 0;
@@ -10773,7 +10773,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewSelectionChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedItemContainer(void**) noexcept = 0;
             virtual int32_t __stdcall get_RecommendedNavigationTransitionInfo(void**) noexcept = 0;
@@ -10781,7 +10781,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPaneOpenProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CompactModeThresholdWidthProperty(void**) noexcept = 0;
@@ -10809,7 +10809,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBackButtonVisibleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsBackEnabledProperty(void**) noexcept = 0;
@@ -10818,7 +10818,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PaneDisplayModeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PaneHeaderProperty(void**) noexcept = 0;
@@ -10833,7 +10833,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewTemplateSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TopPadding(double*) noexcept = 0;
             virtual int32_t __stdcall get_OverflowButtonVisibility(int32_t*) noexcept = 0;
@@ -10846,14 +10846,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewTemplateSettingsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INavigationViewTemplateSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TopPaddingProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OverflowButtonVisibilityProperty(void**) noexcept = 0;
@@ -10866,21 +10866,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INotifyEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::INotifyEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CallingUri(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
             virtual int32_t __stdcall get_NavigationCacheMode(int32_t*) noexcept = 0;
@@ -10893,14 +10893,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPageOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnNavigatedFrom(void*) noexcept = 0;
             virtual int32_t __stdcall OnNavigatedTo(void*) noexcept = 0;
@@ -10909,7 +10909,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPageStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TopAppBarProperty(void**) noexcept = 0;
@@ -10918,7 +10918,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Children(void**) noexcept = 0;
             virtual int32_t __stdcall get_Background(void**) noexcept = 0;
@@ -10930,7 +10930,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPanel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundTransition(void**) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundTransition(void*) noexcept = 0;
@@ -10938,14 +10938,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPanelFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPanelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsItemsHostProperty(void**) noexcept = 0;
@@ -10954,7 +10954,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IParallaxView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Child(void**) noexcept = 0;
             virtual int32_t __stdcall put_Child(void*) noexcept = 0;
@@ -10990,14 +10990,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IParallaxViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IParallaxViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChildProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HorizontalSourceEndOffsetProperty(void**) noexcept = 0;
@@ -11017,7 +11017,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Password(void**) noexcept = 0;
             virtual int32_t __stdcall put_Password(void*) noexcept = 0;
@@ -11036,7 +11036,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBox2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -11054,7 +11054,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBox3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PasswordRevealMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_PasswordRevealMode(int32_t) noexcept = 0;
@@ -11066,7 +11066,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBox4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PasswordChanging(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PasswordChanging(winrt::event_token) noexcept = 0;
@@ -11074,7 +11074,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBox5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanPasteClipboardContent(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SelectionFlyout(void**) noexcept = 0;
@@ -11086,14 +11086,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBoxPasswordChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsContentChanging(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBoxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PasswordProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PasswordCharProperty(void**) noexcept = 0;
@@ -11103,7 +11103,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBoxStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -11114,7 +11114,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBoxStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PasswordRevealModeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextReadingOrderProperty(void**) noexcept = 0;
@@ -11123,7 +11123,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPasswordBoxStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanPasteClipboardContentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_SelectionFlyoutProperty(void**) noexcept = 0;
@@ -11132,7 +11132,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPathIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall put_Data(void*) noexcept = 0;
@@ -11140,14 +11140,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPathIconFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPathIconSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall put_Data(void*) noexcept = 0;
@@ -11155,28 +11155,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPathIconSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPathIconSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPathIconStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPersonPicture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BadgeNumber(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BadgeNumber(int32_t) noexcept = 0;
@@ -11202,14 +11202,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPersonPictureFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPersonPictureStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BadgeNumberProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_BadgeGlyphProperty(void**) noexcept = 0;
@@ -11225,13 +11225,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPickerConfirmedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPickerFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -11244,13 +11244,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPickerFlyoutPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPickerFlyoutStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConfirmationButtonsVisibleProperty(void**) noexcept = 0;
@@ -11258,7 +11258,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivot>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -11286,7 +11286,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivot2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LeftHeader(void**) noexcept = 0;
             virtual int32_t __stdcall put_LeftHeader(void*) noexcept = 0;
@@ -11300,7 +11300,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivot3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderFocusVisualPlacement(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_HeaderFocusVisualPlacement(int32_t) noexcept = 0;
@@ -11310,14 +11310,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivotFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivotItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -11325,7 +11325,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivotItemEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
             virtual int32_t __stdcall put_Item(void*) noexcept = 0;
@@ -11333,21 +11333,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivotItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivotItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivotStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TitleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TitleTemplateProperty(void**) noexcept = 0;
@@ -11362,7 +11362,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivotStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LeftHeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_LeftHeaderTemplateProperty(void**) noexcept = 0;
@@ -11372,7 +11372,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IPivotStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderFocusVisualPlacementProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsHeaderItemsCarouselEnabledProperty(void**) noexcept = 0;
@@ -11380,7 +11380,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IProgressBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsIndeterminate(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsIndeterminate(bool) noexcept = 0;
@@ -11393,14 +11393,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IProgressBarFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IProgressBarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsIndeterminateProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ShowErrorProperty(void**) noexcept = 0;
@@ -11409,7 +11409,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IProgressRing>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsActive(bool) noexcept = 0;
@@ -11418,14 +11418,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IProgressRingStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsActiveProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRadioButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GroupName(void**) noexcept = 0;
             virtual int32_t __stdcall put_GroupName(void*) noexcept = 0;
@@ -11433,21 +11433,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRadioButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRadioButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GroupNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Caption(void**) noexcept = 0;
             virtual int32_t __stdcall put_Caption(void*) noexcept = 0;
@@ -11471,14 +11471,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingControlFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CaptionProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_InitialSetValueProperty(void**) noexcept = 0;
@@ -11492,7 +11492,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingItemFontInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisabledGlyph(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisabledGlyph(void*) noexcept = 0;
@@ -11510,14 +11510,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingItemFontInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingItemFontInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisabledGlyphProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_GlyphProperty(void**) noexcept = 0;
@@ -11529,7 +11529,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingItemImageInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisabledImage(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisabledImage(void*) noexcept = 0;
@@ -11547,14 +11547,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingItemImageInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingItemImageInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisabledImageProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ImageProperty(void**) noexcept = 0;
@@ -11566,20 +11566,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingItemInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRatingItemInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshContainer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Visualizer(void**) noexcept = 0;
             virtual int32_t __stdcall put_Visualizer(void*) noexcept = 0;
@@ -11592,14 +11592,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshContainerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshContainerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VisualizerProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PullDirectionProperty(void**) noexcept = 0;
@@ -11607,21 +11607,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshInteractionRatioChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionRatio(double*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewState(int32_t*) noexcept = 0;
@@ -11629,7 +11629,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshVisualizer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestRefresh() noexcept = 0;
             virtual int32_t __stdcall get_Orientation(int32_t*) noexcept = 0;
@@ -11645,14 +11645,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshVisualizerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRefreshVisualizerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InfoProviderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OrientationProperty(void**) noexcept = 0;
@@ -11662,7 +11662,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRelativePanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BorderBrush(void**) noexcept = 0;
             virtual int32_t __stdcall put_BorderBrush(void*) noexcept = 0;
@@ -11676,7 +11676,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRelativePanel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizing(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundSizing(int32_t) noexcept = 0;
@@ -11684,14 +11684,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRelativePanelFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRelativePanelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LeftOfProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetLeftOf(void*, void**) noexcept = 0;
@@ -11749,14 +11749,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRelativePanelStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizingProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReadOnly(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsReadOnly(bool) noexcept = 0;
@@ -11783,7 +11783,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBox2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -11803,7 +11803,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBox3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_TextCompositionStarted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_TextCompositionStarted(winrt::event_token) noexcept = 0;
@@ -11823,7 +11823,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBox4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetLinguisticAlternativesAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_ClipboardCopyFormat(int32_t*) noexcept = 0;
@@ -11832,7 +11832,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBox5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionHighlightColorWhenNotFocused(void**) noexcept = 0;
             virtual int32_t __stdcall put_SelectionHighlightColorWhenNotFocused(void*) noexcept = 0;
@@ -11842,7 +11842,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBox6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalTextAlignment(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_HorizontalTextAlignment(int32_t) noexcept = 0;
@@ -11858,7 +11858,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBox7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentLinkForegroundColor(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContentLinkForegroundColor(void*) noexcept = 0;
@@ -11878,7 +11878,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBox8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextDocument(void**) noexcept = 0;
             virtual int32_t __stdcall get_SelectionFlyout(void**) noexcept = 0;
@@ -11892,14 +11892,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxSelectionChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionStart(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SelectionLength(int32_t*) noexcept = 0;
@@ -11909,7 +11909,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReadOnlyProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_AcceptsReturnProperty(void**) noexcept = 0;
@@ -11922,7 +11922,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -11934,7 +11934,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredCandidateWindowAlignmentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextReadingOrderProperty(void**) noexcept = 0;
@@ -11942,14 +11942,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClipboardCopyFormatProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionHighlightColorWhenNotFocusedProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxLengthProperty(void**) noexcept = 0;
@@ -11957,7 +11957,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxStatics6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalTextAlignmentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CharacterCasingProperty(void**) noexcept = 0;
@@ -11966,7 +11966,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxStatics7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentLinkForegroundColorProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContentLinkBackgroundColorProperty(void**) noexcept = 0;
@@ -11977,7 +11977,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxStatics8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionFlyoutProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProofingMenuFlyoutProperty(void**) noexcept = 0;
@@ -11986,20 +11986,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxTextChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichEditBoxTextChangingEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsContentChanging(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlock>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontSize(double*) noexcept = 0;
             virtual int32_t __stdcall put_FontSize(double) noexcept = 0;
@@ -12053,7 +12053,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlock2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxLines(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MaxLines(int32_t) noexcept = 0;
@@ -12071,7 +12071,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlock3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsTextScaleFactorEnabled(bool) noexcept = 0;
@@ -12079,7 +12079,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlock4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextDecorations(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_TextDecorations(uint32_t) noexcept = 0;
@@ -12087,7 +12087,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlock5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextTrimmed(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HorizontalTextAlignment(int32_t*) noexcept = 0;
@@ -12099,7 +12099,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlock6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionFlyout(void**) noexcept = 0;
             virtual int32_t __stdcall put_SelectionFlyout(void*) noexcept = 0;
@@ -12108,7 +12108,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OverflowContentTarget(void**) noexcept = 0;
             virtual int32_t __stdcall put_OverflowContentTarget(void*) noexcept = 0;
@@ -12125,7 +12125,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflow2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxLines(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MaxLines(int32_t) noexcept = 0;
@@ -12133,7 +12133,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflow3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextTrimmed(bool*) noexcept = 0;
             virtual int32_t __stdcall add_IsTextTrimmedChanged(void*, winrt::event_token*) noexcept = 0;
@@ -12142,7 +12142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflowStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OverflowContentTargetProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PaddingProperty(void**) noexcept = 0;
@@ -12151,21 +12151,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflowStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxLinesProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflowStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextTrimmedProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontSizeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FontFamilyProperty(void**) noexcept = 0;
@@ -12189,7 +12189,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxLinesProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextLineBoundsProperty(void**) noexcept = 0;
@@ -12201,21 +12201,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextDecorationsProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextTrimmedProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HorizontalTextAlignmentProperty(void**) noexcept = 0;
@@ -12223,14 +12223,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRichTextBlockStatics6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionFlyoutProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRowDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Height(struct struct_Windows_UI_Xaml_GridLength*) noexcept = 0;
             virtual int32_t __stdcall put_Height(struct struct_Windows_UI_Xaml_GridLength) noexcept = 0;
@@ -12243,7 +12243,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IRowDefinitionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeightProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxHeightProperty(void**) noexcept = 0;
@@ -12252,7 +12252,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollAnchorProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentAnchor(void**) noexcept = 0;
             virtual int32_t __stdcall RegisterAnchorCandidate(void*) noexcept = 0;
@@ -12261,7 +12261,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollContentPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanVerticallyScroll(bool*) noexcept = 0;
             virtual int32_t __stdcall put_CanVerticallyScroll(bool) noexcept = 0;
@@ -12294,7 +12294,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollContentPresenter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanContentRenderOutsideBounds(bool*) noexcept = 0;
             virtual int32_t __stdcall put_CanContentRenderOutsideBounds(bool) noexcept = 0;
@@ -12304,7 +12304,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollContentPresenterStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanContentRenderOutsideBoundsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_SizesContentToTemplatedParentProperty(void**) noexcept = 0;
@@ -12312,7 +12312,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalScrollBarVisibility(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_HorizontalScrollBarVisibility(int32_t) noexcept = 0;
@@ -12378,7 +12378,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TopLeftHeader(void**) noexcept = 0;
             virtual int32_t __stdcall put_TopLeftHeader(void*) noexcept = 0;
@@ -12394,7 +12394,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_DirectManipulationStarted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_DirectManipulationStarted(winrt::event_token) noexcept = 0;
@@ -12404,7 +12404,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewer4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReduceViewportForCoreInputViewOcclusions(bool*) noexcept = 0;
             virtual int32_t __stdcall put_ReduceViewportForCoreInputViewOcclusions(bool) noexcept = 0;
@@ -12420,7 +12420,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalSnapPointsAlignmentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_VerticalSnapPointsAlignmentProperty(void**) noexcept = 0;
@@ -12487,7 +12487,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TopLeftHeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_LeftHeaderProperty(void**) noexcept = 0;
@@ -12496,7 +12496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReduceViewportForCoreInputViewOcclusionsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HorizontalAnchorRatioProperty(void**) noexcept = 0;
@@ -12508,7 +12508,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewerView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalOffset(double*) noexcept = 0;
             virtual int32_t __stdcall get_VerticalOffset(double*) noexcept = 0;
@@ -12517,14 +12517,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewerViewChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsIntermediate(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IScrollViewerViewChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NextView(void**) noexcept = 0;
             virtual int32_t __stdcall get_FinalView(void**) noexcept = 0;
@@ -12533,7 +12533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISearchBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SearchHistoryEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_SearchHistoryEnabled(bool) noexcept = 0;
@@ -12562,14 +12562,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISearchBoxFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISearchBoxQueryChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryText(void**) noexcept = 0;
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
@@ -12578,7 +12578,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISearchBoxQuerySubmittedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryText(void**) noexcept = 0;
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
@@ -12588,7 +12588,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISearchBoxResultSuggestionChosenEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tag(void**) noexcept = 0;
             virtual int32_t __stdcall get_KeyModifiers(uint32_t*) noexcept = 0;
@@ -12596,7 +12596,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISearchBoxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SearchHistoryEnabledProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_SearchHistoryContextProperty(void**) noexcept = 0;
@@ -12608,7 +12608,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISearchBoxSuggestionsRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryText(void**) noexcept = 0;
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
@@ -12618,7 +12618,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISectionsInViewChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AddedSections(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemovedSections(void**) noexcept = 0;
@@ -12626,13 +12626,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISectionsInViewChangedEventArgsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISelectionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AddedItems(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemovedItems(void**) noexcept = 0;
@@ -12640,14 +12640,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISelectionChangedEventArgsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithRemovedItemsAndAddedItems(void*, void*, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISemanticZoom>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ZoomedInView(void**) noexcept = 0;
             virtual int32_t __stdcall put_ZoomedInView(void*) noexcept = 0;
@@ -12668,7 +12668,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISemanticZoomInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SemanticZoomOwner(void**) noexcept = 0;
             virtual int32_t __stdcall put_SemanticZoomOwner(void*) noexcept = 0;
@@ -12687,7 +12687,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISemanticZoomLocation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
             virtual int32_t __stdcall put_Item(void*) noexcept = 0;
@@ -12697,7 +12697,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISemanticZoomStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ZoomedInViewProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ZoomedOutViewProperty(void**) noexcept = 0;
@@ -12708,7 +12708,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISemanticZoomViewChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSourceZoomedInView(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsSourceZoomedInView(bool) noexcept = 0;
@@ -12720,7 +12720,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISettingsFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -12740,14 +12740,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISettingsFlyoutFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISettingsFlyoutStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TitleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderBackgroundProperty(void**) noexcept = 0;
@@ -12757,7 +12757,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISlider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IntermediateValue(double*) noexcept = 0;
             virtual int32_t __stdcall put_IntermediateValue(double) noexcept = 0;
@@ -12781,7 +12781,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISlider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -12791,14 +12791,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISliderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISliderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IntermediateValueProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StepFrequencyProperty(void**) noexcept = 0;
@@ -12813,7 +12813,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISliderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -12821,7 +12821,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Flyout(void**) noexcept = 0;
             virtual int32_t __stdcall put_Flyout(void*) noexcept = 0;
@@ -12835,33 +12835,33 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitButtonAutomationPeer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitButtonAutomationPeerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitButtonClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitButtonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FlyoutProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CommandProperty(void**) noexcept = 0;
@@ -12870,7 +12870,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -12897,7 +12897,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LightDismissOverlayMode(int32_t) noexcept = 0;
@@ -12905,7 +12905,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitView3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PaneOpening(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PaneOpening(winrt::event_token) noexcept = 0;
@@ -12915,14 +12915,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitViewPaneClosingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
@@ -12930,7 +12930,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_PaneProperty(void**) noexcept = 0;
@@ -12945,14 +12945,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISplitViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreScrollSnapPointsRegular(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AreScrollSnapPointsRegular(bool) noexcept = 0;
@@ -12962,7 +12962,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BorderBrush(void**) noexcept = 0;
             virtual int32_t __stdcall put_BorderBrush(void*) noexcept = 0;
@@ -12976,7 +12976,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanel4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Spacing(double*) noexcept = 0;
             virtual int32_t __stdcall put_Spacing(double) noexcept = 0;
@@ -12984,7 +12984,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanel5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizing(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BackgroundSizing(int32_t) noexcept = 0;
@@ -12992,14 +12992,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanelFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreScrollSnapPointsRegularProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OrientationProperty(void**) noexcept = 0;
@@ -13007,7 +13007,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanelStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BorderBrushProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_BorderThicknessProperty(void**) noexcept = 0;
@@ -13017,62 +13017,62 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanelStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SpacingProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStackPanelStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundSizingProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStyleSelector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectStyle(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStyleSelectorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IStyleSelectorOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectStyleCore(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwapChainBackgroundPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwapChainBackgroundPanel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCoreIndependentInputSource(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwapChainBackgroundPanelFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwapChainPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompositionScaleX(float*) noexcept = 0;
             virtual int32_t __stdcall get_CompositionScaleY(float*) noexcept = 0;
@@ -13083,14 +13083,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwapChainPanelFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwapChainPanelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompositionScaleXProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CompositionScaleYProperty(void**) noexcept = 0;
@@ -13098,7 +13098,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LeftItems(void**) noexcept = 0;
             virtual int32_t __stdcall put_LeftItems(void*) noexcept = 0;
@@ -13113,14 +13113,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeControlFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LeftItemsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_RightItemsProperty(void**) noexcept = 0;
@@ -13130,7 +13130,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -13152,21 +13152,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeItemInvokedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SwipeControl(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IconSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextProperty(void**) noexcept = 0;
@@ -13179,7 +13179,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeItems>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -13187,21 +13187,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeItemsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISwipeItemsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISymbolIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Symbol(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Symbol(int32_t) noexcept = 0;
@@ -13209,14 +13209,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISymbolIconFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithSymbol(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISymbolIconSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Symbol(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Symbol(int32_t) noexcept = 0;
@@ -13224,28 +13224,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISymbolIconSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISymbolIconSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SymbolProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ISymbolIconStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SymbolProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlock>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontSize(double*) noexcept = 0;
             virtual int32_t __stdcall put_FontSize(double) noexcept = 0;
@@ -13295,7 +13295,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlock2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionHighlightColor(void**) noexcept = 0;
             virtual int32_t __stdcall put_SelectionHighlightColor(void*) noexcept = 0;
@@ -13313,7 +13313,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlock3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsTextScaleFactorEnabled(bool) noexcept = 0;
@@ -13321,14 +13321,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlock4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAlphaMask(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlock5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextDecorations(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_TextDecorations(uint32_t) noexcept = 0;
@@ -13336,7 +13336,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlock6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextTrimmed(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HorizontalTextAlignment(int32_t*) noexcept = 0;
@@ -13348,7 +13348,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlock7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionFlyout(void**) noexcept = 0;
             virtual int32_t __stdcall put_SelectionFlyout(void*) noexcept = 0;
@@ -13357,7 +13357,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlockStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontSizeProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FontFamilyProperty(void**) noexcept = 0;
@@ -13379,7 +13379,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlockStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionHighlightColorProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxLinesProperty(void**) noexcept = 0;
@@ -13391,21 +13391,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlockStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextScaleFactorEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlockStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextDecorationsProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlockStatics6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTextTrimmedProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HorizontalTextAlignmentProperty(void**) noexcept = 0;
@@ -13413,14 +13413,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBlockStatics7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionFlyoutProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -13459,7 +13459,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBox2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -13479,7 +13479,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBox3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_TextCompositionStarted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_TextCompositionStarted(winrt::event_token) noexcept = 0;
@@ -13499,14 +13499,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBox4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetLinguisticAlternativesAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBox5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionHighlightColorWhenNotFocused(void**) noexcept = 0;
             virtual int32_t __stdcall put_SelectionHighlightColorWhenNotFocused(void*) noexcept = 0;
@@ -13514,7 +13514,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBox6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalTextAlignment(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_HorizontalTextAlignment(int32_t) noexcept = 0;
@@ -13532,7 +13532,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBox7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HandwritingView(void**) noexcept = 0;
             virtual int32_t __stdcall put_HandwritingView(void*) noexcept = 0;
@@ -13542,7 +13542,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBox8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanPasteClipboardContent(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanUndo(bool*) noexcept = 0;
@@ -13564,7 +13564,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxBeforeTextChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NewText(void**) noexcept = 0;
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
@@ -13573,14 +13573,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxSelectionChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionStart(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SelectionLength(int32_t*) noexcept = 0;
@@ -13590,7 +13590,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxLengthProperty(void**) noexcept = 0;
@@ -13605,7 +13605,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -13617,7 +13617,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredCandidateWindowAlignmentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextReadingOrderProperty(void**) noexcept = 0;
@@ -13625,14 +13625,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionHighlightColorWhenNotFocusedProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxStatics6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalTextAlignmentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CharacterCasingProperty(void**) noexcept = 0;
@@ -13641,7 +13641,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxStatics7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HandwritingViewProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsHandwritingViewEnabledProperty(void**) noexcept = 0;
@@ -13649,7 +13649,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxStatics8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanPasteClipboardContentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanUndoProperty(void**) noexcept = 0;
@@ -13661,39 +13661,39 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxTextChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextBoxTextChangingEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsContentChanging(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextCommandBarFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextCommandBarFlyoutFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextCompositionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Length(int32_t*) noexcept = 0;
@@ -13701,7 +13701,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextCompositionEndedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Length(int32_t*) noexcept = 0;
@@ -13709,7 +13709,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextCompositionStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Length(int32_t*) noexcept = 0;
@@ -13717,7 +13717,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextControlCopyingToClipboardEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -13725,7 +13725,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextControlCuttingToClipboardEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -13733,7 +13733,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITextControlPasteEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -13741,7 +13741,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewTime(int64_t*) noexcept = 0;
@@ -13749,7 +13749,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Header(void**) noexcept = 0;
             virtual int32_t __stdcall put_Header(void*) noexcept = 0;
@@ -13767,7 +13767,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePicker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_LightDismissOverlayMode(int32_t) noexcept = 0;
@@ -13775,7 +13775,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePicker3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedTime(void**) noexcept = 0;
             virtual int32_t __stdcall put_SelectedTime(void*) noexcept = 0;
@@ -13785,14 +13785,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClockIdentifier(void**) noexcept = 0;
             virtual int32_t __stdcall put_ClockIdentifier(void*) noexcept = 0;
@@ -13807,13 +13807,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerFlyoutPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerFlyoutPresenter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultShadowEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsDefaultShadowEnabled(bool) noexcept = 0;
@@ -13821,14 +13821,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerFlyoutPresenterStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultShadowEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerFlyoutStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClockIdentifierProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TimeProperty(void**) noexcept = 0;
@@ -13837,7 +13837,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerSelectedValueChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldTime(void**) noexcept = 0;
             virtual int32_t __stdcall get_NewTime(void**) noexcept = 0;
@@ -13845,7 +13845,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderTemplateProperty(void**) noexcept = 0;
@@ -13856,21 +13856,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LightDismissOverlayModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedTimeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITimePickerValueChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewTime(int64_t*) noexcept = 0;
@@ -13878,7 +13878,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleMenuFlyoutItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsChecked(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsChecked(bool) noexcept = 0;
@@ -13886,21 +13886,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleMenuFlyoutItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleMenuFlyoutItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCheckedProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleSplitButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsChecked(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsChecked(bool) noexcept = 0;
@@ -13910,33 +13910,33 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleSplitButtonAutomationPeer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleSplitButtonAutomationPeerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleSplitButtonFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleSplitButtonIsCheckedChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleSwitch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOn(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsOn(bool) noexcept = 0;
@@ -13959,7 +13959,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleSwitchOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnToggled() noexcept = 0;
             virtual int32_t __stdcall OnOnContentChanged(void*, void*) noexcept = 0;
@@ -13969,7 +13969,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToggleSwitchStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOnProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeaderProperty(void**) noexcept = 0;
@@ -13982,7 +13982,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToolTip>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalOffset(double*) noexcept = 0;
             virtual int32_t __stdcall put_HorizontalOffset(double) noexcept = 0;
@@ -14003,7 +14003,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToolTip2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlacementRect(void**) noexcept = 0;
             virtual int32_t __stdcall put_PlacementRect(void*) noexcept = 0;
@@ -14011,20 +14011,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToolTipFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToolTipService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToolTipServiceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlacementProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetPlacement(void*, int32_t*) noexcept = 0;
@@ -14039,7 +14039,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToolTipStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalOffsetProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsOpenProperty(void**) noexcept = 0;
@@ -14050,14 +14050,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IToolTipStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlacementRectProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RootNodes(void**) noexcept = 0;
             virtual int32_t __stdcall get_SelectionMode(int32_t*) noexcept = 0;
@@ -14076,7 +14076,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall NodeFromContainer(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ContainerFromNode(void*, void**) noexcept = 0;
@@ -14106,21 +14106,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewCollapsedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Node(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewCollapsedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewDragItemsCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DropResult(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
@@ -14128,7 +14128,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewDragItemsStartingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
@@ -14138,28 +14138,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewExpandingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Node(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewExpandingEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GlyphOpacity(double*) noexcept = 0;
             virtual int32_t __stdcall put_GlyphOpacity(double) noexcept = 0;
@@ -14178,7 +14178,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasUnrealizedChildren(bool*) noexcept = 0;
             virtual int32_t __stdcall put_HasUnrealizedChildren(bool) noexcept = 0;
@@ -14188,14 +14188,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItemInvokedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InvokedItem(void**) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -14204,7 +14204,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GlyphOpacityProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_GlyphBrushProperty(void**) noexcept = 0;
@@ -14217,7 +14217,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItemStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasUnrealizedChildrenProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemsSourceProperty(void**) noexcept = 0;
@@ -14225,7 +14225,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItemTemplateSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExpandedGlyphVisibility(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_CollapsedGlyphVisibility(int32_t*) noexcept = 0;
@@ -14235,14 +14235,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItemTemplateSettingsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewItemTemplateSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExpandedGlyphVisibilityProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CollapsedGlyphVisibilityProperty(void**) noexcept = 0;
@@ -14252,20 +14252,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewListFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -14281,14 +14281,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewNodeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewNodeStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_DepthProperty(void**) noexcept = 0;
@@ -14298,14 +14298,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectionModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITreeViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanDragItemsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanReorderItemsProperty(void**) noexcept = 0;
@@ -14319,7 +14319,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITwoPaneView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Pane1(void**) noexcept = 0;
             virtual int32_t __stdcall put_Pane1(void*) noexcept = 0;
@@ -14346,14 +14346,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITwoPaneViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ITwoPaneViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Pane1Property(void**) noexcept = 0;
             virtual int32_t __stdcall get_Pane2Property(void**) noexcept = 0;
@@ -14369,14 +14369,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IUIElementCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Move(uint32_t, uint32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IUserControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -14384,21 +14384,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IUserControlFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IUserControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVariableSizedWrapGrid>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemHeight(double*) noexcept = 0;
             virtual int32_t __stdcall put_ItemHeight(double) noexcept = 0;
@@ -14416,7 +14416,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVariableSizedWrapGridStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemHeightProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemWidthProperty(void**) noexcept = 0;
@@ -14434,7 +14434,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IViewbox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Child(void**) noexcept = 0;
             virtual int32_t __stdcall put_Child(void*) noexcept = 0;
@@ -14446,7 +14446,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IViewboxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StretchProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StretchDirectionProperty(void**) noexcept = 0;
@@ -14454,20 +14454,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVirtualizingPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemContainerGenerator(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVirtualizingPanelFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVirtualizingPanelOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnItemsChanged(void*, void*) noexcept = 0;
             virtual int32_t __stdcall OnClearChildren() noexcept = 0;
@@ -14476,7 +14476,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVirtualizingPanelProtected>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddInternalChild(void*) noexcept = 0;
             virtual int32_t __stdcall InsertInternalChild(int32_t, void*) noexcept = 0;
@@ -14485,7 +14485,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVirtualizingStackPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreScrollSnapPointsRegular(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AreScrollSnapPointsRegular(bool) noexcept = 0;
@@ -14497,14 +14497,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVirtualizingStackPanelOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnCleanUpVirtualizedItem(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IVirtualizingStackPanelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreScrollSnapPointsRegularProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OrientationProperty(void**) noexcept = 0;
@@ -14517,7 +14517,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall put_Source(void*) noexcept = 0;
@@ -14537,7 +14537,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanGoBack(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanGoForward(bool*) noexcept = 0;
@@ -14581,7 +14581,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebView3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContainsFullScreenElement(bool*) noexcept = 0;
             virtual int32_t __stdcall add_ContainsFullScreenElementChanged(void*, winrt::event_token*) noexcept = 0;
@@ -14590,7 +14590,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebView4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExecutionMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DeferredPermissionRequests(void**) noexcept = 0;
@@ -14607,7 +14607,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebView5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XYFocusLeft(void**) noexcept = 0;
             virtual int32_t __stdcall put_XYFocusLeft(void*) noexcept = 0;
@@ -14621,7 +14621,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebView6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SeparateProcessLost(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SeparateProcessLost(winrt::event_token) noexcept = 0;
@@ -14629,7 +14629,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebView7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_WebResourceRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_WebResourceRequested(winrt::event_token) noexcept = 0;
@@ -14637,7 +14637,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceName(void**) noexcept = 0;
             virtual int32_t __stdcall put_SourceName(void*) noexcept = 0;
@@ -14647,28 +14647,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewBrushStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewContentLoadingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewDOMContentLoadedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewDeferredPermissionRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_PermissionType(int32_t*) noexcept = 0;
@@ -14679,14 +14679,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewFactory4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithExecutionMode(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewLongRunningScriptDetectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExecutionTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_StopPageScriptExecution(bool*) noexcept = 0;
@@ -14695,7 +14695,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewNavigationCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsSuccess(bool*) noexcept = 0;
@@ -14704,7 +14704,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewNavigationFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_WebErrorStatus(int32_t*) noexcept = 0;
@@ -14712,7 +14712,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewNavigationStartingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
@@ -14721,7 +14721,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewNewWindowRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_Referrer(void**) noexcept = 0;
@@ -14731,7 +14731,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewPermissionRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_PermissionType(int32_t*) noexcept = 0;
@@ -14744,20 +14744,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewPermissionRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PermissionRequest(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewSeparateProcessLostEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsJavaScriptEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsJavaScriptEnabled(bool) noexcept = 0;
@@ -14767,7 +14767,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnyScriptNotifyUri(void**) noexcept = 0;
             virtual int32_t __stdcall get_SourceProperty(void**) noexcept = 0;
@@ -14777,7 +14777,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanGoBackProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanGoForwardProperty(void**) noexcept = 0;
@@ -14787,14 +14787,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContainsFullScreenElementProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultExecutionMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall ClearTemporaryWebDataAsync(void**) noexcept = 0;
@@ -14802,7 +14802,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XYFocusLeftProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_XYFocusRightProperty(void**) noexcept = 0;
@@ -14812,7 +14812,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewUnsupportedUriSchemeIdentifiedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
@@ -14821,7 +14821,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewUnviewableContentIdentifiedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_Referrer(void**) noexcept = 0;
@@ -14829,14 +14829,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewUnviewableContentIdentifiedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaType(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWebViewWebResourceRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall get_Response(void**) noexcept = 0;
@@ -14846,7 +14846,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWrapGrid>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemWidth(double*) noexcept = 0;
             virtual int32_t __stdcall put_ItemWidth(double) noexcept = 0;
@@ -14864,7 +14864,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::IWrapGridStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemWidthProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemHeightProperty(void**) noexcept = 0;
@@ -14876,112 +14876,112 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::BackClickEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::CalendarViewDayItemChangingEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::CleanUpVirtualizedItemEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::DragItemsStartingEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::HubSectionHeaderClickEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ItemClickEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ListViewItemToKeyHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::ListViewKeyToItemHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::NotifyEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::SectionsInViewChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::SelectionChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::SemanticZoomViewChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::TextChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::WebViewNavigationFailedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -15006,11 +15006,11 @@ namespace winrt::impl
         auto IsSticky(bool value) const;
         auto Opened(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Opened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IAppBar, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IAppBar>::remove_Opened>;
-        [[nodiscard]] Opened_revoker Opened(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Opened(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Opened(winrt::event_token const& token) const noexcept;
         auto Closed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IAppBar, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IAppBar>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IAppBar>
@@ -15033,11 +15033,11 @@ namespace winrt::impl
         [[nodiscard]] auto TemplateSettings() const;
         auto Opening(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Opening_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IAppBar3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IAppBar3>::remove_Opening>;
-        [[nodiscard]] Opening_revoker Opening(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Opening(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Opening(winrt::event_token const& token) const noexcept;
         auto Closing(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Closing_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IAppBar3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IAppBar3>::remove_Closing>;
-        [[nodiscard]] Closing_revoker Closing(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Closing(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Closing(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IAppBar3>
@@ -15360,11 +15360,11 @@ namespace winrt::impl
         auto TextBoxStyle(winrt::Windows::UI::Xaml::Style const& value) const;
         auto SuggestionChosen(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs> const& handler) const;
         using SuggestionChosen_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox>::remove_SuggestionChosen>;
-        [[nodiscard]] SuggestionChosen_revoker SuggestionChosen(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs> const& handler) const;
+        [[nodiscard]] auto SuggestionChosen(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs> const& handler) const;
         auto SuggestionChosen(winrt::event_token const& token) const noexcept;
         auto TextChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs> const& handler) const;
         using TextChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox>::remove_TextChanged>;
-        [[nodiscard]] TextChanged_revoker TextChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs> const& handler) const;
         auto TextChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox>
@@ -15378,7 +15378,7 @@ namespace winrt::impl
         auto QueryIcon(winrt::Windows::UI::Xaml::Controls::IconElement const& value) const;
         auto QuerySubmitted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxQuerySubmittedEventArgs> const& handler) const;
         using QuerySubmitted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox2>::remove_QuerySubmitted>;
-        [[nodiscard]] QuerySubmitted_revoker QuerySubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxQuerySubmittedEventArgs> const& handler) const;
+        [[nodiscard]] auto QuerySubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::AutoSuggestBox, winrt::Windows::UI::Xaml::Controls::AutoSuggestBoxQuerySubmittedEventArgs> const& handler) const;
         auto QuerySubmitted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IAutoSuggestBox2>
@@ -15706,19 +15706,19 @@ namespace winrt::impl
         auto IsGroupLabelVisible(bool value) const;
         auto CalendarViewDayItemChanging(winrt::Windows::UI::Xaml::Controls::CalendarViewDayItemChangingEventHandler const& handler) const;
         using CalendarViewDayItemChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker>::remove_CalendarViewDayItemChanging>;
-        [[nodiscard]] CalendarViewDayItemChanging_revoker CalendarViewDayItemChanging(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::CalendarViewDayItemChangingEventHandler const& handler) const;
+        [[nodiscard]] auto CalendarViewDayItemChanging(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::CalendarViewDayItemChangingEventHandler const& handler) const;
         auto CalendarViewDayItemChanging(winrt::event_token const& token) const noexcept;
         auto DateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarDatePicker, winrt::Windows::UI::Xaml::Controls::CalendarDatePickerDateChangedEventArgs> const& handler) const;
         using DateChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker>::remove_DateChanged>;
-        [[nodiscard]] DateChanged_revoker DateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarDatePicker, winrt::Windows::UI::Xaml::Controls::CalendarDatePickerDateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto DateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarDatePicker, winrt::Windows::UI::Xaml::Controls::CalendarDatePickerDateChangedEventArgs> const& handler) const;
         auto DateChanged(winrt::event_token const& token) const noexcept;
         auto Opened(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Opened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker>::remove_Opened>;
-        [[nodiscard]] Opened_revoker Opened(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Opened(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Opened(winrt::event_token const& token) const noexcept;
         auto Closed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ICalendarDatePicker>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto SetDisplayDate(winrt::Windows::Foundation::DateTime const& date) const;
         auto SetYearDecadeDisplayDimensions(int32_t columns, int32_t rows) const;
@@ -15913,11 +15913,11 @@ namespace winrt::impl
         auto CalendarViewDayItemStyle(winrt::Windows::UI::Xaml::Style const& value) const;
         auto CalendarViewDayItemChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarView, winrt::Windows::UI::Xaml::Controls::CalendarViewDayItemChangingEventArgs> const& handler) const;
         using CalendarViewDayItemChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ICalendarView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ICalendarView>::remove_CalendarViewDayItemChanging>;
-        [[nodiscard]] CalendarViewDayItemChanging_revoker CalendarViewDayItemChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarView, winrt::Windows::UI::Xaml::Controls::CalendarViewDayItemChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto CalendarViewDayItemChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarView, winrt::Windows::UI::Xaml::Controls::CalendarViewDayItemChangingEventArgs> const& handler) const;
         auto CalendarViewDayItemChanging(winrt::event_token const& token) const noexcept;
         auto SelectedDatesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarView, winrt::Windows::UI::Xaml::Controls::CalendarViewSelectedDatesChangedEventArgs> const& handler) const;
         using SelectedDatesChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ICalendarView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ICalendarView>::remove_SelectedDatesChanged>;
-        [[nodiscard]] SelectedDatesChanged_revoker SelectedDatesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarView, winrt::Windows::UI::Xaml::Controls::CalendarViewSelectedDatesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SelectedDatesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CalendarView, winrt::Windows::UI::Xaml::Controls::CalendarViewSelectedDatesChangedEventArgs> const& handler) const;
         auto SelectedDatesChanged(winrt::event_token const& token) const noexcept;
         auto SetDisplayDate(winrt::Windows::Foundation::DateTime const& date) const;
         auto SetYearDecadeDisplayDimensions(int32_t columns, int32_t rows) const;
@@ -16309,7 +16309,7 @@ namespace winrt::impl
         auto ColorSpectrumComponents(winrt::Windows::UI::Xaml::Controls::ColorSpectrumComponents const& value) const;
         auto ColorChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ColorPicker, winrt::Windows::UI::Xaml::Controls::ColorChangedEventArgs> const& handler) const;
         using ColorChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IColorPicker, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IColorPicker>::remove_ColorChanged>;
-        [[nodiscard]] ColorChanged_revoker ColorChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ColorPicker, winrt::Windows::UI::Xaml::Controls::ColorChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ColorChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ColorPicker, winrt::Windows::UI::Xaml::Controls::ColorChangedEventArgs> const& handler) const;
         auto ColorChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IColorPicker>
@@ -16392,11 +16392,11 @@ namespace winrt::impl
         [[nodiscard]] auto TemplateSettings() const;
         auto DropDownClosed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DropDownClosed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IComboBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IComboBox>::remove_DropDownClosed>;
-        [[nodiscard]] DropDownClosed_revoker DropDownClosed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DropDownClosed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DropDownClosed(winrt::event_token const& token) const noexcept;
         auto DropDownOpened(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DropDownOpened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IComboBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IComboBox>::remove_DropDownOpened>;
-        [[nodiscard]] DropDownOpened_revoker DropDownOpened(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DropDownOpened(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DropDownOpened(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IComboBox>
@@ -16461,7 +16461,7 @@ namespace winrt::impl
         auto Description(winrt::Windows::Foundation::IInspectable const& value) const;
         auto TextSubmitted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ComboBox, winrt::Windows::UI::Xaml::Controls::ComboBoxTextSubmittedEventArgs> const& handler) const;
         using TextSubmitted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IComboBox6, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IComboBox6>::remove_TextSubmitted>;
-        [[nodiscard]] TextSubmitted_revoker TextSubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ComboBox, winrt::Windows::UI::Xaml::Controls::ComboBoxTextSubmittedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextSubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ComboBox, winrt::Windows::UI::Xaml::Controls::ComboBoxTextSubmittedEventArgs> const& handler) const;
         auto TextSubmitted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IComboBox6>
@@ -16608,7 +16608,7 @@ namespace winrt::impl
         auto IsDynamicOverflowEnabled(bool value) const;
         auto DynamicOverflowItemsChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CommandBar, winrt::Windows::UI::Xaml::Controls::DynamicOverflowItemsChangingEventArgs> const& handler) const;
         using DynamicOverflowItemsChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ICommandBar3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ICommandBar3>::remove_DynamicOverflowItemsChanging>;
-        [[nodiscard]] DynamicOverflowItemsChanging_revoker DynamicOverflowItemsChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CommandBar, winrt::Windows::UI::Xaml::Controls::DynamicOverflowItemsChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto DynamicOverflowItemsChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::CommandBar, winrt::Windows::UI::Xaml::Controls::DynamicOverflowItemsChangingEventArgs> const& handler) const;
         auto DynamicOverflowItemsChanging(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ICommandBar3>
@@ -16812,23 +16812,23 @@ namespace winrt::impl
         auto IsSecondaryButtonEnabled(bool value) const;
         auto Closing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogClosingEventArgs> const& handler) const;
         using Closing_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IContentDialog, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IContentDialog>::remove_Closing>;
-        [[nodiscard]] Closing_revoker Closing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogClosingEventArgs> const& handler) const;
+        [[nodiscard]] auto Closing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogClosingEventArgs> const& handler) const;
         auto Closing(winrt::event_token const& token) const noexcept;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IContentDialog, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IContentDialog>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto Opened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogOpenedEventArgs> const& handler) const;
         using Opened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IContentDialog, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IContentDialog>::remove_Opened>;
-        [[nodiscard]] Opened_revoker Opened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogOpenedEventArgs> const& handler) const;
+        [[nodiscard]] auto Opened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogOpenedEventArgs> const& handler) const;
         auto Opened(winrt::event_token const& token) const noexcept;
         auto PrimaryButtonClick(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
         using PrimaryButtonClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IContentDialog, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IContentDialog>::remove_PrimaryButtonClick>;
-        [[nodiscard]] PrimaryButtonClick_revoker PrimaryButtonClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
+        [[nodiscard]] auto PrimaryButtonClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
         auto PrimaryButtonClick(winrt::event_token const& token) const noexcept;
         auto SecondaryButtonClick(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
         using SecondaryButtonClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IContentDialog, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IContentDialog>::remove_SecondaryButtonClick>;
-        [[nodiscard]] SecondaryButtonClick_revoker SecondaryButtonClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
+        [[nodiscard]] auto SecondaryButtonClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
         auto SecondaryButtonClick(winrt::event_token const& token) const noexcept;
         auto Hide() const;
         auto ShowAsync() const;
@@ -16856,7 +16856,7 @@ namespace winrt::impl
         auto DefaultButton(winrt::Windows::UI::Xaml::Controls::ContentDialogButton const& value) const;
         auto CloseButtonClick(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
         using CloseButtonClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IContentDialog2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IContentDialog2>::remove_CloseButtonClick>;
-        [[nodiscard]] CloseButtonClick_revoker CloseButtonClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
+        [[nodiscard]] auto CloseButtonClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ContentDialog, winrt::Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs> const& handler) const;
         auto CloseButtonClick(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IContentDialog2>
@@ -17217,7 +17217,7 @@ namespace winrt::impl
         [[nodiscard]] auto FocusState() const;
         auto IsEnabledChanged(winrt::Windows::UI::Xaml::DependencyPropertyChangedEventHandler const& handler) const;
         using IsEnabledChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IControl>::remove_IsEnabledChanged>;
-        [[nodiscard]] IsEnabledChanged_revoker IsEnabledChanged(auto_revoke_t, winrt::Windows::UI::Xaml::DependencyPropertyChangedEventHandler const& handler) const;
+        [[nodiscard]] auto IsEnabledChanged(auto_revoke_t, winrt::Windows::UI::Xaml::DependencyPropertyChangedEventHandler const& handler) const;
         auto IsEnabledChanged(winrt::event_token const& token) const noexcept;
         auto ApplyTemplate() const;
         auto Focus(winrt::Windows::UI::Xaml::FocusState const& value) const;
@@ -17267,11 +17267,11 @@ namespace winrt::impl
         auto ElementSoundMode(winrt::Windows::UI::Xaml::ElementSoundMode const& value) const;
         auto FocusEngaged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Control, winrt::Windows::UI::Xaml::Controls::FocusEngagedEventArgs> const& handler) const;
         using FocusEngaged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IControl4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IControl4>::remove_FocusEngaged>;
-        [[nodiscard]] FocusEngaged_revoker FocusEngaged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Control, winrt::Windows::UI::Xaml::Controls::FocusEngagedEventArgs> const& handler) const;
+        [[nodiscard]] auto FocusEngaged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Control, winrt::Windows::UI::Xaml::Controls::FocusEngagedEventArgs> const& handler) const;
         auto FocusEngaged(winrt::event_token const& token) const noexcept;
         auto FocusDisengaged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Control, winrt::Windows::UI::Xaml::Controls::FocusDisengagedEventArgs> const& handler) const;
         using FocusDisengaged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IControl4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IControl4>::remove_FocusDisengaged>;
-        [[nodiscard]] FocusDisengaged_revoker FocusDisengaged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Control, winrt::Windows::UI::Xaml::Controls::FocusDisengagedEventArgs> const& handler) const;
+        [[nodiscard]] auto FocusDisengaged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Control, winrt::Windows::UI::Xaml::Controls::FocusDisengagedEventArgs> const& handler) const;
         auto FocusDisengaged(winrt::event_token const& token) const noexcept;
         auto RemoveFocusEngagement() const;
     };
@@ -17548,7 +17548,7 @@ namespace winrt::impl
         auto Orientation(winrt::Windows::UI::Xaml::Controls::Orientation const& value) const;
         auto DateChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::DatePickerValueChangedEventArgs> const& handler) const;
         using DateChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IDatePicker, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IDatePicker>::remove_DateChanged>;
-        [[nodiscard]] DateChanged_revoker DateChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::DatePickerValueChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto DateChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::DatePickerValueChangedEventArgs> const& handler) const;
         auto DateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IDatePicker>
@@ -17572,7 +17572,7 @@ namespace winrt::impl
         auto SelectedDate(winrt::Windows::Foundation::IReference<winrt::Windows::Foundation::DateTime> const& value) const;
         auto SelectedDateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::DatePicker, winrt::Windows::UI::Xaml::Controls::DatePickerSelectedValueChangedEventArgs> const& handler) const;
         using SelectedDateChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IDatePicker3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IDatePicker3>::remove_SelectedDateChanged>;
-        [[nodiscard]] SelectedDateChanged_revoker SelectedDateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::DatePicker, winrt::Windows::UI::Xaml::Controls::DatePickerSelectedValueChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SelectedDateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::DatePicker, winrt::Windows::UI::Xaml::Controls::DatePickerSelectedValueChangedEventArgs> const& handler) const;
         auto SelectedDateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IDatePicker3>
@@ -17607,7 +17607,7 @@ namespace winrt::impl
         auto MaxYear(winrt::Windows::Foundation::DateTime const& value) const;
         auto DatePicked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::DatePickerFlyout, winrt::Windows::UI::Xaml::Controls::DatePickedEventArgs> const& handler) const;
         using DatePicked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyout, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IDatePickerFlyout>::remove_DatePicked>;
-        [[nodiscard]] DatePicked_revoker DatePicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::DatePickerFlyout, winrt::Windows::UI::Xaml::Controls::DatePickedEventArgs> const& handler) const;
+        [[nodiscard]] auto DatePicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::DatePickerFlyout, winrt::Windows::UI::Xaml::Controls::DatePickedEventArgs> const& handler) const;
         auto DatePicked(winrt::event_token const& token) const noexcept;
         auto ShowAtAsync(winrt::Windows::UI::Xaml::FrameworkElement const& target) const;
     };
@@ -18111,19 +18111,19 @@ namespace winrt::impl
         [[nodiscard]] auto BackStackDepth() const;
         auto Navigated(winrt::Windows::UI::Xaml::Navigation::NavigatedEventHandler const& handler) const;
         using Navigated_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IFrame, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IFrame>::remove_Navigated>;
-        [[nodiscard]] Navigated_revoker Navigated(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::NavigatedEventHandler const& handler) const;
+        [[nodiscard]] auto Navigated(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::NavigatedEventHandler const& handler) const;
         auto Navigated(winrt::event_token const& token) const noexcept;
         auto Navigating(winrt::Windows::UI::Xaml::Navigation::NavigatingCancelEventHandler const& handler) const;
         using Navigating_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IFrame, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IFrame>::remove_Navigating>;
-        [[nodiscard]] Navigating_revoker Navigating(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::NavigatingCancelEventHandler const& handler) const;
+        [[nodiscard]] auto Navigating(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::NavigatingCancelEventHandler const& handler) const;
         auto Navigating(winrt::event_token const& token) const noexcept;
         auto NavigationFailed(winrt::Windows::UI::Xaml::Navigation::NavigationFailedEventHandler const& handler) const;
         using NavigationFailed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IFrame, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IFrame>::remove_NavigationFailed>;
-        [[nodiscard]] NavigationFailed_revoker NavigationFailed(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::NavigationFailedEventHandler const& handler) const;
+        [[nodiscard]] auto NavigationFailed(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::NavigationFailedEventHandler const& handler) const;
         auto NavigationFailed(winrt::event_token const& token) const noexcept;
         auto NavigationStopped(winrt::Windows::UI::Xaml::Navigation::NavigationStoppedEventHandler const& handler) const;
         using NavigationStopped_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IFrame, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IFrame>::remove_NavigationStopped>;
-        [[nodiscard]] NavigationStopped_revoker NavigationStopped(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::NavigationStoppedEventHandler const& handler) const;
+        [[nodiscard]] auto NavigationStopped(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::NavigationStoppedEventHandler const& handler) const;
         auto NavigationStopped(winrt::event_token const& token) const noexcept;
         auto GoBack() const;
         auto GoForward() const;
@@ -18488,11 +18488,11 @@ namespace winrt::impl
         auto AreCandidatesEnabled(bool value) const;
         auto Opened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingPanelOpenedEventArgs> const& handler) const;
         using Opened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IHandwritingView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IHandwritingView>::remove_Opened>;
-        [[nodiscard]] Opened_revoker Opened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingPanelOpenedEventArgs> const& handler) const;
+        [[nodiscard]] auto Opened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingPanelOpenedEventArgs> const& handler) const;
         auto Opened(winrt::event_token const& token) const noexcept;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingPanelClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IHandwritingView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IHandwritingView>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingPanelClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingPanelClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto TryClose() const;
         auto TryOpen() const;
@@ -18512,11 +18512,11 @@ namespace winrt::impl
         auto InputDeviceTypes(winrt::Windows::UI::Core::CoreInputDeviceTypes const& value) const;
         auto CandidatesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingViewCandidatesChangedEventArgs> const& handler) const;
         using CandidatesChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IHandwritingView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IHandwritingView2>::remove_CandidatesChanged>;
-        [[nodiscard]] CandidatesChanged_revoker CandidatesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingViewCandidatesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto CandidatesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingViewCandidatesChangedEventArgs> const& handler) const;
         auto CandidatesChanged(winrt::event_token const& token) const noexcept;
         auto TextSubmitted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingViewTextSubmittedEventArgs> const& handler) const;
         using TextSubmitted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IHandwritingView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IHandwritingView2>::remove_TextSubmitted>;
-        [[nodiscard]] TextSubmitted_revoker TextSubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingViewTextSubmittedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextSubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::HandwritingView, winrt::Windows::UI::Xaml::Controls::HandwritingViewTextSubmittedEventArgs> const& handler) const;
         auto TextSubmitted(winrt::event_token const& token) const noexcept;
         auto GetCandidates(uint32_t candidatesSessionId) const;
         auto SelectCandidate(uint32_t candidatesSessionId, uint32_t selectedCandidateIndex) const;
@@ -18589,11 +18589,11 @@ namespace winrt::impl
         [[nodiscard]] auto SectionHeaders() const;
         auto SectionHeaderClick(winrt::Windows::UI::Xaml::Controls::HubSectionHeaderClickEventHandler const& handler) const;
         using SectionHeaderClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IHub, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IHub>::remove_SectionHeaderClick>;
-        [[nodiscard]] SectionHeaderClick_revoker SectionHeaderClick(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::HubSectionHeaderClickEventHandler const& handler) const;
+        [[nodiscard]] auto SectionHeaderClick(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::HubSectionHeaderClickEventHandler const& handler) const;
         auto SectionHeaderClick(winrt::event_token const& token) const noexcept;
         auto SectionsInViewChanged(winrt::Windows::UI::Xaml::Controls::SectionsInViewChangedEventHandler const& handler) const;
         using SectionsInViewChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IHub, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IHub>::remove_SectionsInViewChanged>;
-        [[nodiscard]] SectionsInViewChanged_revoker SectionsInViewChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::SectionsInViewChangedEventHandler const& handler) const;
+        [[nodiscard]] auto SectionsInViewChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::SectionsInViewChangedEventHandler const& handler) const;
         auto SectionsInViewChanged(winrt::event_token const& token) const noexcept;
         auto ScrollToSection(winrt::Windows::UI::Xaml::Controls::HubSection const& section) const;
     };
@@ -18793,11 +18793,11 @@ namespace winrt::impl
         [[nodiscard]] auto PlayToSource() const;
         auto ImageFailed(winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
         using ImageFailed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IImage, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IImage>::remove_ImageFailed>;
-        [[nodiscard]] ImageFailed_revoker ImageFailed(auto_revoke_t, winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
+        [[nodiscard]] auto ImageFailed(auto_revoke_t, winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
         auto ImageFailed(winrt::event_token const& token) const noexcept;
         auto ImageOpened(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using ImageOpened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IImage, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IImage>::remove_ImageOpened>;
-        [[nodiscard]] ImageOpened_revoker ImageOpened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto ImageOpened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto ImageOpened(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IImage>
@@ -18867,19 +18867,19 @@ namespace winrt::impl
         auto TargetInkCanvas(winrt::Windows::UI::Xaml::Controls::InkCanvas const& value) const;
         auto ActiveToolChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ActiveToolChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IInkToolbar, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IInkToolbar>::remove_ActiveToolChanged>;
-        [[nodiscard]] ActiveToolChanged_revoker ActiveToolChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ActiveToolChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ActiveToolChanged(winrt::event_token const& token) const noexcept;
         auto InkDrawingAttributesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using InkDrawingAttributesChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IInkToolbar, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IInkToolbar>::remove_InkDrawingAttributesChanged>;
-        [[nodiscard]] InkDrawingAttributesChanged_revoker InkDrawingAttributesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto InkDrawingAttributesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto InkDrawingAttributesChanged(winrt::event_token const& token) const noexcept;
         auto EraseAllClicked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EraseAllClicked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IInkToolbar, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IInkToolbar>::remove_EraseAllClicked>;
-        [[nodiscard]] EraseAllClicked_revoker EraseAllClicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EraseAllClicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EraseAllClicked(winrt::event_token const& token) const noexcept;
         auto IsRulerButtonCheckedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsRulerButtonCheckedChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IInkToolbar, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IInkToolbar>::remove_IsRulerButtonCheckedChanged>;
-        [[nodiscard]] IsRulerButtonCheckedChanged_revoker IsRulerButtonCheckedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsRulerButtonCheckedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsRulerButtonCheckedChanged(winrt::event_token const& token) const noexcept;
         auto GetToolButton(winrt::Windows::UI::Xaml::Controls::InkToolbarTool const& tool) const;
         auto GetToggleButton(winrt::Windows::UI::Xaml::Controls::InkToolbarToggle const& tool) const;
@@ -18899,7 +18899,7 @@ namespace winrt::impl
         auto Orientation(winrt::Windows::UI::Xaml::Controls::Orientation const& value) const;
         auto IsStencilButtonCheckedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::UI::Xaml::Controls::InkToolbarIsStencilButtonCheckedChangedEventArgs> const& handler) const;
         using IsStencilButtonCheckedChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IInkToolbar2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IInkToolbar2>::remove_IsStencilButtonCheckedChanged>;
-        [[nodiscard]] IsStencilButtonCheckedChanged_revoker IsStencilButtonCheckedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::UI::Xaml::Controls::InkToolbarIsStencilButtonCheckedChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto IsStencilButtonCheckedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbar, winrt::Windows::UI::Xaml::Controls::InkToolbarIsStencilButtonCheckedChangedEventArgs> const& handler) const;
         auto IsStencilButtonCheckedChanged(winrt::event_token const& token) const noexcept;
         auto GetMenuButton(winrt::Windows::UI::Xaml::Controls::InkToolbarMenuKind const& menu) const;
     };
@@ -19091,11 +19091,11 @@ namespace winrt::impl
         auto IsChecked(bool value) const;
         auto Checked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbarFlyoutItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Checked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IInkToolbarFlyoutItem, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IInkToolbarFlyoutItem>::remove_Checked>;
-        [[nodiscard]] Checked_revoker Checked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbarFlyoutItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Checked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbarFlyoutItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Checked(winrt::event_token const& token) const noexcept;
         auto Unchecked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbarFlyoutItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Unchecked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IInkToolbarFlyoutItem, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IInkToolbarFlyoutItem>::remove_Unchecked>;
-        [[nodiscard]] Unchecked_revoker Unchecked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbarFlyoutItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Unchecked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::InkToolbarFlyoutItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Unchecked(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IInkToolbarFlyoutItem>
@@ -19436,7 +19436,7 @@ namespace winrt::impl
     {
         auto ItemsChanged(winrt::Windows::UI::Xaml::Controls::Primitives::ItemsChangedEventHandler const& handler) const;
         using ItemsChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IItemContainerGenerator, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IItemContainerGenerator>::remove_ItemsChanged>;
-        [[nodiscard]] ItemsChanged_revoker ItemsChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::Primitives::ItemsChangedEventHandler const& handler) const;
+        [[nodiscard]] auto ItemsChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::Primitives::ItemsChangedEventHandler const& handler) const;
         auto ItemsChanged(winrt::event_token const& token) const noexcept;
         auto ItemFromContainer(winrt::Windows::UI::Xaml::DependencyObject const& container) const;
         auto ContainerFromItem(winrt::Windows::Foundation::IInspectable const& item) const;
@@ -19839,7 +19839,7 @@ namespace winrt::impl
         [[nodiscard]] auto SelectedItems() const;
         auto ItemsPicked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListPickerFlyout, winrt::Windows::UI::Xaml::Controls::ItemsPickedEventArgs> const& handler) const;
         using ItemsPicked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IListPickerFlyout, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IListPickerFlyout>::remove_ItemsPicked>;
-        [[nodiscard]] ItemsPicked_revoker ItemsPicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListPickerFlyout, winrt::Windows::UI::Xaml::Controls::ItemsPickedEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemsPicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListPickerFlyout, winrt::Windows::UI::Xaml::Controls::ItemsPickedEventArgs> const& handler) const;
         auto ItemsPicked(winrt::event_token const& token) const noexcept;
         auto ShowAtAsync(winrt::Windows::UI::Xaml::FrameworkElement const& target) const;
     };
@@ -19901,11 +19901,11 @@ namespace winrt::impl
         auto IncrementalLoadingTrigger(winrt::Windows::UI::Xaml::Controls::IncrementalLoadingTrigger const& value) const;
         auto ItemClick(winrt::Windows::UI::Xaml::Controls::ItemClickEventHandler const& handler) const;
         using ItemClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IListViewBase, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IListViewBase>::remove_ItemClick>;
-        [[nodiscard]] ItemClick_revoker ItemClick(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ItemClickEventHandler const& handler) const;
+        [[nodiscard]] auto ItemClick(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ItemClickEventHandler const& handler) const;
         auto ItemClick(winrt::event_token const& token) const noexcept;
         auto DragItemsStarting(winrt::Windows::UI::Xaml::Controls::DragItemsStartingEventHandler const& handler) const;
         using DragItemsStarting_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IListViewBase, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IListViewBase>::remove_DragItemsStarting>;
-        [[nodiscard]] DragItemsStarting_revoker DragItemsStarting(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::DragItemsStartingEventHandler const& handler) const;
+        [[nodiscard]] auto DragItemsStarting(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::DragItemsStartingEventHandler const& handler) const;
         auto DragItemsStarting(winrt::event_token const& token) const noexcept;
         auto ScrollIntoView(winrt::Windows::Foundation::IInspectable const& item) const;
         auto SelectAll() const;
@@ -19929,7 +19929,7 @@ namespace winrt::impl
         auto ShowsScrollingPlaceholders(bool value) const;
         auto ContainerContentChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ContainerContentChangingEventArgs> const& handler) const;
         using ContainerContentChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IListViewBase2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IListViewBase2>::remove_ContainerContentChanging>;
-        [[nodiscard]] ContainerContentChanging_revoker ContainerContentChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ContainerContentChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto ContainerContentChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ContainerContentChangingEventArgs> const& handler) const;
         auto ContainerContentChanging(winrt::event_token const& token) const noexcept;
         auto SetDesiredContainerUpdateDuration(winrt::Windows::Foundation::TimeSpan const& duration) const;
         [[nodiscard]] auto Footer() const;
@@ -19961,15 +19961,15 @@ namespace winrt::impl
         auto IsMultiSelectCheckBoxEnabled(bool value) const;
         auto DragItemsCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::DragItemsCompletedEventArgs> const& handler) const;
         using DragItemsCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IListViewBase4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IListViewBase4>::remove_DragItemsCompleted>;
-        [[nodiscard]] DragItemsCompleted_revoker DragItemsCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::DragItemsCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto DragItemsCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::DragItemsCompletedEventArgs> const& handler) const;
         auto DragItemsCompleted(winrt::event_token const& token) const noexcept;
         auto ChoosingItemContainer(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ChoosingItemContainerEventArgs> const& handler) const;
         using ChoosingItemContainer_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IListViewBase4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IListViewBase4>::remove_ChoosingItemContainer>;
-        [[nodiscard]] ChoosingItemContainer_revoker ChoosingItemContainer(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ChoosingItemContainerEventArgs> const& handler) const;
+        [[nodiscard]] auto ChoosingItemContainer(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ChoosingItemContainerEventArgs> const& handler) const;
         auto ChoosingItemContainer(winrt::event_token const& token) const noexcept;
         auto ChoosingGroupHeaderContainer(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ChoosingGroupHeaderContainerEventArgs> const& handler) const;
         using ChoosingGroupHeaderContainer_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IListViewBase4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IListViewBase4>::remove_ChoosingGroupHeaderContainer>;
-        [[nodiscard]] ChoosingGroupHeaderContainer_revoker ChoosingGroupHeaderContainer(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ChoosingGroupHeaderContainerEventArgs> const& handler) const;
+        [[nodiscard]] auto ChoosingGroupHeaderContainer(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ListViewBase, winrt::Windows::UI::Xaml::Controls::ChoosingGroupHeaderContainerEventArgs> const& handler) const;
         auto ChoosingGroupHeaderContainer(winrt::event_token const& token) const noexcept;
         auto SelectRange(winrt::Windows::UI::Xaml::Data::ItemIndexRange const& itemIndexRange) const;
         auto DeselectRange(winrt::Windows::UI::Xaml::Data::ItemIndexRange const& itemIndexRange) const;
@@ -20202,43 +20202,43 @@ namespace winrt::impl
         [[nodiscard]] auto IsStereo3DVideo() const;
         auto MediaOpened(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using MediaOpened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_MediaOpened>;
-        [[nodiscard]] MediaOpened_revoker MediaOpened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto MediaOpened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto MediaOpened(winrt::event_token const& token) const noexcept;
         auto MediaEnded(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using MediaEnded_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_MediaEnded>;
-        [[nodiscard]] MediaEnded_revoker MediaEnded(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto MediaEnded(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto MediaEnded(winrt::event_token const& token) const noexcept;
         auto MediaFailed(winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
         using MediaFailed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_MediaFailed>;
-        [[nodiscard]] MediaFailed_revoker MediaFailed(auto_revoke_t, winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
+        [[nodiscard]] auto MediaFailed(auto_revoke_t, winrt::Windows::UI::Xaml::ExceptionRoutedEventHandler const& handler) const;
         auto MediaFailed(winrt::event_token const& token) const noexcept;
         auto DownloadProgressChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using DownloadProgressChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_DownloadProgressChanged>;
-        [[nodiscard]] DownloadProgressChanged_revoker DownloadProgressChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto DownloadProgressChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto DownloadProgressChanged(winrt::event_token const& token) const noexcept;
         auto BufferingProgressChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using BufferingProgressChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_BufferingProgressChanged>;
-        [[nodiscard]] BufferingProgressChanged_revoker BufferingProgressChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto BufferingProgressChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto BufferingProgressChanged(winrt::event_token const& token) const noexcept;
         auto CurrentStateChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using CurrentStateChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_CurrentStateChanged>;
-        [[nodiscard]] CurrentStateChanged_revoker CurrentStateChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto CurrentStateChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto CurrentStateChanged(winrt::event_token const& token) const noexcept;
         auto MarkerReached(winrt::Windows::UI::Xaml::Media::TimelineMarkerRoutedEventHandler const& handler) const;
         using MarkerReached_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_MarkerReached>;
-        [[nodiscard]] MarkerReached_revoker MarkerReached(auto_revoke_t, winrt::Windows::UI::Xaml::Media::TimelineMarkerRoutedEventHandler const& handler) const;
+        [[nodiscard]] auto MarkerReached(auto_revoke_t, winrt::Windows::UI::Xaml::Media::TimelineMarkerRoutedEventHandler const& handler) const;
         auto MarkerReached(winrt::event_token const& token) const noexcept;
         auto RateChanged(winrt::Windows::UI::Xaml::Media::RateChangedRoutedEventHandler const& handler) const;
         using RateChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_RateChanged>;
-        [[nodiscard]] RateChanged_revoker RateChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Media::RateChangedRoutedEventHandler const& handler) const;
+        [[nodiscard]] auto RateChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Media::RateChangedRoutedEventHandler const& handler) const;
         auto RateChanged(winrt::event_token const& token) const noexcept;
         auto VolumeChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using VolumeChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_VolumeChanged>;
-        [[nodiscard]] VolumeChanged_revoker VolumeChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto VolumeChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto VolumeChanged(winrt::event_token const& token) const noexcept;
         auto SeekCompleted(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using SeekCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement>::remove_SeekCompleted>;
-        [[nodiscard]] SeekCompleted_revoker SeekCompleted(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto SeekCompleted(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto SeekCompleted(winrt::event_token const& token) const noexcept;
         auto Stop() const;
         auto Play() const;
@@ -20279,7 +20279,7 @@ namespace winrt::impl
         auto TransportControls(winrt::Windows::UI::Xaml::Controls::MediaTransportControls const& value) const;
         auto PartialMediaFailureDetected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::MediaElement, winrt::Windows::UI::Xaml::Media::PartialMediaFailureDetectedEventArgs> const& handler) const;
         using PartialMediaFailureDetected_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaElement3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaElement3>::remove_PartialMediaFailureDetected>;
-        [[nodiscard]] PartialMediaFailureDetected_revoker PartialMediaFailureDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::MediaElement, winrt::Windows::UI::Xaml::Media::PartialMediaFailureDetectedEventArgs> const& handler) const;
+        [[nodiscard]] auto PartialMediaFailureDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::MediaElement, winrt::Windows::UI::Xaml::Media::PartialMediaFailureDetectedEventArgs> const& handler) const;
         auto PartialMediaFailureDetected(winrt::event_token const& token) const noexcept;
         auto SetPlaybackSource(winrt::Windows::Media::Playback::IMediaPlaybackSource const& source) const;
         auto GetAsCastingSource() const;
@@ -20484,7 +20484,7 @@ namespace winrt::impl
         auto FastPlayFallbackBehaviour(winrt::Windows::UI::Xaml::Media::FastPlayFallbackBehaviour const& value) const;
         auto ThumbnailRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::MediaTransportControls, winrt::Windows::UI::Xaml::Media::MediaTransportControlsThumbnailRequestedEventArgs> const& handler) const;
         using ThumbnailRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMediaTransportControls2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMediaTransportControls2>::remove_ThumbnailRequested>;
-        [[nodiscard]] ThumbnailRequested_revoker ThumbnailRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::MediaTransportControls, winrt::Windows::UI::Xaml::Media::MediaTransportControlsThumbnailRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ThumbnailRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::MediaTransportControls, winrt::Windows::UI::Xaml::Media::MediaTransportControlsThumbnailRequestedEventArgs> const& handler) const;
         auto ThumbnailRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IMediaTransportControls2>
@@ -20722,7 +20722,7 @@ namespace winrt::impl
         auto CommandParameter(winrt::Windows::Foundation::IInspectable const& value) const;
         auto Click(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using Click_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItem, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItem>::remove_Click>;
-        [[nodiscard]] Click_revoker Click(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto Click(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto Click(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IMenuFlyoutItem>
@@ -20971,15 +20971,15 @@ namespace winrt::impl
         auto ContainerFromMenuItem(winrt::Windows::Foundation::IInspectable const& item) const;
         auto SelectionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs> const& handler) const;
         using SelectionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::INavigationView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::INavigationView>::remove_SelectionChanged>;
-        [[nodiscard]] SelectionChanged_revoker SelectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SelectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs> const& handler) const;
         auto SelectionChanged(winrt::event_token const& token) const noexcept;
         auto ItemInvoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs> const& handler) const;
         using ItemInvoked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::INavigationView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::INavigationView>::remove_ItemInvoked>;
-        [[nodiscard]] ItemInvoked_revoker ItemInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs> const& handler) const;
         auto ItemInvoked(winrt::event_token const& token) const noexcept;
         auto DisplayModeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewDisplayModeChangedEventArgs> const& handler) const;
         using DisplayModeChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::INavigationView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::INavigationView>::remove_DisplayModeChanged>;
-        [[nodiscard]] DisplayModeChanged_revoker DisplayModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewDisplayModeChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto DisplayModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewDisplayModeChangedEventArgs> const& handler) const;
         auto DisplayModeChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::INavigationView>
@@ -20997,23 +20997,23 @@ namespace winrt::impl
         auto PaneTitle(param::hstring const& value) const;
         auto BackRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewBackRequestedEventArgs> const& handler) const;
         using BackRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::INavigationView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::INavigationView2>::remove_BackRequested>;
-        [[nodiscard]] BackRequested_revoker BackRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewBackRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto BackRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewBackRequestedEventArgs> const& handler) const;
         auto BackRequested(winrt::event_token const& token) const noexcept;
         auto PaneClosed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PaneClosed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::INavigationView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::INavigationView2>::remove_PaneClosed>;
-        [[nodiscard]] PaneClosed_revoker PaneClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PaneClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PaneClosed(winrt::event_token const& token) const noexcept;
         auto PaneClosing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewPaneClosingEventArgs> const& handler) const;
         using PaneClosing_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::INavigationView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::INavigationView2>::remove_PaneClosing>;
-        [[nodiscard]] PaneClosing_revoker PaneClosing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewPaneClosingEventArgs> const& handler) const;
+        [[nodiscard]] auto PaneClosing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::UI::Xaml::Controls::NavigationViewPaneClosingEventArgs> const& handler) const;
         auto PaneClosing(winrt::event_token const& token) const noexcept;
         auto PaneOpened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PaneOpened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::INavigationView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::INavigationView2>::remove_PaneOpened>;
-        [[nodiscard]] PaneOpened_revoker PaneOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PaneOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PaneOpened(winrt::event_token const& token) const noexcept;
         auto PaneOpening(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PaneOpening_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::INavigationView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::INavigationView2>::remove_PaneOpening>;
-        [[nodiscard]] PaneOpening_revoker PaneOpening(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PaneOpening(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::NavigationView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PaneOpening(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::INavigationView2>
@@ -21524,11 +21524,11 @@ namespace winrt::impl
         auto MaxLength(int32_t value) const;
         auto PasswordChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using PasswordChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPasswordBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPasswordBox>::remove_PasswordChanged>;
-        [[nodiscard]] PasswordChanged_revoker PasswordChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto PasswordChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto PasswordChanged(winrt::event_token const& token) const noexcept;
         auto ContextMenuOpening(winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         using ContextMenuOpening_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPasswordBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPasswordBox>::remove_ContextMenuOpening>;
-        [[nodiscard]] ContextMenuOpening_revoker ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
+        [[nodiscard]] auto ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         auto ContextMenuOpening(winrt::event_token const& token) const noexcept;
         auto SelectAll() const;
     };
@@ -21551,7 +21551,7 @@ namespace winrt::impl
         auto PreventKeyboardDisplayOnProgrammaticFocus(bool value) const;
         auto Paste(winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
         using Paste_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPasswordBox2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPasswordBox2>::remove_Paste>;
-        [[nodiscard]] Paste_revoker Paste(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
+        [[nodiscard]] auto Paste(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
         auto Paste(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IPasswordBox2>
@@ -21577,7 +21577,7 @@ namespace winrt::impl
     {
         auto PasswordChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::PasswordBox, winrt::Windows::UI::Xaml::Controls::PasswordBoxPasswordChangingEventArgs> const& handler) const;
         using PasswordChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPasswordBox4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPasswordBox4>::remove_PasswordChanging>;
-        [[nodiscard]] PasswordChanging_revoker PasswordChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::PasswordBox, winrt::Windows::UI::Xaml::Controls::PasswordBoxPasswordChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto PasswordChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::PasswordBox, winrt::Windows::UI::Xaml::Controls::PasswordBoxPasswordChangingEventArgs> const& handler) const;
         auto PasswordChanging(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IPasswordBox4>
@@ -21782,7 +21782,7 @@ namespace winrt::impl
         auto ConfirmationButtonsVisible(bool value) const;
         auto Confirmed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::PickerFlyout, winrt::Windows::UI::Xaml::Controls::PickerConfirmedEventArgs> const& handler) const;
         using Confirmed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPickerFlyout, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPickerFlyout>::remove_Confirmed>;
-        [[nodiscard]] Confirmed_revoker Confirmed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::PickerFlyout, winrt::Windows::UI::Xaml::Controls::PickerConfirmedEventArgs> const& handler) const;
+        [[nodiscard]] auto Confirmed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::PickerFlyout, winrt::Windows::UI::Xaml::Controls::PickerConfirmedEventArgs> const& handler) const;
         auto Confirmed(winrt::event_token const& token) const noexcept;
         auto ShowAtAsync(winrt::Windows::UI::Xaml::FrameworkElement const& target) const;
     };
@@ -21825,23 +21825,23 @@ namespace winrt::impl
         auto IsLocked(bool value) const;
         auto SelectionChanged(winrt::Windows::UI::Xaml::Controls::SelectionChangedEventHandler const& handler) const;
         using SelectionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPivot, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPivot>::remove_SelectionChanged>;
-        [[nodiscard]] SelectionChanged_revoker SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::SelectionChangedEventHandler const& handler) const;
+        [[nodiscard]] auto SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::SelectionChangedEventHandler const& handler) const;
         auto SelectionChanged(winrt::event_token const& token) const noexcept;
         auto PivotItemLoading(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
         using PivotItemLoading_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPivot, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPivot>::remove_PivotItemLoading>;
-        [[nodiscard]] PivotItemLoading_revoker PivotItemLoading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
+        [[nodiscard]] auto PivotItemLoading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
         auto PivotItemLoading(winrt::event_token const& token) const noexcept;
         auto PivotItemLoaded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
         using PivotItemLoaded_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPivot, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPivot>::remove_PivotItemLoaded>;
-        [[nodiscard]] PivotItemLoaded_revoker PivotItemLoaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
+        [[nodiscard]] auto PivotItemLoaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
         auto PivotItemLoaded(winrt::event_token const& token) const noexcept;
         auto PivotItemUnloading(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
         using PivotItemUnloading_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPivot, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPivot>::remove_PivotItemUnloading>;
-        [[nodiscard]] PivotItemUnloading_revoker PivotItemUnloading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
+        [[nodiscard]] auto PivotItemUnloading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
         auto PivotItemUnloading(winrt::event_token const& token) const noexcept;
         auto PivotItemUnloaded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
         using PivotItemUnloaded_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IPivot, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IPivot>::remove_PivotItemUnloaded>;
-        [[nodiscard]] PivotItemUnloaded_revoker PivotItemUnloaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
+        [[nodiscard]] auto PivotItemUnloaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Pivot, winrt::Windows::UI::Xaml::Controls::PivotItemEventArgs> const& handler) const;
         auto PivotItemUnloaded(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IPivot>
@@ -22066,7 +22066,7 @@ namespace winrt::impl
         auto Value(double value) const;
         auto ValueChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RatingControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ValueChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRatingControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRatingControl>::remove_ValueChanged>;
-        [[nodiscard]] ValueChanged_revoker ValueChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RatingControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ValueChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RatingControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ValueChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRatingControl>
@@ -22210,7 +22210,7 @@ namespace winrt::impl
         auto PullDirection(winrt::Windows::UI::Xaml::Controls::RefreshPullDirection const& value) const;
         auto RefreshRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshContainer, winrt::Windows::UI::Xaml::Controls::RefreshRequestedEventArgs> const& handler) const;
         using RefreshRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRefreshContainer, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRefreshContainer>::remove_RefreshRequested>;
-        [[nodiscard]] RefreshRequested_revoker RefreshRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshContainer, winrt::Windows::UI::Xaml::Controls::RefreshRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto RefreshRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshContainer, winrt::Windows::UI::Xaml::Controls::RefreshRequestedEventArgs> const& handler) const;
         auto RefreshRequested(winrt::event_token const& token) const noexcept;
         auto RequestRefresh() const;
     };
@@ -22276,11 +22276,11 @@ namespace winrt::impl
         [[nodiscard]] auto State() const;
         auto RefreshRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshVisualizer, winrt::Windows::UI::Xaml::Controls::RefreshRequestedEventArgs> const& handler) const;
         using RefreshRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRefreshVisualizer, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRefreshVisualizer>::remove_RefreshRequested>;
-        [[nodiscard]] RefreshRequested_revoker RefreshRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshVisualizer, winrt::Windows::UI::Xaml::Controls::RefreshRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto RefreshRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshVisualizer, winrt::Windows::UI::Xaml::Controls::RefreshRequestedEventArgs> const& handler) const;
         auto RefreshRequested(winrt::event_token const& token) const noexcept;
         auto RefreshStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshVisualizer, winrt::Windows::UI::Xaml::Controls::RefreshStateChangedEventArgs> const& handler) const;
         using RefreshStateChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRefreshVisualizer, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRefreshVisualizer>::remove_RefreshStateChanged>;
-        [[nodiscard]] RefreshStateChanged_revoker RefreshStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshVisualizer, winrt::Windows::UI::Xaml::Controls::RefreshStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto RefreshStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RefreshVisualizer, winrt::Windows::UI::Xaml::Controls::RefreshStateChangedEventArgs> const& handler) const;
         auto RefreshStateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRefreshVisualizer>
@@ -22432,15 +22432,15 @@ namespace winrt::impl
         auto InputScope(winrt::Windows::UI::Xaml::Input::InputScope const& value) const;
         auto TextChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using TextChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox>::remove_TextChanged>;
-        [[nodiscard]] TextChanged_revoker TextChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto TextChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto TextChanged(winrt::event_token const& token) const noexcept;
         auto SelectionChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using SelectionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox>::remove_SelectionChanged>;
-        [[nodiscard]] SelectionChanged_revoker SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto SelectionChanged(winrt::event_token const& token) const noexcept;
         auto ContextMenuOpening(winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         using ContextMenuOpening_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox>::remove_ContextMenuOpening>;
-        [[nodiscard]] ContextMenuOpening_revoker ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
+        [[nodiscard]] auto ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         auto ContextMenuOpening(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRichEditBox>
@@ -22464,7 +22464,7 @@ namespace winrt::impl
         auto IsColorFontEnabled(bool value) const;
         auto Paste(winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
         using Paste_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox2>::remove_Paste>;
-        [[nodiscard]] Paste_revoker Paste(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
+        [[nodiscard]] auto Paste(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
         auto Paste(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRichEditBox2>
@@ -22476,15 +22476,15 @@ namespace winrt::impl
     {
         auto TextCompositionStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionStartedEventArgs> const& handler) const;
         using TextCompositionStarted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox3>::remove_TextCompositionStarted>;
-        [[nodiscard]] TextCompositionStarted_revoker TextCompositionStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextCompositionStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionStartedEventArgs> const& handler) const;
         auto TextCompositionStarted(winrt::event_token const& token) const noexcept;
         auto TextCompositionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionChangedEventArgs> const& handler) const;
         using TextCompositionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox3>::remove_TextCompositionChanged>;
-        [[nodiscard]] TextCompositionChanged_revoker TextCompositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextCompositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionChangedEventArgs> const& handler) const;
         auto TextCompositionChanged(winrt::event_token const& token) const noexcept;
         auto TextCompositionEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionEndedEventArgs> const& handler) const;
         using TextCompositionEnded_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox3>::remove_TextCompositionEnded>;
-        [[nodiscard]] TextCompositionEnded_revoker TextCompositionEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionEndedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextCompositionEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextCompositionEndedEventArgs> const& handler) const;
         auto TextCompositionEnded(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto TextReadingOrder() const;
         auto TextReadingOrder(winrt::Windows::UI::Xaml::TextReadingOrder const& value) const;
@@ -22492,11 +22492,11 @@ namespace winrt::impl
         auto DesiredCandidateWindowAlignment(winrt::Windows::UI::Xaml::Controls::CandidateWindowAlignment const& value) const;
         auto CandidateWindowBoundsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::CandidateWindowBoundsChangedEventArgs> const& handler) const;
         using CandidateWindowBoundsChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox3>::remove_CandidateWindowBoundsChanged>;
-        [[nodiscard]] CandidateWindowBoundsChanged_revoker CandidateWindowBoundsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::CandidateWindowBoundsChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto CandidateWindowBoundsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::CandidateWindowBoundsChangedEventArgs> const& handler) const;
         auto CandidateWindowBoundsChanged(winrt::event_token const& token) const noexcept;
         auto TextChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::RichEditBoxTextChangingEventArgs> const& handler) const;
         using TextChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox3>::remove_TextChanging>;
-        [[nodiscard]] TextChanging_revoker TextChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::RichEditBoxTextChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto TextChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::RichEditBoxTextChangingEventArgs> const& handler) const;
         auto TextChanging(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRichEditBox3>
@@ -22537,11 +22537,11 @@ namespace winrt::impl
         auto DisabledFormattingAccelerators(winrt::Windows::UI::Xaml::Controls::DisabledFormattingAccelerators const& value) const;
         auto CopyingToClipboard(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextControlCopyingToClipboardEventArgs> const& handler) const;
         using CopyingToClipboard_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox6, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox6>::remove_CopyingToClipboard>;
-        [[nodiscard]] CopyingToClipboard_revoker CopyingToClipboard(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextControlCopyingToClipboardEventArgs> const& handler) const;
+        [[nodiscard]] auto CopyingToClipboard(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextControlCopyingToClipboardEventArgs> const& handler) const;
         auto CopyingToClipboard(winrt::event_token const& token) const noexcept;
         auto CuttingToClipboard(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextControlCuttingToClipboardEventArgs> const& handler) const;
         using CuttingToClipboard_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox6, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox6>::remove_CuttingToClipboard>;
-        [[nodiscard]] CuttingToClipboard_revoker CuttingToClipboard(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextControlCuttingToClipboardEventArgs> const& handler) const;
+        [[nodiscard]] auto CuttingToClipboard(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::TextControlCuttingToClipboardEventArgs> const& handler) const;
         auto CuttingToClipboard(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRichEditBox6>
@@ -22563,11 +22563,11 @@ namespace winrt::impl
         auto IsHandwritingViewEnabled(bool value) const;
         auto ContentLinkChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::ContentLinkChangedEventArgs> const& handler) const;
         using ContentLinkChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox7, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox7>::remove_ContentLinkChanged>;
-        [[nodiscard]] ContentLinkChanged_revoker ContentLinkChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::ContentLinkChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ContentLinkChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::ContentLinkChangedEventArgs> const& handler) const;
         auto ContentLinkChanged(winrt::event_token const& token) const noexcept;
         auto ContentLinkInvoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Documents::ContentLinkInvokedEventArgs> const& handler) const;
         using ContentLinkInvoked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox7, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox7>::remove_ContentLinkInvoked>;
-        [[nodiscard]] ContentLinkInvoked_revoker ContentLinkInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Documents::ContentLinkInvokedEventArgs> const& handler) const;
+        [[nodiscard]] auto ContentLinkInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Documents::ContentLinkInvokedEventArgs> const& handler) const;
         auto ContentLinkInvoked(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRichEditBox7>
@@ -22585,7 +22585,7 @@ namespace winrt::impl
         auto Description(winrt::Windows::Foundation::IInspectable const& value) const;
         auto SelectionChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::RichEditBoxSelectionChangingEventArgs> const& handler) const;
         using SelectionChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichEditBox8, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichEditBox8>::remove_SelectionChanging>;
-        [[nodiscard]] SelectionChanging_revoker SelectionChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::RichEditBoxSelectionChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto SelectionChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichEditBox, winrt::Windows::UI::Xaml::Controls::RichEditBoxSelectionChangingEventArgs> const& handler) const;
         auto SelectionChanging(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRichEditBox8>
@@ -22766,11 +22766,11 @@ namespace winrt::impl
         [[nodiscard]] auto BaselineOffset() const;
         auto SelectionChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using SelectionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichTextBlock, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichTextBlock>::remove_SelectionChanged>;
-        [[nodiscard]] SelectionChanged_revoker SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto SelectionChanged(winrt::event_token const& token) const noexcept;
         auto ContextMenuOpening(winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         using ContextMenuOpening_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichTextBlock, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichTextBlock>::remove_ContextMenuOpening>;
-        [[nodiscard]] ContextMenuOpening_revoker ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
+        [[nodiscard]] auto ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         auto ContextMenuOpening(winrt::event_token const& token) const noexcept;
         auto SelectAll() const;
         auto Select(winrt::Windows::UI::Xaml::Documents::TextPointer const& start, winrt::Windows::UI::Xaml::Documents::TextPointer const& end) const;
@@ -22832,7 +22832,7 @@ namespace winrt::impl
         [[nodiscard]] auto TextHighlighters() const;
         auto IsTextTrimmedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichTextBlock, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
         using IsTextTrimmedChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichTextBlock5, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichTextBlock5>::remove_IsTextTrimmedChanged>;
-        [[nodiscard]] IsTextTrimmedChanged_revoker IsTextTrimmedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichTextBlock, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto IsTextTrimmedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichTextBlock, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
         auto IsTextTrimmedChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRichTextBlock5>
@@ -22885,7 +22885,7 @@ namespace winrt::impl
         [[nodiscard]] auto IsTextTrimmed() const;
         auto IsTextTrimmedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichTextBlockOverflow, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
         using IsTextTrimmedChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflow3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflow3>::remove_IsTextTrimmedChanged>;
-        [[nodiscard]] IsTextTrimmedChanged_revoker IsTextTrimmedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichTextBlockOverflow, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto IsTextTrimmedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::RichTextBlockOverflow, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
         auto IsTextTrimmedChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IRichTextBlockOverflow3>
@@ -23147,7 +23147,7 @@ namespace winrt::impl
         [[nodiscard]] auto ZoomSnapPoints() const;
         auto ViewChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewerViewChangedEventArgs> const& handler) const;
         using ViewChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IScrollViewer, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IScrollViewer>::remove_ViewChanged>;
-        [[nodiscard]] ViewChanged_revoker ViewChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewerViewChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ViewChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewerViewChangedEventArgs> const& handler) const;
         auto ViewChanged(winrt::event_token const& token) const noexcept;
         auto ScrollToHorizontalOffset(double offset) const;
         auto ScrollToVerticalOffset(double offset) const;
@@ -23173,7 +23173,7 @@ namespace winrt::impl
         auto TopHeader(winrt::Windows::UI::Xaml::UIElement const& value) const;
         auto ViewChanging(winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewerViewChangingEventArgs> const& handler) const;
         using ViewChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IScrollViewer2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IScrollViewer2>::remove_ViewChanging>;
-        [[nodiscard]] ViewChanging_revoker ViewChanging(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewerViewChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto ViewChanging(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewerViewChangingEventArgs> const& handler) const;
         auto ViewChanging(winrt::event_token const& token) const noexcept;
         auto ChangeView(winrt::Windows::Foundation::IReference<double> const& horizontalOffset, winrt::Windows::Foundation::IReference<double> const& verticalOffset, winrt::Windows::Foundation::IReference<float> const& zoomFactor) const;
         auto ChangeView(winrt::Windows::Foundation::IReference<double> const& horizontalOffset, winrt::Windows::Foundation::IReference<double> const& verticalOffset, winrt::Windows::Foundation::IReference<float> const& zoomFactor, bool disableAnimation) const;
@@ -23187,11 +23187,11 @@ namespace winrt::impl
     {
         auto DirectManipulationStarted(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DirectManipulationStarted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IScrollViewer3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IScrollViewer3>::remove_DirectManipulationStarted>;
-        [[nodiscard]] DirectManipulationStarted_revoker DirectManipulationStarted(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DirectManipulationStarted(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DirectManipulationStarted(winrt::event_token const& token) const noexcept;
         auto DirectManipulationCompleted(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DirectManipulationCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IScrollViewer3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IScrollViewer3>::remove_DirectManipulationCompleted>;
-        [[nodiscard]] DirectManipulationCompleted_revoker DirectManipulationCompleted(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DirectManipulationCompleted(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DirectManipulationCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IScrollViewer3>
@@ -23211,7 +23211,7 @@ namespace winrt::impl
         auto CanContentRenderOutsideBounds(bool value) const;
         auto AnchorRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewer, winrt::Windows::UI::Xaml::Controls::AnchorRequestedEventArgs> const& handler) const;
         using AnchorRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IScrollViewer4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IScrollViewer4>::remove_AnchorRequested>;
-        [[nodiscard]] AnchorRequested_revoker AnchorRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewer, winrt::Windows::UI::Xaml::Controls::AnchorRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto AnchorRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ScrollViewer, winrt::Windows::UI::Xaml::Controls::AnchorRequestedEventArgs> const& handler) const;
         auto AnchorRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IScrollViewer4>
@@ -23360,23 +23360,23 @@ namespace winrt::impl
         auto ChooseSuggestionOnEnter(bool value) const;
         auto QueryChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxQueryChangedEventArgs> const& handler) const;
         using QueryChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISearchBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISearchBox>::remove_QueryChanged>;
-        [[nodiscard]] QueryChanged_revoker QueryChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxQueryChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto QueryChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxQueryChangedEventArgs> const& handler) const;
         auto QueryChanged(winrt::event_token const& token) const noexcept;
         auto SuggestionsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxSuggestionsRequestedEventArgs> const& handler) const;
         using SuggestionsRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISearchBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISearchBox>::remove_SuggestionsRequested>;
-        [[nodiscard]] SuggestionsRequested_revoker SuggestionsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxSuggestionsRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto SuggestionsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxSuggestionsRequestedEventArgs> const& handler) const;
         auto SuggestionsRequested(winrt::event_token const& token) const noexcept;
         auto QuerySubmitted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxQuerySubmittedEventArgs> const& handler) const;
         using QuerySubmitted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISearchBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISearchBox>::remove_QuerySubmitted>;
-        [[nodiscard]] QuerySubmitted_revoker QuerySubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxQuerySubmittedEventArgs> const& handler) const;
+        [[nodiscard]] auto QuerySubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxQuerySubmittedEventArgs> const& handler) const;
         auto QuerySubmitted(winrt::event_token const& token) const noexcept;
         auto ResultSuggestionChosen(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxResultSuggestionChosenEventArgs> const& handler) const;
         using ResultSuggestionChosen_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISearchBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISearchBox>::remove_ResultSuggestionChosen>;
-        [[nodiscard]] ResultSuggestionChosen_revoker ResultSuggestionChosen(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxResultSuggestionChosenEventArgs> const& handler) const;
+        [[nodiscard]] auto ResultSuggestionChosen(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::Controls::SearchBoxResultSuggestionChosenEventArgs> const& handler) const;
         auto ResultSuggestionChosen(winrt::event_token const& token) const noexcept;
         auto PrepareForFocusOnKeyboardInput(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::RoutedEventArgs> const& handler) const;
         using PrepareForFocusOnKeyboardInput_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISearchBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISearchBox>::remove_PrepareForFocusOnKeyboardInput>;
-        [[nodiscard]] PrepareForFocusOnKeyboardInput_revoker PrepareForFocusOnKeyboardInput(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::RoutedEventArgs> const& handler) const;
+        [[nodiscard]] auto PrepareForFocusOnKeyboardInput(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SearchBox, winrt::Windows::UI::Xaml::RoutedEventArgs> const& handler) const;
         auto PrepareForFocusOnKeyboardInput(winrt::event_token const& token) const noexcept;
         auto SetLocalContentSuggestionSettings(winrt::Windows::ApplicationModel::Search::LocalContentSuggestionSettings const& settings) const;
     };
@@ -23502,11 +23502,11 @@ namespace winrt::impl
         auto CanChangeViews(bool value) const;
         auto ViewChangeStarted(winrt::Windows::UI::Xaml::Controls::SemanticZoomViewChangedEventHandler const& handler) const;
         using ViewChangeStarted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISemanticZoom, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISemanticZoom>::remove_ViewChangeStarted>;
-        [[nodiscard]] ViewChangeStarted_revoker ViewChangeStarted(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::SemanticZoomViewChangedEventHandler const& handler) const;
+        [[nodiscard]] auto ViewChangeStarted(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::SemanticZoomViewChangedEventHandler const& handler) const;
         auto ViewChangeStarted(winrt::event_token const& token) const noexcept;
         auto ViewChangeCompleted(winrt::Windows::UI::Xaml::Controls::SemanticZoomViewChangedEventHandler const& handler) const;
         using ViewChangeCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISemanticZoom, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISemanticZoom>::remove_ViewChangeCompleted>;
-        [[nodiscard]] ViewChangeCompleted_revoker ViewChangeCompleted(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::SemanticZoomViewChangedEventHandler const& handler) const;
+        [[nodiscard]] auto ViewChangeCompleted(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::SemanticZoomViewChangedEventHandler const& handler) const;
         auto ViewChangeCompleted(winrt::event_token const& token) const noexcept;
         auto ToggleActiveView() const;
         [[nodiscard]] auto IsZoomOutButtonEnabled() const;
@@ -23590,7 +23590,7 @@ namespace winrt::impl
         [[nodiscard]] auto TemplateSettings() const;
         auto BackClick(winrt::Windows::UI::Xaml::Controls::BackClickEventHandler const& handler) const;
         using BackClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISettingsFlyout, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISettingsFlyout>::remove_BackClick>;
-        [[nodiscard]] BackClick_revoker BackClick(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::BackClickEventHandler const& handler) const;
+        [[nodiscard]] auto BackClick(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::BackClickEventHandler const& handler) const;
         auto BackClick(winrt::event_token const& token) const noexcept;
         auto Show() const;
         auto ShowIndependent() const;
@@ -23706,7 +23706,7 @@ namespace winrt::impl
         auto CommandParameter(winrt::Windows::Foundation::IInspectable const& value) const;
         auto Click(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitButton, winrt::Windows::UI::Xaml::Controls::SplitButtonClickEventArgs> const& handler) const;
         using Click_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISplitButton, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISplitButton>::remove_Click>;
-        [[nodiscard]] Click_revoker Click(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitButton, winrt::Windows::UI::Xaml::Controls::SplitButtonClickEventArgs> const& handler) const;
+        [[nodiscard]] auto Click(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitButton, winrt::Windows::UI::Xaml::Controls::SplitButtonClickEventArgs> const& handler) const;
         auto Click(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ISplitButton>
@@ -23780,11 +23780,11 @@ namespace winrt::impl
         auto PaneBackground(winrt::Windows::UI::Xaml::Media::Brush const& value) const;
         auto PaneClosing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::UI::Xaml::Controls::SplitViewPaneClosingEventArgs> const& handler) const;
         using PaneClosing_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISplitView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISplitView>::remove_PaneClosing>;
-        [[nodiscard]] PaneClosing_revoker PaneClosing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::UI::Xaml::Controls::SplitViewPaneClosingEventArgs> const& handler) const;
+        [[nodiscard]] auto PaneClosing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::UI::Xaml::Controls::SplitViewPaneClosingEventArgs> const& handler) const;
         auto PaneClosing(winrt::event_token const& token) const noexcept;
         auto PaneClosed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PaneClosed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISplitView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISplitView>::remove_PaneClosed>;
-        [[nodiscard]] PaneClosed_revoker PaneClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PaneClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PaneClosed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ISplitView>
@@ -23806,11 +23806,11 @@ namespace winrt::impl
     {
         auto PaneOpening(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PaneOpening_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISplitView3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISplitView3>::remove_PaneOpening>;
-        [[nodiscard]] PaneOpening_revoker PaneOpening(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PaneOpening(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PaneOpening(winrt::event_token const& token) const noexcept;
         auto PaneOpened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PaneOpened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISplitView3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISplitView3>::remove_PaneOpened>;
-        [[nodiscard]] PaneOpened_revoker PaneOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PaneOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SplitView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PaneOpened(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ISplitView3>
@@ -24019,7 +24019,7 @@ namespace winrt::impl
         [[nodiscard]] auto CompositionScaleY() const;
         auto CompositionScaleChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SwapChainPanel, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CompositionScaleChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISwapChainPanel, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISwapChainPanel>::remove_CompositionScaleChanged>;
-        [[nodiscard]] CompositionScaleChanged_revoker CompositionScaleChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SwapChainPanel, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CompositionScaleChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SwapChainPanel, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CompositionScaleChanged(winrt::event_token const& token) const noexcept;
         auto CreateCoreIndependentInputSource(winrt::Windows::UI::Core::CoreInputDeviceTypes const& deviceTypes) const;
     };
@@ -24103,7 +24103,7 @@ namespace winrt::impl
         auto BehaviorOnInvoked(winrt::Windows::UI::Xaml::Controls::SwipeBehaviorOnInvoked const& value) const;
         auto Invoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SwipeItem, winrt::Windows::UI::Xaml::Controls::SwipeItemInvokedEventArgs> const& handler) const;
         using Invoked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ISwipeItem, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ISwipeItem>::remove_Invoked>;
-        [[nodiscard]] Invoked_revoker Invoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SwipeItem, winrt::Windows::UI::Xaml::Controls::SwipeItemInvokedEventArgs> const& handler) const;
+        [[nodiscard]] auto Invoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::SwipeItem, winrt::Windows::UI::Xaml::Controls::SwipeItemInvokedEventArgs> const& handler) const;
         auto Invoked(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ISwipeItem>
@@ -24269,11 +24269,11 @@ namespace winrt::impl
         [[nodiscard]] auto BaselineOffset() const;
         auto SelectionChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using SelectionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBlock, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBlock>::remove_SelectionChanged>;
-        [[nodiscard]] SelectionChanged_revoker SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto SelectionChanged(winrt::event_token const& token) const noexcept;
         auto ContextMenuOpening(winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         using ContextMenuOpening_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBlock, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBlock>::remove_ContextMenuOpening>;
-        [[nodiscard]] ContextMenuOpening_revoker ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
+        [[nodiscard]] auto ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         auto ContextMenuOpening(winrt::event_token const& token) const noexcept;
         auto SelectAll() const;
         auto Select(winrt::Windows::UI::Xaml::Documents::TextPointer const& start, winrt::Windows::UI::Xaml::Documents::TextPointer const& end) const;
@@ -24341,7 +24341,7 @@ namespace winrt::impl
         [[nodiscard]] auto TextHighlighters() const;
         auto IsTextTrimmedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBlock, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
         using IsTextTrimmedChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBlock6, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBlock6>::remove_IsTextTrimmedChanged>;
-        [[nodiscard]] IsTextTrimmedChanged_revoker IsTextTrimmedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBlock, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto IsTextTrimmedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBlock, winrt::Windows::UI::Xaml::Controls::IsTextTrimmedChangedEventArgs> const& handler) const;
         auto IsTextTrimmedChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITextBlock6>
@@ -24463,15 +24463,15 @@ namespace winrt::impl
         auto InputScope(winrt::Windows::UI::Xaml::Input::InputScope const& value) const;
         auto TextChanged(winrt::Windows::UI::Xaml::Controls::TextChangedEventHandler const& handler) const;
         using TextChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox>::remove_TextChanged>;
-        [[nodiscard]] TextChanged_revoker TextChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::TextChangedEventHandler const& handler) const;
+        [[nodiscard]] auto TextChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::TextChangedEventHandler const& handler) const;
         auto TextChanged(winrt::event_token const& token) const noexcept;
         auto SelectionChanged(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using SelectionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox>::remove_SelectionChanged>;
-        [[nodiscard]] SelectionChanged_revoker SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto SelectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto SelectionChanged(winrt::event_token const& token) const noexcept;
         auto ContextMenuOpening(winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         using ContextMenuOpening_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox>::remove_ContextMenuOpening>;
-        [[nodiscard]] ContextMenuOpening_revoker ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
+        [[nodiscard]] auto ContextMenuOpening(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::ContextMenuOpeningEventHandler const& handler) const;
         auto ContextMenuOpening(winrt::event_token const& token) const noexcept;
         auto Select(int32_t start, int32_t length) const;
         auto SelectAll() const;
@@ -24498,7 +24498,7 @@ namespace winrt::impl
         auto IsColorFontEnabled(bool value) const;
         auto Paste(winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
         using Paste_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox2>::remove_Paste>;
-        [[nodiscard]] Paste_revoker Paste(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
+        [[nodiscard]] auto Paste(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::TextControlPasteEventHandler const& handler) const;
         auto Paste(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITextBox2>
@@ -24510,15 +24510,15 @@ namespace winrt::impl
     {
         auto TextCompositionStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionStartedEventArgs> const& handler) const;
         using TextCompositionStarted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox3>::remove_TextCompositionStarted>;
-        [[nodiscard]] TextCompositionStarted_revoker TextCompositionStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextCompositionStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionStartedEventArgs> const& handler) const;
         auto TextCompositionStarted(winrt::event_token const& token) const noexcept;
         auto TextCompositionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionChangedEventArgs> const& handler) const;
         using TextCompositionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox3>::remove_TextCompositionChanged>;
-        [[nodiscard]] TextCompositionChanged_revoker TextCompositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextCompositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionChangedEventArgs> const& handler) const;
         auto TextCompositionChanged(winrt::event_token const& token) const noexcept;
         auto TextCompositionEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionEndedEventArgs> const& handler) const;
         using TextCompositionEnded_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox3>::remove_TextCompositionEnded>;
-        [[nodiscard]] TextCompositionEnded_revoker TextCompositionEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionEndedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextCompositionEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextCompositionEndedEventArgs> const& handler) const;
         auto TextCompositionEnded(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto TextReadingOrder() const;
         auto TextReadingOrder(winrt::Windows::UI::Xaml::TextReadingOrder const& value) const;
@@ -24526,11 +24526,11 @@ namespace winrt::impl
         auto DesiredCandidateWindowAlignment(winrt::Windows::UI::Xaml::Controls::CandidateWindowAlignment const& value) const;
         auto CandidateWindowBoundsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::CandidateWindowBoundsChangedEventArgs> const& handler) const;
         using CandidateWindowBoundsChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox3>::remove_CandidateWindowBoundsChanged>;
-        [[nodiscard]] CandidateWindowBoundsChanged_revoker CandidateWindowBoundsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::CandidateWindowBoundsChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto CandidateWindowBoundsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::CandidateWindowBoundsChangedEventArgs> const& handler) const;
         auto CandidateWindowBoundsChanged(winrt::event_token const& token) const noexcept;
         auto TextChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxTextChangingEventArgs> const& handler) const;
         using TextChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox3>::remove_TextChanging>;
-        [[nodiscard]] TextChanging_revoker TextChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxTextChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto TextChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxTextChangingEventArgs> const& handler) const;
         auto TextChanging(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITextBox3>
@@ -24567,15 +24567,15 @@ namespace winrt::impl
         auto PlaceholderForeground(winrt::Windows::UI::Xaml::Media::Brush const& value) const;
         auto CopyingToClipboard(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextControlCopyingToClipboardEventArgs> const& handler) const;
         using CopyingToClipboard_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox6, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox6>::remove_CopyingToClipboard>;
-        [[nodiscard]] CopyingToClipboard_revoker CopyingToClipboard(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextControlCopyingToClipboardEventArgs> const& handler) const;
+        [[nodiscard]] auto CopyingToClipboard(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextControlCopyingToClipboardEventArgs> const& handler) const;
         auto CopyingToClipboard(winrt::event_token const& token) const noexcept;
         auto CuttingToClipboard(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextControlCuttingToClipboardEventArgs> const& handler) const;
         using CuttingToClipboard_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox6, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox6>::remove_CuttingToClipboard>;
-        [[nodiscard]] CuttingToClipboard_revoker CuttingToClipboard(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextControlCuttingToClipboardEventArgs> const& handler) const;
+        [[nodiscard]] auto CuttingToClipboard(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextControlCuttingToClipboardEventArgs> const& handler) const;
         auto CuttingToClipboard(winrt::event_token const& token) const noexcept;
         auto BeforeTextChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxBeforeTextChangingEventArgs> const& handler) const;
         using BeforeTextChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox6, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox6>::remove_BeforeTextChanging>;
-        [[nodiscard]] BeforeTextChanging_revoker BeforeTextChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxBeforeTextChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto BeforeTextChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxBeforeTextChangingEventArgs> const& handler) const;
         auto BeforeTextChanging(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITextBox6>
@@ -24607,7 +24607,7 @@ namespace winrt::impl
         auto Description(winrt::Windows::Foundation::IInspectable const& value) const;
         auto SelectionChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxSelectionChangingEventArgs> const& handler) const;
         using SelectionChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITextBox8, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITextBox8>::remove_SelectionChanging>;
-        [[nodiscard]] SelectionChanging_revoker SelectionChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxSelectionChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto SelectionChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TextBox, winrt::Windows::UI::Xaml::Controls::TextBoxSelectionChangingEventArgs> const& handler) const;
         auto SelectionChanging(winrt::event_token const& token) const noexcept;
         auto Undo() const;
         auto Redo() const;
@@ -24864,7 +24864,7 @@ namespace winrt::impl
         auto Time(winrt::Windows::Foundation::TimeSpan const& value) const;
         auto TimeChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::TimePickerValueChangedEventArgs> const& handler) const;
         using TimeChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITimePicker, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITimePicker>::remove_TimeChanged>;
-        [[nodiscard]] TimeChanged_revoker TimeChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::TimePickerValueChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TimeChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Xaml::Controls::TimePickerValueChangedEventArgs> const& handler) const;
         auto TimeChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITimePicker>
@@ -24888,7 +24888,7 @@ namespace winrt::impl
         auto SelectedTime(winrt::Windows::Foundation::IReference<winrt::Windows::Foundation::TimeSpan> const& value) const;
         auto SelectedTimeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TimePicker, winrt::Windows::UI::Xaml::Controls::TimePickerSelectedValueChangedEventArgs> const& handler) const;
         using SelectedTimeChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITimePicker3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITimePicker3>::remove_SelectedTimeChanged>;
-        [[nodiscard]] SelectedTimeChanged_revoker SelectedTimeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TimePicker, winrt::Windows::UI::Xaml::Controls::TimePickerSelectedValueChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SelectedTimeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TimePicker, winrt::Windows::UI::Xaml::Controls::TimePickerSelectedValueChangedEventArgs> const& handler) const;
         auto SelectedTimeChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITimePicker3>
@@ -24915,7 +24915,7 @@ namespace winrt::impl
         auto MinuteIncrement(int32_t value) const;
         auto TimePicked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TimePickerFlyout, winrt::Windows::UI::Xaml::Controls::TimePickedEventArgs> const& handler) const;
         using TimePicked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITimePickerFlyout, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITimePickerFlyout>::remove_TimePicked>;
-        [[nodiscard]] TimePicked_revoker TimePicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TimePickerFlyout, winrt::Windows::UI::Xaml::Controls::TimePickedEventArgs> const& handler) const;
+        [[nodiscard]] auto TimePicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TimePickerFlyout, winrt::Windows::UI::Xaml::Controls::TimePickedEventArgs> const& handler) const;
         auto TimePicked(winrt::event_token const& token) const noexcept;
         auto ShowAtAsync(winrt::Windows::UI::Xaml::FrameworkElement const& target) const;
     };
@@ -25047,7 +25047,7 @@ namespace winrt::impl
         auto IsChecked(bool value) const;
         auto IsCheckedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ToggleSplitButton, winrt::Windows::UI::Xaml::Controls::ToggleSplitButtonIsCheckedChangedEventArgs> const& handler) const;
         using IsCheckedChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IToggleSplitButton, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IToggleSplitButton>::remove_IsCheckedChanged>;
-        [[nodiscard]] IsCheckedChanged_revoker IsCheckedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ToggleSplitButton, winrt::Windows::UI::Xaml::Controls::ToggleSplitButtonIsCheckedChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto IsCheckedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::ToggleSplitButton, winrt::Windows::UI::Xaml::Controls::ToggleSplitButtonIsCheckedChangedEventArgs> const& handler) const;
         auto IsCheckedChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IToggleSplitButton>
@@ -25108,7 +25108,7 @@ namespace winrt::impl
         [[nodiscard]] auto TemplateSettings() const;
         auto Toggled(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using Toggled_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IToggleSwitch, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IToggleSwitch>::remove_Toggled>;
-        [[nodiscard]] Toggled_revoker Toggled(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto Toggled(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto Toggled(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IToggleSwitch>
@@ -25158,11 +25158,11 @@ namespace winrt::impl
         [[nodiscard]] auto TemplateSettings() const;
         auto Closed(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IToolTip, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IToolTip>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto Opened(winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         using Opened_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IToolTip, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IToolTip>::remove_Opened>;
-        [[nodiscard]] Opened_revoker Opened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
+        [[nodiscard]] auto Opened(auto_revoke_t, winrt::Windows::UI::Xaml::RoutedEventHandler const& handler) const;
         auto Opened(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IToolTip>
@@ -25247,15 +25247,15 @@ namespace winrt::impl
         auto SelectAll() const;
         auto ItemInvoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewItemInvokedEventArgs> const& handler) const;
         using ItemInvoked_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITreeView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITreeView>::remove_ItemInvoked>;
-        [[nodiscard]] ItemInvoked_revoker ItemInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewItemInvokedEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewItemInvokedEventArgs> const& handler) const;
         auto ItemInvoked(winrt::event_token const& token) const noexcept;
         auto Expanding(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewExpandingEventArgs> const& handler) const;
         using Expanding_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITreeView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITreeView>::remove_Expanding>;
-        [[nodiscard]] Expanding_revoker Expanding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewExpandingEventArgs> const& handler) const;
+        [[nodiscard]] auto Expanding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewExpandingEventArgs> const& handler) const;
         auto Expanding(winrt::event_token const& token) const noexcept;
         auto Collapsed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewCollapsedEventArgs> const& handler) const;
         using Collapsed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITreeView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITreeView>::remove_Collapsed>;
-        [[nodiscard]] Collapsed_revoker Collapsed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewCollapsedEventArgs> const& handler) const;
+        [[nodiscard]] auto Collapsed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewCollapsedEventArgs> const& handler) const;
         auto Collapsed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITreeView>
@@ -25287,11 +25287,11 @@ namespace winrt::impl
         auto ItemsSource(winrt::Windows::Foundation::IInspectable const& value) const;
         auto DragItemsStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewDragItemsStartingEventArgs> const& handler) const;
         using DragItemsStarting_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITreeView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITreeView2>::remove_DragItemsStarting>;
-        [[nodiscard]] DragItemsStarting_revoker DragItemsStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewDragItemsStartingEventArgs> const& handler) const;
+        [[nodiscard]] auto DragItemsStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewDragItemsStartingEventArgs> const& handler) const;
         auto DragItemsStarting(winrt::event_token const& token) const noexcept;
         auto DragItemsCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewDragItemsCompletedEventArgs> const& handler) const;
         using DragItemsCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITreeView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITreeView2>::remove_DragItemsCompleted>;
-        [[nodiscard]] DragItemsCompleted_revoker DragItemsCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewDragItemsCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto DragItemsCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TreeView, winrt::Windows::UI::Xaml::Controls::TreeViewDragItemsCompletedEventArgs> const& handler) const;
         auto DragItemsCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITreeView2>
@@ -25581,7 +25581,7 @@ namespace winrt::impl
         auto MinTallModeHeight(double value) const;
         auto ModeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TwoPaneView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ModeChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::ITwoPaneView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::ITwoPaneView>::remove_ModeChanged>;
-        [[nodiscard]] ModeChanged_revoker ModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TwoPaneView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::TwoPaneView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ModeChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::ITwoPaneView>
@@ -25764,7 +25764,7 @@ namespace winrt::impl
         auto Orientation(winrt::Windows::UI::Xaml::Controls::Orientation const& value) const;
         auto CleanUpVirtualizedItemEvent(winrt::Windows::UI::Xaml::Controls::CleanUpVirtualizedItemEventHandler const& handler) const;
         using CleanUpVirtualizedItemEvent_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IVirtualizingStackPanel, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IVirtualizingStackPanel>::remove_CleanUpVirtualizedItemEvent>;
-        [[nodiscard]] CleanUpVirtualizedItemEvent_revoker CleanUpVirtualizedItemEvent(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::CleanUpVirtualizedItemEventHandler const& handler) const;
+        [[nodiscard]] auto CleanUpVirtualizedItemEvent(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::CleanUpVirtualizedItemEventHandler const& handler) const;
         auto CleanUpVirtualizedItemEvent(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IVirtualizingStackPanel>
@@ -25805,15 +25805,15 @@ namespace winrt::impl
         [[nodiscard]] auto DataTransferPackage() const;
         auto LoadCompleted(winrt::Windows::UI::Xaml::Navigation::LoadCompletedEventHandler const& handler) const;
         using LoadCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView>::remove_LoadCompleted>;
-        [[nodiscard]] LoadCompleted_revoker LoadCompleted(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::LoadCompletedEventHandler const& handler) const;
+        [[nodiscard]] auto LoadCompleted(auto_revoke_t, winrt::Windows::UI::Xaml::Navigation::LoadCompletedEventHandler const& handler) const;
         auto LoadCompleted(winrt::event_token const& token) const noexcept;
         auto ScriptNotify(winrt::Windows::UI::Xaml::Controls::NotifyEventHandler const& handler) const;
         using ScriptNotify_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView>::remove_ScriptNotify>;
-        [[nodiscard]] ScriptNotify_revoker ScriptNotify(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::NotifyEventHandler const& handler) const;
+        [[nodiscard]] auto ScriptNotify(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::NotifyEventHandler const& handler) const;
         auto ScriptNotify(winrt::event_token const& token) const noexcept;
         auto NavigationFailed(winrt::Windows::UI::Xaml::Controls::WebViewNavigationFailedEventHandler const& handler) const;
         using NavigationFailed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView>::remove_NavigationFailed>;
-        [[nodiscard]] NavigationFailed_revoker NavigationFailed(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::WebViewNavigationFailedEventHandler const& handler) const;
+        [[nodiscard]] auto NavigationFailed(auto_revoke_t, winrt::Windows::UI::Xaml::Controls::WebViewNavigationFailedEventHandler const& handler) const;
         auto NavigationFailed(winrt::event_token const& token) const noexcept;
         auto InvokeScript(param::hstring const& scriptName, array_view<hstring const> arguments) const;
         auto Navigate(winrt::Windows::Foundation::Uri const& source) const;
@@ -25831,15 +25831,15 @@ namespace winrt::impl
         [[nodiscard]] auto DocumentTitle() const;
         auto NavigationStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs> const& handler) const;
         using NavigationStarting_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_NavigationStarting>;
-        [[nodiscard]] NavigationStarting_revoker NavigationStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs> const& handler) const;
+        [[nodiscard]] auto NavigationStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs> const& handler) const;
         auto NavigationStarting(winrt::event_token const& token) const noexcept;
         auto ContentLoading(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs> const& handler) const;
         using ContentLoading_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_ContentLoading>;
-        [[nodiscard]] ContentLoading_revoker ContentLoading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs> const& handler) const;
+        [[nodiscard]] auto ContentLoading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs> const& handler) const;
         auto ContentLoading(winrt::event_token const& token) const noexcept;
         auto DOMContentLoaded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewDOMContentLoadedEventArgs> const& handler) const;
         using DOMContentLoaded_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_DOMContentLoaded>;
-        [[nodiscard]] DOMContentLoaded_revoker DOMContentLoaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewDOMContentLoadedEventArgs> const& handler) const;
+        [[nodiscard]] auto DOMContentLoaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewDOMContentLoadedEventArgs> const& handler) const;
         auto DOMContentLoaded(winrt::event_token const& token) const noexcept;
         auto GoForward() const;
         auto GoBack() const;
@@ -25854,35 +25854,35 @@ namespace winrt::impl
         auto DefaultBackgroundColor(winrt::Windows::UI::Color const& value) const;
         auto NavigationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs> const& handler) const;
         using NavigationCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_NavigationCompleted>;
-        [[nodiscard]] NavigationCompleted_revoker NavigationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto NavigationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs> const& handler) const;
         auto NavigationCompleted(winrt::event_token const& token) const noexcept;
         auto FrameNavigationStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs> const& handler) const;
         using FrameNavigationStarting_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_FrameNavigationStarting>;
-        [[nodiscard]] FrameNavigationStarting_revoker FrameNavigationStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameNavigationStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs> const& handler) const;
         auto FrameNavigationStarting(winrt::event_token const& token) const noexcept;
         auto FrameContentLoading(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs> const& handler) const;
         using FrameContentLoading_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_FrameContentLoading>;
-        [[nodiscard]] FrameContentLoading_revoker FrameContentLoading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameContentLoading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs> const& handler) const;
         auto FrameContentLoading(winrt::event_token const& token) const noexcept;
         auto FrameDOMContentLoaded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewDOMContentLoadedEventArgs> const& handler) const;
         using FrameDOMContentLoaded_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_FrameDOMContentLoaded>;
-        [[nodiscard]] FrameDOMContentLoaded_revoker FrameDOMContentLoaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewDOMContentLoadedEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameDOMContentLoaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewDOMContentLoadedEventArgs> const& handler) const;
         auto FrameDOMContentLoaded(winrt::event_token const& token) const noexcept;
         auto FrameNavigationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs> const& handler) const;
         using FrameNavigationCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_FrameNavigationCompleted>;
-        [[nodiscard]] FrameNavigationCompleted_revoker FrameNavigationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameNavigationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs> const& handler) const;
         auto FrameNavigationCompleted(winrt::event_token const& token) const noexcept;
         auto LongRunningScriptDetected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewLongRunningScriptDetectedEventArgs> const& handler) const;
         using LongRunningScriptDetected_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_LongRunningScriptDetected>;
-        [[nodiscard]] LongRunningScriptDetected_revoker LongRunningScriptDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewLongRunningScriptDetectedEventArgs> const& handler) const;
+        [[nodiscard]] auto LongRunningScriptDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewLongRunningScriptDetectedEventArgs> const& handler) const;
         auto LongRunningScriptDetected(winrt::event_token const& token) const noexcept;
         auto UnsafeContentWarningDisplaying(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using UnsafeContentWarningDisplaying_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_UnsafeContentWarningDisplaying>;
-        [[nodiscard]] UnsafeContentWarningDisplaying_revoker UnsafeContentWarningDisplaying(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto UnsafeContentWarningDisplaying(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto UnsafeContentWarningDisplaying(winrt::event_token const& token) const noexcept;
         auto UnviewableContentIdentified(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewUnviewableContentIdentifiedEventArgs> const& handler) const;
         using UnviewableContentIdentified_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView2>::remove_UnviewableContentIdentified>;
-        [[nodiscard]] UnviewableContentIdentified_revoker UnviewableContentIdentified(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewUnviewableContentIdentifiedEventArgs> const& handler) const;
+        [[nodiscard]] auto UnviewableContentIdentified(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewUnviewableContentIdentifiedEventArgs> const& handler) const;
         auto UnviewableContentIdentified(winrt::event_token const& token) const noexcept;
         auto NavigateWithHttpRequestMessage(winrt::Windows::Web::Http::HttpRequestMessage const& requestMessage) const;
         auto Focus(winrt::Windows::UI::Xaml::FocusState const& value) const;
@@ -25897,7 +25897,7 @@ namespace winrt::impl
         [[nodiscard]] auto ContainsFullScreenElement() const;
         auto ContainsFullScreenElementChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ContainsFullScreenElementChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView3>::remove_ContainsFullScreenElementChanged>;
-        [[nodiscard]] ContainsFullScreenElementChanged_revoker ContainsFullScreenElementChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ContainsFullScreenElementChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ContainsFullScreenElementChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IWebView3>
@@ -25912,15 +25912,15 @@ namespace winrt::impl
         [[nodiscard]] auto Settings() const;
         auto UnsupportedUriSchemeIdentified(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewUnsupportedUriSchemeIdentifiedEventArgs> const& handler) const;
         using UnsupportedUriSchemeIdentified_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView4>::remove_UnsupportedUriSchemeIdentified>;
-        [[nodiscard]] UnsupportedUriSchemeIdentified_revoker UnsupportedUriSchemeIdentified(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewUnsupportedUriSchemeIdentifiedEventArgs> const& handler) const;
+        [[nodiscard]] auto UnsupportedUriSchemeIdentified(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewUnsupportedUriSchemeIdentifiedEventArgs> const& handler) const;
         auto UnsupportedUriSchemeIdentified(winrt::event_token const& token) const noexcept;
         auto NewWindowRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNewWindowRequestedEventArgs> const& handler) const;
         using NewWindowRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView4>::remove_NewWindowRequested>;
-        [[nodiscard]] NewWindowRequested_revoker NewWindowRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNewWindowRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto NewWindowRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewNewWindowRequestedEventArgs> const& handler) const;
         auto NewWindowRequested(winrt::event_token const& token) const noexcept;
         auto PermissionRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewPermissionRequestedEventArgs> const& handler) const;
         using PermissionRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView4, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView4>::remove_PermissionRequested>;
-        [[nodiscard]] PermissionRequested_revoker PermissionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewPermissionRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto PermissionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewPermissionRequestedEventArgs> const& handler) const;
         auto PermissionRequested(winrt::event_token const& token) const noexcept;
         auto AddWebAllowedObject(param::hstring const& name, winrt::Windows::Foundation::IInspectable const& pObject) const;
         auto DeferredPermissionRequestById(uint32_t id) const;
@@ -25950,7 +25950,7 @@ namespace winrt::impl
     {
         auto SeparateProcessLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewSeparateProcessLostEventArgs> const& handler) const;
         using SeparateProcessLost_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView6, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView6>::remove_SeparateProcessLost>;
-        [[nodiscard]] SeparateProcessLost_revoker SeparateProcessLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewSeparateProcessLostEventArgs> const& handler) const;
+        [[nodiscard]] auto SeparateProcessLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewSeparateProcessLostEventArgs> const& handler) const;
         auto SeparateProcessLost(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IWebView6>
@@ -25962,7 +25962,7 @@ namespace winrt::impl
     {
         auto WebResourceRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewWebResourceRequestedEventArgs> const& handler) const;
         using WebResourceRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::IWebView7, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::IWebView7>::remove_WebResourceRequested>;
-        [[nodiscard]] WebResourceRequested_revoker WebResourceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewWebResourceRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto WebResourceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::WebView, winrt::Windows::UI::Xaml::Controls::WebViewWebResourceRequestedEventArgs> const& handler) const;
         auto WebResourceRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::IWebView7>

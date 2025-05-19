@@ -732,6 +732,7 @@ typedef enum _SECPKG_FAILURE_SPECIAL_REASON {
     SecpkgFailureReason_DupTarget,      // The targetname used during InitializeSecurityContext has duplicates. E.g. duplicate SPS in AD. 
     SecpkgFailureReason_NoLineOfSight,  // The secpkg needed a line-of-sight to a Domain Controller, but none could be found. 
     SecpkgFailureReason_Loopback,       // The secpkg does not support loopback authentication.
+    SecpkgFailureReason_NullSession,    // The secpkg does not handle null sessions.
 } SECPKG_FAILURE_SPECIAL_REASON, * PSECPKG_FAILURE_SPECIAL_REASON;
 
 typedef struct _SECPKG_FAILURE_REASON {
@@ -886,6 +887,7 @@ typedef LSA_CALLBACK_FUNCTION * PLSA_CALLBACK_FUNCTION;
 #define PRIMARY_CRED_SUPPLEMENTAL                   0x00400000  // The update is only to move supplemental credentials around
                                                                 // all primary credentials fields except the LogonId should be ignored
 #define PRIMARY_CRED_FOR_PASSWORD_CHANGE            0x00800000  // The credential will be used for a password change
+#define PRIMARY_CRED_LOCAL_USER                     0x01000000  // The credential is for a local user
 
 #define PRIMARY_CRED_LOGON_PACKAGE_SHIFT            24
 #define PRIMARY_CRED_PACKAGE_MASK                   0xff000000

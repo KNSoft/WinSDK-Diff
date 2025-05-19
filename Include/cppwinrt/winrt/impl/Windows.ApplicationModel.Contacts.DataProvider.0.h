@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -17,7 +17,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts::DataProvider
 {
@@ -110,7 +110,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListSyncManagerSyncRequestEventArgs>{ using type = winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListSyncManagerSyncRequestEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SyncRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SyncRequested(winrt::event_token) noexcept = 0;
@@ -121,7 +121,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CreateOrUpdateContactRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CreateOrUpdateContactRequested(winrt::event_token) noexcept = 0;
@@ -131,14 +131,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Connection(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListCreateOrUpdateContactRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContactListId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Contact(void**) noexcept = 0;
@@ -148,7 +148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListCreateOrUpdateContactRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -156,7 +156,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListDeleteContactRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContactListId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContactId(void**) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListDeleteContactRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -174,7 +174,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListServerSearchReadBatchRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContactListId(void**) noexcept = 0;
@@ -187,7 +187,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListServerSearchReadBatchRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -195,7 +195,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListSyncManagerSyncRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContactListId(void**) noexcept = 0;
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
@@ -204,7 +204,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactListSyncManagerSyncRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -215,11 +215,11 @@ namespace winrt::impl
     {
         auto SyncRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListSyncManagerSyncRequestEventArgs> const& handler) const;
         using SyncRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection>::remove_SyncRequested>;
-        [[nodiscard]] SyncRequested_revoker SyncRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListSyncManagerSyncRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto SyncRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListSyncManagerSyncRequestEventArgs> const& handler) const;
         auto SyncRequested(winrt::event_token const& token) const noexcept;
         auto ServerSearchReadBatchRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListServerSearchReadBatchRequestEventArgs> const& handler) const;
         using ServerSearchReadBatchRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection>::remove_ServerSearchReadBatchRequested>;
-        [[nodiscard]] ServerSearchReadBatchRequested_revoker ServerSearchReadBatchRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListServerSearchReadBatchRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto ServerSearchReadBatchRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListServerSearchReadBatchRequestEventArgs> const& handler) const;
         auto ServerSearchReadBatchRequested(winrt::event_token const& token) const noexcept;
         auto Start() const;
     };
@@ -232,11 +232,11 @@ namespace winrt::impl
     {
         auto CreateOrUpdateContactRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListCreateOrUpdateContactRequestEventArgs> const& handler) const;
         using CreateOrUpdateContactRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection2, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection2>::remove_CreateOrUpdateContactRequested>;
-        [[nodiscard]] CreateOrUpdateContactRequested_revoker CreateOrUpdateContactRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListCreateOrUpdateContactRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto CreateOrUpdateContactRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListCreateOrUpdateContactRequestEventArgs> const& handler) const;
         auto CreateOrUpdateContactRequested(winrt::event_token const& token) const noexcept;
         auto DeleteContactRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListDeleteContactRequestEventArgs> const& handler) const;
         using DeleteContactRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection2, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection2>::remove_DeleteContactRequested>;
-        [[nodiscard]] DeleteContactRequested_revoker DeleteContactRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListDeleteContactRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto DeleteContactRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactDataProviderConnection, winrt::Windows::ApplicationModel::Contacts::DataProvider::ContactListDeleteContactRequestEventArgs> const& handler) const;
         auto DeleteContactRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection2>

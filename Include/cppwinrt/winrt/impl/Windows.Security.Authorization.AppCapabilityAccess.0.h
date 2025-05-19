@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,11 +9,11 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -60,7 +60,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Authorization::AppCapabilityAccess::AppCapabilityAccessChangedEventArgs>{ using type = winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapabilityAccessChangedEventArgs; };
     template <> struct abi<winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapability>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CapabilityName(void**) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -72,7 +72,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapability2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayMessage(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayMessage(void*) noexcept = 0;
@@ -80,13 +80,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapabilityAccessChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapabilityStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessForCapabilitiesAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestAccessForCapabilitiesForUserAsync(void*, void*, void**) noexcept = 0;
@@ -103,7 +103,7 @@ namespace winrt::impl
         auto CheckAccess() const;
         auto AccessChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authorization::AppCapabilityAccess::AppCapability, winrt::Windows::Security::Authorization::AppCapabilityAccess::AppCapabilityAccessChangedEventArgs> const& handler) const;
         using AccessChanged_revoker = impl::event_revoker<winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapability, &impl::abi_t<winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapability>::remove_AccessChanged>;
-        [[nodiscard]] AccessChanged_revoker AccessChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authorization::AppCapabilityAccess::AppCapability, winrt::Windows::Security::Authorization::AppCapabilityAccess::AppCapabilityAccessChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AccessChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authorization::AppCapabilityAccess::AppCapability, winrt::Windows::Security::Authorization::AppCapabilityAccess::AppCapabilityAccessChangedEventArgs> const& handler) const;
         auto AccessChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Security::Authorization::AppCapabilityAccess::IAppCapability>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking::Sockets
 {
@@ -112,7 +112,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Web::Http::Filters::HttpServerCustomValidationRequestedEventArgs>{ using type = winrt::Windows::Web::Http::Filters::IHttpServerCustomValidationRequestedEventArgs; };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowAutoRedirect(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowAutoRedirect(bool) noexcept = 0;
@@ -137,7 +137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxVersion(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MaxVersion(int32_t) noexcept = 0;
@@ -145,7 +145,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CookieUsageBehavior(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_CookieUsageBehavior(int32_t) noexcept = 0;
@@ -153,7 +153,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ServerCustomValidationRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ServerCustomValidationRequested(winrt::event_token) noexcept = 0;
@@ -162,21 +162,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpCacheControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReadBehavior(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ReadBehavior(int32_t) noexcept = 0;
@@ -186,14 +186,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendRequestAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Filters::IHttpServerCustomValidationRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestMessage(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServerCertificate(void**) noexcept = 0;
@@ -256,7 +256,7 @@ namespace winrt::impl
     {
         auto ServerCustomValidationRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Filters::HttpBaseProtocolFilter, winrt::Windows::Web::Http::Filters::HttpServerCustomValidationRequestedEventArgs> const& handler) const;
         using ServerCustomValidationRequested_revoker = impl::event_revoker<winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter4, &impl::abi_t<winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter4>::remove_ServerCustomValidationRequested>;
-        [[nodiscard]] ServerCustomValidationRequested_revoker ServerCustomValidationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Filters::HttpBaseProtocolFilter, winrt::Windows::Web::Http::Filters::HttpServerCustomValidationRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ServerCustomValidationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Filters::HttpBaseProtocolFilter, winrt::Windows::Web::Http::Filters::HttpServerCustomValidationRequestedEventArgs> const& handler) const;
         auto ServerCustomValidationRequested(winrt::event_token const& token) const noexcept;
         auto ClearAuthenticationCache() const;
     };

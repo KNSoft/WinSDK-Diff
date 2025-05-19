@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Globalization
 {
@@ -276,7 +276,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Text::Core::CoreTextTextUpdatingEventArgs>{ using type = winrt::Windows::UI::Text::Core::ICoreTextTextUpdatingEventArgs; };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextCompositionCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCanceled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CompositionSegments(void**) noexcept = 0;
@@ -285,7 +285,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextCompositionSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PreconversionString(void**) noexcept = 0;
             virtual int32_t __stdcall get_Range(struct struct_Windows_UI_Text_Core_CoreTextRange*) noexcept = 0;
@@ -293,7 +293,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextCompositionStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCanceled(bool*) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -301,7 +301,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextEditContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -338,7 +338,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextEditContext2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_NotifyFocusLeaveCompleted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_NotifyFocusLeaveCompleted(winrt::event_token) noexcept = 0;
@@ -346,7 +346,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextFormatUpdatingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Range(struct struct_Windows_UI_Text_Core_CoreTextRange*) noexcept = 0;
             virtual int32_t __stdcall get_TextColor(void**) noexcept = 0;
@@ -362,7 +362,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextLayoutBounds>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextBounds(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall put_TextBounds(winrt::Windows::Foundation::Rect) noexcept = 0;
@@ -372,7 +372,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextLayoutRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Range(struct struct_Windows_UI_Text_Core_CoreTextRange*) noexcept = 0;
             virtual int32_t __stdcall get_LayoutBounds(void**) noexcept = 0;
@@ -382,21 +382,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextLayoutRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LayoutBoundsVisualPixels(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextLayoutRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextSelectionRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Selection(struct struct_Windows_UI_Text_Core_CoreTextRange*) noexcept = 0;
             virtual int32_t __stdcall put_Selection(struct struct_Windows_UI_Text_Core_CoreTextRange) noexcept = 0;
@@ -406,14 +406,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextSelectionRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextSelectionUpdatingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Selection(struct struct_Windows_UI_Text_Core_CoreTextRange*) noexcept = 0;
             virtual int32_t __stdcall get_Result(int32_t*) noexcept = 0;
@@ -424,7 +424,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextServicesManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputLanguage(void**) noexcept = 0;
             virtual int32_t __stdcall add_InputLanguageChanged(void*, winrt::event_token*) noexcept = 0;
@@ -434,21 +434,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextServicesManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextServicesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HiddenCharacter(char16_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextTextRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Range(struct struct_Windows_UI_Text_Core_CoreTextRange*) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
@@ -459,14 +459,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextTextRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Text::Core::ICoreTextTextUpdatingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Range(struct struct_Windows_UI_Text_Core_CoreTextRange*) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
@@ -522,39 +522,39 @@ namespace winrt::impl
         auto InputPaneDisplayPolicy(winrt::Windows::UI::Text::Core::CoreTextInputPaneDisplayPolicy const& value) const;
         auto TextRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextTextRequestedEventArgs> const& handler) const;
         using TextRequested_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_TextRequested>;
-        [[nodiscard]] TextRequested_revoker TextRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextTextRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextTextRequestedEventArgs> const& handler) const;
         auto TextRequested(winrt::event_token const& cookie) const noexcept;
         auto SelectionRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextSelectionRequestedEventArgs> const& handler) const;
         using SelectionRequested_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_SelectionRequested>;
-        [[nodiscard]] SelectionRequested_revoker SelectionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextSelectionRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto SelectionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextSelectionRequestedEventArgs> const& handler) const;
         auto SelectionRequested(winrt::event_token const& cookie) const noexcept;
         auto LayoutRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextLayoutRequestedEventArgs> const& handler) const;
         using LayoutRequested_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_LayoutRequested>;
-        [[nodiscard]] LayoutRequested_revoker LayoutRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextLayoutRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto LayoutRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextLayoutRequestedEventArgs> const& handler) const;
         auto LayoutRequested(winrt::event_token const& cookie) const noexcept;
         auto TextUpdating(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextTextUpdatingEventArgs> const& handler) const;
         using TextUpdating_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_TextUpdating>;
-        [[nodiscard]] TextUpdating_revoker TextUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextTextUpdatingEventArgs> const& handler) const;
+        [[nodiscard]] auto TextUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextTextUpdatingEventArgs> const& handler) const;
         auto TextUpdating(winrt::event_token const& cookie) const noexcept;
         auto SelectionUpdating(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextSelectionUpdatingEventArgs> const& handler) const;
         using SelectionUpdating_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_SelectionUpdating>;
-        [[nodiscard]] SelectionUpdating_revoker SelectionUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextSelectionUpdatingEventArgs> const& handler) const;
+        [[nodiscard]] auto SelectionUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextSelectionUpdatingEventArgs> const& handler) const;
         auto SelectionUpdating(winrt::event_token const& cookie) const noexcept;
         auto FormatUpdating(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextFormatUpdatingEventArgs> const& handler) const;
         using FormatUpdating_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_FormatUpdating>;
-        [[nodiscard]] FormatUpdating_revoker FormatUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextFormatUpdatingEventArgs> const& handler) const;
+        [[nodiscard]] auto FormatUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextFormatUpdatingEventArgs> const& handler) const;
         auto FormatUpdating(winrt::event_token const& cookie) const noexcept;
         auto CompositionStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextCompositionStartedEventArgs> const& handler) const;
         using CompositionStarted_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_CompositionStarted>;
-        [[nodiscard]] CompositionStarted_revoker CompositionStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextCompositionStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto CompositionStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextCompositionStartedEventArgs> const& handler) const;
         auto CompositionStarted(winrt::event_token const& cookie) const noexcept;
         auto CompositionCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextCompositionCompletedEventArgs> const& handler) const;
         using CompositionCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_CompositionCompleted>;
-        [[nodiscard]] CompositionCompleted_revoker CompositionCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextCompositionCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto CompositionCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::UI::Text::Core::CoreTextCompositionCompletedEventArgs> const& handler) const;
         auto CompositionCompleted(winrt::event_token const& cookie) const noexcept;
         auto FocusRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using FocusRemoved_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext>::remove_FocusRemoved>;
-        [[nodiscard]] FocusRemoved_revoker FocusRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto FocusRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto FocusRemoved(winrt::event_token const& cookie) const noexcept;
         auto NotifyFocusEnter() const;
         auto NotifyFocusLeave() const;
@@ -571,7 +571,7 @@ namespace winrt::impl
     {
         auto NotifyFocusLeaveCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using NotifyFocusLeaveCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextEditContext2, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextEditContext2>::remove_NotifyFocusLeaveCompleted>;
-        [[nodiscard]] NotifyFocusLeaveCompleted_revoker NotifyFocusLeaveCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto NotifyFocusLeaveCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextEditContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto NotifyFocusLeaveCompleted(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Text::Core::ICoreTextEditContext2>
@@ -678,7 +678,7 @@ namespace winrt::impl
         [[nodiscard]] auto InputLanguage() const;
         auto InputLanguageChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextServicesManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using InputLanguageChanged_revoker = impl::event_revoker<winrt::Windows::UI::Text::Core::ICoreTextServicesManager, &impl::abi_t<winrt::Windows::UI::Text::Core::ICoreTextServicesManager>::remove_InputLanguageChanged>;
-        [[nodiscard]] InputLanguageChanged_revoker InputLanguageChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextServicesManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto InputLanguageChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Text::Core::CoreTextServicesManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto InputLanguageChanged(winrt::event_token const& cookie) const noexcept;
         auto CreateEditContext() const;
     };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -17,15 +17,15 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Sms
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
 {
@@ -569,6 +569,8 @@ WINRT_EXPORT namespace winrt::Windows::Networking::NetworkOperators
     struct UssdSession;
     struct ESimProfileInstallProgress;
     struct ProfileUsage;
+    struct LegacyNetworkOperatorsContract;
+    struct NetworkOperatorsFdnContract;
 }
 namespace winrt::impl
 {
@@ -1050,6 +1052,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::NetworkOperators::IUssdReply> = L"Windows.Networking.NetworkOperators.IUssdReply";
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::NetworkOperators::IUssdSession> = L"Windows.Networking.NetworkOperators.IUssdSession";
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::NetworkOperators::IUssdSessionStatics> = L"Windows.Networking.NetworkOperators.IUssdSessionStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::Networking::NetworkOperators::LegacyNetworkOperatorsContract> = L"Windows.Networking.NetworkOperators.LegacyNetworkOperatorsContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::Networking::NetworkOperators::NetworkOperatorsFdnContract> = L"Windows.Networking.NetworkOperators.NetworkOperatorsFdnContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::NetworkOperators::IESim>{ 0x6F6E6E26,0xF123,0x437D,{ 0x8C,0xED,0xDC,0x1D,0x2B,0xC0,0xC3,0xA9 } }; // 6F6E6E26-F123-437D-8CED-DC1D2BC0C3A9
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::NetworkOperators::IESim2>{ 0xBD4FD0A0,0xC68F,0x56EB,{ 0xB9,0x9B,0x8F,0x34,0xB8,0x10,0x02,0x99 } }; // BD4FD0A0-C68F-56EB-B99B-8F34B8100299
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::NetworkOperators::IESim3>{ 0xFE1EDF45,0x01B8,0x5D31,{ 0xB8,0xD3,0xD9,0xCB,0xEB,0xB2,0xB8,0x31 } }; // FE1EDF45-01B8-5D31-B8D3-D9CBEBB2B831
@@ -1249,7 +1253,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::NetworkOperators::UssdSession>{ using type = winrt::Windows::Networking::NetworkOperators::IUssdSession; };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESim>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AvailableMemoryInBytes(void**) noexcept = 0;
             virtual int32_t __stdcall get_Eid(void**) noexcept = 0;
@@ -1267,7 +1271,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESim2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Discover(void**) noexcept = 0;
             virtual int32_t __stdcall DiscoverWithServerAddressAndMatchingId(void*, void*, void**) noexcept = 0;
@@ -1277,21 +1281,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESim3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SlotIndex(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ESim(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimDiscoverEvent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MatchingId(void**) noexcept = 0;
             virtual int32_t __stdcall get_RspServerAddress(void**) noexcept = 0;
@@ -1299,7 +1303,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimDiscoverResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Events(void**) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -1309,7 +1313,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimDownloadProfileMetadataResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Result(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProfileMetadata(void**) noexcept = 0;
@@ -1317,7 +1321,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServiceInfo(void**) noexcept = 0;
             virtual int32_t __stdcall TryCreateESimWatcher(void**) noexcept = 0;
@@ -1327,21 +1331,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimOperationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimPolicy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShouldEnableManagingUi(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Class(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Nickname(void**) noexcept = 0;
@@ -1358,7 +1362,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimProfileMetadata>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsConfirmationCodeRequired(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Policy(void**) noexcept = 0;
@@ -1377,7 +1381,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimProfilePolicy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanDelete(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanDisable(bool*) noexcept = 0;
@@ -1386,14 +1390,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ESim(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimServiceInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AuthenticationPreference(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsESimUiEnabled(bool*) noexcept = 0;
@@ -1401,14 +1405,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ESim(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IESimWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Start() noexcept = 0;
@@ -1427,14 +1431,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IFdnAccessManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestUnlockAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IHotspotAuthenticationContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WirelessNetworkId(uint32_t* __valueSize, uint8_t**) noexcept = 0;
             virtual int32_t __stdcall get_NetworkAdapter(void**) noexcept = 0;
@@ -1449,28 +1453,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IHotspotAuthenticationContext2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IssueCredentialsAsync(void*, void*, void*, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IHotspotAuthenticationContextStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetAuthenticationContext(void*, void**, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IHotspotAuthenticationEventDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EventToken(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IHotspotCredentialsAuthenticationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasNetworkErrorOccurred(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ResponseCode(int32_t*) noexcept = 0;
@@ -1480,7 +1484,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IKnownCSimFilePathsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EFSpn(void**) noexcept = 0;
             virtual int32_t __stdcall get_Gid1(void**) noexcept = 0;
@@ -1489,7 +1493,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IKnownRuimFilePathsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EFSpn(void**) noexcept = 0;
             virtual int32_t __stdcall get_Gid1(void**) noexcept = 0;
@@ -1498,7 +1502,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IKnownSimFilePathsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EFOns(void**) noexcept = 0;
             virtual int32_t __stdcall get_EFSpn(void**) noexcept = 0;
@@ -1508,7 +1512,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IKnownUSimFilePathsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EFSpn(void**) noexcept = 0;
             virtual int32_t __stdcall get_EFOpl(void**) noexcept = 0;
@@ -1519,7 +1523,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccount>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAccountId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServiceProviderGuid(winrt::guid*) noexcept = 0;
@@ -1530,28 +1534,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccount2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetConnectionProfiles(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccount3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AccountExperienceUrl(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAccountId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AvailableNetworkAccountIds(void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromNetworkAccountId(void*, void**) noexcept = 0;
@@ -1559,7 +1563,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAccountId(void**) noexcept = 0;
             virtual int32_t __stdcall get_HasDeviceInformationChanged(bool*) noexcept = 0;
@@ -1568,7 +1572,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AccountAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AccountAdded(winrt::event_token) noexcept = 0;
@@ -1587,7 +1591,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAntennaSar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AntennaIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SarBackoffIndex(int32_t*) noexcept = 0;
@@ -1595,14 +1599,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAntennaSarFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithIndex(int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCellCdma>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BaseStationId(void**) noexcept = 0;
             virtual int32_t __stdcall get_BaseStationPNCode(void**) noexcept = 0;
@@ -1616,7 +1620,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCellGsm>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BaseStationId(void**) noexcept = 0;
             virtual int32_t __stdcall get_CellId(void**) noexcept = 0;
@@ -1629,7 +1633,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCellLte>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CellId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChannelNumber(void**) noexcept = 0;
@@ -1643,7 +1647,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCellNR>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CellId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChannelNumber(void**) noexcept = 0;
@@ -1658,7 +1662,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCellTdscdma>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CellId(void**) noexcept = 0;
             virtual int32_t __stdcall get_CellParameterId(void**) noexcept = 0;
@@ -1672,7 +1676,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCellUmts>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CellId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChannelNumber(void**) noexcept = 0;
@@ -1686,7 +1690,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCellsInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NeighboringCellsCdma(void**) noexcept = 0;
             virtual int32_t __stdcall get_NeighboringCellsGsm(void**) noexcept = 0;
@@ -1702,7 +1706,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCellsInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NeighboringCellsNR(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServingCellsNR(void**) noexcept = 0;
@@ -1710,14 +1714,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandCurrentSlotIndexChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentSlotIndex(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkDeviceStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Manufacturer(void**) noexcept = 0;
@@ -1737,7 +1741,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceInformation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PinManager(void**) noexcept = 0;
             virtual int32_t __stdcall get_Revision(void**) noexcept = 0;
@@ -1746,7 +1750,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceInformation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SimSpn(void**) noexcept = 0;
             virtual int32_t __stdcall get_SimPnn(void**) noexcept = 0;
@@ -1755,14 +1759,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceInformation4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SlotManager(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceServiceId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedCommands(void**) noexcept = 0;
@@ -1772,7 +1776,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceCommandEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeviceServiceId(winrt::guid*) noexcept = 0;
@@ -1782,7 +1786,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceCommandResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StatusCode(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ResponseData(void**) noexcept = 0;
@@ -1790,7 +1794,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceCommandSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendQueryCommandAsync(uint32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall SendSetCommandAsync(uint32_t, void*, void**) noexcept = 0;
@@ -1799,7 +1803,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceCommandSession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CommandReceived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CommandReceived(winrt::event_token) noexcept = 0;
@@ -1807,14 +1811,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceDataReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReceivedData(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceDataSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall WriteDataAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CloseSession() noexcept = 0;
@@ -1824,7 +1828,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceServiceId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_IsDataReadSupported(bool*) noexcept = 0;
@@ -1833,7 +1837,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeviceServiceId(winrt::guid*) noexcept = 0;
@@ -1842,14 +1846,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceTriggerDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EventId(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentAccount(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeviceInformation(void**) noexcept = 0;
@@ -1865,7 +1869,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetIsPassthroughEnabledAsync(void**) noexcept = 0;
             virtual int32_t __stdcall SetIsPassthroughEnabledAsync(bool, void**) noexcept = 0;
@@ -1873,7 +1877,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModem3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetPcoAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsInEmergencyCallMode(bool*) noexcept = 0;
@@ -1883,7 +1887,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModem4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetIsPassthroughEnabledWithSlotIndexAsync(bool, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetIsPassthroughEnabledWithSlotIndexAsync(int32_t, void**) noexcept = 0;
@@ -1893,7 +1897,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModemConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uicc(void**) noexcept = 0;
             virtual int32_t __stdcall get_HomeProviderId(void**) noexcept = 0;
@@ -1902,14 +1906,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModemConfiguration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SarManager(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModemIsolation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddAllowedHost(void*) noexcept = 0;
             virtual int32_t __stdcall AddAllowedHostRange(void*, void*) noexcept = 0;
@@ -1919,14 +1923,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModemIsolationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromId(void*, void**) noexcept = 0;
@@ -1935,7 +1939,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandNetwork>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAdapter(void**) noexcept = 0;
             virtual int32_t __stdcall get_NetworkRegistrationState(int32_t*) noexcept = 0;
@@ -1951,7 +1955,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandNetwork2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetVoiceCallSupportAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_RegistrationUiccApps(void**) noexcept = 0;
@@ -1959,14 +1963,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandNetwork3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCellsInfoAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandNetworkRegistrationStateChange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Network(void**) noexcept = 0;
@@ -1974,14 +1978,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandNetworkRegistrationStateChangeTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkRegistrationStateChanges(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandPco>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsComplete(bool*) noexcept = 0;
@@ -1990,14 +1994,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandPcoDataChangeTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UpdatedData(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandPin>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_LockState(int32_t*) noexcept = 0;
@@ -2015,7 +2019,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandPinLockStateChange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_PinType(int32_t*) noexcept = 0;
@@ -2024,14 +2028,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandPinLockStateChangeTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PinLockStateChanges(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandPinManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedPins(void**) noexcept = 0;
             virtual int32_t __stdcall GetPin(int32_t, void**) noexcept = 0;
@@ -2039,7 +2043,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandPinOperationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSuccessful(bool*) noexcept = 0;
             virtual int32_t __stdcall get_AttemptsRemaining(uint32_t*) noexcept = 0;
@@ -2047,7 +2051,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandRadioStateChange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_RadioState(int32_t*) noexcept = 0;
@@ -2055,14 +2059,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandRadioStateChangeTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RadioStateChanges(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSarManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBackoffEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsWiFiHardwareIntegrated(bool*) noexcept = 0;
@@ -2083,7 +2087,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Index(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
@@ -2091,21 +2095,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IccId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotInfoChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SlotInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SlotInfos(void**) noexcept = 0;
             virtual int32_t __stdcall get_CurrentSlotIndex(int32_t*) noexcept = 0;
@@ -2119,14 +2123,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandTransmissionStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTransmitting(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandUicc>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SimIccId(void**) noexcept = 0;
             virtual int32_t __stdcall GetUiccAppsAsync(void**) noexcept = 0;
@@ -2134,7 +2138,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandUiccApp>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -2144,7 +2148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandUiccAppReadRecordResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
@@ -2152,7 +2156,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandUiccAppRecordDetailsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -2164,7 +2168,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandUiccAppsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_UiccApps(void**) noexcept = 0;
@@ -2172,14 +2176,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorDataUsageTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NotificationKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorNotificationEventDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NotificationType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NetworkAccountId(void**) noexcept = 0;
@@ -2191,7 +2195,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringAccessPointConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Ssid(void**) noexcept = 0;
             virtual int32_t __stdcall put_Ssid(void*) noexcept = 0;
@@ -2201,7 +2205,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringAccessPointConfiguration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsBandSupported(int32_t, bool*) noexcept = 0;
             virtual int32_t __stdcall IsBandSupportedAsync(int32_t, void**) noexcept = 0;
@@ -2211,7 +2215,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringAccessPointConfiguration3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsAuthenticationKindSupported(int32_t, bool*) noexcept = 0;
             virtual int32_t __stdcall IsAuthenticationKindSupportedAsync(int32_t, void**) noexcept = 0;
@@ -2221,7 +2225,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringClient>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MacAddress(void**) noexcept = 0;
             virtual int32_t __stdcall get_HostNames(void**) noexcept = 0;
@@ -2229,21 +2233,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringClientManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetTetheringClients(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringEntitlementCheck>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AuthorizeTethering(bool, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxClientCount(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ClientCount(uint32_t*) noexcept = 0;
@@ -2256,14 +2260,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartTetheringAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetTetheringCapability(void*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall CreateFromNetworkAccountId(void*, void**) noexcept = 0;
@@ -2271,7 +2275,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetTetheringCapabilityFromConnectionProfile(void*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall CreateFromConnectionProfile(void*, void**) noexcept = 0;
@@ -2279,14 +2283,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromConnectionProfileWithTargetAdapter(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringManagerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsNoConnectionsTimeoutEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall EnableNoConnectionsTimeout() noexcept = 0;
@@ -2297,7 +2301,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringOperationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AdditionalErrorMessage(void**) noexcept = 0;
@@ -2305,7 +2309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::INetworkOperatorTetheringSessionAccessPointConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Ssid(void**) noexcept = 0;
             virtual int32_t __stdcall put_Ssid(void*) noexcept = 0;
@@ -2325,7 +2329,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IProvisionFromXmlDocumentResults>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllElementsProvisioned(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ProvisionResultsXml(void**) noexcept = 0;
@@ -2333,7 +2337,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IProvisionedProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UpdateCost(int32_t) noexcept = 0;
             virtual int32_t __stdcall UpdateUsage(struct struct_Windows_Networking_NetworkOperators_ProfileUsage) noexcept = 0;
@@ -2341,7 +2345,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IProvisioningAgent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProvisionFromXmlDocumentAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetProvisionedProfile(int32_t, void*, void**) noexcept = 0;
@@ -2349,14 +2353,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IProvisioningAgentStaticMethods>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromNetworkAccountId(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::ITetheringEntitlementCheckTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAccountId(void**) noexcept = 0;
             virtual int32_t __stdcall AllowTethering() noexcept = 0;
@@ -2365,7 +2369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IUssdMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataCodingScheme(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall put_DataCodingScheme(uint8_t) noexcept = 0;
@@ -2377,14 +2381,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IUssdMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMessage(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IUssdReply>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResultCode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
@@ -2392,7 +2396,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IUssdSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendMessageAndGetReplyAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall Close() noexcept = 0;
@@ -2400,7 +2404,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::NetworkOperators::IUssdSessionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromNetworkAccountId(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromNetworkInterfaceId(void*, void**) noexcept = 0;
@@ -2421,7 +2425,7 @@ namespace winrt::impl
         auto ResetAsync() const;
         auto ProfileChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESim, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ProfileChanged_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IESim, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IESim>::remove_ProfileChanged>;
-        [[nodiscard]] ProfileChanged_revoker ProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESim, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESim, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ProfileChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::NetworkOperators::IESim>
@@ -2497,7 +2501,7 @@ namespace winrt::impl
         auto TryCreateESimWatcher() const;
         auto ServiceInfoChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ServiceInfoChanged_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IESimManagerStatics, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IESimManagerStatics>::remove_ServiceInfoChanged>;
-        [[nodiscard]] ServiceInfoChanged_revoker ServiceInfoChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ServiceInfoChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ServiceInfoChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::NetworkOperators::IESimManagerStatics>
@@ -2557,7 +2561,7 @@ namespace winrt::impl
         auto PostponeInstallAsync() const;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimProfileMetadata, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IESimProfileMetadata, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IESimProfileMetadata>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimProfileMetadata, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimProfileMetadata, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::NetworkOperators::IESimProfileMetadata>
@@ -2611,23 +2615,23 @@ namespace winrt::impl
         auto Stop() const;
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimAddedEventArgs> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IESimWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IESimWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimAddedEventArgs> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IESimWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IESimWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimRemovedEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IESimWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IESimWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimRemovedEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IESimWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IESimWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimUpdatedEventArgs> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IESimWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IESimWatcher>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::ESimWatcher, winrt::Windows::Networking::NetworkOperators::ESimUpdatedEventArgs> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::NetworkOperators::IESimWatcher>
@@ -2812,23 +2816,23 @@ namespace winrt::impl
     {
         auto AccountAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountEventArgs> const& handler) const;
         using AccountAdded_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher>::remove_AccountAdded>;
-        [[nodiscard]] AccountAdded_revoker AccountAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountEventArgs> const& handler) const;
+        [[nodiscard]] auto AccountAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountEventArgs> const& handler) const;
         auto AccountAdded(winrt::event_token const& cookie) const noexcept;
         auto AccountUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountUpdatedEventArgs> const& handler) const;
         using AccountUpdated_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher>::remove_AccountUpdated>;
-        [[nodiscard]] AccountUpdated_revoker AccountUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto AccountUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountUpdatedEventArgs> const& handler) const;
         auto AccountUpdated(winrt::event_token const& cookie) const noexcept;
         auto AccountRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountEventArgs> const& handler) const;
         using AccountRemoved_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher>::remove_AccountRemoved>;
-        [[nodiscard]] AccountRemoved_revoker AccountRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountEventArgs> const& handler) const;
+        [[nodiscard]] auto AccountRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountEventArgs> const& handler) const;
         auto AccountRemoved(winrt::event_token const& cookie) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& cookie) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandAccountWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandAccountWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;
@@ -3093,7 +3097,7 @@ namespace winrt::impl
     {
         auto CommandReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceCommandSession, winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceCommandEventArgs> const& handler) const;
         using CommandReceived_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceCommandSession2, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceCommandSession2>::remove_CommandReceived>;
-        [[nodiscard]] CommandReceived_revoker CommandReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceCommandSession, winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceCommandEventArgs> const& handler) const;
+        [[nodiscard]] auto CommandReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceCommandSession, winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceCommandEventArgs> const& handler) const;
         auto CommandReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceCommandSession2>
@@ -3116,7 +3120,7 @@ namespace winrt::impl
         auto CloseSession() const;
         auto DataReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceDataSession, winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceDataReceivedEventArgs> const& eventHandler) const;
         using DataReceived_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceDataSession, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceDataSession>::remove_DataReceived>;
-        [[nodiscard]] DataReceived_revoker DataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceDataSession, winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceDataReceivedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto DataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceDataSession, winrt::Windows::Networking::NetworkOperators::MobileBroadbandDeviceServiceDataReceivedEventArgs> const& eventHandler) const;
         auto DataReceived(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandDeviceServiceDataSession>
@@ -3189,7 +3193,7 @@ namespace winrt::impl
         [[nodiscard]] auto IsInEmergencyCallMode() const;
         auto IsInEmergencyCallModeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandModem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsInEmergencyCallModeChanged_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModem3, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModem3>::remove_IsInEmergencyCallModeChanged>;
-        [[nodiscard]] IsInEmergencyCallModeChanged_revoker IsInEmergencyCallModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandModem, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsInEmergencyCallModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandModem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsInEmergencyCallModeChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandModem3>
@@ -3425,7 +3429,7 @@ namespace winrt::impl
         [[nodiscard]] auto HysteresisTimerPeriod() const;
         auto TransmissionStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSarManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandTransmissionStateChangedEventArgs> const& handler) const;
         using TransmissionStateChanged_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSarManager, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSarManager>::remove_TransmissionStateChanged>;
-        [[nodiscard]] TransmissionStateChanged_revoker TransmissionStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSarManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandTransmissionStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TransmissionStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSarManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandTransmissionStateChangedEventArgs> const& handler) const;
         auto TransmissionStateChanged(winrt::event_token const& token) const noexcept;
         auto EnableBackoffAsync() const;
         auto DisableBackoffAsync() const;
@@ -3477,11 +3481,11 @@ namespace winrt::impl
         auto SetCurrentSlotAsync(int32_t slotIndex) const;
         auto SlotInfoChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotInfoChangedEventArgs> const& handler) const;
         using SlotInfoChanged_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotManager, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotManager>::remove_SlotInfoChanged>;
-        [[nodiscard]] SlotInfoChanged_revoker SlotInfoChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotInfoChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SlotInfoChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotInfoChangedEventArgs> const& handler) const;
         auto SlotInfoChanged(winrt::event_token const& token) const noexcept;
         auto CurrentSlotIndexChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandCurrentSlotIndexChangedEventArgs> const& handler) const;
         using CurrentSlotIndexChanged_revoker = impl::event_revoker<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotManager, &impl::abi_t<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotManager>::remove_CurrentSlotIndexChanged>;
-        [[nodiscard]] CurrentSlotIndexChanged_revoker CurrentSlotIndexChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandCurrentSlotIndexChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto CurrentSlotIndexChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::NetworkOperators::MobileBroadbandSlotManager, winrt::Windows::Networking::NetworkOperators::MobileBroadbandCurrentSlotIndexChangedEventArgs> const& handler) const;
         auto CurrentSlotIndexChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::NetworkOperators::IMobileBroadbandSlotManager>

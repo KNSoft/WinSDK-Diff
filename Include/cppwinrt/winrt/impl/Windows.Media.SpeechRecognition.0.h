@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,11 +10,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Globalization
 {
@@ -299,21 +299,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::SpeechRecognition::VoiceCommandSet>{ using type = winrt::Windows::Media::SpeechRecognition::IVoiceCommandSet; };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionResultGeneratedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Result(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutoStopSilenceTimeout(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_AutoStopSilenceTimeout(int64_t) noexcept = 0;
@@ -331,14 +331,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionCompilationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionConstraint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -351,14 +351,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionGrammarFileConstraint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GrammarFile(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionGrammarFileConstraintFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTag(void*, void*, void**) noexcept = 0;
@@ -366,28 +366,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionHypothesis>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionHypothesisGeneratedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Hypothesis(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionListConstraint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Commands(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionListConstraintFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTag(void*, void*, void**) noexcept = 0;
@@ -395,14 +395,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionQualityDegradingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Problem(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
@@ -416,7 +416,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PhraseStartTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_PhraseDuration(int64_t*) noexcept = 0;
@@ -424,14 +424,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionSemanticInterpretation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionTopicConstraint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Scenario(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_TopicHint(void**) noexcept = 0;
@@ -439,7 +439,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionTopicConstraintFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTag(int32_t, void*, void*, void**) noexcept = 0;
@@ -447,13 +447,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognitionVoiceCommandDefinitionConstraint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentLanguage(void**) noexcept = 0;
             virtual int32_t __stdcall get_Constraints(void**) noexcept = 0;
@@ -470,7 +470,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContinuousRecognitionSession(void**) noexcept = 0;
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
@@ -481,21 +481,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizerStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SystemSpeechLanguage(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedTopicLanguages(void**) noexcept = 0;
@@ -504,14 +504,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TrySetSystemSpeechLanguageAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizerTimeouts>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InitialSilenceTimeout(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_InitialSilenceTimeout(int64_t) noexcept = 0;
@@ -523,7 +523,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizerUIOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExampleText(void**) noexcept = 0;
             virtual int32_t __stdcall put_ExampleText(void*) noexcept = 0;
@@ -537,7 +537,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::IVoiceCommandManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InstallCommandSetsFromStorageFileAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_InstalledCommandSets(void**) noexcept = 0;
@@ -545,7 +545,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechRecognition::IVoiceCommandSet>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -583,11 +583,11 @@ namespace winrt::impl
         auto Resume() const;
         auto Completed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionSession, winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionCompletedEventArgs> const& value) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionSession, &impl::abi_t<winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionSession>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionSession, winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionCompletedEventArgs> const& value) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionSession, winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionCompletedEventArgs> const& value) const;
         auto Completed(winrt::event_token const& value) const noexcept;
         auto ResultGenerated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionSession, winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionResultGeneratedEventArgs> const& value) const;
         using ResultGenerated_revoker = impl::event_revoker<winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionSession, &impl::abi_t<winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionSession>::remove_ResultGenerated>;
-        [[nodiscard]] ResultGenerated_revoker ResultGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionSession, winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionResultGeneratedEventArgs> const& value) const;
+        [[nodiscard]] auto ResultGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionSession, winrt::Windows::Media::SpeechRecognition::SpeechContinuousRecognitionResultGeneratedEventArgs> const& value) const;
         auto ResultGenerated(winrt::event_token const& value) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionSession>
@@ -758,11 +758,11 @@ namespace winrt::impl
         auto RecognizeWithUIAsync() const;
         auto RecognitionQualityDegrading(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognitionQualityDegradingEventArgs> const& speechRecognitionQualityDegradingHandler) const;
         using RecognitionQualityDegrading_revoker = impl::event_revoker<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer, &impl::abi_t<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer>::remove_RecognitionQualityDegrading>;
-        [[nodiscard]] RecognitionQualityDegrading_revoker RecognitionQualityDegrading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognitionQualityDegradingEventArgs> const& speechRecognitionQualityDegradingHandler) const;
+        [[nodiscard]] auto RecognitionQualityDegrading(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognitionQualityDegradingEventArgs> const& speechRecognitionQualityDegradingHandler) const;
         auto RecognitionQualityDegrading(winrt::event_token const& cookie) const noexcept;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognizerStateChangedEventArgs> const& stateChangedHandler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer, &impl::abi_t<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognizerStateChangedEventArgs> const& stateChangedHandler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognizerStateChangedEventArgs> const& stateChangedHandler) const;
         auto StateChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer>
@@ -777,7 +777,7 @@ namespace winrt::impl
         auto StopRecognitionAsync() const;
         auto HypothesisGenerated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognitionHypothesisGeneratedEventArgs> const& value) const;
         using HypothesisGenerated_revoker = impl::event_revoker<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer2, &impl::abi_t<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer2>::remove_HypothesisGenerated>;
-        [[nodiscard]] HypothesisGenerated_revoker HypothesisGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognitionHypothesisGeneratedEventArgs> const& value) const;
+        [[nodiscard]] auto HypothesisGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::SpeechRecognition::SpeechRecognizer, winrt::Windows::Media::SpeechRecognition::SpeechRecognitionHypothesisGeneratedEventArgs> const& value) const;
         auto HypothesisGenerated(winrt::event_token const& value) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::SpeechRecognition::ISpeechRecognizer2>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,8 +15,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::DirectX::Direct3D11
 {
@@ -326,7 +326,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Capture::Frames::VideoMediaFrameFormat>{ using type = winrt::Windows::Media::Capture::Frames::IVideoMediaFrameFormat; };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IAudioMediaFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameReference(void**) noexcept = 0;
             virtual int32_t __stdcall get_AudioEncodingProperties(void**) noexcept = 0;
@@ -335,7 +335,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IBufferMediaFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameReference(void**) noexcept = 0;
             virtual int32_t __stdcall get_Buffer(void**) noexcept = 0;
@@ -343,7 +343,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IDepthMediaFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameReference(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoMediaFrame(void**) noexcept = 0;
@@ -353,7 +353,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IDepthMediaFrame2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxReliableDepth(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MinReliableDepth(uint32_t*) noexcept = 0;
@@ -361,7 +361,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IDepthMediaFrameFormat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoFormat(void**) noexcept = 0;
             virtual int32_t __stdcall get_DepthScaleInMeters(double*) noexcept = 0;
@@ -369,7 +369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IInfraredMediaFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameReference(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoMediaFrame(void**) noexcept = 0;
@@ -378,13 +378,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameArrivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameFormat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MajorType(void**) noexcept = 0;
             virtual int32_t __stdcall get_Subtype(void**) noexcept = 0;
@@ -395,14 +395,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameFormat2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioEncodingProperties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_FrameArrived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_FrameArrived(winrt::event_token) noexcept = 0;
@@ -413,7 +413,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameReader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_AcquisitionMode(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_AcquisitionMode(int32_t*) noexcept = 0;
@@ -421,7 +421,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameReference>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Format(void**) noexcept = 0;
@@ -435,14 +435,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameReference2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioMediaFrame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Info(void**) noexcept = 0;
             virtual int32_t __stdcall get_Controller(void**) noexcept = 0;
@@ -456,7 +456,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPropertyAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall SetPropertyAsync(void*, void*, void**) noexcept = 0;
@@ -465,7 +465,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceController2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPropertyByExtendedIdAsync(uint32_t, uint8_t*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall SetPropertyByExtendedIdAsync(uint32_t, uint8_t*, uint32_t, uint8_t*, void**) noexcept = 0;
@@ -473,14 +473,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceController3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioDeviceController(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceGetPropertyResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -488,7 +488,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -497,7 +497,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceGroupStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -506,7 +506,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_MediaStreamType(int32_t*) noexcept = 0;
@@ -519,7 +519,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProfileId(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoProfileMediaDescription(void**) noexcept = 0;
@@ -527,27 +527,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceInfo3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetRelativePanel(void*, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMediaFrameSourceInfo4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsShareable(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMultiSourceMediaFrameArrivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMultiSourceMediaFrameReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_FrameArrived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_FrameArrived(winrt::event_token) noexcept = 0;
@@ -558,7 +558,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMultiSourceMediaFrameReader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_AcquisitionMode(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_AcquisitionMode(int32_t*) noexcept = 0;
@@ -566,14 +566,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IMultiSourceMediaFrameReference>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetFrameReferenceBySourceId(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IVideoMediaFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameReference(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoFormat(void**) noexcept = 0;
@@ -587,7 +587,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Frames::IVideoMediaFrameFormat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaFrameFormat(void**) noexcept = 0;
             virtual int32_t __stdcall get_DepthFormat(void**) noexcept = 0;
@@ -694,7 +694,7 @@ namespace winrt::impl
     {
         auto FrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MediaFrameReader, winrt::Windows::Media::Capture::Frames::MediaFrameArrivedEventArgs> const& handler) const;
         using FrameArrived_revoker = impl::event_revoker<winrt::Windows::Media::Capture::Frames::IMediaFrameReader, &impl::abi_t<winrt::Windows::Media::Capture::Frames::IMediaFrameReader>::remove_FrameArrived>;
-        [[nodiscard]] FrameArrived_revoker FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MediaFrameReader, winrt::Windows::Media::Capture::Frames::MediaFrameArrivedEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MediaFrameReader, winrt::Windows::Media::Capture::Frames::MediaFrameArrivedEventArgs> const& handler) const;
         auto FrameArrived(winrt::event_token const& token) const noexcept;
         auto TryAcquireLatestFrame() const;
         auto StartAsync() const;
@@ -749,7 +749,7 @@ namespace winrt::impl
         auto SetFormatAsync(winrt::Windows::Media::Capture::Frames::MediaFrameFormat const& format) const;
         auto FormatChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MediaFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using FormatChanged_revoker = impl::event_revoker<winrt::Windows::Media::Capture::Frames::IMediaFrameSource, &impl::abi_t<winrt::Windows::Media::Capture::Frames::IMediaFrameSource>::remove_FormatChanged>;
-        [[nodiscard]] FormatChanged_revoker FormatChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MediaFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto FormatChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MediaFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto FormatChanged(winrt::event_token const& token) const noexcept;
         auto TryGetCameraIntrinsics(winrt::Windows::Media::Capture::Frames::MediaFrameFormat const& format) const;
     };
@@ -875,7 +875,7 @@ namespace winrt::impl
     {
         auto FrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MultiSourceMediaFrameReader, winrt::Windows::Media::Capture::Frames::MultiSourceMediaFrameArrivedEventArgs> const& handler) const;
         using FrameArrived_revoker = impl::event_revoker<winrt::Windows::Media::Capture::Frames::IMultiSourceMediaFrameReader, &impl::abi_t<winrt::Windows::Media::Capture::Frames::IMultiSourceMediaFrameReader>::remove_FrameArrived>;
-        [[nodiscard]] FrameArrived_revoker FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MultiSourceMediaFrameReader, winrt::Windows::Media::Capture::Frames::MultiSourceMediaFrameArrivedEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Frames::MultiSourceMediaFrameReader, winrt::Windows::Media::Capture::Frames::MultiSourceMediaFrameArrivedEventArgs> const& handler) const;
         auto FrameArrived(winrt::event_token const& token) const noexcept;
         auto TryAcquireLatestFrame() const;
         auto StartAsync() const;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -21,7 +21,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Display::DisplayRequest>{ using type = winrt::Windows::System::Display::IDisplayRequest; };
     template <> struct abi<winrt::Windows::System::Display::IDisplayRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestActive() noexcept = 0;
             virtual int32_t __stdcall RequestRelease() noexcept = 0;

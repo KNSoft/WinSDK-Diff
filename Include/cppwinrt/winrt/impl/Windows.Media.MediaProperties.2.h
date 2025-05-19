@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,7 +12,7 @@
 #include "winrt/impl/Windows.Media.MediaProperties.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::MediaProperties
 {
-    struct __declspec(empty_bases) AudioEncodingProperties : winrt::Windows::Media::MediaProperties::IAudioEncodingProperties,
+    struct WINRT_IMPL_EMPTY_BASES AudioEncodingProperties : winrt::Windows::Media::MediaProperties::IAudioEncodingProperties,
         impl::require<AudioEncodingProperties, winrt::Windows::Media::MediaProperties::IAudioEncodingPropertiesWithFormatUserData, winrt::Windows::Media::MediaProperties::IAudioEncodingProperties2, winrt::Windows::Media::MediaProperties::IAudioEncodingProperties3>
     {
         AudioEncodingProperties(std::nullptr_t) noexcept {}
@@ -42,7 +42,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::MediaProperties
         [[nodiscard]] static auto ProfessionalChromaSubsampling422BitDepth10();
         [[nodiscard]] static auto ProfessionalChromaSubsampling422BitDepth12();
     };
-    struct __declspec(empty_bases) ContainerEncodingProperties : winrt::Windows::Media::MediaProperties::IContainerEncodingProperties,
+    struct WINRT_IMPL_EMPTY_BASES ContainerEncodingProperties : winrt::Windows::Media::MediaProperties::IContainerEncodingProperties,
         impl::require<ContainerEncodingProperties, winrt::Windows::Media::MediaProperties::IContainerEncodingProperties2>
     {
         ContainerEncodingProperties(std::nullptr_t) noexcept {}
@@ -89,7 +89,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::MediaProperties
         [[nodiscard]] static auto MainStillChromaSubsampling444BitDepth8();
         [[nodiscard]] static auto MainStillChromaSubsampling444BitDepth16();
     };
-    struct __declspec(empty_bases) ImageEncodingProperties : winrt::Windows::Media::MediaProperties::IImageEncodingProperties,
+    struct WINRT_IMPL_EMPTY_BASES ImageEncodingProperties : winrt::Windows::Media::MediaProperties::IImageEncodingProperties,
         impl::require<ImageEncodingProperties, winrt::Windows::Media::MediaProperties::IImageEncodingProperties2>
     {
         ImageEncodingProperties(std::nullptr_t) noexcept {}
@@ -102,7 +102,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::MediaProperties
         static auto CreateBmp();
         static auto CreateHeif();
     };
-    struct __declspec(empty_bases) MediaEncodingProfile : winrt::Windows::Media::MediaProperties::IMediaEncodingProfile,
+    struct WINRT_IMPL_EMPTY_BASES MediaEncodingProfile : winrt::Windows::Media::MediaProperties::IMediaEncodingProfile,
         impl::require<MediaEncodingProfile, winrt::Windows::Media::MediaProperties::IMediaEncodingProfile2, winrt::Windows::Media::MediaProperties::IMediaEncodingProfile3>
     {
         MediaEncodingProfile(std::nullptr_t) noexcept {}
@@ -180,13 +180,13 @@ WINRT_EXPORT namespace winrt::Windows::Media::MediaProperties
         [[nodiscard]] static auto VobSub();
         [[nodiscard]] static auto Av1();
     };
-    struct __declspec(empty_bases) MediaPropertySet : winrt::Windows::Foundation::Collections::IMap<winrt::guid, winrt::Windows::Foundation::IInspectable>
+    struct WINRT_IMPL_EMPTY_BASES MediaPropertySet : winrt::Windows::Foundation::Collections::IMap<winrt::guid, winrt::Windows::Foundation::IInspectable>
     {
         MediaPropertySet(std::nullptr_t) noexcept {}
         MediaPropertySet(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::Collections::IMap<winrt::guid, winrt::Windows::Foundation::IInspectable>(ptr, take_ownership_from_abi) {}
         MediaPropertySet();
     };
-    struct __declspec(empty_bases) MediaRatio : winrt::Windows::Media::MediaProperties::IMediaRatio
+    struct WINRT_IMPL_EMPTY_BASES MediaRatio : winrt::Windows::Media::MediaProperties::IMediaRatio
     {
         MediaRatio(std::nullptr_t) noexcept {}
         MediaRatio(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::MediaProperties::IMediaRatio(ptr, take_ownership_from_abi) {}
@@ -200,7 +200,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::MediaProperties
         [[nodiscard]] static auto SpatiallyScalable();
         [[nodiscard]] static auto High();
     };
-    struct __declspec(empty_bases) TimedMetadataEncodingProperties : winrt::Windows::Media::MediaProperties::IMediaEncodingProperties,
+    struct WINRT_IMPL_EMPTY_BASES TimedMetadataEncodingProperties : winrt::Windows::Media::MediaProperties::IMediaEncodingProperties,
         impl::require<TimedMetadataEncodingProperties, winrt::Windows::Media::MediaProperties::ITimedMetadataEncodingProperties>
     {
         TimedMetadataEncodingProperties(std::nullptr_t) noexcept {}
@@ -211,7 +211,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::MediaProperties
         static auto CreateSsa(array_view<uint8_t const> formatUserData);
         static auto CreateVobSub(array_view<uint8_t const> formatUserData);
     };
-    struct __declspec(empty_bases) VideoEncodingProperties : winrt::Windows::Media::MediaProperties::IVideoEncodingProperties,
+    struct WINRT_IMPL_EMPTY_BASES VideoEncodingProperties : winrt::Windows::Media::MediaProperties::IVideoEncodingProperties,
         impl::require<VideoEncodingProperties, winrt::Windows::Media::MediaProperties::IVideoEncodingProperties2, winrt::Windows::Media::MediaProperties::IVideoEncodingProperties3, winrt::Windows::Media::MediaProperties::IVideoEncodingProperties4, winrt::Windows::Media::MediaProperties::IVideoEncodingProperties5>
     {
         VideoEncodingProperties(std::nullptr_t) noexcept {}

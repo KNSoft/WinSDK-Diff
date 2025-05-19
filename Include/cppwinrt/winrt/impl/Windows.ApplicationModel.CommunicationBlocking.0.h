@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_ApplicationModel_CommunicationBlocking_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::CommunicationBlocking
 {
@@ -17,6 +17,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::CommunicationBlocking
     struct ICommunicationBlockingAppManagerStatics2;
     struct CommunicationBlockingAccessManager;
     struct CommunicationBlockingAppManager;
+    struct CommunicationBlockingContract;
 }
 namespace winrt::impl
 {
@@ -30,12 +31,13 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAccessManagerStatics> = L"Windows.ApplicationModel.CommunicationBlocking.ICommunicationBlockingAccessManagerStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAppManagerStatics> = L"Windows.ApplicationModel.CommunicationBlocking.ICommunicationBlockingAppManagerStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAppManagerStatics2> = L"Windows.ApplicationModel.CommunicationBlocking.ICommunicationBlockingAppManagerStatics2";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::CommunicationBlocking::CommunicationBlockingContract> = L"Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingContract";
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAccessManagerStatics>{ 0x1C969998,0x9D2A,0x5DB7,{ 0xED,0xD5,0x0C,0xE4,0x07,0xFC,0x25,0x95 } }; // 1C969998-9D2A-5DB7-EDD5-0CE407FC2595
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAppManagerStatics>{ 0x77DB58EC,0x14A6,0x4BAA,{ 0x94,0x2A,0x6A,0x67,0x3D,0x99,0x9B,0xF2 } }; // 77DB58EC-14A6-4BAA-942A-6A673D999BF2
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAppManagerStatics2>{ 0x14A68EDD,0xED88,0x457A,{ 0xA3,0x64,0xA3,0x63,0x4D,0x6F,0x16,0x6D } }; // 14A68EDD-ED88-457A-A364-A3634D6F166D
     template <> struct abi<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAccessManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBlockingActive(bool*) noexcept = 0;
             virtual int32_t __stdcall IsBlockedNumberAsync(void*, void**) noexcept = 0;
@@ -47,7 +49,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAppManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCurrentAppActiveBlockingApp(bool*) noexcept = 0;
             virtual int32_t __stdcall ShowCommunicationBlockingSettingsUI() noexcept = 0;
@@ -55,7 +57,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::CommunicationBlocking::ICommunicationBlockingAppManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestSetAsActiveBlockingAppAsync(void**) noexcept = 0;
         };

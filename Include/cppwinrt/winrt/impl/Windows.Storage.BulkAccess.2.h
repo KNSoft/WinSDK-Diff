@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@
 #include "winrt/impl/Windows.Storage.BulkAccess.1.h"
 WINRT_EXPORT namespace winrt::Windows::Storage::BulkAccess
 {
-    struct __declspec(empty_bases) FileInformation : winrt::Windows::Storage::BulkAccess::IStorageItemInformation,
+    struct WINRT_IMPL_EMPTY_BASES FileInformation : winrt::Windows::Storage::BulkAccess::IStorageItemInformation,
         impl::require<FileInformation, winrt::Windows::Storage::IStorageItem, winrt::Windows::Storage::Streams::IRandomAccessStreamReference, winrt::Windows::Storage::Streams::IInputStreamReference, winrt::Windows::Storage::IStorageFile, winrt::Windows::Storage::IStorageItemProperties, winrt::Windows::Storage::IStorageItem2, winrt::Windows::Storage::IStorageItemPropertiesWithProvider, winrt::Windows::Storage::IStorageFilePropertiesWithAvailability, winrt::Windows::Storage::IStorageFile2>
     {
         FileInformation(std::nullptr_t) noexcept {}
@@ -23,7 +23,7 @@ WINRT_EXPORT namespace winrt::Windows::Storage::BulkAccess
         using impl::consume_t<FileInformation, winrt::Windows::Storage::IStorageFile>::OpenTransactedWriteAsync;
         using impl::consume_t<FileInformation, winrt::Windows::Storage::IStorageFile2>::OpenTransactedWriteAsync;
     };
-    struct __declspec(empty_bases) FileInformationFactory : winrt::Windows::Storage::BulkAccess::IFileInformationFactory
+    struct WINRT_IMPL_EMPTY_BASES FileInformationFactory : winrt::Windows::Storage::BulkAccess::IFileInformationFactory
     {
         FileInformationFactory(std::nullptr_t) noexcept {}
         FileInformationFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Storage::BulkAccess::IFileInformationFactory(ptr, take_ownership_from_abi) {}
@@ -32,7 +32,7 @@ WINRT_EXPORT namespace winrt::Windows::Storage::BulkAccess
         FileInformationFactory(winrt::Windows::Storage::Search::IStorageQueryResultBase const& queryResult, winrt::Windows::Storage::FileProperties::ThumbnailMode const& mode, uint32_t requestedThumbnailSize, winrt::Windows::Storage::FileProperties::ThumbnailOptions const& thumbnailOptions);
         FileInformationFactory(winrt::Windows::Storage::Search::IStorageQueryResultBase const& queryResult, winrt::Windows::Storage::FileProperties::ThumbnailMode const& mode, uint32_t requestedThumbnailSize, winrt::Windows::Storage::FileProperties::ThumbnailOptions const& thumbnailOptions, bool delayLoad);
     };
-    struct __declspec(empty_bases) FolderInformation : winrt::Windows::Storage::BulkAccess::IStorageItemInformation,
+    struct WINRT_IMPL_EMPTY_BASES FolderInformation : winrt::Windows::Storage::BulkAccess::IStorageItemInformation,
         impl::require<FolderInformation, winrt::Windows::Storage::IStorageItem, winrt::Windows::Storage::IStorageFolder, winrt::Windows::Storage::IStorageItemProperties, winrt::Windows::Storage::Search::IStorageFolderQueryOperations, winrt::Windows::Storage::IStorageItem2, winrt::Windows::Storage::IStorageFolder2, winrt::Windows::Storage::IStorageItemPropertiesWithProvider>
     {
         FolderInformation(std::nullptr_t) noexcept {}

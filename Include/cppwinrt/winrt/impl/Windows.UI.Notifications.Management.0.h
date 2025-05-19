@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Notifications
 {
@@ -44,7 +44,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Notifications::Management::UserNotificationListener>{ using type = winrt::Windows::UI::Notifications::Management::IUserNotificationListener; };
     template <> struct abi<winrt::Windows::UI::Notifications::Management::IUserNotificationListener>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetAccessStatus(int32_t*) noexcept = 0;
@@ -58,7 +58,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::Management::IUserNotificationListenerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
         };
@@ -70,7 +70,7 @@ namespace winrt::impl
         auto GetAccessStatus() const;
         auto NotificationChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::Management::UserNotificationListener, winrt::Windows::UI::Notifications::UserNotificationChangedEventArgs> const& handler) const;
         using NotificationChanged_revoker = impl::event_revoker<winrt::Windows::UI::Notifications::Management::IUserNotificationListener, &impl::abi_t<winrt::Windows::UI::Notifications::Management::IUserNotificationListener>::remove_NotificationChanged>;
-        [[nodiscard]] NotificationChanged_revoker NotificationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::Management::UserNotificationListener, winrt::Windows::UI::Notifications::UserNotificationChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto NotificationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::Management::UserNotificationListener, winrt::Windows::UI::Notifications::UserNotificationChangedEventArgs> const& handler) const;
         auto NotificationChanged(winrt::event_token const& token) const noexcept;
         auto GetNotificationsAsync(winrt::Windows::UI::Notifications::NotificationKinds const& kinds) const;
         auto GetNotification(uint32_t notificationId) const;

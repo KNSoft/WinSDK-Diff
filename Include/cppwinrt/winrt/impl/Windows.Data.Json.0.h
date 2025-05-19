@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -85,7 +85,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Data::Json::JsonValue>{ using type = winrt::Windows::Data::Json::IJsonValue; };
     template <> struct abi<winrt::Windows::Data::Json::IJsonArray>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetObjectAt(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetArrayAt(uint32_t, void**) noexcept = 0;
@@ -96,7 +96,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Json::IJsonArrayStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -104,14 +104,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Json::IJsonErrorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetJsonStatus(int32_t, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Json::IJsonObject>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetNamedValue(void*, void**) noexcept = 0;
             virtual int32_t __stdcall SetNamedValue(void*, void*) noexcept = 0;
@@ -124,7 +124,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Json::IJsonObjectStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -132,7 +132,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Json::IJsonObjectWithDefaultValues>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetNamedValueOrDefault(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetNamedObjectOrDefault(void*, void*, void**) noexcept = 0;
@@ -144,7 +144,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Json::IJsonValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ValueType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Stringify(void**) noexcept = 0;
@@ -157,7 +157,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Json::IJsonValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -168,7 +168,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Json::IJsonValueStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateNullValue(void**) noexcept = 0;
         };

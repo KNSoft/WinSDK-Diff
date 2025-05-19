@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -183,21 +183,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::AppService::StatelessAppServiceResponse>{ using type = winrt::Windows::ApplicationModel::AppService::IStatelessAppServiceResponse; };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceCatalogStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAppServiceProvidersAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppServiceName(void**) noexcept = 0;
             virtual int32_t __stdcall put_AppServiceName(void*) noexcept = 0;
@@ -213,7 +213,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceConnection2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenRemoteAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -222,21 +222,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceConnectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendStatelessMessageAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
             virtual int32_t __stdcall SendResponseAsync(void*, void**) noexcept = 0;
@@ -244,7 +244,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceRequestReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -252,7 +252,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceResponse>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -260,7 +260,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_CallerPackageFamilyName(void**) noexcept = 0;
@@ -269,28 +269,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceTriggerDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsRemoteSystemConnection(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceTriggerDetails3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CheckCallerForCapabilityAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IAppServiceTriggerDetails4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CallerRemoteConnectionToken(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::AppService::IStatelessAppServiceResponse>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -325,11 +325,11 @@ namespace winrt::impl
         auto SendMessageAsync(winrt::Windows::Foundation::Collections::ValueSet const& message) const;
         auto RequestReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::AppService::AppServiceConnection, winrt::Windows::ApplicationModel::AppService::AppServiceRequestReceivedEventArgs> const& handler) const;
         using RequestReceived_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::AppService::IAppServiceConnection, &impl::abi_t<winrt::Windows::ApplicationModel::AppService::IAppServiceConnection>::remove_RequestReceived>;
-        [[nodiscard]] RequestReceived_revoker RequestReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::AppService::AppServiceConnection, winrt::Windows::ApplicationModel::AppService::AppServiceRequestReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto RequestReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::AppService::AppServiceConnection, winrt::Windows::ApplicationModel::AppService::AppServiceRequestReceivedEventArgs> const& handler) const;
         auto RequestReceived(winrt::event_token const& token) const noexcept;
         auto ServiceClosed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::AppService::AppServiceConnection, winrt::Windows::ApplicationModel::AppService::AppServiceClosedEventArgs> const& handler) const;
         using ServiceClosed_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::AppService::IAppServiceConnection, &impl::abi_t<winrt::Windows::ApplicationModel::AppService::IAppServiceConnection>::remove_ServiceClosed>;
-        [[nodiscard]] ServiceClosed_revoker ServiceClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::AppService::AppServiceConnection, winrt::Windows::ApplicationModel::AppService::AppServiceClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto ServiceClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::AppService::AppServiceConnection, winrt::Windows::ApplicationModel::AppService::AppServiceClosedEventArgs> const& handler) const;
         auto ServiceClosed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::AppService::IAppServiceConnection>

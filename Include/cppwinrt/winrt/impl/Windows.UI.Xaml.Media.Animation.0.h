@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,16 +8,16 @@
 #define WINRT_Windows_UI_Xaml_Media_Animation_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::UI
 {
@@ -1073,13 +1073,13 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Media::Animation::TransitionCollection>{ using type = winrt::Windows::Foundation::Collections::IVector<winrt::Windows::UI::Xaml::Media::Animation::Transition>; };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IAddDeleteThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IBackEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Amplitude(double*) noexcept = 0;
             virtual int32_t __stdcall put_Amplitude(double) noexcept = 0;
@@ -1087,27 +1087,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IBackEaseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AmplitudeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IBasicConnectedAnimationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IBasicConnectedAnimationConfigurationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IBeginStoryboard>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Storyboard(void**) noexcept = 0;
             virtual int32_t __stdcall put_Storyboard(void*) noexcept = 0;
@@ -1115,14 +1115,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IBeginStoryboardStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StoryboardProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IBounceEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Bounces(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Bounces(int32_t) noexcept = 0;
@@ -1132,7 +1132,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IBounceEaseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BouncesProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_BouncinessProperty(void**) noexcept = 0;
@@ -1140,13 +1140,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ICircleEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IColorAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_From(void**) noexcept = 0;
             virtual int32_t __stdcall put_From(void*) noexcept = 0;
@@ -1162,7 +1162,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IColorAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FromProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ToProperty(void**) noexcept = 0;
@@ -1173,7 +1173,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IColorAnimationUsingKeyFrames>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyFrames(void**) noexcept = 0;
             virtual int32_t __stdcall get_EnableDependentAnimation(bool*) noexcept = 0;
@@ -1182,14 +1182,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IColorAnimationUsingKeyFramesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnableDependentAnimationProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IColorKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Value(struct struct_Windows_UI_Color) noexcept = 0;
@@ -1199,14 +1199,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IColorKeyFrameFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IColorKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ValueProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_KeyTimeProperty(void**) noexcept = 0;
@@ -1214,7 +1214,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ICommonNavigationTransitionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsStaggeringEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsStaggeringEnabled(bool) noexcept = 0;
@@ -1222,7 +1222,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ICommonNavigationTransitionInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsStaggeringEnabledProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsStaggerElementProperty(void**) noexcept = 0;
@@ -1232,7 +1232,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Completed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Completed(winrt::event_token) noexcept = 0;
@@ -1242,7 +1242,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsScaleAnimationEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsScaleAnimationEnabled(bool) noexcept = 0;
@@ -1252,7 +1252,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall put_Configuration(void*) noexcept = 0;
@@ -1260,19 +1260,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimationConfigurationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimationService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultDuration(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_DefaultDuration(int64_t) noexcept = 0;
@@ -1284,14 +1284,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimationServiceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IContentThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalOffset(double*) noexcept = 0;
             virtual int32_t __stdcall put_HorizontalOffset(double) noexcept = 0;
@@ -1301,7 +1301,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IContentThemeTransitionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalOffsetProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_VerticalOffsetProperty(void**) noexcept = 0;
@@ -1309,7 +1309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IContinuumNavigationTransitionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExitElement(void**) noexcept = 0;
             virtual int32_t __stdcall put_ExitElement(void*) noexcept = 0;
@@ -1317,7 +1317,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IContinuumNavigationTransitionInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExitElementProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsEntranceElementProperty(void**) noexcept = 0;
@@ -1333,50 +1333,50 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ICubicEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDirectConnectedAnimationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDirectConnectedAnimationConfigurationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDiscreteColorKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDiscreteDoubleKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDiscreteObjectKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDiscretePointKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDoubleAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_From(void**) noexcept = 0;
             virtual int32_t __stdcall put_From(void*) noexcept = 0;
@@ -1392,7 +1392,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDoubleAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FromProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ToProperty(void**) noexcept = 0;
@@ -1403,7 +1403,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDoubleAnimationUsingKeyFrames>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyFrames(void**) noexcept = 0;
             virtual int32_t __stdcall get_EnableDependentAnimation(bool*) noexcept = 0;
@@ -1412,14 +1412,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDoubleAnimationUsingKeyFramesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnableDependentAnimationProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDoubleKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(double*) noexcept = 0;
             virtual int32_t __stdcall put_Value(double) noexcept = 0;
@@ -1429,14 +1429,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDoubleKeyFrameFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDoubleKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ValueProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_KeyTimeProperty(void**) noexcept = 0;
@@ -1444,7 +1444,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDragItemThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -1452,14 +1452,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDragItemThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDragOverThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -1471,7 +1471,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDragOverThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ToOffsetProperty(void**) noexcept = 0;
@@ -1480,13 +1480,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDrillInNavigationTransitionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDrillInThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EntranceTargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_EntranceTargetName(void*) noexcept = 0;
@@ -1500,7 +1500,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDrillInThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EntranceTargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_EntranceTargetProperty(void**) noexcept = 0;
@@ -1510,7 +1510,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDrillOutThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EntranceTargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_EntranceTargetName(void*) noexcept = 0;
@@ -1524,7 +1524,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDrillOutThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EntranceTargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_EntranceTargetProperty(void**) noexcept = 0;
@@ -1534,7 +1534,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDropTargetItemThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -1542,14 +1542,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IDropTargetItemThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingColorKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EasingFunction(void**) noexcept = 0;
             virtual int32_t __stdcall put_EasingFunction(void*) noexcept = 0;
@@ -1557,14 +1557,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingColorKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EasingFunctionProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingDoubleKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EasingFunction(void**) noexcept = 0;
             virtual int32_t __stdcall put_EasingFunction(void*) noexcept = 0;
@@ -1572,14 +1572,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingDoubleKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EasingFunctionProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingFunctionBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EasingMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_EasingMode(int32_t) noexcept = 0;
@@ -1588,20 +1588,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingFunctionBaseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingFunctionBaseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EasingModeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingPointKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EasingFunction(void**) noexcept = 0;
             virtual int32_t __stdcall put_EasingFunction(void*) noexcept = 0;
@@ -1609,14 +1609,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEasingPointKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EasingFunctionProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEdgeUIThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Edge(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Edge(int32_t) noexcept = 0;
@@ -1624,14 +1624,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEdgeUIThemeTransitionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EdgeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IElasticEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Oscillations(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Oscillations(int32_t) noexcept = 0;
@@ -1641,7 +1641,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IElasticEaseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OscillationsProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_SpringinessProperty(void**) noexcept = 0;
@@ -1649,13 +1649,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEntranceNavigationTransitionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEntranceNavigationTransitionInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTargetElementProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetIsTargetElement(void*, bool*) noexcept = 0;
@@ -1664,7 +1664,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEntranceThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FromHorizontalOffset(double*) noexcept = 0;
             virtual int32_t __stdcall put_FromHorizontalOffset(double) noexcept = 0;
@@ -1676,7 +1676,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IEntranceThemeTransitionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FromHorizontalOffsetProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FromVerticalOffsetProperty(void**) noexcept = 0;
@@ -1685,7 +1685,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IExponentialEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Exponent(double*) noexcept = 0;
             virtual int32_t __stdcall put_Exponent(double) noexcept = 0;
@@ -1693,14 +1693,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IExponentialEaseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExponentProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IFadeInThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -1708,14 +1708,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IFadeInThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IFadeOutThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -1723,20 +1723,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IFadeOutThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IGravityConnectedAnimationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IGravityConnectedAnimationConfiguration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsShadowEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsShadowEnabled(bool) noexcept = 0;
@@ -1744,14 +1744,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IGravityConnectedAnimationConfigurationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IKeySpline>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ControlPoint1(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_ControlPoint1(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1761,38 +1761,38 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IKeyTimeHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IKeyTimeHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromTimeSpan(int64_t, struct struct_Windows_UI_Xaml_Media_Animation_KeyTime*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ILinearColorKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ILinearDoubleKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ILinearPointKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::INavigationThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultNavigationTransitionInfo(void**) noexcept = 0;
             virtual int32_t __stdcall put_DefaultNavigationTransitionInfo(void*) noexcept = 0;
@@ -1800,27 +1800,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::INavigationThemeTransitionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultNavigationTransitionInfoProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::INavigationTransitionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::INavigationTransitionInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::INavigationTransitionInfoOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetNavigationStateCore(void**) noexcept = 0;
             virtual int32_t __stdcall SetNavigationStateCore(void*) noexcept = 0;
@@ -1828,7 +1828,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IObjectAnimationUsingKeyFrames>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyFrames(void**) noexcept = 0;
             virtual int32_t __stdcall get_EnableDependentAnimation(bool*) noexcept = 0;
@@ -1837,14 +1837,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IObjectAnimationUsingKeyFramesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnableDependentAnimationProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IObjectKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
             virtual int32_t __stdcall put_Value(void*) noexcept = 0;
@@ -1854,14 +1854,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IObjectKeyFrameFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IObjectKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ValueProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_KeyTimeProperty(void**) noexcept = 0;
@@ -1869,7 +1869,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPaneThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Edge(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Edge(int32_t) noexcept = 0;
@@ -1877,14 +1877,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPaneThemeTransitionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EdgeProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_From(void**) noexcept = 0;
             virtual int32_t __stdcall put_From(void*) noexcept = 0;
@@ -1900,7 +1900,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FromProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ToProperty(void**) noexcept = 0;
@@ -1911,7 +1911,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointAnimationUsingKeyFrames>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyFrames(void**) noexcept = 0;
             virtual int32_t __stdcall get_EnableDependentAnimation(bool*) noexcept = 0;
@@ -1920,14 +1920,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointAnimationUsingKeyFramesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnableDependentAnimationProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall put_Value(winrt::Windows::Foundation::Point) noexcept = 0;
@@ -1937,14 +1937,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointKeyFrameFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ValueProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_KeyTimeProperty(void**) noexcept = 0;
@@ -1952,7 +1952,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointerDownThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -1960,14 +1960,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointerDownThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointerUpThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -1975,14 +1975,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPointerUpThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPopInThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -1994,7 +1994,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPopInThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FromHorizontalOffsetProperty(void**) noexcept = 0;
@@ -2003,7 +2003,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPopOutThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -2011,14 +2011,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPopOutThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPopupThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FromHorizontalOffset(double*) noexcept = 0;
             virtual int32_t __stdcall put_FromHorizontalOffset(double) noexcept = 0;
@@ -2028,7 +2028,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPopupThemeTransitionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FromHorizontalOffsetProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FromVerticalOffsetProperty(void**) noexcept = 0;
@@ -2036,7 +2036,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPowerEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Power(double*) noexcept = 0;
             virtual int32_t __stdcall put_Power(double) noexcept = 0;
@@ -2044,44 +2044,44 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IPowerEaseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PowerProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IQuadraticEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IQuarticEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IQuinticEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IReorderThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IRepeatBehaviorHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IRepeatBehaviorHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Forever(struct struct_Windows_UI_Xaml_Media_Animation_RepeatBehavior*) noexcept = 0;
             virtual int32_t __stdcall FromCount(double, struct struct_Windows_UI_Xaml_Media_Animation_RepeatBehavior*) noexcept = 0;
@@ -2093,7 +2093,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IRepositionThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -2105,7 +2105,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IRepositionThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FromHorizontalOffsetProperty(void**) noexcept = 0;
@@ -2114,13 +2114,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IRepositionThemeTransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IRepositionThemeTransition2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsStaggeringEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsStaggeringEnabled(bool) noexcept = 0;
@@ -2128,26 +2128,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IRepositionThemeTransitionStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsStaggeringEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISineEase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISlideNavigationTransitionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISlideNavigationTransitionInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Effect(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Effect(int32_t) noexcept = 0;
@@ -2155,14 +2155,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISlideNavigationTransitionInfoStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EffectProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplineColorKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeySpline(void**) noexcept = 0;
             virtual int32_t __stdcall put_KeySpline(void*) noexcept = 0;
@@ -2170,14 +2170,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplineColorKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeySplineProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplineDoubleKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeySpline(void**) noexcept = 0;
             virtual int32_t __stdcall put_KeySpline(void*) noexcept = 0;
@@ -2185,14 +2185,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplineDoubleKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeySplineProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplinePointKeyFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeySpline(void**) noexcept = 0;
             virtual int32_t __stdcall put_KeySpline(void*) noexcept = 0;
@@ -2200,14 +2200,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplinePointKeyFrameStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeySplineProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplitCloseThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OpenedTargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_OpenedTargetName(void*) noexcept = 0;
@@ -2235,7 +2235,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplitCloseThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OpenedTargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OpenedTargetProperty(void**) noexcept = 0;
@@ -2252,7 +2252,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplitOpenThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OpenedTargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_OpenedTargetName(void*) noexcept = 0;
@@ -2280,7 +2280,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISplitOpenThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OpenedTargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OpenedTargetProperty(void**) noexcept = 0;
@@ -2297,7 +2297,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IStoryboard>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Children(void**) noexcept = 0;
             virtual int32_t __stdcall Seek(int64_t) noexcept = 0;
@@ -2313,7 +2313,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::IStoryboardStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetPropertyProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetTargetProperty(void*, void**) noexcept = 0;
@@ -2326,13 +2326,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISuppressNavigationTransitionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISwipeBackThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -2344,7 +2344,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISwipeBackThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_FromHorizontalOffsetProperty(void**) noexcept = 0;
@@ -2353,7 +2353,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISwipeHintThemeAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetName(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetName(void*) noexcept = 0;
@@ -2365,7 +2365,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ISwipeHintThemeAnimationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetNameProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ToHorizontalOffsetProperty(void**) noexcept = 0;
@@ -2374,7 +2374,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ITimeline>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutoReverse(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AutoReverse(bool) noexcept = 0;
@@ -2394,14 +2394,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ITimelineFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ITimelineStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowDependentAnimations(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowDependentAnimations(bool) noexcept = 0;
@@ -2415,13 +2415,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ITransition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Animation::ITransitionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
@@ -2627,7 +2627,7 @@ namespace winrt::impl
     {
         auto Completed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Animation::ConnectedAnimation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimation, &impl::abi_t<winrt::Windows::UI::Xaml::Media::Animation::IConnectedAnimation>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Animation::ConnectedAnimation, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Media::Animation::ConnectedAnimation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Completed(winrt::event_token const& token) const noexcept;
         auto TryStart(winrt::Windows::UI::Xaml::UIElement const& destination) const;
         auto Cancel() const;
@@ -4045,7 +4045,7 @@ namespace winrt::impl
         auto RepeatBehavior(winrt::Windows::UI::Xaml::Media::Animation::RepeatBehavior const& value) const;
         auto Completed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Media::Animation::ITimeline, &impl::abi_t<winrt::Windows::UI::Xaml::Media::Animation::ITimeline>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Completed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Media::Animation::ITimeline>

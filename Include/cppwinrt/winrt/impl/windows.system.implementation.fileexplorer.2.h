@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 #include "winrt/impl/Windows.System.Implementation.FileExplorer.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Implementation::FileExplorer
 {
-    struct __declspec(empty_bases) SysStorageProviderEventReceivedEventArgs : winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventReceivedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES SysStorageProviderEventReceivedEventArgs : winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventReceivedEventArgs
     {
         SysStorageProviderEventReceivedEventArgs(std::nullptr_t) noexcept {}
         SysStorageProviderEventReceivedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventReceivedEventArgs(ptr, take_ownership_from_abi) {}

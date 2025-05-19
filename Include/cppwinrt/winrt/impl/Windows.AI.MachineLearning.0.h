@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,8 +8,8 @@
 #define WINRT_Windows_AI_MachineLearning_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IMap;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMap;
     struct IPropertySet;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics
@@ -168,6 +168,7 @@ WINRT_EXPORT namespace winrt::Windows::AI::MachineLearning
     struct TensorUInt32Bit;
     struct TensorUInt64Bit;
     struct TensorUInt8Bit;
+    struct MachineLearningContract;
 }
 namespace winrt::impl
 {
@@ -355,6 +356,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::AI::MachineLearning::ITensorUInt8Bit> = L"Windows.AI.MachineLearning.ITensorUInt8Bit";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::MachineLearning::ITensorUInt8BitStatics> = L"Windows.AI.MachineLearning.ITensorUInt8BitStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::MachineLearning::ITensorUInt8BitStatics2> = L"Windows.AI.MachineLearning.ITensorUInt8BitStatics2";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::MachineLearning::MachineLearningContract> = L"Windows.AI.MachineLearning.MachineLearningContract";
     template <> inline constexpr guid guid_v<winrt::Windows::AI::MachineLearning::IImageFeatureDescriptor>{ 0x365585A5,0x171A,0x4A2A,{ 0x98,0x5F,0x26,0x51,0x59,0xD3,0x89,0x5A } }; // 365585A5-171A-4A2A-985F-265159D3895A
     template <> inline constexpr guid guid_v<winrt::Windows::AI::MachineLearning::IImageFeatureDescriptor2>{ 0x2B27CCA7,0xD533,0x5862,{ 0xBB,0x98,0x16,0x11,0xB1,0x55,0xB0,0xE1 } }; // 2B27CCA7-D533-5862-BB98-1611B155B0E1
     template <> inline constexpr guid guid_v<winrt::Windows::AI::MachineLearning::IImageFeatureValue>{ 0xF0414FD9,0xC9AA,0x4405,{ 0xB7,0xFB,0x94,0xF8,0x7C,0x8A,0x30,0x37 } }; // F0414FD9-C9AA-4405-B7FB-94F87C8A3037
@@ -445,7 +447,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::AI::MachineLearning::TensorUInt8Bit>{ using type = winrt::Windows::AI::MachineLearning::ITensorUInt8Bit; };
     template <> struct abi<winrt::Windows::AI::MachineLearning::IImageFeatureDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BitmapPixelFormat(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_BitmapAlphaMode(int32_t*) noexcept = 0;
@@ -455,28 +457,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::IImageFeatureDescriptor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelRange(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::IImageFeatureValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoFrame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::IImageFeatureValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromVideoFrame(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Author(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -490,7 +492,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelBinding>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Bind(void*, void*) noexcept = 0;
             virtual int32_t __stdcall BindWithProperties(void*, void*, void*) noexcept = 0;
@@ -499,14 +501,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelBindingFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromSession(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AdapterId(struct struct_Windows_Graphics_DisplayAdapterId*) noexcept = 0;
             virtual int32_t __stdcall get_Direct3D11Device(void**) noexcept = 0;
@@ -514,21 +516,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelDeviceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromDirect3D11Device(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelEvaluationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CorrelationId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ErrorStatus(int32_t*) noexcept = 0;
@@ -538,7 +540,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelFeatureDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
@@ -548,20 +550,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelFeatureValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelOperatorProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Model(void**) noexcept = 0;
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
@@ -574,7 +576,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelSessionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromModel(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromModelOnDevice(void*, void*, void**) noexcept = 0;
@@ -582,14 +584,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelSessionFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromModelOnDeviceWithSessionOptions(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelSessionOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BatchSizeOverride(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BatchSizeOverride(uint32_t) noexcept = 0;
@@ -597,7 +599,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelSessionOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CloseModelOnSessionCreation(bool*) noexcept = 0;
             virtual int32_t __stdcall put_CloseModelOnSessionCreation(bool) noexcept = 0;
@@ -605,14 +607,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelSessionOptions3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OverrideNamedDimension(void*, uint32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ILearningModelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadFromStorageFileAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LoadFromStreamAsync(void*, void**) noexcept = 0;
@@ -626,7 +628,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::IMapFeatureDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ValueDescriptor(void**) noexcept = 0;
@@ -634,14 +636,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ISequenceFeatureDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ElementDescriptor(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TensorKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Shape(void**) noexcept = 0;
@@ -649,14 +651,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorBoolean>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorBooleanStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -666,7 +668,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorBooleanStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, bool*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -674,14 +676,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorDouble>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorDoubleStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -691,7 +693,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorDoubleStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, double*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -699,7 +701,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorFeatureDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TensorKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Shape(void**) noexcept = 0;
@@ -707,21 +709,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorFloat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorFloat16Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorFloat16BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -731,7 +733,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorFloat16BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, float*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -739,7 +741,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorFloatStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -749,7 +751,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorFloatStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, float*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -757,14 +759,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt16Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt16BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -774,7 +776,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt16BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, int16_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -782,14 +784,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt32Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt32BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -799,7 +801,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt32BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, int32_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -807,14 +809,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt64Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt64BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -824,7 +826,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt64BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, int64_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -832,14 +834,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt8Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt8BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -849,7 +851,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorInt8BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, uint8_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -857,14 +859,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorString>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorStringStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -874,21 +876,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorStringStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt16Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt16BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -898,7 +900,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt16BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, uint16_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -906,14 +908,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt32Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt32BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -923,7 +925,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt32BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, uint32_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -931,14 +933,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt64Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt64BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -948,7 +950,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt64BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, uint64_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;
@@ -956,14 +958,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt8Bit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsVectorView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt8BitStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void**) noexcept = 0;
             virtual int32_t __stdcall Create2(void*, void**) noexcept = 0;
@@ -973,7 +975,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::AI::MachineLearning::ITensorUInt8BitStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromShapeArrayAndDataArray(uint32_t, int64_t*, uint32_t, uint8_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBuffer(uint32_t, int64_t*, void*, void**) noexcept = 0;

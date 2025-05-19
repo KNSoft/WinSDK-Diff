@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,8 +8,8 @@
 #define WINRT_Windows_Media_MediaProperties_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IMap;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMap;
 }
 WINRT_EXPORT namespace winrt::Windows::Media::Core
 {
@@ -330,7 +330,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::MediaProperties::VideoEncodingProperties>{ using type = winrt::Windows::Media::MediaProperties::IVideoEncodingProperties; };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IAudioEncodingProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Bitrate(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_Bitrate(uint32_t*) noexcept = 0;
@@ -344,21 +344,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IAudioEncodingProperties2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSpatial(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IAudioEncodingProperties3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Copy(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IAudioEncodingPropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAac(uint32_t, uint32_t, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateAacAdts(uint32_t, uint32_t, uint32_t, void**) noexcept = 0;
@@ -369,7 +369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IAudioEncodingPropertiesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAlac(uint32_t, uint32_t, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFlac(uint32_t, uint32_t, uint32_t, void**) noexcept = 0;
@@ -377,7 +377,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IAudioEncodingPropertiesWithFormatUserData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetFormatUserData(uint32_t, uint8_t*) noexcept = 0;
             virtual int32_t __stdcall GetFormatUserData(uint32_t*, uint8_t**) noexcept = 0;
@@ -385,7 +385,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IAv1ProfileIdsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MainChromaSubsampling420BitDepth8(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MainChromaSubsampling420BitDepth10(int32_t*) noexcept = 0;
@@ -403,20 +403,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IContainerEncodingProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IContainerEncodingProperties2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Copy(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IH264ProfileIdsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConstrainedBaseline(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Baseline(int32_t*) noexcept = 0;
@@ -432,7 +432,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IHevcProfileIdsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MainChromaSubsampling420BitDepth8(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MainChromaSubsampling420BitDepth10(int32_t*) noexcept = 0;
@@ -460,7 +460,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IImageEncodingProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Width(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_Width(uint32_t*) noexcept = 0;
@@ -470,14 +470,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IImageEncodingProperties2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Copy(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IImageEncodingPropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateJpeg(void**) noexcept = 0;
             virtual int32_t __stdcall CreatePng(void**) noexcept = 0;
@@ -486,7 +486,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IImageEncodingPropertiesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateUncompressed(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateBmp(void**) noexcept = 0;
@@ -494,14 +494,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IImageEncodingPropertiesStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateHeif(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Audio(void*) noexcept = 0;
             virtual int32_t __stdcall get_Audio(void**) noexcept = 0;
@@ -513,7 +513,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingProfile2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetAudioTracks(void*) noexcept = 0;
             virtual int32_t __stdcall GetAudioTracks(void**) noexcept = 0;
@@ -523,7 +523,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingProfile3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetTimedMetadataTracks(void*) noexcept = 0;
             virtual int32_t __stdcall GetTimedMetadataTracks(void**) noexcept = 0;
@@ -531,7 +531,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingProfileStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateM4a(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateMp3(int32_t, void**) noexcept = 0;
@@ -544,7 +544,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingProfileStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWav(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateAvi(int32_t, void**) noexcept = 0;
@@ -552,7 +552,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingProfileStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAlac(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFlac(int32_t, void**) noexcept = 0;
@@ -561,7 +561,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingProfileStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVp9(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateAv1(int32_t, void**) noexcept = 0;
@@ -569,7 +569,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
             virtual int32_t __stdcall get_Type(void**) noexcept = 0;
@@ -579,7 +579,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingSubtypesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Aac(void**) noexcept = 0;
             virtual int32_t __stdcall get_AacAdts(void**) noexcept = 0;
@@ -625,7 +625,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingSubtypesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Vp9(void**) noexcept = 0;
             virtual int32_t __stdcall get_L8(void**) noexcept = 0;
@@ -635,7 +635,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingSubtypesStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Alac(void**) noexcept = 0;
             virtual int32_t __stdcall get_Flac(void**) noexcept = 0;
@@ -643,21 +643,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingSubtypesStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_P010(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingSubtypesStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Heif(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingSubtypesStatics6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Pgs(void**) noexcept = 0;
             virtual int32_t __stdcall get_Srt(void**) noexcept = 0;
@@ -667,14 +667,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaEncodingSubtypesStatics7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Av1(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMediaRatio>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Numerator(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_Numerator(uint32_t*) noexcept = 0;
@@ -684,7 +684,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IMpeg2ProfileIdsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Simple(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Main(int32_t*) noexcept = 0;
@@ -695,7 +695,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::ITimedMetadataEncodingProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetFormatUserData(uint32_t, uint8_t*) noexcept = 0;
             virtual int32_t __stdcall GetFormatUserData(uint32_t*, uint8_t**) noexcept = 0;
@@ -704,7 +704,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::ITimedMetadataEncodingPropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePgs(void**) noexcept = 0;
             virtual int32_t __stdcall CreateSrt(void**) noexcept = 0;
@@ -714,7 +714,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVideoEncodingProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Bitrate(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_Bitrate(uint32_t*) noexcept = 0;
@@ -728,7 +728,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVideoEncodingProperties2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetFormatUserData(uint32_t, uint8_t*) noexcept = 0;
             virtual int32_t __stdcall GetFormatUserData(uint32_t*, uint8_t**) noexcept = 0;
@@ -738,28 +738,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVideoEncodingProperties3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StereoscopicVideoPackingMode(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVideoEncodingProperties4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SphericalVideoFrameFormat(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVideoEncodingProperties5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Copy(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVideoEncodingPropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateH264(void**) noexcept = 0;
             virtual int32_t __stdcall CreateMpeg2(void**) noexcept = 0;
@@ -768,14 +768,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVideoEncodingPropertiesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateHevc(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVideoEncodingPropertiesStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVp9(void**) noexcept = 0;
             virtual int32_t __stdcall CreateAv1(void**) noexcept = 0;
@@ -783,7 +783,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::MediaProperties::IVp9ProfileIdsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Profile0ChromaSubsampling420BitDepth8(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Profile2ChromaSubsampling420BitDepth10(int32_t*) noexcept = 0;

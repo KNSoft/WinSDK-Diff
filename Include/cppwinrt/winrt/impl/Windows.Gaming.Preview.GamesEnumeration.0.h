@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -95,7 +95,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::Preview::GamesEnumeration::GameModeUserConfiguration>{ using type = winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeUserConfiguration; };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListEntry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayInfo(void**) noexcept = 0;
             virtual int32_t __stdcall LaunchAsync(void**) noexcept = 0;
@@ -106,7 +106,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListEntry2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LaunchableState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_LauncherExecutable(void**) noexcept = 0;
@@ -120,7 +120,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsyncPackageFamilyName(void*, void**) noexcept = 0;
@@ -134,7 +134,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MergeEntriesAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall UnmergeEntryAsync(void*, void**) noexcept = 0;
@@ -142,7 +142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeUserConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GamingRelatedProcessNames(void**) noexcept = 0;
             virtual int32_t __stdcall SaveAsync(void**) noexcept = 0;
@@ -174,21 +174,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeUserConfigurationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -229,15 +229,15 @@ namespace winrt::impl
         auto FindAllAsync(param::hstring const& packageFamilyName) const;
         auto GameAdded(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
         using GameAdded_revoker = impl::event_revoker<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics, &impl::abi_t<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>::remove_GameAdded>;
-        [[nodiscard]] GameAdded_revoker GameAdded(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
+        [[nodiscard]] auto GameAdded(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
         auto GameAdded(winrt::event_token const& token) const noexcept;
         auto GameRemoved(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler const& handler) const;
         using GameRemoved_revoker = impl::event_revoker<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics, &impl::abi_t<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>::remove_GameRemoved>;
-        [[nodiscard]] GameRemoved_revoker GameRemoved(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler const& handler) const;
+        [[nodiscard]] auto GameRemoved(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler const& handler) const;
         auto GameRemoved(winrt::event_token const& token) const noexcept;
         auto GameUpdated(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
         using GameUpdated_revoker = impl::event_revoker<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics, &impl::abi_t<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>::remove_GameUpdated>;
-        [[nodiscard]] GameUpdated_revoker GameUpdated(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
+        [[nodiscard]] auto GameUpdated(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
         auto GameUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>

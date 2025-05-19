@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,14 +10,14 @@
 #include "winrt/impl/Windows.Devices.I2c.Provider.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::I2c::Provider
 {
-    struct __declspec(empty_bases) II2cControllerProvider :
+    struct WINRT_IMPL_EMPTY_BASES II2cControllerProvider :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<II2cControllerProvider>
     {
         II2cControllerProvider(std::nullptr_t = nullptr) noexcept {}
         II2cControllerProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) II2cDeviceProvider :
+    struct WINRT_IMPL_EMPTY_BASES II2cDeviceProvider :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<II2cDeviceProvider>,
         impl::require<winrt::Windows::Devices::I2c::Provider::II2cDeviceProvider, winrt::Windows::Foundation::IClosable>
@@ -25,14 +25,14 @@ WINRT_EXPORT namespace winrt::Windows::Devices::I2c::Provider
         II2cDeviceProvider(std::nullptr_t = nullptr) noexcept {}
         II2cDeviceProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) II2cProvider :
+    struct WINRT_IMPL_EMPTY_BASES II2cProvider :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<II2cProvider>
     {
         II2cProvider(std::nullptr_t = nullptr) noexcept {}
         II2cProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IProviderI2cConnectionSettings :
+    struct WINRT_IMPL_EMPTY_BASES IProviderI2cConnectionSettings :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IProviderI2cConnectionSettings>
     {

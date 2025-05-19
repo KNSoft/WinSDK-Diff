@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,8 +15,8 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Bluetooth
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -236,7 +236,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData>{ using type = winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEManufacturerData; };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Flags(void**) noexcept = 0;
             virtual int32_t __stdcall put_Flags(void*) noexcept = 0;
@@ -251,7 +251,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementBytePattern>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataType(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall put_DataType(uint8_t) noexcept = 0;
@@ -263,14 +263,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementBytePatternFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint8_t, int16_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementDataSection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataType(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall put_DataType(uint8_t) noexcept = 0;
@@ -280,14 +280,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementDataSectionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint8_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementDataTypesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Flags(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_IncompleteService16BitUuids(uint8_t*) noexcept = 0;
@@ -315,7 +315,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Advertisement(void**) noexcept = 0;
             virtual int32_t __stdcall put_Advertisement(void*) noexcept = 0;
@@ -324,7 +324,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Advertisement(void**) noexcept = 0;
@@ -336,7 +336,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisher2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PreferredTransmitPowerLevelInDBm(void**) noexcept = 0;
             virtual int32_t __stdcall put_PreferredTransmitPowerLevelInDBm(void*) noexcept = 0;
@@ -350,7 +350,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisher3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryPhy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_PrimaryPhy(int32_t) noexcept = 0;
@@ -360,14 +360,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisherFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisherStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
@@ -375,14 +375,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisherStatusChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedTransmitPowerLevelInDBm(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RawSignalStrengthInDBm(int16_t*) noexcept = 0;
             virtual int32_t __stdcall get_BluetoothAddress(uint64_t*) noexcept = 0;
@@ -393,7 +393,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementReceivedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BluetoothAddressType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_TransmitPowerLevelInDBm(void**) noexcept = 0;
@@ -406,7 +406,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementReceivedEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryPhy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SecondaryPhy(int32_t*) noexcept = 0;
@@ -414,7 +414,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementScanParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ScanWindow(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_ScanInterval(uint16_t*) noexcept = 0;
@@ -422,7 +422,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementScanParametersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CoexistenceOptimized(void**) noexcept = 0;
             virtual int32_t __stdcall LowLatency(void**) noexcept = 0;
@@ -430,7 +430,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinSamplingInterval(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_MaxSamplingInterval(int64_t*) noexcept = 0;
@@ -453,7 +453,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcher2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowExtendedAdvertisements(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowExtendedAdvertisements(bool) noexcept = 0;
@@ -461,7 +461,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcher3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseUncoded1MPhy(bool*) noexcept = 0;
             virtual int32_t __stdcall put_UseUncoded1MPhy(bool) noexcept = 0;
@@ -475,21 +475,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcherFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcherStoppedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEManufacturerData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompanyId(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall put_CompanyId(uint16_t) noexcept = 0;
@@ -499,7 +499,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEManufacturerDataFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint16_t, void*, void**) noexcept = 0;
         };
@@ -615,7 +615,7 @@ namespace winrt::impl
         auto Stop() const;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisher, &impl::abi_t<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisher>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementPublisher>
@@ -754,11 +754,11 @@ namespace winrt::impl
         auto Stop() const;
         auto Received(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs> const& handler) const;
         using Received_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcher, &impl::abi_t<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcher>::remove_Received>;
-        [[nodiscard]] Received_revoker Received(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto Received(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs> const& handler) const;
         auto Received(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcher, &impl::abi_t<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher, winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisementWatcher>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_System_RemoteDesktop_H
 #define WINRT_Windows_System_RemoteDesktop_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.230511.6"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.230511.6"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
 #include "winrt/Windows.System.h"
 #include "winrt/impl/Windows.System.RemoteDesktop.2.h"
 namespace winrt::impl
@@ -16,7 +16,19 @@ namespace winrt::impl
     template <typename D> auto consume_Windows_System_RemoteDesktop_IInteractiveSessionStatics<D>::IsRemote() const
     {
         bool value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::IInteractiveSessionStatics)->get_IsRemote(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::IInteractiveSessionStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::IInteractiveSessionStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::IInteractiveSessionStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsRemote(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::IInteractiveSessionStatics>**)this;
+            check_hresult(_winrt_abi_type->get_IsRemote(&value));
+        }
         return value;
     }
 #ifndef WINRT_LEAN_AND_MEAN

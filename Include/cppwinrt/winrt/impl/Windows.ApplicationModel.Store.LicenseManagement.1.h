@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,28 +9,28 @@
 #include "winrt/impl/Windows.ApplicationModel.Store.LicenseManagement.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Store::LicenseManagement
 {
-    struct __declspec(empty_bases) ILicenseManagerStatics :
+    struct WINRT_IMPL_EMPTY_BASES ILicenseManagerStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILicenseManagerStatics>
     {
         ILicenseManagerStatics(std::nullptr_t = nullptr) noexcept {}
         ILicenseManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILicenseManagerStatics2 :
+    struct WINRT_IMPL_EMPTY_BASES ILicenseManagerStatics2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILicenseManagerStatics2>
     {
         ILicenseManagerStatics2(std::nullptr_t = nullptr) noexcept {}
         ILicenseManagerStatics2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILicenseSatisfactionInfo :
+    struct WINRT_IMPL_EMPTY_BASES ILicenseSatisfactionInfo :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILicenseSatisfactionInfo>
     {
         ILicenseSatisfactionInfo(std::nullptr_t = nullptr) noexcept {}
         ILicenseSatisfactionInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILicenseSatisfactionResult :
+    struct WINRT_IMPL_EMPTY_BASES ILicenseSatisfactionResult :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILicenseSatisfactionResult>
     {

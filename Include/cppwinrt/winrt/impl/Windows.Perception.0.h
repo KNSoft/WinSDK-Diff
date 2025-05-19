@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -39,7 +39,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Perception::PerceptionTimestamp>{ using type = winrt::Windows::Perception::IPerceptionTimestamp; };
     template <> struct abi<winrt::Windows::Perception::IPerceptionTimestamp>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_PredictionAmount(int64_t*) noexcept = 0;
@@ -47,21 +47,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::IPerceptionTimestamp2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SystemRelativeTargetTime(int64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::IPerceptionTimestampHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromHistoricalTargetTime(int64_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::IPerceptionTimestampHelperStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromSystemRelativeTargetTime(int64_t, void**) noexcept = 0;
         };

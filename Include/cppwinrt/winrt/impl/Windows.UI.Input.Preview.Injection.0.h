@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_UI_Input_Preview_Injection_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input
 {
@@ -203,7 +203,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Input::Preview::Injection::InputInjector>{ using type = winrt::Windows::UI::Input::Preview::Injection::IInputInjector; };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInjectedInputGamepadInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Buttons(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Buttons(uint32_t) noexcept = 0;
@@ -223,14 +223,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInjectedInputGamepadInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceFromGamepadReading(struct struct_Windows_Gaming_Input_GamepadReading, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInjectedInputKeyboardInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyOptions(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_KeyOptions(uint32_t) noexcept = 0;
@@ -242,7 +242,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInjectedInputMouseInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MouseOptions(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MouseOptions(uint32_t) noexcept = 0;
@@ -258,7 +258,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInjectedInputPenInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointerInfo(struct struct_Windows_UI_Input_Preview_Injection_InjectedInputPointerInfo*) noexcept = 0;
             virtual int32_t __stdcall put_PointerInfo(struct struct_Windows_UI_Input_Preview_Injection_InjectedInputPointerInfo) noexcept = 0;
@@ -278,7 +278,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInjectedInputTouchInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Contact(struct struct_Windows_UI_Input_Preview_Injection_InjectedInputRectangle*) noexcept = 0;
             virtual int32_t __stdcall put_Contact(struct struct_Windows_UI_Input_Preview_Injection_InjectedInputRectangle) noexcept = 0;
@@ -294,7 +294,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInputInjector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InjectKeyboardInput(void*) noexcept = 0;
             virtual int32_t __stdcall InjectMouseInput(void*) noexcept = 0;
@@ -309,7 +309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInputInjector2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InitializeGamepadInjection() noexcept = 0;
             virtual int32_t __stdcall InjectGamepadInput(void*) noexcept = 0;
@@ -318,14 +318,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInputInjectorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreate(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Preview::Injection::IInputInjectorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateForAppBroadcastOnly(void**) noexcept = 0;
         };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -101,6 +101,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::Protection
     struct ComponentLoadFailedEventHandler;
     struct RebootNeededEventHandler;
     struct ServiceRequestedEventHandler;
+    struct ProtectionRenewalContract;
 }
 namespace winrt::impl
 {
@@ -168,6 +169,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Protection::ComponentLoadFailedEventHandler> = L"Windows.Media.Protection.ComponentLoadFailedEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Protection::RebootNeededEventHandler> = L"Windows.Media.Protection.RebootNeededEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Protection::ServiceRequestedEventHandler> = L"Windows.Media.Protection.ServiceRequestedEventHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::Protection::ProtectionRenewalContract> = L"Windows.Media.Protection.ProtectionRenewalContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Protection::IComponentLoadFailedEventArgs>{ 0x95972E93,0x7746,0x417E,{ 0x84,0x95,0xF0,0x31,0xBB,0xC5,0x86,0x2C } }; // 95972E93-7746-417E-8495-F031BBC5862C
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Protection::IComponentRenewalStatics>{ 0x6FFBCD67,0xB795,0x48C5,{ 0x8B,0x7B,0xA7,0xC4,0xEF,0xE2,0x02,0xE3 } }; // 6FFBCD67-B795-48C5-8B7B-A7C4EFE202E3
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Protection::IHdcpSession>{ 0x718845E9,0x64D7,0x426D,{ 0x80,0x9B,0x1B,0xE4,0x61,0x94,0x1A,0x2A } }; // 718845E9-64D7-426D-809B-1BE461941A2A
@@ -195,7 +197,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Protection::ServiceRequestedEventArgs>{ using type = winrt::Windows::Media::Protection::IServiceRequestedEventArgs; };
     template <> struct abi<winrt::Windows::Media::Protection::IComponentLoadFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Information(void**) noexcept = 0;
             virtual int32_t __stdcall get_Completion(void**) noexcept = 0;
@@ -203,14 +205,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::IComponentRenewalStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RenewSystemComponentsAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::IHdcpSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsEffectiveProtectionAtLeast(int32_t, bool*) noexcept = 0;
             virtual int32_t __stdcall GetEffectiveProtection(void**) noexcept = 0;
@@ -221,7 +223,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::IMediaProtectionManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ServiceRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ServiceRequested(winrt::event_token) noexcept = 0;
@@ -234,28 +236,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::IMediaProtectionPMPServer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::IMediaProtectionPMPServerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePMPServer(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::IMediaProtectionServiceCompletion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete(bool) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::IMediaProtectionServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProtectionSystem(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Type(winrt::guid*) noexcept = 0;
@@ -263,21 +265,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::IProtectionCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsTypeSupported(void*, void*, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::IRevocationAndRenewalInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::IRevocationAndRenewalItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reasons(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_HeaderHash(void**) noexcept = 0;
@@ -288,7 +290,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::IServiceRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall get_Completion(void**) noexcept = 0;
@@ -296,28 +298,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::IServiceRequestedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaPlaybackItem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::ComponentLoadFailedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::RebootNeededEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::ServiceRequestedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -349,7 +351,7 @@ namespace winrt::impl
         auto SetDesiredMinProtectionAsync(winrt::Windows::Media::Protection::HdcpProtection const& protection) const;
         auto ProtectionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::HdcpSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ProtectionChanged_revoker = impl::event_revoker<winrt::Windows::Media::Protection::IHdcpSession, &impl::abi_t<winrt::Windows::Media::Protection::IHdcpSession>::remove_ProtectionChanged>;
-        [[nodiscard]] ProtectionChanged_revoker ProtectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::HdcpSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ProtectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::HdcpSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ProtectionChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Protection::IHdcpSession>
@@ -361,15 +363,15 @@ namespace winrt::impl
     {
         auto ServiceRequested(winrt::Windows::Media::Protection::ServiceRequestedEventHandler const& handler) const;
         using ServiceRequested_revoker = impl::event_revoker<winrt::Windows::Media::Protection::IMediaProtectionManager, &impl::abi_t<winrt::Windows::Media::Protection::IMediaProtectionManager>::remove_ServiceRequested>;
-        [[nodiscard]] ServiceRequested_revoker ServiceRequested(auto_revoke_t, winrt::Windows::Media::Protection::ServiceRequestedEventHandler const& handler) const;
+        [[nodiscard]] auto ServiceRequested(auto_revoke_t, winrt::Windows::Media::Protection::ServiceRequestedEventHandler const& handler) const;
         auto ServiceRequested(winrt::event_token const& cookie) const noexcept;
         auto RebootNeeded(winrt::Windows::Media::Protection::RebootNeededEventHandler const& handler) const;
         using RebootNeeded_revoker = impl::event_revoker<winrt::Windows::Media::Protection::IMediaProtectionManager, &impl::abi_t<winrt::Windows::Media::Protection::IMediaProtectionManager>::remove_RebootNeeded>;
-        [[nodiscard]] RebootNeeded_revoker RebootNeeded(auto_revoke_t, winrt::Windows::Media::Protection::RebootNeededEventHandler const& handler) const;
+        [[nodiscard]] auto RebootNeeded(auto_revoke_t, winrt::Windows::Media::Protection::RebootNeededEventHandler const& handler) const;
         auto RebootNeeded(winrt::event_token const& cookie) const noexcept;
         auto ComponentLoadFailed(winrt::Windows::Media::Protection::ComponentLoadFailedEventHandler const& handler) const;
         using ComponentLoadFailed_revoker = impl::event_revoker<winrt::Windows::Media::Protection::IMediaProtectionManager, &impl::abi_t<winrt::Windows::Media::Protection::IMediaProtectionManager>::remove_ComponentLoadFailed>;
-        [[nodiscard]] ComponentLoadFailed_revoker ComponentLoadFailed(auto_revoke_t, winrt::Windows::Media::Protection::ComponentLoadFailedEventHandler const& handler) const;
+        [[nodiscard]] auto ComponentLoadFailed(auto_revoke_t, winrt::Windows::Media::Protection::ComponentLoadFailedEventHandler const& handler) const;
         auto ComponentLoadFailed(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto Properties() const;
     };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,11 +9,11 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -332,7 +332,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Holographic::HolographicViewConfiguration>{ using type = winrt::Windows::Graphics::Holographic::IHolographicViewConfiguration; };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCamera>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RenderTargetSize(winrt::Windows::Foundation::Size*) noexcept = 0;
             virtual int32_t __stdcall get_ViewportScaleFactor(double*) noexcept = 0;
@@ -345,7 +345,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCamera2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LeftViewportParameters(void**) noexcept = 0;
             virtual int32_t __stdcall get_RightViewportParameters(void**) noexcept = 0;
@@ -354,7 +354,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCamera3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPrimaryLayerEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsPrimaryLayerEnabled(bool) noexcept = 0;
@@ -364,14 +364,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCamera4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanOverrideViewport(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCamera5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsHardwareContentProtectionSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsHardwareContentProtectionEnabled(bool*) noexcept = 0;
@@ -380,14 +380,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCamera6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewConfiguration(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCameraPose>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HolographicCamera(void**) noexcept = 0;
             virtual int32_t __stdcall get_Viewport(winrt::Windows::Foundation::Rect*) noexcept = 0;
@@ -401,7 +401,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCameraPose2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OverrideViewTransform(void*, struct struct_Windows_Graphics_Holographic_HolographicStereoTransform) noexcept = 0;
             virtual int32_t __stdcall OverrideProjectionTransform(struct struct_Windows_Graphics_Holographic_HolographicStereoTransform) noexcept = 0;
@@ -410,7 +410,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCameraRenderingParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetFocusPoint(void*, winrt::Windows::Foundation::Numerics::float3) noexcept = 0;
             virtual int32_t __stdcall SetFocusPointWithNormal(void*, winrt::Windows::Foundation::Numerics::float3, winrt::Windows::Foundation::Numerics::float3) noexcept = 0;
@@ -421,7 +421,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCameraRenderingParameters2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReprojectionMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ReprojectionMode(int32_t) noexcept = 0;
@@ -430,7 +430,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCameraRenderingParameters3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsContentProtectionEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsContentProtectionEnabled(bool) noexcept = 0;
@@ -438,7 +438,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCameraRenderingParameters4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DepthReprojectionMethod(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DepthReprojectionMethod(int32_t) noexcept = 0;
@@ -446,7 +446,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicCameraViewportParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HiddenAreaMesh(uint32_t* __valueSize, winrt::Windows::Foundation::Numerics::float2**) noexcept = 0;
             virtual int32_t __stdcall get_VisibleAreaMesh(uint32_t* __valueSize, winrt::Windows::Foundation::Numerics::float2**) noexcept = 0;
@@ -454,7 +454,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicDisplay>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxViewportSize(winrt::Windows::Foundation::Size*) noexcept = 0;
@@ -466,28 +466,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicDisplay2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RefreshRate(double*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicDisplay3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetViewConfiguration(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicDisplayStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AddedCameras(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemovedCameras(void**) noexcept = 0;
@@ -502,21 +502,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFrame2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetQuadLayerUpdateParameters(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFrame3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(struct struct_Windows_Graphics_Holographic_HolographicFrameId*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFramePrediction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CameraPoses(void**) noexcept = 0;
             virtual int32_t __stdcall get_Timestamp(void**) noexcept = 0;
@@ -524,14 +524,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFramePresentationMonitor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadReports(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFramePresentationReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompositorGpuDuration(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AppGpuDuration(int64_t*) noexcept = 0;
@@ -542,7 +542,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFrameRenderingReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameId(struct struct_Windows_Graphics_Holographic_HolographicFrameId*) noexcept = 0;
             virtual int32_t __stdcall get_MissedLatchCount(uint32_t*) noexcept = 0;
@@ -553,14 +553,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFrameScanoutMonitor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadReports(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicFrameScanoutReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RenderingReport(void**) noexcept = 0;
             virtual int32_t __stdcall get_MissedScanoutCount(uint32_t*) noexcept = 0;
@@ -571,7 +571,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicQuadLayer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelFormat(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Size(winrt::Windows::Foundation::Size*) noexcept = 0;
@@ -579,7 +579,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicQuadLayerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(winrt::Windows::Foundation::Size, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithPixelFormat(winrt::Windows::Foundation::Size, int32_t, void**) noexcept = 0;
@@ -587,7 +587,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicQuadLayerUpdateParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AcquireBufferToUpdateContent(void**) noexcept = 0;
             virtual int32_t __stdcall UpdateViewport(winrt::Windows::Foundation::Rect) noexcept = 0;
@@ -599,7 +599,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicQuadLayerUpdateParameters2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanAcquireWithHardwareProtection(bool*) noexcept = 0;
             virtual int32_t __stdcall AcquireBufferToUpdateContentWithHardwareProtection(void**) noexcept = 0;
@@ -607,7 +607,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicSpace>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryAdapterId(struct struct_Windows_Graphics_Holographic_HolographicAdapterId*) noexcept = 0;
             virtual int32_t __stdcall SetDirect3D11Device(void*) noexcept = 0;
@@ -620,7 +620,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicSpace2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserPresence(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_UserPresenceChanged(void*, winrt::event_token*) noexcept = 0;
@@ -632,14 +632,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicSpace3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFrameScanoutMonitor(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicSpaceCameraAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Camera(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -647,21 +647,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicSpaceCameraRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Camera(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicSpaceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForCoreWindow(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicSpaceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsAvailable(bool*) noexcept = 0;
@@ -671,14 +671,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicSpaceStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsConfigured(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicViewConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NativeRenderTargetSize(winrt::Windows::Foundation::Size*) noexcept = 0;
             virtual int32_t __stdcall get_RenderTargetSize(winrt::Windows::Foundation::Size*) noexcept = 0;
@@ -696,7 +696,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Holographic::IHolographicViewConfiguration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedDepthReprojectionMethods(void**) noexcept = 0;
         };
@@ -1043,11 +1043,11 @@ namespace winrt::impl
         auto SetDirect3D11Device(winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DDevice const& value) const;
         auto CameraAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Graphics::Holographic::HolographicSpaceCameraAddedEventArgs> const& handler) const;
         using CameraAdded_revoker = impl::event_revoker<winrt::Windows::Graphics::Holographic::IHolographicSpace, &impl::abi_t<winrt::Windows::Graphics::Holographic::IHolographicSpace>::remove_CameraAdded>;
-        [[nodiscard]] CameraAdded_revoker CameraAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Graphics::Holographic::HolographicSpaceCameraAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto CameraAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Graphics::Holographic::HolographicSpaceCameraAddedEventArgs> const& handler) const;
         auto CameraAdded(winrt::event_token const& cookie) const noexcept;
         auto CameraRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Graphics::Holographic::HolographicSpaceCameraRemovedEventArgs> const& handler) const;
         using CameraRemoved_revoker = impl::event_revoker<winrt::Windows::Graphics::Holographic::IHolographicSpace, &impl::abi_t<winrt::Windows::Graphics::Holographic::IHolographicSpace>::remove_CameraRemoved>;
-        [[nodiscard]] CameraRemoved_revoker CameraRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Graphics::Holographic::HolographicSpaceCameraRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto CameraRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Graphics::Holographic::HolographicSpaceCameraRemovedEventArgs> const& handler) const;
         auto CameraRemoved(winrt::event_token const& cookie) const noexcept;
         auto CreateNextFrame() const;
     };
@@ -1061,7 +1061,7 @@ namespace winrt::impl
         [[nodiscard]] auto UserPresence() const;
         auto UserPresenceChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using UserPresenceChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Holographic::IHolographicSpace2, &impl::abi_t<winrt::Windows::Graphics::Holographic::IHolographicSpace2>::remove_UserPresenceChanged>;
-        [[nodiscard]] UserPresenceChanged_revoker UserPresenceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto UserPresenceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Holographic::HolographicSpace, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto UserPresenceChanged(winrt::event_token const& token) const noexcept;
         auto WaitForNextFrameReady() const;
         auto WaitForNextFrameReadyWithHeadStart(winrt::Windows::Foundation::TimeSpan const& requestedHeadStartDuration) const;
@@ -1115,7 +1115,7 @@ namespace winrt::impl
         [[nodiscard]] auto IsAvailable() const;
         auto IsAvailableChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsAvailableChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Holographic::IHolographicSpaceStatics2, &impl::abi_t<winrt::Windows::Graphics::Holographic::IHolographicSpaceStatics2>::remove_IsAvailableChanged>;
-        [[nodiscard]] IsAvailableChanged_revoker IsAvailableChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsAvailableChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsAvailableChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Holographic::IHolographicSpaceStatics2>

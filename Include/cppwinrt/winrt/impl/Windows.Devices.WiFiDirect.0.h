@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,11 +14,11 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Credentials
 {
@@ -193,7 +193,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::WiFiDirect::WiFiDirectLegacySettings>{ using type = winrt::Windows::Devices::WiFiDirect::IWiFiDirectLegacySettings; };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectAdvertisement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InformationElements(void**) noexcept = 0;
             virtual int32_t __stdcall put_InformationElements(void*) noexcept = 0;
@@ -206,14 +206,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectAdvertisement2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedConfigurationMethods(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectAdvertisementPublisher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Advertisement(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -225,7 +225,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectAdvertisementPublisherStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
@@ -233,7 +233,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionListener>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ConnectionRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ConnectionRequested(winrt::event_token) noexcept = 0;
@@ -241,7 +241,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GroupOwnerIntent(int16_t*) noexcept = 0;
             virtual int32_t __stdcall put_GroupOwnerIntent(int16_t) noexcept = 0;
@@ -249,7 +249,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionParameters2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PreferenceOrderedConfigurationMethods(void**) noexcept = 0;
             virtual int32_t __stdcall get_PreferredPairingProcedure(int32_t*) noexcept = 0;
@@ -258,28 +258,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionParametersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDevicePairingKinds(int32_t, uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceInformation(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetConnectionRequest(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConnectionStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
@@ -290,7 +290,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -298,7 +298,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectDeviceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void*, void**) noexcept = 0;
@@ -306,7 +306,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectInformationElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Oui(void**) noexcept = 0;
             virtual int32_t __stdcall put_Oui(void*) noexcept = 0;
@@ -318,7 +318,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectInformationElementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromBuffer(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromDeviceInformation(void*, void**) noexcept = 0;
@@ -326,7 +326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::IWiFiDirectLegacySettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -367,7 +367,7 @@ namespace winrt::impl
         [[nodiscard]] auto Status() const;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectAdvertisementPublisher, winrt::Windows::Devices::WiFiDirect::WiFiDirectAdvertisementPublisherStatusChangedEventArgs> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::IWiFiDirectAdvertisementPublisher, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::IWiFiDirectAdvertisementPublisher>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectAdvertisementPublisher, winrt::Windows::Devices::WiFiDirect::WiFiDirectAdvertisementPublisherStatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectAdvertisementPublisher, winrt::Windows::Devices::WiFiDirect::WiFiDirectAdvertisementPublisherStatusChangedEventArgs> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
         auto Start() const;
         auto Stop() const;
@@ -391,7 +391,7 @@ namespace winrt::impl
     {
         auto ConnectionRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectConnectionListener, winrt::Windows::Devices::WiFiDirect::WiFiDirectConnectionRequestedEventArgs> const& handler) const;
         using ConnectionRequested_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionListener, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionListener>::remove_ConnectionRequested>;
-        [[nodiscard]] ConnectionRequested_revoker ConnectionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectConnectionListener, winrt::Windows::Devices::WiFiDirect::WiFiDirectConnectionRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ConnectionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectConnectionListener, winrt::Windows::Devices::WiFiDirect::WiFiDirectConnectionRequestedEventArgs> const& handler) const;
         auto ConnectionRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::WiFiDirect::IWiFiDirectConnectionListener>
@@ -453,7 +453,7 @@ namespace winrt::impl
         [[nodiscard]] auto DeviceId() const;
         auto ConnectionStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ConnectionStatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::IWiFiDirectDevice, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::IWiFiDirectDevice>::remove_ConnectionStatusChanged>;
-        [[nodiscard]] ConnectionStatusChanged_revoker ConnectionStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ConnectionStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::WiFiDirectDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ConnectionStatusChanged(winrt::event_token const& token) const noexcept;
         auto GetConnectionEndpointPairs() const;
     };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -90,14 +90,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::DataProtection::UserDataStorageItemProtectionInfo>{ using type = winrt::Windows::Security::DataProtection::IUserDataStorageItemProtectionInfo; };
     template <> struct abi<winrt::Windows::Security::DataProtection::IUserDataAvailabilityStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::DataProtection::IUserDataBufferUnprotectResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_UnprotectedBuffer(void**) noexcept = 0;
@@ -105,7 +105,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::DataProtection::IUserDataProtectionManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProtectStorageItemAsync(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetStorageItemProtectionInfoAsync(void*, void**) noexcept = 0;
@@ -118,7 +118,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::DataProtection::IUserDataProtectionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall TryGetForUser(void*, void**) noexcept = 0;
@@ -126,7 +126,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::DataProtection::IUserDataStorageItemProtectionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Availability(int32_t*) noexcept = 0;
         };
@@ -160,7 +160,7 @@ namespace winrt::impl
         auto IsContinuedDataAvailabilityExpected(winrt::Windows::Security::DataProtection::UserDataAvailability const& availability) const;
         auto DataAvailabilityStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::DataProtection::UserDataProtectionManager, winrt::Windows::Security::DataProtection::UserDataAvailabilityStateChangedEventArgs> const& handler) const;
         using DataAvailabilityStateChanged_revoker = impl::event_revoker<winrt::Windows::Security::DataProtection::IUserDataProtectionManager, &impl::abi_t<winrt::Windows::Security::DataProtection::IUserDataProtectionManager>::remove_DataAvailabilityStateChanged>;
-        [[nodiscard]] DataAvailabilityStateChanged_revoker DataAvailabilityStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::DataProtection::UserDataProtectionManager, winrt::Windows::Security::DataProtection::UserDataAvailabilityStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto DataAvailabilityStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::DataProtection::UserDataProtectionManager, winrt::Windows::Security::DataProtection::UserDataAvailabilityStateChangedEventArgs> const& handler) const;
         auto DataAvailabilityStateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Security::DataProtection::IUserDataProtectionManager>

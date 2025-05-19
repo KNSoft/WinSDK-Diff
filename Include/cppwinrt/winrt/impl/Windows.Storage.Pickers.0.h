@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,9 +8,9 @@
 #define WINRT_Windows_Storage_Pickers_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename K, typename V> struct __declspec(empty_bases) IMap;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMap;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
@@ -134,7 +134,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::Pickers::FolderPicker>{ using type = winrt::Windows::Storage::Pickers::IFolderPicker; };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileOpenPicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ViewMode(int32_t) noexcept = 0;
@@ -151,7 +151,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileOpenPicker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContinuationData(void**) noexcept = 0;
             virtual int32_t __stdcall PickSingleFileAndContinue() noexcept = 0;
@@ -160,35 +160,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileOpenPicker3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileOpenPickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ResumePickSingleFileAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileOpenPickerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileOpenPickerWithOperationId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PickSingleFileAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileSavePicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SettingsIdentifier(void**) noexcept = 0;
             virtual int32_t __stdcall put_SettingsIdentifier(void*) noexcept = 0;
@@ -208,7 +208,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileSavePicker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContinuationData(void**) noexcept = 0;
             virtual int32_t __stdcall PickSaveFileAndContinue() noexcept = 0;
@@ -216,7 +216,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileSavePicker3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnterpriseId(void**) noexcept = 0;
             virtual int32_t __stdcall put_EnterpriseId(void*) noexcept = 0;
@@ -224,21 +224,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileSavePicker4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFileSavePickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFolderPicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ViewMode(int32_t) noexcept = 0;
@@ -254,7 +254,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFolderPicker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContinuationData(void**) noexcept = 0;
             virtual int32_t __stdcall PickFolderAndContinue() noexcept = 0;
@@ -262,14 +262,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFolderPicker3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::IFolderPickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForUser(void*, void**) noexcept = 0;
         };

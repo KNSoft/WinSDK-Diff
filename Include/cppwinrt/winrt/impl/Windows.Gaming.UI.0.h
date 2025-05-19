@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,9 +8,9 @@
 #define WINRT_Windows_Gaming_UI_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -45,6 +45,8 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::UI
     struct GameChatOverlay;
     struct GameChatOverlayMessageSource;
     struct GameUIProviderActivatedEventArgs;
+    struct GameChatOverlayContract;
+    struct GamingUIProviderContract;
 }
 namespace winrt::impl
 {
@@ -74,6 +76,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Gaming::UI::IGameChatOverlayMessageSource> = L"Windows.Gaming.UI.IGameChatOverlayMessageSource";
     template <> inline constexpr auto& name_v<winrt::Windows::Gaming::UI::IGameChatOverlayStatics> = L"Windows.Gaming.UI.IGameChatOverlayStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Gaming::UI::IGameUIProviderActivatedEventArgs> = L"Windows.Gaming.UI.IGameUIProviderActivatedEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::Gaming::UI::GameChatOverlayContract> = L"Windows.Gaming.UI.GameChatOverlayContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::Gaming::UI::GamingUIProviderContract> = L"Windows.Gaming.UI.GamingUIProviderContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Gaming::UI::IGameBarStatics>{ 0x1DB9A292,0xCC78,0x4173,{ 0xBE,0x45,0xB6,0x1E,0x67,0x28,0x3E,0xA7 } }; // 1DB9A292-CC78-4173-BE45-B61E67283EA7
     template <> inline constexpr guid guid_v<winrt::Windows::Gaming::UI::IGameChatMessageReceivedEventArgs>{ 0xA28201F1,0x3FB9,0x4E42,{ 0xA4,0x03,0x7A,0xFC,0xE2,0x02,0x3B,0x1E } }; // A28201F1-3FB9-4E42-A403-7AFCE2023B1E
     template <> inline constexpr guid guid_v<winrt::Windows::Gaming::UI::IGameChatOverlay>{ 0xFBC64865,0xF6FC,0x4A48,{ 0xAE,0x07,0x03,0xAC,0x6E,0xD4,0x37,0x04 } }; // FBC64865-F6FC-4A48-AE07-03AC6ED43704
@@ -86,7 +90,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::UI::GameUIProviderActivatedEventArgs>{ using type = winrt::Windows::Gaming::UI::IGameUIProviderActivatedEventArgs; };
     template <> struct abi<winrt::Windows::Gaming::UI::IGameBarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_VisibilityChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_VisibilityChanged(winrt::event_token) noexcept = 0;
@@ -98,7 +102,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::UI::IGameChatMessageReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppDisplayName(void**) noexcept = 0;
@@ -109,7 +113,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::UI::IGameChatOverlay>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredPosition(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DesiredPosition(int32_t) noexcept = 0;
@@ -118,7 +122,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::UI::IGameChatOverlayMessageSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_MessageReceived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_MessageReceived(winrt::event_token) noexcept = 0;
@@ -127,14 +131,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::UI::IGameChatOverlayStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::UI::IGameUIProviderActivatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GameUIArgs(void**) noexcept = 0;
             virtual int32_t __stdcall ReportCompleted(void*) noexcept = 0;
@@ -145,11 +149,11 @@ namespace winrt::impl
     {
         auto VisibilityChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using VisibilityChanged_revoker = impl::event_revoker<winrt::Windows::Gaming::UI::IGameBarStatics, &impl::abi_t<winrt::Windows::Gaming::UI::IGameBarStatics>::remove_VisibilityChanged>;
-        [[nodiscard]] VisibilityChanged_revoker VisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto VisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto VisibilityChanged(winrt::event_token const& token) const noexcept;
         auto IsInputRedirectedChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsInputRedirectedChanged_revoker = impl::event_revoker<winrt::Windows::Gaming::UI::IGameBarStatics, &impl::abi_t<winrt::Windows::Gaming::UI::IGameBarStatics>::remove_IsInputRedirectedChanged>;
-        [[nodiscard]] IsInputRedirectedChanged_revoker IsInputRedirectedChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsInputRedirectedChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsInputRedirectedChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Visible() const;
         [[nodiscard]] auto IsInputRedirected() const;
@@ -187,7 +191,7 @@ namespace winrt::impl
     {
         auto MessageReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::UI::GameChatOverlayMessageSource, winrt::Windows::Gaming::UI::GameChatMessageReceivedEventArgs> const& handler) const;
         using MessageReceived_revoker = impl::event_revoker<winrt::Windows::Gaming::UI::IGameChatOverlayMessageSource, &impl::abi_t<winrt::Windows::Gaming::UI::IGameChatOverlayMessageSource>::remove_MessageReceived>;
-        [[nodiscard]] MessageReceived_revoker MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::UI::GameChatOverlayMessageSource, winrt::Windows::Gaming::UI::GameChatMessageReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::UI::GameChatOverlayMessageSource, winrt::Windows::Gaming::UI::GameChatMessageReceivedEventArgs> const& handler) const;
         auto MessageReceived(winrt::event_token const& token) const noexcept;
         auto SetDelayBeforeClosingAfterMessageReceived(winrt::Windows::Foundation::TimeSpan const& value) const;
     };

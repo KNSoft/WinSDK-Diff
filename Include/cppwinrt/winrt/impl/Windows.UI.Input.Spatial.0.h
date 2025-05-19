@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -17,7 +17,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Power
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -391,7 +391,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Input::Spatial::SpatialTappedEventArgs>{ using type = winrt::Windows::UI::Input::Spatial::ISpatialTappedEventArgs; };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_RecognitionStarted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_RecognitionStarted(winrt::event_token) noexcept = 0;
@@ -429,28 +429,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialHoldCanceledEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialHoldCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialHoldStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryGetPointerPose(void*, void**) noexcept = 0;
@@ -458,14 +458,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteraction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceState(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasTouchpad(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HasThumbstick(bool*) noexcept = 0;
@@ -477,21 +477,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionController2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetRenderableModelAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionController3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetBatteryReport(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionControllerProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTouchpadTouched(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsTouchpadPressed(bool*) noexcept = 0;
@@ -504,7 +504,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionDetectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryGetPointerPose(void*, void**) noexcept = 0;
@@ -513,14 +513,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionDetectedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SourceDetected(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SourceDetected(winrt::event_token) noexcept = 0;
@@ -539,21 +539,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSourceKindSupported(int32_t, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -561,7 +561,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPointingSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsMenuSupported(bool*) noexcept = 0;
@@ -572,14 +572,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSource3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handedness(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSource4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateHandMeshObserver(void**) noexcept = 0;
             virtual int32_t __stdcall TryCreateHandMeshObserverAsync(void**) noexcept = 0;
@@ -587,21 +587,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PressKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceLocation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(void**) noexcept = 0;
             virtual int32_t __stdcall get_Velocity(void**) noexcept = 0;
@@ -609,14 +609,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceLocation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Orientation(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceLocation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PositionAccuracy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AngularVelocity(void**) noexcept = 0;
@@ -625,7 +625,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetSourceLossMitigationDirection(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_SourceLossRisk(double*) noexcept = 0;
@@ -634,7 +634,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -645,7 +645,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceState2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSelectPressed(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsMenuPressed(bool*) noexcept = 0;
@@ -656,21 +656,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSourceState3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetHandPose(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialManipulationCanceledEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialManipulationCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryGetCumulativeDelta(void*, void**) noexcept = 0;
@@ -678,14 +678,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialManipulationDelta>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Translation(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialManipulationStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryGetPointerPose(void*, void**) noexcept = 0;
@@ -693,7 +693,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialManipulationUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryGetCumulativeDelta(void*, void**) noexcept = 0;
@@ -701,14 +701,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialNavigationCanceledEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialNavigationCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NormalizedOffset(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
@@ -716,7 +716,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialNavigationStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryGetPointerPose(void*, void**) noexcept = 0;
@@ -727,7 +727,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialNavigationUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NormalizedOffset(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
@@ -735,7 +735,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialPointerInteractionSourcePose>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall get_ForwardDirection(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
@@ -744,7 +744,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialPointerInteractionSourcePose2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Orientation(winrt::Windows::Foundation::Numerics::quaternion*) noexcept = 0;
             virtual int32_t __stdcall get_PositionAccuracy(int32_t*) noexcept = 0;
@@ -752,7 +752,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialPointerPose>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(void**) noexcept = 0;
             virtual int32_t __stdcall get_Head(void**) noexcept = 0;
@@ -760,14 +760,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialPointerPose2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetInteractionSourcePose(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialPointerPose3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Eyes(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsHeadCapturedBySystem(bool*) noexcept = 0;
@@ -775,21 +775,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialPointerPoseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetAtTimestamp(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialRecognitionEndedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialRecognitionStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryGetPointerPose(void*, void**) noexcept = 0;
@@ -798,7 +798,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Spatial::ISpatialTappedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSourceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryGetPointerPose(void*, void**) noexcept = 0;
@@ -810,59 +810,59 @@ namespace winrt::impl
     {
         auto RecognitionStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialRecognitionStartedEventArgs> const& handler) const;
         using RecognitionStarted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_RecognitionStarted>;
-        [[nodiscard]] RecognitionStarted_revoker RecognitionStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialRecognitionStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto RecognitionStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialRecognitionStartedEventArgs> const& handler) const;
         auto RecognitionStarted(winrt::event_token const& token) const noexcept;
         auto RecognitionEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialRecognitionEndedEventArgs> const& handler) const;
         using RecognitionEnded_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_RecognitionEnded>;
-        [[nodiscard]] RecognitionEnded_revoker RecognitionEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialRecognitionEndedEventArgs> const& handler) const;
+        [[nodiscard]] auto RecognitionEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialRecognitionEndedEventArgs> const& handler) const;
         auto RecognitionEnded(winrt::event_token const& token) const noexcept;
         auto Tapped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialTappedEventArgs> const& handler) const;
         using Tapped_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_Tapped>;
-        [[nodiscard]] Tapped_revoker Tapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialTappedEventArgs> const& handler) const;
+        [[nodiscard]] auto Tapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialTappedEventArgs> const& handler) const;
         auto Tapped(winrt::event_token const& token) const noexcept;
         auto HoldStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldStartedEventArgs> const& handler) const;
         using HoldStarted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_HoldStarted>;
-        [[nodiscard]] HoldStarted_revoker HoldStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto HoldStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldStartedEventArgs> const& handler) const;
         auto HoldStarted(winrt::event_token const& token) const noexcept;
         auto HoldCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldCompletedEventArgs> const& handler) const;
         using HoldCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_HoldCompleted>;
-        [[nodiscard]] HoldCompleted_revoker HoldCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto HoldCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldCompletedEventArgs> const& handler) const;
         auto HoldCompleted(winrt::event_token const& token) const noexcept;
         auto HoldCanceled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldCanceledEventArgs> const& handler) const;
         using HoldCanceled_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_HoldCanceled>;
-        [[nodiscard]] HoldCanceled_revoker HoldCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldCanceledEventArgs> const& handler) const;
+        [[nodiscard]] auto HoldCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialHoldCanceledEventArgs> const& handler) const;
         auto HoldCanceled(winrt::event_token const& token) const noexcept;
         auto ManipulationStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationStartedEventArgs> const& handler) const;
         using ManipulationStarted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_ManipulationStarted>;
-        [[nodiscard]] ManipulationStarted_revoker ManipulationStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto ManipulationStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationStartedEventArgs> const& handler) const;
         auto ManipulationStarted(winrt::event_token const& token) const noexcept;
         auto ManipulationUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationUpdatedEventArgs> const& handler) const;
         using ManipulationUpdated_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_ManipulationUpdated>;
-        [[nodiscard]] ManipulationUpdated_revoker ManipulationUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto ManipulationUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationUpdatedEventArgs> const& handler) const;
         auto ManipulationUpdated(winrt::event_token const& token) const noexcept;
         auto ManipulationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationCompletedEventArgs> const& handler) const;
         using ManipulationCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_ManipulationCompleted>;
-        [[nodiscard]] ManipulationCompleted_revoker ManipulationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto ManipulationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationCompletedEventArgs> const& handler) const;
         auto ManipulationCompleted(winrt::event_token const& token) const noexcept;
         auto ManipulationCanceled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationCanceledEventArgs> const& handler) const;
         using ManipulationCanceled_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_ManipulationCanceled>;
-        [[nodiscard]] ManipulationCanceled_revoker ManipulationCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationCanceledEventArgs> const& handler) const;
+        [[nodiscard]] auto ManipulationCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialManipulationCanceledEventArgs> const& handler) const;
         auto ManipulationCanceled(winrt::event_token const& token) const noexcept;
         auto NavigationStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationStartedEventArgs> const& handler) const;
         using NavigationStarted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_NavigationStarted>;
-        [[nodiscard]] NavigationStarted_revoker NavigationStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto NavigationStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationStartedEventArgs> const& handler) const;
         auto NavigationStarted(winrt::event_token const& token) const noexcept;
         auto NavigationUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationUpdatedEventArgs> const& handler) const;
         using NavigationUpdated_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_NavigationUpdated>;
-        [[nodiscard]] NavigationUpdated_revoker NavigationUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto NavigationUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationUpdatedEventArgs> const& handler) const;
         auto NavigationUpdated(winrt::event_token const& token) const noexcept;
         auto NavigationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationCompletedEventArgs> const& handler) const;
         using NavigationCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_NavigationCompleted>;
-        [[nodiscard]] NavigationCompleted_revoker NavigationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto NavigationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationCompletedEventArgs> const& handler) const;
         auto NavigationCompleted(winrt::event_token const& token) const noexcept;
         auto NavigationCanceled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationCanceledEventArgs> const& handler) const;
         using NavigationCanceled_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer>::remove_NavigationCanceled>;
-        [[nodiscard]] NavigationCanceled_revoker NavigationCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationCanceledEventArgs> const& handler) const;
+        [[nodiscard]] auto NavigationCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialNavigationCanceledEventArgs> const& handler) const;
         auto NavigationCanceled(winrt::event_token const& token) const noexcept;
         auto CaptureInteraction(winrt::Windows::UI::Input::Spatial::SpatialInteraction const& interaction) const;
         auto CancelPendingGestures() const;
@@ -991,27 +991,27 @@ namespace winrt::impl
     {
         auto SourceDetected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         using SourceDetected_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager>::remove_SourceDetected>;
-        [[nodiscard]] SourceDetected_revoker SourceDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         auto SourceDetected(winrt::event_token const& token) const noexcept;
         auto SourceLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         using SourceLost_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager>::remove_SourceLost>;
-        [[nodiscard]] SourceLost_revoker SourceLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         auto SourceLost(winrt::event_token const& token) const noexcept;
         auto SourceUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         using SourceUpdated_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager>::remove_SourceUpdated>;
-        [[nodiscard]] SourceUpdated_revoker SourceUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         auto SourceUpdated(winrt::event_token const& token) const noexcept;
         auto SourcePressed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         using SourcePressed_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager>::remove_SourcePressed>;
-        [[nodiscard]] SourcePressed_revoker SourcePressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
+        [[nodiscard]] auto SourcePressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         auto SourcePressed(winrt::event_token const& token) const noexcept;
         auto SourceReleased(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         using SourceReleased_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager>::remove_SourceReleased>;
-        [[nodiscard]] SourceReleased_revoker SourceReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs> const& handler) const;
         auto SourceReleased(winrt::event_token const& token) const noexcept;
         auto InteractionDetected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionDetectedEventArgs> const& handler) const;
         using InteractionDetected_revoker = impl::event_revoker<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager, &impl::abi_t<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManager>::remove_InteractionDetected>;
-        [[nodiscard]] InteractionDetected_revoker InteractionDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionDetectedEventArgs> const& handler) const;
+        [[nodiscard]] auto InteractionDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialInteractionManager, winrt::Windows::UI::Input::Spatial::SpatialInteractionDetectedEventArgs> const& handler) const;
         auto InteractionDetected(winrt::event_token const& token) const noexcept;
         auto GetDetectedSourcesAtTimestamp(winrt::Windows::Perception::PerceptionTimestamp const& timeStamp) const;
     };

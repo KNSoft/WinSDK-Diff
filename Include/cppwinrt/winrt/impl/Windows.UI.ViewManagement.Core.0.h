@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::UI
 {
@@ -173,7 +173,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::ViewManagement::Core::UISettingsController>{ using type = winrt::Windows::UI::ViewManagement::Core::IUISettingsController; };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PrimaryViewAnimationStarting(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PrimaryViewAnimationStarting(winrt::event_token) noexcept = 0;
@@ -183,7 +183,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputViewAnimationStartingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Occlusions(void**) noexcept = 0;
             virtual int32_t __stdcall get_FrameworkAnimationRecommended(bool*) noexcept = 0;
@@ -192,7 +192,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputViewOcclusionsChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Occlusions(void**) noexcept = 0;
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
@@ -200,7 +200,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUIContext(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
@@ -208,7 +208,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_OcclusionsChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_OcclusionsChanged(winrt::event_token) noexcept = 0;
@@ -219,7 +219,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_XYFocusTransferringFromPrimaryView(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_XYFocusTransferringFromPrimaryView(winrt::event_token) noexcept = 0;
@@ -230,7 +230,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputView3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryShow(bool*) noexcept = 0;
             virtual int32_t __stdcall TryShowWithKind(int32_t, bool*) noexcept = 0;
@@ -239,7 +239,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputView4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PrimaryViewShowing(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PrimaryViewShowing(winrt::event_token) noexcept = 0;
@@ -249,7 +249,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputView5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsKindSupported(int32_t, bool*) noexcept = 0;
             virtual int32_t __stdcall add_SupportedKindsChanged(void*, winrt::event_token*) noexcept = 0;
@@ -260,7 +260,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputViewAnimationStartingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Occlusions(void**) noexcept = 0;
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
@@ -270,14 +270,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputViewHidingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCancel(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputViewOcclusion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OccludingRect(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall get_OcclusionKind(int32_t*) noexcept = 0;
@@ -285,7 +285,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputViewOcclusionsChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Occlusions(void**) noexcept = 0;
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
@@ -294,28 +294,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputViewShowingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCancel(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputViewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputViewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUIContext(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::ICoreInputViewTransferringXYFocusEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Origin(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall get_Direction(int32_t*) noexcept = 0;
@@ -327,7 +327,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::IUISettingsController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetAdvancedEffectsEnabled(bool) noexcept = 0;
             virtual int32_t __stdcall SetAnimationsEnabled(bool) noexcept = 0;
@@ -338,7 +338,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ViewManagement::Core::IUISettingsControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestDefaultAsync(void**) noexcept = 0;
         };
@@ -348,11 +348,11 @@ namespace winrt::impl
     {
         auto PrimaryViewAnimationStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputView, winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputViewAnimationStartingEventArgs> const& handler) const;
         using PrimaryViewAnimationStarting_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputView, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputView>::remove_PrimaryViewAnimationStarting>;
-        [[nodiscard]] PrimaryViewAnimationStarting_revoker PrimaryViewAnimationStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputView, winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputViewAnimationStartingEventArgs> const& handler) const;
+        [[nodiscard]] auto PrimaryViewAnimationStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputView, winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputViewAnimationStartingEventArgs> const& handler) const;
         auto PrimaryViewAnimationStarting(winrt::event_token const& token) const noexcept;
         auto OcclusionsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputView, winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputViewOcclusionsChangedEventArgs> const& handler) const;
         using OcclusionsChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputView, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputView>::remove_OcclusionsChanged>;
-        [[nodiscard]] OcclusionsChanged_revoker OcclusionsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputView, winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputViewOcclusionsChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto OcclusionsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputView, winrt::Windows::UI::ViewManagement::Core::CoreFrameworkInputViewOcclusionsChangedEventArgs> const& handler) const;
         auto OcclusionsChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputView>
@@ -395,7 +395,7 @@ namespace winrt::impl
     {
         auto OcclusionsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewOcclusionsChangedEventArgs> const& handler) const;
         using OcclusionsChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreInputView, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreInputView>::remove_OcclusionsChanged>;
-        [[nodiscard]] OcclusionsChanged_revoker OcclusionsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewOcclusionsChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto OcclusionsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewOcclusionsChangedEventArgs> const& handler) const;
         auto OcclusionsChanged(winrt::event_token const& token) const noexcept;
         auto GetCoreInputViewOcclusions() const;
         auto TryShowPrimaryView() const;
@@ -410,11 +410,11 @@ namespace winrt::impl
     {
         auto XYFocusTransferringFromPrimaryView(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewTransferringXYFocusEventArgs> const& handler) const;
         using XYFocusTransferringFromPrimaryView_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreInputView2, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreInputView2>::remove_XYFocusTransferringFromPrimaryView>;
-        [[nodiscard]] XYFocusTransferringFromPrimaryView_revoker XYFocusTransferringFromPrimaryView(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewTransferringXYFocusEventArgs> const& handler) const;
+        [[nodiscard]] auto XYFocusTransferringFromPrimaryView(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewTransferringXYFocusEventArgs> const& handler) const;
         auto XYFocusTransferringFromPrimaryView(winrt::event_token const& token) const noexcept;
         auto XYFocusTransferredToPrimaryView(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using XYFocusTransferredToPrimaryView_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreInputView2, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreInputView2>::remove_XYFocusTransferredToPrimaryView>;
-        [[nodiscard]] XYFocusTransferredToPrimaryView_revoker XYFocusTransferredToPrimaryView(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto XYFocusTransferredToPrimaryView(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto XYFocusTransferredToPrimaryView(winrt::event_token const& token) const noexcept;
         auto TryTransferXYFocusToPrimaryView(winrt::Windows::Foundation::Rect const& origin, winrt::Windows::UI::ViewManagement::Core::CoreInputViewXYFocusTransferDirection const& direction) const;
     };
@@ -438,11 +438,11 @@ namespace winrt::impl
     {
         auto PrimaryViewShowing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewShowingEventArgs> const& handler) const;
         using PrimaryViewShowing_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreInputView4, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreInputView4>::remove_PrimaryViewShowing>;
-        [[nodiscard]] PrimaryViewShowing_revoker PrimaryViewShowing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewShowingEventArgs> const& handler) const;
+        [[nodiscard]] auto PrimaryViewShowing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewShowingEventArgs> const& handler) const;
         auto PrimaryViewShowing(winrt::event_token const& token) const noexcept;
         auto PrimaryViewHiding(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewHidingEventArgs> const& handler) const;
         using PrimaryViewHiding_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreInputView4, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreInputView4>::remove_PrimaryViewHiding>;
-        [[nodiscard]] PrimaryViewHiding_revoker PrimaryViewHiding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewHidingEventArgs> const& handler) const;
+        [[nodiscard]] auto PrimaryViewHiding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewHidingEventArgs> const& handler) const;
         auto PrimaryViewHiding(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::Core::ICoreInputView4>
@@ -455,11 +455,11 @@ namespace winrt::impl
         auto IsKindSupported(winrt::Windows::UI::ViewManagement::Core::CoreInputViewKind const& type) const;
         auto SupportedKindsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SupportedKindsChanged_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreInputView5, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreInputView5>::remove_SupportedKindsChanged>;
-        [[nodiscard]] SupportedKindsChanged_revoker SupportedKindsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SupportedKindsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SupportedKindsChanged(winrt::event_token const& token) const noexcept;
         auto PrimaryViewAnimationStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewAnimationStartingEventArgs> const& handler) const;
         using PrimaryViewAnimationStarting_revoker = impl::event_revoker<winrt::Windows::UI::ViewManagement::Core::ICoreInputView5, &impl::abi_t<winrt::Windows::UI::ViewManagement::Core::ICoreInputView5>::remove_PrimaryViewAnimationStarting>;
-        [[nodiscard]] PrimaryViewAnimationStarting_revoker PrimaryViewAnimationStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewAnimationStartingEventArgs> const& handler) const;
+        [[nodiscard]] auto PrimaryViewAnimationStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ViewManagement::Core::CoreInputView, winrt::Windows::UI::ViewManagement::Core::CoreInputViewAnimationStartingEventArgs> const& handler) const;
         auto PrimaryViewAnimationStarting(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ViewManagement::Core::ICoreInputView5>

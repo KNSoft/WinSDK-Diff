@@ -172,7 +172,6 @@ namespace Windows
                     [contract(Windows.Foundation.UniversalApiContract, 13.0)]
                     Dictation   = 6,
                     [contract(Windows.Foundation.UniversalApiContract, 15.0)]
-                    [experimental]
                     Gamepad     = 7
                 };
 

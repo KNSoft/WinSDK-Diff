@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Composition
 {
@@ -31,7 +31,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Composition::Core::CompositorController>{ using type = winrt::Windows::UI::Composition::Core::ICompositorController; };
     template <> struct abi<winrt::Windows::UI::Composition::Core::ICompositorController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Compositor(void**) noexcept = 0;
             virtual int32_t __stdcall Commit() noexcept = 0;
@@ -48,7 +48,7 @@ namespace winrt::impl
         auto EnsurePreviousCommitCompletedAsync() const;
         auto CommitNeeded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::Core::CompositorController, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CommitNeeded_revoker = impl::event_revoker<winrt::Windows::UI::Composition::Core::ICompositorController, &impl::abi_t<winrt::Windows::UI::Composition::Core::ICompositorController>::remove_CommitNeeded>;
-        [[nodiscard]] CommitNeeded_revoker CommitNeeded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::Core::CompositorController, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CommitNeeded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::Core::CompositorController, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CommitNeeded(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Composition::Core::ICompositorController>

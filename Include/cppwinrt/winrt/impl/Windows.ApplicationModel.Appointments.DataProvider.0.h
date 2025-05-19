@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,7 +16,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Appointments::DataProvider
 {
@@ -137,7 +137,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderTriggerDetails>{ using type = winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderTriggerDetails; };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarCancelMeetingRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentCalendarLocalId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppointmentLocalId(void**) noexcept = 0;
@@ -151,7 +151,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarCancelMeetingRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -159,7 +159,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarCreateOrUpdateAppointmentRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentCalendarLocalId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Appointment(void**) noexcept = 0;
@@ -171,7 +171,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -179,7 +179,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarForwardMeetingRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentCalendarLocalId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppointmentLocalId(void**) noexcept = 0;
@@ -194,7 +194,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarForwardMeetingRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -202,7 +202,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarProposeNewTimeForMeetingRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentCalendarLocalId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppointmentLocalId(void**) noexcept = 0;
@@ -217,7 +217,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarProposeNewTimeForMeetingRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -225,7 +225,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarSyncManagerSyncRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentCalendarLocalId(void**) noexcept = 0;
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
@@ -234,7 +234,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarSyncManagerSyncRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -242,7 +242,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarUpdateMeetingResponseRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentCalendarLocalId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppointmentLocalId(void**) noexcept = 0;
@@ -257,7 +257,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarUpdateMeetingResponseRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -265,7 +265,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SyncRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SyncRequested(winrt::event_token) noexcept = 0;
@@ -284,7 +284,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Connection(void**) noexcept = 0;
         };
@@ -446,27 +446,27 @@ namespace winrt::impl
     {
         auto SyncRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarSyncManagerSyncRequestEventArgs> const& handler) const;
         using SyncRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection>::remove_SyncRequested>;
-        [[nodiscard]] SyncRequested_revoker SyncRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarSyncManagerSyncRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto SyncRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarSyncManagerSyncRequestEventArgs> const& handler) const;
         auto SyncRequested(winrt::event_token const& token) const noexcept;
         auto CreateOrUpdateAppointmentRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs> const& handler) const;
         using CreateOrUpdateAppointmentRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection>::remove_CreateOrUpdateAppointmentRequested>;
-        [[nodiscard]] CreateOrUpdateAppointmentRequested_revoker CreateOrUpdateAppointmentRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto CreateOrUpdateAppointmentRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs> const& handler) const;
         auto CreateOrUpdateAppointmentRequested(winrt::event_token const& token) const noexcept;
         auto CancelMeetingRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarCancelMeetingRequestEventArgs> const& handler) const;
         using CancelMeetingRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection>::remove_CancelMeetingRequested>;
-        [[nodiscard]] CancelMeetingRequested_revoker CancelMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarCancelMeetingRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto CancelMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarCancelMeetingRequestEventArgs> const& handler) const;
         auto CancelMeetingRequested(winrt::event_token const& token) const noexcept;
         auto ForwardMeetingRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarForwardMeetingRequestEventArgs> const& handler) const;
         using ForwardMeetingRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection>::remove_ForwardMeetingRequested>;
-        [[nodiscard]] ForwardMeetingRequested_revoker ForwardMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarForwardMeetingRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto ForwardMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarForwardMeetingRequestEventArgs> const& handler) const;
         auto ForwardMeetingRequested(winrt::event_token const& token) const noexcept;
         auto ProposeNewTimeForMeetingRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarProposeNewTimeForMeetingRequestEventArgs> const& handler) const;
         using ProposeNewTimeForMeetingRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection>::remove_ProposeNewTimeForMeetingRequested>;
-        [[nodiscard]] ProposeNewTimeForMeetingRequested_revoker ProposeNewTimeForMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarProposeNewTimeForMeetingRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto ProposeNewTimeForMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarProposeNewTimeForMeetingRequestEventArgs> const& handler) const;
         auto ProposeNewTimeForMeetingRequested(winrt::event_token const& token) const noexcept;
         auto UpdateMeetingResponseRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarUpdateMeetingResponseRequestEventArgs> const& handler) const;
         using UpdateMeetingResponseRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentDataProviderConnection>::remove_UpdateMeetingResponseRequested>;
-        [[nodiscard]] UpdateMeetingResponseRequested_revoker UpdateMeetingResponseRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarUpdateMeetingResponseRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto UpdateMeetingResponseRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentDataProviderConnection, winrt::Windows::ApplicationModel::Appointments::DataProvider::AppointmentCalendarUpdateMeetingResponseRequestEventArgs> const& handler) const;
         auto UpdateMeetingResponseRequested(winrt::event_token const& token) const noexcept;
         auto Start() const;
     };

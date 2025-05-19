@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -118,7 +118,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::Pickers::Provider::TargetFileRequestedEventArgs>{ using type = winrt::Windows::Storage::Pickers::Provider::ITargetFileRequestedEventArgs; };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::IFileOpenPickerUI>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddFile(void*, void*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall RemoveFile(void*) noexcept = 0;
@@ -137,14 +137,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::IFileRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::IFileSavePickerUI>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -160,14 +160,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::IPickerClosingDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::IPickerClosingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClosingOperation(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsCanceled(bool*) noexcept = 0;
@@ -175,7 +175,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::IPickerClosingOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
             virtual int32_t __stdcall get_Deadline(int64_t*) noexcept = 0;
@@ -183,7 +183,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::ITargetFileRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetFile(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetFile(void*) noexcept = 0;
@@ -192,14 +192,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::ITargetFileRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Pickers::Provider::ITargetFileRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
@@ -218,11 +218,11 @@ namespace winrt::impl
         auto Title(param::hstring const& value) const;
         auto FileRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileOpenPickerUI, winrt::Windows::Storage::Pickers::Provider::FileRemovedEventArgs> const& handler) const;
         using FileRemoved_revoker = impl::event_revoker<winrt::Windows::Storage::Pickers::Provider::IFileOpenPickerUI, &impl::abi_t<winrt::Windows::Storage::Pickers::Provider::IFileOpenPickerUI>::remove_FileRemoved>;
-        [[nodiscard]] FileRemoved_revoker FileRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileOpenPickerUI, winrt::Windows::Storage::Pickers::Provider::FileRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto FileRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileOpenPickerUI, winrt::Windows::Storage::Pickers::Provider::FileRemovedEventArgs> const& handler) const;
         auto FileRemoved(winrt::event_token const& token) const noexcept;
         auto Closing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileOpenPickerUI, winrt::Windows::Storage::Pickers::Provider::PickerClosingEventArgs> const& handler) const;
         using Closing_revoker = impl::event_revoker<winrt::Windows::Storage::Pickers::Provider::IFileOpenPickerUI, &impl::abi_t<winrt::Windows::Storage::Pickers::Provider::IFileOpenPickerUI>::remove_Closing>;
-        [[nodiscard]] Closing_revoker Closing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileOpenPickerUI, winrt::Windows::Storage::Pickers::Provider::PickerClosingEventArgs> const& handler) const;
+        [[nodiscard]] auto Closing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileOpenPickerUI, winrt::Windows::Storage::Pickers::Provider::PickerClosingEventArgs> const& handler) const;
         auto Closing(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Storage::Pickers::Provider::IFileOpenPickerUI>
@@ -249,11 +249,11 @@ namespace winrt::impl
         auto TrySetFileName(param::hstring const& value) const;
         auto FileNameChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileSavePickerUI, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using FileNameChanged_revoker = impl::event_revoker<winrt::Windows::Storage::Pickers::Provider::IFileSavePickerUI, &impl::abi_t<winrt::Windows::Storage::Pickers::Provider::IFileSavePickerUI>::remove_FileNameChanged>;
-        [[nodiscard]] FileNameChanged_revoker FileNameChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileSavePickerUI, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto FileNameChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileSavePickerUI, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto FileNameChanged(winrt::event_token const& token) const noexcept;
         auto TargetFileRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileSavePickerUI, winrt::Windows::Storage::Pickers::Provider::TargetFileRequestedEventArgs> const& handler) const;
         using TargetFileRequested_revoker = impl::event_revoker<winrt::Windows::Storage::Pickers::Provider::IFileSavePickerUI, &impl::abi_t<winrt::Windows::Storage::Pickers::Provider::IFileSavePickerUI>::remove_TargetFileRequested>;
-        [[nodiscard]] TargetFileRequested_revoker TargetFileRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileSavePickerUI, winrt::Windows::Storage::Pickers::Provider::TargetFileRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto TargetFileRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Pickers::Provider::FileSavePickerUI, winrt::Windows::Storage::Pickers::Provider::TargetFileRequestedEventArgs> const& handler) const;
         auto TargetFileRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Storage::Pickers::Provider::IFileSavePickerUI>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,12 +15,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -197,6 +197,7 @@ WINRT_EXPORT namespace winrt::Windows::Services::Store
     struct StoreUninstallStorePackageResult;
     struct StoreVideo;
     struct StorePackageUpdateStatus;
+    struct StoreContract;
 }
 namespace winrt::impl
 {
@@ -368,6 +369,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Services::Store::IStoreSubscriptionInfo> = L"Windows.Services.Store.IStoreSubscriptionInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Services::Store::IStoreUninstallStorePackageResult> = L"Windows.Services.Store.IStoreUninstallStorePackageResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Services::Store::IStoreVideo> = L"Windows.Services.Store.IStoreVideo";
+    template <> inline constexpr auto& name_v<winrt::Windows::Services::Store::StoreContract> = L"Windows.Services.Store.StoreContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Services::Store::IStoreAcquireLicenseResult>{ 0xFBD7946D,0xF040,0x4CB3,{ 0x9A,0x39,0x29,0xBC,0xEC,0xDB,0xE2,0x2D } }; // FBD7946D-F040-4CB3-9A39-29BCECDBE22D
     template <> inline constexpr guid guid_v<winrt::Windows::Services::Store::IStoreAppLicense>{ 0xF389F9DE,0x73C0,0x45CE,{ 0x9B,0xAB,0xB2,0xFE,0x3E,0x5E,0xAF,0xD3 } }; // F389F9DE-73C0-45CE-9BAB-B2FE3E5EAFD3
     template <> inline constexpr guid guid_v<winrt::Windows::Services::Store::IStoreAppLicense2>{ 0xB4666E91,0x4443,0x40B3,{ 0x99,0x3F,0x28,0x90,0x44,0x35,0xBD,0xC6 } }; // B4666E91-4443-40B3-993F-28904435BDC6
@@ -442,7 +444,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Services::Store::StoreVideo>{ using type = winrt::Windows::Services::Store::IStoreVideo; };
     template <> struct abi<winrt::Windows::Services::Store::IStoreAcquireLicenseResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StorePackageLicense(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -450,7 +452,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreAppLicense>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SkuStoreId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
@@ -465,14 +467,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreAppLicense2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDiscLicense(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreAvailability>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StoreId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EndDate(int64_t*) noexcept = 0;
@@ -484,7 +486,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreCanAcquireLicenseResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_LicensableSku(void**) noexcept = 0;
@@ -493,7 +495,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreCollectionData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTrial(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CampaignId(void**) noexcept = 0;
@@ -507,7 +509,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreConsumableResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_TrackingId(winrt::guid*) noexcept = 0;
@@ -517,7 +519,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall add_OfflineLicensesChanged(void*, winrt::event_token*) noexcept = 0;
@@ -544,14 +546,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreContext2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindStoreProductForPackageAsync(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreContext3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanSilentlyDownloadStorePackageUpdates(bool*) noexcept = 0;
             virtual int32_t __stdcall TrySilentDownloadStorePackageUpdatesAsync(void*, void**) noexcept = 0;
@@ -571,7 +573,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreContext4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestRateAndReviewAppAsync(void**) noexcept = 0;
             virtual int32_t __stdcall SetInstallOrderForAssociatedStoreQueueItemsAsync(void*, void**) noexcept = 0;
@@ -579,7 +581,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreContext5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetUserPurchaseHistoryAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetAssociatedStoreProductsByInAppOfferTokenAsync(void*, void**) noexcept = 0;
@@ -588,7 +590,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreContextStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -596,7 +598,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreImage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_ImagePurposeTag(void**) noexcept = 0;
@@ -607,7 +609,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreLicense>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SkuStoreId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
@@ -618,7 +620,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePackageInstallOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowForcedAppRestart(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowForcedAppRestart(bool) noexcept = 0;
@@ -626,7 +628,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePackageLicense>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_LicenseLost(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_LicenseLost(winrt::event_token) noexcept = 0;
@@ -637,7 +639,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePackageUpdate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
             virtual int32_t __stdcall get_Mandatory(bool*) noexcept = 0;
@@ -645,7 +647,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePackageUpdateResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OverallState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_StorePackageUpdateStatuses(void**) noexcept = 0;
@@ -653,14 +655,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePackageUpdateResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StoreQueueItems(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePrice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FormattedBasePrice(void**) noexcept = 0;
             virtual int32_t __stdcall get_FormattedPrice(void**) noexcept = 0;
@@ -672,7 +674,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePrice2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnformattedBasePrice(void**) noexcept = 0;
             virtual int32_t __stdcall get_UnformattedPrice(void**) noexcept = 0;
@@ -681,7 +683,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreProduct>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StoreId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
@@ -705,14 +707,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreProductOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActionFilters(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreProductPagedQueryResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Products(void**) noexcept = 0;
             virtual int32_t __stdcall get_HasMoreResults(bool*) noexcept = 0;
@@ -722,7 +724,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreProductQueryResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Products(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -730,7 +732,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreProductResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Product(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -738,7 +740,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePurchaseProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -748,14 +750,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePurchasePropertiesFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Store::IStorePurchaseResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -763,7 +765,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreQueueItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductId(void**) noexcept = 0;
             virtual int32_t __stdcall get_PackageFamilyName(void**) noexcept = 0;
@@ -777,7 +779,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreQueueItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CancelInstallAsync(void**) noexcept = 0;
             virtual int32_t __stdcall PauseInstallAsync(void**) noexcept = 0;
@@ -786,14 +788,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreQueueItemCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreQueueItemStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageInstallState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PackageInstallExtendedState(int32_t*) noexcept = 0;
@@ -803,7 +805,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreRateAndReviewResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedJsonData(void**) noexcept = 0;
@@ -813,14 +815,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreRequestHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendRequestAsync(void*, uint32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreSendRequestResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Response(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -828,14 +830,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreSendRequestResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HttpStatusCode(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreSku>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StoreId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
@@ -860,7 +862,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreSubscriptionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BillingPeriod(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_BillingPeriodUnit(int32_t*) noexcept = 0;
@@ -871,7 +873,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreUninstallStorePackageResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -879,7 +881,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Store::IStoreVideo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoPurposeTag(void**) noexcept = 0;
@@ -984,7 +986,7 @@ namespace winrt::impl
         [[nodiscard]] auto User() const;
         auto OfflineLicensesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using OfflineLicensesChanged_revoker = impl::event_revoker<winrt::Windows::Services::Store::IStoreContext, &impl::abi_t<winrt::Windows::Services::Store::IStoreContext>::remove_OfflineLicensesChanged>;
-        [[nodiscard]] OfflineLicensesChanged_revoker OfflineLicensesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto OfflineLicensesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreContext, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto OfflineLicensesChanged(winrt::event_token const& token) const noexcept;
         auto GetCustomerPurchaseIdAsync(param::hstring const& serviceTicket, param::hstring const& publisherUserId) const;
         auto GetCustomerCollectionsIdAsync(param::hstring const& serviceTicket, param::hstring const& publisherUserId) const;
@@ -1112,7 +1114,7 @@ namespace winrt::impl
     {
         auto LicenseLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StorePackageLicense, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using LicenseLost_revoker = impl::event_revoker<winrt::Windows::Services::Store::IStorePackageLicense, &impl::abi_t<winrt::Windows::Services::Store::IStorePackageLicense>::remove_LicenseLost>;
-        [[nodiscard]] LicenseLost_revoker LicenseLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StorePackageLicense, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto LicenseLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StorePackageLicense, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto LicenseLost(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Package() const;
         [[nodiscard]] auto IsValid() const;
@@ -1283,11 +1285,11 @@ namespace winrt::impl
         auto GetCurrentStatus() const;
         auto Completed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreQueueItem, winrt::Windows::Services::Store::StoreQueueItemCompletedEventArgs> const& handler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::Services::Store::IStoreQueueItem, &impl::abi_t<winrt::Windows::Services::Store::IStoreQueueItem>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreQueueItem, winrt::Windows::Services::Store::StoreQueueItemCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreQueueItem, winrt::Windows::Services::Store::StoreQueueItemCompletedEventArgs> const& handler) const;
         auto Completed(winrt::event_token const& token) const noexcept;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreQueueItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Services::Store::IStoreQueueItem, &impl::abi_t<winrt::Windows::Services::Store::IStoreQueueItem>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreQueueItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Store::StoreQueueItem, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Services::Store::IStoreQueueItem>

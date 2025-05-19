@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -21,7 +21,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -507,7 +507,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResult>{ using type = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattWriteResult; };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDescriptors(winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall get_CharacteristicProperties(uint32_t*) noexcept = 0;
@@ -529,7 +529,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristic2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Service(void**) noexcept = 0;
             virtual int32_t __stdcall GetAllDescriptors(void**) noexcept = 0;
@@ -537,7 +537,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristic3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDescriptorsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetDescriptorsWithCacheModeAsync(int32_t, void**) noexcept = 0;
@@ -550,14 +550,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristicStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConvertShortIdToUuid(uint16_t, winrt::guid*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristicUuidsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BatteryLevel(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_BloodPressureFeature(winrt::guid*) noexcept = 0;
@@ -584,7 +584,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristicUuidsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlertCategoryId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_AlertCategoryIdBitMask(winrt::guid*) noexcept = 0;
@@ -650,7 +650,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristicsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ProtocolError(void**) noexcept = 0;
@@ -659,7 +659,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattClientNotificationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SubscribedClient(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -668,14 +668,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattClientNotificationResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BytesSent(uint16_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProtectionLevel(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ProtectionLevel(int32_t) noexcept = 0;
@@ -688,21 +688,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDescriptor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall WriteValueWithResultAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDescriptorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConvertShortIdToUuid(uint16_t, winrt::guid*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDescriptorUuidsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CharacteristicAggregateFormat(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_CharacteristicExtendedProperties(winrt::guid*) noexcept = 0;
@@ -714,7 +714,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDescriptorsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ProtocolError(void**) noexcept = 0;
@@ -723,7 +723,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDeviceService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCharacteristics(winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall GetIncludedServices(winrt::guid, void**) noexcept = 0;
@@ -734,7 +734,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDeviceService2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
             virtual int32_t __stdcall get_ParentServices(void**) noexcept = 0;
@@ -744,7 +744,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDeviceService3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceAccessInformation(void**) noexcept = 0;
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
@@ -763,7 +763,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDeviceServiceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorFromUuid(winrt::guid, void**) noexcept = 0;
@@ -773,7 +773,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDeviceServiceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdWithSharingModeAsync(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorForBluetoothDeviceId(void*, void**) noexcept = 0;
@@ -784,7 +784,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattDeviceServicesResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ProtocolError(void**) noexcept = 0;
@@ -793,7 +793,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uuid(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_StaticValue(void**) noexcept = 0;
@@ -817,7 +817,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristicParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_StaticValue(void*) noexcept = 0;
             virtual int32_t __stdcall get_StaticValue(void**) noexcept = 0;
@@ -834,7 +834,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristicResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Characteristic(void**) noexcept = 0;
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
@@ -842,7 +842,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uuid(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_StaticValue(void**) noexcept = 0;
@@ -856,7 +856,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalDescriptorParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_StaticValue(void*) noexcept = 0;
             virtual int32_t __stdcall get_StaticValue(void**) noexcept = 0;
@@ -868,7 +868,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalDescriptorResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Descriptor(void**) noexcept = 0;
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
@@ -876,7 +876,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uuid(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall CreateCharacteristicAsync(winrt::guid, void*, void**) noexcept = 0;
@@ -885,7 +885,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattPresentationFormat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FormatType(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Exponent(int32_t*) noexcept = 0;
@@ -896,21 +896,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattPresentationFormatStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BluetoothSigAssignedNumbers(uint8_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattPresentationFormatStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromParts(uint8_t, int32_t, uint16_t, uint8_t, uint16_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattPresentationFormatTypesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Boolean(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Bit2(uint8_t*) noexcept = 0;
@@ -943,7 +943,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattProtocolErrorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InvalidHandle(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_ReadNotPermitted(uint8_t*) noexcept = 0;
@@ -966,7 +966,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReadClientCharacteristicConfigurationDescriptorResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ClientCharacteristicConfigurationDescriptor(int32_t*) noexcept = 0;
@@ -974,14 +974,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReadClientCharacteristicConfigurationDescriptorResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProtocolError(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReadRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Offset(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Length(uint32_t*) noexcept = 0;
@@ -994,7 +994,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReadRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -1003,7 +1003,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReadResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -1011,14 +1011,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReadResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProtocolError(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReliableWriteTransaction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall WriteValue(void*, void*) noexcept = 0;
             virtual int32_t __stdcall CommitAsync(void**) noexcept = 0;
@@ -1026,14 +1026,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReliableWriteTransaction2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CommitWithResultAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattRequestStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
@@ -1041,7 +1041,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Service(void**) noexcept = 0;
             virtual int32_t __stdcall get_AdvertisementStatus(int32_t*) noexcept = 0;
@@ -1054,14 +1054,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UpdateAdvertisingParameters(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProviderAdvertisementStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -1069,7 +1069,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProviderAdvertisingParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsConnectable(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsConnectable(bool*) noexcept = 0;
@@ -1079,7 +1079,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProviderAdvertisingParameters2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ServiceData(void*) noexcept = 0;
             virtual int32_t __stdcall get_ServiceData(void**) noexcept = 0;
@@ -1087,7 +1087,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProviderAdvertisingParameters3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseLowEnergyUncoded1MPhyAsSecondaryPhy(bool*) noexcept = 0;
             virtual int32_t __stdcall put_UseLowEnergyUncoded1MPhyAsSecondaryPhy(bool) noexcept = 0;
@@ -1097,7 +1097,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProviderResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ServiceProvider(void**) noexcept = 0;
@@ -1105,14 +1105,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAsync(winrt::guid, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceUuidsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Battery(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_BloodPressure(winrt::guid*) noexcept = 0;
@@ -1127,7 +1127,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceUuidsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlertNotification(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_CurrentTime(winrt::guid*) noexcept = 0;
@@ -1146,7 +1146,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanMaintainConnection(bool*) noexcept = 0;
@@ -1162,14 +1162,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSessionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromDeviceIdAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSessionStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -1177,7 +1177,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSubscribedClient>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxNotificationSize(uint16_t*) noexcept = 0;
@@ -1187,7 +1187,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattValueChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CharacteristicValue(void**) noexcept = 0;
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
@@ -1195,7 +1195,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattWriteRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
             virtual int32_t __stdcall get_Offset(uint32_t*) noexcept = 0;
@@ -1209,7 +1209,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattWriteRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -1218,7 +1218,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattWriteResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ProtocolError(void**) noexcept = 0;
@@ -1243,7 +1243,7 @@ namespace winrt::impl
         auto WriteClientCharacteristicConfigurationDescriptorAsync(winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientCharacteristicConfigurationDescriptorValue const& clientCharacteristicConfigurationDescriptorValue) const;
         auto ValueChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattValueChangedEventArgs> const& valueChangedHandler) const;
         using ValueChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristic, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristic>::remove_ValueChanged>;
-        [[nodiscard]] ValueChanged_revoker ValueChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattValueChangedEventArgs> const& valueChangedHandler) const;
+        [[nodiscard]] auto ValueChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattValueChangedEventArgs> const& valueChangedHandler) const;
         auto ValueChanged(winrt::event_token const& valueChangedEventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristic>
@@ -1567,15 +1567,15 @@ namespace winrt::impl
         [[nodiscard]] auto SubscribedClients() const;
         auto SubscribedClientsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SubscribedClientsChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristic, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristic>::remove_SubscribedClientsChanged>;
-        [[nodiscard]] SubscribedClientsChanged_revoker SubscribedClientsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SubscribedClientsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SubscribedClientsChanged(winrt::event_token const& token) const noexcept;
         auto ReadRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs> const& handler) const;
         using ReadRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristic, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristic>::remove_ReadRequested>;
-        [[nodiscard]] ReadRequested_revoker ReadRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs> const& handler) const;
         auto ReadRequested(winrt::event_token const& token) const noexcept;
         auto WriteRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs> const& handler) const;
         using WriteRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristic, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalCharacteristic>::remove_WriteRequested>;
-        [[nodiscard]] WriteRequested_revoker WriteRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto WriteRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs> const& handler) const;
         auto WriteRequested(winrt::event_token const& token) const noexcept;
         auto NotifyValueAsync(winrt::Windows::Storage::Streams::IBuffer const& value) const;
         auto NotifyValueAsync(winrt::Windows::Storage::Streams::IBuffer const& value, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSubscribedClient const& subscribedClient) const;
@@ -1622,11 +1622,11 @@ namespace winrt::impl
         [[nodiscard]] auto WriteProtectionLevel() const;
         auto ReadRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs> const& handler) const;
         using ReadRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalDescriptor, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalDescriptor>::remove_ReadRequested>;
-        [[nodiscard]] ReadRequested_revoker ReadRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs> const& handler) const;
         auto ReadRequested(winrt::event_token const& token) const noexcept;
         auto WriteRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs> const& handler) const;
         using WriteRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalDescriptor, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalDescriptor>::remove_WriteRequested>;
-        [[nodiscard]] WriteRequested_revoker WriteRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto WriteRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs> const& handler) const;
         auto WriteRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattLocalDescriptor>
@@ -1786,7 +1786,7 @@ namespace winrt::impl
         [[nodiscard]] auto State() const;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequest, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReadRequest, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattReadRequest>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequest, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequest, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
         auto RespondWithValue(winrt::Windows::Storage::Streams::IBuffer const& value) const;
         auto RespondWithProtocolError(uint8_t protocolError) const;
@@ -1861,7 +1861,7 @@ namespace winrt::impl
         [[nodiscard]] auto AdvertisementStatus() const;
         auto AdvertisementStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProvider, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProviderAdvertisementStatusChangedEventArgs> const& handler) const;
         using AdvertisementStatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProvider, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattServiceProvider>::remove_AdvertisementStatusChanged>;
-        [[nodiscard]] AdvertisementStatusChanged_revoker AdvertisementStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProvider, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProviderAdvertisementStatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AdvertisementStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProvider, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProviderAdvertisementStatusChangedEventArgs> const& handler) const;
         auto AdvertisementStatusChanged(winrt::event_token const& token) const noexcept;
         auto StartAdvertising() const;
         auto StartAdvertising(winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProviderAdvertisingParameters const& parameters) const;
@@ -1992,11 +1992,11 @@ namespace winrt::impl
         [[nodiscard]] auto SessionStatus() const;
         auto MaxPduSizeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using MaxPduSizeChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSession, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSession>::remove_MaxPduSizeChanged>;
-        [[nodiscard]] MaxPduSizeChanged_revoker MaxPduSizeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto MaxPduSizeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto MaxPduSizeChanged(winrt::event_token const& token) const noexcept;
         auto SessionStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSessionStatusChangedEventArgs> const& handler) const;
         using SessionStatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSession, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSession>::remove_SessionStatusChanged>;
-        [[nodiscard]] SessionStatusChanged_revoker SessionStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSessionStatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SessionStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSessionStatusChangedEventArgs> const& handler) const;
         auto SessionStatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSession>
@@ -2029,7 +2029,7 @@ namespace winrt::impl
         [[nodiscard]] auto MaxNotificationSize() const;
         auto MaxNotificationSizeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSubscribedClient, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using MaxNotificationSizeChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSubscribedClient, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSubscribedClient>::remove_MaxNotificationSizeChanged>;
-        [[nodiscard]] MaxNotificationSizeChanged_revoker MaxNotificationSizeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSubscribedClient, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto MaxNotificationSizeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSubscribedClient, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto MaxNotificationSizeChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattSubscribedClient>
@@ -2055,7 +2055,7 @@ namespace winrt::impl
         [[nodiscard]] auto State() const;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequest, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattWriteRequest, &impl::abi_t<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattWriteRequest>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequest, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequest, winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
         auto Respond() const;
         auto RespondWithProtocolError(uint8_t protocolError) const;

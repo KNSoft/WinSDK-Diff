@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,13 +14,13 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Media::Capture
 {
@@ -371,6 +371,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::Devices
     struct DialRequestedEventHandler;
     struct KeypadPressedEventHandler;
     struct RedialRequestedEventHandler;
+    struct CallControlContract;
 }
 namespace winrt::impl
 {
@@ -656,6 +657,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Devices::DialRequestedEventHandler> = L"Windows.Media.Devices.DialRequestedEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Devices::KeypadPressedEventHandler> = L"Windows.Media.Devices.KeypadPressedEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::Devices::RedialRequestedEventHandler> = L"Windows.Media.Devices.RedialRequestedEventHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::Devices::CallControlContract> = L"Windows.Media.Devices.CallControlContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Devices::IAdvancedPhotoCaptureSettings>{ 0x08F3863A,0x0018,0x445B,{ 0x93,0xD2,0x64,0x6D,0x1C,0x5E,0xD0,0x5C } }; // 08F3863A-0018-445B-93D2-646D1C5ED05C
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Devices::IAdvancedPhotoControl>{ 0xC5B15486,0x9001,0x4682,{ 0x93,0x09,0x68,0xEA,0xE0,0x08,0x0E,0xEC } }; // C5B15486-9001-4682-9309-68EAE0080EEC
     template <> inline constexpr guid guid_v<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController>{ 0xDE6FF4D3,0x2B96,0x4583,{ 0x80,0xAB,0xB5,0xB0,0x1D,0xC6,0xA8,0xD7 } }; // DE6FF4D3-2B96-4583-80AB-B5B01DC6A8D7
@@ -772,7 +774,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Devices::ZoomSettings>{ using type = winrt::Windows::Media::Devices::IZoomSettings; };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedPhotoCaptureSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -780,7 +782,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedPhotoControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedModes(void**) noexcept = 0;
@@ -790,7 +792,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetDeviceProperty(void*, void*) noexcept = 0;
             virtual int32_t __stdcall GetDeviceProperty(void*, void**) noexcept = 0;
@@ -798,21 +800,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController10>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CameraOcclusionInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController11>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryAcquireExclusiveControl(void*, int32_t, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LowLagPhotoSequence(void**) noexcept = 0;
             virtual int32_t __stdcall get_LowLagPhoto(void**) noexcept = 0;
@@ -831,7 +833,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VariablePhotoSequenceController(void**) noexcept = 0;
             virtual int32_t __stdcall get_PhotoConfirmationControl(void**) noexcept = 0;
@@ -840,7 +842,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExposurePriorityVideoControl(void**) noexcept = 0;
             virtual int32_t __stdcall get_DesiredOptimization(int32_t*) noexcept = 0;
@@ -852,7 +854,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall GetDevicePropertyById(void*, void*, void**) noexcept = 0;
@@ -863,35 +865,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoTemporalDenoisingControl(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InfraredTorchControl(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PanelBasedOptimizationControl(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAdvancedVideoCaptureDeviceController9>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DigitalWindowControl(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAudioDeviceController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Muted(bool) noexcept = 0;
             virtual int32_t __stdcall get_Muted(bool*) noexcept = 0;
@@ -901,14 +903,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAudioDeviceController2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioCaptureEffectsManager(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAudioDeviceModule>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClassId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -920,7 +922,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAudioDeviceModuleNotificationEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Module(void**) noexcept = 0;
             virtual int32_t __stdcall get_NotificationData(void**) noexcept = 0;
@@ -928,7 +930,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAudioDeviceModulesManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ModuleNotificationReceived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ModuleNotificationReceived(winrt::event_token) noexcept = 0;
@@ -938,14 +940,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IAudioDeviceModulesManagerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::ICallControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IndicateNewIncomingCall(bool, void*, uint64_t*) noexcept = 0;
             virtual int32_t __stdcall IndicateNewOutgoingCall(uint64_t*) noexcept = 0;
@@ -968,7 +970,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::ICallControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall FromId(void*, void**) noexcept = 0;
@@ -976,7 +978,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::ICameraOcclusionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetState(void**) noexcept = 0;
             virtual int32_t __stdcall IsOcclusionKindSupported(int32_t, bool*) noexcept = 0;
@@ -986,7 +988,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::ICameraOcclusionState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOccluded(bool*) noexcept = 0;
             virtual int32_t __stdcall IsOcclusionKind(int32_t, bool*) noexcept = 0;
@@ -994,14 +996,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::ICameraOcclusionStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IDefaultAudioDeviceChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Role(int32_t*) noexcept = 0;
@@ -1009,7 +1011,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IDialRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Handled() noexcept = 0;
             virtual int32_t __stdcall get_Contact(void**) noexcept = 0;
@@ -1017,7 +1019,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IDigitalWindowBounds>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NormalizedOriginTop(double*) noexcept = 0;
             virtual int32_t __stdcall put_NormalizedOriginTop(double) noexcept = 0;
@@ -1029,7 +1031,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IDigitalWindowCapability>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Width(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Height(int32_t*) noexcept = 0;
@@ -1041,7 +1043,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IDigitalWindowControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedModes(uint32_t* __valueSize, int32_t**) noexcept = 0;
@@ -1055,7 +1057,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IExposureCompensationControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Min(float*) noexcept = 0;
@@ -1067,7 +1069,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IExposureControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Auto(bool*) noexcept = 0;
@@ -1081,7 +1083,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IExposurePriorityVideoControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
@@ -1090,7 +1092,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IFlashControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_PowerSupported(bool*) noexcept = 0;
@@ -1107,7 +1109,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IFlashControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AssistantLightSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_AssistantLightEnabled(bool*) noexcept = 0;
@@ -1116,7 +1118,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IFocusControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedPresets(void**) noexcept = 0;
@@ -1133,7 +1135,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IFocusControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FocusChangedSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_WaitForFocusSupported(bool*) noexcept = 0;
@@ -1149,7 +1151,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IFocusSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -1167,7 +1169,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IHdrVideoControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedModes(void**) noexcept = 0;
@@ -1177,7 +1179,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IInfraredTorchControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedModes(void**) noexcept = 0;
@@ -1192,7 +1194,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IIsoSpeedControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedPresets(void**) noexcept = 0;
@@ -1202,7 +1204,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IIsoSpeedControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Min(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Max(uint32_t*) noexcept = 0;
@@ -1215,14 +1217,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IKeypadPressedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TelephonyKey(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::ILowLagPhotoControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetHighestConcurrentFrameRate(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetCurrentFrameRate(void**) noexcept = 0;
@@ -1237,7 +1239,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::ILowLagPhotoSequenceControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_MaxPastPhotos(uint32_t*) noexcept = 0;
@@ -1259,7 +1261,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IMediaDeviceControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
             virtual int32_t __stdcall TryGetValue(double*, bool*) noexcept = 0;
@@ -1270,7 +1272,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IMediaDeviceControlCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Min(double*) noexcept = 0;
@@ -1282,7 +1284,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IMediaDeviceController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAvailableMediaStreamProperties(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetMediaStreamProperties(int32_t, void**) noexcept = 0;
@@ -1291,7 +1293,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IMediaDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAudioCaptureSelector(void**) noexcept = 0;
             virtual int32_t __stdcall GetAudioRenderSelector(void**) noexcept = 0;
@@ -1306,7 +1308,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IModuleCommandResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Result(void**) noexcept = 0;
@@ -1314,7 +1316,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IOpticalImageStabilizationControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedModes(void**) noexcept = 0;
@@ -1324,7 +1326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IPanelBasedOptimizationControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Panel(int32_t*) noexcept = 0;
@@ -1333,7 +1335,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IPhotoConfirmationControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
@@ -1344,14 +1346,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IRedialRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Handled() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::IRegionOfInterest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutoFocusEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AutoFocusEnabled(bool) noexcept = 0;
@@ -1365,7 +1367,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IRegionOfInterest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Type(int32_t) noexcept = 0;
@@ -1377,7 +1379,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IRegionsOfInterestControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxRegions(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall SetRegionsAsync(void*, void**) noexcept = 0;
@@ -1390,7 +1392,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::ISceneModeControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedModes(void**) noexcept = 0;
             virtual int32_t __stdcall get_Value(int32_t*) noexcept = 0;
@@ -1399,7 +1401,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::ITorchControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_PowerSupported(bool*) noexcept = 0;
@@ -1411,7 +1413,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IVideoDeviceController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Brightness(void**) noexcept = 0;
             virtual int32_t __stdcall get_Contrast(void**) noexcept = 0;
@@ -1430,7 +1432,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IVideoDeviceControllerGetDevicePropertyResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -1438,7 +1440,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IVideoTemporalDenoisingControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedModes(void**) noexcept = 0;
@@ -1448,7 +1450,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IWhiteBalanceControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Preset(int32_t*) noexcept = 0;
@@ -1462,7 +1464,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IZoomControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Min(float*) noexcept = 0;
@@ -1474,7 +1476,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IZoomControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedModes(void**) noexcept = 0;
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
@@ -1483,7 +1485,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::IZoomSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -1493,28 +1495,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::CallControlEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::DialRequestedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::KeypadPressedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::RedialRequestedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -1714,7 +1716,7 @@ namespace winrt::impl
     {
         auto ModuleNotificationReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Devices::AudioDeviceModulesManager, winrt::Windows::Media::Devices::AudioDeviceModuleNotificationEventArgs> const& handler) const;
         using ModuleNotificationReceived_revoker = impl::event_revoker<winrt::Windows::Media::Devices::IAudioDeviceModulesManager, &impl::abi_t<winrt::Windows::Media::Devices::IAudioDeviceModulesManager>::remove_ModuleNotificationReceived>;
-        [[nodiscard]] ModuleNotificationReceived_revoker ModuleNotificationReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Devices::AudioDeviceModulesManager, winrt::Windows::Media::Devices::AudioDeviceModuleNotificationEventArgs> const& handler) const;
+        [[nodiscard]] auto ModuleNotificationReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Devices::AudioDeviceModulesManager, winrt::Windows::Media::Devices::AudioDeviceModuleNotificationEventArgs> const& handler) const;
         auto ModuleNotificationReceived(winrt::event_token const& token) const noexcept;
         auto FindAllById(param::hstring const& moduleId) const;
         auto FindAll() const;
@@ -1742,27 +1744,27 @@ namespace winrt::impl
         [[nodiscard]] auto HasRinger() const;
         auto AnswerRequested(winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
         using AnswerRequested_revoker = impl::event_revoker<winrt::Windows::Media::Devices::ICallControl, &impl::abi_t<winrt::Windows::Media::Devices::ICallControl>::remove_AnswerRequested>;
-        [[nodiscard]] AnswerRequested_revoker AnswerRequested(auto_revoke_t, winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
+        [[nodiscard]] auto AnswerRequested(auto_revoke_t, winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
         auto AnswerRequested(winrt::event_token const& token) const noexcept;
         auto HangUpRequested(winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
         using HangUpRequested_revoker = impl::event_revoker<winrt::Windows::Media::Devices::ICallControl, &impl::abi_t<winrt::Windows::Media::Devices::ICallControl>::remove_HangUpRequested>;
-        [[nodiscard]] HangUpRequested_revoker HangUpRequested(auto_revoke_t, winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
+        [[nodiscard]] auto HangUpRequested(auto_revoke_t, winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
         auto HangUpRequested(winrt::event_token const& token) const noexcept;
         auto DialRequested(winrt::Windows::Media::Devices::DialRequestedEventHandler const& handler) const;
         using DialRequested_revoker = impl::event_revoker<winrt::Windows::Media::Devices::ICallControl, &impl::abi_t<winrt::Windows::Media::Devices::ICallControl>::remove_DialRequested>;
-        [[nodiscard]] DialRequested_revoker DialRequested(auto_revoke_t, winrt::Windows::Media::Devices::DialRequestedEventHandler const& handler) const;
+        [[nodiscard]] auto DialRequested(auto_revoke_t, winrt::Windows::Media::Devices::DialRequestedEventHandler const& handler) const;
         auto DialRequested(winrt::event_token const& token) const noexcept;
         auto RedialRequested(winrt::Windows::Media::Devices::RedialRequestedEventHandler const& handler) const;
         using RedialRequested_revoker = impl::event_revoker<winrt::Windows::Media::Devices::ICallControl, &impl::abi_t<winrt::Windows::Media::Devices::ICallControl>::remove_RedialRequested>;
-        [[nodiscard]] RedialRequested_revoker RedialRequested(auto_revoke_t, winrt::Windows::Media::Devices::RedialRequestedEventHandler const& handler) const;
+        [[nodiscard]] auto RedialRequested(auto_revoke_t, winrt::Windows::Media::Devices::RedialRequestedEventHandler const& handler) const;
         auto RedialRequested(winrt::event_token const& token) const noexcept;
         auto KeypadPressed(winrt::Windows::Media::Devices::KeypadPressedEventHandler const& handler) const;
         using KeypadPressed_revoker = impl::event_revoker<winrt::Windows::Media::Devices::ICallControl, &impl::abi_t<winrt::Windows::Media::Devices::ICallControl>::remove_KeypadPressed>;
-        [[nodiscard]] KeypadPressed_revoker KeypadPressed(auto_revoke_t, winrt::Windows::Media::Devices::KeypadPressedEventHandler const& handler) const;
+        [[nodiscard]] auto KeypadPressed(auto_revoke_t, winrt::Windows::Media::Devices::KeypadPressedEventHandler const& handler) const;
         auto KeypadPressed(winrt::event_token const& token) const noexcept;
         auto AudioTransferRequested(winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
         using AudioTransferRequested_revoker = impl::event_revoker<winrt::Windows::Media::Devices::ICallControl, &impl::abi_t<winrt::Windows::Media::Devices::ICallControl>::remove_AudioTransferRequested>;
-        [[nodiscard]] AudioTransferRequested_revoker AudioTransferRequested(auto_revoke_t, winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
+        [[nodiscard]] auto AudioTransferRequested(auto_revoke_t, winrt::Windows::Media::Devices::CallControlEventHandler const& handler) const;
         auto AudioTransferRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Devices::ICallControl>
@@ -1786,7 +1788,7 @@ namespace winrt::impl
         auto IsOcclusionKindSupported(winrt::Windows::Media::Devices::CameraOcclusionKind const& occlusionKind) const;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Devices::CameraOcclusionInfo, winrt::Windows::Media::Devices::CameraOcclusionStateChangedEventArgs> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Devices::ICameraOcclusionInfo, &impl::abi_t<winrt::Windows::Media::Devices::ICameraOcclusionInfo>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Devices::CameraOcclusionInfo, winrt::Windows::Media::Devices::CameraOcclusionStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Devices::CameraOcclusionInfo, winrt::Windows::Media::Devices::CameraOcclusionStateChangedEventArgs> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Devices::ICameraOcclusionInfo>
@@ -2158,11 +2160,11 @@ namespace winrt::impl
         auto GetDefaultAudioRenderId(winrt::Windows::Media::Devices::AudioDeviceRole const& role) const;
         auto DefaultAudioCaptureDeviceChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Media::Devices::DefaultAudioCaptureDeviceChangedEventArgs> const& handler) const;
         using DefaultAudioCaptureDeviceChanged_revoker = impl::event_revoker<winrt::Windows::Media::Devices::IMediaDeviceStatics, &impl::abi_t<winrt::Windows::Media::Devices::IMediaDeviceStatics>::remove_DefaultAudioCaptureDeviceChanged>;
-        [[nodiscard]] DefaultAudioCaptureDeviceChanged_revoker DefaultAudioCaptureDeviceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Media::Devices::DefaultAudioCaptureDeviceChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto DefaultAudioCaptureDeviceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Media::Devices::DefaultAudioCaptureDeviceChangedEventArgs> const& handler) const;
         auto DefaultAudioCaptureDeviceChanged(winrt::event_token const& cookie) const noexcept;
         auto DefaultAudioRenderDeviceChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Media::Devices::DefaultAudioRenderDeviceChangedEventArgs> const& handler) const;
         using DefaultAudioRenderDeviceChanged_revoker = impl::event_revoker<winrt::Windows::Media::Devices::IMediaDeviceStatics, &impl::abi_t<winrt::Windows::Media::Devices::IMediaDeviceStatics>::remove_DefaultAudioRenderDeviceChanged>;
-        [[nodiscard]] DefaultAudioRenderDeviceChanged_revoker DefaultAudioRenderDeviceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Media::Devices::DefaultAudioRenderDeviceChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto DefaultAudioRenderDeviceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Media::Devices::DefaultAudioRenderDeviceChangedEventArgs> const& handler) const;
         auto DefaultAudioRenderDeviceChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Devices::IMediaDeviceStatics>

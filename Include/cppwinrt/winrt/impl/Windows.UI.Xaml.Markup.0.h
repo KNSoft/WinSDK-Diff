@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,7 +15,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -140,21 +140,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Markup::XamlReader>{ using type = winrt::Windows::UI::Xaml::Markup::IXamlReader; };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IComponentConnector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Connect(int32_t, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IComponentConnector2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetBindingConnector(int32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IDataTemplateComponent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Recycle() noexcept = 0;
             virtual int32_t __stdcall ProcessBindings(void*, int32_t, int32_t, int32_t*) noexcept = 0;
@@ -162,53 +162,53 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IMarkupExtension>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IMarkupExtensionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IMarkupExtensionOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProvideValue(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlBinaryWriter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlBinaryWriterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Write(void*, void*, void*, struct struct_Windows_UI_Xaml_Markup_XamlBinaryWriterErrorInformation*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlBindScopeDiagnostics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Disable(int32_t, int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlBindingHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlBindingHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataTemplateComponentProperty(void**) noexcept = 0;
             virtual int32_t __stdcall GetDataTemplateComponent(void*, void**) noexcept = 0;
@@ -237,20 +237,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlMarkupHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlMarkupHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UnloadObject(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlMember>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAttachable(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsDependencyProperty(bool*) noexcept = 0;
@@ -264,7 +264,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlMetadataProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetXamlType(struct struct_Windows_UI_Xaml_Interop_TypeName, void**) noexcept = 0;
             virtual int32_t __stdcall GetXamlTypeByFullName(void*, void**) noexcept = 0;
@@ -273,13 +273,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlReaderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Load(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LoadWithInitialTemplateValidation(void*, void**) noexcept = 0;
@@ -287,7 +287,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlType>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BaseType(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContentProperty(void**) noexcept = 0;
@@ -311,7 +311,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Markup::IXamlType2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BoxedType(void**) noexcept = 0;
         };

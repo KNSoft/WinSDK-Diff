@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
@@ -156,14 +156,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::Proximity::TriggeredConnectionStateChangedEventArgs>{ using type = winrt::Windows::Networking::Proximity::ITriggeredConnectionStateChangedEventArgs; };
     template <> struct abi<winrt::Windows::Networking::Proximity::IConnectionRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PeerInformation(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IPeerFinderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowBluetooth(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowBluetooth(bool) noexcept = 0;
@@ -188,7 +188,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IPeerFinderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Role(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Role(int32_t) noexcept = 0;
@@ -199,14 +199,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IPeerInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IPeerInformation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DiscoveryData(void**) noexcept = 0;
@@ -214,7 +214,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IPeerInformationWithHostAndService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HostName(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServiceName(void**) noexcept = 0;
@@ -222,7 +222,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IPeerWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Added(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Added(winrt::event_token) noexcept = 0;
@@ -241,7 +241,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IProximityDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SubscribeForMessage(void*, void*, int64_t*) noexcept = 0;
             virtual int32_t __stdcall PublishMessage(void*, void*, int64_t*) noexcept = 0;
@@ -263,7 +263,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IProximityDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
@@ -272,7 +272,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::IProximityMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MessageType(void**) noexcept = 0;
             virtual int32_t __stdcall get_SubscriptionId(int64_t*) noexcept = 0;
@@ -282,7 +282,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::ITriggeredConnectionStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
@@ -291,28 +291,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::DeviceArrivedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::DeviceDepartedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::MessageReceivedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Proximity::MessageTransmittedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, int64_t) noexcept = 0;
         };
@@ -344,11 +344,11 @@ namespace winrt::impl
         auto Stop() const;
         auto TriggeredConnectionStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Networking::Proximity::TriggeredConnectionStateChangedEventArgs> const& handler) const;
         using TriggeredConnectionStateChanged_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IPeerFinderStatics, &impl::abi_t<winrt::Windows::Networking::Proximity::IPeerFinderStatics>::remove_TriggeredConnectionStateChanged>;
-        [[nodiscard]] TriggeredConnectionStateChanged_revoker TriggeredConnectionStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Networking::Proximity::TriggeredConnectionStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TriggeredConnectionStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Networking::Proximity::TriggeredConnectionStateChangedEventArgs> const& handler) const;
         auto TriggeredConnectionStateChanged(winrt::event_token const& cookie) const noexcept;
         auto ConnectionRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Networking::Proximity::ConnectionRequestedEventArgs> const& handler) const;
         using ConnectionRequested_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IPeerFinderStatics, &impl::abi_t<winrt::Windows::Networking::Proximity::IPeerFinderStatics>::remove_ConnectionRequested>;
-        [[nodiscard]] ConnectionRequested_revoker ConnectionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Networking::Proximity::ConnectionRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ConnectionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::Networking::Proximity::ConnectionRequestedEventArgs> const& handler) const;
         auto ConnectionRequested(winrt::event_token const& cookie) const noexcept;
         auto FindAllPeersAsync() const;
         auto ConnectAsync(winrt::Windows::Networking::Proximity::PeerInformation const& peerInformation) const;
@@ -404,23 +404,23 @@ namespace winrt::impl
     {
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IPeerWatcher, &impl::abi_t<winrt::Windows::Networking::Proximity::IPeerWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IPeerWatcher, &impl::abi_t<winrt::Windows::Networking::Proximity::IPeerWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IPeerWatcher, &impl::abi_t<winrt::Windows::Networking::Proximity::IPeerWatcher>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Networking::Proximity::PeerInformation> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IPeerWatcher, &impl::abi_t<winrt::Windows::Networking::Proximity::IPeerWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IPeerWatcher, &impl::abi_t<winrt::Windows::Networking::Proximity::IPeerWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Proximity::PeerWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;
@@ -444,11 +444,11 @@ namespace winrt::impl
         auto StopPublishingMessage(int64_t messageId) const;
         auto DeviceArrived(winrt::Windows::Networking::Proximity::DeviceArrivedEventHandler const& arrivedHandler) const;
         using DeviceArrived_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IProximityDevice, &impl::abi_t<winrt::Windows::Networking::Proximity::IProximityDevice>::remove_DeviceArrived>;
-        [[nodiscard]] DeviceArrived_revoker DeviceArrived(auto_revoke_t, winrt::Windows::Networking::Proximity::DeviceArrivedEventHandler const& arrivedHandler) const;
+        [[nodiscard]] auto DeviceArrived(auto_revoke_t, winrt::Windows::Networking::Proximity::DeviceArrivedEventHandler const& arrivedHandler) const;
         auto DeviceArrived(winrt::event_token const& cookie) const noexcept;
         auto DeviceDeparted(winrt::Windows::Networking::Proximity::DeviceDepartedEventHandler const& departedHandler) const;
         using DeviceDeparted_revoker = impl::event_revoker<winrt::Windows::Networking::Proximity::IProximityDevice, &impl::abi_t<winrt::Windows::Networking::Proximity::IProximityDevice>::remove_DeviceDeparted>;
-        [[nodiscard]] DeviceDeparted_revoker DeviceDeparted(auto_revoke_t, winrt::Windows::Networking::Proximity::DeviceDepartedEventHandler const& departedHandler) const;
+        [[nodiscard]] auto DeviceDeparted(auto_revoke_t, winrt::Windows::Networking::Proximity::DeviceDepartedEventHandler const& departedHandler) const;
         auto DeviceDeparted(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto MaxMessageBytes() const;
         [[nodiscard]] auto BitsPerSecond() const;

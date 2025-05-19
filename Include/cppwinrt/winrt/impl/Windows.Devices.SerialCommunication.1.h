@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,21 +10,21 @@
 #include "winrt/impl/Windows.Devices.SerialCommunication.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::SerialCommunication
 {
-    struct __declspec(empty_bases) IErrorReceivedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IErrorReceivedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IErrorReceivedEventArgs>
     {
         IErrorReceivedEventArgs(std::nullptr_t = nullptr) noexcept {}
         IErrorReceivedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IPinChangedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IPinChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IPinChangedEventArgs>
     {
         IPinChangedEventArgs(std::nullptr_t = nullptr) noexcept {}
         IPinChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ISerialDevice :
+    struct WINRT_IMPL_EMPTY_BASES ISerialDevice :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ISerialDevice>,
         impl::require<winrt::Windows::Devices::SerialCommunication::ISerialDevice, winrt::Windows::Foundation::IClosable>
@@ -32,7 +32,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::SerialCommunication
         ISerialDevice(std::nullptr_t = nullptr) noexcept {}
         ISerialDevice(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ISerialDeviceStatics :
+    struct WINRT_IMPL_EMPTY_BASES ISerialDeviceStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ISerialDeviceStatics>
     {

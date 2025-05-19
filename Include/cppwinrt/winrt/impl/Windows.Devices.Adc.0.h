@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -48,7 +48,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Adc::AdcController>{ using type = winrt::Windows::Devices::Adc::IAdcController; };
     template <> struct abi<winrt::Windows::Devices::Adc::IAdcChannel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Controller(void**) noexcept = 0;
             virtual int32_t __stdcall ReadValue(int32_t*) noexcept = 0;
@@ -57,7 +57,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Adc::IAdcController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChannelCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ResolutionInBits(int32_t*) noexcept = 0;
@@ -71,14 +71,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Adc::IAdcControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetControllersAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Adc::IAdcControllerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
         };

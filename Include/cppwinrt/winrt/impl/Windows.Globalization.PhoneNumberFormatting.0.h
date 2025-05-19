@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -86,7 +86,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Globalization::PhoneNumberFormatting::PhoneNumberInfo>{ using type = winrt::Windows::Globalization::PhoneNumberFormatting::IPhoneNumberInfo; };
     template <> struct abi<winrt::Windows::Globalization::PhoneNumberFormatting::IPhoneNumberFormatter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Format(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FormatWithOutputFormat(void*, int32_t, void**) noexcept = 0;
@@ -97,7 +97,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::PhoneNumberFormatting::IPhoneNumberFormatterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreate(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetCountryCodeForRegion(void*, int32_t*) noexcept = 0;
@@ -107,7 +107,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::PhoneNumberFormatting::IPhoneNumberInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CountryCode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PhoneNumber(void**) noexcept = 0;
@@ -121,14 +121,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::PhoneNumberFormatting::IPhoneNumberInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::PhoneNumberFormatting::IPhoneNumberInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryParse(void*, void**, int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryParseWithRegion(void*, void*, void**, int32_t*) noexcept = 0;

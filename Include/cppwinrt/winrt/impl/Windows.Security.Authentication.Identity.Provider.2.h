@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.Security.Authentication.Identity.Provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Identity::Provider
 {
-    struct __declspec(empty_bases) SecondaryAuthenticationFactorAuthentication : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthentication
+    struct WINRT_IMPL_EMPTY_BASES SecondaryAuthenticationFactorAuthentication : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthentication
     {
         SecondaryAuthenticationFactorAuthentication(std::nullptr_t) noexcept {}
         SecondaryAuthenticationFactorAuthentication(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthentication(ptr, take_ownership_from_abi) {}
@@ -19,32 +19,32 @@ WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Identity::Provi
         static auto StartAuthenticationAsync(param::hstring const& deviceId, winrt::Windows::Storage::Streams::IBuffer const& serviceAuthenticationNonce);
         static auto AuthenticationStageChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::Authentication::Identity::Provider::SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs> const& handler);
         using AuthenticationStageChanged_revoker = impl::factory_event_revoker<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStatics, &impl::abi_t<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStatics>::remove_AuthenticationStageChanged>;
-        [[nodiscard]] static AuthenticationStageChanged_revoker AuthenticationStageChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::Authentication::Identity::Provider::SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs> const& handler);
+        [[nodiscard]] static auto AuthenticationStageChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::Authentication::Identity::Provider::SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs> const& handler);
         static auto AuthenticationStageChanged(winrt::event_token const& token);
         static auto GetAuthenticationStageInfoAsync();
     };
-    struct __declspec(empty_bases) SecondaryAuthenticationFactorAuthenticationResult : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationResult
+    struct WINRT_IMPL_EMPTY_BASES SecondaryAuthenticationFactorAuthenticationResult : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationResult
     {
         SecondaryAuthenticationFactorAuthenticationResult(std::nullptr_t) noexcept {}
         SecondaryAuthenticationFactorAuthenticationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStageChangedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStageChangedEventArgs
     {
         SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs(std::nullptr_t) noexcept {}
         SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStageChangedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SecondaryAuthenticationFactorAuthenticationStageInfo : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStageInfo
+    struct WINRT_IMPL_EMPTY_BASES SecondaryAuthenticationFactorAuthenticationStageInfo : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStageInfo
     {
         SecondaryAuthenticationFactorAuthenticationStageInfo(std::nullptr_t) noexcept {}
         SecondaryAuthenticationFactorAuthenticationStageInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStageInfo(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SecondaryAuthenticationFactorInfo : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorInfo,
+    struct WINRT_IMPL_EMPTY_BASES SecondaryAuthenticationFactorInfo : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorInfo,
         impl::require<SecondaryAuthenticationFactorInfo, winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorInfo2>
     {
         SecondaryAuthenticationFactorInfo(std::nullptr_t) noexcept {}
         SecondaryAuthenticationFactorInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorInfo(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SecondaryAuthenticationFactorRegistration : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistration
+    struct WINRT_IMPL_EMPTY_BASES SecondaryAuthenticationFactorRegistration : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistration
     {
         SecondaryAuthenticationFactorRegistration(std::nullptr_t) noexcept {}
         SecondaryAuthenticationFactorRegistration(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistration(ptr, take_ownership_from_abi) {}
@@ -57,7 +57,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Identity::Provi
         static auto UnregisterDeviceAsync(param::hstring const& deviceId);
         static auto UpdateDeviceConfigurationDataAsync(param::hstring const& deviceId, winrt::Windows::Storage::Streams::IBuffer const& deviceConfigurationData);
     };
-    struct __declspec(empty_bases) SecondaryAuthenticationFactorRegistrationResult : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistrationResult
+    struct WINRT_IMPL_EMPTY_BASES SecondaryAuthenticationFactorRegistrationResult : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistrationResult
     {
         SecondaryAuthenticationFactorRegistrationResult(std::nullptr_t) noexcept {}
         SecondaryAuthenticationFactorRegistrationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistrationResult(ptr, take_ownership_from_abi) {}

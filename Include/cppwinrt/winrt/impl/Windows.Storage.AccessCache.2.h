@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,8 +13,8 @@ WINRT_EXPORT namespace winrt::Windows::Storage::AccessCache
 {
     struct AccessListEntry
     {
-        hstring Token;
-        hstring Metadata;
+        hstring Token {};
+        hstring Metadata {};
     };
     inline bool operator==(AccessListEntry const& left, AccessListEntry const& right) noexcept
     {
@@ -24,12 +24,12 @@ WINRT_EXPORT namespace winrt::Windows::Storage::AccessCache
     {
         return !(left == right);
     }
-    struct __declspec(empty_bases) AccessListEntryView : winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Storage::AccessCache::AccessListEntry>
+    struct WINRT_IMPL_EMPTY_BASES AccessListEntryView : winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Storage::AccessCache::AccessListEntry>
     {
         AccessListEntryView(std::nullptr_t) noexcept {}
         AccessListEntryView(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Storage::AccessCache::AccessListEntry>(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ItemRemovedEventArgs : winrt::Windows::Storage::AccessCache::IItemRemovedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES ItemRemovedEventArgs : winrt::Windows::Storage::AccessCache::IItemRemovedEventArgs
     {
         ItemRemovedEventArgs(std::nullptr_t) noexcept {}
         ItemRemovedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Storage::AccessCache::IItemRemovedEventArgs(ptr, take_ownership_from_abi) {}
@@ -42,12 +42,12 @@ WINRT_EXPORT namespace winrt::Windows::Storage::AccessCache
         static auto GetFutureAccessListForUser(winrt::Windows::System::User const& user);
         static auto GetMostRecentlyUsedListForUser(winrt::Windows::System::User const& user);
     };
-    struct __declspec(empty_bases) StorageItemAccessList : winrt::Windows::Storage::AccessCache::IStorageItemAccessList
+    struct WINRT_IMPL_EMPTY_BASES StorageItemAccessList : winrt::Windows::Storage::AccessCache::IStorageItemAccessList
     {
         StorageItemAccessList(std::nullptr_t) noexcept {}
         StorageItemAccessList(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Storage::AccessCache::IStorageItemAccessList(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) StorageItemMostRecentlyUsedList : winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList,
+    struct WINRT_IMPL_EMPTY_BASES StorageItemMostRecentlyUsedList : winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList,
         impl::require<StorageItemMostRecentlyUsedList, winrt::Windows::Storage::AccessCache::IStorageItemMostRecentlyUsedList2>
     {
         StorageItemMostRecentlyUsedList(std::nullptr_t) noexcept {}

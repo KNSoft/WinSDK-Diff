@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,14 +9,14 @@
 #include "winrt/impl/Windows.Web.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web
 {
-    struct __declspec(empty_bases) IUriToStreamResolver :
+    struct WINRT_IMPL_EMPTY_BASES IUriToStreamResolver :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUriToStreamResolver>
     {
         IUriToStreamResolver(std::nullptr_t = nullptr) noexcept {}
         IUriToStreamResolver(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebErrorStatics :
+    struct WINRT_IMPL_EMPTY_BASES IWebErrorStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebErrorStatics>
     {

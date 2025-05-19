@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,7 +15,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Services::Maps::OfflineMaps
 {
@@ -79,7 +79,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Services::Maps::OfflineMaps::OfflineMapPackageStartDownloadResult>{ using type = winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackageStartDownloadResult; };
     template <> struct abi<winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -92,7 +92,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackageQueryResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Packages(void**) noexcept = 0;
@@ -100,14 +100,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackageStartDownloadResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackageStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindPackagesAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindPackagesInBoundingBoxAsync(void*, void**) noexcept = 0;
@@ -124,7 +124,7 @@ namespace winrt::impl
         auto StatusChanged(winrt::event_token const& token) const noexcept;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::OfflineMaps::OfflineMapPackage, winrt::Windows::Foundation::IInspectable> const& value) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackage, &impl::abi_t<winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackage>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::OfflineMaps::OfflineMapPackage, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::Maps::OfflineMaps::OfflineMapPackage, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto RequestStartDownloadAsync() const;
     };
     template <> struct consume<winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackage>

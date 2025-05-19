@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,35 +9,35 @@
 #include "winrt/impl/Windows.Devices.Geolocation.Geofencing.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation::Geofencing
 {
-    struct __declspec(empty_bases) IGeofence :
+    struct WINRT_IMPL_EMPTY_BASES IGeofence :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGeofence>
     {
         IGeofence(std::nullptr_t = nullptr) noexcept {}
         IGeofence(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IGeofenceFactory :
+    struct WINRT_IMPL_EMPTY_BASES IGeofenceFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGeofenceFactory>
     {
         IGeofenceFactory(std::nullptr_t = nullptr) noexcept {}
         IGeofenceFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IGeofenceMonitor :
+    struct WINRT_IMPL_EMPTY_BASES IGeofenceMonitor :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGeofenceMonitor>
     {
         IGeofenceMonitor(std::nullptr_t = nullptr) noexcept {}
         IGeofenceMonitor(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IGeofenceMonitorStatics :
+    struct WINRT_IMPL_EMPTY_BASES IGeofenceMonitorStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGeofenceMonitorStatics>
     {
         IGeofenceMonitorStatics(std::nullptr_t = nullptr) noexcept {}
         IGeofenceMonitorStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IGeofenceStateChangeReport :
+    struct WINRT_IMPL_EMPTY_BASES IGeofenceStateChangeReport :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGeofenceStateChangeReport>
     {

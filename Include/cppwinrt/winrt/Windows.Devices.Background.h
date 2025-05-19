@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_Devices_Background_H
 #define WINRT_Windows_Devices_Background_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.230511.6"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.230511.6"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
 #include "winrt/Windows.Devices.h"
 #include "winrt/impl/Windows.Foundation.2.h"
 #include "winrt/impl/Windows.Devices.Background.2.h"
@@ -17,31 +17,91 @@ namespace winrt::impl
     template <typename D> auto consume_Windows_Devices_Background_IDeviceServicingDetails<D>::DeviceId() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Background::IDeviceServicingDetails)->get_DeviceId(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Background::IDeviceServicingDetails>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Background::IDeviceServicingDetails, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceServicingDetails>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_DeviceId(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceServicingDetails>**)this;
+            check_hresult(_winrt_abi_type->get_DeviceId(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_Devices_Background_IDeviceServicingDetails<D>::Arguments() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Background::IDeviceServicingDetails)->get_Arguments(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Background::IDeviceServicingDetails>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Background::IDeviceServicingDetails, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceServicingDetails>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Arguments(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceServicingDetails>**)this;
+            check_hresult(_winrt_abi_type->get_Arguments(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_Devices_Background_IDeviceServicingDetails<D>::ExpectedDuration() const
     {
         winrt::Windows::Foundation::TimeSpan value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Background::IDeviceServicingDetails)->get_ExpectedDuration(put_abi(value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Background::IDeviceServicingDetails>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Background::IDeviceServicingDetails, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceServicingDetails>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_ExpectedDuration(put_abi(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceServicingDetails>**)this;
+            check_hresult(_winrt_abi_type->get_ExpectedDuration(put_abi(value)));
+        }
         return value;
     }
     template <typename D> auto consume_Windows_Devices_Background_IDeviceUseDetails<D>::DeviceId() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Background::IDeviceUseDetails)->get_DeviceId(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Background::IDeviceUseDetails>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Background::IDeviceUseDetails, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceUseDetails>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_DeviceId(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceUseDetails>**)this;
+            check_hresult(_winrt_abi_type->get_DeviceId(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_Devices_Background_IDeviceUseDetails<D>::Arguments() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Background::IDeviceUseDetails)->get_Arguments(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Background::IDeviceUseDetails>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Background::IDeviceUseDetails, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceUseDetails>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Arguments(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Background::IDeviceUseDetails>**)this;
+            check_hresult(_winrt_abi_type->get_Arguments(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
 #ifndef WINRT_LEAN_AND_MEAN

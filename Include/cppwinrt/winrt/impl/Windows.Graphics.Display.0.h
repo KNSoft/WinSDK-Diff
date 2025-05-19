@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct Point;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics
 {
@@ -226,7 +226,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Display::DisplayServices>{ using type = winrt::Windows::Graphics::Display::IDisplayServices; };
     template <> struct abi<winrt::Windows::Graphics::Display::IAdvancedColorInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentAdvancedColorKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_RedPrimary(winrt::Windows::Foundation::Point*) noexcept = 0;
@@ -243,7 +243,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IBrightnessOverride>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsOverrideActive(bool*) noexcept = 0;
@@ -263,7 +263,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IBrightnessOverrideSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredLevel(double*) noexcept = 0;
             virtual int32_t __stdcall get_DesiredNits(float*) noexcept = 0;
@@ -271,7 +271,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IBrightnessOverrideSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromLevel(double, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromNits(float, void**) noexcept = 0;
@@ -280,7 +280,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IBrightnessOverrideStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultForSystem(void**) noexcept = 0;
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
@@ -289,21 +289,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IColorOverrideSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredDisplayColorOverrideScenario(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IColorOverrideSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromDisplayColorOverrideScenario(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayEnhancementOverride>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ColorOverrideSettings(void**) noexcept = 0;
             virtual int32_t __stdcall put_ColorOverrideSettings(void*) noexcept = 0;
@@ -324,7 +324,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayEnhancementOverrideCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBrightnessControlSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsBrightnessNitsControlSupported(bool*) noexcept = 0;
@@ -333,21 +333,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayEnhancementOverrideCapabilitiesChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayEnhancementOverrideStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentOrientation(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NativeOrientation(uint32_t*) noexcept = 0;
@@ -369,21 +369,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayInformation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RawPixelsPerViewPixel(double*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayInformation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DiagonalSizeInInches(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayInformation4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ScreenWidthInRawPixels(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ScreenHeightInRawPixels(uint32_t*) noexcept = 0;
@@ -391,7 +391,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayInformation5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAdvancedColorInfo(void**) noexcept = 0;
             virtual int32_t __stdcall add_AdvancedColorInfoChanged(void*, winrt::event_token*) noexcept = 0;
@@ -400,7 +400,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayInformationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall get_AutoRotationPreferences(uint32_t*) noexcept = 0;
@@ -411,7 +411,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentOrientation(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NativeOrientation(uint32_t*) noexcept = 0;
@@ -435,20 +435,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayServices>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::IDisplayServicesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAll(uint32_t* __resultSize, struct struct_Windows_Graphics_DisplayId**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -485,15 +485,15 @@ namespace winrt::impl
         auto StopOverride() const;
         auto IsSupportedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsSupportedChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IBrightnessOverride, &impl::abi_t<winrt::Windows::Graphics::Display::IBrightnessOverride>::remove_IsSupportedChanged>;
-        [[nodiscard]] IsSupportedChanged_revoker IsSupportedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsSupportedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsSupportedChanged(winrt::event_token const& token) const noexcept;
         auto IsOverrideActiveChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsOverrideActiveChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IBrightnessOverride, &impl::abi_t<winrt::Windows::Graphics::Display::IBrightnessOverride>::remove_IsOverrideActiveChanged>;
-        [[nodiscard]] IsOverrideActiveChanged_revoker IsOverrideActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsOverrideActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsOverrideActiveChanged(winrt::event_token const& token) const noexcept;
         auto BrightnessLevelChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using BrightnessLevelChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IBrightnessOverride, &impl::abi_t<winrt::Windows::Graphics::Display::IBrightnessOverride>::remove_BrightnessLevelChanged>;
-        [[nodiscard]] BrightnessLevelChanged_revoker BrightnessLevelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto BrightnessLevelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::BrightnessOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto BrightnessLevelChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Display::IBrightnessOverride>
@@ -564,15 +564,15 @@ namespace winrt::impl
         auto StopOverride() const;
         auto CanOverrideChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CanOverrideChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayEnhancementOverride, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayEnhancementOverride>::remove_CanOverrideChanged>;
-        [[nodiscard]] CanOverrideChanged_revoker CanOverrideChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CanOverrideChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CanOverrideChanged(winrt::event_token const& token) const noexcept;
         auto IsOverrideActiveChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsOverrideActiveChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayEnhancementOverride, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayEnhancementOverride>::remove_IsOverrideActiveChanged>;
-        [[nodiscard]] IsOverrideActiveChanged_revoker IsOverrideActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsOverrideActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsOverrideActiveChanged(winrt::event_token const& token) const noexcept;
         auto DisplayEnhancementOverrideCapabilitiesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Graphics::Display::DisplayEnhancementOverrideCapabilitiesChangedEventArgs> const& handler) const;
         using DisplayEnhancementOverrideCapabilitiesChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayEnhancementOverride, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayEnhancementOverride>::remove_DisplayEnhancementOverrideCapabilitiesChanged>;
-        [[nodiscard]] DisplayEnhancementOverrideCapabilitiesChanged_revoker DisplayEnhancementOverrideCapabilitiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Graphics::Display::DisplayEnhancementOverrideCapabilitiesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto DisplayEnhancementOverrideCapabilitiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayEnhancementOverride, winrt::Windows::Graphics::Display::DisplayEnhancementOverrideCapabilitiesChangedEventArgs> const& handler) const;
         auto DisplayEnhancementOverrideCapabilitiesChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Display::IDisplayEnhancementOverride>
@@ -615,7 +615,7 @@ namespace winrt::impl
         [[nodiscard]] auto NativeOrientation() const;
         auto OrientationChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using OrientationChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayInformation, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayInformation>::remove_OrientationChanged>;
-        [[nodiscard]] OrientationChanged_revoker OrientationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto OrientationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto OrientationChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto ResolutionScale() const;
         [[nodiscard]] auto LogicalDpi() const;
@@ -623,17 +623,17 @@ namespace winrt::impl
         [[nodiscard]] auto RawDpiY() const;
         auto DpiChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DpiChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayInformation, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayInformation>::remove_DpiChanged>;
-        [[nodiscard]] DpiChanged_revoker DpiChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DpiChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DpiChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto StereoEnabled() const;
         auto StereoEnabledChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StereoEnabledChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayInformation, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayInformation>::remove_StereoEnabledChanged>;
-        [[nodiscard]] StereoEnabledChanged_revoker StereoEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StereoEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StereoEnabledChanged(winrt::event_token const& token) const noexcept;
         auto GetColorProfileAsync() const;
         auto ColorProfileChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ColorProfileChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayInformation, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayInformation>::remove_ColorProfileChanged>;
-        [[nodiscard]] ColorProfileChanged_revoker ColorProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ColorProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ColorProfileChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Display::IDisplayInformation>
@@ -674,7 +674,7 @@ namespace winrt::impl
         auto GetAdvancedColorInfo() const;
         auto AdvancedColorInfoChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AdvancedColorInfoChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayInformation5, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayInformation5>::remove_AdvancedColorInfoChanged>;
-        [[nodiscard]] AdvancedColorInfoChanged_revoker AdvancedColorInfoChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AdvancedColorInfoChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AdvancedColorInfoChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Display::IDisplayInformation5>
@@ -689,7 +689,7 @@ namespace winrt::impl
         auto AutoRotationPreferences(winrt::Windows::Graphics::Display::DisplayOrientations const& value) const;
         auto DisplayContentsInvalidated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DisplayContentsInvalidated_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayInformationStatics, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayInformationStatics>::remove_DisplayContentsInvalidated>;
-        [[nodiscard]] DisplayContentsInvalidated_revoker DisplayContentsInvalidated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DisplayContentsInvalidated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::DisplayInformation, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DisplayContentsInvalidated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Display::IDisplayInformationStatics>
@@ -705,27 +705,27 @@ namespace winrt::impl
         auto AutoRotationPreferences(winrt::Windows::Graphics::Display::DisplayOrientations const& value) const;
         auto OrientationChanged(winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         using OrientationChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics>::remove_OrientationChanged>;
-        [[nodiscard]] OrientationChanged_revoker OrientationChanged(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
+        [[nodiscard]] auto OrientationChanged(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         auto OrientationChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto ResolutionScale() const;
         [[nodiscard]] auto LogicalDpi() const;
         auto LogicalDpiChanged(winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         using LogicalDpiChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics>::remove_LogicalDpiChanged>;
-        [[nodiscard]] LogicalDpiChanged_revoker LogicalDpiChanged(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
+        [[nodiscard]] auto LogicalDpiChanged(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         auto LogicalDpiChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto StereoEnabled() const;
         auto StereoEnabledChanged(winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         using StereoEnabledChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics>::remove_StereoEnabledChanged>;
-        [[nodiscard]] StereoEnabledChanged_revoker StereoEnabledChanged(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
+        [[nodiscard]] auto StereoEnabledChanged(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         auto StereoEnabledChanged(winrt::event_token const& token) const noexcept;
         auto GetColorProfileAsync() const;
         auto ColorProfileChanged(winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         using ColorProfileChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics>::remove_ColorProfileChanged>;
-        [[nodiscard]] ColorProfileChanged_revoker ColorProfileChanged(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
+        [[nodiscard]] auto ColorProfileChanged(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         auto ColorProfileChanged(winrt::event_token const& token) const noexcept;
         auto DisplayContentsInvalidated(winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         using DisplayContentsInvalidated_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics, &impl::abi_t<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics>::remove_DisplayContentsInvalidated>;
-        [[nodiscard]] DisplayContentsInvalidated_revoker DisplayContentsInvalidated(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
+        [[nodiscard]] auto DisplayContentsInvalidated(auto_revoke_t, winrt::Windows::Graphics::Display::DisplayPropertiesEventHandler const& handler) const;
         auto DisplayContentsInvalidated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Display::IDisplayPropertiesStatics>

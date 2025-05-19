@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -33,27 +33,27 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Resources::CustomXamlResourceLoader>{ using type = winrt::Windows::UI::Xaml::Resources::ICustomXamlResourceLoader; };
     template <> struct abi<winrt::Windows::UI::Xaml::Resources::ICustomXamlResourceLoader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Resources::ICustomXamlResourceLoaderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Resources::ICustomXamlResourceLoaderOverrides>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetResource(void*, void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Resources::ICustomXamlResourceLoaderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
             virtual int32_t __stdcall put_Current(void*) noexcept = 0;

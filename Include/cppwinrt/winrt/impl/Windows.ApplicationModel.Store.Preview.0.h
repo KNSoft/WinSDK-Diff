@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,11 +8,11 @@
 #define WINRT_Windows_ApplicationModel_Store_Preview_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web::Core
 {
@@ -192,7 +192,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Store::Preview::StorePreviewSkuInfo>{ using type = winrt::Windows::ApplicationModel::Store::Preview::IStorePreviewSkuInfo; };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IDeliveryOptimizationSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DownloadMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DownloadModeSource(int32_t*) noexcept = 0;
@@ -200,14 +200,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IDeliveryOptimizationSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentSettings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStoreConfigurationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetSystemConfiguration(void*, void*, int64_t, void*) noexcept = 0;
             virtual int32_t __stdcall SetMobileOperatorConfiguration(void*, uint32_t, uint32_t) noexcept = 0;
@@ -219,7 +219,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStoreConfigurationStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PurchasePromptingPolicy(void**) noexcept = 0;
             virtual int32_t __stdcall put_PurchasePromptingPolicy(void*) noexcept = 0;
@@ -227,7 +227,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStoreConfigurationStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall HasStoreWebAccount(bool*) noexcept = 0;
             virtual int32_t __stdcall HasStoreWebAccountForUser(void*, bool*) noexcept = 0;
@@ -240,7 +240,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStoreConfigurationStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStoreWebAccountId(void**) noexcept = 0;
             virtual int32_t __stdcall GetStoreWebAccountIdForUser(void*, void**) noexcept = 0;
@@ -254,7 +254,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStoreConfigurationStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsPinToDesktopSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall IsPinToTaskbarSupported(bool*) noexcept = 0;
@@ -265,7 +265,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStoreHardwareManufacturerInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HardwareManufacturerId(void**) noexcept = 0;
             virtual int32_t __stdcall get_StoreContentModifierId(void**) noexcept = 0;
@@ -275,7 +275,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStorePreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestProductPurchaseByProductIdAndSkuIdAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall LoadAddOnProductInfosAsync(void**) noexcept = 0;
@@ -283,7 +283,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStorePreviewProductInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProductType(void**) noexcept = 0;
@@ -294,14 +294,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStorePreviewPurchaseResults>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductPurchaseStatus(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IStorePreviewSkuInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductId(void**) noexcept = 0;
             virtual int32_t __stdcall get_SkuId(void**) noexcept = 0;
@@ -316,7 +316,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::Preview::IWebAuthenticationCoreManagerHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestTokenWithUIElementHostingAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestTokenWithUIElementHostingAndWebAccountAsync(void*, void*, void*, void**) noexcept = 0;

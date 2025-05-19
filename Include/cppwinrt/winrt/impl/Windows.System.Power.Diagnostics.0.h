@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -27,7 +27,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::System::Power::Diagnostics::IForegroundEnergyDiagnosticsStatics>{ 0x23CA0917,0xCD07,0x4609,{ 0xBE,0x15,0x8F,0xE8,0x94,0xC5,0xE4,0x1E } }; // 23CA0917-CD07-4609-BE15-8FE894C5E41E
     template <> struct abi<winrt::Windows::System::Power::Diagnostics::IBackgroundEnergyDiagnosticsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceSpecificConversionFactor(double*) noexcept = 0;
             virtual int32_t __stdcall ComputeTotalEnergyUsage(uint64_t*) noexcept = 0;
@@ -36,7 +36,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Power::Diagnostics::IForegroundEnergyDiagnosticsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceSpecificConversionFactor(double*) noexcept = 0;
             virtual int32_t __stdcall ComputeTotalEnergyUsage(uint64_t*) noexcept = 0;

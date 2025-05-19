@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -193,7 +193,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Automation::Provider::IRawElementProviderSimple>{ using type = winrt::Windows::UI::Xaml::Automation::Provider::IIRawElementProviderSimple; };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IAnnotationProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnnotationTypeId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AnnotationTypeName(void**) noexcept = 0;
@@ -204,14 +204,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ICustomNavigationProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall NavigateCustom(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IDockProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DockPosition(int32_t*) noexcept = 0;
             virtual int32_t __stdcall SetDockPosition(int32_t) noexcept = 0;
@@ -219,7 +219,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IDragProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsGrabbed(bool*) noexcept = 0;
             virtual int32_t __stdcall get_DropEffect(void**) noexcept = 0;
@@ -229,7 +229,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IDropTargetProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DropEffect(void**) noexcept = 0;
             virtual int32_t __stdcall get_DropEffects(uint32_t* __valueSize, void***) noexcept = 0;
@@ -237,7 +237,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IExpandCollapseProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExpandCollapseState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Collapse() noexcept = 0;
@@ -246,7 +246,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IGridItemProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Column(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ColumnSpan(int32_t*) noexcept = 0;
@@ -257,7 +257,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IGridProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ColumnCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_RowCount(int32_t*) noexcept = 0;
@@ -266,27 +266,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IIRawElementProviderSimple>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IInvokeProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Invoke() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IItemContainerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindItemByProperty(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IMultipleViewProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentView(int32_t*) noexcept = 0;
             virtual int32_t __stdcall GetSupportedViews(uint32_t* __resultSize, int32_t**) noexcept = 0;
@@ -296,14 +296,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IObjectModelProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetUnderlyingObjectModel(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IRangeValueProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReadOnly(bool*) noexcept = 0;
             virtual int32_t __stdcall get_LargeChange(double*) noexcept = 0;
@@ -316,14 +316,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IScrollItemProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ScrollIntoView() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IScrollProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontallyScrollable(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HorizontalScrollPercent(double*) noexcept = 0;
@@ -337,7 +337,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ISelectionItemProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSelected(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SelectionContainer(void**) noexcept = 0;
@@ -348,7 +348,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ISelectionProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanSelectMultiple(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsSelectionRequired(bool*) noexcept = 0;
@@ -357,7 +357,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ISpreadsheetItemProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Formula(void**) noexcept = 0;
             virtual int32_t __stdcall GetAnnotationObjects(uint32_t* __resultSize, void***) noexcept = 0;
@@ -366,14 +366,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ISpreadsheetProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetItemByName(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IStylesProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedProperties(void**) noexcept = 0;
             virtual int32_t __stdcall get_FillColor(struct struct_Windows_UI_Color*) noexcept = 0;
@@ -386,7 +386,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ISynchronizedInputProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Cancel() noexcept = 0;
             virtual int32_t __stdcall StartListening(int32_t) noexcept = 0;
@@ -394,7 +394,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITableItemProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetColumnHeaderItems(uint32_t* __resultSize, void***) noexcept = 0;
             virtual int32_t __stdcall GetRowHeaderItems(uint32_t* __resultSize, void***) noexcept = 0;
@@ -402,7 +402,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITableProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RowOrColumnMajor(int32_t*) noexcept = 0;
             virtual int32_t __stdcall GetColumnHeaders(uint32_t* __resultSize, void***) noexcept = 0;
@@ -411,7 +411,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITextChildProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextContainer(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextRange(void**) noexcept = 0;
@@ -419,7 +419,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITextEditProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetActiveComposition(void**) noexcept = 0;
             virtual int32_t __stdcall GetConversionTarget(void**) noexcept = 0;
@@ -427,7 +427,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITextProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DocumentRange(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedTextSelection(int32_t*) noexcept = 0;
@@ -439,7 +439,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITextProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RangeFromAnnotation(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetCaretRange(bool*, void**) noexcept = 0;
@@ -447,7 +447,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITextRangeProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Clone(void**) noexcept = 0;
             virtual int32_t __stdcall Compare(void*, bool*) noexcept = 0;
@@ -471,14 +471,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITextRangeProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowContextMenu() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IToggleProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ToggleState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Toggle() noexcept = 0;
@@ -486,7 +486,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITransformProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanMove(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanResize(bool*) noexcept = 0;
@@ -498,7 +498,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::ITransformProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanZoom(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ZoomLevel(double*) noexcept = 0;
@@ -510,7 +510,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IValueProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReadOnly(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -519,14 +519,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IVirtualizedItemProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Realize() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Automation::Provider::IWindowProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsModal(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsTopmost(bool*) noexcept = 0;

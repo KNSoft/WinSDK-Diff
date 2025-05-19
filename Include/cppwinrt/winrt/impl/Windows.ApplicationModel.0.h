@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -17,12 +17,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct HResult;
     struct IAsyncAction;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -201,6 +201,8 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel
     struct SuspendingOperation;
     struct PackageInstallProgress;
     struct PackageVersion;
+    struct FullTrustAppContract;
+    struct StartupTaskContract;
 }
 namespace winrt::impl
 {
@@ -412,6 +414,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::ISuspendingDeferral> = L"Windows.ApplicationModel.ISuspendingDeferral";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::ISuspendingEventArgs> = L"Windows.ApplicationModel.ISuspendingEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::ISuspendingOperation> = L"Windows.ApplicationModel.ISuspendingOperation";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::FullTrustAppContract> = L"Windows.ApplicationModel.FullTrustAppContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::StartupTaskContract> = L"Windows.ApplicationModel.StartupTaskContract";
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::IAppDisplayInfo>{ 0x1AEB1103,0xE4D4,0x41AA,{ 0xA4,0xF6,0xC4,0xA2,0x76,0xE7,0x9E,0xAC } }; // 1AEB1103-E4D4-41AA-A4F6-C4A276E79EAC
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::IAppInfo>{ 0xCF7F59B3,0x6A09,0x4DE8,{ 0xA6,0xC0,0x57,0x92,0xD5,0x68,0x80,0xD1 } }; // CF7F59B3-6A09-4DE8-A6C0-5792D56880D1
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::IAppInfo2>{ 0xBE4B1F5A,0x2098,0x431B,{ 0xBD,0x25,0xB3,0x08,0x78,0x74,0x8D,0x47 } }; // BE4B1F5A-2098-431B-BD25-B30878748D47
@@ -503,7 +507,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::SuspendingOperation>{ using type = winrt::Windows::ApplicationModel::ISuspendingOperation; };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppDisplayInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
@@ -512,7 +516,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppUserModelId(void**) noexcept = 0;
@@ -522,28 +526,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInfo3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExecutionContext(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInfo4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedFileExtensions(uint32_t* __valueSize, void***) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
             virtual int32_t __stdcall GetFromAppUserModelId(void*, void**) noexcept = 0;
@@ -552,14 +556,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInstallerInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInstallerInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OnLaunch(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HoursBetweenUpdateChecks(uint32_t*) noexcept = 0;
@@ -580,7 +584,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInstance>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Key(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsCurrentInstance(bool*) noexcept = 0;
@@ -589,7 +593,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IAppInstanceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecommendedInstance(void**) noexcept = 0;
             virtual int32_t __stdcall GetActivatedEventArgs(void**) noexcept = 0;
@@ -600,28 +604,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IDesignModeStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesignModeEnabled(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IDesignModeStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesignMode2Enabled(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IEnteredBackgroundEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IFindRelatedPackagesOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Relationship(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Relationship(int32_t) noexcept = 0;
@@ -637,14 +641,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IFindRelatedPackagesOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IFullTrustProcessLaunchResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LaunchResult(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -652,7 +656,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IFullTrustProcessLauncherStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchFullTrustProcessForCurrentAppAsync(void**) noexcept = 0;
             virtual int32_t __stdcall LaunchFullTrustProcessForCurrentAppWithParametersAsync(void*, void**) noexcept = 0;
@@ -662,7 +666,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IFullTrustProcessLauncherStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LaunchFullTrustProcessForAppWithArgumentsAsync(void*, void*, void**) noexcept = 0;
@@ -670,14 +674,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ILeavingBackgroundEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ILimitedAccessFeatureRequestResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FeatureId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -686,14 +690,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ILimitedAccessFeaturesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryUnlockFeature(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_InstalledLocation(void**) noexcept = 0;
@@ -703,7 +707,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_PublisherDisplayName(void**) noexcept = 0;
@@ -716,7 +720,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(void**) noexcept = 0;
             virtual int32_t __stdcall get_InstalledDate(int64_t*) noexcept = 0;
@@ -725,7 +729,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SignatureKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsOptional(bool*) noexcept = 0;
@@ -734,7 +738,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetContentGroupsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetContentGroupAsync(void*, void**) noexcept = 0;
@@ -745,7 +749,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAppInstallerInfo(void**) noexcept = 0;
             virtual int32_t __stdcall CheckUpdateAvailabilityAsync(void**) noexcept = 0;
@@ -753,7 +757,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MutableLocation(void**) noexcept = 0;
             virtual int32_t __stdcall get_EffectiveLocation(void**) noexcept = 0;
@@ -761,7 +765,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EffectiveExternalLocation(void**) noexcept = 0;
             virtual int32_t __stdcall get_MachineExternalLocation(void**) noexcept = 0;
@@ -779,7 +783,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackage9>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindRelatedPackages(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_SourceUriSchemeName(void**) noexcept = 0;
@@ -787,7 +791,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalog>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PackageStaging(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PackageStaging(winrt::event_token) noexcept = 0;
@@ -803,7 +807,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalog2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PackageContentGroupStaging(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PackageContentGroupStaging(winrt::event_token) noexcept = 0;
@@ -812,14 +816,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalog3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RemoveOptionalPackagesAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalog4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddResourcePackageAsync(void*, void*, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall RemoveResourcePackagesAsync(void*, void**) noexcept = 0;
@@ -827,7 +831,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalogAddOptionalPackageResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -835,7 +839,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalogAddResourcePackageResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsComplete(bool*) noexcept = 0;
@@ -844,7 +848,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalogRemoveOptionalPackagesResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackagesRemoved(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -852,7 +856,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalogRemoveResourcePackagesResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackagesRemoved(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -860,7 +864,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalogStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenForCurrentPackage(void**) noexcept = 0;
             virtual int32_t __stdcall OpenForCurrentUser(void**) noexcept = 0;
@@ -868,14 +872,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageCatalogStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenForPackage(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageContentGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -885,7 +889,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageContentGroupStagingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivityId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -898,14 +902,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageContentGroupStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequiredGroupName(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Version(struct struct_Windows_ApplicationModel_PackageVersion*) noexcept = 0;
@@ -919,7 +923,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageIdWithMetadata>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Author(void**) noexcept = 0;
@@ -927,7 +931,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageInstallingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivityId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -938,7 +942,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageStagingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivityId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -949,14 +953,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall VerifyIsOK(bool*) noexcept = 0;
             virtual int32_t __stdcall get_NotAvailable(bool*) noexcept = 0;
@@ -974,21 +978,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageStatus2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPartiallyStaged(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageUninstallingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivityId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -999,7 +1003,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageUpdateAvailabilityResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Availability(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -1007,7 +1011,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageUpdatingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivityId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_SourcePackage(void**) noexcept = 0;
@@ -1019,7 +1023,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IPackageWithMetadata>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InstallDate(int64_t*) noexcept = 0;
             virtual int32_t __stdcall GetThumbnailToken(void**) noexcept = 0;
@@ -1028,7 +1032,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IStartupTask>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestEnableAsync(void**) noexcept = 0;
             virtual int32_t __stdcall Disable() noexcept = 0;
@@ -1038,7 +1042,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::IStartupTaskStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentPackageAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetAsync(void*, void**) noexcept = 0;
@@ -1046,21 +1050,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ISuspendingDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ISuspendingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SuspendingOperation(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ISuspendingOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
             virtual int32_t __stdcall get_Deadline(int64_t*) noexcept = 0;
@@ -1415,23 +1419,23 @@ namespace winrt::impl
     {
         auto PackageStaging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageStagingEventArgs> const& handler) const;
         using PackageStaging_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::IPackageCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::IPackageCatalog>::remove_PackageStaging>;
-        [[nodiscard]] PackageStaging_revoker PackageStaging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageStagingEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageStaging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageStagingEventArgs> const& handler) const;
         auto PackageStaging(winrt::event_token const& token) const noexcept;
         auto PackageInstalling(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageInstallingEventArgs> const& handler) const;
         using PackageInstalling_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::IPackageCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::IPackageCatalog>::remove_PackageInstalling>;
-        [[nodiscard]] PackageInstalling_revoker PackageInstalling(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageInstallingEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageInstalling(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageInstallingEventArgs> const& handler) const;
         auto PackageInstalling(winrt::event_token const& token) const noexcept;
         auto PackageUpdating(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageUpdatingEventArgs> const& handler) const;
         using PackageUpdating_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::IPackageCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::IPackageCatalog>::remove_PackageUpdating>;
-        [[nodiscard]] PackageUpdating_revoker PackageUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageUpdatingEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageUpdatingEventArgs> const& handler) const;
         auto PackageUpdating(winrt::event_token const& token) const noexcept;
         auto PackageUninstalling(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageUninstallingEventArgs> const& handler) const;
         using PackageUninstalling_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::IPackageCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::IPackageCatalog>::remove_PackageUninstalling>;
-        [[nodiscard]] PackageUninstalling_revoker PackageUninstalling(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageUninstallingEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageUninstalling(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageUninstallingEventArgs> const& handler) const;
         auto PackageUninstalling(winrt::event_token const& token) const noexcept;
         auto PackageStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageStatusChangedEventArgs> const& handler) const;
         using PackageStatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::IPackageCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::IPackageCatalog>::remove_PackageStatusChanged>;
-        [[nodiscard]] PackageStatusChanged_revoker PackageStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageStatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageStatusChangedEventArgs> const& handler) const;
         auto PackageStatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::IPackageCatalog>
@@ -1443,7 +1447,7 @@ namespace winrt::impl
     {
         auto PackageContentGroupStaging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageContentGroupStagingEventArgs> const& handler) const;
         using PackageContentGroupStaging_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::IPackageCatalog2, &impl::abi_t<winrt::Windows::ApplicationModel::IPackageCatalog2>::remove_PackageContentGroupStaging>;
-        [[nodiscard]] PackageContentGroupStaging_revoker PackageContentGroupStaging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageContentGroupStagingEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageContentGroupStaging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageCatalog, winrt::Windows::ApplicationModel::PackageContentGroupStagingEventArgs> const& handler) const;
         auto PackageContentGroupStaging(winrt::event_token const& token) const noexcept;
         auto AddOptionalPackageAsync(param::hstring const& optionalPackageFamilyName) const;
     };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,11 +14,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
@@ -584,7 +584,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::RemoteSystems::RemoteSystemWebAccountFilter>{ using type = winrt::Windows::System::RemoteSystems::IRemoteSystemWebAccountFilter; };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IKnownRemoteSystemCapabilitiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppService(void**) noexcept = 0;
             virtual int32_t __stdcall get_LaunchUri(void**) noexcept = 0;
@@ -594,7 +594,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
@@ -605,7 +605,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAvailableBySpatialProximity(bool*) noexcept = 0;
             virtual int32_t __stdcall GetCapabilitySupportedAsync(void*, void**) noexcept = 0;
@@ -613,7 +613,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystem3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ManufacturerDisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_ModelDisplayName(void**) noexcept = 0;
@@ -621,35 +621,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystem4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Platform(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystem5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Apps(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystem6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemApp>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -660,7 +660,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemApp2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConnectionToken(void**) noexcept = 0;
@@ -668,7 +668,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemAppRegistration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall get_Attributes(void**) noexcept = 0;
@@ -677,7 +677,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemAppRegistrationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -685,70 +685,70 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemAuthorizationKindFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystemAuthorizationKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemAuthorizationKindFilterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemConnectionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsProximal(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemConnectionInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateFromAppServiceConnection(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemConnectionRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemConnectionRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystemApp(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemConnectionRequest3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConnectionToken(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemConnectionRequestFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemConnectionRequestStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForApp(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemConnectionRequestStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromConnectionToken(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromConnectionTokenForUser(void*, void*, void**) noexcept = 0;
@@ -756,47 +756,47 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemDiscoveryTypeFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystemDiscoveryType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemDiscoveryTypeFilterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemEnumerationCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemKindFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystemKinds(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemKindFilterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemKindStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Phone(void**) noexcept = 0;
             virtual int32_t __stdcall get_Hub(void**) noexcept = 0;
@@ -807,7 +807,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemKindStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Iot(void**) noexcept = 0;
             virtual int32_t __stdcall get_Tablet(void**) noexcept = 0;
@@ -816,14 +816,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystemId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -836,14 +836,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_JoinRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_JoinRequested(winrt::event_token) noexcept = 0;
@@ -853,7 +853,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionControllerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateController(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateControllerWithSessionOptions(void*, void*, void**) noexcept = 0;
@@ -861,7 +861,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionCreationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
@@ -869,14 +869,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionDisconnectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_ControllerDisplayName(void**) noexcept = 0;
@@ -885,7 +885,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionInvitation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Sender(void**) noexcept = 0;
             virtual int32_t __stdcall get_SessionInfo(void**) noexcept = 0;
@@ -893,7 +893,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionInvitationListener>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_InvitationReceived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_InvitationReceived(winrt::event_token) noexcept = 0;
@@ -901,14 +901,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionInvitationReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Invitation(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionJoinRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Participant(void**) noexcept = 0;
             virtual int32_t __stdcall Accept() noexcept = 0;
@@ -916,7 +916,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionJoinRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_JoinRequest(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -924,7 +924,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionJoinResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
@@ -932,7 +932,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionMessageChannel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall BroadcastValueSetAsync(void*, void**) noexcept = 0;
@@ -944,7 +944,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionMessageChannelFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithReliability(void*, void*, int32_t, void**) noexcept = 0;
@@ -952,7 +952,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsInviteOnly(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsInviteOnly(bool) noexcept = 0;
@@ -960,7 +960,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipant>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystem(void**) noexcept = 0;
             virtual int32_t __stdcall GetHostNames(void**) noexcept = 0;
@@ -968,21 +968,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Participant(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Participant(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Start() noexcept = 0;
             virtual int32_t __stdcall Stop() noexcept = 0;
@@ -997,28 +997,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWatcher(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionValueSetReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Sender(void**) noexcept = 0;
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
@@ -1026,7 +1026,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Start() noexcept = 0;
             virtual int32_t __stdcall Stop() noexcept = 0;
@@ -1041,7 +1041,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindByHostNameAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWatcher(void**) noexcept = 0;
@@ -1051,14 +1051,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsAuthorizationKindEnabled(int32_t, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWatcherForUser(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWatcherWithFiltersForUser(void*, void*, void**) noexcept = 0;
@@ -1066,28 +1066,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemStatusTypeFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystemStatusType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemStatusTypeFilterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteSystem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Start() noexcept = 0;
             virtual int32_t __stdcall Stop() noexcept = 0;
@@ -1101,7 +1101,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_EnumerationCompleted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_EnumerationCompleted(winrt::event_token) noexcept = 0;
@@ -1111,28 +1111,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcherErrorOccurredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemWebAccountFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Account(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteSystems::IRemoteSystemWebAccountFilterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
@@ -1446,7 +1446,7 @@ namespace winrt::impl
         [[nodiscard]] auto ControllerDisplayName() const;
         auto Disconnected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSession, winrt::Windows::System::RemoteSystems::RemoteSystemSessionDisconnectedEventArgs> const& handler) const;
         using Disconnected_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSession, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSession>::remove_Disconnected>;
-        [[nodiscard]] Disconnected_revoker Disconnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSession, winrt::Windows::System::RemoteSystems::RemoteSystemSessionDisconnectedEventArgs> const& handler) const;
+        [[nodiscard]] auto Disconnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSession, winrt::Windows::System::RemoteSystems::RemoteSystemSessionDisconnectedEventArgs> const& handler) const;
         auto Disconnected(winrt::event_token const& token) const noexcept;
         auto CreateParticipantWatcher() const;
         auto SendInvitationAsync(winrt::Windows::System::RemoteSystems::RemoteSystem const& invitee) const;
@@ -1469,7 +1469,7 @@ namespace winrt::impl
     {
         auto JoinRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionController, winrt::Windows::System::RemoteSystems::RemoteSystemSessionJoinRequestedEventArgs> const& handler) const;
         using JoinRequested_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionController, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionController>::remove_JoinRequested>;
-        [[nodiscard]] JoinRequested_revoker JoinRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionController, winrt::Windows::System::RemoteSystems::RemoteSystemSessionJoinRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto JoinRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionController, winrt::Windows::System::RemoteSystems::RemoteSystemSessionJoinRequestedEventArgs> const& handler) const;
         auto JoinRequested(winrt::event_token const& token) const noexcept;
         auto RemoveParticipantAsync(winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipant const& pParticipant) const;
         auto CreateSessionAsync() const;
@@ -1533,7 +1533,7 @@ namespace winrt::impl
     {
         auto InvitationReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionInvitationListener, winrt::Windows::System::RemoteSystems::RemoteSystemSessionInvitationReceivedEventArgs> const& handler) const;
         using InvitationReceived_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionInvitationListener, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionInvitationListener>::remove_InvitationReceived>;
-        [[nodiscard]] InvitationReceived_revoker InvitationReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionInvitationListener, winrt::Windows::System::RemoteSystems::RemoteSystemSessionInvitationReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto InvitationReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionInvitationListener, winrt::Windows::System::RemoteSystems::RemoteSystemSessionInvitationReceivedEventArgs> const& handler) const;
         auto InvitationReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionInvitationListener>
@@ -1588,7 +1588,7 @@ namespace winrt::impl
         auto SendValueSetToParticipantsAsync(winrt::Windows::Foundation::Collections::ValueSet const& messageData, param::async_iterable<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipant> const& participants) const;
         auto ValueSetReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionMessageChannel, winrt::Windows::System::RemoteSystems::RemoteSystemSessionValueSetReceivedEventArgs> const& handler) const;
         using ValueSetReceived_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionMessageChannel, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionMessageChannel>::remove_ValueSetReceived>;
-        [[nodiscard]] ValueSetReceived_revoker ValueSetReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionMessageChannel, winrt::Windows::System::RemoteSystems::RemoteSystemSessionValueSetReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto ValueSetReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionMessageChannel, winrt::Windows::System::RemoteSystems::RemoteSystemSessionValueSetReceivedEventArgs> const& handler) const;
         auto ValueSetReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionMessageChannel>
@@ -1651,15 +1651,15 @@ namespace winrt::impl
         [[nodiscard]] auto Status() const;
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantAddedEventArgs> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantAddedEventArgs> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantRemovedEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantRemovedEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionParticipantWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionParticipantWatcher>
@@ -1711,15 +1711,15 @@ namespace winrt::impl
         [[nodiscard]] auto Status() const;
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionAddedEventArgs> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionAddedEventArgs> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionUpdatedEventArgs> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionWatcher>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionUpdatedEventArgs> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionRemovedEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemSessionWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemSessionRemovedEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::RemoteSystems::IRemoteSystemSessionWatcher>
@@ -1791,15 +1791,15 @@ namespace winrt::impl
         auto Stop() const;
         auto RemoteSystemAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemAddedEventArgs> const& handler) const;
         using RemoteSystemAdded_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher>::remove_RemoteSystemAdded>;
-        [[nodiscard]] RemoteSystemAdded_revoker RemoteSystemAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto RemoteSystemAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemAddedEventArgs> const& handler) const;
         auto RemoteSystemAdded(winrt::event_token const& token) const noexcept;
         auto RemoteSystemUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemUpdatedEventArgs> const& handler) const;
         using RemoteSystemUpdated_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher>::remove_RemoteSystemUpdated>;
-        [[nodiscard]] RemoteSystemUpdated_revoker RemoteSystemUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto RemoteSystemUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemUpdatedEventArgs> const& handler) const;
         auto RemoteSystemUpdated(winrt::event_token const& token) const noexcept;
         auto RemoteSystemRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemRemovedEventArgs> const& handler) const;
         using RemoteSystemRemoved_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher>::remove_RemoteSystemRemoved>;
-        [[nodiscard]] RemoteSystemRemoved_revoker RemoteSystemRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto RemoteSystemRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemRemovedEventArgs> const& handler) const;
         auto RemoteSystemRemoved(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher>
@@ -1811,11 +1811,11 @@ namespace winrt::impl
     {
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemEnumerationCompletedEventArgs> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher2, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher2>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemEnumerationCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemEnumerationCompletedEventArgs> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto ErrorOccurred(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemWatcherErrorOccurredEventArgs> const& handler) const;
         using ErrorOccurred_revoker = impl::event_revoker<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher2, &impl::abi_t<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher2>::remove_ErrorOccurred>;
-        [[nodiscard]] ErrorOccurred_revoker ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemWatcherErrorOccurredEventArgs> const& handler) const;
+        [[nodiscard]] auto ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::RemoteSystems::RemoteSystemWatcher, winrt::Windows::System::RemoteSystems::RemoteSystemWatcherErrorOccurredEventArgs> const& handler) const;
         auto ErrorOccurred(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::RemoteSystems::IRemoteSystemWatcher2>

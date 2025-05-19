@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,7 +16,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct IAsyncAction;
     struct Point;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -358,7 +358,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Perception::PerceptionVideoProfile>{ using type = winrt::Windows::Devices::Perception::IPerceptionVideoProfile; };
     template <> struct abi<winrt::Windows::Devices::Perception::IKnownCameraIntrinsicsPropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FocalLength(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrincipalPoint(void**) noexcept = 0;
@@ -368,7 +368,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IKnownPerceptionColorFrameSourcePropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Exposure(void**) noexcept = 0;
             virtual int32_t __stdcall get_AutoExposureEnabled(void**) noexcept = 0;
@@ -377,7 +377,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IKnownPerceptionDepthFrameSourcePropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinDepth(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxDepth(void**) noexcept = 0;
@@ -385,7 +385,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IKnownPerceptionFrameSourcePropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_PhysicalDeviceIds(void**) noexcept = 0;
@@ -396,14 +396,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IKnownPerceptionFrameSourcePropertiesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IKnownPerceptionInfraredFrameSourcePropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Exposure(void**) noexcept = 0;
             virtual int32_t __stdcall get_AutoExposureEnabled(void**) noexcept = 0;
@@ -416,7 +416,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IKnownPerceptionVideoFrameSourcePropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoProfile(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedVideoProfiles(void**) noexcept = 0;
@@ -427,7 +427,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IKnownPerceptionVideoProfilePropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BitmapPixelFormat(void**) noexcept = 0;
             virtual int32_t __stdcall get_BitmapAlphaMode(void**) noexcept = 0;
@@ -438,14 +438,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoFrame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrameArrivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RelativeTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall TryOpenFrame(void**) noexcept = 0;
@@ -453,7 +453,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrameReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_FrameArrived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_FrameArrived(winrt::event_token) noexcept = 0;
@@ -465,7 +465,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AvailableChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AvailableChanged(winrt::event_token) noexcept = 0;
@@ -500,28 +500,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWatcher(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
@@ -531,7 +531,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SourceAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SourceAdded(winrt::event_token) noexcept = 0;
@@ -548,7 +548,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionControlSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ControlLost(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ControlLost(winrt::event_token) noexcept = 0;
@@ -557,7 +557,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthCorrelatedCameraIntrinsics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UnprojectPixelAtCorrelatedDepth(winrt::Windows::Foundation::Point, void*, winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall UnprojectPixelsAtCorrelatedDepth(uint32_t, winrt::Windows::Foundation::Point*, void*, uint32_t, winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
@@ -567,7 +567,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthCorrelatedCoordinateMapper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MapPixelToTarget(winrt::Windows::Foundation::Point, void*, winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall MapPixelsToTarget(uint32_t, winrt::Windows::Foundation::Point*, void*, uint32_t, winrt::Windows::Foundation::Point*) noexcept = 0;
@@ -577,14 +577,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoFrame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrameArrivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RelativeTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall TryOpenFrame(void**) noexcept = 0;
@@ -592,7 +592,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrameReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_FrameArrived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_FrameArrived(winrt::event_token) noexcept = 0;
@@ -604,7 +604,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AvailableChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AvailableChanged(winrt::event_token) noexcept = 0;
@@ -639,28 +639,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWatcher(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
@@ -670,7 +670,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SourceAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SourceAdded(winrt::event_token) noexcept = 0;
@@ -687,7 +687,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionFrameSourcePropertiesChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CollectionChange(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Key(void**) noexcept = 0;
@@ -695,7 +695,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionFrameSourcePropertyChangeResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewValue(void**) noexcept = 0;
@@ -703,14 +703,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoFrame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameArrivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RelativeTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall TryOpenFrame(void**) noexcept = 0;
@@ -718,7 +718,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_FrameArrived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_FrameArrived(winrt::event_token) noexcept = 0;
@@ -730,7 +730,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AvailableChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AvailableChanged(winrt::event_token) noexcept = 0;
@@ -765,28 +765,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWatcher(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
@@ -796,7 +796,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SourceAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SourceAdded(winrt::event_token) noexcept = 0;
@@ -813,7 +813,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Perception::IPerceptionVideoProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BitmapPixelFormat(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_BitmapAlphaMode(int32_t*) noexcept = 0;
@@ -943,7 +943,7 @@ namespace winrt::impl
     {
         auto FrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameReader, winrt::Windows::Devices::Perception::PerceptionColorFrameArrivedEventArgs> const& handler) const;
         using FrameArrived_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameReader, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameReader>::remove_FrameArrived>;
-        [[nodiscard]] FrameArrived_revoker FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameReader, winrt::Windows::Devices::Perception::PerceptionColorFrameArrivedEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameReader, winrt::Windows::Devices::Perception::PerceptionColorFrameArrivedEventArgs> const& handler) const;
         auto FrameArrived(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Source() const;
         [[nodiscard]] auto IsPaused() const;
@@ -959,23 +959,23 @@ namespace winrt::impl
     {
         auto AvailableChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AvailableChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource>::remove_AvailableChanged>;
-        [[nodiscard]] AvailableChanged_revoker AvailableChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AvailableChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AvailableChanged(winrt::event_token const& token) const noexcept;
         auto ActiveChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ActiveChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource>::remove_ActiveChanged>;
-        [[nodiscard]] ActiveChanged_revoker ActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ActiveChanged(winrt::event_token const& token) const noexcept;
         auto PropertiesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
         using PropertiesChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource>::remove_PropertiesChanged>;
-        [[nodiscard]] PropertiesChanged_revoker PropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
         auto PropertiesChanged(winrt::event_token const& token) const noexcept;
         auto VideoProfileChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using VideoProfileChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource>::remove_VideoProfileChanged>;
-        [[nodiscard]] VideoProfileChanged_revoker VideoProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto VideoProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto VideoProfileChanged(winrt::event_token const& token) const noexcept;
         auto CameraIntrinsicsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CameraIntrinsicsChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSource>::remove_CameraIntrinsicsChanged>;
-        [[nodiscard]] CameraIntrinsicsChanged_revoker CameraIntrinsicsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CameraIntrinsicsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CameraIntrinsicsChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Id() const;
         [[nodiscard]] auto DisplayName() const;
@@ -1045,19 +1045,19 @@ namespace winrt::impl
     {
         auto SourceAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionColorFrameSourceAddedEventArgs> const& handler) const;
         using SourceAdded_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher>::remove_SourceAdded>;
-        [[nodiscard]] SourceAdded_revoker SourceAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionColorFrameSourceAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionColorFrameSourceAddedEventArgs> const& handler) const;
         auto SourceAdded(winrt::event_token const& token) const noexcept;
         auto SourceRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionColorFrameSourceRemovedEventArgs> const& handler) const;
         using SourceRemoved_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher>::remove_SourceRemoved>;
-        [[nodiscard]] SourceRemoved_revoker SourceRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionColorFrameSourceRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionColorFrameSourceRemovedEventArgs> const& handler) const;
         auto SourceRemoved(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionColorFrameSourceWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionColorFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;
@@ -1072,7 +1072,7 @@ namespace winrt::impl
     {
         auto ControlLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionControlSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ControlLost_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionControlSession, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionControlSession>::remove_ControlLost>;
-        [[nodiscard]] ControlLost_revoker ControlLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionControlSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ControlLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionControlSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ControlLost(winrt::event_token const& token) const noexcept;
         auto TrySetPropertyAsync(param::hstring const& name, winrt::Windows::Foundation::IInspectable const& value) const;
     };
@@ -1128,7 +1128,7 @@ namespace winrt::impl
     {
         auto FrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameReader, winrt::Windows::Devices::Perception::PerceptionDepthFrameArrivedEventArgs> const& handler) const;
         using FrameArrived_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameReader, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameReader>::remove_FrameArrived>;
-        [[nodiscard]] FrameArrived_revoker FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameReader, winrt::Windows::Devices::Perception::PerceptionDepthFrameArrivedEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameReader, winrt::Windows::Devices::Perception::PerceptionDepthFrameArrivedEventArgs> const& handler) const;
         auto FrameArrived(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Source() const;
         [[nodiscard]] auto IsPaused() const;
@@ -1144,23 +1144,23 @@ namespace winrt::impl
     {
         auto AvailableChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AvailableChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource>::remove_AvailableChanged>;
-        [[nodiscard]] AvailableChanged_revoker AvailableChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AvailableChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AvailableChanged(winrt::event_token const& token) const noexcept;
         auto ActiveChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ActiveChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource>::remove_ActiveChanged>;
-        [[nodiscard]] ActiveChanged_revoker ActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ActiveChanged(winrt::event_token const& token) const noexcept;
         auto PropertiesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
         using PropertiesChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource>::remove_PropertiesChanged>;
-        [[nodiscard]] PropertiesChanged_revoker PropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
         auto PropertiesChanged(winrt::event_token const& token) const noexcept;
         auto VideoProfileChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using VideoProfileChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource>::remove_VideoProfileChanged>;
-        [[nodiscard]] VideoProfileChanged_revoker VideoProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto VideoProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto VideoProfileChanged(winrt::event_token const& token) const noexcept;
         auto CameraIntrinsicsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CameraIntrinsicsChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSource>::remove_CameraIntrinsicsChanged>;
-        [[nodiscard]] CameraIntrinsicsChanged_revoker CameraIntrinsicsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CameraIntrinsicsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CameraIntrinsicsChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Id() const;
         [[nodiscard]] auto DisplayName() const;
@@ -1230,19 +1230,19 @@ namespace winrt::impl
     {
         auto SourceAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceAddedEventArgs> const& handler) const;
         using SourceAdded_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher>::remove_SourceAdded>;
-        [[nodiscard]] SourceAdded_revoker SourceAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceAddedEventArgs> const& handler) const;
         auto SourceAdded(winrt::event_token const& token) const noexcept;
         auto SourceRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceRemovedEventArgs> const& handler) const;
         using SourceRemoved_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher>::remove_SourceRemoved>;
-        [[nodiscard]] SourceRemoved_revoker SourceRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceRemovedEventArgs> const& handler) const;
         auto SourceRemoved(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionDepthFrameSourceWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionDepthFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;
@@ -1296,7 +1296,7 @@ namespace winrt::impl
     {
         auto FrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameReader, winrt::Windows::Devices::Perception::PerceptionInfraredFrameArrivedEventArgs> const& handler) const;
         using FrameArrived_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameReader, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameReader>::remove_FrameArrived>;
-        [[nodiscard]] FrameArrived_revoker FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameReader, winrt::Windows::Devices::Perception::PerceptionInfraredFrameArrivedEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameReader, winrt::Windows::Devices::Perception::PerceptionInfraredFrameArrivedEventArgs> const& handler) const;
         auto FrameArrived(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Source() const;
         [[nodiscard]] auto IsPaused() const;
@@ -1312,23 +1312,23 @@ namespace winrt::impl
     {
         auto AvailableChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AvailableChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource>::remove_AvailableChanged>;
-        [[nodiscard]] AvailableChanged_revoker AvailableChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AvailableChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AvailableChanged(winrt::event_token const& token) const noexcept;
         auto ActiveChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ActiveChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource>::remove_ActiveChanged>;
-        [[nodiscard]] ActiveChanged_revoker ActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ActiveChanged(winrt::event_token const& token) const noexcept;
         auto PropertiesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
         using PropertiesChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource>::remove_PropertiesChanged>;
-        [[nodiscard]] PropertiesChanged_revoker PropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Devices::Perception::PerceptionFrameSourcePropertiesChangedEventArgs> const& handler) const;
         auto PropertiesChanged(winrt::event_token const& token) const noexcept;
         auto VideoProfileChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using VideoProfileChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource>::remove_VideoProfileChanged>;
-        [[nodiscard]] VideoProfileChanged_revoker VideoProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto VideoProfileChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto VideoProfileChanged(winrt::event_token const& token) const noexcept;
         auto CameraIntrinsicsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CameraIntrinsicsChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSource>::remove_CameraIntrinsicsChanged>;
-        [[nodiscard]] CameraIntrinsicsChanged_revoker CameraIntrinsicsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CameraIntrinsicsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CameraIntrinsicsChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Id() const;
         [[nodiscard]] auto DisplayName() const;
@@ -1398,19 +1398,19 @@ namespace winrt::impl
     {
         auto SourceAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceAddedEventArgs> const& handler) const;
         using SourceAdded_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher>::remove_SourceAdded>;
-        [[nodiscard]] SourceAdded_revoker SourceAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceAddedEventArgs> const& handler) const;
         auto SourceAdded(winrt::event_token const& token) const noexcept;
         auto SourceRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceRemovedEventArgs> const& handler) const;
         using SourceRemoved_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher>::remove_SourceRemoved>;
-        [[nodiscard]] SourceRemoved_revoker SourceRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto SourceRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceRemovedEventArgs> const& handler) const;
         auto SourceRemoved(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher, &impl::abi_t<winrt::Windows::Devices::Perception::IPerceptionInfraredFrameSourceWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Perception::PerceptionInfraredFrameSourceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;

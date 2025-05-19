@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -89,7 +89,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Credentials::UI::CredentialPickerResults>{ using type = winrt::Windows::Security::Credentials::UI::ICredentialPickerResults; };
     template <> struct abi<winrt::Windows::Security::Credentials::UI::ICredentialPickerOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Caption(void*) noexcept = 0;
             virtual int32_t __stdcall get_Caption(void**) noexcept = 0;
@@ -115,7 +115,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::UI::ICredentialPickerResults>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ErrorCode(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_CredentialSaveOption(int32_t*) noexcept = 0;
@@ -128,7 +128,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::UI::ICredentialPickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PickWithOptionsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall PickWithMessageAsync(void*, void*, void**) noexcept = 0;
@@ -137,7 +137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::UI::IUserConsentVerifierStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CheckAvailabilityAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RequestVerificationAsync(void*, void**) noexcept = 0;

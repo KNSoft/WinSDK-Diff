@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::ExtendedExecution
 {
@@ -56,14 +56,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::ExtendedExecution::ExtendedExecutionSession>{ using type = winrt::Windows::ApplicationModel::ExtendedExecution::IExtendedExecutionSession; };
     template <> struct abi<winrt::Windows::ApplicationModel::ExtendedExecution::IExtendedExecutionRevokedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ExtendedExecution::IExtendedExecutionSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Reason(int32_t) noexcept = 0;
@@ -96,7 +96,7 @@ namespace winrt::impl
         auto PercentProgress(uint32_t value) const;
         auto Revoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::ApplicationModel::ExtendedExecution::ExtendedExecutionRevokedEventArgs> const& handler) const;
         using Revoked_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::ExtendedExecution::IExtendedExecutionSession, &impl::abi_t<winrt::Windows::ApplicationModel::ExtendedExecution::IExtendedExecutionSession>::remove_Revoked>;
-        [[nodiscard]] Revoked_revoker Revoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::ApplicationModel::ExtendedExecution::ExtendedExecutionRevokedEventArgs> const& handler) const;
+        [[nodiscard]] auto Revoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::ApplicationModel::ExtendedExecution::ExtendedExecutionRevokedEventArgs> const& handler) const;
         auto Revoked(winrt::event_token const& token) const noexcept;
         auto RequestExtensionAsync() const;
     };

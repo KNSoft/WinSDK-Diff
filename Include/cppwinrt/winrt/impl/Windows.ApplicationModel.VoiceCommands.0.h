@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,11 +14,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Globalization
 {
@@ -152,7 +152,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::VoiceCommands::VoiceCommandUserMessage>{ using type = winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandUserMessage; };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommand>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommandName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -161,21 +161,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandConfirmationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Confirmed(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandContentTile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -197,7 +197,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -206,7 +206,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandDefinitionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InstallCommandDefinitionsFromStorageFileAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_InstalledCommandDefinitions(void**) noexcept = 0;
@@ -214,14 +214,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandDisambiguationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedItem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandResponse>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
             virtual int32_t __stdcall put_Message(void*) noexcept = 0;
@@ -234,7 +234,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandResponseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxSupportedVoiceCommandContentTiles(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall CreateResponse(void*, void**) noexcept = 0;
@@ -245,7 +245,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandServiceConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetVoiceCommandAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RequestConfirmationAsync(void*, void**) noexcept = 0;
@@ -261,14 +261,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandServiceConnectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromAppServiceTriggerDetails(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandUserMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayMessage(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayMessage(void*) noexcept = 0;
@@ -400,7 +400,7 @@ namespace winrt::impl
         [[nodiscard]] auto Language() const;
         auto VoiceCommandCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::VoiceCommands::VoiceCommandServiceConnection, winrt::Windows::ApplicationModel::VoiceCommands::VoiceCommandCompletedEventArgs> const& handler) const;
         using VoiceCommandCompleted_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandServiceConnection, &impl::abi_t<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandServiceConnection>::remove_VoiceCommandCompleted>;
-        [[nodiscard]] VoiceCommandCompleted_revoker VoiceCommandCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::VoiceCommands::VoiceCommandServiceConnection, winrt::Windows::ApplicationModel::VoiceCommands::VoiceCommandCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto VoiceCommandCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::VoiceCommands::VoiceCommandServiceConnection, winrt::Windows::ApplicationModel::VoiceCommands::VoiceCommandCompletedEventArgs> const& handler) const;
         auto VoiceCommandCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::VoiceCommands::IVoiceCommandServiceConnection>

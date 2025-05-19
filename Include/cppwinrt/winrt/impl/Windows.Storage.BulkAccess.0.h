@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::FileProperties
 {
@@ -57,7 +57,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::BulkAccess::FolderInformation>{ using type = winrt::Windows::Storage::BulkAccess::IStorageItemInformation; };
     template <> struct abi<winrt::Windows::Storage::BulkAccess::IFileInformationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetItemsAsync(uint32_t, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetItemsAsyncDefaultStartAndCount(void**) noexcept = 0;
@@ -72,7 +72,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::BulkAccess::IFileInformationFactoryFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithMode(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithModeAndSize(void*, int32_t, uint32_t, void**) noexcept = 0;
@@ -82,7 +82,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::BulkAccess::IStorageItemInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MusicProperties(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoProperties(void**) noexcept = 0;
@@ -136,11 +136,11 @@ namespace winrt::impl
         [[nodiscard]] auto Thumbnail() const;
         auto ThumbnailUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::BulkAccess::IStorageItemInformation, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
         using ThumbnailUpdated_revoker = impl::event_revoker<winrt::Windows::Storage::BulkAccess::IStorageItemInformation, &impl::abi_t<winrt::Windows::Storage::BulkAccess::IStorageItemInformation>::remove_ThumbnailUpdated>;
-        [[nodiscard]] ThumbnailUpdated_revoker ThumbnailUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::BulkAccess::IStorageItemInformation, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
+        [[nodiscard]] auto ThumbnailUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::BulkAccess::IStorageItemInformation, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
         auto ThumbnailUpdated(winrt::event_token const& eventCookie) const noexcept;
         auto PropertiesUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::BulkAccess::IStorageItemInformation, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
         using PropertiesUpdated_revoker = impl::event_revoker<winrt::Windows::Storage::BulkAccess::IStorageItemInformation, &impl::abi_t<winrt::Windows::Storage::BulkAccess::IStorageItemInformation>::remove_PropertiesUpdated>;
-        [[nodiscard]] PropertiesUpdated_revoker PropertiesUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::BulkAccess::IStorageItemInformation, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
+        [[nodiscard]] auto PropertiesUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::BulkAccess::IStorageItemInformation, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
         auto PropertiesUpdated(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Storage::BulkAccess::IStorageItemInformation>

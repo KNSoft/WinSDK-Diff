@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,21 +9,21 @@
 #include "winrt/impl/Windows.ApplicationModel.SocialInfo.Provider.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::SocialInfo::Provider
 {
-    struct __declspec(empty_bases) ISocialDashboardItemUpdater :
+    struct WINRT_IMPL_EMPTY_BASES ISocialDashboardItemUpdater :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ISocialDashboardItemUpdater>
     {
         ISocialDashboardItemUpdater(std::nullptr_t = nullptr) noexcept {}
         ISocialDashboardItemUpdater(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ISocialFeedUpdater :
+    struct WINRT_IMPL_EMPTY_BASES ISocialFeedUpdater :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ISocialFeedUpdater>
     {
         ISocialFeedUpdater(std::nullptr_t = nullptr) noexcept {}
         ISocialFeedUpdater(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ISocialInfoProviderManagerStatics :
+    struct WINRT_IMPL_EMPTY_BASES ISocialInfoProviderManagerStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ISocialInfoProviderManagerStatics>
     {

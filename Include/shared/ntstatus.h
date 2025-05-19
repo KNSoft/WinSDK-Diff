@@ -12882,6 +12882,15 @@ Notes:
 //
 #define STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT ((NTSTATUS)0xC000CF21L)
 
+//
+// MessageId: STATUS_CLOUD_FILE_ARCHIVED_HYDRATION_DENIED
+//
+// MessageText:
+//
+// The hydration of the cloud archive file has been denied.
+//
+#define STATUS_CLOUD_FILE_ARCHIVED_HYDRATION_DENIED ((NTSTATUS)0xC000CF22L)
+
 /*++
 
  End of Cloud Files specific messages.

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,12 +12,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IIterator;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
-    template <typename K, typename V> struct __declspec(empty_bases) IMapView;
-    template <typename K, typename V> struct __declspec(empty_bases) IObservableMap;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterator;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMapView;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IObservableMap;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -164,7 +164,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Resources::Core::ResourceQualifierVectorView>{ using type = winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::ApplicationModel::Resources::Core::ResourceQualifier>; };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::INamedResource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall get_Candidates(void**) noexcept = 0;
@@ -176,7 +176,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceCandidate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Qualifiers(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsMatch(bool*) noexcept = 0;
@@ -189,21 +189,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceCandidate2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetValueAsStreamAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceCandidate3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QualifierValues(void**) noexcept = 0;
             virtual int32_t __stdcall Reset() noexcept = 0;
@@ -216,14 +216,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceContextStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMatchingContext(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceContextStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall SetGlobalQualifierValue(void*, void*) noexcept = 0;
@@ -234,21 +234,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceContextStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetGlobalQualifierValueWithPersistence(void*, void*, int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceContextStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUIContext(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MainResourceMap(void**) noexcept = 0;
             virtual int32_t __stdcall get_AllResourceMaps(void**) noexcept = 0;
@@ -259,7 +259,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAllNamedResourcesForPackage(void*, struct struct_Windows_ApplicationModel_Resources_Core_ResourceLayoutInfo, void**) noexcept = 0;
             virtual int32_t __stdcall GetAllSubtreesForPackage(void*, struct struct_Windows_ApplicationModel_Resources_Core_ResourceLayoutInfo, void**) noexcept = 0;
@@ -267,7 +267,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
             virtual int32_t __stdcall IsResourceReference(void*, bool*) noexcept = 0;
@@ -275,7 +275,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceMap>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall GetValue(void*, void**) noexcept = 0;
@@ -285,7 +285,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Resources::Core::IResourceQualifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QualifierName(void**) noexcept = 0;
             virtual int32_t __stdcall get_QualifierValue(void**) noexcept = 0;

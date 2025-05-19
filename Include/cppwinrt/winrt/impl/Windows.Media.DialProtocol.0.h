@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,12 +16,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct IAsyncAction;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -156,7 +156,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::DialProtocol::DialReceiverApp>{ using type = winrt::Windows::Media::DialProtocol::IDialReceiverApp; };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialApp>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppName(void**) noexcept = 0;
             virtual int32_t __stdcall RequestLaunchAsync(void*, void**) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialAppStateDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_FullXml(void**) noexcept = 0;
@@ -174,7 +174,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall GetDialApp(void*, void**) noexcept = 0;
@@ -182,7 +182,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialDevice2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FriendlyName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Thumbnail(void**) noexcept = 0;
@@ -190,7 +190,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialDevicePicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Filter(void**) noexcept = 0;
             virtual int32_t __stdcall get_Appearance(void**) noexcept = 0;
@@ -210,21 +210,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialDevicePickerFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedAppNames(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialDeviceSelectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedDialDevice(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -233,14 +233,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialDisconnectButtonClickedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialReceiverApp>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAdditionalDataAsync(void**) noexcept = 0;
             virtual int32_t __stdcall SetAdditionalDataAsync(void*, void**) noexcept = 0;
@@ -248,14 +248,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialReceiverApp2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetUniqueDeviceNameAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::DialProtocol::IDialReceiverAppStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
         };
@@ -309,15 +309,15 @@ namespace winrt::impl
         [[nodiscard]] auto Appearance() const;
         auto DialDeviceSelected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Media::DialProtocol::DialDeviceSelectedEventArgs> const& handler) const;
         using DialDeviceSelected_revoker = impl::event_revoker<winrt::Windows::Media::DialProtocol::IDialDevicePicker, &impl::abi_t<winrt::Windows::Media::DialProtocol::IDialDevicePicker>::remove_DialDeviceSelected>;
-        [[nodiscard]] DialDeviceSelected_revoker DialDeviceSelected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Media::DialProtocol::DialDeviceSelectedEventArgs> const& handler) const;
+        [[nodiscard]] auto DialDeviceSelected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Media::DialProtocol::DialDeviceSelectedEventArgs> const& handler) const;
         auto DialDeviceSelected(winrt::event_token const& token) const noexcept;
         auto DisconnectButtonClicked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Media::DialProtocol::DialDisconnectButtonClickedEventArgs> const& handler) const;
         using DisconnectButtonClicked_revoker = impl::event_revoker<winrt::Windows::Media::DialProtocol::IDialDevicePicker, &impl::abi_t<winrt::Windows::Media::DialProtocol::IDialDevicePicker>::remove_DisconnectButtonClicked>;
-        [[nodiscard]] DisconnectButtonClicked_revoker DisconnectButtonClicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Media::DialProtocol::DialDisconnectButtonClickedEventArgs> const& handler) const;
+        [[nodiscard]] auto DisconnectButtonClicked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Media::DialProtocol::DialDisconnectButtonClickedEventArgs> const& handler) const;
         auto DisconnectButtonClicked(winrt::event_token const& token) const noexcept;
         auto DialDevicePickerDismissed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DialDevicePickerDismissed_revoker = impl::event_revoker<winrt::Windows::Media::DialProtocol::IDialDevicePicker, &impl::abi_t<winrt::Windows::Media::DialProtocol::IDialDevicePicker>::remove_DialDevicePickerDismissed>;
-        [[nodiscard]] DialDevicePickerDismissed_revoker DialDevicePickerDismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DialDevicePickerDismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::DialProtocol::DialDevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DialDevicePickerDismissed(winrt::event_token const& token) const noexcept;
         auto Show(winrt::Windows::Foundation::Rect const& selection) const;
         auto Show(winrt::Windows::Foundation::Rect const& selection, winrt::Windows::UI::Popups::Placement const& preferredPlacement) const;

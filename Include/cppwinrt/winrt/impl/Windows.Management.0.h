@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Management
 {
@@ -76,7 +76,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Management::MdmSession>{ using type = winrt::Windows::Management::IMdmSession; };
     template <> struct abi<winrt::Windows::Management::IMdmAlert>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall put_Data(void*) noexcept = 0;
@@ -95,7 +95,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::IMdmSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Alerts(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -109,7 +109,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::IMdmSessionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionIds(void**) noexcept = 0;
             virtual int32_t __stdcall TryCreateSession(void**) noexcept = 0;

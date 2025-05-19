@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Identity::Core
 {
@@ -113,7 +113,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Authentication::Identity::Core::MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo>{ using type = winrt::Windows::Security::Authentication::Identity::Core::IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo; };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Core::IMicrosoftAccountMultiFactorAuthenticationManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetOneTimePassCodeAsync(void*, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall AddDeviceAsync(void*, void*, void*, void**) noexcept = 0;
@@ -129,14 +129,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Core::IMicrosoftAccountMultiFactorAuthenticatorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Core::IMicrosoftAccountMultiFactorGetSessionsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Sessions(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServiceResponse(int32_t*) noexcept = 0;
@@ -144,7 +144,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Core::IMicrosoftAccountMultiFactorOneTimeCodedInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Code(void**) noexcept = 0;
             virtual int32_t __stdcall get_TimeInterval(int64_t*) noexcept = 0;
@@ -154,7 +154,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Core::IMicrosoftAccountMultiFactorSessionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserAccountId(void**) noexcept = 0;
             virtual int32_t __stdcall get_SessionId(void**) noexcept = 0;
@@ -167,7 +167,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Core::IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Sessions(void**) noexcept = 0;
             virtual int32_t __stdcall get_UnregisteredAccounts(void**) noexcept = 0;

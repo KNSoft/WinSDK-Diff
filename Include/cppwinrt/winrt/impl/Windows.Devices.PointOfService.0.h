@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,18 +8,18 @@
 #define WINRT_Windows_Devices_PointOfService_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
     struct Point;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
 {
@@ -1073,7 +1073,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::PointOfService::UnifiedPosErrorData>{ using type = winrt::Windows::Devices::PointOfService::IUnifiedPosErrorData; };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScanner>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
@@ -1090,14 +1090,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScanner2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoDeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PowerReportingType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsStatisticsReportingSupported(bool*) noexcept = 0;
@@ -1107,28 +1107,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerCapabilities1>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSoftwareTriggerSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerCapabilities2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsVideoPreviewSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerDataReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Report(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerErrorOccurredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PartialInputData(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsRetriable(bool*) noexcept = 0;
@@ -1137,14 +1137,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerImagePreviewReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Preview(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ScanDataType(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ScanData(void**) noexcept = 0;
@@ -1153,14 +1153,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerReportFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(uint32_t, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -1169,14 +1169,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelectorWithConnectionTypes(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeScannerStatusUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedStatus(uint32_t*) noexcept = 0;
@@ -1184,7 +1184,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeSymbologiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Unknown(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Ean8(uint32_t*) noexcept = 0;
@@ -1284,14 +1284,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeSymbologiesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Gs1DWCode(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IBarcodeSymbologyAttributes>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCheckDigitValidationEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsCheckDigitValidationEnabled(bool) noexcept = 0;
@@ -1310,7 +1310,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
@@ -1326,7 +1326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawerCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PowerReportingType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsStatisticsReportingSupported(bool*) noexcept = 0;
@@ -1338,7 +1338,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawerCloseAlarm>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_AlarmTimeout(int64_t) noexcept = 0;
             virtual int32_t __stdcall get_AlarmTimeout(int64_t*) noexcept = 0;
@@ -1355,7 +1355,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawerEventSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_DrawerClosed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_DrawerClosed(winrt::event_token) noexcept = 0;
@@ -1365,14 +1365,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawerEventSourceEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CashDrawer(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -1381,14 +1381,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelectorWithConnectionTypes(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawerStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StatusKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedStatus(uint32_t*) noexcept = 0;
@@ -1396,14 +1396,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICashDrawerStatusUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
@@ -1434,7 +1434,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner1>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartSoftwareTriggerAsync(void**) noexcept = 0;
             virtual int32_t __stdcall StopSoftwareTriggerAsync(void**) noexcept = 0;
@@ -1442,7 +1442,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetSymbologyAttributesAsync(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall SetSymbologyAttributesAsync(uint32_t, void*, void**) noexcept = 0;
@@ -1450,7 +1450,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowVideoPreviewAsync(void**) noexcept = 0;
             virtual int32_t __stdcall HideVideoPreview() noexcept = 0;
@@ -1460,7 +1460,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Closed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Closed(winrt::event_token) noexcept = 0;
@@ -1468,13 +1468,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScannerClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedCashDrawer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
@@ -1492,7 +1492,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedCashDrawer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Closed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Closed(winrt::event_token) noexcept = 0;
@@ -1500,20 +1500,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedCashDrawerClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedJournalPrinter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateJob(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
@@ -1530,7 +1530,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStatisticsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CheckHealthAsync(int32_t, void**) noexcept = 0;
@@ -1553,7 +1553,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Closed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Closed(winrt::event_token) noexcept = 0;
@@ -1561,13 +1561,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedLineDisplayClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedLineDisplayStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -1576,7 +1576,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
@@ -1615,7 +1615,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Closed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Closed(winrt::event_token) noexcept = 0;
@@ -1623,13 +1623,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReaderClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedPosPrinter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
@@ -1654,7 +1654,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedPosPrinter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Closed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Closed(winrt::event_token) noexcept = 0;
@@ -1662,13 +1662,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedPosPrinterClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedReceiptPrinter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SidewaysMaxLines(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SidewaysMaxChars(uint32_t*) noexcept = 0;
@@ -1680,7 +1680,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IClaimedSlipPrinter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SidewaysMaxLines(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SidewaysMaxChars(uint32_t*) noexcept = 0;
@@ -1699,7 +1699,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICommonClaimedPosPrinterStation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_CharactersPerLine(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_CharactersPerLine(uint32_t*) noexcept = 0;
@@ -1724,7 +1724,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICommonPosPrintStationCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPrinterPresent(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsDualColorSupported(bool*) noexcept = 0;
@@ -1743,7 +1743,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ICommonReceiptSlipCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBarcodeSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsBitmapSupported(bool*) noexcept = 0;
@@ -1758,7 +1758,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IJournalPrintJob>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Print(void*, void*) noexcept = 0;
             virtual int32_t __stdcall FeedPaperByLine(int32_t) noexcept = 0;
@@ -1767,13 +1767,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IJournalPrinterCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IJournalPrinterCapabilities2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReverseVideoSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsStrikethroughSupported(bool*) noexcept = 0;
@@ -1785,7 +1785,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplay>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
@@ -1799,14 +1799,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplay2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CheckPowerStatusAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayAttributes>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPowerNotifyEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsPowerNotifyEnabled(bool) noexcept = 0;
@@ -1826,7 +1826,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsStatisticsReportingSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsStatisticsUpdatingSupported(bool*) noexcept = 0;
@@ -1850,7 +1850,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayCursor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanCustomize(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsBlinkSupported(bool*) noexcept = 0;
@@ -1865,7 +1865,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayCursorAttributes>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsBlinkEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsBlinkEnabled(bool) noexcept = 0;
@@ -1879,7 +1879,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayCustomGlyphs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SizeInPixels(winrt::Windows::Foundation::Size*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedGlyphCodes(void**) noexcept = 0;
@@ -1888,7 +1888,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayMarquee>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Format(int32_t) noexcept = 0;
@@ -1902,7 +1902,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
@@ -1912,14 +1912,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StatisticsCategorySelector(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayStatisticsCategorySelector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllStatistics(void**) noexcept = 0;
             virtual int32_t __stdcall get_UnifiedPosStatistics(void**) noexcept = 0;
@@ -1928,14 +1928,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayStatusUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayStoredBitmap>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EscapeSequence(void**) noexcept = 0;
             virtual int32_t __stdcall TryDeleteAsync(void**) noexcept = 0;
@@ -1943,7 +1943,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayWindow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SizeInCharacters(winrt::Windows::Foundation::Size*) noexcept = 0;
             virtual int32_t __stdcall get_InterCharacterWaitInterval(int64_t*) noexcept = 0;
@@ -1958,7 +1958,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ILineDisplayWindow2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cursor(void**) noexcept = 0;
             virtual int32_t __stdcall get_Marquee(void**) noexcept = 0;
@@ -1973,7 +1973,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
@@ -1989,7 +1989,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderAamvaCardDataReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Report(void**) noexcept = 0;
             virtual int32_t __stdcall get_LicenseNumber(void**) noexcept = 0;
@@ -2014,7 +2014,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderBankCardDataReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Report(void**) noexcept = 0;
             virtual int32_t __stdcall get_AccountNumber(void**) noexcept = 0;
@@ -2029,7 +2029,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CardAuthentication(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedEncryptionAlgorithms(uint32_t*) noexcept = 0;
@@ -2046,7 +2046,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderCardTypesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Unknown(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Bank(uint32_t*) noexcept = 0;
@@ -2056,7 +2056,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderEncryptionAlgorithmsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_None(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_TripleDesDukpt(uint32_t*) noexcept = 0;
@@ -2065,7 +2065,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderErrorOccurredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Track1Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Track2Status(int32_t*) noexcept = 0;
@@ -2077,7 +2077,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CardType(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Track1(void**) noexcept = 0;
@@ -2092,7 +2092,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -2101,14 +2101,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelectorWithConnectionTypes(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderStatusUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedStatus(uint32_t*) noexcept = 0;
@@ -2116,7 +2116,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderTrackData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall get_DiscretionaryData(void**) noexcept = 0;
@@ -2125,14 +2125,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Report(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
@@ -2148,7 +2148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedBarcodeSymbologies(void**) noexcept = 0;
             virtual int32_t __stdcall GetFontProperty(void*, void**) noexcept = 0;
@@ -2156,7 +2156,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PowerReportingType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsStatisticsReportingSupported(bool*) noexcept = 0;
@@ -2172,7 +2172,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterCharacterSetIdsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Utf16LE(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Ascii(uint32_t*) noexcept = 0;
@@ -2181,7 +2181,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterFontProperty>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TypeFace(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsScalableToAnySize(bool*) noexcept = 0;
@@ -2190,7 +2190,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterJob>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Print(void*) noexcept = 0;
             virtual int32_t __stdcall PrintLine(void*) noexcept = 0;
@@ -2200,7 +2200,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterPrintOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TypeFace(void**) noexcept = 0;
             virtual int32_t __stdcall put_TypeFace(void*) noexcept = 0;
@@ -2232,13 +2232,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterReleaseDeviceRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -2247,14 +2247,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelectorWithConnectionTypes(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StatusKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedStatus(uint32_t*) noexcept = 0;
@@ -2262,14 +2262,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IPosPrinterStatusUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IReceiptOrSlipJob>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetBarcodeRotation(int32_t) noexcept = 0;
             virtual int32_t __stdcall SetPrintRotation(int32_t, bool) noexcept = 0;
@@ -2290,7 +2290,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IReceiptPrintJob>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MarkFeed(int32_t) noexcept = 0;
             virtual int32_t __stdcall CutPaper(double) noexcept = 0;
@@ -2299,7 +2299,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IReceiptPrintJob2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StampPaper() noexcept = 0;
             virtual int32_t __stdcall Print(void*, void*) noexcept = 0;
@@ -2309,7 +2309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IReceiptPrinterCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanCutPaper(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsStampSupported(bool*) noexcept = 0;
@@ -2318,7 +2318,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IReceiptPrinterCapabilities2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReverseVideoSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsStrikethroughSupported(bool*) noexcept = 0;
@@ -2330,7 +2330,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ISlipPrintJob>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Print(void*, void*) noexcept = 0;
             virtual int32_t __stdcall FeedPaperByLine(int32_t) noexcept = 0;
@@ -2339,7 +2339,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ISlipPrinterCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFullLengthSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsBothSidesPrintingSupported(bool*) noexcept = 0;
@@ -2347,7 +2347,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::ISlipPrinterCapabilities2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReverseVideoSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsStrikethroughSupported(bool*) noexcept = 0;
@@ -2359,7 +2359,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IUnifiedPosErrorData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
             virtual int32_t __stdcall get_Severity(int32_t*) noexcept = 0;
@@ -2369,7 +2369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::IUnifiedPosErrorDataFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, int32_t, int32_t, uint32_t, void**) noexcept = 0;
         };
@@ -2388,7 +2388,7 @@ namespace winrt::impl
         auto IsProfileSupported(param::hstring const& profile) const;
         auto StatusUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::BarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerStatusUpdatedEventArgs> const& handler) const;
         using StatusUpdated_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IBarcodeScanner, &impl::abi_t<winrt::Windows::Devices::PointOfService::IBarcodeScanner>::remove_StatusUpdated>;
-        [[nodiscard]] StatusUpdated_revoker StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::BarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerStatusUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::BarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerStatusUpdatedEventArgs> const& handler) const;
         auto StatusUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IBarcodeScanner>
@@ -2658,7 +2658,7 @@ namespace winrt::impl
         auto GetStatisticsAsync(param::async_iterable<hstring> const& statisticsCategories) const;
         auto StatusUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawer, winrt::Windows::Devices::PointOfService::CashDrawerStatusUpdatedEventArgs> const& handler) const;
         using StatusUpdated_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::ICashDrawer, &impl::abi_t<winrt::Windows::Devices::PointOfService::ICashDrawer>::remove_StatusUpdated>;
-        [[nodiscard]] StatusUpdated_revoker StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawer, winrt::Windows::Devices::PointOfService::CashDrawerStatusUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawer, winrt::Windows::Devices::PointOfService::CashDrawerStatusUpdatedEventArgs> const& handler) const;
         auto StatusUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::ICashDrawer>
@@ -2692,7 +2692,7 @@ namespace winrt::impl
         [[nodiscard]] auto BeepDelay() const;
         auto AlarmTimeoutExpired(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerCloseAlarm, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AlarmTimeoutExpired_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::ICashDrawerCloseAlarm, &impl::abi_t<winrt::Windows::Devices::PointOfService::ICashDrawerCloseAlarm>::remove_AlarmTimeoutExpired>;
-        [[nodiscard]] AlarmTimeoutExpired_revoker AlarmTimeoutExpired(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerCloseAlarm, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AlarmTimeoutExpired(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerCloseAlarm, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AlarmTimeoutExpired(winrt::event_token const& token) const noexcept;
         auto StartAsync() const;
     };
@@ -2705,11 +2705,11 @@ namespace winrt::impl
     {
         auto DrawerClosed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerEventSource, winrt::Windows::Devices::PointOfService::CashDrawerClosedEventArgs> const& handler) const;
         using DrawerClosed_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::ICashDrawerEventSource, &impl::abi_t<winrt::Windows::Devices::PointOfService::ICashDrawerEventSource>::remove_DrawerClosed>;
-        [[nodiscard]] DrawerClosed_revoker DrawerClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerEventSource, winrt::Windows::Devices::PointOfService::CashDrawerClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto DrawerClosed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerEventSource, winrt::Windows::Devices::PointOfService::CashDrawerClosedEventArgs> const& handler) const;
         auto DrawerClosed(winrt::event_token const& token) const noexcept;
         auto DrawerOpened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerEventSource, winrt::Windows::Devices::PointOfService::CashDrawerOpenedEventArgs> const& handler) const;
         using DrawerOpened_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::ICashDrawerEventSource, &impl::abi_t<winrt::Windows::Devices::PointOfService::ICashDrawerEventSource>::remove_DrawerOpened>;
-        [[nodiscard]] DrawerOpened_revoker DrawerOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerEventSource, winrt::Windows::Devices::PointOfService::CashDrawerOpenedEventArgs> const& handler) const;
+        [[nodiscard]] auto DrawerOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::CashDrawerEventSource, winrt::Windows::Devices::PointOfService::CashDrawerOpenedEventArgs> const& handler) const;
         auto DrawerOpened(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::ICashDrawerEventSource>
@@ -2782,27 +2782,27 @@ namespace winrt::impl
         auto SetActiveProfileAsync(param::hstring const& profile) const;
         auto DataReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerDataReceivedEventArgs> const& handler) const;
         using DataReceived_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner>::remove_DataReceived>;
-        [[nodiscard]] DataReceived_revoker DataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerDataReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto DataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerDataReceivedEventArgs> const& handler) const;
         auto DataReceived(winrt::event_token const& token) const noexcept;
         auto TriggerPressed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
         using TriggerPressed_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner>::remove_TriggerPressed>;
-        [[nodiscard]] TriggerPressed_revoker TriggerPressed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
+        [[nodiscard]] auto TriggerPressed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
         auto TriggerPressed(winrt::event_token const& token) const noexcept;
         auto TriggerReleased(winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
         using TriggerReleased_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner>::remove_TriggerReleased>;
-        [[nodiscard]] TriggerReleased_revoker TriggerReleased(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
+        [[nodiscard]] auto TriggerReleased(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
         auto TriggerReleased(winrt::event_token const& token) const noexcept;
         auto ReleaseDeviceRequested(winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
         using ReleaseDeviceRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner>::remove_ReleaseDeviceRequested>;
-        [[nodiscard]] ReleaseDeviceRequested_revoker ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
+        [[nodiscard]] auto ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner> const& handler) const;
         auto ReleaseDeviceRequested(winrt::event_token const& token) const noexcept;
         auto ImagePreviewReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerImagePreviewReceivedEventArgs> const& handler) const;
         using ImagePreviewReceived_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner>::remove_ImagePreviewReceived>;
-        [[nodiscard]] ImagePreviewReceived_revoker ImagePreviewReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerImagePreviewReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto ImagePreviewReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerImagePreviewReceivedEventArgs> const& handler) const;
         auto ImagePreviewReceived(winrt::event_token const& token) const noexcept;
         auto ErrorOccurred(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerErrorOccurredEventArgs> const& handler) const;
         using ErrorOccurred_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner>::remove_ErrorOccurred>;
-        [[nodiscard]] ErrorOccurred_revoker ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerErrorOccurredEventArgs> const& handler) const;
+        [[nodiscard]] auto ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::BarcodeScannerErrorOccurredEventArgs> const& handler) const;
         auto ErrorOccurred(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner>
@@ -2846,7 +2846,7 @@ namespace winrt::impl
     {
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::ClaimedBarcodeScannerClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner4, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner4>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::ClaimedBarcodeScannerClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedBarcodeScanner, winrt::Windows::Devices::PointOfService::ClaimedBarcodeScannerClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedBarcodeScanner4>
@@ -2876,7 +2876,7 @@ namespace winrt::impl
         auto UpdateStatisticsAsync(param::async_iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, hstring>> const& statistics) const;
         auto ReleaseDeviceRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedCashDrawer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ReleaseDeviceRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedCashDrawer, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedCashDrawer>::remove_ReleaseDeviceRequested>;
-        [[nodiscard]] ReleaseDeviceRequested_revoker ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedCashDrawer, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedCashDrawer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ReleaseDeviceRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedCashDrawer>
@@ -2888,7 +2888,7 @@ namespace winrt::impl
     {
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedCashDrawer, winrt::Windows::Devices::PointOfService::ClaimedCashDrawerClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedCashDrawer2, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedCashDrawer2>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedCashDrawer, winrt::Windows::Devices::PointOfService::ClaimedCashDrawerClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedCashDrawer, winrt::Windows::Devices::PointOfService::ClaimedCashDrawerClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedCashDrawer2>
@@ -2926,7 +2926,7 @@ namespace winrt::impl
         auto RetainDevice() const;
         auto ReleaseDeviceRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ReleaseDeviceRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay>::remove_ReleaseDeviceRequested>;
-        [[nodiscard]] ReleaseDeviceRequested_revoker ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ReleaseDeviceRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay>
@@ -2941,7 +2941,7 @@ namespace winrt::impl
         auto CheckPowerStatusAsync() const;
         auto StatusUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Devices::PointOfService::LineDisplayStatusUpdatedEventArgs> const& handler) const;
         using StatusUpdated_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay2, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay2>::remove_StatusUpdated>;
-        [[nodiscard]] StatusUpdated_revoker StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Devices::PointOfService::LineDisplayStatusUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Devices::PointOfService::LineDisplayStatusUpdatedEventArgs> const& handler) const;
         auto StatusUpdated(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto SupportedScreenSizesInCharacters() const;
         [[nodiscard]] auto MaxBitmapSizeInPixels() const;
@@ -2965,7 +2965,7 @@ namespace winrt::impl
     {
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Devices::PointOfService::ClaimedLineDisplayClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay3, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay3>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Devices::PointOfService::ClaimedLineDisplayClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedLineDisplay, winrt::Windows::Devices::PointOfService::ClaimedLineDisplayClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedLineDisplay3>
@@ -3019,23 +3019,23 @@ namespace winrt::impl
         auto UpdateStatisticsAsync(param::async_iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, hstring>> const& statistics) const;
         auto BankCardDataReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderBankCardDataReceivedEventArgs> const& handler) const;
         using BankCardDataReceived_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader>::remove_BankCardDataReceived>;
-        [[nodiscard]] BankCardDataReceived_revoker BankCardDataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderBankCardDataReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto BankCardDataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderBankCardDataReceivedEventArgs> const& handler) const;
         auto BankCardDataReceived(winrt::event_token const& token) const noexcept;
         auto AamvaCardDataReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderAamvaCardDataReceivedEventArgs> const& handler) const;
         using AamvaCardDataReceived_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader>::remove_AamvaCardDataReceived>;
-        [[nodiscard]] AamvaCardDataReceived_revoker AamvaCardDataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderAamvaCardDataReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto AamvaCardDataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderAamvaCardDataReceivedEventArgs> const& handler) const;
         auto AamvaCardDataReceived(winrt::event_token const& token) const noexcept;
         auto VendorSpecificDataReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderVendorSpecificCardDataReceivedEventArgs> const& handler) const;
         using VendorSpecificDataReceived_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader>::remove_VendorSpecificDataReceived>;
-        [[nodiscard]] VendorSpecificDataReceived_revoker VendorSpecificDataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderVendorSpecificCardDataReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto VendorSpecificDataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderVendorSpecificCardDataReceivedEventArgs> const& handler) const;
         auto VendorSpecificDataReceived(winrt::event_token const& token) const noexcept;
         auto ReleaseDeviceRequested(winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader> const& handler) const;
         using ReleaseDeviceRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader>::remove_ReleaseDeviceRequested>;
-        [[nodiscard]] ReleaseDeviceRequested_revoker ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader> const& handler) const;
+        [[nodiscard]] auto ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader> const& handler) const;
         auto ReleaseDeviceRequested(winrt::event_token const& token) const noexcept;
         auto ErrorOccurred(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderErrorOccurredEventArgs> const& handler) const;
         using ErrorOccurred_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader>::remove_ErrorOccurred>;
-        [[nodiscard]] ErrorOccurred_revoker ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderErrorOccurredEventArgs> const& handler) const;
+        [[nodiscard]] auto ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderErrorOccurredEventArgs> const& handler) const;
         auto ErrorOccurred(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader>
@@ -3047,7 +3047,7 @@ namespace winrt::impl
     {
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReaderClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader2, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader2>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReaderClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReader, winrt::Windows::Devices::PointOfService::ClaimedMagneticStripeReaderClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedMagneticStripeReader2>
@@ -3084,7 +3084,7 @@ namespace winrt::impl
         auto UpdateStatisticsAsync(param::async_iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, hstring>> const& statistics) const;
         auto ReleaseDeviceRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedPosPrinter, winrt::Windows::Devices::PointOfService::PosPrinterReleaseDeviceRequestedEventArgs> const& handler) const;
         using ReleaseDeviceRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedPosPrinter, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedPosPrinter>::remove_ReleaseDeviceRequested>;
-        [[nodiscard]] ReleaseDeviceRequested_revoker ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedPosPrinter, winrt::Windows::Devices::PointOfService::PosPrinterReleaseDeviceRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReleaseDeviceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedPosPrinter, winrt::Windows::Devices::PointOfService::PosPrinterReleaseDeviceRequestedEventArgs> const& handler) const;
         auto ReleaseDeviceRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedPosPrinter>
@@ -3096,7 +3096,7 @@ namespace winrt::impl
     {
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedPosPrinter, winrt::Windows::Devices::PointOfService::ClaimedPosPrinterClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IClaimedPosPrinter2, &impl::abi_t<winrt::Windows::Devices::PointOfService::IClaimedPosPrinter2>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedPosPrinter, winrt::Windows::Devices::PointOfService::ClaimedPosPrinterClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::ClaimedPosPrinter, winrt::Windows::Devices::PointOfService::ClaimedPosPrinterClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IClaimedPosPrinter2>
@@ -3475,7 +3475,7 @@ namespace winrt::impl
         auto GetErrorReportingType() const;
         auto StatusUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::MagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderStatusUpdatedEventArgs> const& handler) const;
         using StatusUpdated_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IMagneticStripeReader, &impl::abi_t<winrt::Windows::Devices::PointOfService::IMagneticStripeReader>::remove_StatusUpdated>;
-        [[nodiscard]] StatusUpdated_revoker StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::MagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderStatusUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::MagneticStripeReader, winrt::Windows::Devices::PointOfService::MagneticStripeReaderStatusUpdatedEventArgs> const& handler) const;
         auto StatusUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IMagneticStripeReader>
@@ -3662,7 +3662,7 @@ namespace winrt::impl
         auto GetStatisticsAsync(param::async_iterable<hstring> const& statisticsCategories) const;
         auto StatusUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::PosPrinter, winrt::Windows::Devices::PointOfService::PosPrinterStatusUpdatedEventArgs> const& handler) const;
         using StatusUpdated_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::IPosPrinter, &impl::abi_t<winrt::Windows::Devices::PointOfService::IPosPrinter>::remove_StatusUpdated>;
-        [[nodiscard]] StatusUpdated_revoker StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::PosPrinter, winrt::Windows::Devices::PointOfService::PosPrinterStatusUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto StatusUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::PosPrinter, winrt::Windows::Devices::PointOfService::PosPrinterStatusUpdatedEventArgs> const& handler) const;
         auto StatusUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::IPosPrinter>

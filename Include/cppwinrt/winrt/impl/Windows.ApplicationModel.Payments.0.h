@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,8 +13,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Payments
@@ -271,7 +271,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Payments::PaymentToken>{ using type = winrt::Windows::ApplicationModel::Payments::IPaymentToken; };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentAddress>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Country(void**) noexcept = 0;
             virtual int32_t __stdcall put_Country(void*) noexcept = 0;
@@ -300,21 +300,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentCanMakePaymentResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentCanMakePaymentResultFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentCurrencyAmount>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Currency(void**) noexcept = 0;
             virtual int32_t __stdcall put_Currency(void*) noexcept = 0;
@@ -326,7 +326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentCurrencyAmountFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithCurrencySystem(void*, void*, void*, void**) noexcept = 0;
@@ -334,7 +334,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Total(void**) noexcept = 0;
             virtual int32_t __stdcall put_Total(void*) noexcept = 0;
@@ -348,7 +348,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentDetailsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithDisplayItems(void*, void*, void**) noexcept = 0;
@@ -356,7 +356,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentDetailsModifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_JsonData(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedMethodIds(void**) noexcept = 0;
@@ -366,7 +366,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentDetailsModifierFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithAdditionalDisplayItems(void*, void*, void*, void**) noexcept = 0;
@@ -375,7 +375,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
             virtual int32_t __stdcall put_Label(void*) noexcept = 0;
@@ -387,14 +387,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentMediator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetSupportedMethodIdsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall SubmitPaymentRequestAsync(void*, void**) noexcept = 0;
@@ -403,14 +403,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentMediator2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CanMakePaymentAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentMerchantInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageFullName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
@@ -418,14 +418,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentMerchantInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentMethodData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedMethodIds(void**) noexcept = 0;
             virtual int32_t __stdcall get_JsonData(void**) noexcept = 0;
@@ -433,7 +433,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentMethodDataFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithJsonData(void*, void*, void**) noexcept = 0;
@@ -441,7 +441,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestPayerEmail(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_RequestPayerEmail(int32_t) noexcept = 0;
@@ -457,7 +457,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MerchantInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_Details(void**) noexcept = 0;
@@ -467,14 +467,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentRequestChangedArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ShippingAddress(void**) noexcept = 0;
@@ -484,7 +484,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentRequestChangedResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeAcceptedByMerchant(bool*) noexcept = 0;
             virtual int32_t __stdcall put_ChangeAcceptedByMerchant(bool) noexcept = 0;
@@ -496,7 +496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentRequestChangedResultFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(bool, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithPaymentDetails(bool, void*, void**) noexcept = 0;
@@ -504,7 +504,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentRequestFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithMerchantInfo(void*, void*, void*, void**) noexcept = 0;
@@ -513,14 +513,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentRequestFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithMerchantInfoOptionsAndId(void*, void*, void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentRequestSubmitResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Response(void**) noexcept = 0;
@@ -528,7 +528,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentResponse>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PaymentToken(void**) noexcept = 0;
             virtual int32_t __stdcall get_ShippingOption(void**) noexcept = 0;
@@ -541,7 +541,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentShippingOption>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
             virtual int32_t __stdcall put_Label(void*) noexcept = 0;
@@ -555,7 +555,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentShippingOptionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithSelected(void*, void*, bool, void**) noexcept = 0;
@@ -564,7 +564,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentToken>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PaymentMethodId(void**) noexcept = 0;
             virtual int32_t __stdcall get_JsonDetails(void**) noexcept = 0;
@@ -572,7 +572,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::IPaymentTokenFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithJsonDetails(void*, void*, void**) noexcept = 0;
@@ -580,7 +580,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Payments::PaymentRequestChangedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };

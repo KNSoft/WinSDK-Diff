@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -77,7 +77,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Spi::SpiDevice>{ using type = winrt::Windows::Devices::Spi::ISpiDevice; };
     template <> struct abi<winrt::Windows::Devices::Spi::ISpiBusInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChipSelectLineCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MinClockFrequency(int32_t*) noexcept = 0;
@@ -87,7 +87,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Spi::ISpiConnectionSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChipSelectLine(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ChipSelectLine(int32_t) noexcept = 0;
@@ -103,21 +103,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Spi::ISpiConnectionSettingsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Spi::ISpiController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDevice(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Spi::ISpiControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetControllersAsync(void*, void**) noexcept = 0;
@@ -125,7 +125,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Spi::ISpiDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConnectionSettings(void**) noexcept = 0;
@@ -137,7 +137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Spi::ISpiDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorFromFriendlyName(void*, void**) noexcept = 0;

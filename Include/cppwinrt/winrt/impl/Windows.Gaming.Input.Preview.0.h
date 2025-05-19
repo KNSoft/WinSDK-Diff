@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_Gaming_Input_Preview_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename K, typename V> struct __declspec(empty_bases) IMapView;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMapView;
 }
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input
 {
@@ -134,7 +134,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::Input::Preview::LegacyGipGameControllerProvider>{ using type = winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider; };
     template <> struct abi<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetParentProviderId(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetProviderId(void*, void**) noexcept = 0;
@@ -142,7 +142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BatteryChargingState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_BatteryKind(int32_t*) noexcept = 0;
@@ -164,7 +164,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromGameController(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FromGameControllerProvider(void*, void**) noexcept = 0;

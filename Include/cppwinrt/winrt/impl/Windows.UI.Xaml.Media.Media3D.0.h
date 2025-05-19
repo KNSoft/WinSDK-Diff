@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -68,7 +68,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Media::Media3D::Transform3D>{ using type = winrt::Windows::UI::Xaml::Media::Media3D::ITransform3D; };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Media3D::ICompositeTransform3D>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterX(double*) noexcept = 0;
             virtual int32_t __stdcall put_CenterX(double) noexcept = 0;
@@ -98,7 +98,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Media3D::ICompositeTransform3DStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterXProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CenterYProperty(void**) noexcept = 0;
@@ -116,13 +116,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Media3D::IMatrix3DHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Media3D::IMatrix3DHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Identity(struct struct_Windows_UI_Xaml_Media_Media3D_Matrix3D*) noexcept = 0;
             virtual int32_t __stdcall Multiply(struct struct_Windows_UI_Xaml_Media_Media3D_Matrix3D, struct struct_Windows_UI_Xaml_Media_Media3D_Matrix3D, struct struct_Windows_UI_Xaml_Media_Media3D_Matrix3D*) noexcept = 0;
@@ -134,7 +134,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Media3D::IPerspectiveTransform3D>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Depth(double*) noexcept = 0;
             virtual int32_t __stdcall put_Depth(double) noexcept = 0;
@@ -146,7 +146,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Media3D::IPerspectiveTransform3DStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DepthProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_OffsetXProperty(void**) noexcept = 0;
@@ -155,13 +155,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Media3D::ITransform3D>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Media::Media3D::ITransform3DFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };

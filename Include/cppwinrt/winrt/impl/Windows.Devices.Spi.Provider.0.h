@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -53,7 +53,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Spi::Provider::ProviderSpiConnectionSettings>{ using type = winrt::Windows::Devices::Spi::Provider::IProviderSpiConnectionSettings; };
     template <> struct abi<winrt::Windows::Devices::Spi::Provider::IProviderSpiConnectionSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChipSelectLine(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ChipSelectLine(int32_t) noexcept = 0;
@@ -69,21 +69,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Spi::Provider::IProviderSpiConnectionSettingsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Spi::Provider::ISpiControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceProvider(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Spi::Provider::ISpiDeviceProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConnectionSettings(void**) noexcept = 0;
@@ -95,7 +95,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Spi::Provider::ISpiProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetControllersAsync(void**) noexcept = 0;
         };

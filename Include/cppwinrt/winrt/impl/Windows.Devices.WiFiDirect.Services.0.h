@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking::Sockets
 {
@@ -174,7 +174,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSessionRequestedEventArgs>{ using type = winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSessionRequestedEventArgs; };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteServiceInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedConfigurationMethods(void**) noexcept = 0;
@@ -192,7 +192,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAdvertiser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServiceName(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServiceNamePrefixes(void**) noexcept = 0;
@@ -225,14 +225,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAdvertiserFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWiFiDirectServiceAdvertiser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAutoAcceptSessionConnectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall get_SessionInfo(void**) noexcept = 0;
@@ -240,7 +240,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceProvisioningInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedConfigurationMethod(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsGroupFormationNeeded(bool*) noexcept = 0;
@@ -248,7 +248,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceRemotePortAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EndpointPairs(void**) noexcept = 0;
             virtual int32_t __stdcall get_Protocol(int32_t*) noexcept = 0;
@@ -256,7 +256,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServiceName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -276,14 +276,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSessionDeferredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeferredSessionInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSessionRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceInformation(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProvisioningInfo(void**) noexcept = 0;
@@ -292,14 +292,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSessionRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetSessionRequest(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetSelector(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetSelectorWithFilter(void*, void*, void**) noexcept = 0;
@@ -318,7 +318,7 @@ namespace winrt::impl
         [[nodiscard]] auto ServiceError() const;
         auto SessionDeferred(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectService, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSessionDeferredEventArgs> const& handler) const;
         using SessionDeferred_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectService, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectService>::remove_SessionDeferred>;
-        [[nodiscard]] SessionDeferred_revoker SessionDeferred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectService, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSessionDeferredEventArgs> const& handler) const;
+        [[nodiscard]] auto SessionDeferred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectService, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSessionDeferredEventArgs> const& handler) const;
         auto SessionDeferred(winrt::event_token const& token) const noexcept;
         auto GetProvisioningInfoAsync(winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceConfigurationMethod const& selectedConfigurationMethod) const;
         auto ConnectAsync() const;
@@ -350,15 +350,15 @@ namespace winrt::impl
         [[nodiscard]] auto ServiceError() const;
         auto SessionRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSessionRequestedEventArgs> const& handler) const;
         using SessionRequested_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAdvertiser, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAdvertiser>::remove_SessionRequested>;
-        [[nodiscard]] SessionRequested_revoker SessionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSessionRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto SessionRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSessionRequestedEventArgs> const& handler) const;
         auto SessionRequested(winrt::event_token const& token) const noexcept;
         auto AutoAcceptSessionConnected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAutoAcceptSessionConnectedEventArgs> const& handler) const;
         using AutoAcceptSessionConnected_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAdvertiser, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAdvertiser>::remove_AutoAcceptSessionConnected>;
-        [[nodiscard]] AutoAcceptSessionConnected_revoker AutoAcceptSessionConnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAutoAcceptSessionConnectedEventArgs> const& handler) const;
+        [[nodiscard]] auto AutoAcceptSessionConnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAutoAcceptSessionConnectedEventArgs> const& handler) const;
         auto AutoAcceptSessionConnected(winrt::event_token const& token) const noexcept;
         auto AdvertisementStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AdvertisementStatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAdvertiser, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceAdvertiser>::remove_AdvertisementStatusChanged>;
-        [[nodiscard]] AdvertisementStatusChanged_revoker AdvertisementStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AdvertisementStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceAdvertiser, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AdvertisementStatusChanged(winrt::event_token const& token) const noexcept;
         auto ConnectAsync(winrt::Windows::Devices::Enumeration::DeviceInformation const& deviceInfo) const;
         auto ConnectAsync(winrt::Windows::Devices::Enumeration::DeviceInformation const& deviceInfo, param::hstring const& pin) const;
@@ -421,13 +421,13 @@ namespace winrt::impl
         auto GetConnectionEndpointPairs() const;
         auto SessionStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SessionStatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSession, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSession>::remove_SessionStatusChanged>;
-        [[nodiscard]] SessionStatusChanged_revoker SessionStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SessionStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSession, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SessionStatusChanged(winrt::event_token const& token) const noexcept;
         auto AddStreamSocketListenerAsync(winrt::Windows::Networking::Sockets::StreamSocketListener const& value) const;
         auto AddDatagramSocketAsync(winrt::Windows::Networking::Sockets::DatagramSocket const& value) const;
         auto RemotePortAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSession, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceRemotePortAddedEventArgs> const& handler) const;
         using RemotePortAdded_revoker = impl::event_revoker<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSession, &impl::abi_t<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSession>::remove_RemotePortAdded>;
-        [[nodiscard]] RemotePortAdded_revoker RemotePortAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSession, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceRemotePortAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto RemotePortAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceSession, winrt::Windows::Devices::WiFiDirect::Services::WiFiDirectServiceRemotePortAddedEventArgs> const& handler) const;
         auto RemotePortAdded(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::WiFiDirect::Services::IWiFiDirectServiceSession>

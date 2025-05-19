@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,12 +15,12 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Rect;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Popups
 {
@@ -222,6 +222,8 @@ WINRT_EXPORT namespace winrt::Windows::Services::Maps
     struct MapService;
     struct PlaceInfo;
     struct PlaceInfoCreateOptions;
+    struct GuidanceContract;
+    struct LocalSearchContract;
 }
 namespace winrt::impl
 {
@@ -349,6 +351,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Services::Maps::IPlaceInfoCreateOptions> = L"Windows.Services.Maps.IPlaceInfoCreateOptions";
     template <> inline constexpr auto& name_v<winrt::Windows::Services::Maps::IPlaceInfoStatics> = L"Windows.Services.Maps.IPlaceInfoStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Services::Maps::IPlaceInfoStatics2> = L"Windows.Services.Maps.IPlaceInfoStatics2";
+    template <> inline constexpr auto& name_v<winrt::Windows::Services::Maps::GuidanceContract> = L"Windows.Services.Maps.GuidanceContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::Services::Maps::LocalSearchContract> = L"Windows.Services.Maps.LocalSearchContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Services::Maps::IEnhancedWaypoint>{ 0xED268C74,0x5913,0x11E6,{ 0x8B,0x77,0x86,0xF3,0x0C,0xA8,0x93,0xD3 } }; // ED268C74-5913-11E6-8B77-86F30CA893D3
     template <> inline constexpr guid guid_v<winrt::Windows::Services::Maps::IEnhancedWaypointFactory>{ 0xAF868477,0xA2AA,0x46DD,{ 0xB6,0x45,0x23,0xB3,0x1B,0x8A,0xA6,0xC7 } }; // AF868477-A2AA-46DD-B645-23B31B8AA6C7
     template <> inline constexpr guid guid_v<winrt::Windows::Services::Maps::IManeuverWarning>{ 0xC1A36D8A,0x2630,0x4378,{ 0x9E,0x4A,0x6E,0x44,0x25,0x3D,0xCE,0xBA } }; // C1A36D8A-2630-4378-9E4A-6E44253DCEBA
@@ -397,7 +401,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Services::Maps::PlaceInfoCreateOptions>{ using type = winrt::Windows::Services::Maps::IPlaceInfoCreateOptions; };
     template <> struct abi<winrt::Windows::Services::Maps::IEnhancedWaypoint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point(void**) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -405,14 +409,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IEnhancedWaypointFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IManeuverWarning>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Severity(int32_t*) noexcept = 0;
@@ -420,7 +424,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapAddress>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BuildingName(void**) noexcept = 0;
             virtual int32_t __stdcall get_BuildingFloor(void**) noexcept = 0;
@@ -441,14 +445,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapAddress2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FormattedAddress(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapLocation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -458,7 +462,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapLocationFinderResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Locations(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -466,7 +470,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapLocationFinderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindLocationsAtAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindLocationsAsync(void*, void*, void**) noexcept = 0;
@@ -475,14 +479,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapLocationFinderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindLocationsAtWithAccuracyAsync(void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowDownloadedMapsUI() noexcept = 0;
             virtual int32_t __stdcall ShowMapsUpdateUI() noexcept = 0;
@@ -490,7 +494,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRoute>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BoundingBox(void**) noexcept = 0;
             virtual int32_t __stdcall get_LengthInMeters(double*) noexcept = 0;
@@ -502,7 +506,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRoute2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViolatedRestrictions(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_HasBlockedRoads(bool*) noexcept = 0;
@@ -510,7 +514,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRoute3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DurationWithoutTraffic(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_TrafficCongestion(int32_t*) noexcept = 0;
@@ -518,14 +522,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRoute4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsScenic(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteDrivingOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxAlternateRouteCount(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MaxAlternateRouteCount(uint32_t) noexcept = 0;
@@ -539,7 +543,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteDrivingOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DepartureTime(void**) noexcept = 0;
             virtual int32_t __stdcall put_DepartureTime(void*) noexcept = 0;
@@ -547,7 +551,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteFinderResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Route(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -555,14 +559,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteFinderResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlternateRoutes(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteFinderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDrivingRouteAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDrivingRouteWithOptimizationAsync(void*, void*, int32_t, void**) noexcept = 0;
@@ -578,14 +582,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteFinderStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDrivingRouteWithOptionsAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteFinderStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDrivingRouteFromEnhancedWaypointsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDrivingRouteFromEnhancedWaypointsWithOptionsAsync(void*, void*, void**) noexcept = 0;
@@ -593,7 +597,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteLeg>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BoundingBox(void**) noexcept = 0;
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
@@ -604,7 +608,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteLeg2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DurationWithoutTraffic(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_TrafficCongestion(int32_t*) noexcept = 0;
@@ -612,7 +616,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteManeuver>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartingPoint(void**) noexcept = 0;
             virtual int32_t __stdcall get_LengthInMeters(double*) noexcept = 0;
@@ -624,7 +628,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteManeuver2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartHeading(double*) noexcept = 0;
             virtual int32_t __stdcall get_EndHeading(double*) noexcept = 0;
@@ -633,14 +637,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapRouteManeuver3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Warnings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapServiceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ServiceToken(void*) noexcept = 0;
             virtual int32_t __stdcall get_ServiceToken(void**) noexcept = 0;
@@ -648,21 +652,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapServiceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WorldViewRegionCode(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapServiceStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataAttributions(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::IMapServiceStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DataUsagePreference(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_DataUsagePreference(int32_t*) noexcept = 0;
@@ -670,7 +674,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IPlaceInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Show(winrt::Windows::Foundation::Rect) noexcept = 0;
             virtual int32_t __stdcall ShowWithPreferredPlacement(winrt::Windows::Foundation::Rect, int32_t) noexcept = 0;
@@ -682,7 +686,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IPlaceInfoCreateOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DisplayName(void*) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -692,7 +696,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IPlaceInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithGeopointAndOptions(void*, void*, void**) noexcept = 0;
@@ -704,7 +708,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::IPlaceInfoStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromAddress(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromAddressWithName(void*, void*, void**) noexcept = 0;

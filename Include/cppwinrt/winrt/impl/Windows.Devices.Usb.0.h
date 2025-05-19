@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,8 +10,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -278,7 +278,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Usb::UsbSetupPacket>{ using type = winrt::Windows::Devices::Usb::IUsbSetupPacket; };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbBulkInEndpointDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxPacketSize(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_EndpointNumber(uint8_t*) noexcept = 0;
@@ -287,7 +287,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbBulkInPipe>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxTransferSizeBytes(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_EndpointDescriptor(void**) noexcept = 0;
@@ -300,7 +300,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbBulkOutEndpointDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxPacketSize(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_EndpointNumber(uint8_t*) noexcept = 0;
@@ -309,7 +309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbBulkOutPipe>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EndpointDescriptor(void**) noexcept = 0;
             virtual int32_t __stdcall ClearStallAsync(void**) noexcept = 0;
@@ -320,7 +320,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UsbInterfaces(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConfigurationDescriptor(void**) noexcept = 0;
@@ -329,7 +329,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbConfigurationDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConfigurationValue(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_MaxPowerMilliamps(uint32_t*) noexcept = 0;
@@ -339,7 +339,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbConfigurationDescriptorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
@@ -347,7 +347,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbControlRequestType>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Direction(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Direction(int32_t) noexcept = 0;
@@ -361,7 +361,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Length(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_DescriptorType(uint8_t*) noexcept = 0;
@@ -370,7 +370,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendControlOutTransferAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall SendControlOutTransferAsyncNoBuffer(void*, void**) noexcept = 0;
@@ -383,7 +383,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbDeviceClass>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClassCode(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall put_ClassCode(uint8_t) noexcept = 0;
@@ -395,13 +395,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbDeviceClasses>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbDeviceClassesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CdcControl(void**) noexcept = 0;
             virtual int32_t __stdcall get_Physical(void**) noexcept = 0;
@@ -416,7 +416,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbDeviceDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BcdUsb(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MaxPacketSize0(uint8_t*) noexcept = 0;
@@ -428,7 +428,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(uint32_t, uint32_t, winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorGuidOnly(winrt::guid, void**) noexcept = 0;
@@ -439,7 +439,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbEndpointDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EndpointNumber(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Direction(int32_t*) noexcept = 0;
@@ -452,7 +452,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbEndpointDescriptorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
@@ -460,7 +460,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BulkInPipes(void**) noexcept = 0;
             virtual int32_t __stdcall get_InterruptInPipes(void**) noexcept = 0;
@@ -473,7 +473,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterfaceDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClassCode(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_SubclassCode(uint8_t*) noexcept = 0;
@@ -484,7 +484,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterfaceDescriptorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
@@ -492,7 +492,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterfaceSetting>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BulkInEndpoints(void**) noexcept = 0;
             virtual int32_t __stdcall get_InterruptInEndpoints(void**) noexcept = 0;
@@ -506,7 +506,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterruptInEndpointDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxPacketSize(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_EndpointNumber(uint8_t*) noexcept = 0;
@@ -516,14 +516,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterruptInEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InterruptData(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterruptInPipe>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EndpointDescriptor(void**) noexcept = 0;
             virtual int32_t __stdcall ClearStallAsync(void**) noexcept = 0;
@@ -533,7 +533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterruptOutEndpointDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxPacketSize(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_EndpointNumber(uint8_t*) noexcept = 0;
@@ -543,7 +543,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbInterruptOutPipe>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EndpointDescriptor(void**) noexcept = 0;
             virtual int32_t __stdcall ClearStallAsync(void**) noexcept = 0;
@@ -554,7 +554,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbSetupPacket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestType(void**) noexcept = 0;
             virtual int32_t __stdcall put_RequestType(void*) noexcept = 0;
@@ -570,7 +570,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Usb::IUsbSetupPacketFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithEightByteBuffer(void*, void**) noexcept = 0;
         };
@@ -873,7 +873,7 @@ namespace winrt::impl
         auto ClearStallAsync() const;
         auto DataReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Usb::UsbInterruptInPipe, winrt::Windows::Devices::Usb::UsbInterruptInEventArgs> const& handler) const;
         using DataReceived_revoker = impl::event_revoker<winrt::Windows::Devices::Usb::IUsbInterruptInPipe, &impl::abi_t<winrt::Windows::Devices::Usb::IUsbInterruptInPipe>::remove_DataReceived>;
-        [[nodiscard]] DataReceived_revoker DataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Usb::UsbInterruptInPipe, winrt::Windows::Devices::Usb::UsbInterruptInEventArgs> const& handler) const;
+        [[nodiscard]] auto DataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Usb::UsbInterruptInPipe, winrt::Windows::Devices::Usb::UsbInterruptInEventArgs> const& handler) const;
         auto DataReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Usb::IUsbInterruptInPipe>

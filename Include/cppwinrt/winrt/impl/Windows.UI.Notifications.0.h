@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -20,14 +20,14 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::System
@@ -690,7 +690,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Notifications::UserNotificationChangedEventArgs>{ using type = winrt::Windows::UI::Notifications::IUserNotificationChangedEventArgs; };
     template <> struct abi<winrt::Windows::UI::Notifications::IAdaptiveNotificationContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Hints(void**) noexcept = 0;
@@ -698,7 +698,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IAdaptiveNotificationText>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -708,7 +708,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IBadgeNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_ExpirationTime(void*) noexcept = 0;
@@ -717,14 +717,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IBadgeNotificationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateBadgeNotification(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IBadgeUpdateManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateBadgeUpdaterForApplication(void**) noexcept = 0;
             virtual int32_t __stdcall CreateBadgeUpdaterForApplicationWithId(void*, void**) noexcept = 0;
@@ -734,7 +734,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IBadgeUpdateManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateBadgeUpdaterForApplication(void**) noexcept = 0;
             virtual int32_t __stdcall CreateBadgeUpdaterForApplicationWithId(void*, void**) noexcept = 0;
@@ -744,14 +744,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IBadgeUpdateManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IBadgeUpdater>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Update(void*) noexcept = 0;
             virtual int32_t __stdcall Clear() noexcept = 0;
@@ -762,7 +762,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IKnownAdaptiveNotificationHintsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Style(void**) noexcept = 0;
             virtual int32_t __stdcall get_Wrap(void**) noexcept = 0;
@@ -774,7 +774,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IKnownAdaptiveNotificationTextStylesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Caption(void**) noexcept = 0;
             virtual int32_t __stdcall get_Body(void**) noexcept = 0;
@@ -799,14 +799,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IKnownNotificationBindingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ToastGeneric(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::INotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExpirationTime(void**) noexcept = 0;
             virtual int32_t __stdcall put_ExpirationTime(void*) noexcept = 0;
@@ -816,7 +816,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::INotificationBinding>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Template(void**) noexcept = 0;
             virtual int32_t __stdcall put_Template(void*) noexcept = 0;
@@ -828,7 +828,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::INotificationData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Values(void**) noexcept = 0;
             virtual int32_t __stdcall get_SequenceNumber(uint32_t*) noexcept = 0;
@@ -837,7 +837,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::INotificationDataFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateNotificationDataWithValuesAndSequenceNumber(void*, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateNotificationDataWithValues(void*, void**) noexcept = 0;
@@ -845,7 +845,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::INotificationVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
             virtual int32_t __stdcall put_Language(void*) noexcept = 0;
@@ -855,7 +855,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IScheduledTileNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeliveryTime(int64_t*) noexcept = 0;
@@ -869,14 +869,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IScheduledTileNotificationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateScheduledTileNotification(void*, int64_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IScheduledToastNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeliveryTime(int64_t*) noexcept = 0;
@@ -888,7 +888,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IScheduledToastNotification2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Tag(void*) noexcept = 0;
             virtual int32_t __stdcall get_Tag(void**) noexcept = 0;
@@ -900,7 +900,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IScheduledToastNotification3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NotificationMirroring(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_NotificationMirroring(int32_t) noexcept = 0;
@@ -910,7 +910,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IScheduledToastNotification4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExpirationTime(void**) noexcept = 0;
             virtual int32_t __stdcall put_ExpirationTime(void*) noexcept = 0;
@@ -918,7 +918,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IScheduledToastNotificationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateScheduledToastNotification(void*, int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateScheduledToastNotificationRecurring(void*, int64_t, int64_t, uint32_t, void**) noexcept = 0;
@@ -926,7 +926,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IScheduledToastNotificationShowingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
@@ -936,14 +936,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IShownTileNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Arguments(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileFlyoutNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_ExpirationTime(void*) noexcept = 0;
@@ -952,14 +952,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileFlyoutNotificationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTileFlyoutNotification(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileFlyoutUpdateManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTileFlyoutUpdaterForApplication(void**) noexcept = 0;
             virtual int32_t __stdcall CreateTileFlyoutUpdaterForApplicationWithId(void*, void**) noexcept = 0;
@@ -969,7 +969,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileFlyoutUpdater>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Update(void*) noexcept = 0;
             virtual int32_t __stdcall Clear() noexcept = 0;
@@ -981,7 +981,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_ExpirationTime(void*) noexcept = 0;
@@ -992,14 +992,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileNotificationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTileNotification(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileUpdateManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTileUpdaterForApplication(void**) noexcept = 0;
             virtual int32_t __stdcall CreateTileUpdaterForApplicationWithId(void*, void**) noexcept = 0;
@@ -1009,7 +1009,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileUpdateManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTileUpdaterForApplication(void**) noexcept = 0;
             virtual int32_t __stdcall CreateTileUpdaterForApplicationWithId(void*, void**) noexcept = 0;
@@ -1019,14 +1019,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileUpdateManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileUpdater>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Update(void*) noexcept = 0;
             virtual int32_t __stdcall Clear() noexcept = 0;
@@ -1044,7 +1044,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::ITileUpdater2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall EnableNotificationQueueForSquare150x150(bool) noexcept = 0;
             virtual int32_t __stdcall EnableNotificationQueueForWide310x150(bool) noexcept = 0;
@@ -1053,21 +1053,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastActivatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Arguments(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastActivatedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserInput(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -1080,14 +1080,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastCollectionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastCollectionManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SaveToastCollectionAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindAllToastCollectionsAsync(void**) noexcept = 0;
@@ -1100,21 +1100,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastDismissedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ErrorCode(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_ExpirationTime(void*) noexcept = 0;
@@ -1129,7 +1129,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotification2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Tag(void*) noexcept = 0;
             virtual int32_t __stdcall get_Tag(void**) noexcept = 0;
@@ -1141,7 +1141,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotification3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NotificationMirroring(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_NotificationMirroring(int32_t) noexcept = 0;
@@ -1151,7 +1151,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotification4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall put_Data(void*) noexcept = 0;
@@ -1161,7 +1161,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotification6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExpiresOnReboot(bool*) noexcept = 0;
             virtual int32_t __stdcall put_ExpiresOnReboot(bool) noexcept = 0;
@@ -1169,7 +1169,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationActionTriggerDetail>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Argument(void**) noexcept = 0;
             virtual int32_t __stdcall get_UserInput(void**) noexcept = 0;
@@ -1177,14 +1177,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateToastNotification(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationHistory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RemoveGroup(void*) noexcept = 0;
             virtual int32_t __stdcall RemoveGroupWithId(void*, void*) noexcept = 0;
@@ -1197,7 +1197,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationHistory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetHistory(void**) noexcept = 0;
             virtual int32_t __stdcall GetHistoryWithId(void*, void**) noexcept = 0;
@@ -1205,21 +1205,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationHistoryChangedTriggerDetail>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationHistoryChangedTriggerDetail2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CollectionId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateToastNotifier(void**) noexcept = 0;
             virtual int32_t __stdcall CreateToastNotifierWithId(void*, void**) noexcept = 0;
@@ -1229,7 +1229,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationManagerForUser2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetToastNotifierForToastCollectionIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetHistoryForToastCollectionIdAsync(void*, void**) noexcept = 0;
@@ -1239,7 +1239,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationManagerForUser3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NotificationMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_NotificationModeChanged(void*, winrt::event_token*) noexcept = 0;
@@ -1248,7 +1248,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateToastNotifier(void**) noexcept = 0;
             virtual int32_t __stdcall CreateToastNotifierWithId(void*, void**) noexcept = 0;
@@ -1257,14 +1257,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_History(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ConfigureNotificationMirroring(int32_t) noexcept = 0;
@@ -1272,14 +1272,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Show(void*) noexcept = 0;
             virtual int32_t __stdcall Hide(void*) noexcept = 0;
@@ -1291,7 +1291,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotifier2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UpdateWithTagAndGroup(void*, void*, void*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall UpdateWithTag(void*, void*, int32_t*) noexcept = 0;
@@ -1299,7 +1299,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotifier3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ScheduledToastNotificationShowing(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ScheduledToastNotificationShowing(winrt::event_token) noexcept = 0;
@@ -1307,7 +1307,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IUserNotification>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Notification(void**) noexcept = 0;
             virtual int32_t __stdcall get_AppInfo(void**) noexcept = 0;
@@ -1317,7 +1317,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IUserNotificationChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_UserNotificationId(uint32_t*) noexcept = 0;
@@ -1841,15 +1841,15 @@ namespace winrt::impl
         [[nodiscard]] auto ExpirationTime() const;
         auto Dismissed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::UI::Notifications::ToastDismissedEventArgs> const& handler) const;
         using Dismissed_revoker = impl::event_revoker<winrt::Windows::UI::Notifications::IToastNotification, &impl::abi_t<winrt::Windows::UI::Notifications::IToastNotification>::remove_Dismissed>;
-        [[nodiscard]] Dismissed_revoker Dismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::UI::Notifications::ToastDismissedEventArgs> const& handler) const;
+        [[nodiscard]] auto Dismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::UI::Notifications::ToastDismissedEventArgs> const& handler) const;
         auto Dismissed(winrt::event_token const& token) const noexcept;
         auto Activated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Activated_revoker = impl::event_revoker<winrt::Windows::UI::Notifications::IToastNotification, &impl::abi_t<winrt::Windows::UI::Notifications::IToastNotification>::remove_Activated>;
-        [[nodiscard]] Activated_revoker Activated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Activated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Activated(winrt::event_token const& token) const noexcept;
         auto Failed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::UI::Notifications::ToastFailedEventArgs> const& handler) const;
         using Failed_revoker = impl::event_revoker<winrt::Windows::UI::Notifications::IToastNotification, &impl::abi_t<winrt::Windows::UI::Notifications::IToastNotification>::remove_Failed>;
-        [[nodiscard]] Failed_revoker Failed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::UI::Notifications::ToastFailedEventArgs> const& handler) const;
+        [[nodiscard]] auto Failed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotification, winrt::Windows::UI::Notifications::ToastFailedEventArgs> const& handler) const;
         auto Failed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Notifications::IToastNotification>
@@ -1996,7 +1996,7 @@ namespace winrt::impl
         [[nodiscard]] auto NotificationMode() const;
         auto NotificationModeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotificationManagerForUser, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using NotificationModeChanged_revoker = impl::event_revoker<winrt::Windows::UI::Notifications::IToastNotificationManagerForUser3, &impl::abi_t<winrt::Windows::UI::Notifications::IToastNotificationManagerForUser3>::remove_NotificationModeChanged>;
-        [[nodiscard]] NotificationModeChanged_revoker NotificationModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotificationManagerForUser, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto NotificationModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotificationManagerForUser, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto NotificationModeChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Notifications::IToastNotificationManagerForUser3>
@@ -2071,7 +2071,7 @@ namespace winrt::impl
     {
         auto ScheduledToastNotificationShowing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotifier, winrt::Windows::UI::Notifications::ScheduledToastNotificationShowingEventArgs> const& handler) const;
         using ScheduledToastNotificationShowing_revoker = impl::event_revoker<winrt::Windows::UI::Notifications::IToastNotifier3, &impl::abi_t<winrt::Windows::UI::Notifications::IToastNotifier3>::remove_ScheduledToastNotificationShowing>;
-        [[nodiscard]] ScheduledToastNotificationShowing_revoker ScheduledToastNotificationShowing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotifier, winrt::Windows::UI::Notifications::ScheduledToastNotificationShowingEventArgs> const& handler) const;
+        [[nodiscard]] auto ScheduledToastNotificationShowing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Notifications::ToastNotifier, winrt::Windows::UI::Notifications::ScheduledToastNotificationShowingEventArgs> const& handler) const;
         auto ScheduledToastNotificationShowing(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Notifications::IToastNotifier3>

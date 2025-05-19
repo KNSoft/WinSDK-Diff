@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing
 {
@@ -236,7 +236,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionDetails>{ using type = winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetails; };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintBindingOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -246,7 +246,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintBorderingOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -256,7 +256,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCollationOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -266,7 +266,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintColorModeOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -276,7 +276,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCopiesOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -286,7 +286,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCustomItemDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemId(void**) noexcept = 0;
             virtual int32_t __stdcall put_ItemDisplayName(void*) noexcept = 0;
@@ -295,21 +295,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCustomItemListOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddItem(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCustomItemListOptionDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddItem(void*, void*, void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCustomItemListOptionDetails3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -319,7 +319,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCustomOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DisplayName(void*) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -327,7 +327,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCustomTextOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_MaxCharacters(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_MaxCharacters(uint32_t*) noexcept = 0;
@@ -335,7 +335,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCustomTextOptionDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -345,7 +345,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintCustomToggleOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -355,7 +355,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintDuplexOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -365,7 +365,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintHolePunchOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -375,14 +375,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintItemListOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintMediaSizeOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -392,7 +392,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintMediaTypeOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -402,7 +402,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintNumberOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinValue(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MaxValue(uint32_t*) noexcept = 0;
@@ -410,7 +410,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OptionId(void**) noexcept = 0;
             virtual int32_t __stdcall get_OptionType(int32_t*) noexcept = 0;
@@ -424,7 +424,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintOrientationOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -434,7 +434,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintPageRangeOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -444,7 +444,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintQualityOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -454,7 +454,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintStapleOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_WarningText(void*) noexcept = 0;
             virtual int32_t __stdcall get_WarningText(void**) noexcept = 0;
@@ -464,14 +464,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OptionId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Options(void**) noexcept = 0;
             virtual int32_t __stdcall CreateItemListOption(void*, void*, void**) noexcept = 0;
@@ -484,21 +484,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateToggleOption(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetailsStatic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFromPrintTaskOptions(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTextOptionDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxCharacters(uint32_t*) noexcept = 0;
         };
@@ -796,11 +796,11 @@ namespace winrt::impl
         auto CreateTextOption(param::hstring const& optionId, param::hstring const& displayName) const;
         auto OptionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionDetails, winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionChangedEventArgs> const& eventHandler) const;
         using OptionChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetails, &impl::abi_t<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetails>::remove_OptionChanged>;
-        [[nodiscard]] OptionChanged_revoker OptionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionDetails, winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionChangedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto OptionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionDetails, winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionChangedEventArgs> const& eventHandler) const;
         auto OptionChanged(winrt::event_token const& eventCookie) const noexcept;
         auto BeginValidation(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionDetails, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using BeginValidation_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetails, &impl::abi_t<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetails>::remove_BeginValidation>;
-        [[nodiscard]] BeginValidation_revoker BeginValidation(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionDetails, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto BeginValidation(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::OptionDetails::PrintTaskOptionDetails, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto BeginValidation(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing::OptionDetails::IPrintTaskOptionDetails>

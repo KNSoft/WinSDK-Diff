@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,11 +9,11 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
 {
@@ -87,7 +87,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher>{ using type = winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceWatcher; };
     template <> struct abi<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdRegistrationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IPAddress(void**) noexcept = 0;
@@ -96,7 +96,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceInstance>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DnssdServiceInstanceName(void**) noexcept = 0;
             virtual int32_t __stdcall put_DnssdServiceInstanceName(void*) noexcept = 0;
@@ -117,14 +117,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceInstanceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, uint16_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Added(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Added(winrt::event_token) noexcept = 0;
@@ -185,15 +185,15 @@ namespace winrt::impl
     {
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceInstance> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceWatcher, &impl::abi_t<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceInstance> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceInstance> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceWatcher, &impl::abi_t<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceWatcher, &impl::abi_t<winrt::Windows::Networking::ServiceDiscovery::Dnssd::IDnssdServiceWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::ServiceDiscovery::Dnssd::DnssdServiceWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;

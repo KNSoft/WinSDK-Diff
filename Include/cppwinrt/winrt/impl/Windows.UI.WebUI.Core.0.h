@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::UI
@@ -47,6 +47,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::WebUI::Core
     struct MenuClosedEventHandler;
     struct MenuOpenedEventHandler;
     struct SizeChangedEventHandler;
+    struct WebUICommandBarContract;
 }
 namespace winrt::impl
 {
@@ -96,6 +97,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::WebUI::Core::MenuClosedEventHandler> = L"Windows.UI.WebUI.Core.MenuClosedEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::WebUI::Core::MenuOpenedEventHandler> = L"Windows.UI.WebUI.Core.MenuOpenedEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::WebUI::Core::SizeChangedEventHandler> = L"Windows.UI.WebUI.Core.SizeChangedEventHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::WebUI::Core::WebUICommandBarContract> = L"Windows.UI.WebUI.Core.WebUICommandBarContract";
     template <> inline constexpr guid guid_v<winrt::Windows::UI::WebUI::Core::IWebUICommandBar>{ 0xA4FC0016,0xDBE5,0x41AD,{ 0x8D,0x7B,0x14,0x69,0x8B,0xD6,0x91,0x1D } }; // A4FC0016-DBE5-41AD-8D7B-14698BD6911D
     template <> inline constexpr guid guid_v<winrt::Windows::UI::WebUI::Core::IWebUICommandBarBitmapIcon>{ 0x858F4F45,0x08D8,0x4A46,{ 0x81,0xEC,0x00,0x01,0x5B,0x0B,0x1C,0x6C } }; // 858F4F45-08D8-4A46-81EC-00015B0B1C6C
     template <> inline constexpr guid guid_v<winrt::Windows::UI::WebUI::Core::IWebUICommandBarBitmapIconFactory>{ 0xF3F7D78A,0x7673,0x444A,{ 0xBE,0x62,0xAC,0x12,0xD3,0x1C,0x22,0x31 } }; // F3F7D78A-7673-444A-BE62-AC12D31C2231
@@ -120,7 +122,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::WebUI::Core::WebUICommandBarSymbolIcon>{ using type = winrt::Windows::UI::WebUI::Core::IWebUICommandBarSymbolIcon; };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Visible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Visible(bool) noexcept = 0;
@@ -147,7 +149,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarBitmapIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall put_Uri(void*) noexcept = 0;
@@ -155,14 +157,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarBitmapIconFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarConfirmationButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -172,19 +174,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarIconButton>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Enabled(bool) noexcept = 0;
@@ -202,28 +204,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarItemInvokedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPrimaryCommand(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarSizeChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Size(winrt::Windows::Foundation::Size*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarSymbolIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Symbol(void**) noexcept = 0;
             virtual int32_t __stdcall put_Symbol(void*) noexcept = 0;
@@ -231,28 +233,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::IWebUICommandBarSymbolIconFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::MenuClosedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::MenuOpenedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::WebUI::Core::SizeChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -277,15 +279,15 @@ namespace winrt::impl
         [[nodiscard]] auto SecondaryCommands() const;
         auto MenuOpened(winrt::Windows::UI::WebUI::Core::MenuOpenedEventHandler const& handler) const;
         using MenuOpened_revoker = impl::event_revoker<winrt::Windows::UI::WebUI::Core::IWebUICommandBar, &impl::abi_t<winrt::Windows::UI::WebUI::Core::IWebUICommandBar>::remove_MenuOpened>;
-        [[nodiscard]] MenuOpened_revoker MenuOpened(auto_revoke_t, winrt::Windows::UI::WebUI::Core::MenuOpenedEventHandler const& handler) const;
+        [[nodiscard]] auto MenuOpened(auto_revoke_t, winrt::Windows::UI::WebUI::Core::MenuOpenedEventHandler const& handler) const;
         auto MenuOpened(winrt::event_token const& value) const noexcept;
         auto MenuClosed(winrt::Windows::UI::WebUI::Core::MenuClosedEventHandler const& handler) const;
         using MenuClosed_revoker = impl::event_revoker<winrt::Windows::UI::WebUI::Core::IWebUICommandBar, &impl::abi_t<winrt::Windows::UI::WebUI::Core::IWebUICommandBar>::remove_MenuClosed>;
-        [[nodiscard]] MenuClosed_revoker MenuClosed(auto_revoke_t, winrt::Windows::UI::WebUI::Core::MenuClosedEventHandler const& handler) const;
+        [[nodiscard]] auto MenuClosed(auto_revoke_t, winrt::Windows::UI::WebUI::Core::MenuClosedEventHandler const& handler) const;
         auto MenuClosed(winrt::event_token const& value) const noexcept;
         auto SizeChanged(winrt::Windows::UI::WebUI::Core::SizeChangedEventHandler const& handler) const;
         using SizeChanged_revoker = impl::event_revoker<winrt::Windows::UI::WebUI::Core::IWebUICommandBar, &impl::abi_t<winrt::Windows::UI::WebUI::Core::IWebUICommandBar>::remove_SizeChanged>;
-        [[nodiscard]] SizeChanged_revoker SizeChanged(auto_revoke_t, winrt::Windows::UI::WebUI::Core::SizeChangedEventHandler const& handler) const;
+        [[nodiscard]] auto SizeChanged(auto_revoke_t, winrt::Windows::UI::WebUI::Core::SizeChangedEventHandler const& handler) const;
         auto SizeChanged(winrt::event_token const& value) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::WebUI::Core::IWebUICommandBar>
@@ -318,7 +320,7 @@ namespace winrt::impl
         auto Text(param::hstring const& value) const;
         auto ItemInvoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WebUI::Core::WebUICommandBarConfirmationButton, winrt::Windows::UI::WebUI::Core::WebUICommandBarItemInvokedEventArgs> const& handler) const;
         using ItemInvoked_revoker = impl::event_revoker<winrt::Windows::UI::WebUI::Core::IWebUICommandBarConfirmationButton, &impl::abi_t<winrt::Windows::UI::WebUI::Core::IWebUICommandBarConfirmationButton>::remove_ItemInvoked>;
-        [[nodiscard]] ItemInvoked_revoker ItemInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WebUI::Core::WebUICommandBarConfirmationButton, winrt::Windows::UI::WebUI::Core::WebUICommandBarItemInvokedEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WebUI::Core::WebUICommandBarConfirmationButton, winrt::Windows::UI::WebUI::Core::WebUICommandBarItemInvokedEventArgs> const& handler) const;
         auto ItemInvoked(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::WebUI::Core::IWebUICommandBarConfirmationButton>
@@ -356,7 +358,7 @@ namespace winrt::impl
         auto Icon(winrt::Windows::UI::WebUI::Core::IWebUICommandBarIcon const& value) const;
         auto ItemInvoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WebUI::Core::WebUICommandBarIconButton, winrt::Windows::UI::WebUI::Core::WebUICommandBarItemInvokedEventArgs> const& handler) const;
         using ItemInvoked_revoker = impl::event_revoker<winrt::Windows::UI::WebUI::Core::IWebUICommandBarIconButton, &impl::abi_t<winrt::Windows::UI::WebUI::Core::IWebUICommandBarIconButton>::remove_ItemInvoked>;
-        [[nodiscard]] ItemInvoked_revoker ItemInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WebUI::Core::WebUICommandBarIconButton, winrt::Windows::UI::WebUI::Core::WebUICommandBarItemInvokedEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::WebUI::Core::WebUICommandBarIconButton, winrt::Windows::UI::WebUI::Core::WebUICommandBarItemInvokedEventArgs> const& handler) const;
         auto ItemInvoked(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::WebUI::Core::IWebUICommandBarIconButton>

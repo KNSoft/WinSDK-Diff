@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -66,6 +66,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Calls::Background
     struct PhoneIncomingCallNotificationTriggerDetails;
     struct PhoneLineChangedTriggerDetails;
     struct PhoneNewVoicemailMessageTriggerDetails;
+    struct CallsBackgroundContract;
 }
 namespace winrt::impl
 {
@@ -103,6 +104,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::Background::IPhoneIncomingCallNotificationTriggerDetails> = L"Windows.ApplicationModel.Calls.Background.IPhoneIncomingCallNotificationTriggerDetails";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::Background::IPhoneLineChangedTriggerDetails> = L"Windows.ApplicationModel.Calls.Background.IPhoneLineChangedTriggerDetails";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::Background::IPhoneNewVoicemailMessageTriggerDetails> = L"Windows.ApplicationModel.Calls.Background.IPhoneNewVoicemailMessageTriggerDetails";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::Background::CallsBackgroundContract> = L"Windows.ApplicationModel.Calls.Background.CallsBackgroundContract";
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Calls::Background::IPhoneCallBlockedTriggerDetails>{ 0xA4A690A2,0xE4C1,0x427F,{ 0x86,0x4E,0xE4,0x70,0x47,0x7D,0xDB,0x67 } }; // A4A690A2-E4C1-427F-864E-E470477DDB67
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Calls::Background::IPhoneCallOriginDataRequestTriggerDetails>{ 0x6E9B5B3F,0xC54B,0x4E82,{ 0x4C,0xC9,0xE3,0x29,0xA4,0x18,0x45,0x92 } }; // 6E9B5B3F-C54B-4E82-4CC9-E329A4184592
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Calls::Background::IPhoneIncomingCallDismissedTriggerDetails>{ 0xBAD30276,0x83B6,0x5732,{ 0x9C,0x38,0x0C,0x20,0x65,0x46,0x19,0x6A } }; // BAD30276-83B6-5732-9C38-0C206546196A
@@ -117,7 +119,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Calls::Background::PhoneNewVoicemailMessageTriggerDetails>{ using type = winrt::Windows::ApplicationModel::Calls::Background::IPhoneNewVoicemailMessageTriggerDetails; };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Background::IPhoneCallBlockedTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PhoneNumber(void**) noexcept = 0;
             virtual int32_t __stdcall get_LineId(winrt::guid*) noexcept = 0;
@@ -126,7 +128,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Background::IPhoneCallOriginDataRequestTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_PhoneNumber(void**) noexcept = 0;
@@ -134,7 +136,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Background::IPhoneIncomingCallDismissedTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LineId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_PhoneNumber(void**) noexcept = 0;
@@ -146,7 +148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Background::IPhoneIncomingCallNotificationTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LineId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_CallId(void**) noexcept = 0;
@@ -154,7 +156,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Background::IPhoneLineChangedTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LineId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_ChangeType(int32_t*) noexcept = 0;
@@ -163,7 +165,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Background::IPhoneNewVoicemailMessageTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LineId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_VoicemailCount(int32_t*) noexcept = 0;

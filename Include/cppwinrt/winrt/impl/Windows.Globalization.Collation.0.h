@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -33,7 +33,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Globalization::Collation::CharacterGroupings>{ using type = winrt::Windows::Globalization::Collation::ICharacterGroupings; };
     template <> struct abi<winrt::Windows::Globalization::Collation::ICharacterGrouping>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_First(void**) noexcept = 0;
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
@@ -41,14 +41,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::Collation::ICharacterGroupings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Lookup(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::Collation::ICharacterGroupingsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };

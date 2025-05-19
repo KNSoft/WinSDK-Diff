@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@
 #include "winrt/impl/Windows.ApplicationModel.UserDataAccounts.SystemAccess.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts::SystemAccess
 {
-    struct __declspec(empty_bases) DeviceAccountConfiguration : winrt::Windows::ApplicationModel::UserDataAccounts::SystemAccess::IDeviceAccountConfiguration,
+    struct WINRT_IMPL_EMPTY_BASES DeviceAccountConfiguration : winrt::Windows::ApplicationModel::UserDataAccounts::SystemAccess::IDeviceAccountConfiguration,
         impl::require<DeviceAccountConfiguration, winrt::Windows::ApplicationModel::UserDataAccounts::SystemAccess::IDeviceAccountConfiguration2>
     {
         DeviceAccountConfiguration(std::nullptr_t) noexcept {}

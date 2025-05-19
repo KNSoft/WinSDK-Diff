@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,28 +9,28 @@
 #include "winrt/impl/Windows.ApplicationModel.UserDataAccounts.SystemAccess.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts::SystemAccess
 {
-    struct __declspec(empty_bases) IDeviceAccountConfiguration :
+    struct WINRT_IMPL_EMPTY_BASES IDeviceAccountConfiguration :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeviceAccountConfiguration>
     {
         IDeviceAccountConfiguration(std::nullptr_t = nullptr) noexcept {}
         IDeviceAccountConfiguration(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDeviceAccountConfiguration2 :
+    struct WINRT_IMPL_EMPTY_BASES IDeviceAccountConfiguration2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeviceAccountConfiguration2>
     {
         IDeviceAccountConfiguration2(std::nullptr_t = nullptr) noexcept {}
         IDeviceAccountConfiguration2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccountSystemAccessManagerStatics :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountSystemAccessManagerStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountSystemAccessManagerStatics>
     {
         IUserDataAccountSystemAccessManagerStatics(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccountSystemAccessManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccountSystemAccessManagerStatics2 :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountSystemAccessManagerStatics2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountSystemAccessManagerStatics2>
     {

@@ -8092,6 +8092,15 @@
 //
 #define CI_DATABASE_DECRYPTION_FAILED    ((HRESULT)0xC0041838L)
 
+//
+// MessageId: CI_DATABASE_ENCRYPTION_FAILED
+//
+// MessageText:
+//
+// Failed to encrypt an existing database file during first encryption upgrade for the device.
+//
+#define CI_DATABASE_ENCRYPTION_FAILED    ((HRESULT)0xC0041839L)
+
 #endif // _CIERROR_H_
 #ifndef _FILTERR_H_
 #define _FILTERR_H_

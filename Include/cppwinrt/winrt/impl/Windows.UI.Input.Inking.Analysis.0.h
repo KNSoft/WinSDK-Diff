@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Inking
 {
@@ -167,14 +167,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Input::Inking::Analysis::InkAnalyzer>{ using type = winrt::Windows::UI::Input::Inking::Analysis::IInkAnalyzer; };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisInkBullet>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecognizedText(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisInkDrawing>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DrawingKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Center(winrt::Windows::Foundation::Point*) noexcept = 0;
@@ -183,7 +183,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisInkWord>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecognizedText(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextAlternates(void**) noexcept = 0;
@@ -191,7 +191,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisLine>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecognizedText(void**) noexcept = 0;
             virtual int32_t __stdcall get_IndentLevel(int32_t*) noexcept = 0;
@@ -199,14 +199,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisListItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecognizedText(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -219,21 +219,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisParagraph>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecognizedText(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisRoot>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecognizedText(void**) noexcept = 0;
             virtual int32_t __stdcall FindNodes(int32_t, void**) noexcept = 0;
@@ -241,14 +241,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisWritingRegion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecognizedText(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalyzer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnalysisRoot(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsAnalyzing(bool*) noexcept = 0;
@@ -264,7 +264,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Analysis::IInkAnalyzerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAnalyzer(void**) noexcept = 0;
         };

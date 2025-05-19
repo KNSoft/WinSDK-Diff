@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,16 +13,16 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -324,6 +324,9 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Calls
     struct PhoneVoicemail;
     struct VoipCallCoordinator;
     struct VoipPhoneCall;
+    struct CallsPhoneContract;
+    struct CallsVoipContract;
+    struct LockScreenCallContract;
 }
 namespace winrt::impl
 {
@@ -577,6 +580,9 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall2> = L"Windows.ApplicationModel.Calls.IVoipPhoneCall2";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall3> = L"Windows.ApplicationModel.Calls.IVoipPhoneCall3";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall4> = L"Windows.ApplicationModel.Calls.IVoipPhoneCall4";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::CallsPhoneContract> = L"Windows.ApplicationModel.Calls.CallsPhoneContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::CallsVoipContract> = L"Windows.ApplicationModel.Calls.CallsVoipContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Calls::LockScreenCallContract> = L"Windows.ApplicationModel.Calls.LockScreenCallContract";
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Calls::IAcceptedVoipPhoneCallOptions>{ 0xE519C726,0xB86F,0x5ADD,{ 0x8A,0xE2,0x0F,0x46,0xAC,0xD9,0x23,0x2D } }; // E519C726-B86F-5ADD-8AE2-0F46ACD9232D
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Calls::IAcceptedVoipPhoneCallOptionsFactory>{ 0x6CF8A79B,0xACC1,0x54CE,{ 0xA7,0x5D,0xCC,0x78,0xD1,0x76,0x90,0xC8 } }; // 6CF8A79B-ACC1-54CE-A75D-CC78D17690C8
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Calls::IAppInitiatedVoipPhoneCallOptions>{ 0x86BEBF63,0xFF5A,0x57FD,{ 0x84,0xC6,0x2D,0x2C,0xF1,0x83,0x02,0xF8 } }; // 86BEBF63-FF5A-57FD-84C6-2D2CF18302F8
@@ -672,7 +678,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall>{ using type = winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall; };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IAcceptedVoipPhoneCallOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Context(void**) noexcept = 0;
             virtual int32_t __stdcall put_Context(void*) noexcept = 0;
@@ -689,14 +695,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IAcceptedVoipPhoneCallOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IAppInitiatedVoipPhoneCallOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Context(void**) noexcept = 0;
             virtual int32_t __stdcall put_Context(void*) noexcept = 0;
@@ -713,42 +719,42 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IAppInitiatedVoipPhoneCallOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::ICallAnswerEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AcceptedMedia(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::ICallAnswerEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceDeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::ICallRejectEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RejectReason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::ICallStateChangeEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IIncomingVoipPhoneCallOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Context(void**) noexcept = 0;
             virtual int32_t __stdcall put_Context(void*) noexcept = 0;
@@ -777,21 +783,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IIncomingVoipPhoneCallOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::ILockScreenCallEndCallDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::ILockScreenCallEndRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
             virtual int32_t __stdcall get_Deadline(int64_t*) noexcept = 0;
@@ -799,7 +805,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::ILockScreenCallUI>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Dismiss() noexcept = 0;
             virtual int32_t __stdcall add_EndRequested(void*, winrt::event_token*) noexcept = 0;
@@ -812,14 +818,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IMuteChangeEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Muted(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IOutgoingVoipPhoneCallOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Context(void**) noexcept = 0;
             virtual int32_t __stdcall put_Context(void*) noexcept = 0;
@@ -834,14 +840,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IOutgoingVoipPhoneCallOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCall>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_StatusChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_StatusChanged(winrt::event_token) noexcept = 0;
@@ -877,7 +883,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallBlockingStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BlockUnknownNumbers(bool*) noexcept = 0;
             virtual int32_t __stdcall put_BlockUnknownNumbers(bool) noexcept = 0;
@@ -888,7 +894,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryEntry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Address(void**) noexcept = 0;
@@ -928,7 +934,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryEntryAddress>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContactId(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContactId(void*) noexcept = 0;
@@ -942,14 +948,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryEntryAddressFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryEntryQueryOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredMedia(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DesiredMedia(uint32_t) noexcept = 0;
@@ -958,14 +964,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryEntryReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -973,21 +979,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallHistoryStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetEntryAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetEntryReader(void**) noexcept = 0;
@@ -1005,7 +1011,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LineId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_IsHoldSupported(bool*) noexcept = 0;
@@ -1017,14 +1023,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowPhoneCallUI(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CallStateChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CallStateChanged(winrt::event_token) noexcept = 0;
@@ -1036,14 +1042,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFromId(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsEmergencyPhoneNumberAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefaultLineAsync(void**) noexcept = 0;
@@ -1052,21 +1058,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallVideoCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsVideoCallingCapable(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallVideoCapabilitiesManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCapabilitiesAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneCallsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OperationStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AllActivePhoneCalls(void**) noexcept = 0;
@@ -1074,7 +1080,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneDialOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Number(void**) noexcept = 0;
             virtual int32_t __stdcall put_Number(void*) noexcept = 0;
@@ -1092,7 +1098,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLine>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_LineChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_LineChanged(winrt::event_token) noexcept = 0;
@@ -1115,7 +1121,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLine2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall EnableTextReply(bool) noexcept = 0;
             virtual int32_t __stdcall get_TransportDeviceId(void**) noexcept = 0;
@@ -1123,7 +1129,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLine3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DialWithResult(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall DialWithResultAsync(void*, void*, void**) noexcept = 0;
@@ -1133,7 +1139,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineCellularDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SimState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SimSlotIndex(int32_t*) noexcept = 0;
@@ -1144,7 +1150,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsVideoCallingEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedProperties(void**) noexcept = 0;
@@ -1152,7 +1158,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineDialResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DialCallStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DialedCall(void**) noexcept = 0;
@@ -1160,14 +1166,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(winrt::guid, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineTransportDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Transport(int32_t*) noexcept = 0;
@@ -1183,7 +1189,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineTransportDevice2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioRoutingStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_AudioRoutingStatusChanged(void*, winrt::event_token*) noexcept = 0;
@@ -1195,7 +1201,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineTransportDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromId(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -1204,7 +1210,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Start() noexcept = 0;
             virtual int32_t __stdcall Stop() noexcept = 0;
@@ -1223,14 +1229,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcherEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LineId(winrt::guid*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IPhoneVoicemail>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Number(void**) noexcept = 0;
             virtual int32_t __stdcall get_MessageCount(int32_t*) noexcept = 0;
@@ -1240,7 +1246,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReserveCallResourcesAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall add_MuteStateChanged(void*, winrt::event_token*) noexcept = 0;
@@ -1257,14 +1263,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinator2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetupNewAcceptedCall(void*, void*, void*, void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinator3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestNewAppInitiatedCall(void*, void*, void*, void*, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall RequestNewIncomingCallWithContactRemoteId(void*, void*, void*, void*, void*, void*, void*, void*, uint32_t, int64_t, void*, void**) noexcept = 0;
@@ -1272,14 +1278,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinator4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReserveOneProcessCallResourcesAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinator5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestNewIncomingCallWithOptions(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestNewOutgoingCallWithOptions(void*, void**) noexcept = 0;
@@ -1289,14 +1295,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinatorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinatorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsCallControlDeviceKindSupportedForAssociation(int32_t, bool*) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorForCallControl(void**) noexcept = 0;
@@ -1304,7 +1310,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_EndRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_EndRequested(winrt::event_token) noexcept = 0;
@@ -1330,21 +1336,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryShowAppUI() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall NotifyCallAccepted(uint32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsUsingAssociatedDevicesList(bool*) noexcept = 0;
             virtual int32_t __stdcall NotifyCallActiveOnDevices(void*) noexcept = 0;
@@ -1511,11 +1517,11 @@ namespace winrt::impl
         auto Dismiss() const;
         auto EndRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::LockScreenCallUI, winrt::Windows::ApplicationModel::Calls::LockScreenCallEndRequestedEventArgs> const& handler) const;
         using EndRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::ILockScreenCallUI, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::ILockScreenCallUI>::remove_EndRequested>;
-        [[nodiscard]] EndRequested_revoker EndRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::LockScreenCallUI, winrt::Windows::ApplicationModel::Calls::LockScreenCallEndRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto EndRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::LockScreenCallUI, winrt::Windows::ApplicationModel::Calls::LockScreenCallEndRequestedEventArgs> const& handler) const;
         auto EndRequested(winrt::event_token const& token) const noexcept;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::LockScreenCallUI, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::ILockScreenCallUI, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::ILockScreenCallUI>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::LockScreenCallUI, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::LockScreenCallUI, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto CallTitle() const;
         auto CallTitle(param::hstring const& value) const;
@@ -1564,15 +1570,15 @@ namespace winrt::impl
     {
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneCall, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneCall>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
         auto AudioDeviceChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AudioDeviceChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneCall, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneCall>::remove_AudioDeviceChanged>;
-        [[nodiscard]] AudioDeviceChanged_revoker AudioDeviceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AudioDeviceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AudioDeviceChanged(winrt::event_token const& token) const noexcept;
         auto IsMutedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsMutedChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneCall, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneCall>::remove_IsMutedChanged>;
-        [[nodiscard]] IsMutedChanged_revoker IsMutedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsMutedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneCall, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsMutedChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto CallId() const;
         [[nodiscard]] auto IsMuted() const;
@@ -1779,7 +1785,7 @@ namespace winrt::impl
     {
         auto CallStateChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CallStateChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneCallManagerStatics2, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneCallManagerStatics2>::remove_CallStateChanged>;
-        [[nodiscard]] CallStateChanged_revoker CallStateChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CallStateChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CallStateChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto IsCallActive() const;
         [[nodiscard]] auto IsCallIncoming() const;
@@ -1863,7 +1869,7 @@ namespace winrt::impl
     {
         auto LineChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLine, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using LineChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneLine, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneLine>::remove_LineChanged>;
-        [[nodiscard]] LineChanged_revoker LineChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLine, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto LineChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLine, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto LineChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Id() const;
         [[nodiscard]] auto DisplayColor() const;
@@ -1973,12 +1979,12 @@ namespace winrt::impl
         [[nodiscard]] auto AudioRoutingStatus() const;
         auto AudioRoutingStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineTransportDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AudioRoutingStatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneLineTransportDevice2, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneLineTransportDevice2>::remove_AudioRoutingStatusChanged>;
-        [[nodiscard]] AudioRoutingStatusChanged_revoker AudioRoutingStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineTransportDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AudioRoutingStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineTransportDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AudioRoutingStatusChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto InBandRingingEnabled() const;
         auto InBandRingingEnabledChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineTransportDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using InBandRingingEnabledChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneLineTransportDevice2, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneLineTransportDevice2>::remove_InBandRingingEnabledChanged>;
-        [[nodiscard]] InBandRingingEnabledChanged_revoker InBandRingingEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineTransportDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto InBandRingingEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineTransportDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto InBandRingingEnabledChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Calls::IPhoneLineTransportDevice2>
@@ -2003,23 +2009,23 @@ namespace winrt::impl
         auto Stop() const;
         auto LineAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
         using LineAdded_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher>::remove_LineAdded>;
-        [[nodiscard]] LineAdded_revoker LineAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
+        [[nodiscard]] auto LineAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
         auto LineAdded(winrt::event_token const& token) const noexcept;
         auto LineRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
         using LineRemoved_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher>::remove_LineRemoved>;
-        [[nodiscard]] LineRemoved_revoker LineRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
+        [[nodiscard]] auto LineRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
         auto LineRemoved(winrt::event_token const& token) const noexcept;
         auto LineUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
         using LineUpdated_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher>::remove_LineUpdated>;
-        [[nodiscard]] LineUpdated_revoker LineUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
+        [[nodiscard]] auto LineUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::ApplicationModel::Calls::PhoneLineWatcherEventArgs> const& handler) const;
         auto LineUpdated(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IPhoneLineWatcher>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::PhoneLineWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
     };
@@ -2054,7 +2060,7 @@ namespace winrt::impl
         auto ReserveCallResourcesAsync(param::hstring const& taskEntryPoint) const;
         auto MuteStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipCallCoordinator, winrt::Windows::ApplicationModel::Calls::MuteChangeEventArgs> const& muteChangeHandler) const;
         using MuteStateChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinator, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IVoipCallCoordinator>::remove_MuteStateChanged>;
-        [[nodiscard]] MuteStateChanged_revoker MuteStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipCallCoordinator, winrt::Windows::ApplicationModel::Calls::MuteChangeEventArgs> const& muteChangeHandler) const;
+        [[nodiscard]] auto MuteStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipCallCoordinator, winrt::Windows::ApplicationModel::Calls::MuteChangeEventArgs> const& muteChangeHandler) const;
         auto MuteStateChanged(winrt::event_token const& token) const noexcept;
         auto RequestNewIncomingCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, winrt::Windows::Foundation::Uri const& contactImage, param::hstring const& serviceName, winrt::Windows::Foundation::Uri const& brandingImage, param::hstring const& callDetails, winrt::Windows::Foundation::Uri const& ringtone, winrt::Windows::ApplicationModel::Calls::VoipPhoneCallMedia const& media, winrt::Windows::Foundation::TimeSpan const& ringTimeout) const;
         auto RequestNewOutgoingCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& serviceName, winrt::Windows::ApplicationModel::Calls::VoipPhoneCallMedia const& media) const;
@@ -2133,23 +2139,23 @@ namespace winrt::impl
     {
         auto EndRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
         using EndRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall>::remove_EndRequested>;
-        [[nodiscard]] EndRequested_revoker EndRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
+        [[nodiscard]] auto EndRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
         auto EndRequested(winrt::event_token const& token) const noexcept;
         auto HoldRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
         using HoldRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall>::remove_HoldRequested>;
-        [[nodiscard]] HoldRequested_revoker HoldRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
+        [[nodiscard]] auto HoldRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
         auto HoldRequested(winrt::event_token const& token) const noexcept;
         auto ResumeRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
         using ResumeRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall>::remove_ResumeRequested>;
-        [[nodiscard]] ResumeRequested_revoker ResumeRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
+        [[nodiscard]] auto ResumeRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallStateChangeEventArgs> const& handler) const;
         auto ResumeRequested(winrt::event_token const& token) const noexcept;
         auto AnswerRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallAnswerEventArgs> const& acceptHandler) const;
         using AnswerRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall>::remove_AnswerRequested>;
-        [[nodiscard]] AnswerRequested_revoker AnswerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallAnswerEventArgs> const& acceptHandler) const;
+        [[nodiscard]] auto AnswerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallAnswerEventArgs> const& acceptHandler) const;
         auto AnswerRequested(winrt::event_token const& token) const noexcept;
         auto RejectRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallRejectEventArgs> const& rejectHandler) const;
         using RejectRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall, &impl::abi_t<winrt::Windows::ApplicationModel::Calls::IVoipPhoneCall>::remove_RejectRequested>;
-        [[nodiscard]] RejectRequested_revoker RejectRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallRejectEventArgs> const& rejectHandler) const;
+        [[nodiscard]] auto RejectRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Calls::VoipPhoneCall, winrt::Windows::ApplicationModel::Calls::CallRejectEventArgs> const& rejectHandler) const;
         auto RejectRequested(winrt::event_token const& token) const noexcept;
         auto NotifyCallHeld() const;
         auto NotifyCallActive() const;

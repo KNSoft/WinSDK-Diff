@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -237,7 +237,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Cryptography::Core::SymmetricKeyAlgorithmProvider>{ using type = winrt::Windows::Security::Cryptography::Core::ISymmetricKeyAlgorithmProvider; };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IAsymmetricAlgorithmNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RsaPkcs1(void**) noexcept = 0;
             virtual int32_t __stdcall get_RsaOaepSha1(void**) noexcept = 0;
@@ -261,7 +261,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IAsymmetricAlgorithmNamesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EcdsaSha256(void**) noexcept = 0;
             virtual int32_t __stdcall get_EcdsaSha384(void**) noexcept = 0;
@@ -270,7 +270,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IAsymmetricKeyAlgorithmProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlgorithmName(void**) noexcept = 0;
             virtual int32_t __stdcall CreateKeyPair(uint32_t, void**) noexcept = 0;
@@ -282,7 +282,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IAsymmetricKeyAlgorithmProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateKeyPairWithCurveName(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateKeyPairWithCurveParameters(uint32_t, uint8_t*, void**) noexcept = 0;
@@ -290,14 +290,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IAsymmetricKeyAlgorithmProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenAlgorithm(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::ICryptographicEngineStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Encrypt(void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall Decrypt(void*, void*, void*, void**) noexcept = 0;
@@ -310,7 +310,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::ICryptographicEngineStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SignHashedData(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall VerifySignatureWithHashInput(void*, void*, void*, bool*) noexcept = 0;
@@ -321,7 +321,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::ICryptographicKey>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeySize(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall ExportDefaultPrivateKeyBlobType(void**) noexcept = 0;
@@ -332,7 +332,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IEccCurveNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BrainpoolP160r1(void**) noexcept = 0;
             virtual int32_t __stdcall get_BrainpoolP160t1(void**) noexcept = 0;
@@ -384,7 +384,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IEncryptedAndAuthenticatedData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EncryptedData(void**) noexcept = 0;
             virtual int32_t __stdcall get_AuthenticationTag(void**) noexcept = 0;
@@ -392,7 +392,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IHashAlgorithmNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Md5(void**) noexcept = 0;
             virtual int32_t __stdcall get_Sha1(void**) noexcept = 0;
@@ -403,7 +403,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IHashAlgorithmProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlgorithmName(void**) noexcept = 0;
             virtual int32_t __stdcall get_HashLength(uint32_t*) noexcept = 0;
@@ -413,14 +413,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IHashAlgorithmProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenAlgorithm(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IHashComputation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Append(void*) noexcept = 0;
             virtual int32_t __stdcall GetValueAndReset(void**) noexcept = 0;
@@ -428,7 +428,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IKeyDerivationAlgorithmNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Pbkdf2Md5(void**) noexcept = 0;
             virtual int32_t __stdcall get_Pbkdf2Sha1(void**) noexcept = 0;
@@ -449,7 +449,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IKeyDerivationAlgorithmNamesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CapiKdfMd5(void**) noexcept = 0;
             virtual int32_t __stdcall get_CapiKdfSha1(void**) noexcept = 0;
@@ -460,7 +460,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IKeyDerivationAlgorithmProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlgorithmName(void**) noexcept = 0;
             virtual int32_t __stdcall CreateKey(void*, void**) noexcept = 0;
@@ -468,14 +468,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IKeyDerivationAlgorithmProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenAlgorithm(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IKeyDerivationParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KdfGenericBinary(void**) noexcept = 0;
             virtual int32_t __stdcall put_KdfGenericBinary(void*) noexcept = 0;
@@ -484,7 +484,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IKeyDerivationParameters2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Capi1KdfTargetAlgorithm(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Capi1KdfTargetAlgorithm(int32_t) noexcept = 0;
@@ -492,7 +492,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IKeyDerivationParametersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall BuildForPbkdf2(void*, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall BuildForSP800108(void*, void*, void**) noexcept = 0;
@@ -501,14 +501,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IKeyDerivationParametersStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall BuildForCapi1Kdf(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IMacAlgorithmNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HmacMd5(void**) noexcept = 0;
             virtual int32_t __stdcall get_HmacSha1(void**) noexcept = 0;
@@ -520,7 +520,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IMacAlgorithmProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlgorithmName(void**) noexcept = 0;
             virtual int32_t __stdcall get_MacLength(uint32_t*) noexcept = 0;
@@ -529,21 +529,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IMacAlgorithmProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateHash(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IMacAlgorithmProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenAlgorithm(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::IPersistedKeyProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenKeyPairFromCertificateAsync(void*, void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall OpenPublicKeyFromCertificate(void*, void*, int32_t, void**) noexcept = 0;
@@ -551,7 +551,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::ISymmetricAlgorithmNamesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesCbc(void**) noexcept = 0;
             virtual int32_t __stdcall get_DesEcb(void**) noexcept = 0;
@@ -576,7 +576,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::ISymmetricKeyAlgorithmProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlgorithmName(void**) noexcept = 0;
             virtual int32_t __stdcall get_BlockLength(uint32_t*) noexcept = 0;
@@ -585,7 +585,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::Core::ISymmetricKeyAlgorithmProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenAlgorithm(void*, void**) noexcept = 0;
         };

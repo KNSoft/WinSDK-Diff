@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,42 +9,42 @@
 #include "winrt/impl/Windows.Perception.People.0.h"
 WINRT_EXPORT namespace winrt::Windows::Perception::People
 {
-    struct __declspec(empty_bases) IEyesPose :
+    struct WINRT_IMPL_EMPTY_BASES IEyesPose :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IEyesPose>
     {
         IEyesPose(std::nullptr_t = nullptr) noexcept {}
         IEyesPose(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IEyesPoseStatics :
+    struct WINRT_IMPL_EMPTY_BASES IEyesPoseStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IEyesPoseStatics>
     {
         IEyesPoseStatics(std::nullptr_t = nullptr) noexcept {}
         IEyesPoseStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IHandMeshObserver :
+    struct WINRT_IMPL_EMPTY_BASES IHandMeshObserver :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IHandMeshObserver>
     {
         IHandMeshObserver(std::nullptr_t = nullptr) noexcept {}
         IHandMeshObserver(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IHandMeshVertexState :
+    struct WINRT_IMPL_EMPTY_BASES IHandMeshVertexState :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IHandMeshVertexState>
     {
         IHandMeshVertexState(std::nullptr_t = nullptr) noexcept {}
         IHandMeshVertexState(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IHandPose :
+    struct WINRT_IMPL_EMPTY_BASES IHandPose :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IHandPose>
     {
         IHandPose(std::nullptr_t = nullptr) noexcept {}
         IHandPose(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IHeadPose :
+    struct WINRT_IMPL_EMPTY_BASES IHeadPose :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IHeadPose>
     {

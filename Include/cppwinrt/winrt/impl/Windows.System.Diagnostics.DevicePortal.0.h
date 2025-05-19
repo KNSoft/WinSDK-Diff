@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking::Sockets
 {
@@ -82,7 +82,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnectionRequestReceivedEventArgs>{ using type = winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnectionRequestReceivedEventArgs; };
     template <> struct abi<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Closed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Closed(winrt::event_token) noexcept = 0;
@@ -92,14 +92,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnectionClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnectionRequestReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestMessage(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResponseMessage(void**) noexcept = 0;
@@ -107,14 +107,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForAppServiceConnection(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalWebSocketConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetServerMessageWebSocketForRequest(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetServerMessageWebSocketForRequest2(void*, int32_t, void*, void**) noexcept = 0;
@@ -125,7 +125,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalWebSocketConnectionRequestReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsWebSocketUpgradeRequest(bool*) noexcept = 0;
             virtual int32_t __stdcall get_WebSocketProtocolsRequested(void**) noexcept = 0;
@@ -137,11 +137,11 @@ namespace winrt::impl
     {
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnection, winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnectionClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnection, &impl::abi_t<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnection>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnection, winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnectionClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnection, winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnectionClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto RequestReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnection, winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnectionRequestReceivedEventArgs> const& handler) const;
         using RequestReceived_revoker = impl::event_revoker<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnection, &impl::abi_t<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnection>::remove_RequestReceived>;
-        [[nodiscard]] RequestReceived_revoker RequestReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnection, winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnectionRequestReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto RequestReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnection, winrt::Windows::System::Diagnostics::DevicePortal::DevicePortalConnectionRequestReceivedEventArgs> const& handler) const;
         auto RequestReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnection>

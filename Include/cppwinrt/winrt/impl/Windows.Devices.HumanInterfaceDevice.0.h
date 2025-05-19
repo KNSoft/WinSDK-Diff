@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -135,7 +135,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::HumanInterfaceDevice::HidOutputReport>{ using type = winrt::Windows::Devices::HumanInterfaceDevice::IHidOutputReport; };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidBooleanControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_UsagePage(uint16_t*) noexcept = 0;
@@ -147,7 +147,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidBooleanControlDescription>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ReportId(uint16_t*) noexcept = 0;
@@ -159,14 +159,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidBooleanControlDescription2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAbsolute(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
@@ -176,7 +176,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VendorId(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_ProductId(uint16_t*) noexcept = 0;
@@ -201,7 +201,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(uint16_t, uint16_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorVidPid(uint16_t, uint16_t, uint16_t, uint16_t, void**) noexcept = 0;
@@ -210,7 +210,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidFeatureReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
@@ -223,7 +223,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidInputReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
@@ -237,14 +237,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidInputReportReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Report(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidNumericControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsGrouped(bool*) noexcept = 0;
@@ -259,7 +259,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidNumericControlDescription>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ReportId(uint16_t*) noexcept = 0;
@@ -281,7 +281,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::HumanInterfaceDevice::IHidOutputReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
@@ -363,7 +363,7 @@ namespace winrt::impl
         auto GetNumericControlDescriptions(winrt::Windows::Devices::HumanInterfaceDevice::HidReportType const& reportType, uint16_t usagePage, uint16_t usageId) const;
         auto InputReportReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::HumanInterfaceDevice::HidDevice, winrt::Windows::Devices::HumanInterfaceDevice::HidInputReportReceivedEventArgs> const& reportHandler) const;
         using InputReportReceived_revoker = impl::event_revoker<winrt::Windows::Devices::HumanInterfaceDevice::IHidDevice, &impl::abi_t<winrt::Windows::Devices::HumanInterfaceDevice::IHidDevice>::remove_InputReportReceived>;
-        [[nodiscard]] InputReportReceived_revoker InputReportReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::HumanInterfaceDevice::HidDevice, winrt::Windows::Devices::HumanInterfaceDevice::HidInputReportReceivedEventArgs> const& reportHandler) const;
+        [[nodiscard]] auto InputReportReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::HumanInterfaceDevice::HidDevice, winrt::Windows::Devices::HumanInterfaceDevice::HidInputReportReceivedEventArgs> const& reportHandler) const;
         auto InputReportReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::HumanInterfaceDevice::IHidDevice>

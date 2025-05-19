@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation::Geofencing
 {
@@ -91,7 +91,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Geolocation::Geofencing::GeofenceStateChangeReport>{ using type = winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceStateChangeReport; };
     template <> struct abi<winrt::Windows::Devices::Geolocation::Geofencing::IGeofence>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Duration(int64_t*) noexcept = 0;
@@ -104,7 +104,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithMonitorStates(void*, void*, uint32_t, bool, void**) noexcept = 0;
@@ -114,7 +114,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceMonitor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Geofences(void**) noexcept = 0;
@@ -128,14 +128,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceMonitorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceStateChangeReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NewState(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Geofence(void**) noexcept = 0;
@@ -178,12 +178,12 @@ namespace winrt::impl
         [[nodiscard]] auto LastKnownGeoposition() const;
         auto GeofenceStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geofencing::GeofenceMonitor, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using GeofenceStateChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceMonitor, &impl::abi_t<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceMonitor>::remove_GeofenceStateChanged>;
-        [[nodiscard]] GeofenceStateChanged_revoker GeofenceStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geofencing::GeofenceMonitor, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto GeofenceStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geofencing::GeofenceMonitor, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto GeofenceStateChanged(winrt::event_token const& token) const noexcept;
         auto ReadReports() const;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geofencing::GeofenceMonitor, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceMonitor, &impl::abi_t<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceMonitor>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geofencing::GeofenceMonitor, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geofencing::GeofenceMonitor, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Geolocation::Geofencing::IGeofenceMonitor>

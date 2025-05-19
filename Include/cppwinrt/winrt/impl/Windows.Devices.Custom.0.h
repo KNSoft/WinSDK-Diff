@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -47,6 +47,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Custom
     struct CustomDevice;
     struct IOControlCode;
     struct KnownDeviceTypes;
+    struct CustomDeviceContract;
 }
 namespace winrt::impl
 {
@@ -74,6 +75,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Custom::IIOControlCode> = L"Windows.Devices.Custom.IIOControlCode";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Custom::IIOControlCodeFactory> = L"Windows.Devices.Custom.IIOControlCodeFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Custom::IKnownDeviceTypesStatics> = L"Windows.Devices.Custom.IKnownDeviceTypesStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Custom::CustomDeviceContract> = L"Windows.Devices.Custom.CustomDeviceContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Custom::ICustomDevice>{ 0xDD30251F,0xC48B,0x43BD,{ 0xBC,0xB1,0xDE,0xC8,0x8F,0x15,0x14,0x3E } }; // DD30251F-C48B-43BD-BCB1-DEC88F15143E
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Custom::ICustomDeviceStatics>{ 0xC8220312,0xEF4C,0x46B1,{ 0xA5,0x8E,0xEE,0xB3,0x08,0xDC,0x89,0x17 } }; // C8220312-EF4C-46B1-A58E-EEB308DC8917
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Custom::IIOControlCode>{ 0x0E9559E7,0x60C8,0x4375,{ 0xA7,0x61,0x7F,0x88,0x08,0x06,0x6C,0x60 } }; // 0E9559E7-60C8-4375-A761-7F8808066C60
@@ -83,7 +85,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Custom::IOControlCode>{ using type = winrt::Windows::Devices::Custom::IIOControlCode; };
     template <> struct abi<winrt::Windows::Devices::Custom::ICustomDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputStream(void**) noexcept = 0;
             virtual int32_t __stdcall get_OutputStream(void**) noexcept = 0;
@@ -93,7 +95,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Custom::ICustomDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, int32_t, int32_t, void**) noexcept = 0;
@@ -101,7 +103,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Custom::IIOControlCode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AccessMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_BufferingMethod(int32_t*) noexcept = 0;
@@ -112,14 +114,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Custom::IIOControlCodeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateIOControlCode(uint16_t, uint16_t, int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Custom::IKnownDeviceTypesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Unknown(uint16_t*) noexcept = 0;
         };

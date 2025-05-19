@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -513,7 +513,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Text::RichEditTextRange>{ using type = winrt::Windows::UI::Text::ITextRange; };
     template <> struct abi<winrt::Windows::UI::Text::IContentLinkInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Id(uint32_t) noexcept = 0;
@@ -529,13 +529,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::IFontWeights>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Text::IFontWeightsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Black(struct struct_Windows_UI_Text_FontWeight*) noexcept = 0;
             virtual int32_t __stdcall get_Bold(struct struct_Windows_UI_Text_FontWeight*) noexcept = 0;
@@ -552,7 +552,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::IRichEditTextRange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentLinkInfo(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContentLinkInfo(void*) noexcept = 0;
@@ -560,7 +560,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextCharacterFormat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllCaps(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_AllCaps(int32_t) noexcept = 0;
@@ -616,7 +616,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextConstantsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutoColor(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall get_MinUnitCount(int32_t*) noexcept = 0;
@@ -630,7 +630,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextDocument>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CaretType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_CaretType(int32_t) noexcept = 0;
@@ -663,7 +663,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextDocument2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlignmentIncludesTrailingWhitespace(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AlignmentIncludesTrailingWhitespace(bool) noexcept = 0;
@@ -673,14 +673,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextDocument3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ClearUndoRedoHistory() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextDocument4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetMath(void*) noexcept = 0;
             virtual int32_t __stdcall GetMath(void**) noexcept = 0;
@@ -689,7 +689,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextParagraphFormat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Alignment(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Alignment(int32_t) noexcept = 0;
@@ -743,7 +743,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextRange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Character(char16_t*) noexcept = 0;
             virtual int32_t __stdcall put_Character(char16_t) noexcept = 0;
@@ -801,7 +801,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Text::ITextSelection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Options(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Options(uint32_t) noexcept = 0;

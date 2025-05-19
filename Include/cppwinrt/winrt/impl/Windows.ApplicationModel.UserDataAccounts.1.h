@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,14 +9,14 @@
 #include "winrt/impl/Windows.ApplicationModel.UserDataAccounts.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts
 {
-    struct __declspec(empty_bases) IUserDataAccount :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccount :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccount>
     {
         IUserDataAccount(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccount(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccount2 :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccount2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccount2>,
         impl::require<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccount2, winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccount>
@@ -24,49 +24,49 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts
         IUserDataAccount2(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccount2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccount3 :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccount3 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccount3>
     {
         IUserDataAccount3(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccount3(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccount4 :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccount4 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccount4>
     {
         IUserDataAccount4(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccount4(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccountManagerForUser :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountManagerForUser :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountManagerForUser>
     {
         IUserDataAccountManagerForUser(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccountManagerForUser(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccountManagerStatics :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountManagerStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountManagerStatics>
     {
         IUserDataAccountManagerStatics(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccountManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccountManagerStatics2 :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountManagerStatics2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountManagerStatics2>
     {
         IUserDataAccountManagerStatics2(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccountManagerStatics2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccountStore :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountStore :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountStore>
     {
         IUserDataAccountStore(std::nullptr_t = nullptr) noexcept {}
         IUserDataAccountStore(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUserDataAccountStore2 :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountStore2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountStore2>,
         impl::require<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore2, winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore>
@@ -76,7 +76,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts
         using impl::consume_t<IUserDataAccountStore2, IUserDataAccountStore2>::CreateAccountAsync;
         using impl::consume_t<IUserDataAccountStore2, winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore>::CreateAccountAsync;
     };
-    struct __declspec(empty_bases) IUserDataAccountStore3 :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountStore3 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountStore3>,
         impl::require<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore3, winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore>
@@ -86,7 +86,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts
         using impl::consume_t<IUserDataAccountStore3, IUserDataAccountStore3>::CreateAccountAsync;
         using impl::consume_t<IUserDataAccountStore3, winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore>::CreateAccountAsync;
     };
-    struct __declspec(empty_bases) IUserDataAccountStoreChangedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IUserDataAccountStoreChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUserDataAccountStoreChangedEventArgs>
     {

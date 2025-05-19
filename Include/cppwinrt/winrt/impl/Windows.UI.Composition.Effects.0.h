@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -36,7 +36,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Composition::Effects::SceneLightingEffect>{ using type = winrt::Windows::UI::Composition::Effects::ISceneLightingEffect; };
     template <> struct abi<winrt::Windows::UI::Composition::Effects::ISceneLightingEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AmbientAmount(float*) noexcept = 0;
             virtual int32_t __stdcall put_AmbientAmount(float) noexcept = 0;
@@ -52,7 +52,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Effects::ISceneLightingEffect2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReflectanceModel(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ReflectanceModel(int32_t) noexcept = 0;

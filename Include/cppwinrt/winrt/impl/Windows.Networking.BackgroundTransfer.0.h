@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,12 +14,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Credentials
 {
@@ -299,7 +299,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::BackgroundTransfer::UploadOperation>{ using type = winrt::Windows::Networking::BackgroundTransfer::IUploadOperation; };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundDownloader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDownload(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateDownloadFromFile(void*, void*, void*, void**) noexcept = 0;
@@ -308,7 +308,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundDownloader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransferGroup(void**) noexcept = 0;
             virtual int32_t __stdcall put_TransferGroup(void*) noexcept = 0;
@@ -324,21 +324,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundDownloader3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompletionGroup(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundDownloaderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithCompletionGroup(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundDownloaderStaticMethods>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentDownloadsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetCurrentDownloadsForGroupAsync(void*, void**) noexcept = 0;
@@ -346,21 +346,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundDownloaderStaticMethods2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentDownloadsForTransferGroupAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundDownloaderUserConsent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestUnconstrainedDownloadsAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetRequestHeader(void*, void*) noexcept = 0;
             virtual int32_t __stdcall get_ServerCredential(void**) noexcept = 0;
@@ -377,7 +377,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferCompletionGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Trigger(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
@@ -386,7 +386,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferCompletionGroupTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Downloads(void**) noexcept = 0;
             virtual int32_t __stdcall get_Uploads(void**) noexcept = 0;
@@ -394,7 +394,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferContentPart>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetHeader(void*, void*) noexcept = 0;
             virtual int32_t __stdcall SetText(void*) noexcept = 0;
@@ -403,7 +403,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferContentPartFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithName(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithNameAndFileName(void*, void*, void**) noexcept = 0;
@@ -411,14 +411,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferErrorStaticMethods>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStatus(int32_t, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_TransferBehavior(int32_t*) noexcept = 0;
@@ -427,14 +427,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferGroupStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateGroup(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Guid(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_RequestedUri(void**) noexcept = 0;
@@ -448,7 +448,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferOperationPriority>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Priority(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Priority(int32_t) noexcept = 0;
@@ -456,7 +456,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundTransferRangesDownloadedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WasDownloadRestarted(bool*) noexcept = 0;
             virtual int32_t __stdcall get_AddedRanges(void**) noexcept = 0;
@@ -465,7 +465,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundUploader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateUpload(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateUploadFromStreamAsync(void*, void*, void**) noexcept = 0;
@@ -476,7 +476,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundUploader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransferGroup(void**) noexcept = 0;
             virtual int32_t __stdcall put_TransferGroup(void*) noexcept = 0;
@@ -492,21 +492,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundUploader3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompletionGroup(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundUploaderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithCompletionGroup(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundUploaderStaticMethods>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentUploadsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetCurrentUploadsForGroupAsync(void*, void**) noexcept = 0;
@@ -514,21 +514,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundUploaderStaticMethods2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentUploadsForTransferGroupAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IBackgroundUploaderUserConsent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestUnconstrainedUploadsAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IContentPrefetcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentUris(void**) noexcept = 0;
             virtual int32_t __stdcall put_IndirectContentUri(void*) noexcept = 0;
@@ -537,14 +537,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IContentPrefetcherTime>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LastSuccessfulPrefetchTime(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IDownloadOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResultFile(void**) noexcept = 0;
             virtual int32_t __stdcall get_Progress(struct struct_Windows_Networking_BackgroundTransfer_BackgroundDownloadProgress*) noexcept = 0;
@@ -556,14 +556,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IDownloadOperation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransferGroup(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IDownloadOperation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsRandomAccessRequired(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsRandomAccessRequired(bool) noexcept = 0;
@@ -578,14 +578,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IDownloadOperation4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MakeCurrentInTransferGroup() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IDownloadOperation5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetRequestHeader(void*, void*) noexcept = 0;
             virtual int32_t __stdcall RemoveRequestHeader(void*) noexcept = 0;
@@ -593,7 +593,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IResponseInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsResumable(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ActualUri(void**) noexcept = 0;
@@ -603,14 +603,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IUnconstrainedTransferRequestResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsUnconstrained(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IUploadOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceFile(void**) noexcept = 0;
             virtual int32_t __stdcall get_Progress(struct struct_Windows_Networking_BackgroundTransfer_BackgroundUploadProgress*) noexcept = 0;
@@ -620,21 +620,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IUploadOperation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransferGroup(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IUploadOperation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MakeCurrentInTransferGroup() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::BackgroundTransfer::IUploadOperation4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetRequestHeader(void*, void*) noexcept = 0;
             virtual int32_t __stdcall RemoveRequestHeader(void*) noexcept = 0;
@@ -971,7 +971,7 @@ namespace winrt::impl
         auto GetDownloadedRanges() const;
         auto RangesDownloaded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::BackgroundTransfer::DownloadOperation, winrt::Windows::Networking::BackgroundTransfer::BackgroundTransferRangesDownloadedEventArgs> const& eventHandler) const;
         using RangesDownloaded_revoker = impl::event_revoker<winrt::Windows::Networking::BackgroundTransfer::IDownloadOperation3, &impl::abi_t<winrt::Windows::Networking::BackgroundTransfer::IDownloadOperation3>::remove_RangesDownloaded>;
-        [[nodiscard]] RangesDownloaded_revoker RangesDownloaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::BackgroundTransfer::DownloadOperation, winrt::Windows::Networking::BackgroundTransfer::BackgroundTransferRangesDownloadedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto RangesDownloaded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::BackgroundTransfer::DownloadOperation, winrt::Windows::Networking::BackgroundTransfer::BackgroundTransferRangesDownloadedEventArgs> const& eventHandler) const;
         auto RangesDownloaded(winrt::event_token const& eventCookie) const noexcept;
         auto RequestedUri(winrt::Windows::Foundation::Uri const& value) const;
         [[nodiscard]] auto RecoverableWebErrorStatuses() const;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.Web.Http.Filters.1.h"
 WINRT_EXPORT namespace winrt::Windows::Web::Http::Filters
 {
-    struct __declspec(empty_bases) HttpBaseProtocolFilter : winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter,
+    struct WINRT_IMPL_EMPTY_BASES HttpBaseProtocolFilter : winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter,
         impl::require<HttpBaseProtocolFilter, winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter2, winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter3, winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter4, winrt::Windows::Web::Http::Filters::IHttpBaseProtocolFilter5, winrt::Windows::Foundation::IClosable, winrt::Windows::Web::Http::Filters::IHttpFilter>
     {
         HttpBaseProtocolFilter(std::nullptr_t) noexcept {}
@@ -19,12 +19,12 @@ WINRT_EXPORT namespace winrt::Windows::Web::Http::Filters
         HttpBaseProtocolFilter();
         static auto CreateForUser(winrt::Windows::System::User const& user);
     };
-    struct __declspec(empty_bases) HttpCacheControl : winrt::Windows::Web::Http::Filters::IHttpCacheControl
+    struct WINRT_IMPL_EMPTY_BASES HttpCacheControl : winrt::Windows::Web::Http::Filters::IHttpCacheControl
     {
         HttpCacheControl(std::nullptr_t) noexcept {}
         HttpCacheControl(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Web::Http::Filters::IHttpCacheControl(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) HttpServerCustomValidationRequestedEventArgs : winrt::Windows::Web::Http::Filters::IHttpServerCustomValidationRequestedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES HttpServerCustomValidationRequestedEventArgs : winrt::Windows::Web::Http::Filters::IHttpServerCustomValidationRequestedEventArgs
     {
         HttpServerCustomValidationRequestedEventArgs(std::nullptr_t) noexcept {}
         HttpServerCustomValidationRequestedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Web::Http::Filters::IHttpServerCustomValidationRequestedEventArgs(ptr, take_ownership_from_abi) {}

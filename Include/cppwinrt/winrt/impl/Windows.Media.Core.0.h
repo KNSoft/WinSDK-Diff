@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,14 +16,14 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IMap;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMap;
     struct PropertySet;
     struct ValueSet;
 }
@@ -1112,14 +1112,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Core::VideoTrackSupportInfo>{ using type = winrt::Windows::Media::Core::IVideoTrackSupportInfo; };
     template <> struct abi<winrt::Windows::Media::Core::IAudioStreamDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EncodingProperties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IAudioStreamDescriptor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_LeadingEncoderPadding(void*) noexcept = 0;
             virtual int32_t __stdcall get_LeadingEncoderPadding(void**) noexcept = 0;
@@ -1129,21 +1129,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IAudioStreamDescriptor3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Copy(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IAudioStreamDescriptorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IAudioTrack>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_OpenFailed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_OpenFailed(winrt::event_token) noexcept = 0;
@@ -1155,14 +1155,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IAudioTrackOpenFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IAudioTrackSupportInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DecoderStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Degradation(int32_t*) noexcept = 0;
@@ -1172,7 +1172,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IChapterCue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
@@ -1180,7 +1180,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ICodecInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Category(int32_t*) noexcept = 0;
@@ -1191,14 +1191,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ICodecQuery>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAllAsync(int32_t, int32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ICodecSubtypesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoFormatDV25(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoFormatDV50(void**) noexcept = 0;
@@ -1255,7 +1255,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IDataCue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Data(void*) noexcept = 0;
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
@@ -1263,21 +1263,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IDataCue2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IFaceDetectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResultFrame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IFaceDetectionEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Enabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
@@ -1289,7 +1289,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IFaceDetectionEffectDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DetectionMode(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_DetectionMode(int32_t*) noexcept = 0;
@@ -1299,14 +1299,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IFaceDetectionEffectFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DetectedFaces(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IHighDynamicRangeControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Enabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
@@ -1314,7 +1314,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IHighDynamicRangeOutput>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Certainty(double*) noexcept = 0;
             virtual int32_t __stdcall get_FrameControllers(void**) noexcept = 0;
@@ -1322,7 +1322,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IImageCue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(struct struct_Windows_Media_Core_TimedTextPoint*) noexcept = 0;
             virtual int32_t __stdcall put_Position(struct struct_Windows_Media_Core_TimedTextPoint) noexcept = 0;
@@ -1334,7 +1334,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IInitializeMediaStreamSourceRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall get_RandomAccessStream(void**) noexcept = 0;
@@ -1343,14 +1343,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ILowLightFusionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ILowLightFusionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedBitmapPixelFormats(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxSupportedFrameCount(int32_t*) noexcept = 0;
@@ -1359,7 +1359,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaBinder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Binding(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Binding(winrt::event_token) noexcept = 0;
@@ -1370,7 +1370,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaBindingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Canceled(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Canceled(winrt::event_token) noexcept = 0;
@@ -1383,7 +1383,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaBindingEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetAdaptiveMediaSource(void*) noexcept = 0;
             virtual int32_t __stdcall SetStorageFile(void*) noexcept = 0;
@@ -1391,14 +1391,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaBindingEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetDownloadOperation(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaCue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_StartTime(int64_t) noexcept = 0;
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
@@ -1410,20 +1410,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaCueEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cue(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_OpenOperationCompleted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_OpenOperationCompleted(winrt::event_token) noexcept = 0;
@@ -1436,7 +1436,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSource3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_StateChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_StateChanged(winrt::event_token) noexcept = 0;
@@ -1446,7 +1446,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSource4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AdaptiveMediaSource(void**) noexcept = 0;
             virtual int32_t __stdcall get_MediaStreamSource(void**) noexcept = 0;
@@ -1457,14 +1457,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSource5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DownloadOperation(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceAppServiceConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_InitializeMediaStreamSourceRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_InitializeMediaStreamSourceRequested(winrt::event_token) noexcept = 0;
@@ -1473,28 +1473,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceAppServiceConnectionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceError>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceOpenOperationCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewState(int32_t*) noexcept = 0;
@@ -1502,7 +1502,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromAdaptiveMediaSource(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromMediaStreamSource(void*, void**) noexcept = 0;
@@ -1516,28 +1516,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromMediaBinder(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromMediaFrameSource(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaSourceStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromDownloadOperation(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSelected(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -1548,7 +1548,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamDescriptor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Label(void*) noexcept = 0;
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
@@ -1556,7 +1556,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSample>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Processed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Processed(winrt::event_token) noexcept = 0;
@@ -1576,14 +1576,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSample2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Direct3D11Surface(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSampleProtectionProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetKeyIdentifier(uint32_t, uint8_t*) noexcept = 0;
             virtual int32_t __stdcall GetKeyIdentifier(uint32_t*, uint8_t**) noexcept = 0;
@@ -1595,7 +1595,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSampleStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromBuffer(void*, int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromStreamAsync(void*, uint32_t, int64_t, void**) noexcept = 0;
@@ -1603,14 +1603,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSampleStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromDirect3D11Surface(void*, int64_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Closed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Closed(winrt::event_token) noexcept = 0;
@@ -1642,7 +1642,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SampleRendered(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SampleRendered(winrt::event_token) noexcept = 0;
@@ -1650,7 +1650,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSource3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_MaxSupportedPlaybackRate(void*) noexcept = 0;
             virtual int32_t __stdcall get_MaxSupportedPlaybackRate(void**) noexcept = 0;
@@ -1658,7 +1658,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSource4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsLive(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsLive(bool*) noexcept = 0;
@@ -1666,21 +1666,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceClosedRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromDescriptor(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromDescriptors(void*, void*, void**) noexcept = 0;
@@ -1688,14 +1688,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceSampleRenderedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SampleLag(int64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceSampleRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StreamDescriptor(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -1706,28 +1706,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceSampleRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceSampleRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceStartingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceStartingRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartPosition(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -1736,14 +1736,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceStartingRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceSwitchStreamsRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldStreamDescriptor(void**) noexcept = 0;
             virtual int32_t __stdcall get_NewStreamDescriptor(void**) noexcept = 0;
@@ -1752,21 +1752,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceSwitchStreamsRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaStreamSourceSwitchStreamsRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IMediaTrack>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
@@ -1777,7 +1777,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMseSourceBuffer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_UpdateStarting(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_UpdateStarting(winrt::event_token) noexcept = 0;
@@ -1808,7 +1808,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMseSourceBufferList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SourceBufferAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SourceBufferAdded(winrt::event_token) noexcept = 0;
@@ -1819,7 +1819,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMseStreamSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Opened(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Opened(winrt::event_token) noexcept = 0;
@@ -1839,7 +1839,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMseStreamSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LiveSeekableRange(void**) noexcept = 0;
             virtual int32_t __stdcall put_LiveSeekableRange(void*) noexcept = 0;
@@ -1847,14 +1847,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IMseStreamSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsContentTypeSupported(void*, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ISceneAnalysisEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HighDynamicRangeAnalyzer(void**) noexcept = 0;
             virtual int32_t __stdcall put_DesiredAnalysisInterval(int64_t) noexcept = 0;
@@ -1865,7 +1865,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ISceneAnalysisEffectFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameControlValues(void**) noexcept = 0;
             virtual int32_t __stdcall get_HighDynamicRange(void**) noexcept = 0;
@@ -1873,21 +1873,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ISceneAnalysisEffectFrame2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnalysisRecommendation(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ISceneAnalyzedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResultFrame(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ISingleSelectMediaTrackList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SelectedIndexChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SelectedIndexChanged(winrt::event_token) noexcept = 0;
@@ -1897,7 +1897,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ISpeechCue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -1909,7 +1909,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedMetadataStreamDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EncodingProperties(void**) noexcept = 0;
             virtual int32_t __stdcall Copy(void**) noexcept = 0;
@@ -1917,14 +1917,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedMetadataStreamDescriptorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedMetadataTrack>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CueEntered(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CueEntered(winrt::event_token) noexcept = 0;
@@ -1942,7 +1942,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedMetadataTrack2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlaybackItem(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -1950,7 +1950,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedMetadataTrackError>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ErrorCode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -1958,28 +1958,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedMetadataTrackFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedMetadataTrackFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedMetadataTrackProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TimedMetadataTracks(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextBouten>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Type(int32_t) noexcept = 0;
@@ -1991,7 +1991,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextCue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CueRegion(void**) noexcept = 0;
             virtual int32_t __stdcall put_CueRegion(void*) noexcept = 0;
@@ -2002,7 +2002,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextLine>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -2011,7 +2011,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextRegion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -2041,7 +2041,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextRuby>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -2055,7 +2055,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Resolved(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Resolved(winrt::event_token) noexcept = 0;
@@ -2063,7 +2063,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextSourceResolveResultEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(void**) noexcept = 0;
             virtual int32_t __stdcall get_Tracks(void**) noexcept = 0;
@@ -2071,7 +2071,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromStream(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromUri(void*, void**) noexcept = 0;
@@ -2081,7 +2081,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextSourceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromStreamWithIndex(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromUriWithIndex(void*, void*, void**) noexcept = 0;
@@ -2091,7 +2091,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextStyle>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -2121,7 +2121,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextStyle2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FontStyle(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_FontStyle(int32_t) noexcept = 0;
@@ -2135,7 +2135,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextStyle3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Ruby(void**) noexcept = 0;
             virtual int32_t __stdcall get_Bouten(void**) noexcept = 0;
@@ -2147,7 +2147,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::ITimedTextSubformat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_StartIndex(int32_t) noexcept = 0;
@@ -2159,7 +2159,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IVideoStabilizationEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Enabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
@@ -2170,35 +2170,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IVideoStabilizationEffectEnabledChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IVideoStreamDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EncodingProperties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IVideoStreamDescriptor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Copy(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IVideoStreamDescriptorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IVideoTrack>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_OpenFailed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_OpenFailed(winrt::event_token) noexcept = 0;
@@ -2210,14 +2210,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Core::IVideoTrackOpenFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Core::IVideoTrackSupportInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DecoderStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MediaSourceStatus(int32_t*) noexcept = 0;
@@ -2267,7 +2267,7 @@ namespace winrt::impl
     {
         auto OpenFailed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::AudioTrack, winrt::Windows::Media::Core::AudioTrackOpenFailedEventArgs> const& handler) const;
         using OpenFailed_revoker = impl::event_revoker<winrt::Windows::Media::Core::IAudioTrack, &impl::abi_t<winrt::Windows::Media::Core::IAudioTrack>::remove_OpenFailed>;
-        [[nodiscard]] OpenFailed_revoker OpenFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::AudioTrack, winrt::Windows::Media::Core::AudioTrackOpenFailedEventArgs> const& handler) const;
+        [[nodiscard]] auto OpenFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::AudioTrack, winrt::Windows::Media::Core::AudioTrackOpenFailedEventArgs> const& handler) const;
         auto OpenFailed(winrt::event_token const& token) const noexcept;
         auto GetEncodingProperties() const;
         [[nodiscard]] auto PlaybackItem() const;
@@ -2427,7 +2427,7 @@ namespace winrt::impl
         [[nodiscard]] auto DesiredDetectionInterval() const;
         auto FaceDetected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::FaceDetectionEffect, winrt::Windows::Media::Core::FaceDetectedEventArgs> const& handler) const;
         using FaceDetected_revoker = impl::event_revoker<winrt::Windows::Media::Core::IFaceDetectionEffect, &impl::abi_t<winrt::Windows::Media::Core::IFaceDetectionEffect>::remove_FaceDetected>;
-        [[nodiscard]] FaceDetected_revoker FaceDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::FaceDetectionEffect, winrt::Windows::Media::Core::FaceDetectedEventArgs> const& handler) const;
+        [[nodiscard]] auto FaceDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::FaceDetectionEffect, winrt::Windows::Media::Core::FaceDetectedEventArgs> const& handler) const;
         auto FaceDetected(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Core::IFaceDetectionEffect>
@@ -2525,7 +2525,7 @@ namespace winrt::impl
     {
         auto Binding(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaBinder, winrt::Windows::Media::Core::MediaBindingEventArgs> const& handler) const;
         using Binding_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaBinder, &impl::abi_t<winrt::Windows::Media::Core::IMediaBinder>::remove_Binding>;
-        [[nodiscard]] Binding_revoker Binding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaBinder, winrt::Windows::Media::Core::MediaBindingEventArgs> const& handler) const;
+        [[nodiscard]] auto Binding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaBinder, winrt::Windows::Media::Core::MediaBindingEventArgs> const& handler) const;
         auto Binding(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Token() const;
         auto Token(param::hstring const& value) const;
@@ -2540,7 +2540,7 @@ namespace winrt::impl
     {
         auto Canceled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaBindingEventArgs, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Canceled_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaBindingEventArgs, &impl::abi_t<winrt::Windows::Media::Core::IMediaBindingEventArgs>::remove_Canceled>;
-        [[nodiscard]] Canceled_revoker Canceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaBindingEventArgs, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Canceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaBindingEventArgs, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Canceled(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto MediaBinder() const;
         auto GetDeferral() const;
@@ -2607,7 +2607,7 @@ namespace winrt::impl
     {
         auto OpenOperationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSource, winrt::Windows::Media::Core::MediaSourceOpenOperationCompletedEventArgs> const& handler) const;
         using OpenOperationCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaSource2, &impl::abi_t<winrt::Windows::Media::Core::IMediaSource2>::remove_OpenOperationCompleted>;
-        [[nodiscard]] OpenOperationCompleted_revoker OpenOperationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSource, winrt::Windows::Media::Core::MediaSourceOpenOperationCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto OpenOperationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSource, winrt::Windows::Media::Core::MediaSourceOpenOperationCompletedEventArgs> const& handler) const;
         auto OpenOperationCompleted(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto CustomProperties() const;
         [[nodiscard]] auto Duration() const;
@@ -2624,7 +2624,7 @@ namespace winrt::impl
     {
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSource, winrt::Windows::Media::Core::MediaSourceStateChangedEventArgs> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaSource3, &impl::abi_t<winrt::Windows::Media::Core::IMediaSource3>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSource, winrt::Windows::Media::Core::MediaSourceStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSource, winrt::Windows::Media::Core::MediaSourceStateChangedEventArgs> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto State() const;
         auto Reset() const;
@@ -2660,7 +2660,7 @@ namespace winrt::impl
     {
         auto InitializeMediaStreamSourceRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSourceAppServiceConnection, winrt::Windows::Media::Core::InitializeMediaStreamSourceRequestedEventArgs> const& handler) const;
         using InitializeMediaStreamSourceRequested_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaSourceAppServiceConnection, &impl::abi_t<winrt::Windows::Media::Core::IMediaSourceAppServiceConnection>::remove_InitializeMediaStreamSourceRequested>;
-        [[nodiscard]] InitializeMediaStreamSourceRequested_revoker InitializeMediaStreamSourceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSourceAppServiceConnection, winrt::Windows::Media::Core::InitializeMediaStreamSourceRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto InitializeMediaStreamSourceRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaSourceAppServiceConnection, winrt::Windows::Media::Core::InitializeMediaStreamSourceRequestedEventArgs> const& handler) const;
         auto InitializeMediaStreamSourceRequested(winrt::event_token const& token) const noexcept;
         auto Start() const;
     };
@@ -2776,7 +2776,7 @@ namespace winrt::impl
     {
         auto Processed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSample, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Processed_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaStreamSample, &impl::abi_t<winrt::Windows::Media::Core::IMediaStreamSample>::remove_Processed>;
-        [[nodiscard]] Processed_revoker Processed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSample, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Processed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSample, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Processed(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Buffer() const;
         [[nodiscard]] auto Timestamp() const;
@@ -2842,23 +2842,23 @@ namespace winrt::impl
     {
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceClosedEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaStreamSource, &impl::abi_t<winrt::Windows::Media::Core::IMediaStreamSource>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceClosedEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceClosedEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto Starting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceStartingEventArgs> const& handler) const;
         using Starting_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaStreamSource, &impl::abi_t<winrt::Windows::Media::Core::IMediaStreamSource>::remove_Starting>;
-        [[nodiscard]] Starting_revoker Starting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceStartingEventArgs> const& handler) const;
+        [[nodiscard]] auto Starting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceStartingEventArgs> const& handler) const;
         auto Starting(winrt::event_token const& token) const noexcept;
         auto Paused(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Paused_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaStreamSource, &impl::abi_t<winrt::Windows::Media::Core::IMediaStreamSource>::remove_Paused>;
-        [[nodiscard]] Paused_revoker Paused(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Paused(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Paused(winrt::event_token const& token) const noexcept;
         auto SampleRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSampleRequestedEventArgs> const& handler) const;
         using SampleRequested_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaStreamSource, &impl::abi_t<winrt::Windows::Media::Core::IMediaStreamSource>::remove_SampleRequested>;
-        [[nodiscard]] SampleRequested_revoker SampleRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSampleRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto SampleRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSampleRequestedEventArgs> const& handler) const;
         auto SampleRequested(winrt::event_token const& token) const noexcept;
         auto SwitchStreamsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSwitchStreamsRequestedEventArgs> const& handler) const;
         using SwitchStreamsRequested_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaStreamSource, &impl::abi_t<winrt::Windows::Media::Core::IMediaStreamSource>::remove_SwitchStreamsRequested>;
-        [[nodiscard]] SwitchStreamsRequested_revoker SwitchStreamsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSwitchStreamsRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto SwitchStreamsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSwitchStreamsRequestedEventArgs> const& handler) const;
         auto SwitchStreamsRequested(winrt::event_token const& token) const noexcept;
         auto NotifyError(winrt::Windows::Media::Core::MediaStreamSourceErrorStatus const& errorStatus) const;
         auto AddStreamDescriptor(winrt::Windows::Media::Core::IMediaStreamDescriptor const& descriptor) const;
@@ -2886,7 +2886,7 @@ namespace winrt::impl
     {
         auto SampleRendered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSampleRenderedEventArgs> const& handler) const;
         using SampleRendered_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMediaStreamSource2, &impl::abi_t<winrt::Windows::Media::Core::IMediaStreamSource2>::remove_SampleRendered>;
-        [[nodiscard]] SampleRendered_revoker SampleRendered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSampleRenderedEventArgs> const& handler) const;
+        [[nodiscard]] auto SampleRendered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MediaStreamSource, winrt::Windows::Media::Core::MediaStreamSourceSampleRenderedEventArgs> const& handler) const;
         auto SampleRendered(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Core::IMediaStreamSource2>
@@ -3057,23 +3057,23 @@ namespace winrt::impl
     {
         auto UpdateStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using UpdateStarting_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseSourceBuffer, &impl::abi_t<winrt::Windows::Media::Core::IMseSourceBuffer>::remove_UpdateStarting>;
-        [[nodiscard]] UpdateStarting_revoker UpdateStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto UpdateStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto UpdateStarting(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseSourceBuffer, &impl::abi_t<winrt::Windows::Media::Core::IMseSourceBuffer>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto UpdateEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using UpdateEnded_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseSourceBuffer, &impl::abi_t<winrt::Windows::Media::Core::IMseSourceBuffer>::remove_UpdateEnded>;
-        [[nodiscard]] UpdateEnded_revoker UpdateEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto UpdateEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto UpdateEnded(winrt::event_token const& token) const noexcept;
         auto ErrorOccurred(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ErrorOccurred_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseSourceBuffer, &impl::abi_t<winrt::Windows::Media::Core::IMseSourceBuffer>::remove_ErrorOccurred>;
-        [[nodiscard]] ErrorOccurred_revoker ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ErrorOccurred(winrt::event_token const& token) const noexcept;
         auto Aborted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Aborted_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseSourceBuffer, &impl::abi_t<winrt::Windows::Media::Core::IMseSourceBuffer>::remove_Aborted>;
-        [[nodiscard]] Aborted_revoker Aborted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Aborted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBuffer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Aborted(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Mode() const;
         auto Mode(winrt::Windows::Media::Core::MseAppendMode const& value) const;
@@ -3100,11 +3100,11 @@ namespace winrt::impl
     {
         auto SourceBufferAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBufferList, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SourceBufferAdded_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseSourceBufferList, &impl::abi_t<winrt::Windows::Media::Core::IMseSourceBufferList>::remove_SourceBufferAdded>;
-        [[nodiscard]] SourceBufferAdded_revoker SourceBufferAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBufferList, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SourceBufferAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBufferList, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SourceBufferAdded(winrt::event_token const& token) const noexcept;
         auto SourceBufferRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBufferList, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SourceBufferRemoved_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseSourceBufferList, &impl::abi_t<winrt::Windows::Media::Core::IMseSourceBufferList>::remove_SourceBufferRemoved>;
-        [[nodiscard]] SourceBufferRemoved_revoker SourceBufferRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBufferList, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SourceBufferRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseSourceBufferList, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SourceBufferRemoved(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Buffers() const;
     };
@@ -3117,15 +3117,15 @@ namespace winrt::impl
     {
         auto Opened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Opened_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseStreamSource, &impl::abi_t<winrt::Windows::Media::Core::IMseStreamSource>::remove_Opened>;
-        [[nodiscard]] Opened_revoker Opened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Opened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Opened(winrt::event_token const& token) const noexcept;
         auto Ended(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Ended_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseStreamSource, &impl::abi_t<winrt::Windows::Media::Core::IMseStreamSource>::remove_Ended>;
-        [[nodiscard]] Ended_revoker Ended(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Ended(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Ended(winrt::event_token const& token) const noexcept;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Media::Core::IMseStreamSource, &impl::abi_t<winrt::Windows::Media::Core::IMseStreamSource>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::MseStreamSource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto SourceBuffers() const;
         [[nodiscard]] auto ActiveSourceBuffers() const;
@@ -3167,7 +3167,7 @@ namespace winrt::impl
         [[nodiscard]] auto DesiredAnalysisInterval() const;
         auto SceneAnalyzed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::SceneAnalysisEffect, winrt::Windows::Media::Core::SceneAnalyzedEventArgs> const& handler) const;
         using SceneAnalyzed_revoker = impl::event_revoker<winrt::Windows::Media::Core::ISceneAnalysisEffect, &impl::abi_t<winrt::Windows::Media::Core::ISceneAnalysisEffect>::remove_SceneAnalyzed>;
-        [[nodiscard]] SceneAnalyzed_revoker SceneAnalyzed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::SceneAnalysisEffect, winrt::Windows::Media::Core::SceneAnalyzedEventArgs> const& handler) const;
+        [[nodiscard]] auto SceneAnalyzed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::SceneAnalysisEffect, winrt::Windows::Media::Core::SceneAnalyzedEventArgs> const& handler) const;
         auto SceneAnalyzed(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Core::ISceneAnalysisEffect>
@@ -3207,7 +3207,7 @@ namespace winrt::impl
     {
         auto SelectedIndexChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::ISingleSelectMediaTrackList, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SelectedIndexChanged_revoker = impl::event_revoker<winrt::Windows::Media::Core::ISingleSelectMediaTrackList, &impl::abi_t<winrt::Windows::Media::Core::ISingleSelectMediaTrackList>::remove_SelectedIndexChanged>;
-        [[nodiscard]] SelectedIndexChanged_revoker SelectedIndexChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::ISingleSelectMediaTrackList, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SelectedIndexChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::ISingleSelectMediaTrackList, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SelectedIndexChanged(winrt::event_token const& token) const noexcept;
         auto SelectedIndex(int32_t value) const;
         [[nodiscard]] auto SelectedIndex() const;
@@ -3254,15 +3254,15 @@ namespace winrt::impl
     {
         auto CueEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::MediaCueEventArgs> const& handler) const;
         using CueEntered_revoker = impl::event_revoker<winrt::Windows::Media::Core::ITimedMetadataTrack, &impl::abi_t<winrt::Windows::Media::Core::ITimedMetadataTrack>::remove_CueEntered>;
-        [[nodiscard]] CueEntered_revoker CueEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::MediaCueEventArgs> const& handler) const;
+        [[nodiscard]] auto CueEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::MediaCueEventArgs> const& handler) const;
         auto CueEntered(winrt::event_token const& token) const noexcept;
         auto CueExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::MediaCueEventArgs> const& handler) const;
         using CueExited_revoker = impl::event_revoker<winrt::Windows::Media::Core::ITimedMetadataTrack, &impl::abi_t<winrt::Windows::Media::Core::ITimedMetadataTrack>::remove_CueExited>;
-        [[nodiscard]] CueExited_revoker CueExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::MediaCueEventArgs> const& handler) const;
+        [[nodiscard]] auto CueExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::MediaCueEventArgs> const& handler) const;
         auto CueExited(winrt::event_token const& token) const noexcept;
         auto TrackFailed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::TimedMetadataTrackFailedEventArgs> const& handler) const;
         using TrackFailed_revoker = impl::event_revoker<winrt::Windows::Media::Core::ITimedMetadataTrack, &impl::abi_t<winrt::Windows::Media::Core::ITimedMetadataTrack>::remove_TrackFailed>;
-        [[nodiscard]] TrackFailed_revoker TrackFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::TimedMetadataTrackFailedEventArgs> const& handler) const;
+        [[nodiscard]] auto TrackFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedMetadataTrack, winrt::Windows::Media::Core::TimedMetadataTrackFailedEventArgs> const& handler) const;
         auto TrackFailed(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Cues() const;
         [[nodiscard]] auto ActiveCues() const;
@@ -3413,7 +3413,7 @@ namespace winrt::impl
     {
         auto Resolved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedTextSource, winrt::Windows::Media::Core::TimedTextSourceResolveResultEventArgs> const& handler) const;
         using Resolved_revoker = impl::event_revoker<winrt::Windows::Media::Core::ITimedTextSource, &impl::abi_t<winrt::Windows::Media::Core::ITimedTextSource>::remove_Resolved>;
-        [[nodiscard]] Resolved_revoker Resolved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedTextSource, winrt::Windows::Media::Core::TimedTextSourceResolveResultEventArgs> const& handler) const;
+        [[nodiscard]] auto Resolved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::TimedTextSource, winrt::Windows::Media::Core::TimedTextSourceResolveResultEventArgs> const& handler) const;
         auto Resolved(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Core::ITimedTextSource>
@@ -3537,7 +3537,7 @@ namespace winrt::impl
         [[nodiscard]] auto Enabled() const;
         auto EnabledChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::VideoStabilizationEffect, winrt::Windows::Media::Core::VideoStabilizationEffectEnabledChangedEventArgs> const& handler) const;
         using EnabledChanged_revoker = impl::event_revoker<winrt::Windows::Media::Core::IVideoStabilizationEffect, &impl::abi_t<winrt::Windows::Media::Core::IVideoStabilizationEffect>::remove_EnabledChanged>;
-        [[nodiscard]] EnabledChanged_revoker EnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::VideoStabilizationEffect, winrt::Windows::Media::Core::VideoStabilizationEffectEnabledChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto EnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::VideoStabilizationEffect, winrt::Windows::Media::Core::VideoStabilizationEffectEnabledChangedEventArgs> const& handler) const;
         auto EnabledChanged(winrt::event_token const& cookie) const noexcept;
         auto GetRecommendedStreamConfiguration(winrt::Windows::Media::Devices::VideoDeviceController const& controller, winrt::Windows::Media::MediaProperties::VideoEncodingProperties const& desiredProperties) const;
     };
@@ -3586,7 +3586,7 @@ namespace winrt::impl
     {
         auto OpenFailed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::VideoTrack, winrt::Windows::Media::Core::VideoTrackOpenFailedEventArgs> const& handler) const;
         using OpenFailed_revoker = impl::event_revoker<winrt::Windows::Media::Core::IVideoTrack, &impl::abi_t<winrt::Windows::Media::Core::IVideoTrack>::remove_OpenFailed>;
-        [[nodiscard]] OpenFailed_revoker OpenFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::VideoTrack, winrt::Windows::Media::Core::VideoTrackOpenFailedEventArgs> const& handler) const;
+        [[nodiscard]] auto OpenFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Core::VideoTrack, winrt::Windows::Media::Core::VideoTrackOpenFailedEventArgs> const& handler) const;
         auto OpenFailed(winrt::event_token const& token) const noexcept;
         auto GetEncodingProperties() const;
         [[nodiscard]] auto PlaybackItem() const;

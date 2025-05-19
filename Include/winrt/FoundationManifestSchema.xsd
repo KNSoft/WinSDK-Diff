@@ -37,6 +37,7 @@
            xmlns:heap="http://schemas.microsoft.com/appx/manifest/heap/windows10"
            xmlns:previewsecurity2="http://schemas.microsoft.com/appx/manifest/preview/windows10/security/2"
            xmlns:deployment2="http://schemas.microsoft.com/appx/manifest/deployment/windows10/2"
+           xmlns:trustedlaunch="http://schemas.microsoft.com/appx/manifest/trustedlaunch/windows10"
            >
 
   <xs:import namespace="http://schemas.microsoft.com/appx/manifest/types"/>
@@ -205,6 +206,7 @@
       <xs:element ref="uap17:UpdateWhileInUse" minOccurs="0"/>
       <xs:element ref="heap:HeapPolicy" minOccurs="0"/>
       <xs:element ref="deployment2:StageWhileInUse" minOccurs="0"/>
+      <xs:element ref="trustedlaunch:TrustedLaunch" minOccurs="0"/>
     </xs:all>
   </xs:complexType>
 

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,21 +13,21 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct HResult;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
     struct IPropertySet;
     struct IVectorChangedEventArgs;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
@@ -665,7 +665,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Playback::TimedMetadataPresentationModeChangedEventArgs>{ using type = winrt::Windows::Media::Playback::ITimedMetadataPresentationModeChangedEventArgs; };
     template <> struct abi<winrt::Windows::Media::Playback::IBackgroundMediaPlayerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
             virtual int32_t __stdcall add_MessageReceivedFromBackground(void*, winrt::event_token*) noexcept = 0;
@@ -680,7 +680,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::ICurrentMediaPlaybackItemChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NewItem(void**) noexcept = 0;
             virtual int32_t __stdcall get_OldItem(void**) noexcept = 0;
@@ -688,14 +688,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::ICurrentMediaPlaybackItemChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaBreak>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlaybackList(void**) noexcept = 0;
             virtual int32_t __stdcall get_PresentationPosition(void**) noexcept = 0;
@@ -707,14 +707,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaBreakEndedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaBreak(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaBreakFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithPresentationPosition(int32_t, int64_t, void**) noexcept = 0;
@@ -722,7 +722,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaBreakManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_BreaksSeekedOver(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_BreaksSeekedOver(winrt::event_token) noexcept = 0;
@@ -740,7 +740,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaBreakSchedule>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ScheduleChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ScheduleChanged(winrt::event_token) noexcept = 0;
@@ -756,7 +756,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaBreakSeekedOverEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SeekedOverBreaks(void**) noexcept = 0;
             virtual int32_t __stdcall get_OldPosition(int64_t*) noexcept = 0;
@@ -765,21 +765,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaBreakSkippedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaBreak(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaBreakStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaBreak(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaEnginePlaybackSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentItem(void**) noexcept = 0;
             virtual int32_t __stdcall SetPlaybackSource(void*) noexcept = 0;
@@ -787,7 +787,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaItemDisplayProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Type(int32_t) noexcept = 0;
@@ -800,7 +800,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -839,7 +839,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerAutoRepeatModeReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -849,7 +849,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerCommandBehavior>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommandManager(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
@@ -861,7 +861,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerFastForwardReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -870,7 +870,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerNextReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -879,7 +879,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerPauseReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -888,7 +888,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerPlayReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -897,7 +897,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerPositionReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -907,7 +907,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerPreviousReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -916,7 +916,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerRateReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -926,7 +926,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerRewindReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -935,7 +935,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerShuffleReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -945,7 +945,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AudioTracksChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AudioTracksChanged(winrt::event_token) noexcept = 0;
@@ -961,7 +961,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItem2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BreakSchedule(void**) noexcept = 0;
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
@@ -974,7 +974,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItem3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDisabledInPlaybackList(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsDisabledInPlaybackList(bool) noexcept = 0;
@@ -985,7 +985,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItemError>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ErrorCode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -993,14 +993,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItemFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithStartTime(void*, int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithStartTimeAndDurationLimit(void*, int64_t, int64_t, void**) noexcept = 0;
@@ -1008,7 +1008,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItemFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
             virtual int32_t __stdcall get_Error(void**) noexcept = 0;
@@ -1016,21 +1016,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItemOpenedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Item(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindFromMediaSource(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ItemFailed(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ItemFailed(winrt::event_token) noexcept = 0;
@@ -1052,7 +1052,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackList2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxPrefetchTime(void**) noexcept = 0;
             virtual int32_t __stdcall put_MaxPrefetchTime(void*) noexcept = 0;
@@ -1064,7 +1064,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackList3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxPlayedItemsToKeepOpen(void**) noexcept = 0;
             virtual int32_t __stdcall put_MaxPlayedItemsToKeepOpen(void*) noexcept = 0;
@@ -1072,7 +1072,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PlaybackStateChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PlaybackStateChanged(winrt::event_token) noexcept = 0;
@@ -1116,7 +1116,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackSession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_BufferedRangesChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_BufferedRangesChanged(winrt::event_token) noexcept = 0;
@@ -1137,7 +1137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackSession3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlaybackRotation(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_PlaybackRotation(int32_t) noexcept = 0;
@@ -1146,27 +1146,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackSessionBufferingStartedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPlaybackInterruption(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackSessionOutputDegradationPolicyState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VideoConstrictionReason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackSphericalVideoProjection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -1182,7 +1182,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlaybackTimedMetadataTrackList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PresentationModeChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PresentationModeChanged(winrt::event_token) noexcept = 0;
@@ -1192,7 +1192,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutoPlay(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AutoPlay(bool) noexcept = 0;
@@ -1240,7 +1240,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SystemMediaTransportControls(void**) noexcept = 0;
             virtual int32_t __stdcall get_AudioCategory(int32_t*) noexcept = 0;
@@ -1251,7 +1251,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_IsMutedChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_IsMutedChanged(winrt::event_token) noexcept = 0;
@@ -1279,7 +1279,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayer4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetSurfaceSize(winrt::Windows::Foundation::Size) noexcept = 0;
             virtual int32_t __stdcall GetSurface(void*, void**) noexcept = 0;
@@ -1287,7 +1287,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayer5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_VideoFrameAvailable(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_VideoFrameAvailable(winrt::event_token) noexcept = 0;
@@ -1300,7 +1300,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayer6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SubtitleFrameChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SubtitleFrameChanged(winrt::event_token) noexcept = 0;
@@ -1310,21 +1310,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayer7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioStateMonitor(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayerDataReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayerEffects>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddAudioEffect(void*, bool, void*) noexcept = 0;
             virtual int32_t __stdcall RemoveAllEffects() noexcept = 0;
@@ -1332,14 +1332,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayerEffects2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddVideoEffect(void*, bool, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayerFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedErrorCode(winrt::hresult*) noexcept = 0;
@@ -1348,14 +1348,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayerRateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NewRate(double*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayerSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProtectionManager(void**) noexcept = 0;
             virtual int32_t __stdcall put_ProtectionManager(void*) noexcept = 0;
@@ -1366,7 +1366,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayerSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall put_Source(void*) noexcept = 0;
@@ -1374,7 +1374,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IMediaPlayerSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompositionSurface(void**) noexcept = 0;
             virtual int32_t __stdcall get_Compositor(void**) noexcept = 0;
@@ -1383,7 +1383,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IPlaybackMediaMarker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Time(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_MediaMarkerType(void**) noexcept = 0;
@@ -1392,7 +1392,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IPlaybackMediaMarkerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromTime(int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall Create(int64_t, void*, void*, void**) noexcept = 0;
@@ -1400,14 +1400,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::IPlaybackMediaMarkerReachedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlaybackMediaMarker(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Playback::IPlaybackMediaMarkerSequence>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall Insert(void*) noexcept = 0;
@@ -1416,7 +1416,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Playback::ITimedMetadataPresentationModeChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Track(void**) noexcept = 0;
             virtual int32_t __stdcall get_OldPresentationMode(int32_t*) noexcept = 0;
@@ -1429,11 +1429,11 @@ namespace winrt::impl
         [[nodiscard]] auto Current() const;
         auto MessageReceivedFromBackground(winrt::Windows::Foundation::EventHandler<winrt::Windows::Media::Playback::MediaPlayerDataReceivedEventArgs> const& value) const;
         using MessageReceivedFromBackground_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IBackgroundMediaPlayerStatics, &impl::abi_t<winrt::Windows::Media::Playback::IBackgroundMediaPlayerStatics>::remove_MessageReceivedFromBackground>;
-        [[nodiscard]] MessageReceivedFromBackground_revoker MessageReceivedFromBackground(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Media::Playback::MediaPlayerDataReceivedEventArgs> const& value) const;
+        [[nodiscard]] auto MessageReceivedFromBackground(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Media::Playback::MediaPlayerDataReceivedEventArgs> const& value) const;
         auto MessageReceivedFromBackground(winrt::event_token const& token) const noexcept;
         auto MessageReceivedFromForeground(winrt::Windows::Foundation::EventHandler<winrt::Windows::Media::Playback::MediaPlayerDataReceivedEventArgs> const& value) const;
         using MessageReceivedFromForeground_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IBackgroundMediaPlayerStatics, &impl::abi_t<winrt::Windows::Media::Playback::IBackgroundMediaPlayerStatics>::remove_MessageReceivedFromForeground>;
-        [[nodiscard]] MessageReceivedFromForeground_revoker MessageReceivedFromForeground(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Media::Playback::MediaPlayerDataReceivedEventArgs> const& value) const;
+        [[nodiscard]] auto MessageReceivedFromForeground(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Media::Playback::MediaPlayerDataReceivedEventArgs> const& value) const;
         auto MessageReceivedFromForeground(winrt::event_token const& token) const noexcept;
         auto SendMessageToBackground(winrt::Windows::Foundation::Collections::ValueSet const& value) const;
         auto SendMessageToForeground(winrt::Windows::Foundation::Collections::ValueSet const& value) const;
@@ -1501,19 +1501,19 @@ namespace winrt::impl
     {
         auto BreaksSeekedOver(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakSeekedOverEventArgs> const& handler) const;
         using BreaksSeekedOver_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaBreakManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaBreakManager>::remove_BreaksSeekedOver>;
-        [[nodiscard]] BreaksSeekedOver_revoker BreaksSeekedOver(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakSeekedOverEventArgs> const& handler) const;
+        [[nodiscard]] auto BreaksSeekedOver(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakSeekedOverEventArgs> const& handler) const;
         auto BreaksSeekedOver(winrt::event_token const& token) const noexcept;
         auto BreakStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakStartedEventArgs> const& handler) const;
         using BreakStarted_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaBreakManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaBreakManager>::remove_BreakStarted>;
-        [[nodiscard]] BreakStarted_revoker BreakStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakStartedEventArgs> const& handler) const;
+        [[nodiscard]] auto BreakStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakStartedEventArgs> const& handler) const;
         auto BreakStarted(winrt::event_token const& token) const noexcept;
         auto BreakEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakEndedEventArgs> const& handler) const;
         using BreakEnded_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaBreakManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaBreakManager>::remove_BreakEnded>;
-        [[nodiscard]] BreakEnded_revoker BreakEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakEndedEventArgs> const& handler) const;
+        [[nodiscard]] auto BreakEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakEndedEventArgs> const& handler) const;
         auto BreakEnded(winrt::event_token const& token) const noexcept;
         auto BreakSkipped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakSkippedEventArgs> const& handler) const;
         using BreakSkipped_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaBreakManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaBreakManager>::remove_BreakSkipped>;
-        [[nodiscard]] BreakSkipped_revoker BreakSkipped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakSkippedEventArgs> const& handler) const;
+        [[nodiscard]] auto BreakSkipped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakManager, winrt::Windows::Media::Playback::MediaBreakSkippedEventArgs> const& handler) const;
         auto BreakSkipped(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto CurrentBreak() const;
         [[nodiscard]] auto PlaybackSession() const;
@@ -1529,7 +1529,7 @@ namespace winrt::impl
     {
         auto ScheduleChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakSchedule, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ScheduleChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaBreakSchedule, &impl::abi_t<winrt::Windows::Media::Playback::IMediaBreakSchedule>::remove_ScheduleChanged>;
-        [[nodiscard]] ScheduleChanged_revoker ScheduleChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakSchedule, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ScheduleChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaBreakSchedule, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ScheduleChanged(winrt::event_token const& token) const noexcept;
         auto InsertMidrollBreak(winrt::Windows::Media::Playback::MediaBreak const& mediaBreak) const;
         auto RemoveMidrollBreak(winrt::Windows::Media::Playback::MediaBreak const& mediaBreak) const;
@@ -1616,43 +1616,43 @@ namespace winrt::impl
         [[nodiscard]] auto RateBehavior() const;
         auto PlayReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPlayReceivedEventArgs> const& handler) const;
         using PlayReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_PlayReceived>;
-        [[nodiscard]] PlayReceived_revoker PlayReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPlayReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto PlayReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPlayReceivedEventArgs> const& handler) const;
         auto PlayReceived(winrt::event_token const& token) const noexcept;
         auto PauseReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPauseReceivedEventArgs> const& handler) const;
         using PauseReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_PauseReceived>;
-        [[nodiscard]] PauseReceived_revoker PauseReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPauseReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto PauseReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPauseReceivedEventArgs> const& handler) const;
         auto PauseReceived(winrt::event_token const& token) const noexcept;
         auto NextReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerNextReceivedEventArgs> const& handler) const;
         using NextReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_NextReceived>;
-        [[nodiscard]] NextReceived_revoker NextReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerNextReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto NextReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerNextReceivedEventArgs> const& handler) const;
         auto NextReceived(winrt::event_token const& token) const noexcept;
         auto PreviousReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPreviousReceivedEventArgs> const& handler) const;
         using PreviousReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_PreviousReceived>;
-        [[nodiscard]] PreviousReceived_revoker PreviousReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPreviousReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto PreviousReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPreviousReceivedEventArgs> const& handler) const;
         auto PreviousReceived(winrt::event_token const& token) const noexcept;
         auto FastForwardReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerFastForwardReceivedEventArgs> const& handler) const;
         using FastForwardReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_FastForwardReceived>;
-        [[nodiscard]] FastForwardReceived_revoker FastForwardReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerFastForwardReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto FastForwardReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerFastForwardReceivedEventArgs> const& handler) const;
         auto FastForwardReceived(winrt::event_token const& token) const noexcept;
         auto RewindReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerRewindReceivedEventArgs> const& handler) const;
         using RewindReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_RewindReceived>;
-        [[nodiscard]] RewindReceived_revoker RewindReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerRewindReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto RewindReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerRewindReceivedEventArgs> const& handler) const;
         auto RewindReceived(winrt::event_token const& token) const noexcept;
         auto ShuffleReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerShuffleReceivedEventArgs> const& handler) const;
         using ShuffleReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_ShuffleReceived>;
-        [[nodiscard]] ShuffleReceived_revoker ShuffleReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerShuffleReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto ShuffleReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerShuffleReceivedEventArgs> const& handler) const;
         auto ShuffleReceived(winrt::event_token const& token) const noexcept;
         auto AutoRepeatModeReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerAutoRepeatModeReceivedEventArgs> const& handler) const;
         using AutoRepeatModeReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_AutoRepeatModeReceived>;
-        [[nodiscard]] AutoRepeatModeReceived_revoker AutoRepeatModeReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerAutoRepeatModeReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto AutoRepeatModeReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerAutoRepeatModeReceivedEventArgs> const& handler) const;
         auto AutoRepeatModeReceived(winrt::event_token const& token) const noexcept;
         auto PositionReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPositionReceivedEventArgs> const& handler) const;
         using PositionReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_PositionReceived>;
-        [[nodiscard]] PositionReceived_revoker PositionReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPositionReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto PositionReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerPositionReceivedEventArgs> const& handler) const;
         auto PositionReceived(winrt::event_token const& token) const noexcept;
         auto RateReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerRateReceivedEventArgs> const& handler) const;
         using RateReceived_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>::remove_RateReceived>;
-        [[nodiscard]] RateReceived_revoker RateReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerRateReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto RateReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManager, winrt::Windows::Media::Playback::MediaPlaybackCommandManagerRateReceivedEventArgs> const& handler) const;
         auto RateReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Playback::IMediaPlaybackCommandManager>
@@ -1680,7 +1680,7 @@ namespace winrt::impl
         auto EnablingRule(winrt::Windows::Media::Playback::MediaCommandEnablingRule const& value) const;
         auto IsEnabledChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManagerCommandBehavior, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsEnabledChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerCommandBehavior, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerCommandBehavior>::remove_IsEnabledChanged>;
-        [[nodiscard]] IsEnabledChanged_revoker IsEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManagerCommandBehavior, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackCommandManagerCommandBehavior, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsEnabledChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Playback::IMediaPlaybackCommandManagerCommandBehavior>
@@ -1794,15 +1794,15 @@ namespace winrt::impl
     {
         auto AudioTracksChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
         using AudioTracksChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackItem, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackItem>::remove_AudioTracksChanged>;
-        [[nodiscard]] AudioTracksChanged_revoker AudioTracksChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AudioTracksChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
         auto AudioTracksChanged(winrt::event_token const& token) const noexcept;
         auto VideoTracksChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
         using VideoTracksChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackItem, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackItem>::remove_VideoTracksChanged>;
-        [[nodiscard]] VideoTracksChanged_revoker VideoTracksChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto VideoTracksChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
         auto VideoTracksChanged(winrt::event_token const& token) const noexcept;
         auto TimedMetadataTracksChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
         using TimedMetadataTracksChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackItem, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackItem>::remove_TimedMetadataTracksChanged>;
-        [[nodiscard]] TimedMetadataTracksChanged_revoker TimedMetadataTracksChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TimedMetadataTracksChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackItem, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs> const& handler) const;
         auto TimedMetadataTracksChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Source() const;
         [[nodiscard]] auto AudioTracks() const;
@@ -1903,15 +1903,15 @@ namespace winrt::impl
     {
         auto ItemFailed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::MediaPlaybackItemFailedEventArgs> const& handler) const;
         using ItemFailed_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackList, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackList>::remove_ItemFailed>;
-        [[nodiscard]] ItemFailed_revoker ItemFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::MediaPlaybackItemFailedEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::MediaPlaybackItemFailedEventArgs> const& handler) const;
         auto ItemFailed(winrt::event_token const& token) const noexcept;
         auto CurrentItemChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::CurrentMediaPlaybackItemChangedEventArgs> const& handler) const;
         using CurrentItemChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackList, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackList>::remove_CurrentItemChanged>;
-        [[nodiscard]] CurrentItemChanged_revoker CurrentItemChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::CurrentMediaPlaybackItemChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto CurrentItemChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::CurrentMediaPlaybackItemChangedEventArgs> const& handler) const;
         auto CurrentItemChanged(winrt::event_token const& token) const noexcept;
         auto ItemOpened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::MediaPlaybackItemOpenedEventArgs> const& handler) const;
         using ItemOpened_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackList, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackList>::remove_ItemOpened>;
-        [[nodiscard]] ItemOpened_revoker ItemOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::MediaPlaybackItemOpenedEventArgs> const& handler) const;
+        [[nodiscard]] auto ItemOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackList, winrt::Windows::Media::Playback::MediaPlaybackItemOpenedEventArgs> const& handler) const;
         auto ItemOpened(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Items() const;
         [[nodiscard]] auto AutoRepeatEnabled() const;
@@ -1957,43 +1957,43 @@ namespace winrt::impl
     {
         auto PlaybackStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using PlaybackStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_PlaybackStateChanged>;
-        [[nodiscard]] PlaybackStateChanged_revoker PlaybackStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto PlaybackStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto PlaybackStateChanged(winrt::event_token const& token) const noexcept;
         auto PlaybackRateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using PlaybackRateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_PlaybackRateChanged>;
-        [[nodiscard]] PlaybackRateChanged_revoker PlaybackRateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto PlaybackRateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto PlaybackRateChanged(winrt::event_token const& token) const noexcept;
         auto SeekCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using SeekCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_SeekCompleted>;
-        [[nodiscard]] SeekCompleted_revoker SeekCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto SeekCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto SeekCompleted(winrt::event_token const& token) const noexcept;
         auto BufferingStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using BufferingStarted_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_BufferingStarted>;
-        [[nodiscard]] BufferingStarted_revoker BufferingStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto BufferingStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto BufferingStarted(winrt::event_token const& token) const noexcept;
         auto BufferingEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using BufferingEnded_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_BufferingEnded>;
-        [[nodiscard]] BufferingEnded_revoker BufferingEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto BufferingEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto BufferingEnded(winrt::event_token const& token) const noexcept;
         auto BufferingProgressChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using BufferingProgressChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_BufferingProgressChanged>;
-        [[nodiscard]] BufferingProgressChanged_revoker BufferingProgressChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto BufferingProgressChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto BufferingProgressChanged(winrt::event_token const& token) const noexcept;
         auto DownloadProgressChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using DownloadProgressChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_DownloadProgressChanged>;
-        [[nodiscard]] DownloadProgressChanged_revoker DownloadProgressChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto DownloadProgressChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto DownloadProgressChanged(winrt::event_token const& token) const noexcept;
         auto NaturalDurationChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using NaturalDurationChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_NaturalDurationChanged>;
-        [[nodiscard]] NaturalDurationChanged_revoker NaturalDurationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto NaturalDurationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto NaturalDurationChanged(winrt::event_token const& token) const noexcept;
         auto PositionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using PositionChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_PositionChanged>;
-        [[nodiscard]] PositionChanged_revoker PositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto PositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto PositionChanged(winrt::event_token const& token) const noexcept;
         auto NaturalVideoSizeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using NaturalVideoSizeChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession>::remove_NaturalVideoSizeChanged>;
-        [[nodiscard]] NaturalVideoSizeChanged_revoker NaturalVideoSizeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto NaturalVideoSizeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto NaturalVideoSizeChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto MediaPlayer() const;
         [[nodiscard]] auto NaturalDuration() const;
@@ -2023,19 +2023,19 @@ namespace winrt::impl
     {
         auto BufferedRangesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using BufferedRangesChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession2, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession2>::remove_BufferedRangesChanged>;
-        [[nodiscard]] BufferedRangesChanged_revoker BufferedRangesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto BufferedRangesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto BufferedRangesChanged(winrt::event_token const& token) const noexcept;
         auto PlayedRangesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using PlayedRangesChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession2, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession2>::remove_PlayedRangesChanged>;
-        [[nodiscard]] PlayedRangesChanged_revoker PlayedRangesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto PlayedRangesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto PlayedRangesChanged(winrt::event_token const& token) const noexcept;
         auto SeekableRangesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using SeekableRangesChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession2, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession2>::remove_SeekableRangesChanged>;
-        [[nodiscard]] SeekableRangesChanged_revoker SeekableRangesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto SeekableRangesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto SeekableRangesChanged(winrt::event_token const& token) const noexcept;
         auto SupportedPlaybackRatesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         using SupportedPlaybackRatesChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackSession2, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackSession2>::remove_SupportedPlaybackRatesChanged>;
-        [[nodiscard]] SupportedPlaybackRatesChanged_revoker SupportedPlaybackRatesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto SupportedPlaybackRatesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackSession, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto SupportedPlaybackRatesChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto SphericalVideoProjection() const;
         [[nodiscard]] auto IsMirroring() const;
@@ -2109,7 +2109,7 @@ namespace winrt::impl
     {
         auto PresentationModeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackTimedMetadataTrackList, winrt::Windows::Media::Playback::TimedMetadataPresentationModeChangedEventArgs> const& handler) const;
         using PresentationModeChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlaybackTimedMetadataTrackList, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlaybackTimedMetadataTrackList>::remove_PresentationModeChanged>;
-        [[nodiscard]] PresentationModeChanged_revoker PresentationModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackTimedMetadataTrackList, winrt::Windows::Media::Playback::TimedMetadataPresentationModeChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PresentationModeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlaybackTimedMetadataTrackList, winrt::Windows::Media::Playback::TimedMetadataPresentationModeChangedEventArgs> const& handler) const;
         auto PresentationModeChanged(winrt::event_token const& token) const noexcept;
         auto GetPresentationMode(uint32_t index) const;
         auto SetPresentationMode(uint32_t index, winrt::Windows::Media::Playback::TimedMetadataTrackPresentationMode const& value) const;
@@ -2142,43 +2142,43 @@ namespace winrt::impl
         [[nodiscard]] auto PlaybackMediaMarkers() const;
         auto MediaOpened(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using MediaOpened_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_MediaOpened>;
-        [[nodiscard]] MediaOpened_revoker MediaOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto MediaOpened(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto MediaOpened(winrt::event_token const& token) const noexcept;
         auto MediaEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using MediaEnded_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_MediaEnded>;
-        [[nodiscard]] MediaEnded_revoker MediaEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto MediaEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto MediaEnded(winrt::event_token const& token) const noexcept;
         auto MediaFailed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::MediaPlayerFailedEventArgs> const& value) const;
         using MediaFailed_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_MediaFailed>;
-        [[nodiscard]] MediaFailed_revoker MediaFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::MediaPlayerFailedEventArgs> const& value) const;
+        [[nodiscard]] auto MediaFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::MediaPlayerFailedEventArgs> const& value) const;
         auto MediaFailed(winrt::event_token const& token) const noexcept;
         auto CurrentStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using CurrentStateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_CurrentStateChanged>;
-        [[nodiscard]] CurrentStateChanged_revoker CurrentStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto CurrentStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto CurrentStateChanged(winrt::event_token const& token) const noexcept;
         auto PlaybackMediaMarkerReached(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::PlaybackMediaMarkerReachedEventArgs> const& value) const;
         using PlaybackMediaMarkerReached_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_PlaybackMediaMarkerReached>;
-        [[nodiscard]] PlaybackMediaMarkerReached_revoker PlaybackMediaMarkerReached(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::PlaybackMediaMarkerReachedEventArgs> const& value) const;
+        [[nodiscard]] auto PlaybackMediaMarkerReached(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::PlaybackMediaMarkerReachedEventArgs> const& value) const;
         auto PlaybackMediaMarkerReached(winrt::event_token const& token) const noexcept;
         auto MediaPlayerRateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::MediaPlayerRateChangedEventArgs> const& value) const;
         using MediaPlayerRateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_MediaPlayerRateChanged>;
-        [[nodiscard]] MediaPlayerRateChanged_revoker MediaPlayerRateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::MediaPlayerRateChangedEventArgs> const& value) const;
+        [[nodiscard]] auto MediaPlayerRateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Media::Playback::MediaPlayerRateChangedEventArgs> const& value) const;
         auto MediaPlayerRateChanged(winrt::event_token const& token) const noexcept;
         auto VolumeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using VolumeChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_VolumeChanged>;
-        [[nodiscard]] VolumeChanged_revoker VolumeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto VolumeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto VolumeChanged(winrt::event_token const& token) const noexcept;
         auto SeekCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using SeekCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_SeekCompleted>;
-        [[nodiscard]] SeekCompleted_revoker SeekCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto SeekCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto SeekCompleted(winrt::event_token const& token) const noexcept;
         auto BufferingStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using BufferingStarted_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_BufferingStarted>;
-        [[nodiscard]] BufferingStarted_revoker BufferingStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto BufferingStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto BufferingStarted(winrt::event_token const& token) const noexcept;
         auto BufferingEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using BufferingEnded_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer>::remove_BufferingEnded>;
-        [[nodiscard]] BufferingEnded_revoker BufferingEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto BufferingEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto BufferingEnded(winrt::event_token const& token) const noexcept;
         auto Play() const;
         auto Pause() const;
@@ -2206,11 +2206,11 @@ namespace winrt::impl
     {
         auto IsMutedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using IsMutedChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer3, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer3>::remove_IsMutedChanged>;
-        [[nodiscard]] IsMutedChanged_revoker IsMutedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto IsMutedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto IsMutedChanged(winrt::event_token const& token) const noexcept;
         auto SourceChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using SourceChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer3, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer3>::remove_SourceChanged>;
-        [[nodiscard]] SourceChanged_revoker SourceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto SourceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto SourceChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto AudioBalance() const;
         auto AudioBalance(double value) const;
@@ -2250,7 +2250,7 @@ namespace winrt::impl
     {
         auto VideoFrameAvailable(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         using VideoFrameAvailable_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer5, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer5>::remove_VideoFrameAvailable>;
-        [[nodiscard]] VideoFrameAvailable_revoker VideoFrameAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto VideoFrameAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto VideoFrameAvailable(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto IsVideoFrameServerEnabled() const;
         auto IsVideoFrameServerEnabled(bool value) const;
@@ -2267,7 +2267,7 @@ namespace winrt::impl
     {
         auto SubtitleFrameChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SubtitleFrameChanged_revoker = impl::event_revoker<winrt::Windows::Media::Playback::IMediaPlayer6, &impl::abi_t<winrt::Windows::Media::Playback::IMediaPlayer6>::remove_SubtitleFrameChanged>;
-        [[nodiscard]] SubtitleFrameChanged_revoker SubtitleFrameChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SubtitleFrameChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Playback::MediaPlayer, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SubtitleFrameChanged(winrt::event_token const& token) const noexcept;
         auto RenderSubtitlesToSurface(winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface const& destination) const;
         auto RenderSubtitlesToSurface(winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface const& destination, winrt::Windows::Foundation::Rect const& targetRectangle) const;

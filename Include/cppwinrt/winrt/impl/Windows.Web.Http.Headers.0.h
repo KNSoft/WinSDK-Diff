@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_Web_Http_Headers_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
@@ -422,7 +422,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Web::Http::Headers::HttpTransferCodingHeaderValueCollection>{ using type = winrt::Windows::Web::Http::Headers::IHttpTransferCodingHeaderValueCollection; };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpCacheDirectiveHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxAge(void**) noexcept = 0;
             virtual int32_t __stdcall put_MaxAge(void*) noexcept = 0;
@@ -438,7 +438,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpChallengeHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Parameters(void**) noexcept = 0;
             virtual int32_t __stdcall get_Scheme(void**) noexcept = 0;
@@ -447,7 +447,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpChallengeHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -455,7 +455,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpChallengeHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromScheme(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromSchemeWithToken(void*, void*, void**) noexcept = 0;
@@ -463,7 +463,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpChallengeHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -471,14 +471,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpConnectionOptionHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Token(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpConnectionOptionHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -486,14 +486,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpConnectionOptionHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpConnectionOptionHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -501,14 +501,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentCodingHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentCoding(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentCodingHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -516,14 +516,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentCodingHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentCodingHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -531,7 +531,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentCodingWithQualityHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentCoding(void**) noexcept = 0;
             virtual int32_t __stdcall get_Quality(void**) noexcept = 0;
@@ -539,7 +539,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentCodingWithQualityHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -547,7 +547,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentCodingWithQualityHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromValue(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromValueWithQuality(void*, double, void**) noexcept = 0;
@@ -555,7 +555,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentCodingWithQualityHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -563,7 +563,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentDispositionHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DispositionType(void**) noexcept = 0;
             virtual int32_t __stdcall put_DispositionType(void*) noexcept = 0;
@@ -580,14 +580,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentDispositionHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentDispositionHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -595,7 +595,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentHeaderCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentDisposition(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContentDisposition(void*) noexcept = 0;
@@ -621,7 +621,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentRangeHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FirstBytePosition(void**) noexcept = 0;
             virtual int32_t __stdcall get_LastBytePosition(void**) noexcept = 0;
@@ -632,7 +632,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentRangeHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromLength(uint64_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromRange(uint64_t, uint64_t, void**) noexcept = 0;
@@ -641,7 +641,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpContentRangeHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -649,7 +649,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpCookiePairHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -658,7 +658,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpCookiePairHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -666,7 +666,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpCookiePairHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromName(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromNameWithValue(void*, void*, void**) noexcept = 0;
@@ -674,7 +674,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpCookiePairHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -682,7 +682,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpCredentialsHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Parameters(void**) noexcept = 0;
             virtual int32_t __stdcall get_Scheme(void**) noexcept = 0;
@@ -691,7 +691,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpCredentialsHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromScheme(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromSchemeWithToken(void*, void*, void**) noexcept = 0;
@@ -699,7 +699,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpCredentialsHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -707,7 +707,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpDateOrDeltaHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Date(void**) noexcept = 0;
             virtual int32_t __stdcall get_Delta(void**) noexcept = 0;
@@ -715,7 +715,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpDateOrDeltaHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -723,7 +723,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpExpectationHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -733,7 +733,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpExpectationHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -741,7 +741,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpExpectationHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromName(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromNameWithValue(void*, void*, void**) noexcept = 0;
@@ -749,7 +749,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpExpectationHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -757,7 +757,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpLanguageHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -765,7 +765,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpLanguageRangeWithQualityHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LanguageRange(void**) noexcept = 0;
             virtual int32_t __stdcall get_Quality(void**) noexcept = 0;
@@ -773,7 +773,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpLanguageRangeWithQualityHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -781,7 +781,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpLanguageRangeWithQualityHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromLanguageRange(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromLanguageRangeWithQuality(void*, double, void**) noexcept = 0;
@@ -789,7 +789,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpLanguageRangeWithQualityHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -797,7 +797,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpMediaTypeHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CharSet(void**) noexcept = 0;
             virtual int32_t __stdcall put_CharSet(void*) noexcept = 0;
@@ -808,14 +808,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpMediaTypeHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpMediaTypeHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -823,7 +823,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpMediaTypeWithQualityHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CharSet(void**) noexcept = 0;
             virtual int32_t __stdcall put_CharSet(void*) noexcept = 0;
@@ -836,7 +836,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpMediaTypeWithQualityHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -844,7 +844,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpMediaTypeWithQualityHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromMediaType(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromMediaTypeWithQuality(void*, double, void**) noexcept = 0;
@@ -852,7 +852,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpMediaTypeWithQualityHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -860,7 +860,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpMethodHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -868,7 +868,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpNameValueHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -877,7 +877,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpNameValueHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromName(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromNameWithValue(void*, void*, void**) noexcept = 0;
@@ -885,7 +885,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpNameValueHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -893,7 +893,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpProductHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Version(void**) noexcept = 0;
@@ -901,7 +901,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpProductHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromName(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromNameWithVersion(void*, void*, void**) noexcept = 0;
@@ -909,7 +909,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpProductHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -917,7 +917,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpProductInfoHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Product(void**) noexcept = 0;
             virtual int32_t __stdcall get_Comment(void**) noexcept = 0;
@@ -925,7 +925,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpProductInfoHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -933,7 +933,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpProductInfoHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromComment(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromNameWithVersion(void*, void*, void**) noexcept = 0;
@@ -941,7 +941,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpProductInfoHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;
@@ -949,7 +949,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpRequestHeaderCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Accept(void**) noexcept = 0;
             virtual int32_t __stdcall get_AcceptEncoding(void**) noexcept = 0;
@@ -984,7 +984,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpResponseHeaderCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Age(void**) noexcept = 0;
             virtual int32_t __stdcall put_Age(void*) noexcept = 0;
@@ -1006,7 +1006,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpTransferCodingHeaderValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Parameters(void**) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -1014,7 +1014,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpTransferCodingHeaderValueCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseAdd(void*) noexcept = 0;
             virtual int32_t __stdcall TryParseAdd(void*, bool*) noexcept = 0;
@@ -1022,14 +1022,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpTransferCodingHeaderValueFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Headers::IHttpTransferCodingHeaderValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Parse(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParse(void*, void**, bool*) noexcept = 0;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -90,7 +90,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUpdatingEventArgs>{ using type = winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionPackageUpdatingEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtension>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -105,7 +105,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAll(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
@@ -124,14 +124,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalogStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Open(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionPackageInstalledEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageExtensionName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -140,7 +140,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionPackageStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageExtensionName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -148,7 +148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionPackageUninstallingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageExtensionName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -156,7 +156,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionPackageUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageExtensionName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -165,7 +165,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionPackageUpdatingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageExtensionName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Package(void**) noexcept = 0;
@@ -196,23 +196,23 @@ namespace winrt::impl
         auto RequestRemovePackageAsync(param::hstring const& packageFullName) const;
         auto PackageInstalled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageInstalledEventArgs> const& handler) const;
         using PackageInstalled_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog>::remove_PackageInstalled>;
-        [[nodiscard]] PackageInstalled_revoker PackageInstalled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageInstalledEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageInstalled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageInstalledEventArgs> const& handler) const;
         auto PackageInstalled(winrt::event_token const& token) const noexcept;
         auto PackageUpdating(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUpdatingEventArgs> const& handler) const;
         using PackageUpdating_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog>::remove_PackageUpdating>;
-        [[nodiscard]] PackageUpdating_revoker PackageUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUpdatingEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageUpdating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUpdatingEventArgs> const& handler) const;
         auto PackageUpdating(winrt::event_token const& token) const noexcept;
         auto PackageUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUpdatedEventArgs> const& handler) const;
         using PackageUpdated_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog>::remove_PackageUpdated>;
-        [[nodiscard]] PackageUpdated_revoker PackageUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUpdatedEventArgs> const& handler) const;
         auto PackageUpdated(winrt::event_token const& token) const noexcept;
         auto PackageUninstalling(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUninstallingEventArgs> const& handler) const;
         using PackageUninstalling_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog>::remove_PackageUninstalling>;
-        [[nodiscard]] PackageUninstalling_revoker PackageUninstalling(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUninstallingEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageUninstalling(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageUninstallingEventArgs> const& handler) const;
         auto PackageUninstalling(winrt::event_token const& token) const noexcept;
         auto PackageStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageStatusChangedEventArgs> const& handler) const;
         using PackageStatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog, &impl::abi_t<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog>::remove_PackageStatusChanged>;
-        [[nodiscard]] PackageStatusChanged_revoker PackageStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageStatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PackageStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionCatalog, winrt::Windows::ApplicationModel::PackageExtensions::PackageExtensionPackageStatusChangedEventArgs> const& handler) const;
         auto PackageStatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtensionCatalog>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,16 +9,16 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -422,7 +422,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Input::Inking::PenAndInkSettings>{ using type = winrt::Windows::UI::Input::Inking::IPenAndInkSettings; };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkDrawingAttributes>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -438,7 +438,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkDrawingAttributes2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PenTipTransform(winrt::Windows::Foundation::Numerics::float3x2*) noexcept = 0;
             virtual int32_t __stdcall put_PenTipTransform(winrt::Windows::Foundation::Numerics::float3x2) noexcept = 0;
@@ -448,7 +448,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkDrawingAttributes3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PencilProperties(void**) noexcept = 0;
@@ -456,7 +456,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkDrawingAttributes4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IgnoreTilt(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IgnoreTilt(bool) noexcept = 0;
@@ -464,14 +464,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkDrawingAttributes5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ModelerAttributes(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkDrawingAttributesPencilProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Opacity(double*) noexcept = 0;
             virtual int32_t __stdcall put_Opacity(double) noexcept = 0;
@@ -479,14 +479,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkDrawingAttributesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForPencil(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkInputConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPrimaryBarrelButtonInputEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsPrimaryBarrelButtonInputEnabled(bool) noexcept = 0;
@@ -496,7 +496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkInputConfiguration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPenHapticFeedbackEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsPenHapticFeedbackEnabled(bool) noexcept = 0;
@@ -504,7 +504,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkInputProcessingConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -514,7 +514,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -527,7 +527,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkModelerAttributes>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PredictionTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_PredictionTime(int64_t) noexcept = 0;
@@ -537,7 +537,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkModelerAttributes2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseVelocityBasedPressure(bool*) noexcept = 0;
             virtual int32_t __stdcall put_UseVelocityBasedPressure(bool) noexcept = 0;
@@ -545,7 +545,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPoint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Pressure(float*) noexcept = 0;
@@ -553,7 +553,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPoint2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TiltX(float*) noexcept = 0;
             virtual int32_t __stdcall get_TiltY(float*) noexcept = 0;
@@ -562,21 +562,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPointFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInkPoint(winrt::Windows::Foundation::Point, float, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPointFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInkPointWithTiltAndTimestamp(winrt::Windows::Foundation::Point, float, float, float, uint64_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsInputEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsInputEnabled(bool) noexcept = 0;
@@ -599,7 +599,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HighContrastAdjustment(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_HighContrastAdjustment(int32_t) noexcept = 0;
@@ -607,14 +607,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenter3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputConfiguration(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenterProtractor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreTickMarksVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AreTickMarksVisible(bool) noexcept = 0;
@@ -634,14 +634,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenterProtractorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenterRuler>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Length(double*) noexcept = 0;
             virtual int32_t __stdcall put_Length(double) noexcept = 0;
@@ -651,7 +651,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenterRuler2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreTickMarksVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AreTickMarksVisible(bool) noexcept = 0;
@@ -661,14 +661,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenterRulerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkPresenterStencil>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsVisible(bool*) noexcept = 0;
@@ -683,7 +683,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkRecognitionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BoundingRect(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall GetTextCandidates(void**) noexcept = 0;
@@ -692,14 +692,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkRecognizer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkRecognizerContainer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetDefaultRecognizer(void*) noexcept = 0;
             virtual int32_t __stdcall RecognizeAsync(void*, int32_t, void**) noexcept = 0;
@@ -708,7 +708,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStroke>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DrawingAttributes(void**) noexcept = 0;
             virtual int32_t __stdcall put_DrawingAttributes(void*) noexcept = 0;
@@ -722,7 +722,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStroke2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointTransform(winrt::Windows::Foundation::Numerics::float3x2*) noexcept = 0;
             virtual int32_t __stdcall put_PointTransform(winrt::Windows::Foundation::Numerics::float3x2) noexcept = 0;
@@ -731,7 +731,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStroke3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_StrokeStartedTime(void**) noexcept = 0;
@@ -742,14 +742,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStroke4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointerId(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokeBuilder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall BeginStroke(void*) noexcept = 0;
             virtual int32_t __stdcall AppendToStroke(void*, void**) noexcept = 0;
@@ -760,21 +760,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokeBuilder2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateStrokeFromInkPoints(void*, winrt::Windows::Foundation::Numerics::float3x2, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokeBuilder3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateStrokeFromInkPoints(void*, winrt::Windows::Foundation::Numerics::float3x2, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokeContainer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BoundingRect(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall AddStroke(void*) noexcept = 0;
@@ -794,7 +794,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokeContainer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddStrokes(void*) noexcept = 0;
             virtual int32_t __stdcall Clear() noexcept = 0;
@@ -802,7 +802,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokeContainer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SaveWithFormatAsync(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetStrokeById(uint32_t, void**) noexcept = 0;
@@ -810,7 +810,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokeInput>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_StrokeStarted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_StrokeStarted(winrt::event_token) noexcept = 0;
@@ -825,7 +825,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokeRenderingSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_BezierControlPoint1(winrt::Windows::Foundation::Point*) noexcept = 0;
@@ -838,21 +838,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokesCollectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Strokes(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkStrokesErasedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Strokes(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkSynchronizer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall BeginDry(void**) noexcept = 0;
             virtual int32_t __stdcall EndDry() noexcept = 0;
@@ -860,7 +860,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PointerEntered(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PointerEntered(winrt::event_token) noexcept = 0;
@@ -881,7 +881,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IPenAndInkSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsHandwritingDirectlyIntoTextFieldEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_PenHandedness(int32_t*) noexcept = 0;
@@ -893,14 +893,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IPenAndInkSettings2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetPenHandedness(int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::IPenAndInkSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
@@ -1111,11 +1111,11 @@ namespace winrt::impl
         auto SetPredefinedConfiguration(winrt::Windows::UI::Input::Inking::InkPresenterPredefinedConfiguration const& value) const;
         auto StrokesCollected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkPresenter, winrt::Windows::UI::Input::Inking::InkStrokesCollectedEventArgs> const& handler) const;
         using StrokesCollected_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkPresenter, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkPresenter>::remove_StrokesCollected>;
-        [[nodiscard]] StrokesCollected_revoker StrokesCollected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkPresenter, winrt::Windows::UI::Input::Inking::InkStrokesCollectedEventArgs> const& handler) const;
+        [[nodiscard]] auto StrokesCollected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkPresenter, winrt::Windows::UI::Input::Inking::InkStrokesCollectedEventArgs> const& handler) const;
         auto StrokesCollected(winrt::event_token const& cookie) const noexcept;
         auto StrokesErased(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkPresenter, winrt::Windows::UI::Input::Inking::InkStrokesErasedEventArgs> const& handler) const;
         using StrokesErased_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkPresenter, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkPresenter>::remove_StrokesErased>;
-        [[nodiscard]] StrokesErased_revoker StrokesErased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkPresenter, winrt::Windows::UI::Input::Inking::InkStrokesErasedEventArgs> const& handler) const;
+        [[nodiscard]] auto StrokesErased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkPresenter, winrt::Windows::UI::Input::Inking::InkStrokesErasedEventArgs> const& handler) const;
         auto StrokesErased(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Input::Inking::IInkPresenter>
@@ -1380,19 +1380,19 @@ namespace winrt::impl
     {
         auto StrokeStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using StrokeStarted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkStrokeInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkStrokeInput>::remove_StrokeStarted>;
-        [[nodiscard]] StrokeStarted_revoker StrokeStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto StrokeStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto StrokeStarted(winrt::event_token const& cookie) const noexcept;
         auto StrokeContinued(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using StrokeContinued_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkStrokeInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkStrokeInput>::remove_StrokeContinued>;
-        [[nodiscard]] StrokeContinued_revoker StrokeContinued(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto StrokeContinued(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto StrokeContinued(winrt::event_token const& cookie) const noexcept;
         auto StrokeEnded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using StrokeEnded_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkStrokeInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkStrokeInput>::remove_StrokeEnded>;
-        [[nodiscard]] StrokeEnded_revoker StrokeEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto StrokeEnded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto StrokeEnded(winrt::event_token const& cookie) const noexcept;
         auto StrokeCanceled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using StrokeCanceled_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkStrokeInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkStrokeInput>::remove_StrokeCanceled>;
-        [[nodiscard]] StrokeCanceled_revoker StrokeCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto StrokeCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkStrokeInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto StrokeCanceled(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto InkPresenter() const;
     };
@@ -1448,31 +1448,31 @@ namespace winrt::impl
     {
         auto PointerEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerEntered_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput>::remove_PointerEntered>;
-        [[nodiscard]] PointerEntered_revoker PointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerEntered(winrt::event_token const& cookie) const noexcept;
         auto PointerHovered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerHovered_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput>::remove_PointerHovered>;
-        [[nodiscard]] PointerHovered_revoker PointerHovered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerHovered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerHovered(winrt::event_token const& cookie) const noexcept;
         auto PointerExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerExited_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput>::remove_PointerExited>;
-        [[nodiscard]] PointerExited_revoker PointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerExited(winrt::event_token const& cookie) const noexcept;
         auto PointerPressed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerPressed_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput>::remove_PointerPressed>;
-        [[nodiscard]] PointerPressed_revoker PointerPressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerPressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerPressed(winrt::event_token const& cookie) const noexcept;
         auto PointerMoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerMoved_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput>::remove_PointerMoved>;
-        [[nodiscard]] PointerMoved_revoker PointerMoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerMoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerMoved(winrt::event_token const& cookie) const noexcept;
         auto PointerReleased(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerReleased_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput>::remove_PointerReleased>;
-        [[nodiscard]] PointerReleased_revoker PointerReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerReleased(winrt::event_token const& cookie) const noexcept;
         auto PointerLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerLost_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput, &impl::abi_t<winrt::Windows::UI::Input::Inking::IInkUnprocessedInput>::remove_PointerLost>;
-        [[nodiscard]] PointerLost_revoker PointerLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::InkUnprocessedInput, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerLost(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto InkPresenter() const;
     };

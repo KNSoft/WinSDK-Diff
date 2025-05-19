@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@
 #include "winrt/impl/Windows.Data.Xml.Dom.0.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
 {
-    struct __declspec(empty_bases) IDtdEntity :
+    struct WINRT_IMPL_EMPTY_BASES IDtdEntity :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDtdEntity>,
         impl::require<winrt::Windows::Data::Xml::Dom::IDtdEntity, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -18,7 +18,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IDtdEntity(std::nullptr_t = nullptr) noexcept {}
         IDtdEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDtdNotation :
+    struct WINRT_IMPL_EMPTY_BASES IDtdNotation :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDtdNotation>,
         impl::require<winrt::Windows::Data::Xml::Dom::IDtdNotation, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -26,7 +26,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IDtdNotation(std::nullptr_t = nullptr) noexcept {}
         IDtdNotation(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlAttribute :
+    struct WINRT_IMPL_EMPTY_BASES IXmlAttribute :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlAttribute>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlAttribute, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -34,7 +34,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlAttribute(std::nullptr_t = nullptr) noexcept {}
         IXmlAttribute(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlCDataSection :
+    struct WINRT_IMPL_EMPTY_BASES IXmlCDataSection :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlCDataSection>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlCDataSection, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode, winrt::Windows::Data::Xml::Dom::IXmlCharacterData, winrt::Windows::Data::Xml::Dom::IXmlText>
@@ -42,7 +42,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlCDataSection(std::nullptr_t = nullptr) noexcept {}
         IXmlCDataSection(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlCharacterData :
+    struct WINRT_IMPL_EMPTY_BASES IXmlCharacterData :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlCharacterData>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlCharacterData, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -50,7 +50,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlCharacterData(std::nullptr_t = nullptr) noexcept {}
         IXmlCharacterData(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlComment :
+    struct WINRT_IMPL_EMPTY_BASES IXmlComment :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlComment>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlComment, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode, winrt::Windows::Data::Xml::Dom::IXmlCharacterData>
@@ -58,7 +58,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlComment(std::nullptr_t = nullptr) noexcept {}
         IXmlComment(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlDocument :
+    struct WINRT_IMPL_EMPTY_BASES IXmlDocument :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlDocument>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlDocument, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -66,7 +66,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlDocument(std::nullptr_t = nullptr) noexcept {}
         IXmlDocument(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlDocumentFragment :
+    struct WINRT_IMPL_EMPTY_BASES IXmlDocumentFragment :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlDocumentFragment>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlDocumentFragment, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -74,28 +74,28 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlDocumentFragment(std::nullptr_t = nullptr) noexcept {}
         IXmlDocumentFragment(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlDocumentIO :
+    struct WINRT_IMPL_EMPTY_BASES IXmlDocumentIO :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlDocumentIO>
     {
         IXmlDocumentIO(std::nullptr_t = nullptr) noexcept {}
         IXmlDocumentIO(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlDocumentIO2 :
+    struct WINRT_IMPL_EMPTY_BASES IXmlDocumentIO2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlDocumentIO2>
     {
         IXmlDocumentIO2(std::nullptr_t = nullptr) noexcept {}
         IXmlDocumentIO2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlDocumentStatics :
+    struct WINRT_IMPL_EMPTY_BASES IXmlDocumentStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlDocumentStatics>
     {
         IXmlDocumentStatics(std::nullptr_t = nullptr) noexcept {}
         IXmlDocumentStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlDocumentType :
+    struct WINRT_IMPL_EMPTY_BASES IXmlDocumentType :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlDocumentType>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlDocumentType, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -103,14 +103,14 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlDocumentType(std::nullptr_t = nullptr) noexcept {}
         IXmlDocumentType(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlDomImplementation :
+    struct WINRT_IMPL_EMPTY_BASES IXmlDomImplementation :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlDomImplementation>
     {
         IXmlDomImplementation(std::nullptr_t = nullptr) noexcept {}
         IXmlDomImplementation(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlElement :
+    struct WINRT_IMPL_EMPTY_BASES IXmlElement :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlElement>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlElement, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -118,7 +118,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlElement(std::nullptr_t = nullptr) noexcept {}
         IXmlElement(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlEntityReference :
+    struct WINRT_IMPL_EMPTY_BASES IXmlEntityReference :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlEntityReference>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlEntityReference, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -126,14 +126,14 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlEntityReference(std::nullptr_t = nullptr) noexcept {}
         IXmlEntityReference(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlLoadSettings :
+    struct WINRT_IMPL_EMPTY_BASES IXmlLoadSettings :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlLoadSettings>
     {
         IXmlLoadSettings(std::nullptr_t = nullptr) noexcept {}
         IXmlLoadSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlNamedNodeMap :
+    struct WINRT_IMPL_EMPTY_BASES IXmlNamedNodeMap :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlNamedNodeMap>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlNamedNodeMap, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Data::Xml::Dom::IXmlNode>, winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Data::Xml::Dom::IXmlNode>>
@@ -141,7 +141,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlNamedNodeMap(std::nullptr_t = nullptr) noexcept {}
         IXmlNamedNodeMap(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlNode :
+    struct WINRT_IMPL_EMPTY_BASES IXmlNode :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlNode>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlNode, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer>
@@ -149,7 +149,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlNode(std::nullptr_t = nullptr) noexcept {}
         IXmlNode(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlNodeList :
+    struct WINRT_IMPL_EMPTY_BASES IXmlNodeList :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlNodeList>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlNodeList, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Data::Xml::Dom::IXmlNode>, winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Data::Xml::Dom::IXmlNode>>
@@ -157,21 +157,21 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlNodeList(std::nullptr_t = nullptr) noexcept {}
         IXmlNodeList(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlNodeSelector :
+    struct WINRT_IMPL_EMPTY_BASES IXmlNodeSelector :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlNodeSelector>
     {
         IXmlNodeSelector(std::nullptr_t = nullptr) noexcept {}
         IXmlNodeSelector(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlNodeSerializer :
+    struct WINRT_IMPL_EMPTY_BASES IXmlNodeSerializer :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlNodeSerializer>
     {
         IXmlNodeSerializer(std::nullptr_t = nullptr) noexcept {}
         IXmlNodeSerializer(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlProcessingInstruction :
+    struct WINRT_IMPL_EMPTY_BASES IXmlProcessingInstruction :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlProcessingInstruction>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlProcessingInstruction, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode>
@@ -179,7 +179,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
         IXmlProcessingInstruction(std::nullptr_t = nullptr) noexcept {}
         IXmlProcessingInstruction(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IXmlText :
+    struct WINRT_IMPL_EMPTY_BASES IXmlText :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IXmlText>,
         impl::require<winrt::Windows::Data::Xml::Dom::IXmlText, winrt::Windows::Data::Xml::Dom::IXmlNodeSelector, winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer, winrt::Windows::Data::Xml::Dom::IXmlNode, winrt::Windows::Data::Xml::Dom::IXmlCharacterData>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_System_Update_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct HResult;
 }
@@ -90,7 +90,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Update::SystemUpdateLastErrorInfo>{ using type = winrt::Windows::System::Update::ISystemUpdateLastErrorInfo; };
     template <> struct abi<winrt::Windows::System::Update::ISystemUpdateItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
@@ -104,7 +104,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Update::ISystemUpdateLastErrorInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -113,7 +113,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Update::ISystemUpdateManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
@@ -175,7 +175,7 @@ namespace winrt::impl
         [[nodiscard]] auto State() const;
         auto StateChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::System::Update::ISystemUpdateManagerStatics, &impl::abi_t<winrt::Windows::System::Update::ISystemUpdateManagerStatics>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto DownloadProgress() const;
         [[nodiscard]] auto InstallProgress() const;

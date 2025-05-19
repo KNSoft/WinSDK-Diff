@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::System::Diagnostics
@@ -52,6 +52,7 @@ WINRT_EXPORT namespace winrt::Windows::Web::Http::Diagnostics
     struct HttpDiagnosticProviderRequestSentEventArgs;
     struct HttpDiagnosticProviderResponseReceivedEventArgs;
     struct HttpDiagnosticSourceLocation;
+    struct HttpDiagnosticsContract;
 }
 namespace winrt::impl
 {
@@ -83,6 +84,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderResponseReceivedEventArgs> = L"Windows.Web.Http.Diagnostics.IHttpDiagnosticProviderResponseReceivedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderStatics> = L"Windows.Web.Http.Diagnostics.IHttpDiagnosticProviderStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticSourceLocation> = L"Windows.Web.Http.Diagnostics.IHttpDiagnosticSourceLocation";
+    template <> inline constexpr auto& name_v<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticsContract> = L"Windows.Web.Http.Diagnostics.HttpDiagnosticsContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider>{ 0xBD811501,0xA056,0x4D39,{ 0xB1,0x74,0x83,0x3B,0x7B,0x03,0xB0,0x2C } }; // BD811501-A056-4D39-B174-833B7B03B02C
     template <> inline constexpr guid guid_v<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderRequestResponseCompletedEventArgs>{ 0x735F98EE,0x94F6,0x4532,{ 0xB2,0x6E,0x61,0xE1,0xB1,0xE4,0xEF,0xD4 } }; // 735F98EE-94F6-4532-B26E-61E1B1E4EFD4
     template <> inline constexpr guid guid_v<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderRequestResponseTimestamps>{ 0xE0AFDE10,0x55CF,0x4C01,{ 0x91,0xD4,0xA2,0x05,0x57,0xD8,0x49,0xF0 } }; // E0AFDE10-55CF-4C01-91D4-A20557D849F0
@@ -98,7 +100,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticSourceLocation>{ using type = winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticSourceLocation; };
     template <> struct abi<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Start() noexcept = 0;
             virtual int32_t __stdcall Stop() noexcept = 0;
@@ -112,7 +114,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderRequestResponseCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivityId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Timestamps(void**) noexcept = 0;
@@ -125,7 +127,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderRequestResponseTimestamps>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CacheCheckedTimestamp(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConnectionInitiatedTimestamp(void**) noexcept = 0;
@@ -140,7 +142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderRequestSentEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_ActivityId(winrt::guid*) noexcept = 0;
@@ -153,7 +155,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderResponseReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_ActivityId(winrt::guid*) noexcept = 0;
@@ -162,14 +164,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromProcessDiagnosticInfo(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticSourceLocation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceUri(void**) noexcept = 0;
             virtual int32_t __stdcall get_LineNumber(uint64_t*) noexcept = 0;
@@ -183,15 +185,15 @@ namespace winrt::impl
         auto Stop() const;
         auto RequestSent(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderRequestSentEventArgs> const& handler) const;
         using RequestSent_revoker = impl::event_revoker<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider, &impl::abi_t<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider>::remove_RequestSent>;
-        [[nodiscard]] RequestSent_revoker RequestSent(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderRequestSentEventArgs> const& handler) const;
+        [[nodiscard]] auto RequestSent(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderRequestSentEventArgs> const& handler) const;
         auto RequestSent(winrt::event_token const& token) const noexcept;
         auto ResponseReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderResponseReceivedEventArgs> const& handler) const;
         using ResponseReceived_revoker = impl::event_revoker<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider, &impl::abi_t<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider>::remove_ResponseReceived>;
-        [[nodiscard]] ResponseReceived_revoker ResponseReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderResponseReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto ResponseReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderResponseReceivedEventArgs> const& handler) const;
         auto ResponseReceived(winrt::event_token const& token) const noexcept;
         auto RequestResponseCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderRequestResponseCompletedEventArgs> const& handler) const;
         using RequestResponseCompleted_revoker = impl::event_revoker<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider, &impl::abi_t<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider>::remove_RequestResponseCompleted>;
-        [[nodiscard]] RequestResponseCompleted_revoker RequestResponseCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderRequestResponseCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto RequestResponseCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProvider, winrt::Windows::Web::Http::Diagnostics::HttpDiagnosticProviderRequestResponseCompletedEventArgs> const& handler) const;
         auto RequestResponseCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider>

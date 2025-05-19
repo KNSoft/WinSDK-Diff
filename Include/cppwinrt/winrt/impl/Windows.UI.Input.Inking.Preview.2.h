@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.UI.Input.Inking.Preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Inking::Preview
 {
-    struct __declspec(empty_bases) PalmRejectionDelayZonePreview : winrt::Windows::UI::Input::Inking::Preview::IPalmRejectionDelayZonePreview,
+    struct WINRT_IMPL_EMPTY_BASES PalmRejectionDelayZonePreview : winrt::Windows::UI::Input::Inking::Preview::IPalmRejectionDelayZonePreview,
         impl::require<PalmRejectionDelayZonePreview, winrt::Windows::Foundation::IClosable>
     {
         PalmRejectionDelayZonePreview(std::nullptr_t) noexcept {}

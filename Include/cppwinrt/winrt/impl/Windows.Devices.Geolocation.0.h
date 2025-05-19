@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,12 +9,12 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation
 {
@@ -295,7 +295,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Geolocation::VenueData>{ using type = winrt::Windows::Devices::Geolocation::IVenueData; };
     template <> struct abi<winrt::Windows::Devices::Geolocation::ICivicAddress>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Country(void**) noexcept = 0;
             virtual int32_t __stdcall get_State(void**) noexcept = 0;
@@ -306,7 +306,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeoboundingBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NorthwestCorner(struct struct_Windows_Devices_Geolocation_BasicGeoposition*) noexcept = 0;
             virtual int32_t __stdcall get_SoutheastCorner(struct struct_Windows_Devices_Geolocation_BasicGeoposition*) noexcept = 0;
@@ -317,7 +317,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeoboundingBoxFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(struct struct_Windows_Devices_Geolocation_BasicGeoposition, struct struct_Windows_Devices_Geolocation_BasicGeoposition, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithAltitudeReference(struct struct_Windows_Devices_Geolocation_BasicGeoposition, struct struct_Windows_Devices_Geolocation_BasicGeoposition, int32_t, void**) noexcept = 0;
@@ -326,7 +326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeoboundingBoxStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCompute(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryComputeWithAltitudeReference(void*, int32_t, void**) noexcept = 0;
@@ -335,7 +335,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocircle>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Center(struct struct_Windows_Devices_Geolocation_BasicGeoposition*) noexcept = 0;
             virtual int32_t __stdcall get_Radius(double*) noexcept = 0;
@@ -343,7 +343,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocircleFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(struct struct_Windows_Devices_Geolocation_BasicGeoposition, double, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithAltitudeReferenceSystem(struct struct_Windows_Devices_Geolocation_BasicGeoposition, double, int32_t, void**) noexcept = 0;
@@ -352,7 +352,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocoordinate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Latitude(double*) noexcept = 0;
             virtual int32_t __stdcall get_Longitude(double*) noexcept = 0;
@@ -366,7 +366,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocoordinateSatelliteData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PositionDilutionOfPrecision(void**) noexcept = 0;
             virtual int32_t __stdcall get_HorizontalDilutionOfPrecision(void**) noexcept = 0;
@@ -375,7 +375,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocoordinateSatelliteData2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GeometricDilutionOfPrecision(void**) noexcept = 0;
             virtual int32_t __stdcall get_TimeDilutionOfPrecision(void**) noexcept = 0;
@@ -383,14 +383,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocoordinateWithPoint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Point(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocoordinateWithPositionData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PositionSource(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SatelliteData(void**) noexcept = 0;
@@ -398,21 +398,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocoordinateWithPositionSourceTimestamp>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PositionSourceTimestamp(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeocoordinateWithRemoteSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsRemoteSource(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeolocator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredAccuracy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DesiredAccuracy(int32_t) noexcept = 0;
@@ -431,14 +431,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeolocator2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AllowFallbackToConsentlessPositions() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeolocatorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetGeopositionHistoryAsync(int64_t, void**) noexcept = 0;
@@ -447,7 +447,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeolocatorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDefaultGeopositionRecommended(bool*) noexcept = 0;
             virtual int32_t __stdcall put_DefaultGeoposition(void*) noexcept = 0;
@@ -456,7 +456,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeolocatorWithScalarAccuracy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredAccuracyInMeters(void**) noexcept = 0;
             virtual int32_t __stdcall put_DesiredAccuracyInMeters(void*) noexcept = 0;
@@ -464,14 +464,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeopath>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Positions(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeopathFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithAltitudeReference(void*, int32_t, void**) noexcept = 0;
@@ -480,14 +480,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeopoint>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(struct struct_Windows_Devices_Geolocation_BasicGeoposition*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeopointFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(struct struct_Windows_Devices_Geolocation_BasicGeoposition, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithAltitudeReferenceSystem(struct struct_Windows_Devices_Geolocation_BasicGeoposition, int32_t, void**) noexcept = 0;
@@ -496,7 +496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeoposition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Coordinate(void**) noexcept = 0;
             virtual int32_t __stdcall get_CivicAddress(void**) noexcept = 0;
@@ -504,14 +504,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeoposition2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VenueData(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeoshape>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GeoshapeType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SpatialReferenceId(uint32_t*) noexcept = 0;
@@ -520,7 +520,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeovisit>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(void**) noexcept = 0;
             virtual int32_t __stdcall get_StateChange(int32_t*) noexcept = 0;
@@ -529,7 +529,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeovisitMonitor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MonitoringScope(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Start(int32_t) noexcept = 0;
@@ -540,42 +540,42 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeovisitMonitorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetLastReportAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeovisitStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Visit(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IGeovisitTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadReports(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IPositionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Geolocation::IVenueData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Level(void**) noexcept = 0;
@@ -738,11 +738,11 @@ namespace winrt::impl
         auto GetGeopositionAsync(winrt::Windows::Foundation::TimeSpan const& maximumAge, winrt::Windows::Foundation::TimeSpan const& timeout) const;
         auto PositionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geolocator, winrt::Windows::Devices::Geolocation::PositionChangedEventArgs> const& handler) const;
         using PositionChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Geolocation::IGeolocator, &impl::abi_t<winrt::Windows::Devices::Geolocation::IGeolocator>::remove_PositionChanged>;
-        [[nodiscard]] PositionChanged_revoker PositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geolocator, winrt::Windows::Devices::Geolocation::PositionChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PositionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geolocator, winrt::Windows::Devices::Geolocation::PositionChangedEventArgs> const& handler) const;
         auto PositionChanged(winrt::event_token const& token) const noexcept;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geolocator, winrt::Windows::Devices::Geolocation::StatusChangedEventArgs> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Geolocation::IGeolocator, &impl::abi_t<winrt::Windows::Devices::Geolocation::IGeolocator>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geolocator, winrt::Windows::Devices::Geolocation::StatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::Geolocator, winrt::Windows::Devices::Geolocation::StatusChangedEventArgs> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Geolocation::IGeolocator>
@@ -879,7 +879,7 @@ namespace winrt::impl
         auto Stop() const;
         auto VisitStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::GeovisitMonitor, winrt::Windows::Devices::Geolocation::GeovisitStateChangedEventArgs> const& handler) const;
         using VisitStateChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Geolocation::IGeovisitMonitor, &impl::abi_t<winrt::Windows::Devices::Geolocation::IGeovisitMonitor>::remove_VisitStateChanged>;
-        [[nodiscard]] VisitStateChanged_revoker VisitStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::GeovisitMonitor, winrt::Windows::Devices::Geolocation::GeovisitStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto VisitStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Geolocation::GeovisitMonitor, winrt::Windows::Devices::Geolocation::GeovisitStateChangedEventArgs> const& handler) const;
         auto VisitStateChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Geolocation::IGeovisitMonitor>

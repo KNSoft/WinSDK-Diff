@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,7 +15,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
@@ -124,7 +124,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Casting::CastingSource>{ using type = winrt::Windows::Media::Casting::ICastingSource; };
     template <> struct abi<winrt::Windows::Media::Casting::ICastingConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
@@ -140,7 +140,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Casting::ICastingConnectionErrorOccurredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ErrorStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
@@ -148,7 +148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Casting::ICastingDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_FriendlyName(void**) noexcept = 0;
@@ -159,7 +159,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Casting::ICastingDevicePicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Filter(void**) noexcept = 0;
             virtual int32_t __stdcall get_Appearance(void**) noexcept = 0;
@@ -174,7 +174,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Casting::ICastingDevicePickerFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportsAudio(bool*) noexcept = 0;
             virtual int32_t __stdcall put_SupportsAudio(bool) noexcept = 0;
@@ -187,14 +187,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Casting::ICastingDeviceSelectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedCastingDevice(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Casting::ICastingDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorFromCastingSourceAsync(void*, void**) noexcept = 0;
@@ -204,7 +204,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Casting::ICastingSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PreferredSourceUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_PreferredSourceUri(void*) noexcept = 0;
@@ -219,11 +219,11 @@ namespace winrt::impl
         auto Source(winrt::Windows::Media::Casting::CastingSource const& value) const;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingConnection, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Casting::ICastingConnection, &impl::abi_t<winrt::Windows::Media::Casting::ICastingConnection>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingConnection, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingConnection, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
         auto ErrorOccurred(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingConnection, winrt::Windows::Media::Casting::CastingConnectionErrorOccurredEventArgs> const& handler) const;
         using ErrorOccurred_revoker = impl::event_revoker<winrt::Windows::Media::Casting::ICastingConnection, &impl::abi_t<winrt::Windows::Media::Casting::ICastingConnection>::remove_ErrorOccurred>;
-        [[nodiscard]] ErrorOccurred_revoker ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingConnection, winrt::Windows::Media::Casting::CastingConnectionErrorOccurredEventArgs> const& handler) const;
+        [[nodiscard]] auto ErrorOccurred(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingConnection, winrt::Windows::Media::Casting::CastingConnectionErrorOccurredEventArgs> const& handler) const;
         auto ErrorOccurred(winrt::event_token const& token) const noexcept;
         auto RequestStartCastingAsync(winrt::Windows::Media::Casting::CastingSource const& value) const;
         auto DisconnectAsync() const;
@@ -262,11 +262,11 @@ namespace winrt::impl
         [[nodiscard]] auto Appearance() const;
         auto CastingDeviceSelected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingDevicePicker, winrt::Windows::Media::Casting::CastingDeviceSelectedEventArgs> const& handler) const;
         using CastingDeviceSelected_revoker = impl::event_revoker<winrt::Windows::Media::Casting::ICastingDevicePicker, &impl::abi_t<winrt::Windows::Media::Casting::ICastingDevicePicker>::remove_CastingDeviceSelected>;
-        [[nodiscard]] CastingDeviceSelected_revoker CastingDeviceSelected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingDevicePicker, winrt::Windows::Media::Casting::CastingDeviceSelectedEventArgs> const& handler) const;
+        [[nodiscard]] auto CastingDeviceSelected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingDevicePicker, winrt::Windows::Media::Casting::CastingDeviceSelectedEventArgs> const& handler) const;
         auto CastingDeviceSelected(winrt::event_token const& token) const noexcept;
         auto CastingDevicePickerDismissed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingDevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CastingDevicePickerDismissed_revoker = impl::event_revoker<winrt::Windows::Media::Casting::ICastingDevicePicker, &impl::abi_t<winrt::Windows::Media::Casting::ICastingDevicePicker>::remove_CastingDevicePickerDismissed>;
-        [[nodiscard]] CastingDevicePickerDismissed_revoker CastingDevicePickerDismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingDevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CastingDevicePickerDismissed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Casting::CastingDevicePicker, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CastingDevicePickerDismissed(winrt::event_token const& token) const noexcept;
         auto Show(winrt::Windows::Foundation::Rect const& selection) const;
         auto Show(winrt::Windows::Foundation::Rect const& selection, winrt::Windows::UI::Popups::Placement const& preferredPlacement) const;

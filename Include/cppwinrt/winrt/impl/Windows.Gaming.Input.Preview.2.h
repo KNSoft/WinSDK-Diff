@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,11 +14,11 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::Input::Preview
 {
     struct HeadsetGeqGains
     {
-        int32_t band1Gain;
-        int32_t band2Gain;
-        int32_t band3Gain;
-        int32_t band4Gain;
-        int32_t band5Gain;
+        int32_t band1Gain {};
+        int32_t band2Gain {};
+        int32_t band3Gain {};
+        int32_t band4Gain {};
+        int32_t band5Gain {};
     };
     inline bool operator==(HeadsetGeqGains const& left, HeadsetGeqGains const& right) noexcept
     {
@@ -34,7 +34,7 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::Input::Preview
         static auto GetParentProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider);
         static auto GetProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider);
     };
-    struct __declspec(empty_bases) LegacyGipGameControllerProvider : winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider
+    struct WINRT_IMPL_EMPTY_BASES LegacyGipGameControllerProvider : winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider
     {
         LegacyGipGameControllerProvider(std::nullptr_t) noexcept {}
         LegacyGipGameControllerProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider(ptr, take_ownership_from_abi) {}

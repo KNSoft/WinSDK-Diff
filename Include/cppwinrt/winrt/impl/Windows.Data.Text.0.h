@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_Data_Text_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Text::Core
 {
@@ -213,7 +213,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Data::Text::WordsSegmenter>{ using type = winrt::Windows::Data::Text::IWordsSegmenter; };
     template <> struct abi<winrt::Windows::Data::Text::IAlternateWordForm>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceTextSegment(struct struct_Windows_Data_Text_TextSegment*) noexcept = 0;
             virtual int32_t __stdcall get_AlternateText(void**) noexcept = 0;
@@ -222,7 +222,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ISelectableWordSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall get_SourceTextSegment(struct struct_Windows_Data_Text_TextSegment*) noexcept = 0;
@@ -230,7 +230,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ISelectableWordsSegmenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResolvedLanguage(void**) noexcept = 0;
             virtual int32_t __stdcall GetTokenAt(void*, uint32_t, void**) noexcept = 0;
@@ -240,14 +240,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ISelectableWordsSegmenterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithLanguage(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Text::ISemanticTextQuery>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Find(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindInProperty(void*, void*, void**) noexcept = 0;
@@ -255,7 +255,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ISemanticTextQueryFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithLanguage(void*, void*, void**) noexcept = 0;
@@ -263,7 +263,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextConversionGenerator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResolvedLanguage(void**) noexcept = 0;
             virtual int32_t __stdcall get_LanguageAvailableButNotInstalled(bool*) noexcept = 0;
@@ -273,14 +273,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextConversionGeneratorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextPhoneme>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayText(void**) noexcept = 0;
             virtual int32_t __stdcall get_ReadingText(void**) noexcept = 0;
@@ -288,7 +288,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextPredictionGenerator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResolvedLanguage(void**) noexcept = 0;
             virtual int32_t __stdcall get_LanguageAvailableButNotInstalled(bool*) noexcept = 0;
@@ -298,7 +298,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextPredictionGenerator2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCandidatesWithParametersAsync(void*, uint32_t, uint32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetNextWordCandidatesAsync(uint32_t, void*, void**) noexcept = 0;
@@ -308,14 +308,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextPredictionGeneratorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextReverseConversionGenerator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResolvedLanguage(void**) noexcept = 0;
             virtual int32_t __stdcall get_LanguageAvailableButNotInstalled(bool*) noexcept = 0;
@@ -324,21 +324,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextReverseConversionGenerator2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPhonemesAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Text::ITextReverseConversionGeneratorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Text::IUnicodeCharactersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCodepointFromSurrogatePair(uint32_t, uint32_t, uint32_t*) noexcept = 0;
             virtual int32_t __stdcall GetSurrogatePairFromCodepoint(uint32_t, char16_t*, char16_t*) noexcept = 0;
@@ -361,7 +361,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::IWordSegment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall get_SourceTextSegment(struct struct_Windows_Data_Text_TextSegment*) noexcept = 0;
@@ -370,7 +370,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::IWordsSegmenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResolvedLanguage(void**) noexcept = 0;
             virtual int32_t __stdcall GetTokenAt(void*, uint32_t, void**) noexcept = 0;
@@ -380,21 +380,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Text::IWordsSegmenterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithLanguage(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Text::SelectableWordSegmentsTokenizingHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Text::WordSegmentsTokenizingHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };

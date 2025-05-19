@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -17,7 +17,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
 {
@@ -254,7 +254,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::PointOfService::Provider::BarcodeSymbologyAttributesBuilder>{ using type = winrt::Windows::Devices::PointOfService::Provider::IBarcodeSymbologyAttributesBuilder; };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerDisableScannerRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedAsync(void**) noexcept = 0;
@@ -262,7 +262,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerDisableScannerRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportFailedWithFailedReasonAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedWithFailedReasonAndDescriptionAsync(int32_t, void*, void**) noexcept = 0;
@@ -270,7 +270,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerDisableScannerRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -278,7 +278,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerEnableScannerRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedAsync(void**) noexcept = 0;
@@ -286,7 +286,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerEnableScannerRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportFailedWithFailedReasonAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedWithFailedReasonAndDescriptionAsync(int32_t, void*, void**) noexcept = 0;
@@ -294,7 +294,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerEnableScannerRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -302,7 +302,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerFrameReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAsync(void**) noexcept = 0;
             virtual int32_t __stdcall StopAsync(void**) noexcept = 0;
@@ -314,14 +314,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerFrameReaderFrameArrivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerGetSymbologyAttributesRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Symbology(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall ReportCompletedAsync(void*, void**) noexcept = 0;
@@ -330,7 +330,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerGetSymbologyAttributesRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportFailedWithFailedReasonAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedWithFailedReasonAndDescriptionAsync(int32_t, void*, void**) noexcept = 0;
@@ -338,7 +338,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerGetSymbologyAttributesRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -346,7 +346,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerHideVideoPreviewRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedAsync(void**) noexcept = 0;
@@ -354,7 +354,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerHideVideoPreviewRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportFailedWithFailedReasonAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedWithFailedReasonAndDescriptionAsync(int32_t, void*, void**) noexcept = 0;
@@ -362,7 +362,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerHideVideoPreviewRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -370,7 +370,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_VideoDeviceId(void**) noexcept = 0;
@@ -406,7 +406,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFrameReaderAsync(void**) noexcept = 0;
             virtual int32_t __stdcall CreateFrameReaderWithFormatAsync(int32_t, void**) noexcept = 0;
@@ -415,14 +415,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Connection(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerSetActiveSymbologiesRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Symbologies(void**) noexcept = 0;
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
@@ -431,7 +431,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerSetActiveSymbologiesRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportFailedWithFailedReasonAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedWithFailedReasonAndDescriptionAsync(int32_t, void*, void**) noexcept = 0;
@@ -439,7 +439,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerSetActiveSymbologiesRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -447,7 +447,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerSetSymbologyAttributesRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Symbology(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Attributes(void**) noexcept = 0;
@@ -457,7 +457,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerSetSymbologyAttributesRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportFailedWithFailedReasonAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedWithFailedReasonAndDescriptionAsync(int32_t, void*, void**) noexcept = 0;
@@ -465,7 +465,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerSetSymbologyAttributesRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -473,7 +473,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerStartSoftwareTriggerRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedAsync(void**) noexcept = 0;
@@ -481,7 +481,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerStartSoftwareTriggerRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportFailedWithFailedReasonAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedWithFailedReasonAndDescriptionAsync(int32_t, void*, void**) noexcept = 0;
@@ -489,7 +489,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerStartSoftwareTriggerRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -497,7 +497,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerStopSoftwareTriggerRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedAsync(void**) noexcept = 0;
@@ -505,7 +505,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerStopSoftwareTriggerRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportFailedWithFailedReasonAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ReportFailedWithFailedReasonAndDescriptionAsync(int32_t, void*, void**) noexcept = 0;
@@ -513,7 +513,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerStopSoftwareTriggerRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -521,7 +521,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerVideoFrame>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Width(uint32_t*) noexcept = 0;
@@ -531,7 +531,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::PointOfService::Provider::IBarcodeSymbologyAttributesBuilder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCheckDigitValidationSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsCheckDigitValidationSupported(bool) noexcept = 0;
@@ -611,7 +611,7 @@ namespace winrt::impl
         [[nodiscard]] auto Connection() const;
         auto FrameArrived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerFrameReader, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerFrameReaderFrameArrivedEventArgs> const& handler) const;
         using FrameArrived_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerFrameReader, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerFrameReader>::remove_FrameArrived>;
-        [[nodiscard]] FrameArrived_revoker FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerFrameReader, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerFrameReaderFrameArrivedEventArgs> const& handler) const;
+        [[nodiscard]] auto FrameArrived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerFrameReader, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerFrameReaderFrameArrivedEventArgs> const& handler) const;
         auto FrameArrived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerFrameReader>
@@ -707,35 +707,35 @@ namespace winrt::impl
         auto ReportErrorAsync(winrt::Windows::Devices::PointOfService::UnifiedPosErrorData const& errorData, bool isRetriable, winrt::Windows::Devices::PointOfService::BarcodeScannerReport const& scanReport) const;
         auto EnableScannerRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerEnableScannerRequestEventArgs> const& handler) const;
         using EnableScannerRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>::remove_EnableScannerRequested>;
-        [[nodiscard]] EnableScannerRequested_revoker EnableScannerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerEnableScannerRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto EnableScannerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerEnableScannerRequestEventArgs> const& handler) const;
         auto EnableScannerRequested(winrt::event_token const& token) const noexcept;
         auto DisableScannerRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerDisableScannerRequestEventArgs> const& handler) const;
         using DisableScannerRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>::remove_DisableScannerRequested>;
-        [[nodiscard]] DisableScannerRequested_revoker DisableScannerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerDisableScannerRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto DisableScannerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerDisableScannerRequestEventArgs> const& handler) const;
         auto DisableScannerRequested(winrt::event_token const& token) const noexcept;
         auto SetActiveSymbologiesRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerSetActiveSymbologiesRequestEventArgs> const& handler) const;
         using SetActiveSymbologiesRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>::remove_SetActiveSymbologiesRequested>;
-        [[nodiscard]] SetActiveSymbologiesRequested_revoker SetActiveSymbologiesRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerSetActiveSymbologiesRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto SetActiveSymbologiesRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerSetActiveSymbologiesRequestEventArgs> const& handler) const;
         auto SetActiveSymbologiesRequested(winrt::event_token const& token) const noexcept;
         auto StartSoftwareTriggerRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerStartSoftwareTriggerRequestEventArgs> const& handler) const;
         using StartSoftwareTriggerRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>::remove_StartSoftwareTriggerRequested>;
-        [[nodiscard]] StartSoftwareTriggerRequested_revoker StartSoftwareTriggerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerStartSoftwareTriggerRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto StartSoftwareTriggerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerStartSoftwareTriggerRequestEventArgs> const& handler) const;
         auto StartSoftwareTriggerRequested(winrt::event_token const& token) const noexcept;
         auto StopSoftwareTriggerRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerStopSoftwareTriggerRequestEventArgs> const& handler) const;
         using StopSoftwareTriggerRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>::remove_StopSoftwareTriggerRequested>;
-        [[nodiscard]] StopSoftwareTriggerRequested_revoker StopSoftwareTriggerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerStopSoftwareTriggerRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto StopSoftwareTriggerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerStopSoftwareTriggerRequestEventArgs> const& handler) const;
         auto StopSoftwareTriggerRequested(winrt::event_token const& token) const noexcept;
         auto GetBarcodeSymbologyAttributesRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerGetSymbologyAttributesRequestEventArgs> const& handler) const;
         using GetBarcodeSymbologyAttributesRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>::remove_GetBarcodeSymbologyAttributesRequested>;
-        [[nodiscard]] GetBarcodeSymbologyAttributesRequested_revoker GetBarcodeSymbologyAttributesRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerGetSymbologyAttributesRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto GetBarcodeSymbologyAttributesRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerGetSymbologyAttributesRequestEventArgs> const& handler) const;
         auto GetBarcodeSymbologyAttributesRequested(winrt::event_token const& token) const noexcept;
         auto SetBarcodeSymbologyAttributesRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerSetSymbologyAttributesRequestEventArgs> const& handler) const;
         using SetBarcodeSymbologyAttributesRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>::remove_SetBarcodeSymbologyAttributesRequested>;
-        [[nodiscard]] SetBarcodeSymbologyAttributesRequested_revoker SetBarcodeSymbologyAttributesRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerSetSymbologyAttributesRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto SetBarcodeSymbologyAttributesRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerSetSymbologyAttributesRequestEventArgs> const& handler) const;
         auto SetBarcodeSymbologyAttributesRequested(winrt::event_token const& token) const noexcept;
         auto HideVideoPreviewRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerHideVideoPreviewRequestEventArgs> const& handler) const;
         using HideVideoPreviewRequested_revoker = impl::event_revoker<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection, &impl::abi_t<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>::remove_HideVideoPreviewRequested>;
-        [[nodiscard]] HideVideoPreviewRequested_revoker HideVideoPreviewRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerHideVideoPreviewRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto HideVideoPreviewRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerProviderConnection, winrt::Windows::Devices::PointOfService::Provider::BarcodeScannerHideVideoPreviewRequestEventArgs> const& handler) const;
         auto HideVideoPreviewRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::PointOfService::Provider::IBarcodeScannerProviderConnection>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,12 +9,12 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
 {
@@ -140,6 +140,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
     struct ProtectionPolicyAuditInfo;
     struct ProtectionPolicyManager;
     struct ThreadNetworkContext;
+    struct EnterpriseDataContract;
 }
 namespace winrt::impl
 {
@@ -241,6 +242,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics3> = L"Windows.Security.EnterpriseData.IProtectionPolicyManagerStatics3";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics4> = L"Windows.Security.EnterpriseData.IProtectionPolicyManagerStatics4";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::EnterpriseData::IThreadNetworkContext> = L"Windows.Security.EnterpriseData.IThreadNetworkContext";
+    template <> inline constexpr auto& name_v<winrt::Windows::Security::EnterpriseData::EnterpriseDataContract> = L"Windows.Security.EnterpriseData.EnterpriseDataContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Security::EnterpriseData::IBufferProtectUnprotectResult>{ 0x47995EDC,0x6CEC,0x4E3A,{ 0xB2,0x51,0x9E,0x74,0x85,0xD7,0x9E,0x7A } }; // 47995EDC-6CEC-4E3A-B251-9E7485D79E7A
     template <> inline constexpr guid guid_v<winrt::Windows::Security::EnterpriseData::IDataProtectionInfo>{ 0x8420B0C1,0x5E31,0x4405,{ 0x95,0x40,0x3F,0x94,0x3A,0xF0,0xCB,0x26 } }; // 8420B0C1-5E31-4405-9540-3F943AF0CB26
     template <> inline constexpr guid guid_v<winrt::Windows::Security::EnterpriseData::IDataProtectionManagerStatics>{ 0xB6149B74,0x9144,0x4EE4,{ 0x8A,0x8A,0x30,0xB5,0xF3,0x61,0x43,0x0E } }; // B6149B74-9144-4EE4-8A8A-30B5F361430E
@@ -282,7 +284,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::EnterpriseData::ThreadNetworkContext>{ using type = winrt::Windows::Security::EnterpriseData::IThreadNetworkContext; };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IBufferProtectUnprotectResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Buffer(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProtectionInfo(void**) noexcept = 0;
@@ -290,7 +292,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IDataProtectionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Identity(void**) noexcept = 0;
@@ -298,7 +300,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IDataProtectionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProtectAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall UnprotectAsync(void*, void**) noexcept = 0;
@@ -310,7 +312,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IFileProtectionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsRoamable(bool*) noexcept = 0;
@@ -319,14 +321,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IFileProtectionInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsProtectWhileOpenSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IFileProtectionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProtectAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CopyProtectionAsync(void*, void*, void**) noexcept = 0;
@@ -339,7 +341,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IFileProtectionManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsContainerAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LoadFileFromContainerWithTargetAndNameCollisionOptionAsync(void*, void*, int32_t, void**) noexcept = 0;
@@ -348,7 +350,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IFileProtectionManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UnprotectAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall UnprotectWithOptionsAsync(void*, void*, void**) noexcept = 0;
@@ -356,7 +358,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IFileRevocationManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProtectAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CopyProtectionAsync(void*, void*, void**) noexcept = 0;
@@ -366,7 +368,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IFileUnprotectOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Audit(bool) noexcept = 0;
             virtual int32_t __stdcall get_Audit(bool*) noexcept = 0;
@@ -374,21 +376,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IFileUnprotectOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectedAccessResumedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Identities(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectedAccessSuspendingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Identities(void**) noexcept = 0;
             virtual int32_t __stdcall get_Deadline(int64_t*) noexcept = 0;
@@ -397,7 +399,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectedContainerExportResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_File(void**) noexcept = 0;
@@ -405,7 +407,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectedContainerImportResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_File(void**) noexcept = 0;
@@ -413,14 +415,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectedContentRevokedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Identities(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectedFileCreateResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_File(void**) noexcept = 0;
             virtual int32_t __stdcall get_Stream(void**) noexcept = 0;
@@ -429,7 +431,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectionPolicyAuditInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Action(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_Action(int32_t*) noexcept = 0;
@@ -443,7 +445,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectionPolicyAuditInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithActionAndDataDescription(int32_t, void*, void**) noexcept = 0;
@@ -451,7 +453,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Identity(void*) noexcept = 0;
             virtual int32_t __stdcall get_Identity(void**) noexcept = 0;
@@ -459,7 +461,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ShowEnterpriseIndicator(bool) noexcept = 0;
             virtual int32_t __stdcall get_ShowEnterpriseIndicator(bool*) noexcept = 0;
@@ -467,7 +469,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsIdentityManaged(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall TryApplyProcessUIPolicy(void*, bool*) noexcept = 0;
@@ -488,7 +490,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall HasContentBeenRevokedSince(void*, int64_t, bool*) noexcept = 0;
             virtual int32_t __stdcall CheckAccessForApp(void*, void*, int32_t*) noexcept = 0;
@@ -503,7 +505,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessWithAuditingInfoAsync(void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestAccessWithMessageAsync(void*, void*, void*, void*, void**) noexcept = 0;
@@ -514,7 +516,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsRoamableProtectionEnabled(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall RequestAccessWithBehaviorAsync(void*, void*, void*, void*, int32_t, void**) noexcept = 0;
@@ -531,7 +533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::EnterpriseData::IThreadNetworkContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
@@ -774,15 +776,15 @@ namespace winrt::impl
         auto GetForCurrentView() const;
         auto ProtectedAccessSuspending(winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessSuspendingEventArgs> const& handler) const;
         using ProtectedAccessSuspending_revoker = impl::event_revoker<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics, &impl::abi_t<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics>::remove_ProtectedAccessSuspending>;
-        [[nodiscard]] ProtectedAccessSuspending_revoker ProtectedAccessSuspending(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessSuspendingEventArgs> const& handler) const;
+        [[nodiscard]] auto ProtectedAccessSuspending(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessSuspendingEventArgs> const& handler) const;
         auto ProtectedAccessSuspending(winrt::event_token const& token) const noexcept;
         auto ProtectedAccessResumed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessResumedEventArgs> const& handler) const;
         using ProtectedAccessResumed_revoker = impl::event_revoker<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics, &impl::abi_t<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics>::remove_ProtectedAccessResumed>;
-        [[nodiscard]] ProtectedAccessResumed_revoker ProtectedAccessResumed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessResumedEventArgs> const& handler) const;
+        [[nodiscard]] auto ProtectedAccessResumed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessResumedEventArgs> const& handler) const;
         auto ProtectedAccessResumed(winrt::event_token const& token) const noexcept;
         auto ProtectedContentRevoked(winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedContentRevokedEventArgs> const& handler) const;
         using ProtectedContentRevoked_revoker = impl::event_revoker<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics, &impl::abi_t<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics>::remove_ProtectedContentRevoked>;
-        [[nodiscard]] ProtectedContentRevoked_revoker ProtectedContentRevoked(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedContentRevokedEventArgs> const& handler) const;
+        [[nodiscard]] auto ProtectedContentRevoked(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedContentRevokedEventArgs> const& handler) const;
         auto ProtectedContentRevoked(winrt::event_token const& token) const noexcept;
         auto CheckAccess(param::hstring const& sourceIdentity, param::hstring const& targetIdentity) const;
         auto RequestAccessAsync(param::hstring const& sourceIdentity, param::hstring const& targetIdentity) const;
@@ -802,7 +804,7 @@ namespace winrt::impl
         auto IsProtectionUnderLockRequired(param::hstring const& identity) const;
         auto PolicyChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PolicyChanged_revoker = impl::event_revoker<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics2, &impl::abi_t<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics2>::remove_PolicyChanged>;
-        [[nodiscard]] PolicyChanged_revoker PolicyChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PolicyChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PolicyChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto IsProtectionEnabled() const;
     };

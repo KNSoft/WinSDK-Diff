@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_Storage_Streams_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename TResult> struct __declspec(empty_bases) IAsyncOperation;
+    template <typename TResult> struct WINRT_IMPL_EMPTY_BASES IAsyncOperation;
     struct IMemoryBuffer;
     struct MemoryBuffer;
     struct Uri;
@@ -198,7 +198,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::Streams::RandomAccessStreamReference>{ using type = winrt::Windows::Storage::Streams::IRandomAccessStreamReference; };
     template <> struct abi<winrt::Windows::Storage::Streams::IBuffer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Capacity(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Length(uint32_t*) noexcept = 0;
@@ -207,14 +207,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IBufferFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IBufferStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCopyFromMemoryBuffer(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateMemoryBufferOverIBuffer(void*, void**) noexcept = 0;
@@ -222,14 +222,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IContentTypeProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentType(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IDataReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnconsumedBufferLength(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_UnicodeEncoding(int32_t*) noexcept = 0;
@@ -261,21 +261,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IDataReaderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDataReader(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IDataReaderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromBuffer(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IDataWriter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnstoredBufferLength(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_UnicodeEncoding(int32_t*) noexcept = 0;
@@ -308,14 +308,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IDataWriterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDataWriter(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IFileRandomAccessStreamStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenAsync(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall OpenWithOptionsAsync(void*, int32_t, uint32_t, int32_t, void**) noexcept = 0;
@@ -329,21 +329,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IInputStream>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadAsync(void*, uint32_t, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IInputStreamReference>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenSequentialReadAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IOutputStream>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall WriteAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FlushAsync(void**) noexcept = 0;
@@ -351,7 +351,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IPropertySetSerializer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Serialize(void*, void**) noexcept = 0;
             virtual int32_t __stdcall Deserialize(void*, void*) noexcept = 0;
@@ -359,7 +359,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IRandomAccessStream>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Size(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall put_Size(uint64_t) noexcept = 0;
@@ -374,14 +374,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IRandomAccessStreamReference>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OpenReadAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IRandomAccessStreamReferenceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromFile(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromUri(void*, void**) noexcept = 0;
@@ -390,7 +390,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IRandomAccessStreamStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CopyAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CopySizeAsync(void*, void*, uint64_t, void**) noexcept = 0;
@@ -399,7 +399,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Streams::IRandomAccessStreamWithContentType>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };

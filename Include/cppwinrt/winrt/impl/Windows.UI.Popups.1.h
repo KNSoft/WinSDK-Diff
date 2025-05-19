@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,35 +9,35 @@
 #include "winrt/impl/Windows.UI.Popups.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Popups
 {
-    struct __declspec(empty_bases) IMessageDialog :
+    struct WINRT_IMPL_EMPTY_BASES IMessageDialog :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMessageDialog>
     {
         IMessageDialog(std::nullptr_t = nullptr) noexcept {}
         IMessageDialog(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMessageDialogFactory :
+    struct WINRT_IMPL_EMPTY_BASES IMessageDialogFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMessageDialogFactory>
     {
         IMessageDialogFactory(std::nullptr_t = nullptr) noexcept {}
         IMessageDialogFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IPopupMenu :
+    struct WINRT_IMPL_EMPTY_BASES IPopupMenu :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IPopupMenu>
     {
         IPopupMenu(std::nullptr_t = nullptr) noexcept {}
         IPopupMenu(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUICommand :
+    struct WINRT_IMPL_EMPTY_BASES IUICommand :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUICommand>
     {
         IUICommand(std::nullptr_t = nullptr) noexcept {}
         IUICommand(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IUICommandFactory :
+    struct WINRT_IMPL_EMPTY_BASES IUICommandFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IUICommandFactory>
     {

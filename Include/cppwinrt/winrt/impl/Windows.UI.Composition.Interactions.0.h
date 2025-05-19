@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,11 +8,11 @@
 #define WINRT_Windows_UI_Composition_Interactions_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -329,7 +329,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Composition::Interactions::VisualInteractionSource>{ using type = winrt::Windows::UI::Composition::Interactions::IVisualInteractionSource; };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::ICompositionConditionalValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Condition(void**) noexcept = 0;
             virtual int32_t __stdcall put_Condition(void*) noexcept = 0;
@@ -339,20 +339,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::ICompositionConditionalValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::ICompositionInteractionSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::ICompositionInteractionSourceCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Count(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Add(void*) noexcept = 0;
@@ -362,7 +362,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionSourceConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PositionXSourceMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_PositionXSourceMode(int32_t) noexcept = 0;
@@ -374,7 +374,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTracker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InteractionSources(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsPositionRoundingSuggested(bool*) noexcept = 0;
@@ -413,7 +413,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTracker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConfigureCenterPointXInertiaModifiers(void*) noexcept = 0;
             virtual int32_t __stdcall ConfigureCenterPointYInertiaModifiers(void*) noexcept = 0;
@@ -421,14 +421,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTracker3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConfigureVector2PositionInertiaModifiers(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTracker4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryUpdatePositionWithOption(winrt::Windows::Foundation::Numerics::float3, int32_t, int32_t*) noexcept = 0;
             virtual int32_t __stdcall TryUpdatePositionByWithOption(winrt::Windows::Foundation::Numerics::float3, int32_t, int32_t*) noexcept = 0;
@@ -437,54 +437,54 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTracker5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryUpdatePositionWithOption(winrt::Windows::Foundation::Numerics::float3, int32_t, int32_t, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerCustomAnimationStateEnteredArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestId(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerCustomAnimationStateEnteredArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFromBinding(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerIdleStateEnteredArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestId(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerIdleStateEnteredArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFromBinding(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaModifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaModifierFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaMotion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Condition(void**) noexcept = 0;
             virtual int32_t __stdcall put_Condition(void*) noexcept = 0;
@@ -494,14 +494,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaMotionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaNaturalMotion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Condition(void**) noexcept = 0;
             virtual int32_t __stdcall put_Condition(void*) noexcept = 0;
@@ -511,14 +511,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaNaturalMotionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaRestingValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Condition(void**) noexcept = 0;
             virtual int32_t __stdcall put_Condition(void*) noexcept = 0;
@@ -528,14 +528,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaRestingValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaStateEnteredArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ModifiedRestingPosition(void**) noexcept = 0;
             virtual int32_t __stdcall get_ModifiedRestingScale(void**) noexcept = 0;
@@ -548,35 +548,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaStateEnteredArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsInertiaFromImpulse(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInertiaStateEnteredArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFromBinding(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInteractingStateEnteredArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestId(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerInteractingStateEnteredArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFromBinding(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerOwner>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CustomAnimationStateEntered(void*, void*) noexcept = 0;
             virtual int32_t __stdcall IdleStateEntered(void*, void*) noexcept = 0;
@@ -588,14 +588,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerRequestIgnoredArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestId(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithOwner(void*, void*, void**) noexcept = 0;
@@ -603,7 +603,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetBindingMode(void*, void*, uint32_t) noexcept = 0;
             virtual int32_t __stdcall GetBindingMode(void*, void*, uint32_t*) noexcept = 0;
@@ -611,7 +611,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerValuesChangedArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall get_RequestId(int32_t*) noexcept = 0;
@@ -620,19 +620,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerVector2InertiaModifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerVector2InertiaModifierFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerVector2InertiaNaturalMotion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Condition(void**) noexcept = 0;
             virtual int32_t __stdcall put_Condition(void*) noexcept = 0;
@@ -642,14 +642,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IInteractionTrackerVector2InertiaNaturalMotionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IVisualInteractionSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPositionXRailsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsPositionXRailsEnabled(bool) noexcept = 0;
@@ -675,7 +675,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IVisualInteractionSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeltaPosition(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall get_DeltaScale(float*) noexcept = 0;
@@ -692,27 +692,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IVisualInteractionSource3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointerWheelConfig(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IVisualInteractionSourceObjectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IVisualInteractionSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Interactions::IVisualInteractionSourceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromIVisualElement(void*, void**) noexcept = 0;
         };

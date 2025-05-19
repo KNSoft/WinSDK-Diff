@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -18,7 +18,9 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> AsyncActionCompletedHandler(F* function);
         template <typename O, typename M> AsyncActionCompletedHandler(O* object, M method);
         template <typename O, typename M> AsyncActionCompletedHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> AsyncActionCompletedHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> AsyncActionCompletedHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> AsyncActionCompletedHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> AsyncActionCompletedHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(winrt::Windows::Foundation::IAsyncAction const& asyncInfo, winrt::Windows::Foundation::AsyncStatus const& asyncStatus) const;
     };
     template <typename TProgress>
@@ -31,7 +33,9 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> AsyncActionProgressHandler(F* function);
         template <typename O, typename M> AsyncActionProgressHandler(O* object, M method);
         template <typename O, typename M> AsyncActionProgressHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> AsyncActionProgressHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> AsyncActionProgressHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> AsyncActionProgressHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> AsyncActionProgressHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(winrt::Windows::Foundation::IAsyncActionWithProgress<TProgress> const& asyncInfo, impl::param_type<TProgress> const& progressInfo) const;
     };
     template <typename TProgress>
@@ -44,7 +48,9 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> AsyncActionWithProgressCompletedHandler(F* function);
         template <typename O, typename M> AsyncActionWithProgressCompletedHandler(O* object, M method);
         template <typename O, typename M> AsyncActionWithProgressCompletedHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> AsyncActionWithProgressCompletedHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> AsyncActionWithProgressCompletedHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> AsyncActionWithProgressCompletedHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> AsyncActionWithProgressCompletedHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(winrt::Windows::Foundation::IAsyncActionWithProgress<TProgress> const& asyncInfo, winrt::Windows::Foundation::AsyncStatus const& asyncStatus) const;
     };
     template <typename TResult>
@@ -57,7 +63,9 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> AsyncOperationCompletedHandler(F* function);
         template <typename O, typename M> AsyncOperationCompletedHandler(O* object, M method);
         template <typename O, typename M> AsyncOperationCompletedHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> AsyncOperationCompletedHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> AsyncOperationCompletedHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> AsyncOperationCompletedHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> AsyncOperationCompletedHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(winrt::Windows::Foundation::IAsyncOperation<TResult> const& asyncInfo, winrt::Windows::Foundation::AsyncStatus const& asyncStatus) const;
     };
     template <typename TResult, typename TProgress>
@@ -71,7 +79,9 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> AsyncOperationProgressHandler(F* function);
         template <typename O, typename M> AsyncOperationProgressHandler(O* object, M method);
         template <typename O, typename M> AsyncOperationProgressHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> AsyncOperationProgressHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> AsyncOperationProgressHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> AsyncOperationProgressHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> AsyncOperationProgressHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(winrt::Windows::Foundation::IAsyncOperationWithProgress<TResult, TProgress> const& asyncInfo, impl::param_type<TProgress> const& progressInfo) const;
     };
     template <typename TResult, typename TProgress>
@@ -85,7 +95,9 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> AsyncOperationWithProgressCompletedHandler(F* function);
         template <typename O, typename M> AsyncOperationWithProgressCompletedHandler(O* object, M method);
         template <typename O, typename M> AsyncOperationWithProgressCompletedHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> AsyncOperationWithProgressCompletedHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> AsyncOperationWithProgressCompletedHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> AsyncOperationWithProgressCompletedHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> AsyncOperationWithProgressCompletedHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(winrt::Windows::Foundation::IAsyncOperationWithProgress<TResult, TProgress> const& asyncInfo, winrt::Windows::Foundation::AsyncStatus const& asyncStatus) const;
     };
     struct DeferralCompletedHandler : winrt::Windows::Foundation::IUnknown
@@ -96,7 +108,9 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> DeferralCompletedHandler(F* function);
         template <typename O, typename M> DeferralCompletedHandler(O* object, M method);
         template <typename O, typename M> DeferralCompletedHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> DeferralCompletedHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> DeferralCompletedHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> DeferralCompletedHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> DeferralCompletedHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()() const;
     };
     template <typename T>
@@ -109,7 +123,9 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> EventHandler(F* function);
         template <typename O, typename M> EventHandler(O* object, M method);
         template <typename O, typename M> EventHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> EventHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> EventHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> EventHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> EventHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(winrt::Windows::Foundation::IInspectable const& sender, impl::param_type<T> const& args) const;
     };
     template <typename TSender, typename TResult>
@@ -123,10 +139,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         template <typename F> TypedEventHandler(F* function);
         template <typename O, typename M> TypedEventHandler(O* object, M method);
         template <typename O, typename M> TypedEventHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> TypedEventHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> TypedEventHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> TypedEventHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> TypedEventHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(impl::param_type<TSender> const& sender, impl::param_type<TResult> const& args) const;
     };
-    struct __declspec(empty_bases) Deferral : winrt::Windows::Foundation::IDeferral
+    struct WINRT_IMPL_EMPTY_BASES Deferral : winrt::Windows::Foundation::IDeferral
     {
         Deferral(std::nullptr_t) noexcept {}
         Deferral(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IDeferral(ptr, take_ownership_from_abi) {}
@@ -139,7 +157,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         [[nodiscard]] static auto Empty();
         static auto Equals(winrt::guid const& target, winrt::guid const& value);
     };
-    struct __declspec(empty_bases) MemoryBuffer : winrt::Windows::Foundation::IMemoryBuffer
+    struct WINRT_IMPL_EMPTY_BASES MemoryBuffer : winrt::Windows::Foundation::IMemoryBuffer
     {
         MemoryBuffer(std::nullptr_t) noexcept {}
         MemoryBuffer(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IMemoryBuffer(ptr, take_ownership_from_abi) {}
@@ -188,7 +206,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         static auto CreateSizeArray(array_view<winrt::Windows::Foundation::Size const> value);
         static auto CreateRectArray(array_view<winrt::Windows::Foundation::Rect const> value);
     };
-    struct __declspec(empty_bases) Uri : winrt::Windows::Foundation::IUriRuntimeClass,
+    struct WINRT_IMPL_EMPTY_BASES Uri : winrt::Windows::Foundation::IUriRuntimeClass,
         impl::require<Uri, winrt::Windows::Foundation::IUriRuntimeClassWithAbsoluteCanonicalUri, winrt::Windows::Foundation::IStringable>
     {
         Uri(std::nullptr_t) noexcept {}
@@ -198,13 +216,13 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
         static auto UnescapeComponent(param::hstring const& toUnescape);
         static auto EscapeComponent(param::hstring const& toEscape);
     };
-    struct __declspec(empty_bases) WwwFormUrlDecoder : winrt::Windows::Foundation::IWwwFormUrlDecoderRuntimeClass
+    struct WINRT_IMPL_EMPTY_BASES WwwFormUrlDecoder : winrt::Windows::Foundation::IWwwFormUrlDecoderRuntimeClass
     {
         WwwFormUrlDecoder(std::nullptr_t) noexcept {}
         WwwFormUrlDecoder(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IWwwFormUrlDecoderRuntimeClass(ptr, take_ownership_from_abi) {}
         explicit WwwFormUrlDecoder(param::hstring const& query);
     };
-    struct __declspec(empty_bases) WwwFormUrlDecoderEntry : winrt::Windows::Foundation::IWwwFormUrlDecoderEntry
+    struct WINRT_IMPL_EMPTY_BASES WwwFormUrlDecoderEntry : winrt::Windows::Foundation::IWwwFormUrlDecoderEntry
     {
         WwwFormUrlDecoderEntry(std::nullptr_t) noexcept {}
         WwwFormUrlDecoderEntry(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IWwwFormUrlDecoderEntry(ptr, take_ownership_from_abi) {}

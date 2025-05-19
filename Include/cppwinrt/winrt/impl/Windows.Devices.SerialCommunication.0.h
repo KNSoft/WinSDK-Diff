@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -98,21 +98,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::SerialCommunication::SerialDevice>{ using type = winrt::Windows::Devices::SerialCommunication::ISerialDevice; };
     template <> struct abi<winrt::Windows::Devices::SerialCommunication::IErrorReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SerialCommunication::IPinChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PinChange(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SerialCommunication::ISerialDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BaudRate(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BaudRate(uint32_t) noexcept = 0;
@@ -151,7 +151,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SerialCommunication::ISerialDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorFromPortName(void*, void**) noexcept = 0;
@@ -211,11 +211,11 @@ namespace winrt::impl
         [[nodiscard]] auto OutputStream() const;
         auto ErrorReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SerialCommunication::SerialDevice, winrt::Windows::Devices::SerialCommunication::ErrorReceivedEventArgs> const& reportHandler) const;
         using ErrorReceived_revoker = impl::event_revoker<winrt::Windows::Devices::SerialCommunication::ISerialDevice, &impl::abi_t<winrt::Windows::Devices::SerialCommunication::ISerialDevice>::remove_ErrorReceived>;
-        [[nodiscard]] ErrorReceived_revoker ErrorReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SerialCommunication::SerialDevice, winrt::Windows::Devices::SerialCommunication::ErrorReceivedEventArgs> const& reportHandler) const;
+        [[nodiscard]] auto ErrorReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SerialCommunication::SerialDevice, winrt::Windows::Devices::SerialCommunication::ErrorReceivedEventArgs> const& reportHandler) const;
         auto ErrorReceived(winrt::event_token const& token) const noexcept;
         auto PinChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SerialCommunication::SerialDevice, winrt::Windows::Devices::SerialCommunication::PinChangedEventArgs> const& reportHandler) const;
         using PinChanged_revoker = impl::event_revoker<winrt::Windows::Devices::SerialCommunication::ISerialDevice, &impl::abi_t<winrt::Windows::Devices::SerialCommunication::ISerialDevice>::remove_PinChanged>;
-        [[nodiscard]] PinChanged_revoker PinChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SerialCommunication::SerialDevice, winrt::Windows::Devices::SerialCommunication::PinChangedEventArgs> const& reportHandler) const;
+        [[nodiscard]] auto PinChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SerialCommunication::SerialDevice, winrt::Windows::Devices::SerialCommunication::PinChangedEventArgs> const& reportHandler) const;
         auto PinChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::SerialCommunication::ISerialDevice>

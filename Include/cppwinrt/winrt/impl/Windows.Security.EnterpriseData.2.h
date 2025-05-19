@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,12 +14,12 @@
 #include "winrt/impl/Windows.Security.EnterpriseData.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
 {
-    struct __declspec(empty_bases) BufferProtectUnprotectResult : winrt::Windows::Security::EnterpriseData::IBufferProtectUnprotectResult
+    struct WINRT_IMPL_EMPTY_BASES BufferProtectUnprotectResult : winrt::Windows::Security::EnterpriseData::IBufferProtectUnprotectResult
     {
         BufferProtectUnprotectResult(std::nullptr_t) noexcept {}
         BufferProtectUnprotectResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IBufferProtectUnprotectResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DataProtectionInfo : winrt::Windows::Security::EnterpriseData::IDataProtectionInfo
+    struct WINRT_IMPL_EMPTY_BASES DataProtectionInfo : winrt::Windows::Security::EnterpriseData::IDataProtectionInfo
     {
         DataProtectionInfo(std::nullptr_t) noexcept {}
         DataProtectionInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IDataProtectionInfo(ptr, take_ownership_from_abi) {}
@@ -34,7 +34,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
         static auto GetProtectionInfoAsync(winrt::Windows::Storage::Streams::IBuffer const& protectedData);
         static auto GetStreamProtectionInfoAsync(winrt::Windows::Storage::Streams::IInputStream const& protectedStream);
     };
-    struct __declspec(empty_bases) FileProtectionInfo : winrt::Windows::Security::EnterpriseData::IFileProtectionInfo,
+    struct WINRT_IMPL_EMPTY_BASES FileProtectionInfo : winrt::Windows::Security::EnterpriseData::IFileProtectionInfo,
         impl::require<FileProtectionInfo, winrt::Windows::Security::EnterpriseData::IFileProtectionInfo2>
     {
         FileProtectionInfo(std::nullptr_t) noexcept {}
@@ -64,50 +64,50 @@ WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
         static auto Revoke(param::hstring const& enterpriseIdentity);
         static auto GetStatusAsync(winrt::Windows::Storage::IStorageItem const& storageItem);
     };
-    struct __declspec(empty_bases) FileUnprotectOptions : winrt::Windows::Security::EnterpriseData::IFileUnprotectOptions
+    struct WINRT_IMPL_EMPTY_BASES FileUnprotectOptions : winrt::Windows::Security::EnterpriseData::IFileUnprotectOptions
     {
         FileUnprotectOptions(std::nullptr_t) noexcept {}
         FileUnprotectOptions(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IFileUnprotectOptions(ptr, take_ownership_from_abi) {}
         explicit FileUnprotectOptions(bool audit);
     };
-    struct __declspec(empty_bases) ProtectedAccessResumedEventArgs : winrt::Windows::Security::EnterpriseData::IProtectedAccessResumedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES ProtectedAccessResumedEventArgs : winrt::Windows::Security::EnterpriseData::IProtectedAccessResumedEventArgs
     {
         ProtectedAccessResumedEventArgs(std::nullptr_t) noexcept {}
         ProtectedAccessResumedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IProtectedAccessResumedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ProtectedAccessSuspendingEventArgs : winrt::Windows::Security::EnterpriseData::IProtectedAccessSuspendingEventArgs
+    struct WINRT_IMPL_EMPTY_BASES ProtectedAccessSuspendingEventArgs : winrt::Windows::Security::EnterpriseData::IProtectedAccessSuspendingEventArgs
     {
         ProtectedAccessSuspendingEventArgs(std::nullptr_t) noexcept {}
         ProtectedAccessSuspendingEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IProtectedAccessSuspendingEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ProtectedContainerExportResult : winrt::Windows::Security::EnterpriseData::IProtectedContainerExportResult
+    struct WINRT_IMPL_EMPTY_BASES ProtectedContainerExportResult : winrt::Windows::Security::EnterpriseData::IProtectedContainerExportResult
     {
         ProtectedContainerExportResult(std::nullptr_t) noexcept {}
         ProtectedContainerExportResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IProtectedContainerExportResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ProtectedContainerImportResult : winrt::Windows::Security::EnterpriseData::IProtectedContainerImportResult
+    struct WINRT_IMPL_EMPTY_BASES ProtectedContainerImportResult : winrt::Windows::Security::EnterpriseData::IProtectedContainerImportResult
     {
         ProtectedContainerImportResult(std::nullptr_t) noexcept {}
         ProtectedContainerImportResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IProtectedContainerImportResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ProtectedContentRevokedEventArgs : winrt::Windows::Security::EnterpriseData::IProtectedContentRevokedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES ProtectedContentRevokedEventArgs : winrt::Windows::Security::EnterpriseData::IProtectedContentRevokedEventArgs
     {
         ProtectedContentRevokedEventArgs(std::nullptr_t) noexcept {}
         ProtectedContentRevokedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IProtectedContentRevokedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ProtectedFileCreateResult : winrt::Windows::Security::EnterpriseData::IProtectedFileCreateResult
+    struct WINRT_IMPL_EMPTY_BASES ProtectedFileCreateResult : winrt::Windows::Security::EnterpriseData::IProtectedFileCreateResult
     {
         ProtectedFileCreateResult(std::nullptr_t) noexcept {}
         ProtectedFileCreateResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IProtectedFileCreateResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ProtectionPolicyAuditInfo : winrt::Windows::Security::EnterpriseData::IProtectionPolicyAuditInfo
+    struct WINRT_IMPL_EMPTY_BASES ProtectionPolicyAuditInfo : winrt::Windows::Security::EnterpriseData::IProtectionPolicyAuditInfo
     {
         ProtectionPolicyAuditInfo(std::nullptr_t) noexcept {}
         ProtectionPolicyAuditInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::EnterpriseData::IProtectionPolicyAuditInfo(ptr, take_ownership_from_abi) {}
         ProtectionPolicyAuditInfo(winrt::Windows::Security::EnterpriseData::ProtectionPolicyAuditAction const& action, param::hstring const& dataDescription, param::hstring const& sourceDescription, param::hstring const& targetDescription);
         ProtectionPolicyAuditInfo(winrt::Windows::Security::EnterpriseData::ProtectionPolicyAuditAction const& action, param::hstring const& dataDescription);
     };
-    struct __declspec(empty_bases) ProtectionPolicyManager : winrt::Windows::Security::EnterpriseData::IProtectionPolicyManager,
+    struct WINRT_IMPL_EMPTY_BASES ProtectionPolicyManager : winrt::Windows::Security::EnterpriseData::IProtectionPolicyManager,
         impl::require<ProtectionPolicyManager, winrt::Windows::Security::EnterpriseData::IProtectionPolicyManager2>
     {
         ProtectionPolicyManager(std::nullptr_t) noexcept {}
@@ -121,15 +121,15 @@ WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
         static auto GetForCurrentView();
         static auto ProtectedAccessSuspending(winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessSuspendingEventArgs> const& handler);
         using ProtectedAccessSuspending_revoker = impl::factory_event_revoker<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics, &impl::abi_t<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics>::remove_ProtectedAccessSuspending>;
-        [[nodiscard]] static ProtectedAccessSuspending_revoker ProtectedAccessSuspending(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessSuspendingEventArgs> const& handler);
+        [[nodiscard]] static auto ProtectedAccessSuspending(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessSuspendingEventArgs> const& handler);
         static auto ProtectedAccessSuspending(winrt::event_token const& token);
         static auto ProtectedAccessResumed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessResumedEventArgs> const& handler);
         using ProtectedAccessResumed_revoker = impl::factory_event_revoker<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics, &impl::abi_t<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics>::remove_ProtectedAccessResumed>;
-        [[nodiscard]] static ProtectedAccessResumed_revoker ProtectedAccessResumed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessResumedEventArgs> const& handler);
+        [[nodiscard]] static auto ProtectedAccessResumed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedAccessResumedEventArgs> const& handler);
         static auto ProtectedAccessResumed(winrt::event_token const& token);
         static auto ProtectedContentRevoked(winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedContentRevokedEventArgs> const& handler);
         using ProtectedContentRevoked_revoker = impl::factory_event_revoker<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics, &impl::abi_t<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics>::remove_ProtectedContentRevoked>;
-        [[nodiscard]] static ProtectedContentRevoked_revoker ProtectedContentRevoked(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedContentRevokedEventArgs> const& handler);
+        [[nodiscard]] static auto ProtectedContentRevoked(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::EnterpriseData::ProtectedContentRevokedEventArgs> const& handler);
         static auto ProtectedContentRevoked(winrt::event_token const& token);
         static auto CheckAccess(param::hstring const& sourceIdentity, param::hstring const& targetIdentity);
         static auto RequestAccessAsync(param::hstring const& sourceIdentity, param::hstring const& targetIdentity);
@@ -141,7 +141,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
         static auto IsProtectionUnderLockRequired(param::hstring const& identity);
         static auto PolicyChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         using PolicyChanged_revoker = impl::factory_event_revoker<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics2, &impl::abi_t<winrt::Windows::Security::EnterpriseData::IProtectionPolicyManagerStatics2>::remove_PolicyChanged>;
-        [[nodiscard]] static PolicyChanged_revoker PolicyChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
+        [[nodiscard]] static auto PolicyChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         static auto PolicyChanged(winrt::event_token const& token);
         [[nodiscard]] static auto IsProtectionEnabled();
         static auto RequestAccessAsync(param::hstring const& sourceIdentity, param::hstring const& targetIdentity, winrt::Windows::Security::EnterpriseData::ProtectionPolicyAuditInfo const& auditInfo);
@@ -161,7 +161,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
         [[nodiscard]] static auto PrimaryManagedIdentity();
         static auto GetPrimaryManagedIdentityForIdentity(param::hstring const& identity);
     };
-    struct __declspec(empty_bases) ThreadNetworkContext : winrt::Windows::Security::EnterpriseData::IThreadNetworkContext,
+    struct WINRT_IMPL_EMPTY_BASES ThreadNetworkContext : winrt::Windows::Security::EnterpriseData::IThreadNetworkContext,
         impl::require<ThreadNetworkContext, winrt::Windows::Foundation::IClosable>
     {
         ThreadNetworkContext(std::nullptr_t) noexcept {}

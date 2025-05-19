@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -28,17 +28,17 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Haptics
         [[nodiscard]] static auto PencilContinuous();
         [[nodiscard]] static auto Success();
     };
-    struct __declspec(empty_bases) SimpleHapticsController : winrt::Windows::Devices::Haptics::ISimpleHapticsController
+    struct WINRT_IMPL_EMPTY_BASES SimpleHapticsController : winrt::Windows::Devices::Haptics::ISimpleHapticsController
     {
         SimpleHapticsController(std::nullptr_t) noexcept {}
         SimpleHapticsController(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Haptics::ISimpleHapticsController(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SimpleHapticsControllerFeedback : winrt::Windows::Devices::Haptics::ISimpleHapticsControllerFeedback
+    struct WINRT_IMPL_EMPTY_BASES SimpleHapticsControllerFeedback : winrt::Windows::Devices::Haptics::ISimpleHapticsControllerFeedback
     {
         SimpleHapticsControllerFeedback(std::nullptr_t) noexcept {}
         SimpleHapticsControllerFeedback(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Haptics::ISimpleHapticsControllerFeedback(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) VibrationDevice : winrt::Windows::Devices::Haptics::IVibrationDevice
+    struct WINRT_IMPL_EMPTY_BASES VibrationDevice : winrt::Windows::Devices::Haptics::IVibrationDevice
     {
         VibrationDevice(std::nullptr_t) noexcept {}
         VibrationDevice(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Haptics::IVibrationDevice(ptr, take_ownership_from_abi) {}

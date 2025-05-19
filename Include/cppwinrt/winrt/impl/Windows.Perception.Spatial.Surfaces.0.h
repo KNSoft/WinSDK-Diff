@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,11 +9,11 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -90,7 +90,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Perception::Spatial::Surfaces::SpatialSurfaceObserver>{ using type = winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserver; };
     template <> struct abi<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_UpdateTime(int64_t*) noexcept = 0;
@@ -101,7 +101,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMesh>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SurfaceInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_CoordinateSystem(void**) noexcept = 0;
@@ -113,7 +113,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshBuffer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Stride(uint32_t*) noexcept = 0;
@@ -123,7 +123,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VertexPositionFormat(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_VertexPositionFormat(int32_t) noexcept = 0;
@@ -137,7 +137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshOptionsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedVertexPositionFormats(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedTriangleIndexFormats(void**) noexcept = 0;
@@ -146,7 +146,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserver>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetObservedSurfaces(void**) noexcept = 0;
             virtual int32_t __stdcall SetBoundingVolume(void*) noexcept = 0;
@@ -157,14 +157,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserverStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserverStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
         };
@@ -243,7 +243,7 @@ namespace winrt::impl
         auto SetBoundingVolumes(param::iterable<winrt::Windows::Perception::Spatial::SpatialBoundingVolume> const& bounds) const;
         auto ObservedSurfacesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::Surfaces::SpatialSurfaceObserver, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ObservedSurfacesChanged_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserver, &impl::abi_t<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserver>::remove_ObservedSurfacesChanged>;
-        [[nodiscard]] ObservedSurfacesChanged_revoker ObservedSurfacesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::Surfaces::SpatialSurfaceObserver, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ObservedSurfacesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::Surfaces::SpatialSurfaceObserver, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ObservedSurfacesChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserver>

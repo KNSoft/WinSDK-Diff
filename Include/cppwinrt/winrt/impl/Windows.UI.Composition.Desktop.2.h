@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.UI.Composition.Desktop.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Composition::Desktop
 {
-    struct __declspec(empty_bases) DesktopWindowTarget : winrt::Windows::UI::Composition::Desktop::IDesktopWindowTarget,
+    struct WINRT_IMPL_EMPTY_BASES DesktopWindowTarget : winrt::Windows::UI::Composition::Desktop::IDesktopWindowTarget,
         impl::base<DesktopWindowTarget, winrt::Windows::UI::Composition::CompositionTarget, winrt::Windows::UI::Composition::CompositionObject>,
         impl::require<DesktopWindowTarget, winrt::Windows::UI::Composition::ICompositionTarget, winrt::Windows::UI::Composition::ICompositionObject, winrt::Windows::UI::Composition::ICompositionObject2, winrt::Windows::UI::Composition::ICompositionObject3, winrt::Windows::UI::Composition::ICompositionObject4, winrt::Windows::UI::Composition::ICompositionObject5, winrt::Windows::Foundation::IClosable, winrt::Windows::UI::Composition::IAnimationObject>
     {

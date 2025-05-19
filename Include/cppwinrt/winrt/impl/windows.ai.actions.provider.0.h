@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -30,14 +30,14 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::Provider::IActionProvider>{ 0x62906C47,0x3D07,0x55F1,{ 0xAE,0xFA,0x15,0x22,0x50,0x5A,0xFB,0xBE } }; // 62906C47-3D07-55F1-AEFA-1522505AFBBE
     template <> struct abi<winrt::Windows::AI::Actions::Provider::IActionFeedbackHandler>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProcessFeedbackAsync(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::Actions::Provider::IActionProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InvokeAsync(void*, void**) noexcept = 0;
         };

@@ -888,7 +888,7 @@ typedef struct _SCSI_PNP_REQUEST_BLOCK {
 #define POINTER_ALIGN
 #endif
 
-#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
 
 //
 // This is the STOR_ADDRESS type used by StorMQ.

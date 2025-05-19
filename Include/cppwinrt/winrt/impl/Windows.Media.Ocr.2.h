@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@
 #include "winrt/impl/Windows.Media.Ocr.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Ocr
 {
-    struct __declspec(empty_bases) OcrEngine : winrt::Windows::Media::Ocr::IOcrEngine
+    struct WINRT_IMPL_EMPTY_BASES OcrEngine : winrt::Windows::Media::Ocr::IOcrEngine
     {
         OcrEngine(std::nullptr_t) noexcept {}
         OcrEngine(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::Ocr::IOcrEngine(ptr, take_ownership_from_abi) {}
@@ -20,17 +20,17 @@ WINRT_EXPORT namespace winrt::Windows::Media::Ocr
         static auto TryCreateFromLanguage(winrt::Windows::Globalization::Language const& language);
         static auto TryCreateFromUserProfileLanguages();
     };
-    struct __declspec(empty_bases) OcrLine : winrt::Windows::Media::Ocr::IOcrLine
+    struct WINRT_IMPL_EMPTY_BASES OcrLine : winrt::Windows::Media::Ocr::IOcrLine
     {
         OcrLine(std::nullptr_t) noexcept {}
         OcrLine(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::Ocr::IOcrLine(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) OcrResult : winrt::Windows::Media::Ocr::IOcrResult
+    struct WINRT_IMPL_EMPTY_BASES OcrResult : winrt::Windows::Media::Ocr::IOcrResult
     {
         OcrResult(std::nullptr_t) noexcept {}
         OcrResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::Ocr::IOcrResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) OcrWord : winrt::Windows::Media::Ocr::IOcrWord
+    struct WINRT_IMPL_EMPTY_BASES OcrWord : winrt::Windows::Media::Ocr::IOcrWord
     {
         OcrWord(std::nullptr_t) noexcept {}
         OcrWord(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Media::Ocr::IOcrWord(ptr, take_ownership_from_abi) {}

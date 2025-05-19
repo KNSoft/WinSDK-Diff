@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.Data.Json.1.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Json
 {
-    struct __declspec(empty_bases) JsonArray : winrt::Windows::Data::Json::IJsonArray,
+    struct WINRT_IMPL_EMPTY_BASES JsonArray : winrt::Windows::Data::Json::IJsonArray,
         impl::require<JsonArray, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Data::Json::IJsonValue>, winrt::Windows::Foundation::Collections::IVector<winrt::Windows::Data::Json::IJsonValue>, winrt::Windows::Foundation::IStringable>
     {
         JsonArray(std::nullptr_t) noexcept {}
@@ -25,7 +25,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Json
         JsonError() = delete;
         static auto GetJsonStatus(int32_t hresult);
     };
-    struct __declspec(empty_bases) JsonObject : winrt::Windows::Data::Json::IJsonObject,
+    struct WINRT_IMPL_EMPTY_BASES JsonObject : winrt::Windows::Data::Json::IJsonObject,
         impl::require<JsonObject, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Data::Json::IJsonValue>>, winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Data::Json::IJsonValue>, winrt::Windows::Data::Json::IJsonObjectWithDefaultValues, winrt::Windows::Foundation::IStringable>
     {
         JsonObject(std::nullptr_t) noexcept {}
@@ -46,7 +46,7 @@ WINRT_EXPORT namespace winrt::Windows::Data::Json
         static auto Parse(param::hstring const& input);
         static auto TryParse(param::hstring const& input, winrt::Windows::Data::Json::JsonObject& result);
     };
-    struct __declspec(empty_bases) JsonValue : winrt::Windows::Data::Json::IJsonValue,
+    struct WINRT_IMPL_EMPTY_BASES JsonValue : winrt::Windows::Data::Json::IJsonValue,
         impl::require<JsonValue, winrt::Windows::Foundation::IStringable>
     {
         JsonValue(std::nullptr_t) noexcept {}

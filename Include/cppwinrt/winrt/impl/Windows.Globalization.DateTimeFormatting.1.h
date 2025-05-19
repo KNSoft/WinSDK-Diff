@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,28 +9,28 @@
 #include "winrt/impl/Windows.Globalization.DateTimeFormatting.0.h"
 WINRT_EXPORT namespace winrt::Windows::Globalization::DateTimeFormatting
 {
-    struct __declspec(empty_bases) IDateTimeFormatter :
+    struct WINRT_IMPL_EMPTY_BASES IDateTimeFormatter :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDateTimeFormatter>
     {
         IDateTimeFormatter(std::nullptr_t = nullptr) noexcept {}
         IDateTimeFormatter(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDateTimeFormatter2 :
+    struct WINRT_IMPL_EMPTY_BASES IDateTimeFormatter2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDateTimeFormatter2>
     {
         IDateTimeFormatter2(std::nullptr_t = nullptr) noexcept {}
         IDateTimeFormatter2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDateTimeFormatterFactory :
+    struct WINRT_IMPL_EMPTY_BASES IDateTimeFormatterFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDateTimeFormatterFactory>
     {
         IDateTimeFormatterFactory(std::nullptr_t = nullptr) noexcept {}
         IDateTimeFormatterFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDateTimeFormatterStatics :
+    struct WINRT_IMPL_EMPTY_BASES IDateTimeFormatterStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDateTimeFormatterStatics>
     {

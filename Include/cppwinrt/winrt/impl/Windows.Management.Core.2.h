@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 #include "winrt/impl/Windows.Management.Core.1.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Core
 {
-    struct __declspec(empty_bases) ApplicationDataManager : winrt::Windows::Management::Core::IApplicationDataManager
+    struct WINRT_IMPL_EMPTY_BASES ApplicationDataManager : winrt::Windows::Management::Core::IApplicationDataManager
     {
         ApplicationDataManager(std::nullptr_t) noexcept {}
         ApplicationDataManager(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Core::IApplicationDataManager(ptr, take_ownership_from_abi) {}

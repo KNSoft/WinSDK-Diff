@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,21 +9,21 @@
 #include "winrt/impl/Windows.ApplicationModel.Wallet.System.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Wallet::System
 {
-    struct __declspec(empty_bases) IWalletItemSystemStore :
+    struct WINRT_IMPL_EMPTY_BASES IWalletItemSystemStore :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWalletItemSystemStore>
     {
         IWalletItemSystemStore(std::nullptr_t = nullptr) noexcept {}
         IWalletItemSystemStore(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWalletItemSystemStore2 :
+    struct WINRT_IMPL_EMPTY_BASES IWalletItemSystemStore2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWalletItemSystemStore2>
     {
         IWalletItemSystemStore2(std::nullptr_t = nullptr) noexcept {}
         IWalletItemSystemStore2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWalletManagerSystemStatics :
+    struct WINRT_IMPL_EMPTY_BASES IWalletManagerSystemStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWalletManagerSystemStatics>
     {

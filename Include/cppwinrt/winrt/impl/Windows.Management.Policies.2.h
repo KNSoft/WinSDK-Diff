@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,7 +16,7 @@ WINRT_EXPORT namespace winrt::Windows::Management::Policies
         static auto GetPolicyFromPath(param::hstring const& area, param::hstring const& name);
         static auto GetPolicyFromPathForUser(winrt::Windows::System::User const& user, param::hstring const& area, param::hstring const& name);
     };
-    struct __declspec(empty_bases) NamedPolicyData : winrt::Windows::Management::Policies::INamedPolicyData
+    struct WINRT_IMPL_EMPTY_BASES NamedPolicyData : winrt::Windows::Management::Policies::INamedPolicyData
     {
         NamedPolicyData(std::nullptr_t) noexcept {}
         NamedPolicyData(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Policies::INamedPolicyData(ptr, take_ownership_from_abi) {}

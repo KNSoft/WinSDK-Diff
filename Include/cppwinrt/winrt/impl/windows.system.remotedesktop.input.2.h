@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -18,10 +18,12 @@ WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop::Input
         template <typename F> RemoteTextConnectionDataHandler(F* function);
         template <typename O, typename M> RemoteTextConnectionDataHandler(O* object, M method);
         template <typename O, typename M> RemoteTextConnectionDataHandler(com_ptr<O>&& object, M method);
-        template <typename O, typename M> RemoteTextConnectionDataHandler(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> RemoteTextConnectionDataHandler(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> RemoteTextConnectionDataHandler(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> RemoteTextConnectionDataHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(array_view<uint8_t const> pduData) const;
     };
-    struct __declspec(empty_bases) RemoteTextConnection : winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection,
+    struct WINRT_IMPL_EMPTY_BASES RemoteTextConnection : winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection,
         impl::require<RemoteTextConnection, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection2, winrt::Windows::Foundation::IClosable>
     {
         RemoteTextConnection(std::nullptr_t) noexcept {}

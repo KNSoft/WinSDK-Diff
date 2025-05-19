@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,11 +14,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
 {
@@ -148,7 +148,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Lights::Effects::LampArrayUpdateRequestedEventArgs>{ using type = winrt::Windows::Devices::Lights::Effects::ILampArrayUpdateRequestedEventArgs; };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayBitmapEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Duration(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_Duration(int64_t) noexcept = 0;
@@ -163,14 +163,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayBitmapEffectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, uint32_t, int32_t*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayBitmapRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SinceStarted(int64_t*) noexcept = 0;
             virtual int32_t __stdcall UpdateBitmap(void*) noexcept = 0;
@@ -178,7 +178,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayBlinkEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -200,14 +200,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayBlinkEffectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, uint32_t, int32_t*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayColorRampEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -221,14 +221,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayColorRampEffectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, uint32_t, int32_t*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayCustomEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Duration(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_Duration(int64_t) noexcept = 0;
@@ -240,14 +240,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayCustomEffectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, uint32_t, int32_t*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ZIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ZIndex(int32_t) noexcept = 0;
@@ -255,7 +255,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayEffectPlaylist>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Append(void*) noexcept = 0;
             virtual int32_t __stdcall OverrideZIndex(int32_t) noexcept = 0;
@@ -272,7 +272,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayEffectPlaylistStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAll(void*) noexcept = 0;
             virtual int32_t __stdcall StopAll(void*) noexcept = 0;
@@ -281,7 +281,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArraySolidEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -295,14 +295,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArraySolidEffectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, uint32_t, int32_t*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Lights::Effects::ILampArrayUpdateRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SinceStarted(int64_t*) noexcept = 0;
             virtual int32_t __stdcall SetColor(struct struct_Windows_UI_Color) noexcept = 0;
@@ -323,7 +323,7 @@ namespace winrt::impl
         [[nodiscard]] auto SuggestedBitmapSize() const;
         auto BitmapRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Effects::LampArrayBitmapEffect, winrt::Windows::Devices::Lights::Effects::LampArrayBitmapRequestedEventArgs> const& handler) const;
         using BitmapRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Lights::Effects::ILampArrayBitmapEffect, &impl::abi_t<winrt::Windows::Devices::Lights::Effects::ILampArrayBitmapEffect>::remove_BitmapRequested>;
-        [[nodiscard]] BitmapRequested_revoker BitmapRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Effects::LampArrayBitmapEffect, winrt::Windows::Devices::Lights::Effects::LampArrayBitmapRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto BitmapRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Effects::LampArrayBitmapEffect, winrt::Windows::Devices::Lights::Effects::LampArrayBitmapRequestedEventArgs> const& handler) const;
         auto BitmapRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Lights::Effects::ILampArrayBitmapEffect>
@@ -416,7 +416,7 @@ namespace winrt::impl
         auto UpdateInterval(winrt::Windows::Foundation::TimeSpan const& value) const;
         auto UpdateRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Effects::LampArrayCustomEffect, winrt::Windows::Devices::Lights::Effects::LampArrayUpdateRequestedEventArgs> const& handler) const;
         using UpdateRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Lights::Effects::ILampArrayCustomEffect, &impl::abi_t<winrt::Windows::Devices::Lights::Effects::ILampArrayCustomEffect>::remove_UpdateRequested>;
-        [[nodiscard]] UpdateRequested_revoker UpdateRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Effects::LampArrayCustomEffect, winrt::Windows::Devices::Lights::Effects::LampArrayUpdateRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto UpdateRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Effects::LampArrayCustomEffect, winrt::Windows::Devices::Lights::Effects::LampArrayUpdateRequestedEventArgs> const& handler) const;
         auto UpdateRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Lights::Effects::ILampArrayCustomEffect>

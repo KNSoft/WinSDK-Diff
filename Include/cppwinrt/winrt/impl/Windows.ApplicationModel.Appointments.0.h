@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,14 +10,14 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -399,7 +399,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Appointments::FindAppointmentsOptions>{ using type = winrt::Windows::ApplicationModel::Appointments::IFindAppointmentsOptions; };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_StartTime(int64_t) noexcept = 0;
@@ -430,7 +430,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointment2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalId(void**) noexcept = 0;
             virtual int32_t __stdcall get_CalendarId(void**) noexcept = 0;
@@ -456,7 +456,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointment3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeNumber(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_RemoteChangeNumber(uint64_t*) noexcept = 0;
@@ -467,7 +467,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentCalendar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayColor(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -499,7 +499,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentCalendar2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SyncManager(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemoteId(void**) noexcept = 0;
@@ -530,14 +530,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentCalendar3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterSyncManagerAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentCalendarSyncManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_LastSuccessfulSyncTime(int64_t*) noexcept = 0;
@@ -549,7 +549,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentCalendarSyncManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Status(int32_t) noexcept = 0;
             virtual int32_t __stdcall put_LastSuccessfulSyncTime(int64_t) noexcept = 0;
@@ -558,7 +558,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentConflictResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Date(int64_t*) noexcept = 0;
@@ -566,7 +566,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentException>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Appointment(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExceptionProperties(void**) noexcept = 0;
@@ -575,7 +575,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentInvitee>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Role(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Role(int32_t) noexcept = 0;
@@ -585,7 +585,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowAddAppointmentAsync(void*, winrt::Windows::Foundation::Rect, void**) noexcept = 0;
             virtual int32_t __stdcall ShowAddAppointmentWithPlacementAsync(void*, winrt::Windows::Foundation::Rect, int32_t, void**) noexcept = 0;
@@ -605,7 +605,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowAddAppointmentAsync(void*, winrt::Windows::Foundation::Rect, void**) noexcept = 0;
             virtual int32_t __stdcall ShowAddAppointmentWithPlacementAsync(void*, winrt::Windows::Foundation::Rect, int32_t, void**) noexcept = 0;
@@ -620,7 +620,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowAppointmentDetailsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ShowAppointmentDetailsWithDateAsync(void*, int64_t, void**) noexcept = 0;
@@ -630,14 +630,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentParticipant>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayName(void*) noexcept = 0;
@@ -647,7 +647,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentPropertiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Subject(void**) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -676,7 +676,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentPropertiesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeNumber(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemoteChangeNumber(void**) noexcept = 0;
@@ -685,7 +685,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentRecurrence>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Unit(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Unit(int32_t) noexcept = 0;
@@ -707,7 +707,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentRecurrence2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RecurrenceType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_TimeZone(void**) noexcept = 0;
@@ -716,14 +716,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentRecurrence3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CalendarIdentifier(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeTracker(void**) noexcept = 0;
             virtual int32_t __stdcall CreateAppointmentCalendarAsync(void*, void**) noexcept = 0;
@@ -750,7 +750,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStore2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_StoreChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_StoreChanged(winrt::event_token) noexcept = 0;
@@ -759,14 +759,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStore3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetChangeTracker(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStoreChange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Appointment(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChangeType(int32_t*) noexcept = 0;
@@ -774,14 +774,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStoreChange2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppointmentCalendar(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStoreChangeReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
             virtual int32_t __stdcall AcceptChanges() noexcept = 0;
@@ -790,7 +790,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStoreChangeTracker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetChangeReader(void**) noexcept = 0;
             virtual int32_t __stdcall Enable() noexcept = 0;
@@ -799,34 +799,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStoreChangeTracker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTracking(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStoreChangedDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStoreChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IAppointmentStoreNotificationTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Appointments::IFindAppointmentsOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CalendarIds(void**) noexcept = 0;
             virtual int32_t __stdcall get_FetchProperties(void**) noexcept = 0;
@@ -995,7 +995,7 @@ namespace winrt::impl
         auto SyncAsync() const;
         auto SyncStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::AppointmentCalendarSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SyncStatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Appointments::IAppointmentCalendarSyncManager, &impl::abi_t<winrt::Windows::ApplicationModel::Appointments::IAppointmentCalendarSyncManager>::remove_SyncStatusChanged>;
-        [[nodiscard]] SyncStatusChanged_revoker SyncStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::AppointmentCalendarSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SyncStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::AppointmentCalendarSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SyncStatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Appointments::IAppointmentCalendarSyncManager>
@@ -1238,7 +1238,7 @@ namespace winrt::impl
     {
         auto StoreChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::AppointmentStore, winrt::Windows::ApplicationModel::Appointments::AppointmentStoreChangedEventArgs> const& pHandler) const;
         using StoreChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Appointments::IAppointmentStore2, &impl::abi_t<winrt::Windows::ApplicationModel::Appointments::IAppointmentStore2>::remove_StoreChanged>;
-        [[nodiscard]] StoreChanged_revoker StoreChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::AppointmentStore, winrt::Windows::ApplicationModel::Appointments::AppointmentStoreChangedEventArgs> const& pHandler) const;
+        [[nodiscard]] auto StoreChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Appointments::AppointmentStore, winrt::Windows::ApplicationModel::Appointments::AppointmentStoreChangedEventArgs> const& pHandler) const;
         auto StoreChanged(winrt::event_token const& token) const noexcept;
         auto CreateAppointmentCalendarAsync(param::hstring const& name, param::hstring const& userDataAccountId) const;
     };

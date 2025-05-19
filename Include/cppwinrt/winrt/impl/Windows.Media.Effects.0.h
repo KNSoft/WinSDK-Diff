@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -262,14 +262,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Effects::VideoTransformSphericalProjection>{ using type = winrt::Windows::Media::Effects::IVideoTransformSphericalProjection; };
     template <> struct abi<winrt::Windows::Media::Effects::IAcousticEchoCancellationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetEchoCancellationRenderEndpoint(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Effects::IAudioCaptureEffectsManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AudioCaptureEffectsChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AudioCaptureEffectsChanged(winrt::event_token) noexcept = 0;
@@ -278,14 +278,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IAudioEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioEffectType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Effects::IAudioEffect2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AcousticEchoCancellationConfiguration(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanSetState(bool*) noexcept = 0;
@@ -295,7 +295,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IAudioEffectDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivatableClassId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -303,7 +303,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IAudioEffectDefinitionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithProperties(void*, void*, void**) noexcept = 0;
@@ -311,7 +311,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IAudioEffectsManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAudioRenderEffectsManager(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateAudioRenderEffectsManagerWithMode(void*, int32_t, int32_t, void**) noexcept = 0;
@@ -321,7 +321,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IAudioRenderEffectsManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AudioRenderEffectsChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AudioRenderEffectsChanged(winrt::event_token) noexcept = 0;
@@ -330,7 +330,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IAudioRenderEffectsManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EffectsProviderThumbnail(void**) noexcept = 0;
             virtual int32_t __stdcall get_EffectsProviderSettingsLabel(void**) noexcept = 0;
@@ -339,7 +339,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IBasicAudioEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseInputFrameForOutput(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedEncodingProperties(void**) noexcept = 0;
@@ -351,7 +351,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IBasicVideoEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReadOnly(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedMemoryTypes(int32_t*) noexcept = 0;
@@ -365,7 +365,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::ICompositeVideoFrameContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SurfacesToOverlay(void**) noexcept = 0;
             virtual int32_t __stdcall get_BackgroundFrame(void**) noexcept = 0;
@@ -375,7 +375,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IProcessAudioFrameContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputFrame(void**) noexcept = 0;
             virtual int32_t __stdcall get_OutputFrame(void**) noexcept = 0;
@@ -383,7 +383,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IProcessVideoFrameContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputFrame(void**) noexcept = 0;
             virtual int32_t __stdcall get_OutputFrame(void**) noexcept = 0;
@@ -391,7 +391,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IVideoCompositor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TimeIndependent(bool*) noexcept = 0;
             virtual int32_t __stdcall SetEncodingProperties(void*, void*) noexcept = 0;
@@ -402,7 +402,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IVideoCompositorDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivatableClassId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -410,7 +410,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IVideoCompositorDefinitionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithProperties(void*, void*, void**) noexcept = 0;
@@ -418,7 +418,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IVideoEffectDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivatableClassId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -426,7 +426,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IVideoEffectDefinitionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithProperties(void*, void*, void**) noexcept = 0;
@@ -434,7 +434,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IVideoTransformEffectDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PaddingColor(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_PaddingColor(struct struct_Windows_UI_Color) noexcept = 0;
@@ -452,14 +452,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Effects::IVideoTransformEffectDefinition2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SphericalProjection(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Effects::IVideoTransformSphericalProjection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -487,7 +487,7 @@ namespace winrt::impl
     {
         auto AudioCaptureEffectsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Effects::AudioCaptureEffectsManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AudioCaptureEffectsChanged_revoker = impl::event_revoker<winrt::Windows::Media::Effects::IAudioCaptureEffectsManager, &impl::abi_t<winrt::Windows::Media::Effects::IAudioCaptureEffectsManager>::remove_AudioCaptureEffectsChanged>;
-        [[nodiscard]] AudioCaptureEffectsChanged_revoker AudioCaptureEffectsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Effects::AudioCaptureEffectsManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AudioCaptureEffectsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Effects::AudioCaptureEffectsManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AudioCaptureEffectsChanged(winrt::event_token const& token) const noexcept;
         auto GetAudioCaptureEffects() const;
     };
@@ -553,7 +553,7 @@ namespace winrt::impl
     {
         auto AudioRenderEffectsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Effects::AudioRenderEffectsManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AudioRenderEffectsChanged_revoker = impl::event_revoker<winrt::Windows::Media::Effects::IAudioRenderEffectsManager, &impl::abi_t<winrt::Windows::Media::Effects::IAudioRenderEffectsManager>::remove_AudioRenderEffectsChanged>;
-        [[nodiscard]] AudioRenderEffectsChanged_revoker AudioRenderEffectsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Effects::AudioRenderEffectsManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AudioRenderEffectsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Effects::AudioRenderEffectsManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AudioRenderEffectsChanged(winrt::event_token const& token) const noexcept;
         auto GetAudioRenderEffects() const;
     };

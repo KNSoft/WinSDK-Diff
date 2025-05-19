@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -28,7 +28,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Adc::Provider::IAdcProvider>{ 0x28953668,0x9359,0x4C57,{ 0xBC,0x88,0xE2,0x75,0xE8,0x16,0x38,0xC9 } }; // 28953668-9359-4C57-BC88-E275E81638C9
     template <> struct abi<winrt::Windows::Devices::Adc::Provider::IAdcControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChannelCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ResolutionInBits(int32_t*) noexcept = 0;
@@ -44,7 +44,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Adc::Provider::IAdcProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetControllers(void**) noexcept = 0;
         };

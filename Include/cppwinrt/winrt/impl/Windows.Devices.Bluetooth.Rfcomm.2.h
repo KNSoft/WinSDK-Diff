@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.Devices.Bluetooth.Rfcomm.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Bluetooth::Rfcomm
 {
-    struct __declspec(empty_bases) RfcommDeviceService : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceService,
+    struct WINRT_IMPL_EMPTY_BASES RfcommDeviceService : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceService,
         impl::require<RfcommDeviceService, winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceService2, winrt::Windows::Foundation::IClosable, winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceService3>
     {
         RfcommDeviceService(std::nullptr_t) noexcept {}
@@ -23,12 +23,12 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Bluetooth::Rfcomm
         static auto GetDeviceSelectorForBluetoothDeviceAndServiceId(winrt::Windows::Devices::Bluetooth::BluetoothDevice const& bluetoothDevice, winrt::Windows::Devices::Bluetooth::Rfcomm::RfcommServiceId const& serviceId);
         static auto GetDeviceSelectorForBluetoothDeviceAndServiceId(winrt::Windows::Devices::Bluetooth::BluetoothDevice const& bluetoothDevice, winrt::Windows::Devices::Bluetooth::Rfcomm::RfcommServiceId const& serviceId, winrt::Windows::Devices::Bluetooth::BluetoothCacheMode const& cacheMode);
     };
-    struct __declspec(empty_bases) RfcommDeviceServicesResult : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceServicesResult
+    struct WINRT_IMPL_EMPTY_BASES RfcommDeviceServicesResult : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceServicesResult
     {
         RfcommDeviceServicesResult(std::nullptr_t) noexcept {}
         RfcommDeviceServicesResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceServicesResult(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) RfcommServiceId : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceId
+    struct WINRT_IMPL_EMPTY_BASES RfcommServiceId : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceId
     {
         RfcommServiceId(std::nullptr_t) noexcept {}
         RfcommServiceId(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceId(ptr, take_ownership_from_abi) {}
@@ -41,7 +41,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Bluetooth::Rfcomm
         [[nodiscard]] static auto PhoneBookAccessPse();
         [[nodiscard]] static auto GenericFileTransfer();
     };
-    struct __declspec(empty_bases) RfcommServiceProvider : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceProvider,
+    struct WINRT_IMPL_EMPTY_BASES RfcommServiceProvider : winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceProvider,
         impl::require<RfcommServiceProvider, winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceProvider2>
     {
         RfcommServiceProvider(std::nullptr_t) noexcept {}

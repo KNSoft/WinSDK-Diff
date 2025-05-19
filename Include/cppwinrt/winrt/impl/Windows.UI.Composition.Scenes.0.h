@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,7 +12,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -253,7 +253,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Composition::Scenes::SceneVisual>{ using type = winrt::Windows::UI::Composition::Scenes::ISceneVisual; };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneBoundingBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Center(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall get_Extents(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
@@ -264,50 +264,50 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneComponent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ComponentType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneComponentCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneComponentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMaterialFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMaterialInput>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMaterialInputFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMesh>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Bounds(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrimitiveTopology(int32_t*) noexcept = 0;
@@ -317,13 +317,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMeshMaterialAttributeMap>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMeshRendererComponent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Material(void**) noexcept = 0;
             virtual int32_t __stdcall put_Material(void*) noexcept = 0;
@@ -334,21 +334,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMeshRendererComponentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMeshStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMetallicRoughnessMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BaseColorInput(void**) noexcept = 0;
             virtual int32_t __stdcall put_BaseColorInput(void*) noexcept = 0;
@@ -364,14 +364,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneMetallicRoughnessMaterialStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneModelTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Orientation(winrt::Windows::Foundation::Numerics::quaternion*) noexcept = 0;
             virtual int32_t __stdcall put_Orientation(winrt::Windows::Foundation::Numerics::quaternion) noexcept = 0;
@@ -389,7 +389,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Children(void**) noexcept = 0;
             virtual int32_t __stdcall get_Components(void**) noexcept = 0;
@@ -400,32 +400,32 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneNodeCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneNodeStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneObject>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneObjectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::IScenePbrMaterial>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlphaCutoff(float*) noexcept = 0;
             virtual int32_t __stdcall put_AlphaCutoff(float) noexcept = 0;
@@ -449,25 +449,25 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::IScenePbrMaterialFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneRendererComponent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneRendererComponentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneSurfaceMaterialInput>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BitmapInterpolationMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BitmapInterpolationMode(int32_t) noexcept = 0;
@@ -481,14 +481,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneSurfaceMaterialInputStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Root(void**) noexcept = 0;
             virtual int32_t __stdcall put_Root(void*) noexcept = 0;
@@ -496,7 +496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Scenes::ISceneVisualStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };

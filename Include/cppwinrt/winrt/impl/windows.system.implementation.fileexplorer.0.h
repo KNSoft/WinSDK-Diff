@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Web::Http
 {
@@ -46,21 +46,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Implementation::FileExplorer::SysStorageProviderEventReceivedEventArgs>{ using type = winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventReceivedEventArgs; };
     template <> struct abi<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Json(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventReceivedEventArgsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_EventReceived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_EventReceived(winrt::event_token) noexcept = 0;
@@ -68,7 +68,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderHandlerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetHttpRequestProvider(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetEventSource(void*, void*, void**) noexcept = 0;
@@ -76,7 +76,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderHttpRequestProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendRequestAsync(void*, void**) noexcept = 0;
         };
@@ -104,7 +104,7 @@ namespace winrt::impl
     {
         auto EventReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventSource, winrt::Windows::System::Implementation::FileExplorer::SysStorageProviderEventReceivedEventArgs> const& handler) const;
         using EventReceived_revoker = impl::event_revoker<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventSource, &impl::abi_t<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventSource>::remove_EventReceived>;
-        [[nodiscard]] EventReceived_revoker EventReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventSource, winrt::Windows::System::Implementation::FileExplorer::SysStorageProviderEventReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto EventReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventSource, winrt::Windows::System::Implementation::FileExplorer::SysStorageProviderEventReceivedEventArgs> const& handler) const;
         auto EventReceived(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::System::Implementation::FileExplorer::ISysStorageProviderEventSource>

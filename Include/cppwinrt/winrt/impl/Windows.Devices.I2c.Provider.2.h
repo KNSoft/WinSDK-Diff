@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,8 +11,8 @@ WINRT_EXPORT namespace winrt::Windows::Devices::I2c::Provider
 {
     struct ProviderI2cTransferResult
     {
-        winrt::Windows::Devices::I2c::Provider::ProviderI2cTransferStatus Status;
-        uint32_t BytesTransferred;
+        winrt::Windows::Devices::I2c::Provider::ProviderI2cTransferStatus Status {};
+        uint32_t BytesTransferred {};
     };
     inline bool operator==(ProviderI2cTransferResult const& left, ProviderI2cTransferResult const& right) noexcept
     {
@@ -22,7 +22,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::I2c::Provider
     {
         return !(left == right);
     }
-    struct __declspec(empty_bases) ProviderI2cConnectionSettings : winrt::Windows::Devices::I2c::Provider::IProviderI2cConnectionSettings
+    struct WINRT_IMPL_EMPTY_BASES ProviderI2cConnectionSettings : winrt::Windows::Devices::I2c::Provider::IProviderI2cConnectionSettings
     {
         ProviderI2cConnectionSettings(std::nullptr_t) noexcept {}
         ProviderI2cConnectionSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::I2c::Provider::IProviderI2cConnectionSettings(ptr, take_ownership_from_abi) {}

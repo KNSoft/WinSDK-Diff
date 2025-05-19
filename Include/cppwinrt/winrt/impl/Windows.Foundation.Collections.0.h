@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -19,23 +19,23 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         ItemRemoved = 2,
         ItemChanged = 3,
     };
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IIterator;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
-    template <typename K> struct __declspec(empty_bases) IMapChangedEventArgs;
-    template <typename K, typename V> struct __declspec(empty_bases) IMapView;
-    template <typename K, typename V> struct __declspec(empty_bases) IMap;
-    template <typename K, typename V> struct __declspec(empty_bases) IObservableMap;
-    template <typename T> struct __declspec(empty_bases) IObservableVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterator;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
+    template <typename K> struct WINRT_IMPL_EMPTY_BASES IMapChangedEventArgs;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMapView;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMap;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IObservableMap;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IObservableVector;
     struct IPropertySet;
     struct IVectorChangedEventArgs;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
     struct PropertySet;
     struct StringMap;
     struct ValueSet;
-    template <typename K, typename V> struct __declspec(empty_bases) MapChangedEventHandler;
-    template <typename T> struct __declspec(empty_bases) VectorChangedEventHandler;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES MapChangedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES VectorChangedEventHandler;
 }
 namespace winrt::impl
 {
@@ -106,14 +106,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Foundation::Collections::ValueSet>{ using type = winrt::Windows::Foundation::Collections::IPropertySet; };
     template <typename T> struct abi<winrt::Windows::Foundation::Collections::IIterable<T>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall First(void**) noexcept = 0;
         };
     };
     template <typename T> struct abi<winrt::Windows::Foundation::Collections::IIterator<T>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(arg_out<T>) noexcept = 0;
             virtual int32_t __stdcall get_HasCurrent(bool*) noexcept = 0;
@@ -123,7 +123,7 @@ namespace winrt::impl
     };
     template <typename K, typename V> struct abi<winrt::Windows::Foundation::Collections::IKeyValuePair<K, V>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Key(arg_out<K>) noexcept = 0;
             virtual int32_t __stdcall get_Value(arg_out<V>) noexcept = 0;
@@ -131,7 +131,7 @@ namespace winrt::impl
     };
     template <typename K> struct abi<winrt::Windows::Foundation::Collections::IMapChangedEventArgs<K>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CollectionChange(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Key(arg_out<K>) noexcept = 0;
@@ -139,7 +139,7 @@ namespace winrt::impl
     };
     template <typename K, typename V> struct abi<winrt::Windows::Foundation::Collections::IMapView<K, V>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Lookup(arg_in<K>, arg_out<V>) noexcept = 0;
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
@@ -149,7 +149,7 @@ namespace winrt::impl
     };
     template <typename K, typename V> struct abi<winrt::Windows::Foundation::Collections::IMap<K, V>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Lookup(arg_in<K>, arg_out<V>) noexcept = 0;
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
@@ -162,7 +162,7 @@ namespace winrt::impl
     };
     template <typename K, typename V> struct abi<winrt::Windows::Foundation::Collections::IObservableMap<K, V>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_MapChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_MapChanged(winrt::event_token) noexcept = 0;
@@ -170,7 +170,7 @@ namespace winrt::impl
     };
     template <typename T> struct abi<winrt::Windows::Foundation::Collections::IObservableVector<T>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_VectorChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_VectorChanged(winrt::event_token) noexcept = 0;
@@ -178,13 +178,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Collections::IPropertySet>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Collections::IVectorChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CollectionChange(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Index(uint32_t*) noexcept = 0;
@@ -192,7 +192,7 @@ namespace winrt::impl
     };
     template <typename T> struct abi<winrt::Windows::Foundation::Collections::IVectorView<T>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAt(uint32_t, arg_out<T>) noexcept = 0;
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
@@ -202,7 +202,7 @@ namespace winrt::impl
     };
     template <typename T> struct abi<winrt::Windows::Foundation::Collections::IVector<T>>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAt(uint32_t, arg_out<T>) noexcept = 0;
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
@@ -220,14 +220,14 @@ namespace winrt::impl
     };
     template <typename K, typename V> struct abi<winrt::Windows::Foundation::Collections::MapChangedEventHandler<K, V>>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <typename T> struct abi<winrt::Windows::Foundation::Collections::VectorChangedEventHandler<T>>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -387,7 +387,7 @@ namespace winrt::impl
     {
         auto MapChanged(winrt::Windows::Foundation::Collections::MapChangedEventHandler<K, V> const& vhnd) const;
         using MapChanged_revoker = impl::event_revoker<winrt::Windows::Foundation::Collections::IObservableMap<K, V>, &impl::abi_t<winrt::Windows::Foundation::Collections::IObservableMap<K, V>>::remove_MapChanged>;
-        [[nodiscard]] MapChanged_revoker MapChanged(auto_revoke_t, winrt::Windows::Foundation::Collections::MapChangedEventHandler<K, V> const& vhnd) const;
+        [[nodiscard]] auto MapChanged(auto_revoke_t, winrt::Windows::Foundation::Collections::MapChangedEventHandler<K, V> const& vhnd) const;
         auto MapChanged(winrt::event_token const& token) const noexcept;
     };
     template <typename K, typename V> struct consume<winrt::Windows::Foundation::Collections::IObservableMap<K, V>>
@@ -399,7 +399,7 @@ namespace winrt::impl
     {
         auto VectorChanged(winrt::Windows::Foundation::Collections::VectorChangedEventHandler<T> const& vhnd) const;
         using VectorChanged_revoker = impl::event_revoker<winrt::Windows::Foundation::Collections::IObservableVector<T>, &impl::abi_t<winrt::Windows::Foundation::Collections::IObservableVector<T>>::remove_VectorChanged>;
-        [[nodiscard]] VectorChanged_revoker VectorChanged(auto_revoke_t, winrt::Windows::Foundation::Collections::VectorChangedEventHandler<T> const& vhnd) const;
+        [[nodiscard]] auto VectorChanged(auto_revoke_t, winrt::Windows::Foundation::Collections::VectorChangedEventHandler<T> const& vhnd) const;
         auto VectorChanged(winrt::event_token const& token) const noexcept;
     };
     template <typename T> struct consume<winrt::Windows::Foundation::Collections::IObservableVector<T>>

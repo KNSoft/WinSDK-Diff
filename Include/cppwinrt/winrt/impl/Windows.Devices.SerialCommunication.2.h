@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,17 +10,17 @@
 #include "winrt/impl/Windows.Devices.SerialCommunication.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::SerialCommunication
 {
-    struct __declspec(empty_bases) ErrorReceivedEventArgs : winrt::Windows::Devices::SerialCommunication::IErrorReceivedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES ErrorReceivedEventArgs : winrt::Windows::Devices::SerialCommunication::IErrorReceivedEventArgs
     {
         ErrorReceivedEventArgs(std::nullptr_t) noexcept {}
         ErrorReceivedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::SerialCommunication::IErrorReceivedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) PinChangedEventArgs : winrt::Windows::Devices::SerialCommunication::IPinChangedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES PinChangedEventArgs : winrt::Windows::Devices::SerialCommunication::IPinChangedEventArgs
     {
         PinChangedEventArgs(std::nullptr_t) noexcept {}
         PinChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::SerialCommunication::IPinChangedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SerialDevice : winrt::Windows::Devices::SerialCommunication::ISerialDevice
+    struct WINRT_IMPL_EMPTY_BASES SerialDevice : winrt::Windows::Devices::SerialCommunication::ISerialDevice
     {
         SerialDevice(std::nullptr_t) noexcept {}
         SerialDevice(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::SerialCommunication::ISerialDevice(ptr, take_ownership_from_abi) {}

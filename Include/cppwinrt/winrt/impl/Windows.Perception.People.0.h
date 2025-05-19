@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -116,7 +116,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Perception::People::HeadPose>{ using type = winrt::Windows::Perception::People::IHeadPose; };
     template <> struct abi<winrt::Windows::Perception::People::IEyesPose>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCalibrationValid(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Gaze(void**) noexcept = 0;
@@ -125,7 +125,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::People::IEyesPoseStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
@@ -133,7 +133,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::People::IHandMeshObserver>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall get_TriangleIndexCount(uint32_t*) noexcept = 0;
@@ -147,7 +147,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::People::IHandMeshVertexState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CoordinateSystem(void**) noexcept = 0;
             virtual int32_t __stdcall GetVertices(uint32_t, struct struct_Windows_Perception_People_HandMeshVertex*) noexcept = 0;
@@ -156,7 +156,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::People::IHandPose>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetJoint(void*, int32_t, struct struct_Windows_Perception_People_JointPose*, bool*) noexcept = 0;
             virtual int32_t __stdcall TryGetJoints(void*, uint32_t, int32_t*, uint32_t, struct struct_Windows_Perception_People_JointPose*, bool*) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::People::IHeadPose>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall get_ForwardDirection(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,12 +8,12 @@
 #define WINRT_Windows_Devices_Sensors_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
     struct IClosable;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Display
 {
@@ -1075,7 +1075,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Sensors::WakeOnApproachOptions>{ using type = winrt::Windows::Devices::Sensors::IWakeOnApproachOptions; };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinimumReportInterval(uint32_t*) noexcept = 0;
@@ -1089,7 +1089,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReadingTransform(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReadingTransform(uint32_t*) noexcept = 0;
@@ -1097,7 +1097,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -1106,21 +1106,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometer4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReadingType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometer5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReportThreshold(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerDataThreshold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XAxisInGForce(double*) noexcept = 0;
             virtual int32_t __stdcall put_XAxisInGForce(double) noexcept = 0;
@@ -1132,14 +1132,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerDeviceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AccelerationX(double*) noexcept = 0;
@@ -1149,7 +1149,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -1157,35 +1157,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerShakenEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultWithAccelerometerReadingType(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAccelerometerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(int32_t, void**) noexcept = 0;
@@ -1193,7 +1193,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IActivitySensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReadingAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_SubscribedActivities(void**) noexcept = 0;
@@ -1207,7 +1207,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IActivitySensorReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Activity(int32_t*) noexcept = 0;
@@ -1216,21 +1216,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IActivitySensorReadingChangeReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IActivitySensorReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IActivitySensorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -1241,14 +1241,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IActivitySensorTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadReports(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAdaptiveDimmingOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowWhenExternalDisplayConnected(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowWhenExternalDisplayConnected(bool) noexcept = 0;
@@ -1256,7 +1256,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAltimeter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
@@ -1269,7 +1269,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAltimeter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -1278,7 +1278,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAltimeterReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AltitudeChangeInMeters(double*) noexcept = 0;
@@ -1286,7 +1286,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAltimeterReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -1294,21 +1294,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAltimeterReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IAltimeterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
@@ -1321,7 +1321,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -1330,14 +1330,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReportThreshold(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometerDataThreshold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Hectopascals(double*) noexcept = 0;
             virtual int32_t __stdcall put_Hectopascals(double) noexcept = 0;
@@ -1345,7 +1345,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometerReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_StationPressureInHectopascals(double*) noexcept = 0;
@@ -1353,7 +1353,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometerReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -1361,21 +1361,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometerReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IBarometerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -1383,7 +1383,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompass>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinimumReportInterval(uint32_t*) noexcept = 0;
@@ -1395,7 +1395,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompass2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReadingTransform(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReadingTransform(uint32_t*) noexcept = 0;
@@ -1403,7 +1403,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompass3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -1412,14 +1412,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompass4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReportThreshold(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompassDataThreshold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Degrees(double*) noexcept = 0;
             virtual int32_t __stdcall put_Degrees(double) noexcept = 0;
@@ -1427,14 +1427,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompassDeviceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompassReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_HeadingMagneticNorth(double*) noexcept = 0;
@@ -1443,7 +1443,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompassReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -1451,28 +1451,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompassReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompassReadingHeadingAccuracy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeadingAccuracy(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompassStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ICompassStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -1480,7 +1480,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IDetectedPerson>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Engagement(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DistanceInMillimeters(void**) noexcept = 0;
@@ -1491,7 +1491,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinimumReportInterval(uint32_t*) noexcept = 0;
@@ -1503,7 +1503,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReadingTransform(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReadingTransform(uint32_t*) noexcept = 0;
@@ -1511,7 +1511,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -1520,14 +1520,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometer4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReportThreshold(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometerDataThreshold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XAxisInDegreesPerSecond(double*) noexcept = 0;
             virtual int32_t __stdcall put_XAxisInDegreesPerSecond(double) noexcept = 0;
@@ -1539,14 +1539,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometerDeviceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometerReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AngularVelocityX(double*) noexcept = 0;
@@ -1556,7 +1556,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometerReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -1564,21 +1564,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometerReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IGyrometerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -1586,7 +1586,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHeadOrientation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RollInDegrees(void**) noexcept = 0;
             virtual int32_t __stdcall get_PitchInDegrees(void**) noexcept = 0;
@@ -1595,7 +1595,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHeadPosition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AzimuthInDegrees(void**) noexcept = 0;
             virtual int32_t __stdcall get_AltitudeInDegrees(void**) noexcept = 0;
@@ -1603,7 +1603,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHingeAngleReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AngleInDegrees(double*) noexcept = 0;
@@ -1612,7 +1612,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHingeAngleSensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReadingAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
@@ -1625,14 +1625,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHingeAngleSensorReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHingeAngleSensorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
@@ -1642,7 +1642,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceFeatures>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SensorId(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedWakeOrLockDistancesInMillimeters(void**) noexcept = 0;
@@ -1653,21 +1653,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceFeatures2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAdaptiveDimmingSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceFeatures3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOnlookerDetectionSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxDetectableDistanceInMillimeters(void**) noexcept = 0;
@@ -1679,7 +1679,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPresenceSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsEngagementSupported(bool*) noexcept = 0;
@@ -1687,7 +1687,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensor3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxDetectablePersons(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MinDetectableAzimuthInDegrees(void**) noexcept = 0;
@@ -1698,7 +1698,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorExtension>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Initialize(void*) noexcept = 0;
             virtual int32_t __stdcall Start() noexcept = 0;
@@ -1711,7 +1711,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Presence(int32_t*) noexcept = 0;
@@ -1721,14 +1721,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorReading3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OnlookerPresence(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DetectedPersons(void**) noexcept = 0;
@@ -1736,14 +1736,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorReadingUpdate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(void**) noexcept = 0;
             virtual int32_t __stdcall put_Timestamp(void*) noexcept = 0;
@@ -1757,7 +1757,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorReadingUpdate2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OnlookerPresence(void**) noexcept = 0;
             virtual int32_t __stdcall put_OnlookerPresence(void*) noexcept = 0;
@@ -1765,7 +1765,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -1774,7 +1774,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSensorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromId(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
@@ -1782,7 +1782,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SensorId(void**) noexcept = 0;
             virtual int32_t __stdcall put_SensorId(void*) noexcept = 0;
@@ -1802,7 +1802,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSettings2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAdaptiveDimmingEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsAdaptiveDimmingEnabled(bool) noexcept = 0;
@@ -1813,7 +1813,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSettings3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOnlookerDetectionEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsOnlookerDetectionEnabled(bool) noexcept = 0;
@@ -1822,7 +1822,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IHumanPresenceSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentSettingsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetCurrentSettings(void**) noexcept = 0;
@@ -1837,7 +1837,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinimumReportInterval(uint32_t*) noexcept = 0;
@@ -1849,7 +1849,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReadingTransform(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReadingTransform(uint32_t*) noexcept = 0;
@@ -1858,7 +1858,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -1867,14 +1867,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometer4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReportThreshold(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerDataThreshold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PitchInDegrees(float*) noexcept = 0;
             virtual int32_t __stdcall put_PitchInDegrees(float) noexcept = 0;
@@ -1886,14 +1886,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerDeviceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_PitchDegrees(float*) noexcept = 0;
@@ -1903,7 +1903,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -1911,42 +1911,42 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerReadingYawAccuracy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_YawAccuracy(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultForRelativeReadings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultWithSensorReadingType(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IInclinometerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -1954,7 +1954,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinimumReportInterval(uint32_t*) noexcept = 0;
@@ -1966,7 +1966,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -1975,21 +1975,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensor3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReportThreshold(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensor4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsChromaticitySupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorDataThreshold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LuxPercentage(float*) noexcept = 0;
             virtual int32_t __stdcall put_LuxPercentage(float) noexcept = 0;
@@ -1999,7 +1999,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorDataThreshold2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Chromaticity(struct struct_Windows_Devices_Sensors_LightSensorChromaticity*) noexcept = 0;
             virtual int32_t __stdcall put_Chromaticity(struct struct_Windows_Devices_Sensors_LightSensorChromaticity) noexcept = 0;
@@ -2007,14 +2007,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorDeviceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_IlluminanceInLux(float*) noexcept = 0;
@@ -2022,7 +2022,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -2030,28 +2030,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorReading3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Chromaticity(struct struct_Windows_Devices_Sensors_LightSensorChromaticity*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILightSensorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -2059,7 +2059,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ILockOnLeaveOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowWhenExternalDisplayConnected(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowWhenExternalDisplayConnected(bool) noexcept = 0;
@@ -2067,7 +2067,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinimumReportInterval(uint32_t*) noexcept = 0;
@@ -2079,7 +2079,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReadingTransform(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReadingTransform(uint32_t*) noexcept = 0;
@@ -2087,7 +2087,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -2096,14 +2096,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometer4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReportThreshold(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometerDataThreshold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_XAxisMicroteslas(float*) noexcept = 0;
             virtual int32_t __stdcall put_XAxisMicroteslas(float) noexcept = 0;
@@ -2115,14 +2115,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometerDeviceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometerReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_MagneticFieldX(float*) noexcept = 0;
@@ -2133,7 +2133,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometerReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -2141,21 +2141,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometerReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IMagnetometerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -2163,7 +2163,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOnlookerDetectionOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Action(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Action(int32_t) noexcept = 0;
@@ -2173,7 +2173,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(void**) noexcept = 0;
             virtual int32_t __stdcall get_MinimumReportInterval(uint32_t*) noexcept = 0;
@@ -2185,7 +2185,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReadingTransform(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReadingTransform(uint32_t*) noexcept = 0;
@@ -2194,7 +2194,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensor3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReportLatency(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReportLatency(uint32_t*) noexcept = 0;
@@ -2203,14 +2203,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorDeviceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_RotationMatrix(void**) noexcept = 0;
@@ -2219,7 +2219,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorReading2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PerformanceCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -2227,35 +2227,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorReadingYawAccuracy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_YawAccuracy(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultForRelativeReadings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultWithSensorReadingType(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefaultWithSensorReadingTypeAndSensorOptimizationGoal(int32_t, int32_t, void**) noexcept = 0;
@@ -2263,7 +2263,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IOrientationSensorStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorWithSensorReadingTypeAndSensorOptimizationGoal(int32_t, int32_t, void**) noexcept = 0;
@@ -2272,7 +2272,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IPedometer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_PowerInMilliwatts(double*) noexcept = 0;
@@ -2285,21 +2285,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IPedometer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReadings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IPedometerDataThresholdFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IPedometerReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StepKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_CumulativeSteps(int32_t*) noexcept = 0;
@@ -2309,14 +2309,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IPedometerReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IPedometerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
@@ -2327,14 +2327,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IPedometerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetReadingsFromTriggerDetails(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IProximitySensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxDistanceInMillimeters(void**) noexcept = 0;
@@ -2347,14 +2347,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IProximitySensorDataThresholdFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IProximitySensorReading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsDetected(bool*) noexcept = 0;
@@ -2363,14 +2363,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IProximitySensorReadingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reading(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IProximitySensorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromId(void*, void**) noexcept = 0;
@@ -2378,20 +2378,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IProximitySensorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetReadingsFromTriggerDetails(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISensorDataThreshold>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISensorDataThresholdTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_SensorType(int32_t*) noexcept = 0;
@@ -2399,7 +2399,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISensorQuaternion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_W(float*) noexcept = 0;
             virtual int32_t __stdcall get_X(float*) noexcept = 0;
@@ -2409,7 +2409,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISensorRotationMatrix>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_M11(float*) noexcept = 0;
             virtual int32_t __stdcall get_M12(float*) noexcept = 0;
@@ -2424,7 +2424,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISimpleOrientationSensor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentOrientation(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_OrientationChanged(void*, winrt::event_token*) noexcept = 0;
@@ -2433,7 +2433,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISimpleOrientationSensor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ReadingTransform(uint32_t) noexcept = 0;
             virtual int32_t __stdcall get_ReadingTransform(uint32_t*) noexcept = 0;
@@ -2441,14 +2441,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISimpleOrientationSensorDeviceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISimpleOrientationSensorOrientationChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Orientation(int32_t*) noexcept = 0;
@@ -2456,14 +2456,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISimpleOrientationSensorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::ISimpleOrientationSensorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -2471,7 +2471,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Sensors::IWakeOnApproachOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowWhenExternalDisplayConnected(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowWhenExternalDisplayConnected(bool) noexcept = 0;
@@ -2488,11 +2488,11 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Accelerometer, winrt::Windows::Devices::Sensors::AccelerometerReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IAccelerometer, &impl::abi_t<winrt::Windows::Devices::Sensors::IAccelerometer>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Accelerometer, winrt::Windows::Devices::Sensors::AccelerometerReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Accelerometer, winrt::Windows::Devices::Sensors::AccelerometerReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
         auto Shaken(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Accelerometer, winrt::Windows::Devices::Sensors::AccelerometerShakenEventArgs> const& handler) const;
         using Shaken_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IAccelerometer, &impl::abi_t<winrt::Windows::Devices::Sensors::IAccelerometer>::remove_Shaken>;
-        [[nodiscard]] Shaken_revoker Shaken(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Accelerometer, winrt::Windows::Devices::Sensors::AccelerometerShakenEventArgs> const& handler) const;
+        [[nodiscard]] auto Shaken(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Accelerometer, winrt::Windows::Devices::Sensors::AccelerometerShakenEventArgs> const& handler) const;
         auto Shaken(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IAccelerometer>
@@ -2640,7 +2640,7 @@ namespace winrt::impl
         [[nodiscard]] auto MinimumReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::ActivitySensor, winrt::Windows::Devices::Sensors::ActivitySensorReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IActivitySensor, &impl::abi_t<winrt::Windows::Devices::Sensors::IActivitySensor>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::ActivitySensor, winrt::Windows::Devices::Sensors::ActivitySensorReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::ActivitySensor, winrt::Windows::Devices::Sensors::ActivitySensorReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IActivitySensor>
@@ -2718,7 +2718,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Altimeter, winrt::Windows::Devices::Sensors::AltimeterReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IAltimeter, &impl::abi_t<winrt::Windows::Devices::Sensors::IAltimeter>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Altimeter, winrt::Windows::Devices::Sensors::AltimeterReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Altimeter, winrt::Windows::Devices::Sensors::AltimeterReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IAltimeter>
@@ -2784,7 +2784,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Barometer, winrt::Windows::Devices::Sensors::BarometerReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IBarometer, &impl::abi_t<winrt::Windows::Devices::Sensors::IBarometer>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Barometer, winrt::Windows::Devices::Sensors::BarometerReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Barometer, winrt::Windows::Devices::Sensors::BarometerReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IBarometer>
@@ -2878,7 +2878,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Compass, winrt::Windows::Devices::Sensors::CompassReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::ICompass, &impl::abi_t<winrt::Windows::Devices::Sensors::ICompass>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Compass, winrt::Windows::Devices::Sensors::CompassReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Compass, winrt::Windows::Devices::Sensors::CompassReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::ICompass>
@@ -3014,7 +3014,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Gyrometer, winrt::Windows::Devices::Sensors::GyrometerReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IGyrometer, &impl::abi_t<winrt::Windows::Devices::Sensors::IGyrometer>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Gyrometer, winrt::Windows::Devices::Sensors::GyrometerReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Gyrometer, winrt::Windows::Devices::Sensors::GyrometerReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IGyrometer>
@@ -3166,7 +3166,7 @@ namespace winrt::impl
         auto ReportThresholdInDegrees(double value) const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::HingeAngleSensor, winrt::Windows::Devices::Sensors::HingeAngleSensorReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IHingeAngleSensor, &impl::abi_t<winrt::Windows::Devices::Sensors::IHingeAngleSensor>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::HingeAngleSensor, winrt::Windows::Devices::Sensors::HingeAngleSensorReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::HingeAngleSensor, winrt::Windows::Devices::Sensors::HingeAngleSensorReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IHingeAngleSensor>
@@ -3234,7 +3234,7 @@ namespace winrt::impl
         auto GetCurrentReading() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::HumanPresenceSensor, winrt::Windows::Devices::Sensors::HumanPresenceSensorReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IHumanPresenceSensor, &impl::abi_t<winrt::Windows::Devices::Sensors::IHumanPresenceSensor>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::HumanPresenceSensor, winrt::Windows::Devices::Sensors::HumanPresenceSensorReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::HumanPresenceSensor, winrt::Windows::Devices::Sensors::HumanPresenceSensorReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IHumanPresenceSensor>
@@ -3424,7 +3424,7 @@ namespace winrt::impl
         auto GetSupportedLockOnLeaveTimeouts() const;
         auto SettingsChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SettingsChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IHumanPresenceSettingsStatics, &impl::abi_t<winrt::Windows::Devices::Sensors::IHumanPresenceSettingsStatics>::remove_SettingsChanged>;
-        [[nodiscard]] SettingsChanged_revoker SettingsChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SettingsChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SettingsChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IHumanPresenceSettingsStatics>
@@ -3440,7 +3440,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Inclinometer, winrt::Windows::Devices::Sensors::InclinometerReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IInclinometer, &impl::abi_t<winrt::Windows::Devices::Sensors::IInclinometer>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Inclinometer, winrt::Windows::Devices::Sensors::InclinometerReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Inclinometer, winrt::Windows::Devices::Sensors::InclinometerReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IInclinometer>
@@ -3587,7 +3587,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::LightSensor, winrt::Windows::Devices::Sensors::LightSensorReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::ILightSensor, &impl::abi_t<winrt::Windows::Devices::Sensors::ILightSensor>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::LightSensor, winrt::Windows::Devices::Sensors::LightSensorReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::LightSensor, winrt::Windows::Devices::Sensors::LightSensorReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::ILightSensor>
@@ -3730,7 +3730,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Magnetometer, winrt::Windows::Devices::Sensors::MagnetometerReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IMagnetometer, &impl::abi_t<winrt::Windows::Devices::Sensors::IMagnetometer>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Magnetometer, winrt::Windows::Devices::Sensors::MagnetometerReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Magnetometer, winrt::Windows::Devices::Sensors::MagnetometerReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IMagnetometer>
@@ -3862,7 +3862,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::OrientationSensor, winrt::Windows::Devices::Sensors::OrientationSensorReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IOrientationSensor, &impl::abi_t<winrt::Windows::Devices::Sensors::IOrientationSensor>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::OrientationSensor, winrt::Windows::Devices::Sensors::OrientationSensorReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::OrientationSensor, winrt::Windows::Devices::Sensors::OrientationSensorReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IOrientationSensor>
@@ -3988,7 +3988,7 @@ namespace winrt::impl
         [[nodiscard]] auto ReportInterval() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Pedometer, winrt::Windows::Devices::Sensors::PedometerReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IPedometer, &impl::abi_t<winrt::Windows::Devices::Sensors::IPedometer>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Pedometer, winrt::Windows::Devices::Sensors::PedometerReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::Pedometer, winrt::Windows::Devices::Sensors::PedometerReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::IPedometer>
@@ -4065,7 +4065,7 @@ namespace winrt::impl
         auto GetCurrentReading() const;
         auto ReadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::ProximitySensor, winrt::Windows::Devices::Sensors::ProximitySensorReadingChangedEventArgs> const& handler) const;
         using ReadingChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::IProximitySensor, &impl::abi_t<winrt::Windows::Devices::Sensors::IProximitySensor>::remove_ReadingChanged>;
-        [[nodiscard]] ReadingChanged_revoker ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::ProximitySensor, winrt::Windows::Devices::Sensors::ProximitySensorReadingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ReadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::ProximitySensor, winrt::Windows::Devices::Sensors::ProximitySensorReadingChangedEventArgs> const& handler) const;
         auto ReadingChanged(winrt::event_token const& token) const noexcept;
         auto CreateDisplayOnOffController() const;
     };
@@ -4174,7 +4174,7 @@ namespace winrt::impl
         auto GetCurrentOrientation() const;
         auto OrientationChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::SimpleOrientationSensor, winrt::Windows::Devices::Sensors::SimpleOrientationSensorOrientationChangedEventArgs> const& handler) const;
         using OrientationChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Sensors::ISimpleOrientationSensor, &impl::abi_t<winrt::Windows::Devices::Sensors::ISimpleOrientationSensor>::remove_OrientationChanged>;
-        [[nodiscard]] OrientationChanged_revoker OrientationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::SimpleOrientationSensor, winrt::Windows::Devices::Sensors::SimpleOrientationSensorOrientationChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto OrientationChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Sensors::SimpleOrientationSensor, winrt::Windows::Devices::Sensors::SimpleOrientationSensorOrientationChangedEventArgs> const& handler) const;
         auto OrientationChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Sensors::ISimpleOrientationSensor>

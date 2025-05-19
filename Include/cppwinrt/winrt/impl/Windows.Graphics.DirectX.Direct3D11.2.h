@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,8 +12,8 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::DirectX::Direct3D11
 {
     struct Direct3DMultisampleDescription
     {
-        int32_t Count;
-        int32_t Quality;
+        int32_t Count {};
+        int32_t Quality {};
     };
     inline bool operator==(Direct3DMultisampleDescription const& left, Direct3DMultisampleDescription const& right) noexcept
     {
@@ -25,10 +25,10 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::DirectX::Direct3D11
     }
     struct Direct3DSurfaceDescription
     {
-        int32_t Width;
-        int32_t Height;
-        winrt::Windows::Graphics::DirectX::DirectXPixelFormat Format;
-        winrt::Windows::Graphics::DirectX::Direct3D11::Direct3DMultisampleDescription MultisampleDescription;
+        int32_t Width {};
+        int32_t Height {};
+        winrt::Windows::Graphics::DirectX::DirectXPixelFormat Format {};
+        winrt::Windows::Graphics::DirectX::Direct3D11::Direct3DMultisampleDescription MultisampleDescription {};
     };
     inline bool operator==(Direct3DSurfaceDescription const& left, Direct3DSurfaceDescription const& right) noexcept
     {

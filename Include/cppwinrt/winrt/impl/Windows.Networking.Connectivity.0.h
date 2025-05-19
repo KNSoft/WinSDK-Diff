@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,12 +9,12 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
 {
@@ -231,6 +231,7 @@ WINRT_EXPORT namespace winrt::Windows::Networking::Connectivity
     struct WwanConnectionProfileDetails;
     struct NetworkUsageStates;
     struct NetworkStatusChangedEventHandler;
+    struct WwanContract;
 }
 namespace winrt::impl
 {
@@ -394,6 +395,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::Connectivity::IWwanConnectionProfileDetails> = L"Windows.Networking.Connectivity.IWwanConnectionProfileDetails";
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::Connectivity::IWwanConnectionProfileDetails2> = L"Windows.Networking.Connectivity.IWwanConnectionProfileDetails2";
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::Connectivity::NetworkStatusChangedEventHandler> = L"Windows.Networking.Connectivity.NetworkStatusChangedEventHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::Networking::Connectivity::WwanContract> = L"Windows.Networking.Connectivity.WwanContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::Connectivity::IAttributedNetworkUsage>{ 0xF769B039,0xECA2,0x45EB,{ 0xAD,0xE1,0xB0,0x36,0x8B,0x75,0x6C,0x49 } }; // F769B039-ECA2-45EB-ADE1-B0368B756C49
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::Connectivity::ICellularApnContext>{ 0x6FA529F4,0xEFFD,0x4542,{ 0x9A,0xB2,0x70,0x5B,0xBF,0x94,0x94,0x3A } }; // 6FA529F4-EFFD-4542-9AB2-705BBF94943A
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::Connectivity::ICellularApnContext2>{ 0x76B0EB1A,0xAC49,0x4350,{ 0xB1,0xE5,0xDC,0x47,0x63,0xBC,0x69,0xC7 } }; // 76B0EB1A-AC49-4350-B1E5-DC4763BC69C7
@@ -458,7 +460,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::Connectivity::WwanConnectionProfileDetails>{ using type = winrt::Windows::Networking::Connectivity::IWwanConnectionProfileDetails; };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IAttributedNetworkUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BytesSent(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_BytesReceived(uint64_t*) noexcept = 0;
@@ -469,7 +471,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::ICellularApnContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProviderId(void**) noexcept = 0;
             virtual int32_t __stdcall put_ProviderId(void*) noexcept = 0;
@@ -487,7 +489,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::ICellularApnContext2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProfileName(void**) noexcept = 0;
             virtual int32_t __stdcall put_ProfileName(void*) noexcept = 0;
@@ -495,7 +497,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionCost>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkCostType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Roaming(bool*) noexcept = 0;
@@ -505,14 +507,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionCost2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BackgroundDataUsageRestricted(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProfileName(void**) noexcept = 0;
             virtual int32_t __stdcall GetNetworkConnectivityLevel(int32_t*) noexcept = 0;
@@ -527,7 +529,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfile2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsWwanConnectionProfile(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsWlanConnectionProfile(bool*) noexcept = 0;
@@ -542,21 +544,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfile3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAttributedNetworkUsageAsync(int64_t, int64_t, struct struct_Windows_Networking_Connectivity_NetworkUsageStates, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfile4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetProviderNetworkUsageAsync(int64_t, int64_t, struct struct_Windows_Networking_Connectivity_NetworkUsageStates, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfile5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanDelete(bool*) noexcept = 0;
             virtual int32_t __stdcall TryDeleteAsync(void**) noexcept = 0;
@@ -564,14 +566,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfile6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsDomainAuthenticatedBy(int32_t, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsConnected(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsConnected(bool*) noexcept = 0;
@@ -587,7 +589,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsRoaming(void*) noexcept = 0;
             virtual int32_t __stdcall get_IsRoaming(void**) noexcept = 0;
@@ -600,7 +602,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionProfileFilter3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_PurposeGuid(void*) noexcept = 0;
             virtual int32_t __stdcall get_PurposeGuid(void**) noexcept = 0;
@@ -608,14 +610,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectionSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConnectionProfile(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectivityInterval>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_ConnectionDuration(int64_t*) noexcept = 0;
@@ -623,7 +625,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IConnectivityManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AcquireConnectionAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall AddHttpRoutePolicy(void*) noexcept = 0;
@@ -632,7 +634,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IDataPlanStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataPlanUsage(void**) noexcept = 0;
             virtual int32_t __stdcall get_DataLimitInMegabytes(void**) noexcept = 0;
@@ -644,7 +646,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IDataPlanUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MegabytesUsed(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_LastSyncTime(int64_t*) noexcept = 0;
@@ -652,7 +654,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IDataUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BytesSent(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_BytesReceived(uint64_t*) noexcept = 0;
@@ -660,7 +662,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IIPInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAdapter(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrefixLength(void**) noexcept = 0;
@@ -668,7 +670,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::ILanIdentifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InfrastructureId(void**) noexcept = 0;
             virtual int32_t __stdcall get_PortId(void**) noexcept = 0;
@@ -677,7 +679,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::ILanIdentifierData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -685,7 +687,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::INetworkAdapter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OutboundMaxBitsPerSecond(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_InboundMaxBitsPerSecond(uint64_t*) noexcept = 0;
@@ -697,7 +699,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::INetworkInformationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetConnectionProfiles(void**) noexcept = 0;
             virtual int32_t __stdcall GetInternetConnectionProfile(void**) noexcept = 0;
@@ -711,14 +713,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::INetworkInformationStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindConnectionProfilesAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::INetworkItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall GetNetworkTypes(uint32_t*) noexcept = 0;
@@ -726,7 +728,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::INetworkSecuritySettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAuthenticationType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NetworkEncryptionType(int32_t*) noexcept = 0;
@@ -734,7 +736,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::INetworkStateChangeEventDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasNewInternetConnectionProfile(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HasNewConnectionCost(bool*) noexcept = 0;
@@ -746,7 +748,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::INetworkStateChangeEventDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasNewTetheringOperationalState(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HasNewTetheringClientCount(bool*) noexcept = 0;
@@ -754,7 +756,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::INetworkUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BytesSent(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_BytesReceived(uint64_t*) noexcept = 0;
@@ -763,7 +765,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IProviderNetworkUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BytesSent(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_BytesReceived(uint64_t*) noexcept = 0;
@@ -772,7 +774,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IProxyConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProxyUris(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanConnectDirectly(bool*) noexcept = 0;
@@ -780,7 +782,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IRoutePolicy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConnectionProfile(void**) noexcept = 0;
             virtual int32_t __stdcall get_HostName(void**) noexcept = 0;
@@ -789,21 +791,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IRoutePolicyFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateRoutePolicy(void*, void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IWlanConnectionProfileDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetConnectedSsid(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IWwanConnectionProfileDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HomeProviderId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AccessPointName(void**) noexcept = 0;
@@ -813,7 +815,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::IWwanConnectionProfileDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IPKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PurposeGuids(void**) noexcept = 0;
@@ -821,7 +823,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Connectivity::NetworkStatusChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -1124,7 +1126,7 @@ namespace winrt::impl
         auto GetSortedEndpointPairs(param::iterable<winrt::Windows::Networking::EndpointPair> const& destinationList, winrt::Windows::Networking::HostNameSortOptions const& sortOptions) const;
         auto NetworkStatusChanged(winrt::Windows::Networking::Connectivity::NetworkStatusChangedEventHandler const& networkStatusHandler) const;
         using NetworkStatusChanged_revoker = impl::event_revoker<winrt::Windows::Networking::Connectivity::INetworkInformationStatics, &impl::abi_t<winrt::Windows::Networking::Connectivity::INetworkInformationStatics>::remove_NetworkStatusChanged>;
-        [[nodiscard]] NetworkStatusChanged_revoker NetworkStatusChanged(auto_revoke_t, winrt::Windows::Networking::Connectivity::NetworkStatusChangedEventHandler const& networkStatusHandler) const;
+        [[nodiscard]] auto NetworkStatusChanged(auto_revoke_t, winrt::Windows::Networking::Connectivity::NetworkStatusChangedEventHandler const& networkStatusHandler) const;
         auto NetworkStatusChanged(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::Connectivity::INetworkInformationStatics>

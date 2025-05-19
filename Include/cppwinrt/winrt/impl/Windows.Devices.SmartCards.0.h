@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,13 +10,13 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Cryptography::Core
@@ -287,6 +287,8 @@ WINRT_EXPORT namespace winrt::Windows::Devices::SmartCards
     struct SmartCardReader;
     struct SmartCardTriggerDetails;
     struct SmartCardPinResetHandler;
+    struct SmartCardBackgroundTriggerContract;
+    struct SmartCardEmulatorContract;
 }
 namespace winrt::impl
 {
@@ -506,6 +508,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::SmartCards::ISmartCardTriggerDetails2> = L"Windows.Devices.SmartCards.ISmartCardTriggerDetails2";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::SmartCards::ISmartCardTriggerDetails3> = L"Windows.Devices.SmartCards.ISmartCardTriggerDetails3";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::SmartCards::SmartCardPinResetHandler> = L"Windows.Devices.SmartCards.SmartCardPinResetHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::SmartCards::SmartCardBackgroundTriggerContract> = L"Windows.Devices.SmartCards.SmartCardBackgroundTriggerContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::SmartCards::SmartCardEmulatorContract> = L"Windows.Devices.SmartCards.SmartCardEmulatorContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::SmartCards::ICardAddedEventArgs>{ 0x18BBEF98,0xF18B,0x4DD3,{ 0xB1,0x18,0xDF,0xB2,0xC8,0xE2,0x3C,0xC6 } }; // 18BBEF98-F18B-4DD3-B118-DFB2C8E23CC6
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::SmartCards::ICardRemovedEventArgs>{ 0x15331AAF,0x22D7,0x4945,{ 0xAF,0xC9,0x03,0xB4,0x6F,0x42,0xA6,0xCD } }; // 15331AAF-22D7-4945-AFC9-03B46F42A6CD
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::SmartCards::IKnownSmartCardAppletIds>{ 0x7B04D8D8,0x95B4,0x4C88,{ 0x8C,0xEA,0x41,0x1E,0x55,0x51,0x1E,0xFC } }; // 7B04D8D8-95B4-4C88-8CEA-411E55511EFC
@@ -590,21 +594,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::SmartCards::SmartCardTriggerDetails>{ using type = winrt::Windows::Devices::SmartCards::ISmartCardTriggerDetails; };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ICardAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SmartCard(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ICardRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SmartCard(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::IKnownSmartCardAppletIds>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PaymentSystemEnvironment(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProximityPaymentSystemEnvironment(void**) noexcept = 0;
@@ -612,7 +616,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCard>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reader(void**) noexcept = 0;
             virtual int32_t __stdcall GetStatusAsync(void**) noexcept = 0;
@@ -621,7 +625,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAppletIdGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayName(void*) noexcept = 0;
@@ -636,7 +640,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAppletIdGroup2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Logo(void**) noexcept = 0;
             virtual int32_t __stdcall put_Logo(void*) noexcept = 0;
@@ -649,14 +653,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAppletIdGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAppletIdGroupRegistration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivationPolicy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AppletIdGroup(void**) noexcept = 0;
@@ -667,7 +671,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAppletIdGroupRegistration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SmartCardReaderId(void**) noexcept = 0;
             virtual int32_t __stdcall SetPropertiesAsync(void*, void**) noexcept = 0;
@@ -675,14 +679,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAppletIdGroupStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxAppletIds(uint16_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAutomaticResponseApdu>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommandApdu(void**) noexcept = 0;
             virtual int32_t __stdcall put_CommandApdu(void*) noexcept = 0;
@@ -698,7 +702,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAutomaticResponseApdu2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputState(void**) noexcept = 0;
             virtual int32_t __stdcall put_InputState(void*) noexcept = 0;
@@ -708,7 +712,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAutomaticResponseApdu3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowWhenCryptogramGeneratorNotPrepared(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowWhenCryptogramGeneratorNotPrepared(bool) noexcept = 0;
@@ -716,14 +720,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardAutomaticResponseApduFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardChallengeContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Challenge(void**) noexcept = 0;
             virtual int32_t __stdcall VerifyResponseAsync(void*, void**) noexcept = 0;
@@ -734,21 +738,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardConnect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConnectAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TransmitAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramGenerator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedCryptogramMaterialTypes(void**) noexcept = 0;
             virtual int32_t __stdcall get_SupportedCryptogramAlgorithms(void**) noexcept = 0;
@@ -766,7 +770,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramGenerator2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ValidateRequestApduAsync(int32_t, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetAllCryptogramStorageKeyCharacteristicsAsync(void**) noexcept = 0;
@@ -777,21 +781,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramGeneratorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetSmartCardCryptogramGeneratorAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramGeneratorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OperationStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Characteristics(void**) noexcept = 0;
@@ -799,7 +803,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OperationStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Characteristics(void**) noexcept = 0;
@@ -807,7 +811,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OperationStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Characteristics(void**) noexcept = 0;
@@ -815,7 +819,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramMaterialCharacteristics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaterialName(void**) noexcept = 0;
             virtual int32_t __stdcall get_AllowedAlgorithms(void**) noexcept = 0;
@@ -829,7 +833,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramMaterialPackageCharacteristics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageName(void**) noexcept = 0;
             virtual int32_t __stdcall get_StorageKeyName(void**) noexcept = 0;
@@ -839,7 +843,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramMaterialPossessionProof>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OperationStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Proof(void**) noexcept = 0;
@@ -847,7 +851,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramPlacementStep>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Algorithm(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Algorithm(int32_t) noexcept = 0;
@@ -871,7 +875,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramStorageKeyCharacteristics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StorageKeyName(void**) noexcept = 0;
             virtual int32_t __stdcall get_DateCreated(int64_t*) noexcept = 0;
@@ -881,7 +885,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramStorageKeyInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OperationStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PublicKeyBlobType(int32_t*) noexcept = 0;
@@ -894,21 +898,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardCryptogramStorageKeyInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OperationalRequirements(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnablementPolicy(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulator2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ApduReceived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ApduReceived(winrt::event_token) noexcept = 0;
@@ -920,7 +924,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulatorApduReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommandApdu(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConnectionProperties(void**) noexcept = 0;
@@ -930,7 +934,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulatorApduReceivedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall TryRespondWithStateAsync(void*, void*, void**) noexcept = 0;
@@ -938,7 +942,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulatorApduReceivedEventArgsWithCryptograms>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryRespondWithCryptogramsAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryRespondWithCryptogramsAndStateAsync(void*, void*, void*, void**) noexcept = 0;
@@ -946,7 +950,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulatorConnectionDeactivatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConnectionProperties(void**) noexcept = 0;
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
@@ -954,7 +958,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulatorConnectionProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Source(int32_t*) noexcept = 0;
@@ -962,14 +966,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulatorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulatorStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAppletIdGroupRegistrationsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RegisterAppletIdGroupAsync(void*, void**) noexcept = 0;
@@ -979,14 +983,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardEmulatorStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardPinPolicy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinLength(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MinLength(uint32_t) noexcept = 0;
@@ -1004,14 +1008,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardPinResetDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardPinResetRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Challenge(void**) noexcept = 0;
             virtual int32_t __stdcall get_Deadline(int64_t*) noexcept = 0;
@@ -1021,7 +1025,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardProvisioning>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SmartCard(void**) noexcept = 0;
             virtual int32_t __stdcall GetIdAsync(void**) noexcept = 0;
@@ -1033,14 +1037,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardProvisioning2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAuthorityKeyContainerNameAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardProvisioningStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromSmartCardAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestVirtualSmartCardCreationAsync(void*, void*, void*, void**) noexcept = 0;
@@ -1050,7 +1054,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardProvisioningStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAttestedVirtualSmartCardCreationAsync(void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestAttestedVirtualSmartCardCreationAsyncWithCardId(void*, void*, void*, winrt::guid, void**) noexcept = 0;
@@ -1058,7 +1062,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -1073,7 +1077,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardReaderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorWithKind(int32_t, void**) noexcept = 0;
@@ -1082,7 +1086,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TriggerType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SourceAppletId(void**) noexcept = 0;
@@ -1091,7 +1095,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardTriggerDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Emulator(void**) noexcept = 0;
             virtual int32_t __stdcall TryLaunchCurrentAppAsync(void*, void**) noexcept = 0;
@@ -1100,14 +1104,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::ISmartCardTriggerDetails3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SmartCard(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::SmartCards::SmartCardPinResetHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -1499,11 +1503,11 @@ namespace winrt::impl
     {
         auto ApduReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardEmulator, winrt::Windows::Devices::SmartCards::SmartCardEmulatorApduReceivedEventArgs> const& value) const;
         using ApduReceived_revoker = impl::event_revoker<winrt::Windows::Devices::SmartCards::ISmartCardEmulator2, &impl::abi_t<winrt::Windows::Devices::SmartCards::ISmartCardEmulator2>::remove_ApduReceived>;
-        [[nodiscard]] ApduReceived_revoker ApduReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardEmulator, winrt::Windows::Devices::SmartCards::SmartCardEmulatorApduReceivedEventArgs> const& value) const;
+        [[nodiscard]] auto ApduReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardEmulator, winrt::Windows::Devices::SmartCards::SmartCardEmulatorApduReceivedEventArgs> const& value) const;
         auto ApduReceived(winrt::event_token const& value) const noexcept;
         auto ConnectionDeactivated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardEmulator, winrt::Windows::Devices::SmartCards::SmartCardEmulatorConnectionDeactivatedEventArgs> const& value) const;
         using ConnectionDeactivated_revoker = impl::event_revoker<winrt::Windows::Devices::SmartCards::ISmartCardEmulator2, &impl::abi_t<winrt::Windows::Devices::SmartCards::ISmartCardEmulator2>::remove_ConnectionDeactivated>;
-        [[nodiscard]] ConnectionDeactivated_revoker ConnectionDeactivated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardEmulator, winrt::Windows::Devices::SmartCards::SmartCardEmulatorConnectionDeactivatedEventArgs> const& value) const;
+        [[nodiscard]] auto ConnectionDeactivated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardEmulator, winrt::Windows::Devices::SmartCards::SmartCardEmulatorConnectionDeactivatedEventArgs> const& value) const;
         auto ConnectionDeactivated(winrt::event_token const& value) const noexcept;
         auto Start() const;
         auto IsHostCardEmulationSupported() const;
@@ -1690,11 +1694,11 @@ namespace winrt::impl
         auto FindAllCardsAsync() const;
         auto CardAdded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardReader, winrt::Windows::Devices::SmartCards::CardAddedEventArgs> const& handler) const;
         using CardAdded_revoker = impl::event_revoker<winrt::Windows::Devices::SmartCards::ISmartCardReader, &impl::abi_t<winrt::Windows::Devices::SmartCards::ISmartCardReader>::remove_CardAdded>;
-        [[nodiscard]] CardAdded_revoker CardAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardReader, winrt::Windows::Devices::SmartCards::CardAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto CardAdded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardReader, winrt::Windows::Devices::SmartCards::CardAddedEventArgs> const& handler) const;
         auto CardAdded(winrt::event_token const& token) const noexcept;
         auto CardRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardReader, winrt::Windows::Devices::SmartCards::CardRemovedEventArgs> const& handler) const;
         using CardRemoved_revoker = impl::event_revoker<winrt::Windows::Devices::SmartCards::ISmartCardReader, &impl::abi_t<winrt::Windows::Devices::SmartCards::ISmartCardReader>::remove_CardRemoved>;
-        [[nodiscard]] CardRemoved_revoker CardRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardReader, winrt::Windows::Devices::SmartCards::CardRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto CardRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::SmartCards::SmartCardReader, winrt::Windows::Devices::SmartCards::CardRemovedEventArgs> const& handler) const;
         auto CardRemoved(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::SmartCards::ISmartCardReader>

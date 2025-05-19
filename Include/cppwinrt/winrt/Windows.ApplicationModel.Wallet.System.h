@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_ApplicationModel_Wallet_System_H
 #define WINRT_Windows_ApplicationModel_Wallet_System_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.230511.6"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.230511.6"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
 #include "winrt/Windows.ApplicationModel.Wallet.h"
 #include "winrt/impl/Windows.ApplicationModel.Wallet.2.h"
 #include "winrt/impl/Windows.Foundation.2.h"
@@ -20,51 +20,147 @@ namespace winrt::impl
     template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore<D>::GetItemsAsync() const
     {
         void* operation{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore)->GetItemsAsync(&operation));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetItemsAsync(&operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)this;
+            check_hresult(_winrt_abi_type->GetItemsAsync(&operation));
+        }
         return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::ApplicationModel::Wallet::WalletItem>>{ operation, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore<D>::DeleteAsync(winrt::Windows::ApplicationModel::Wallet::WalletItem const& item) const
     {
         void* operation{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore)->DeleteAsync(*(void**)(&item), &operation));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->DeleteAsync(*(void**)(&item), &operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)this;
+            check_hresult(_winrt_abi_type->DeleteAsync(*(void**)(&item), &operation));
+        }
         return winrt::Windows::Foundation::IAsyncAction{ operation, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore<D>::ImportItemAsync(winrt::Windows::Storage::Streams::IRandomAccessStreamReference const& stream) const
     {
         void* operation{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore)->ImportItemAsync(*(void**)(&stream), &operation));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ImportItemAsync(*(void**)(&stream), &operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)this;
+            check_hresult(_winrt_abi_type->ImportItemAsync(*(void**)(&stream), &operation));
+        }
         return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::ApplicationModel::Wallet::WalletItem>{ operation, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore<D>::GetAppStatusForItem(winrt::Windows::ApplicationModel::Wallet::WalletItem const& item) const
     {
         winrt::Windows::ApplicationModel::Wallet::System::WalletItemAppAssociation result{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore)->GetAppStatusForItem(*(void**)(&item), reinterpret_cast<int32_t*>(&result)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetAppStatusForItem(*(void**)(&item), reinterpret_cast<int32_t*>(&result)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)this;
+            check_hresult(_winrt_abi_type->GetAppStatusForItem(*(void**)(&item), reinterpret_cast<int32_t*>(&result)));
+        }
         return result;
     }
     template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore<D>::LaunchAppForItemAsync(winrt::Windows::ApplicationModel::Wallet::WalletItem const& item) const
     {
         void* operation{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore)->LaunchAppForItemAsync(*(void**)(&item), &operation));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->LaunchAppForItemAsync(*(void**)(&item), &operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>**)this;
+            check_hresult(_winrt_abi_type->LaunchAppForItemAsync(*(void**)(&item), &operation));
+        }
         return winrt::Windows::Foundation::IAsyncOperation<bool>{ operation, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore2<D>::ItemsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Wallet::System::WalletItemSystemStore, winrt::Windows::Foundation::IInspectable> const& handler) const
     {
         winrt::event_token cookie{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2)->add_ItemsChanged(*(void**)(&handler), put_abi(cookie)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_ItemsChanged(*(void**)(&handler), put_abi(cookie)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>**)this;
+            check_hresult(_winrt_abi_type->add_ItemsChanged(*(void**)(&handler), put_abi(cookie)));
+        }
         return cookie;
     }
-    template <typename D> typename consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore2<D>::ItemsChanged_revoker consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore2<D>::ItemsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Wallet::System::WalletItemSystemStore, winrt::Windows::Foundation::IInspectable> const& handler) const
+    template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore2<D>::ItemsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Wallet::System::WalletItemSystemStore, winrt::Windows::Foundation::IInspectable> const& handler) const
     {
         return impl::make_event_revoker<D, ItemsChanged_revoker>(this, ItemsChanged(handler));
     }
     template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletItemSystemStore2<D>::ItemsChanged(winrt::event_token const& cookie) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2)->remove_ItemsChanged(impl::bind_in(cookie));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_ItemsChanged(impl::bind_in(cookie));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>**)this;
+            _winrt_abi_type->remove_ItemsChanged(impl::bind_in(cookie));
+        }
     }
     template <typename D> auto consume_Windows_ApplicationModel_Wallet_System_IWalletManagerSystemStatics<D>::RequestStoreAsync() const
     {
         void* operation{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Wallet::System::IWalletManagerSystemStatics)->RequestStoreAsync(&operation));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Wallet::System::IWalletManagerSystemStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Wallet::System::IWalletManagerSystemStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletManagerSystemStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestStoreAsync(&operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletManagerSystemStatics>**)this;
+            check_hresult(_winrt_abi_type->RequestStoreAsync(&operation));
+        }
         return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::ApplicationModel::Wallet::System::WalletItemSystemStore>{ operation, take_ownership_from_abi };
     }
 #ifndef WINRT_LEAN_AND_MEAN

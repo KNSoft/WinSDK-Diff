@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,10 +14,10 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Perception::Spatial
@@ -214,7 +214,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::StartScreen::VisualElementsRequestedEventArgs>{ using type = winrt::Windows::UI::StartScreen::IVisualElementsRequestedEventArgs; };
     template <> struct abi<winrt::Windows::UI::StartScreen::IJumpList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
             virtual int32_t __stdcall get_SystemGroupKind(int32_t*) noexcept = 0;
@@ -224,7 +224,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IJumpListItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Arguments(void**) noexcept = 0;
@@ -241,7 +241,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IJumpListItemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithArguments(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateSeparator(void**) noexcept = 0;
@@ -249,7 +249,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IJumpListStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadCurrentAsync(void**) noexcept = 0;
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
@@ -257,7 +257,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_TileId(void*) noexcept = 0;
             virtual int32_t __stdcall get_TileId(void**) noexcept = 0;
@@ -296,7 +296,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTile2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_PhoneticName(void*) noexcept = 0;
             virtual int32_t __stdcall get_PhoneticName(void**) noexcept = 0;
@@ -309,7 +309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTileFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTile(void*, void*, void*, void*, uint32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWideTile(void*, void*, void*, void*, uint32_t, void*, void*, void**) noexcept = 0;
@@ -318,14 +318,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTileFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMinimalTile(void*, void*, void*, void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTileStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Exists(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
@@ -335,7 +335,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTileVisualElements>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Square30x30Logo(void*) noexcept = 0;
             virtual int32_t __stdcall get_Square30x30Logo(void**) noexcept = 0;
@@ -361,7 +361,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTileVisualElements2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Square71x71Logo(void*) noexcept = 0;
             virtual int32_t __stdcall get_Square71x71Logo(void**) noexcept = 0;
@@ -369,7 +369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTileVisualElements3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Square44x44Logo(void*) noexcept = 0;
             virtual int32_t __stdcall get_Square44x44Logo(void**) noexcept = 0;
@@ -377,14 +377,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ISecondaryTileVisualElements4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MixedRealityModel(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IStartScreenManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall SupportsAppListEntry(void*, bool*) noexcept = 0;
@@ -394,7 +394,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IStartScreenManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ContainsSecondaryTileAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryRemoveSecondaryTileAsync(void*, void**) noexcept = 0;
@@ -402,7 +402,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IStartScreenManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -410,7 +410,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ITileMixedRealityModel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Uri(void*) noexcept = 0;
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
@@ -420,7 +420,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::ITileMixedRealityModel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ActivationBehavior(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_ActivationBehavior(int32_t*) noexcept = 0;
@@ -428,7 +428,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IVisualElementsRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VisualElements(void**) noexcept = 0;
             virtual int32_t __stdcall get_AlternateVisualElements(void**) noexcept = 0;
@@ -438,14 +438,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IVisualElementsRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::StartScreen::IVisualElementsRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
@@ -552,7 +552,7 @@ namespace winrt::impl
         [[nodiscard]] auto RoamingEnabled() const;
         auto VisualElementsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::StartScreen::SecondaryTile, winrt::Windows::UI::StartScreen::VisualElementsRequestedEventArgs> const& handler) const;
         using VisualElementsRequested_revoker = impl::event_revoker<winrt::Windows::UI::StartScreen::ISecondaryTile2, &impl::abi_t<winrt::Windows::UI::StartScreen::ISecondaryTile2>::remove_VisualElementsRequested>;
-        [[nodiscard]] VisualElementsRequested_revoker VisualElementsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::StartScreen::SecondaryTile, winrt::Windows::UI::StartScreen::VisualElementsRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto VisualElementsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::StartScreen::SecondaryTile, winrt::Windows::UI::StartScreen::VisualElementsRequestedEventArgs> const& handler) const;
         auto VisualElementsRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::StartScreen::ISecondaryTile2>

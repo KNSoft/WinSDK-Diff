@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@
 #include "winrt/impl/Windows.System.Inventory.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Inventory
 {
-    struct __declspec(empty_bases) InstalledDesktopApp : winrt::Windows::System::Inventory::IInstalledDesktopApp,
+    struct WINRT_IMPL_EMPTY_BASES InstalledDesktopApp : winrt::Windows::System::Inventory::IInstalledDesktopApp,
         impl::require<InstalledDesktopApp, winrt::Windows::Foundation::IStringable>
     {
         InstalledDesktopApp(std::nullptr_t) noexcept {}

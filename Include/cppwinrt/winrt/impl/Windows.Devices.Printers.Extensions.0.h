@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers::Extensions
 {
@@ -50,6 +50,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers::Extensions
     struct PrintTaskConfigurationSaveRequest;
     struct PrintTaskConfigurationSaveRequestedDeferral;
     struct PrintTaskConfigurationSaveRequestedEventArgs;
+    struct ExtensionsContract;
 }
 namespace winrt::impl
 {
@@ -95,6 +96,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfigurationSaveRequest> = L"Windows.Devices.Printers.Extensions.IPrintTaskConfigurationSaveRequest";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfigurationSaveRequestedDeferral> = L"Windows.Devices.Printers.Extensions.IPrintTaskConfigurationSaveRequestedDeferral";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfigurationSaveRequestedEventArgs> = L"Windows.Devices.Printers.Extensions.IPrintTaskConfigurationSaveRequestedEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::Extensions::ExtensionsContract> = L"Windows.Devices.Printers.Extensions.ExtensionsContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow>{ 0xC56F74BD,0x3669,0x4A66,{ 0xAB,0x42,0xC8,0x15,0x19,0x30,0xCD,0x34 } }; // C56F74BD-3669-4A66-AB42-C8151930CD34
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow2>{ 0xA2A6C54F,0x8AC1,0x4918,{ 0x97,0x41,0xE3,0x4F,0x30,0x04,0x23,0x9E } }; // A2A6C54F-8AC1-4918-9741-E34F3004239E
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflowPrintRequestedEventArgs>{ 0x19F8C858,0x5AC8,0x4B55,{ 0x8A,0x5F,0xE6,0x15,0x67,0xDA,0xFB,0x4D } }; // 19F8C858-5AC8-4B55-8A5F-E61567DAFB4D
@@ -115,7 +117,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Printers::Extensions::PrintTaskConfigurationSaveRequestedEventArgs>{ using type = winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfigurationSaveRequestedEventArgs; };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceID(void**) noexcept = 0;
             virtual int32_t __stdcall GetPrintModelPackage(void**) noexcept = 0;
@@ -127,7 +129,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PrinterChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PrinterChanged(winrt::event_token) noexcept = 0;
@@ -135,7 +137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflowPrintRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall SetExtendedStatus(int32_t) noexcept = 0;
@@ -145,21 +147,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflowPrinterChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NewDeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrintExtensionContextStatic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromDeviceId(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrintNotificationEventDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrinterName(void**) noexcept = 0;
             virtual int32_t __stdcall get_EventData(void**) noexcept = 0;
@@ -168,7 +170,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrinterExtensionContext(void**) noexcept = 0;
             virtual int32_t __stdcall add_SaveRequested(void*, winrt::event_token*) noexcept = 0;
@@ -177,7 +179,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfigurationSaveRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Cancel() noexcept = 0;
             virtual int32_t __stdcall Save(void*) noexcept = 0;
@@ -187,14 +189,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfigurationSaveRequestedDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfigurationSaveRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
@@ -208,7 +210,7 @@ namespace winrt::impl
         auto IsPrintReady(bool value) const;
         auto PrintRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::Print3DWorkflow, winrt::Windows::Devices::Printers::Extensions::Print3DWorkflowPrintRequestedEventArgs> const& eventHandler) const;
         using PrintRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow, &impl::abi_t<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow>::remove_PrintRequested>;
-        [[nodiscard]] PrintRequested_revoker PrintRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::Print3DWorkflow, winrt::Windows::Devices::Printers::Extensions::Print3DWorkflowPrintRequestedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto PrintRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::Print3DWorkflow, winrt::Windows::Devices::Printers::Extensions::Print3DWorkflowPrintRequestedEventArgs> const& eventHandler) const;
         auto PrintRequested(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow>
@@ -220,7 +222,7 @@ namespace winrt::impl
     {
         auto PrinterChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::Print3DWorkflow, winrt::Windows::Devices::Printers::Extensions::Print3DWorkflowPrinterChangedEventArgs> const& eventHandler) const;
         using PrinterChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow2, &impl::abi_t<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow2>::remove_PrinterChanged>;
-        [[nodiscard]] PrinterChanged_revoker PrinterChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::Print3DWorkflow, winrt::Windows::Devices::Printers::Extensions::Print3DWorkflowPrinterChangedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto PrinterChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::Print3DWorkflow, winrt::Windows::Devices::Printers::Extensions::Print3DWorkflowPrinterChangedEventArgs> const& eventHandler) const;
         auto PrinterChanged(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow2>
@@ -274,7 +276,7 @@ namespace winrt::impl
         [[nodiscard]] auto PrinterExtensionContext() const;
         auto SaveRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::PrintTaskConfiguration, winrt::Windows::Devices::Printers::Extensions::PrintTaskConfigurationSaveRequestedEventArgs> const& eventHandler) const;
         using SaveRequested_revoker = impl::event_revoker<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfiguration, &impl::abi_t<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfiguration>::remove_SaveRequested>;
-        [[nodiscard]] SaveRequested_revoker SaveRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::PrintTaskConfiguration, winrt::Windows::Devices::Printers::Extensions::PrintTaskConfigurationSaveRequestedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto SaveRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Printers::Extensions::PrintTaskConfiguration, winrt::Windows::Devices::Printers::Extensions::PrintTaskConfigurationSaveRequestedEventArgs> const& eventHandler) const;
         auto SaveRequested(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Printers::Extensions::IPrintTaskConfiguration>

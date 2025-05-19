@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -109,7 +109,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicketValidationResult>{ using type = winrt::Windows::Graphics::Printing::PrintTicket::IWorkflowPrintTicketValidationResult; };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTicket::IPrintTicketCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_XmlNamespace(void**) noexcept = 0;
@@ -135,7 +135,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTicket::IPrintTicketFeature>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_XmlNamespace(void**) noexcept = 0;
@@ -150,7 +150,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTicket::IPrintTicketOption>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_XmlNamespace(void**) noexcept = 0;
@@ -164,7 +164,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTicket::IPrintTicketParameterDefinition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_XmlNamespace(void**) noexcept = 0;
@@ -177,7 +177,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTicket::IPrintTicketParameterInitializer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_XmlNamespace(void**) noexcept = 0;
@@ -188,7 +188,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTicket::IPrintTicketValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall GetValueAsInteger(int32_t*) noexcept = 0;
@@ -197,7 +197,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTicket::IWorkflowPrintTicket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_XmlNamespace(void**) noexcept = 0;
@@ -229,7 +229,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTicket::IWorkflowPrintTicketValidationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Validated(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;

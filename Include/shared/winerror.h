@@ -3913,6 +3913,15 @@
 #define ERROR_VOLUME_ROLLBACK_DETECTED   521L
 
 //
+// MessageId: ERROR_CLOUD_FILE_ARCHIVED_HYDRATION_DENIED
+//
+// MessageText:
+//
+// The hydration of the cloud archive file has been denied.
+//
+#define ERROR_CLOUD_FILE_ARCHIVED_HYDRATION_DENIED 522L
+
+//
 // **** Available SYSTEM error codes ****
 //
 //
@@ -29752,6 +29761,24 @@
 //
 #define ERROR_BLOCKED_BY_PENDING_PACKAGE_REMOVAL 15676L
 
+//
+// MessageId: ERROR_PACKAGE_REPOSITORY_ROOT_CORRUPTED
+//
+// MessageText:
+//
+// The package repository root is corrupted.
+//
+#define ERROR_PACKAGE_REPOSITORY_ROOT_CORRUPTED 15677L
+
+//
+// MessageId: ERROR_PACKAGE_MANIFEST_NOT_FOUND
+//
+// MessageText:
+//
+// The package manifest is not found.
+//
+#define ERROR_PACKAGE_MANIFEST_NOT_FOUND 15678L
+
 //////////////////////////
 //                      //
 // AppModel Error Codes //
@@ -42600,6 +42627,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // The server responded with a custom error string, see DeviceManagement-Enterprise-Diagnostics for details.
 //
 #define MENROLL_E_CUSTOMSERVERERROR      _HRESULT_TYPEDEF_(0x80180032L)
+
+//
+// MessageId: MENROLL_E_SERVER429
+//
+// MessageText:
+//
+// The server requested that the device try again later.
+//
+#define MENROLL_E_SERVER429              _HRESULT_TYPEDEF_(0x80180033L)
 
 //
 // FACILITY_WER

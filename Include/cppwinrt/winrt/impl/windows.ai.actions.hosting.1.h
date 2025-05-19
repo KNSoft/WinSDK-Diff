@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,42 +9,70 @@
 #include "winrt/impl/Windows.AI.Actions.Hosting.0.h"
 WINRT_EXPORT namespace winrt::Windows::AI::Actions::Hosting
 {
-    struct __declspec(empty_bases) IActionCatalog :
+    struct WINRT_IMPL_EMPTY_BASES IActionCatalog :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionCatalog>
     {
         IActionCatalog(std::nullptr_t = nullptr) noexcept {}
         IActionCatalog(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IActionDefinition :
+    struct WINRT_IMPL_EMPTY_BASES IActionCatalog2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionCatalog2>
+    {
+        IActionCatalog2(std::nullptr_t = nullptr) noexcept {}
+        IActionCatalog2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IActionDefinition :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionDefinition>
     {
         IActionDefinition(std::nullptr_t = nullptr) noexcept {}
         IActionDefinition(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IActionDefinition2 :
+    struct WINRT_IMPL_EMPTY_BASES IActionDefinition2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionDefinition2>
     {
         IActionDefinition2(std::nullptr_t = nullptr) noexcept {}
         IActionDefinition2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IActionEntityRegistrationInfo :
+    struct WINRT_IMPL_EMPTY_BASES IActionDefinition3 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionDefinition3>
+    {
+        IActionDefinition3(std::nullptr_t = nullptr) noexcept {}
+        IActionDefinition3(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IActionEntityRegistrationInfo :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionEntityRegistrationInfo>
     {
         IActionEntityRegistrationInfo(std::nullptr_t = nullptr) noexcept {}
         IActionEntityRegistrationInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IActionOverload :
+    struct WINRT_IMPL_EMPTY_BASES IActionInstance :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionInstance>
+    {
+        IActionInstance(std::nullptr_t = nullptr) noexcept {}
+        IActionInstance(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IActionInstanceDisplayInfo :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionInstanceDisplayInfo>
+    {
+        IActionInstanceDisplayInfo(std::nullptr_t = nullptr) noexcept {}
+        IActionInstanceDisplayInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IActionOverload :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionOverload>
     {
         IActionOverload(std::nullptr_t = nullptr) noexcept {}
         IActionOverload(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IActionOverload2 :
+    struct WINRT_IMPL_EMPTY_BASES IActionOverload2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionOverload2>
     {

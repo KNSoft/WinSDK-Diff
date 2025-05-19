@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Globalization::DateTimeFormatting
 {
@@ -96,7 +96,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Globalization::DateTimeFormatting::DateTimeFormatter>{ using type = winrt::Windows::Globalization::DateTimeFormatting::IDateTimeFormatter; };
     template <> struct abi<winrt::Windows::Globalization::DateTimeFormatting::IDateTimeFormatter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Languages(void**) noexcept = 0;
             virtual int32_t __stdcall get_GeographicRegion(void**) noexcept = 0;
@@ -120,14 +120,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::DateTimeFormatting::IDateTimeFormatter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FormatUsingTimeZone(int64_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::DateTimeFormatting::IDateTimeFormatterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDateTimeFormatter(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateDateTimeFormatterLanguages(void*, void*, void**) noexcept = 0;
@@ -140,7 +140,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::DateTimeFormatting::IDateTimeFormatterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LongDate(void**) noexcept = 0;
             virtual int32_t __stdcall get_LongTime(void**) noexcept = 0;

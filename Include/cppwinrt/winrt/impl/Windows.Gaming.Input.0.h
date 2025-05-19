@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,9 +12,9 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Power
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input::ForceFeedback
 {
@@ -249,6 +249,7 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::Input
     struct GamepadVibration;
     struct RacingWheelReading;
     struct UINavigationReading;
+    struct GamingInputPreviewContract;
 }
 namespace winrt::impl
 {
@@ -338,6 +339,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Gaming::Input::IUINavigationController> = L"Windows.Gaming.Input.IUINavigationController";
     template <> inline constexpr auto& name_v<winrt::Windows::Gaming::Input::IUINavigationControllerStatics> = L"Windows.Gaming.Input.IUINavigationControllerStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Gaming::Input::IUINavigationControllerStatics2> = L"Windows.Gaming.Input.IUINavigationControllerStatics2";
+    template <> inline constexpr auto& name_v<winrt::Windows::Gaming::Input::GamingInputPreviewContract> = L"Windows.Gaming.Input.GamingInputPreviewContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Gaming::Input::IArcadeStick>{ 0xB14A539D,0xBEFB,0x4C81,{ 0x80,0x51,0x15,0xEC,0xF3,0xB1,0x30,0x36 } }; // B14A539D-BEFB-4C81-8051-15ECF3B13036
     template <> inline constexpr guid guid_v<winrt::Windows::Gaming::Input::IArcadeStickStatics>{ 0x5C37B8C8,0x37B1,0x4AD8,{ 0x94,0x58,0x20,0x0F,0x1A,0x30,0x01,0x8E } }; // 5C37B8C8-37B1-4AD8-9458-200F1A30018E
     template <> inline constexpr guid guid_v<winrt::Windows::Gaming::Input::IArcadeStickStatics2>{ 0x52B5D744,0xBB86,0x445A,{ 0xB5,0x9C,0x59,0x6F,0x0E,0x2A,0x49,0xDF } }; // 52B5D744-BB86-445A-B59C-596F0E2A49DF
@@ -368,7 +370,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::Input::UINavigationController>{ using type = winrt::Windows::Gaming::Input::IUINavigationController; };
     template <> struct abi<winrt::Windows::Gaming::Input::IArcadeStick>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetButtonLabel(uint32_t, int32_t*) noexcept = 0;
             virtual int32_t __stdcall GetCurrentReading(struct struct_Windows_Gaming_Input_ArcadeStickReading*) noexcept = 0;
@@ -376,7 +378,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IArcadeStickStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ArcadeStickAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ArcadeStickAdded(winrt::event_token) noexcept = 0;
@@ -387,14 +389,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IArcadeStickStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromGameController(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IFlightStick>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HatSwitchKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall GetButtonLabel(uint32_t, int32_t*) noexcept = 0;
@@ -403,7 +405,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IFlightStickStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_FlightStickAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_FlightStickAdded(winrt::event_token) noexcept = 0;
@@ -415,7 +417,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IGameController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_HeadsetConnected(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_HeadsetConnected(winrt::event_token) noexcept = 0;
@@ -430,14 +432,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IGameControllerBatteryInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetBatteryReport(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IGamepad>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Vibration(struct struct_Windows_Gaming_Input_GamepadVibration*) noexcept = 0;
             virtual int32_t __stdcall put_Vibration(struct struct_Windows_Gaming_Input_GamepadVibration) noexcept = 0;
@@ -446,14 +448,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IGamepad2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetButtonLabel(uint32_t, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IGamepadStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_GamepadAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_GamepadAdded(winrt::event_token) noexcept = 0;
@@ -464,14 +466,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IGamepadStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromGameController(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IHeadset>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CaptureDeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_RenderDeviceId(void**) noexcept = 0;
@@ -479,7 +481,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IRacingWheel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasClutch(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HasHandbrake(bool*) noexcept = 0;
@@ -493,7 +495,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IRacingWheelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_RacingWheelAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_RacingWheelAdded(winrt::event_token) noexcept = 0;
@@ -504,14 +506,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IRacingWheelStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromGameController(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IRawGameController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AxisCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ButtonCount(int32_t*) noexcept = 0;
@@ -526,7 +528,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IRawGameController2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SimpleHapticsControllers(void**) noexcept = 0;
             virtual int32_t __stdcall get_NonRoamableId(void**) noexcept = 0;
@@ -535,7 +537,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IRawGameControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_RawGameControllerAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_RawGameControllerAdded(winrt::event_token) noexcept = 0;
@@ -547,7 +549,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IUINavigationController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentReading(struct struct_Windows_Gaming_Input_UINavigationReading*) noexcept = 0;
             virtual int32_t __stdcall GetOptionalButtonLabel(uint32_t, int32_t*) noexcept = 0;
@@ -556,7 +558,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IUINavigationControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_UINavigationControllerAdded(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_UINavigationControllerAdded(winrt::event_token) noexcept = 0;
@@ -567,7 +569,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::IUINavigationControllerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromGameController(void*, void**) noexcept = 0;
         };
@@ -587,11 +589,11 @@ namespace winrt::impl
     {
         auto ArcadeStickAdded(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::ArcadeStick> const& value) const;
         using ArcadeStickAdded_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IArcadeStickStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IArcadeStickStatics>::remove_ArcadeStickAdded>;
-        [[nodiscard]] ArcadeStickAdded_revoker ArcadeStickAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::ArcadeStick> const& value) const;
+        [[nodiscard]] auto ArcadeStickAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::ArcadeStick> const& value) const;
         auto ArcadeStickAdded(winrt::event_token const& token) const noexcept;
         auto ArcadeStickRemoved(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::ArcadeStick> const& value) const;
         using ArcadeStickRemoved_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IArcadeStickStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IArcadeStickStatics>::remove_ArcadeStickRemoved>;
-        [[nodiscard]] ArcadeStickRemoved_revoker ArcadeStickRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::ArcadeStick> const& value) const;
+        [[nodiscard]] auto ArcadeStickRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::ArcadeStick> const& value) const;
         auto ArcadeStickRemoved(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto ArcadeSticks() const;
     };
@@ -624,11 +626,11 @@ namespace winrt::impl
     {
         auto FlightStickAdded(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::FlightStick> const& value) const;
         using FlightStickAdded_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IFlightStickStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IFlightStickStatics>::remove_FlightStickAdded>;
-        [[nodiscard]] FlightStickAdded_revoker FlightStickAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::FlightStick> const& value) const;
+        [[nodiscard]] auto FlightStickAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::FlightStick> const& value) const;
         auto FlightStickAdded(winrt::event_token const& token) const noexcept;
         auto FlightStickRemoved(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::FlightStick> const& value) const;
         using FlightStickRemoved_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IFlightStickStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IFlightStickStatics>::remove_FlightStickRemoved>;
-        [[nodiscard]] FlightStickRemoved_revoker FlightStickRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::FlightStick> const& value) const;
+        [[nodiscard]] auto FlightStickRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::FlightStick> const& value) const;
         auto FlightStickRemoved(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto FlightSticks() const;
         auto FromGameController(winrt::Windows::Gaming::Input::IGameController const& gameController) const;
@@ -642,15 +644,15 @@ namespace winrt::impl
     {
         auto HeadsetConnected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::Gaming::Input::Headset> const& value) const;
         using HeadsetConnected_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IGameController, &impl::abi_t<winrt::Windows::Gaming::Input::IGameController>::remove_HeadsetConnected>;
-        [[nodiscard]] HeadsetConnected_revoker HeadsetConnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::Gaming::Input::Headset> const& value) const;
+        [[nodiscard]] auto HeadsetConnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::Gaming::Input::Headset> const& value) const;
         auto HeadsetConnected(winrt::event_token const& token) const noexcept;
         auto HeadsetDisconnected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::Gaming::Input::Headset> const& value) const;
         using HeadsetDisconnected_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IGameController, &impl::abi_t<winrt::Windows::Gaming::Input::IGameController>::remove_HeadsetDisconnected>;
-        [[nodiscard]] HeadsetDisconnected_revoker HeadsetDisconnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::Gaming::Input::Headset> const& value) const;
+        [[nodiscard]] auto HeadsetDisconnected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::Gaming::Input::Headset> const& value) const;
         auto HeadsetDisconnected(winrt::event_token const& token) const noexcept;
         auto UserChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::System::UserChangedEventArgs> const& value) const;
         using UserChanged_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IGameController, &impl::abi_t<winrt::Windows::Gaming::Input::IGameController>::remove_UserChanged>;
-        [[nodiscard]] UserChanged_revoker UserChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::System::UserChangedEventArgs> const& value) const;
+        [[nodiscard]] auto UserChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Gaming::Input::IGameController, winrt::Windows::System::UserChangedEventArgs> const& value) const;
         auto UserChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Headset() const;
         [[nodiscard]] auto IsWireless() const;
@@ -694,11 +696,11 @@ namespace winrt::impl
     {
         auto GamepadAdded(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::Gamepad> const& value) const;
         using GamepadAdded_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IGamepadStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IGamepadStatics>::remove_GamepadAdded>;
-        [[nodiscard]] GamepadAdded_revoker GamepadAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::Gamepad> const& value) const;
+        [[nodiscard]] auto GamepadAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::Gamepad> const& value) const;
         auto GamepadAdded(winrt::event_token const& token) const noexcept;
         auto GamepadRemoved(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::Gamepad> const& value) const;
         using GamepadRemoved_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IGamepadStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IGamepadStatics>::remove_GamepadRemoved>;
-        [[nodiscard]] GamepadRemoved_revoker GamepadRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::Gamepad> const& value) const;
+        [[nodiscard]] auto GamepadRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::Gamepad> const& value) const;
         auto GamepadRemoved(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Gamepads() const;
     };
@@ -746,11 +748,11 @@ namespace winrt::impl
     {
         auto RacingWheelAdded(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RacingWheel> const& value) const;
         using RacingWheelAdded_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IRacingWheelStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IRacingWheelStatics>::remove_RacingWheelAdded>;
-        [[nodiscard]] RacingWheelAdded_revoker RacingWheelAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RacingWheel> const& value) const;
+        [[nodiscard]] auto RacingWheelAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RacingWheel> const& value) const;
         auto RacingWheelAdded(winrt::event_token const& token) const noexcept;
         auto RacingWheelRemoved(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RacingWheel> const& value) const;
         using RacingWheelRemoved_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IRacingWheelStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IRacingWheelStatics>::remove_RacingWheelRemoved>;
-        [[nodiscard]] RacingWheelRemoved_revoker RacingWheelRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RacingWheel> const& value) const;
+        [[nodiscard]] auto RacingWheelRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RacingWheel> const& value) const;
         auto RacingWheelRemoved(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto RacingWheels() const;
     };
@@ -800,11 +802,11 @@ namespace winrt::impl
     {
         auto RawGameControllerAdded(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RawGameController> const& value) const;
         using RawGameControllerAdded_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IRawGameControllerStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IRawGameControllerStatics>::remove_RawGameControllerAdded>;
-        [[nodiscard]] RawGameControllerAdded_revoker RawGameControllerAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RawGameController> const& value) const;
+        [[nodiscard]] auto RawGameControllerAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RawGameController> const& value) const;
         auto RawGameControllerAdded(winrt::event_token const& token) const noexcept;
         auto RawGameControllerRemoved(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RawGameController> const& value) const;
         using RawGameControllerRemoved_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IRawGameControllerStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IRawGameControllerStatics>::remove_RawGameControllerRemoved>;
-        [[nodiscard]] RawGameControllerRemoved_revoker RawGameControllerRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RawGameController> const& value) const;
+        [[nodiscard]] auto RawGameControllerRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::RawGameController> const& value) const;
         auto RawGameControllerRemoved(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto RawGameControllers() const;
         auto FromGameController(winrt::Windows::Gaming::Input::IGameController const& gameController) const;
@@ -829,11 +831,11 @@ namespace winrt::impl
     {
         auto UINavigationControllerAdded(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::UINavigationController> const& value) const;
         using UINavigationControllerAdded_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IUINavigationControllerStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IUINavigationControllerStatics>::remove_UINavigationControllerAdded>;
-        [[nodiscard]] UINavigationControllerAdded_revoker UINavigationControllerAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::UINavigationController> const& value) const;
+        [[nodiscard]] auto UINavigationControllerAdded(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::UINavigationController> const& value) const;
         auto UINavigationControllerAdded(winrt::event_token const& token) const noexcept;
         auto UINavigationControllerRemoved(winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::UINavigationController> const& value) const;
         using UINavigationControllerRemoved_revoker = impl::event_revoker<winrt::Windows::Gaming::Input::IUINavigationControllerStatics, &impl::abi_t<winrt::Windows::Gaming::Input::IUINavigationControllerStatics>::remove_UINavigationControllerRemoved>;
-        [[nodiscard]] UINavigationControllerRemoved_revoker UINavigationControllerRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::UINavigationController> const& value) const;
+        [[nodiscard]] auto UINavigationControllerRemoved(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Gaming::Input::UINavigationController> const& value) const;
         auto UINavigationControllerRemoved(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto UINavigationControllers() const;
     };

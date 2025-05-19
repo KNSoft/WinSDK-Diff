@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -86,7 +86,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::SpeechSynthesis::VoiceInformation>{ using type = winrt::Windows::Media::SpeechSynthesis::IVoiceInformation; };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::IInstalledVoicesStatic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllVoices(void**) noexcept = 0;
             virtual int32_t __stdcall get_DefaultVoice(void**) noexcept = 0;
@@ -94,21 +94,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::IInstalledVoicesStatic2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TrySetDefaultVoiceAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::ISpeechSynthesisStream>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Markers(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::ISpeechSynthesizer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SynthesizeTextToStreamAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall SynthesizeSsmlToStreamAsync(void*, void**) noexcept = 0;
@@ -118,14 +118,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::ISpeechSynthesizer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Options(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::ISpeechSynthesizerOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IncludeWordBoundaryMetadata(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IncludeWordBoundaryMetadata(bool) noexcept = 0;
@@ -135,7 +135,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::ISpeechSynthesizerOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioVolume(double*) noexcept = 0;
             virtual int32_t __stdcall put_AudioVolume(double) noexcept = 0;
@@ -147,7 +147,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::ISpeechSynthesizerOptions3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppendedSilence(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_AppendedSilence(int32_t) noexcept = 0;
@@ -157,7 +157,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::SpeechSynthesis::IVoiceInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;

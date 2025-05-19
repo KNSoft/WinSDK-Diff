@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,35 +9,35 @@
 #include "winrt/impl/Windows.ApplicationModel.Appointments.AppointmentsProvider.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider
 {
-    struct __declspec(empty_bases) IAddAppointmentOperation :
+    struct WINRT_IMPL_EMPTY_BASES IAddAppointmentOperation :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAddAppointmentOperation>
     {
         IAddAppointmentOperation(std::nullptr_t = nullptr) noexcept {}
         IAddAppointmentOperation(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IAppointmentsProviderLaunchActionVerbsStatics :
+    struct WINRT_IMPL_EMPTY_BASES IAppointmentsProviderLaunchActionVerbsStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAppointmentsProviderLaunchActionVerbsStatics>
     {
         IAppointmentsProviderLaunchActionVerbsStatics(std::nullptr_t = nullptr) noexcept {}
         IAppointmentsProviderLaunchActionVerbsStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IAppointmentsProviderLaunchActionVerbsStatics2 :
+    struct WINRT_IMPL_EMPTY_BASES IAppointmentsProviderLaunchActionVerbsStatics2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAppointmentsProviderLaunchActionVerbsStatics2>
     {
         IAppointmentsProviderLaunchActionVerbsStatics2(std::nullptr_t = nullptr) noexcept {}
         IAppointmentsProviderLaunchActionVerbsStatics2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IRemoveAppointmentOperation :
+    struct WINRT_IMPL_EMPTY_BASES IRemoveAppointmentOperation :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IRemoveAppointmentOperation>
     {
         IRemoveAppointmentOperation(std::nullptr_t = nullptr) noexcept {}
         IRemoveAppointmentOperation(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IReplaceAppointmentOperation :
+    struct WINRT_IMPL_EMPTY_BASES IReplaceAppointmentOperation :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IReplaceAppointmentOperation>
     {

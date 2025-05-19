@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@
 #include "winrt/impl/Windows.AI.MachineLearning.Preview.0.h"
 WINRT_EXPORT namespace winrt::Windows::AI::MachineLearning::Preview
 {
-    struct __declspec(empty_bases) IImageVariableDescriptorPreview :
+    struct WINRT_IMPL_EMPTY_BASES IImageVariableDescriptorPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IImageVariableDescriptorPreview>,
         impl::require<winrt::Windows::AI::MachineLearning::Preview::IImageVariableDescriptorPreview, winrt::Windows::AI::MachineLearning::Preview::ILearningModelVariableDescriptorPreview>
@@ -18,14 +18,14 @@ WINRT_EXPORT namespace winrt::Windows::AI::MachineLearning::Preview
         IImageVariableDescriptorPreview(std::nullptr_t = nullptr) noexcept {}
         IImageVariableDescriptorPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IInferencingOptionsPreview :
+    struct WINRT_IMPL_EMPTY_BASES IInferencingOptionsPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IInferencingOptionsPreview>
     {
         IInferencingOptionsPreview(std::nullptr_t = nullptr) noexcept {}
         IInferencingOptionsPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILearningModelBindingPreview :
+    struct WINRT_IMPL_EMPTY_BASES ILearningModelBindingPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILearningModelBindingPreview>,
         impl::require<winrt::Windows::AI::MachineLearning::Preview::ILearningModelBindingPreview, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Foundation::IInspectable>>, winrt::Windows::Foundation::Collections::IMapView<hstring, winrt::Windows::Foundation::IInspectable>>
@@ -33,49 +33,49 @@ WINRT_EXPORT namespace winrt::Windows::AI::MachineLearning::Preview
         ILearningModelBindingPreview(std::nullptr_t = nullptr) noexcept {}
         ILearningModelBindingPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILearningModelBindingPreviewFactory :
+    struct WINRT_IMPL_EMPTY_BASES ILearningModelBindingPreviewFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILearningModelBindingPreviewFactory>
     {
         ILearningModelBindingPreviewFactory(std::nullptr_t = nullptr) noexcept {}
         ILearningModelBindingPreviewFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILearningModelDescriptionPreview :
+    struct WINRT_IMPL_EMPTY_BASES ILearningModelDescriptionPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILearningModelDescriptionPreview>
     {
         ILearningModelDescriptionPreview(std::nullptr_t = nullptr) noexcept {}
         ILearningModelDescriptionPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILearningModelEvaluationResultPreview :
+    struct WINRT_IMPL_EMPTY_BASES ILearningModelEvaluationResultPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILearningModelEvaluationResultPreview>
     {
         ILearningModelEvaluationResultPreview(std::nullptr_t = nullptr) noexcept {}
         ILearningModelEvaluationResultPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILearningModelPreview :
+    struct WINRT_IMPL_EMPTY_BASES ILearningModelPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILearningModelPreview>
     {
         ILearningModelPreview(std::nullptr_t = nullptr) noexcept {}
         ILearningModelPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILearningModelPreviewStatics :
+    struct WINRT_IMPL_EMPTY_BASES ILearningModelPreviewStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILearningModelPreviewStatics>
     {
         ILearningModelPreviewStatics(std::nullptr_t = nullptr) noexcept {}
         ILearningModelPreviewStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ILearningModelVariableDescriptorPreview :
+    struct WINRT_IMPL_EMPTY_BASES ILearningModelVariableDescriptorPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ILearningModelVariableDescriptorPreview>
     {
         ILearningModelVariableDescriptorPreview(std::nullptr_t = nullptr) noexcept {}
         ILearningModelVariableDescriptorPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMapVariableDescriptorPreview :
+    struct WINRT_IMPL_EMPTY_BASES IMapVariableDescriptorPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMapVariableDescriptorPreview>,
         impl::require<winrt::Windows::AI::MachineLearning::Preview::IMapVariableDescriptorPreview, winrt::Windows::AI::MachineLearning::Preview::ILearningModelVariableDescriptorPreview>
@@ -83,7 +83,7 @@ WINRT_EXPORT namespace winrt::Windows::AI::MachineLearning::Preview
         IMapVariableDescriptorPreview(std::nullptr_t = nullptr) noexcept {}
         IMapVariableDescriptorPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ISequenceVariableDescriptorPreview :
+    struct WINRT_IMPL_EMPTY_BASES ISequenceVariableDescriptorPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ISequenceVariableDescriptorPreview>,
         impl::require<winrt::Windows::AI::MachineLearning::Preview::ISequenceVariableDescriptorPreview, winrt::Windows::AI::MachineLearning::Preview::ILearningModelVariableDescriptorPreview>
@@ -91,7 +91,7 @@ WINRT_EXPORT namespace winrt::Windows::AI::MachineLearning::Preview
         ISequenceVariableDescriptorPreview(std::nullptr_t = nullptr) noexcept {}
         ISequenceVariableDescriptorPreview(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) ITensorVariableDescriptorPreview :
+    struct WINRT_IMPL_EMPTY_BASES ITensorVariableDescriptorPreview :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ITensorVariableDescriptorPreview>,
         impl::require<winrt::Windows::AI::MachineLearning::Preview::ITensorVariableDescriptorPreview, winrt::Windows::AI::MachineLearning::Preview::ILearningModelVariableDescriptorPreview>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,14 +10,14 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
@@ -533,7 +533,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::Vpn::VpnTrafficFilterAssignment>{ using type = winrt::Windows::Networking::Vpn::IVpnTrafficFilterAssignment; };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnAppId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Type(int32_t) noexcept = 0;
@@ -543,14 +543,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnAppIdFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AssociateTransport(void*, void*) noexcept = 0;
             virtual int32_t __stdcall Start(void*, void*, void*, void*, void*, uint32_t, uint32_t, bool, void*, void*) noexcept = 0;
@@ -572,7 +572,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartWithMainTransport(void*, void*, void*, void*, void*, uint32_t, uint32_t, bool, void*) noexcept = 0;
             virtual int32_t __stdcall StartExistingTransports(void*, void*, void*, void*, void*, uint32_t, uint32_t, bool) noexcept = 0;
@@ -590,7 +590,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannel4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddAndAssociateTransport(void*, void*) noexcept = 0;
             virtual int32_t __stdcall StartWithMultipleTransports(void*, void*, void*, void*, void*, uint32_t, uint32_t, bool, void*, void*) noexcept = 0;
@@ -602,7 +602,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannel5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AppendVpnReceivePacketBuffer(void*) noexcept = 0;
             virtual int32_t __stdcall AppendVpnSendPacketBuffer(void*) noexcept = 0;
@@ -612,28 +612,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannel6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ActivateForeground(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannelActivityEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannelActivityStateChangedArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivityState(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannelConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerServiceName(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServerHostNameList(void**) noexcept = 0;
@@ -642,21 +642,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannelConfiguration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerUris(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnChannelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProcessEventAsync(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCredential>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PasskeyCredential(void**) noexcept = 0;
             virtual int32_t __stdcall get_CertificateCredential(void**) noexcept = 0;
@@ -666,7 +666,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomCheckBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_InitialCheckState(bool) noexcept = 0;
             virtual int32_t __stdcall get_InitialCheckState(bool*) noexcept = 0;
@@ -675,7 +675,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomComboBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_OptionsText(void*) noexcept = 0;
             virtual int32_t __stdcall get_OptionsText(void**) noexcept = 0;
@@ -684,7 +684,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomEditBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DefaultText(void*) noexcept = 0;
             virtual int32_t __stdcall get_DefaultText(void**) noexcept = 0;
@@ -695,13 +695,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomErrorBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomPrompt>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Label(void*) noexcept = 0;
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
@@ -713,7 +713,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomPromptBooleanInput>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_InitialValue(bool) noexcept = 0;
             virtual int32_t __stdcall get_InitialValue(bool*) noexcept = 0;
@@ -722,7 +722,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomPromptElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DisplayName(void*) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -734,7 +734,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomPromptOptionSelector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Options(void**) noexcept = 0;
             virtual int32_t __stdcall get_SelectedIndex(uint32_t*) noexcept = 0;
@@ -742,7 +742,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomPromptText>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
@@ -750,7 +750,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomPromptTextInput>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_PlaceholderText(void*) noexcept = 0;
             virtual int32_t __stdcall get_PlaceholderText(void**) noexcept = 0;
@@ -761,7 +761,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnCustomTextBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DisplayText(void*) noexcept = 0;
             virtual int32_t __stdcall get_DisplayText(void**) noexcept = 0;
@@ -769,7 +769,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnDomainNameAssignment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DomainNameList(void**) noexcept = 0;
             virtual int32_t __stdcall put_ProxyAutoConfigurationUri(void*) noexcept = 0;
@@ -778,7 +778,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnDomainNameInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DomainName(void*) noexcept = 0;
             virtual int32_t __stdcall get_DomainName(void**) noexcept = 0;
@@ -790,21 +790,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnDomainNameInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebProxyUris(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnDomainNameInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVpnDomainNameInfo(void*, int32_t, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnForegroundActivatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProfileName(void**) noexcept = 0;
             virtual int32_t __stdcall get_SharedContext(void**) noexcept = 0;
@@ -813,28 +813,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnForegroundActivationOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnInterfaceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAddressInfo(uint32_t*, uint8_t**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnInterfaceIdFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVpnInterfaceId(uint32_t, uint8_t*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnManagementAgent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddProfileFromXmlAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall AddProfileFromObjectAsync(void*, void**) noexcept = 0;
@@ -849,7 +849,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnNamespaceAssignment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_NamespaceList(void*) noexcept = 0;
             virtual int32_t __stdcall get_NamespaceList(void**) noexcept = 0;
@@ -859,7 +859,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnNamespaceInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Namespace(void*) noexcept = 0;
             virtual int32_t __stdcall get_Namespace(void**) noexcept = 0;
@@ -871,14 +871,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnNamespaceInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVpnNamespaceInfo(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnNativeProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Servers(void**) noexcept = 0;
             virtual int32_t __stdcall get_RoutingPolicyType(int32_t*) noexcept = 0;
@@ -895,7 +895,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnNativeProfile2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequireVpnClientAppUI(bool*) noexcept = 0;
             virtual int32_t __stdcall put_RequireVpnClientAppUI(bool) noexcept = 0;
@@ -904,7 +904,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPacketBuffer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Buffer(void**) noexcept = 0;
             virtual int32_t __stdcall put_Status(int32_t) noexcept = 0;
@@ -915,14 +915,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPacketBuffer2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPacketBuffer3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_TransportContext(void*) noexcept = 0;
             virtual int32_t __stdcall get_TransportContext(void**) noexcept = 0;
@@ -930,14 +930,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPacketBufferFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVpnPacketBuffer(void*, uint32_t, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPacketBufferList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Append(void*) noexcept = 0;
             virtual int32_t __stdcall AddAtBegin(void*) noexcept = 0;
@@ -951,7 +951,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPacketBufferList2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddLeadingPacket(void*) noexcept = 0;
             virtual int32_t __stdcall RemoveLeadingPacket(void**) noexcept = 0;
@@ -961,7 +961,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPickedCredential>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PasskeyCredential(void**) noexcept = 0;
             virtual int32_t __stdcall get_AdditionalPin(void**) noexcept = 0;
@@ -970,7 +970,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPlugIn>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Connect(void*) noexcept = 0;
             virtual int32_t __stdcall Disconnect(void*) noexcept = 0;
@@ -981,7 +981,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPlugInProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerUris(void**) noexcept = 0;
             virtual int32_t __stdcall get_CustomConfiguration(void**) noexcept = 0;
@@ -992,7 +992,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPlugInProfile2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequireVpnClientAppUI(bool*) noexcept = 0;
             virtual int32_t __stdcall put_RequireVpnClientAppUI(bool) noexcept = 0;
@@ -1001,14 +1001,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnPlugInReconnectTransport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReconnectTransport(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnProfile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProfileName(void**) noexcept = 0;
             virtual int32_t __stdcall put_ProfileName(void*) noexcept = 0;
@@ -1024,7 +1024,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnRoute>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Address(void*) noexcept = 0;
             virtual int32_t __stdcall get_Address(void**) noexcept = 0;
@@ -1034,7 +1034,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnRouteAssignment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Ipv4InclusionRoutes(void*) noexcept = 0;
             virtual int32_t __stdcall put_Ipv6InclusionRoutes(void*) noexcept = 0;
@@ -1050,21 +1050,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnRouteFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVpnRoute(void*, uint8_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnSystemHealth>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StatementOfHealth(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnTrafficFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppId(void**) noexcept = 0;
             virtual int32_t __stdcall put_AppId(void*) noexcept = 0;
@@ -1081,7 +1081,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnTrafficFilterAssignment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TrafficFilterList(void**) noexcept = 0;
             virtual int32_t __stdcall get_AllowOutbound(bool*) noexcept = 0;
@@ -1092,7 +1092,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Vpn::IVpnTrafficFilterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
@@ -1131,7 +1131,7 @@ namespace winrt::impl
         [[nodiscard]] auto Configuration() const;
         auto ActivityChange(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Vpn::VpnChannel, winrt::Windows::Networking::Vpn::VpnChannelActivityEventArgs> const& handler) const;
         using ActivityChange_revoker = impl::event_revoker<winrt::Windows::Networking::Vpn::IVpnChannel, &impl::abi_t<winrt::Windows::Networking::Vpn::IVpnChannel>::remove_ActivityChange>;
-        [[nodiscard]] ActivityChange_revoker ActivityChange(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Vpn::VpnChannel, winrt::Windows::Networking::Vpn::VpnChannelActivityEventArgs> const& handler) const;
+        [[nodiscard]] auto ActivityChange(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Vpn::VpnChannel, winrt::Windows::Networking::Vpn::VpnChannelActivityEventArgs> const& handler) const;
         auto ActivityChange(winrt::event_token const& token) const noexcept;
         auto PlugInContext(winrt::Windows::Foundation::IInspectable const& value) const;
         [[nodiscard]] auto PlugInContext() const;
@@ -1151,7 +1151,7 @@ namespace winrt::impl
         auto StartExistingTransports(param::vector_view<winrt::Windows::Networking::HostName> const& assignedClientIPv4list, param::vector_view<winrt::Windows::Networking::HostName> const& assignedClientIPv6list, winrt::Windows::Networking::Vpn::VpnInterfaceId const& vpnInterfaceId, winrt::Windows::Networking::Vpn::VpnRouteAssignment const& assignedRoutes, winrt::Windows::Networking::Vpn::VpnDomainNameAssignment const& assignedDomainName, uint32_t mtuSize, uint32_t maxFrameSize, bool Reserved) const;
         auto ActivityStateChange(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Vpn::VpnChannel, winrt::Windows::Networking::Vpn::VpnChannelActivityStateChangedArgs> const& handler) const;
         using ActivityStateChange_revoker = impl::event_revoker<winrt::Windows::Networking::Vpn::IVpnChannel2, &impl::abi_t<winrt::Windows::Networking::Vpn::IVpnChannel2>::remove_ActivityStateChange>;
-        [[nodiscard]] ActivityStateChange_revoker ActivityStateChange(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Vpn::VpnChannel, winrt::Windows::Networking::Vpn::VpnChannelActivityStateChangedArgs> const& handler) const;
+        [[nodiscard]] auto ActivityStateChange(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Vpn::VpnChannel, winrt::Windows::Networking::Vpn::VpnChannelActivityStateChangedArgs> const& handler) const;
         auto ActivityStateChange(winrt::event_token const& token) const noexcept;
         auto GetVpnSendPacketBuffer() const;
         auto GetVpnReceivePacketBuffer() const;

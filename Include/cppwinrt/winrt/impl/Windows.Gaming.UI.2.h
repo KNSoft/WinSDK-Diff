@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,33 +16,33 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::UI
         GameBar() = delete;
         static auto VisibilityChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         using VisibilityChanged_revoker = impl::factory_event_revoker<winrt::Windows::Gaming::UI::IGameBarStatics, &impl::abi_t<winrt::Windows::Gaming::UI::IGameBarStatics>::remove_VisibilityChanged>;
-        [[nodiscard]] static VisibilityChanged_revoker VisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
+        [[nodiscard]] static auto VisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         static auto VisibilityChanged(winrt::event_token const& token);
         static auto IsInputRedirectedChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         using IsInputRedirectedChanged_revoker = impl::factory_event_revoker<winrt::Windows::Gaming::UI::IGameBarStatics, &impl::abi_t<winrt::Windows::Gaming::UI::IGameBarStatics>::remove_IsInputRedirectedChanged>;
-        [[nodiscard]] static IsInputRedirectedChanged_revoker IsInputRedirectedChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
+        [[nodiscard]] static auto IsInputRedirectedChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         static auto IsInputRedirectedChanged(winrt::event_token const& token);
         [[nodiscard]] static auto Visible();
         [[nodiscard]] static auto IsInputRedirected();
     };
-    struct __declspec(empty_bases) GameChatMessageReceivedEventArgs : winrt::Windows::Gaming::UI::IGameChatMessageReceivedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES GameChatMessageReceivedEventArgs : winrt::Windows::Gaming::UI::IGameChatMessageReceivedEventArgs
     {
         GameChatMessageReceivedEventArgs(std::nullptr_t) noexcept {}
         GameChatMessageReceivedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Gaming::UI::IGameChatMessageReceivedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) GameChatOverlay : winrt::Windows::Gaming::UI::IGameChatOverlay
+    struct WINRT_IMPL_EMPTY_BASES GameChatOverlay : winrt::Windows::Gaming::UI::IGameChatOverlay
     {
         GameChatOverlay(std::nullptr_t) noexcept {}
         GameChatOverlay(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Gaming::UI::IGameChatOverlay(ptr, take_ownership_from_abi) {}
         static auto GetDefault();
     };
-    struct __declspec(empty_bases) GameChatOverlayMessageSource : winrt::Windows::Gaming::UI::IGameChatOverlayMessageSource
+    struct WINRT_IMPL_EMPTY_BASES GameChatOverlayMessageSource : winrt::Windows::Gaming::UI::IGameChatOverlayMessageSource
     {
         GameChatOverlayMessageSource(std::nullptr_t) noexcept {}
         GameChatOverlayMessageSource(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Gaming::UI::IGameChatOverlayMessageSource(ptr, take_ownership_from_abi) {}
         GameChatOverlayMessageSource();
     };
-    struct __declspec(empty_bases) GameUIProviderActivatedEventArgs : winrt::Windows::Gaming::UI::IGameUIProviderActivatedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES GameUIProviderActivatedEventArgs : winrt::Windows::Gaming::UI::IGameUIProviderActivatedEventArgs
     {
         GameUIProviderActivatedEventArgs(std::nullptr_t) noexcept {}
         GameUIProviderActivatedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Gaming::UI::IGameUIProviderActivatedEventArgs(ptr, take_ownership_from_abi) {}

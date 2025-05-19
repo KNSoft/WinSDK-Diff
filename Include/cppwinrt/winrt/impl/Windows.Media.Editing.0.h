@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::DirectX::Direct3D11
 {
@@ -139,7 +139,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Editing::MediaOverlayLayer>{ using type = winrt::Windows::Media::Editing::IMediaOverlayLayer; };
     template <> struct abi<winrt::Windows::Media::Editing::IBackgroundAudioTrack>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TrimTimeFromStart(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_TrimTimeFromStart(int64_t) noexcept = 0;
@@ -159,7 +159,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Editing::IBackgroundAudioTrackStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromEmbeddedAudioTrack(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromFileAsync(void*, void**) noexcept = 0;
@@ -167,14 +167,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Editing::IEmbeddedAudioTrack>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAudioEncodingProperties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaClip>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TrimTimeFromStart(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_TrimTimeFromStart(int64_t) noexcept = 0;
@@ -198,7 +198,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaClipStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromColor(struct struct_Windows_UI_Color, int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromFileAsync(void*, void**) noexcept = 0;
@@ -207,14 +207,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaClipStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromSurface(void*, int64_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaComposition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Duration(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Clips(void**) noexcept = 0;
@@ -235,21 +235,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaComposition2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OverlayLayers(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaCompositionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaOverlay>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall put_Position(winrt::Windows::Foundation::Rect) noexcept = 0;
@@ -265,7 +265,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaOverlayFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithPositionAndOpacity(void*, winrt::Windows::Foundation::Rect, double, void**) noexcept = 0;
@@ -273,7 +273,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaOverlayLayer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Clone(void**) noexcept = 0;
             virtual int32_t __stdcall get_Overlays(void**) noexcept = 0;
@@ -282,7 +282,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Editing::IMediaOverlayLayerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithCompositorDefinition(void*, void**) noexcept = 0;
         };

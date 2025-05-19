@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -100,7 +100,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Services::Maps::LocalSearch::LocalLocationRatingInfo>{ using type = winrt::Windows::Services::Maps::LocalSearch::ILocalLocationRatingInfo; };
     template <> struct abi<winrt::Windows::Services::Maps::LocalSearch::ILocalCategoriesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BankAndCreditUnions(void**) noexcept = 0;
             virtual int32_t __stdcall get_EatDrink(void**) noexcept = 0;
@@ -114,7 +114,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::LocalSearch::ILocalLocation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Address(void**) noexcept = 0;
             virtual int32_t __stdcall get_Identifier(void**) noexcept = 0;
@@ -127,7 +127,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::LocalSearch::ILocalLocation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Category(void**) noexcept = 0;
             virtual int32_t __stdcall get_RatingInfo(void**) noexcept = 0;
@@ -136,7 +136,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::LocalSearch::ILocalLocationFinderResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalLocations(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -144,14 +144,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::LocalSearch::ILocalLocationFinderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindLocalLocationsAsync(void*, void*, void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::Maps::LocalSearch::ILocalLocationHoursOfOperationItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Day(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Start(int64_t*) noexcept = 0;
@@ -160,7 +160,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::LocalSearch::ILocalLocationRatingInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AggregateRating(void**) noexcept = 0;
             virtual int32_t __stdcall get_RatingCount(void**) noexcept = 0;
@@ -169,7 +169,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::Maps::LocalSearch::IPlaceInfoHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromLocalLocation(void*, void**) noexcept = 0;
         };

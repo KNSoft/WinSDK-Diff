@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,8 +11,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IMapView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMapView;
     struct IPropertySet;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
@@ -142,7 +142,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::XboxLive::Storage::GameSaveProviderGetResult>{ using type = winrt::Windows::Gaming::XboxLive::Storage::IGameSaveProviderGetResult; };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveBlobGetResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -150,7 +150,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveBlobInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
@@ -158,7 +158,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveBlobInfoGetResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveBlobInfoQuery>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetBlobInfoAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetBlobInfoWithIndexAndMaxAsync(uint32_t, uint32_t, void**) noexcept = 0;
@@ -175,7 +175,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveContainer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Provider(void**) noexcept = 0;
@@ -188,7 +188,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveContainerInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_TotalSize(uint64_t*) noexcept = 0;
@@ -199,7 +199,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveContainerInfoGetResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -207,7 +207,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveContainerInfoQuery>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetContainerInfoAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetContainerInfoWithIndexAndMaxAsync(uint32_t, uint32_t, void**) noexcept = 0;
@@ -216,14 +216,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveOperationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall CreateContainer(void*, void**) noexcept = 0;
@@ -236,7 +236,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveProviderGetResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -244,7 +244,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::XboxLive::Storage::IGameSaveProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUserAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetSyncOnDemandForUserAsync(void*, void*, void**) noexcept = 0;

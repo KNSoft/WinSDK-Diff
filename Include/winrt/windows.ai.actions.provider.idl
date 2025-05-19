@@ -62,7 +62,6 @@ namespace Windows
             namespace Provider
             {
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-                [experimental]
                 [uuid(A3FC3C51-A8C6-52C8-AD77-37BF3E2B565C)]
                 interface IActionFeedbackHandler : IInspectable
                 {
@@ -70,7 +69,6 @@ namespace Windows
                 }
 
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-                [experimental]
                 [uuid(62906C47-3D07-55F1-AEFA-1522505AFBBE)]
                 interface IActionProvider : IInspectable
                 {

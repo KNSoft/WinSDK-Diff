@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -60,7 +60,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Store::LicenseManagement::LicenseSatisfactionResult>{ using type = winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionResult; };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddLicenseAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetSatisfactionInfosAsync(void*, void*, void**) noexcept = 0;
@@ -68,14 +68,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RefreshLicensesAsync(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SatisfiedByDevice(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SatisfiedByOpenLicense(bool*) noexcept = 0;
@@ -88,7 +88,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::LicenseManagement::ILicenseSatisfactionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LicenseSatisfactionInfos(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;

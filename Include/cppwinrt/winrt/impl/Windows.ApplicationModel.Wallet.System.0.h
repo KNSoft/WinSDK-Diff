@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -54,7 +54,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Wallet::System::WalletItemSystemStore>{ using type = winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore; };
     template <> struct abi<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetItemsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall DeleteAsync(void*, void**) noexcept = 0;
@@ -65,7 +65,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ItemsChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ItemsChanged(winrt::event_token) noexcept = 0;
@@ -73,7 +73,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Wallet::System::IWalletManagerSystemStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(void**) noexcept = 0;
         };
@@ -96,7 +96,7 @@ namespace winrt::impl
     {
         auto ItemsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Wallet::System::WalletItemSystemStore, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ItemsChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2, &impl::abi_t<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>::remove_ItemsChanged>;
-        [[nodiscard]] ItemsChanged_revoker ItemsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Wallet::System::WalletItemSystemStore, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ItemsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Wallet::System::WalletItemSystemStore, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ItemsChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore2>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,14 +11,14 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
     struct IPropertySet;
     struct ValueSet;
 }
@@ -765,7 +765,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Contacts::PinnedContactManager>{ using type = winrt::Windows::ApplicationModel::Contacts::IPinnedContactManager; };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IAggregateContactManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindRawContactsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryLinkContactsAsync(void*, void*, void**) noexcept = 0;
@@ -775,14 +775,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IAggregateContactManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetRemoteIdentificationInformationAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContact>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -793,7 +793,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContact2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall put_Id(void*) noexcept = 0;
@@ -813,7 +813,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContact3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContactListId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayPictureUserUpdateTime(int64_t*) noexcept = 0;
@@ -842,7 +842,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactAddress>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StreetAddress(void**) noexcept = 0;
             virtual int32_t __stdcall put_StreetAddress(void*) noexcept = 0;
@@ -862,7 +862,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactAnnotation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_AnnotationListId(void**) noexcept = 0;
@@ -878,7 +878,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactAnnotation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContactListId(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContactListId(void*) noexcept = 0;
@@ -886,7 +886,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactAnnotationList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProviderPackageFamilyName(void**) noexcept = 0;
@@ -901,7 +901,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactAnnotationStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindContactIdsByEmailAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindContactIdsByPhoneNumberAsync(void*, void**) noexcept = 0;
@@ -915,14 +915,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactAnnotationStore2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAnnotationsForContactListAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactBatch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Contacts(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -930,14 +930,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactCardDelayedDataLoader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetData(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactCardOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeaderKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_HeaderKind(int32_t) noexcept = 0;
@@ -947,14 +947,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactCardOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerSearchContactListIds(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactChange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Contact(void**) noexcept = 0;
@@ -962,7 +962,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactChangeReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AcceptChanges() noexcept = 0;
             virtual int32_t __stdcall AcceptChangesThrough(void*) noexcept = 0;
@@ -971,7 +971,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactChangeTracker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Enable() noexcept = 0;
             virtual int32_t __stdcall GetChangeReader(void**) noexcept = 0;
@@ -980,28 +980,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactChangeTracker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTracking(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactChangedDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactConnectedServiceAccount>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall put_Id(void*) noexcept = 0;
@@ -1011,7 +1011,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactDate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Day(void**) noexcept = 0;
             virtual int32_t __stdcall put_Day(void*) noexcept = 0;
@@ -1027,7 +1027,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactEmail>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Address(void**) noexcept = 0;
             virtual int32_t __stdcall put_Address(void*) noexcept = 0;
@@ -1039,7 +1039,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactField>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Category(int32_t*) noexcept = 0;
@@ -1049,7 +1049,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactFieldFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateField_Default(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateField_Category(void*, int32_t, int32_t, void**) noexcept = 0;
@@ -1058,13 +1058,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall GetThumbnailAsync(void**) noexcept = 0;
@@ -1078,7 +1078,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactInstantMessageField>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Service(void**) noexcept = 0;
@@ -1088,7 +1088,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactInstantMessageFieldFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstantMessage_Default(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstantMessage_Category(void*, int32_t, void**) noexcept = 0;
@@ -1097,7 +1097,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactJobInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompanyName(void**) noexcept = 0;
             virtual int32_t __stdcall put_CompanyName(void*) noexcept = 0;
@@ -1119,7 +1119,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactLaunchActionVerbsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Call(void**) noexcept = 0;
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
@@ -1130,7 +1130,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -1161,7 +1161,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactList2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterSyncManagerAsync(void**) noexcept = 0;
             virtual int32_t __stdcall put_SupportsServerSearch(bool) noexcept = 0;
@@ -1170,7 +1170,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactList3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LimitedWriteOperations(void**) noexcept = 0;
             virtual int32_t __stdcall GetChangeTracker(void*, void**) noexcept = 0;
@@ -1178,7 +1178,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactListLimitedWriteOperations>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateOrUpdateContactAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryDeleteContactAsync(void*, void**) noexcept = 0;
@@ -1186,7 +1186,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactListSyncConstraints>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanSyncDescriptions(bool*) noexcept = 0;
             virtual int32_t __stdcall put_CanSyncDescriptions(bool) noexcept = 0;
@@ -1248,7 +1248,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactListSyncManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_LastSuccessfulSyncTime(int64_t*) noexcept = 0;
@@ -1260,7 +1260,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactListSyncManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Status(int32_t) noexcept = 0;
             virtual int32_t __stdcall put_LastSuccessfulSyncTime(int64_t) noexcept = 0;
@@ -1269,7 +1269,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactLocationField>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnstructuredAddress(void**) noexcept = 0;
             virtual int32_t __stdcall get_Street(void**) noexcept = 0;
@@ -1281,7 +1281,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactLocationFieldFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateLocation_Default(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateLocation_Category(void*, int32_t, void**) noexcept = 0;
@@ -1290,7 +1290,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConvertContactToVCardAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ConvertContactToVCardAsyncWithMaxBytes(void*, uint32_t, void**) noexcept = 0;
@@ -1306,14 +1306,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactManagerForUser2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowFullContactCard(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowContactCard(void*, winrt::Windows::Foundation::Rect) noexcept = 0;
             virtual int32_t __stdcall ShowContactCardWithPlacement(void*, winrt::Windows::Foundation::Rect, int32_t) noexcept = 0;
@@ -1322,14 +1322,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConvertContactToVCardAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ConvertContactToVCardAsyncWithMaxBytes(void*, uint32_t, void**) noexcept = 0;
@@ -1349,14 +1349,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactManagerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactManagerStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsShowFullContactCardSupportedAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_IncludeMiddleNameInSystemDisplayAndSort(bool*) noexcept = 0;
@@ -1365,7 +1365,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactMatchReason>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Field(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Segments(void**) noexcept = 0;
@@ -1374,7 +1374,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactName>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FirstName(void**) noexcept = 0;
             virtual int32_t __stdcall put_FirstName(void*) noexcept = 0;
@@ -1396,7 +1396,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactPanel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ClosePanel() noexcept = 0;
             virtual int32_t __stdcall get_HeaderColor(void**) noexcept = 0;
@@ -1409,14 +1409,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactPanelClosingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactPanelLaunchFullAppRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -1424,7 +1424,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactPhone>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Number(void**) noexcept = 0;
             virtual int32_t __stdcall put_Number(void*) noexcept = 0;
@@ -1436,7 +1436,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactPicker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommitButtonText(void**) noexcept = 0;
             virtual int32_t __stdcall put_CommitButtonText(void*) noexcept = 0;
@@ -1449,7 +1449,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactPicker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredFieldsWithContactFieldType(void**) noexcept = 0;
             virtual int32_t __stdcall PickContactAsync(void**) noexcept = 0;
@@ -1458,14 +1458,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactPicker3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactPickerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForUser(void*, void**) noexcept = 0;
             virtual int32_t __stdcall IsSupportedAsync(void**) noexcept = 0;
@@ -1473,7 +1473,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactQueryOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextSearch(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContactListIds(void**) noexcept = 0;
@@ -1488,7 +1488,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactQueryOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithText(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTextAndFields(void*, uint32_t, void**) noexcept = 0;
@@ -1496,7 +1496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactQueryTextSearch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Fields(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Fields(uint32_t) noexcept = 0;
@@ -1508,7 +1508,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetMatchingPropertiesWithMatchReason(void*, void**) noexcept = 0;
@@ -1516,7 +1516,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactSignificantOther>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -1526,7 +1526,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactSignificantOther2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Relationship(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Relationship(int32_t) noexcept = 0;
@@ -1534,7 +1534,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindContactsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FindContactsWithSearchTextAsync(void*, void**) noexcept = 0;
@@ -1543,7 +1543,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactStore2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeTracker(void**) noexcept = 0;
             virtual int32_t __stdcall add_ContactChanged(void*, winrt::event_token*) noexcept = 0;
@@ -1560,20 +1560,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactStore3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetChangeTracker(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactStoreNotificationTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactWebsite>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall put_Uri(void*) noexcept = 0;
@@ -1583,7 +1583,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IContactWebsite2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RawValue(void**) noexcept = 0;
             virtual int32_t __stdcall put_RawValue(void*) noexcept = 0;
@@ -1591,7 +1591,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IFullContactCardOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredRemainingView(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DesiredRemainingView(int32_t) noexcept = 0;
@@ -1599,7 +1599,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IKnownContactFieldStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Email(void**) noexcept = 0;
             virtual int32_t __stdcall get_PhoneNumber(void**) noexcept = 0;
@@ -1611,14 +1611,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IPinnedContactIdsQueryResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContactIds(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IPinnedContactManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall IsPinSurfaceSupported(int32_t, bool*) noexcept = 0;
@@ -1632,7 +1632,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::IPinnedContactManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -2087,7 +2087,7 @@ namespace winrt::impl
         [[nodiscard]] auto UserDataAccountId() const;
         auto ContactChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactList, winrt::Windows::ApplicationModel::Contacts::ContactChangedEventArgs> const& value) const;
         using ContactChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::IContactList, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::IContactList>::remove_ContactChanged>;
-        [[nodiscard]] ContactChanged_revoker ContactChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactList, winrt::Windows::ApplicationModel::Contacts::ContactChangedEventArgs> const& value) const;
+        [[nodiscard]] auto ContactChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactList, winrt::Windows::ApplicationModel::Contacts::ContactChangedEventArgs> const& value) const;
         auto ContactChanged(winrt::event_token const& value) const noexcept;
         auto SaveAsync() const;
         auto DeleteAsync() const;
@@ -2207,7 +2207,7 @@ namespace winrt::impl
         auto SyncAsync() const;
         auto SyncStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactListSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SyncStatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::IContactListSyncManager, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::IContactListSyncManager>::remove_SyncStatusChanged>;
-        [[nodiscard]] SyncStatusChanged_revoker SyncStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactListSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SyncStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactListSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SyncStatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Contacts::IContactListSyncManager>
@@ -2382,11 +2382,11 @@ namespace winrt::impl
         auto HeaderColor(winrt::Windows::Foundation::IReference<winrt::Windows::UI::Color> const& value) const;
         auto LaunchFullAppRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactPanel, winrt::Windows::ApplicationModel::Contacts::ContactPanelLaunchFullAppRequestedEventArgs> const& handler) const;
         using LaunchFullAppRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::IContactPanel, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::IContactPanel>::remove_LaunchFullAppRequested>;
-        [[nodiscard]] LaunchFullAppRequested_revoker LaunchFullAppRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactPanel, winrt::Windows::ApplicationModel::Contacts::ContactPanelLaunchFullAppRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto LaunchFullAppRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactPanel, winrt::Windows::ApplicationModel::Contacts::ContactPanelLaunchFullAppRequestedEventArgs> const& handler) const;
         auto LaunchFullAppRequested(winrt::event_token const& token) const noexcept;
         auto Closing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactPanel, winrt::Windows::ApplicationModel::Contacts::ContactPanelClosingEventArgs> const& handler) const;
         using Closing_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::IContactPanel, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::IContactPanel>::remove_Closing>;
-        [[nodiscard]] Closing_revoker Closing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactPanel, winrt::Windows::ApplicationModel::Contacts::ContactPanelClosingEventArgs> const& handler) const;
+        [[nodiscard]] auto Closing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactPanel, winrt::Windows::ApplicationModel::Contacts::ContactPanelClosingEventArgs> const& handler) const;
         auto Closing(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Contacts::IContactPanel>
@@ -2561,7 +2561,7 @@ namespace winrt::impl
         [[nodiscard]] auto ChangeTracker() const;
         auto ContactChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactStore, winrt::Windows::ApplicationModel::Contacts::ContactChangedEventArgs> const& value) const;
         using ContactChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::IContactStore2, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::IContactStore2>::remove_ContactChanged>;
-        [[nodiscard]] ContactChanged_revoker ContactChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactStore, winrt::Windows::ApplicationModel::Contacts::ContactChangedEventArgs> const& value) const;
+        [[nodiscard]] auto ContactChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::ContactStore, winrt::Windows::ApplicationModel::Contacts::ContactChangedEventArgs> const& value) const;
         auto ContactChanged(winrt::event_token const& value) const noexcept;
         [[nodiscard]] auto AggregateContactManager() const;
         auto FindContactListsAsync() const;

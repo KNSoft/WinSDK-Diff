@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -180,7 +180,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Store::UnfulfilledConsumable>{ using type = winrt::Windows::ApplicationModel::Store::IUnfulfilledConsumable; };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentApp>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LicenseInformation(void**) noexcept = 0;
             virtual int32_t __stdcall get_LinkUri(void**) noexcept = 0;
@@ -194,7 +194,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentApp2Statics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCustomerPurchaseIdAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetCustomerCollectionsIdAsync(void*, void*, void**) noexcept = 0;
@@ -202,7 +202,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentAppSimulator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LicenseInformation(void**) noexcept = 0;
             virtual int32_t __stdcall get_LinkUri(void**) noexcept = 0;
@@ -217,7 +217,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentAppSimulatorStaticsWithFiltering>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadListingInformationByProductIdsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LoadListingInformationByKeywordsAsync(void*, void**) noexcept = 0;
@@ -225,14 +225,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentAppSimulatorWithCampaignId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAppPurchaseCampaignIdAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentAppSimulatorWithConsumables>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportConsumableFulfillmentAsync(void*, winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall RequestProductPurchaseWithResultsAsync(void*, void**) noexcept = 0;
@@ -242,7 +242,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentAppStaticsWithFiltering>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadListingInformationByProductIdsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LoadListingInformationByKeywordsAsync(void*, void**) noexcept = 0;
@@ -251,14 +251,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentAppWithCampaignId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAppPurchaseCampaignIdAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ICurrentAppWithConsumables>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportConsumableFulfillmentAsync(void*, winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall RequestProductPurchaseWithResultsAsync(void*, void**) noexcept = 0;
@@ -268,7 +268,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::ILicenseInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductLicenses(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
@@ -280,7 +280,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IListingInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentMarket(void**) noexcept = 0;
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
@@ -292,7 +292,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IListingInformation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FormattedBasePrice(void**) noexcept = 0;
             virtual int32_t __stdcall get_SaleEndDate(int64_t*) noexcept = 0;
@@ -302,7 +302,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IProductLicense>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
@@ -311,14 +311,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IProductLicenseWithFulfillment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsConsumable(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IProductListing>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductId(void**) noexcept = 0;
             virtual int32_t __stdcall get_FormattedPrice(void**) noexcept = 0;
@@ -327,7 +327,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IProductListing2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FormattedBasePrice(void**) noexcept = 0;
             virtual int32_t __stdcall get_SaleEndDate(int64_t*) noexcept = 0;
@@ -337,14 +337,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IProductListingWithConsumables>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IProductListingWithMetadata>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
             virtual int32_t __stdcall get_Keywords(void**) noexcept = 0;
@@ -355,7 +355,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IProductPurchaseDisplayProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -367,14 +367,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IProductPurchaseDisplayPropertiesFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateProductPurchaseDisplayProperties(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IPurchaseResults>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_TransactionId(winrt::guid*) noexcept = 0;
@@ -384,7 +384,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::IUnfulfilledConsumable>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProductId(void**) noexcept = 0;
             virtual int32_t __stdcall get_TransactionId(winrt::guid*) noexcept = 0;
@@ -393,7 +393,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Store::LicenseChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke() noexcept = 0;
         };
@@ -513,7 +513,7 @@ namespace winrt::impl
         [[nodiscard]] auto ExpirationDate() const;
         auto LicenseChanged(winrt::Windows::ApplicationModel::Store::LicenseChangedEventHandler const& handler) const;
         using LicenseChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Store::ILicenseInformation, &impl::abi_t<winrt::Windows::ApplicationModel::Store::ILicenseInformation>::remove_LicenseChanged>;
-        [[nodiscard]] LicenseChanged_revoker LicenseChanged(auto_revoke_t, winrt::Windows::ApplicationModel::Store::LicenseChangedEventHandler const& handler) const;
+        [[nodiscard]] auto LicenseChanged(auto_revoke_t, winrt::Windows::ApplicationModel::Store::LicenseChangedEventHandler const& handler) const;
         auto LicenseChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Store::ILicenseInformation>

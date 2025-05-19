@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,8 +9,8 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Management::Setup
@@ -145,7 +145,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Management::Setup::MachineProvisioningProgressReporter>{ using type = winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter; };
     template <> struct abi<winrt::Windows::Management::Setup::IAgentProvisioningProgressReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_State(int32_t) noexcept = 0;
@@ -164,7 +164,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Setup::IDeploymentSessionConnectionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Change(int32_t*) noexcept = 0;
@@ -172,7 +172,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Setup::IDeploymentSessionHeartbeatRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -180,7 +180,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Setup::IDeploymentSessionStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Change(int32_t*) noexcept = 0;
@@ -188,7 +188,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Setup::IDeploymentWorkload>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayFriendlyName(void**) noexcept = 0;
@@ -213,7 +213,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Setup::IDeploymentWorkloadBatch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DisplayCategoryTitle(void**) noexcept = 0;
@@ -223,28 +223,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Setup::IDeploymentWorkloadBatchFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Setup::IDeploymentWorkloadFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Setup::IDevicePreparationExecutionContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Context(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_SessionConnection(int32_t*) noexcept = 0;
@@ -259,14 +259,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Setup::IMachineProvisioningProgressReporterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForLaunchUri(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Setup::DeploymentSessionHeartbeatRequested>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -396,11 +396,11 @@ namespace winrt::impl
         [[nodiscard]] auto SessionState() const;
         auto SessionStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Setup::MachineProvisioningProgressReporter, winrt::Windows::Management::Setup::DeploymentSessionStateChangedEventArgs> const& handler) const;
         using SessionStateChanged_revoker = impl::event_revoker<winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter, &impl::abi_t<winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter>::remove_SessionStateChanged>;
-        [[nodiscard]] SessionStateChanged_revoker SessionStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Setup::MachineProvisioningProgressReporter, winrt::Windows::Management::Setup::DeploymentSessionStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SessionStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Setup::MachineProvisioningProgressReporter, winrt::Windows::Management::Setup::DeploymentSessionStateChangedEventArgs> const& handler) const;
         auto SessionStateChanged(winrt::event_token const& token) const noexcept;
         auto SessionConnectionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Setup::MachineProvisioningProgressReporter, winrt::Windows::Management::Setup::DeploymentSessionConnectionChangedEventArgs> const& handler) const;
         using SessionConnectionChanged_revoker = impl::event_revoker<winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter, &impl::abi_t<winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter>::remove_SessionConnectionChanged>;
-        [[nodiscard]] SessionConnectionChanged_revoker SessionConnectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Setup::MachineProvisioningProgressReporter, winrt::Windows::Management::Setup::DeploymentSessionConnectionChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SessionConnectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Setup::MachineProvisioningProgressReporter, winrt::Windows::Management::Setup::DeploymentSessionConnectionChangedEventArgs> const& handler) const;
         auto SessionConnectionChanged(winrt::event_token const& token) const noexcept;
         auto ReportProgress(winrt::Windows::Management::Setup::AgentProvisioningProgressReport const& updateReport) const;
         auto GetDevicePreparationExecutionContextAsync() const;

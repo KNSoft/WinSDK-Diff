@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -27,11 +27,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Email::DataProvider
 {
@@ -296,7 +296,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxValidateCertificatesRequestEventArgs>{ using type = winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxValidateCertificatesRequestEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_MailboxSyncRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_MailboxSyncRequested(winrt::event_token) noexcept = 0;
@@ -333,14 +333,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Connection(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxCreateFolderRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ParentFolderId(void**) noexcept = 0;
@@ -351,7 +351,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxCreateFolderRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -359,7 +359,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxDeleteFolderRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailFolderId(void**) noexcept = 0;
@@ -369,7 +369,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxDeleteFolderRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -377,7 +377,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxDownloadAttachmentRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailMessageId(void**) noexcept = 0;
@@ -388,7 +388,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxDownloadAttachmentRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -396,7 +396,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxDownloadMessageRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailMessageId(void**) noexcept = 0;
@@ -406,7 +406,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxDownloadMessageRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -414,7 +414,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxEmptyFolderRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailFolderId(void**) noexcept = 0;
@@ -424,7 +424,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxEmptyFolderRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -432,7 +432,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxForwardMeetingRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailMessageId(void**) noexcept = 0;
@@ -447,7 +447,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxForwardMeetingRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -455,7 +455,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxGetAutoReplySettingsRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_RequestedFormat(int32_t*) noexcept = 0;
@@ -465,7 +465,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxGetAutoReplySettingsRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -473,7 +473,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxMoveFolderRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailFolderId(void**) noexcept = 0;
@@ -485,7 +485,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxMoveFolderRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -493,7 +493,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxProposeNewTimeForMeetingRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailMessageId(void**) noexcept = 0;
@@ -507,7 +507,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxProposeNewTimeForMeetingRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -515,7 +515,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxResolveRecipientsRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Recipients(void**) noexcept = 0;
@@ -525,7 +525,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxResolveRecipientsRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -533,7 +533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxServerSearchReadBatchRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
@@ -547,7 +547,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxServerSearchReadBatchRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -555,7 +555,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxSetAutoReplySettingsRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AutoReplySettings(void**) noexcept = 0;
@@ -565,7 +565,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxSetAutoReplySettingsRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -573,7 +573,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxSyncManagerSyncRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall ReportCompletedAsync(void**) noexcept = 0;
@@ -582,7 +582,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxSyncManagerSyncRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -590,7 +590,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxUpdateMeetingResponseRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_EmailMessageId(void**) noexcept = 0;
@@ -604,7 +604,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxUpdateMeetingResponseRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -612,7 +612,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxValidateCertificatesRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EmailMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Certificates(void**) noexcept = 0;
@@ -622,7 +622,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailMailboxValidateCertificatesRequestEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -633,63 +633,63 @@ namespace winrt::impl
     {
         auto MailboxSyncRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxSyncManagerSyncRequestEventArgs> const& handler) const;
         using MailboxSyncRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_MailboxSyncRequested>;
-        [[nodiscard]] MailboxSyncRequested_revoker MailboxSyncRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxSyncManagerSyncRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto MailboxSyncRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxSyncManagerSyncRequestEventArgs> const& handler) const;
         auto MailboxSyncRequested(winrt::event_token const& token) const noexcept;
         auto DownloadMessageRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDownloadMessageRequestEventArgs> const& handler) const;
         using DownloadMessageRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_DownloadMessageRequested>;
-        [[nodiscard]] DownloadMessageRequested_revoker DownloadMessageRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDownloadMessageRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto DownloadMessageRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDownloadMessageRequestEventArgs> const& handler) const;
         auto DownloadMessageRequested(winrt::event_token const& token) const noexcept;
         auto DownloadAttachmentRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDownloadAttachmentRequestEventArgs> const& handler) const;
         using DownloadAttachmentRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_DownloadAttachmentRequested>;
-        [[nodiscard]] DownloadAttachmentRequested_revoker DownloadAttachmentRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDownloadAttachmentRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto DownloadAttachmentRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDownloadAttachmentRequestEventArgs> const& handler) const;
         auto DownloadAttachmentRequested(winrt::event_token const& token) const noexcept;
         auto CreateFolderRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxCreateFolderRequestEventArgs> const& handler) const;
         using CreateFolderRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_CreateFolderRequested>;
-        [[nodiscard]] CreateFolderRequested_revoker CreateFolderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxCreateFolderRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto CreateFolderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxCreateFolderRequestEventArgs> const& handler) const;
         auto CreateFolderRequested(winrt::event_token const& token) const noexcept;
         auto DeleteFolderRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDeleteFolderRequestEventArgs> const& handler) const;
         using DeleteFolderRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_DeleteFolderRequested>;
-        [[nodiscard]] DeleteFolderRequested_revoker DeleteFolderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDeleteFolderRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto DeleteFolderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxDeleteFolderRequestEventArgs> const& handler) const;
         auto DeleteFolderRequested(winrt::event_token const& token) const noexcept;
         auto EmptyFolderRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxEmptyFolderRequestEventArgs> const& handler) const;
         using EmptyFolderRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_EmptyFolderRequested>;
-        [[nodiscard]] EmptyFolderRequested_revoker EmptyFolderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxEmptyFolderRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto EmptyFolderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxEmptyFolderRequestEventArgs> const& handler) const;
         auto EmptyFolderRequested(winrt::event_token const& token) const noexcept;
         auto MoveFolderRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxMoveFolderRequestEventArgs> const& handler) const;
         using MoveFolderRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_MoveFolderRequested>;
-        [[nodiscard]] MoveFolderRequested_revoker MoveFolderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxMoveFolderRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto MoveFolderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxMoveFolderRequestEventArgs> const& handler) const;
         auto MoveFolderRequested(winrt::event_token const& token) const noexcept;
         auto UpdateMeetingResponseRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxUpdateMeetingResponseRequestEventArgs> const& handler) const;
         using UpdateMeetingResponseRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_UpdateMeetingResponseRequested>;
-        [[nodiscard]] UpdateMeetingResponseRequested_revoker UpdateMeetingResponseRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxUpdateMeetingResponseRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto UpdateMeetingResponseRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxUpdateMeetingResponseRequestEventArgs> const& handler) const;
         auto UpdateMeetingResponseRequested(winrt::event_token const& token) const noexcept;
         auto ForwardMeetingRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxForwardMeetingRequestEventArgs> const& handler) const;
         using ForwardMeetingRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_ForwardMeetingRequested>;
-        [[nodiscard]] ForwardMeetingRequested_revoker ForwardMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxForwardMeetingRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto ForwardMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxForwardMeetingRequestEventArgs> const& handler) const;
         auto ForwardMeetingRequested(winrt::event_token const& token) const noexcept;
         auto ProposeNewTimeForMeetingRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxProposeNewTimeForMeetingRequestEventArgs> const& handler) const;
         using ProposeNewTimeForMeetingRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_ProposeNewTimeForMeetingRequested>;
-        [[nodiscard]] ProposeNewTimeForMeetingRequested_revoker ProposeNewTimeForMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxProposeNewTimeForMeetingRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto ProposeNewTimeForMeetingRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxProposeNewTimeForMeetingRequestEventArgs> const& handler) const;
         auto ProposeNewTimeForMeetingRequested(winrt::event_token const& token) const noexcept;
         auto SetAutoReplySettingsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxSetAutoReplySettingsRequestEventArgs> const& handler) const;
         using SetAutoReplySettingsRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_SetAutoReplySettingsRequested>;
-        [[nodiscard]] SetAutoReplySettingsRequested_revoker SetAutoReplySettingsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxSetAutoReplySettingsRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto SetAutoReplySettingsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxSetAutoReplySettingsRequestEventArgs> const& handler) const;
         auto SetAutoReplySettingsRequested(winrt::event_token const& token) const noexcept;
         auto GetAutoReplySettingsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxGetAutoReplySettingsRequestEventArgs> const& handler) const;
         using GetAutoReplySettingsRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_GetAutoReplySettingsRequested>;
-        [[nodiscard]] GetAutoReplySettingsRequested_revoker GetAutoReplySettingsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxGetAutoReplySettingsRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto GetAutoReplySettingsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxGetAutoReplySettingsRequestEventArgs> const& handler) const;
         auto GetAutoReplySettingsRequested(winrt::event_token const& token) const noexcept;
         auto ResolveRecipientsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxResolveRecipientsRequestEventArgs> const& handler) const;
         using ResolveRecipientsRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_ResolveRecipientsRequested>;
-        [[nodiscard]] ResolveRecipientsRequested_revoker ResolveRecipientsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxResolveRecipientsRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto ResolveRecipientsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxResolveRecipientsRequestEventArgs> const& handler) const;
         auto ResolveRecipientsRequested(winrt::event_token const& token) const noexcept;
         auto ValidateCertificatesRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxValidateCertificatesRequestEventArgs> const& handler) const;
         using ValidateCertificatesRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_ValidateCertificatesRequested>;
-        [[nodiscard]] ValidateCertificatesRequested_revoker ValidateCertificatesRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxValidateCertificatesRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto ValidateCertificatesRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxValidateCertificatesRequestEventArgs> const& handler) const;
         auto ValidateCertificatesRequested(winrt::event_token const& token) const noexcept;
         auto ServerSearchReadBatchRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxServerSearchReadBatchRequestEventArgs> const& handler) const;
         using ServerSearchReadBatchRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection, &impl::abi_t<winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection>::remove_ServerSearchReadBatchRequested>;
-        [[nodiscard]] ServerSearchReadBatchRequested_revoker ServerSearchReadBatchRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxServerSearchReadBatchRequestEventArgs> const& handler) const;
+        [[nodiscard]] auto ServerSearchReadBatchRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxServerSearchReadBatchRequestEventArgs> const& handler) const;
         auto ServerSearchReadBatchRequested(winrt::event_token const& token) const noexcept;
         auto Start() const;
     };

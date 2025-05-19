@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -255,7 +255,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Midi::MidiTuneRequestMessage>{ using type = winrt::Windows::Devices::Midi::IMidiMessage; };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiChannelPressureMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Channel(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Pressure(uint8_t*) noexcept = 0;
@@ -263,14 +263,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiChannelPressureMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiChannelPressureMessage(uint8_t, uint8_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiControlChangeMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Channel(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Controller(uint8_t*) noexcept = 0;
@@ -279,14 +279,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiControlChangeMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiControlChangeMessage(uint8_t, uint8_t, uint8_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiInPort>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_MessageReceived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_MessageReceived(winrt::event_token) noexcept = 0;
@@ -295,7 +295,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiInPortStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -303,7 +303,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_RawData(void**) noexcept = 0;
@@ -312,14 +312,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiMessageReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiNoteOffMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Channel(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Note(uint8_t*) noexcept = 0;
@@ -328,14 +328,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiNoteOffMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiNoteOffMessage(uint8_t, uint8_t, uint8_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiNoteOnMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Channel(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Note(uint8_t*) noexcept = 0;
@@ -344,14 +344,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiNoteOnMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiNoteOnMessage(uint8_t, uint8_t, uint8_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiOutPort>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendMessage(void*) noexcept = 0;
             virtual int32_t __stdcall SendBuffer(void*) noexcept = 0;
@@ -360,7 +360,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiOutPortStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -368,7 +368,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiPitchBendChangeMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Channel(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Bend(uint16_t*) noexcept = 0;
@@ -376,14 +376,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiPitchBendChangeMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiPitchBendChangeMessage(uint8_t, uint16_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiPolyphonicKeyPressureMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Channel(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Note(uint8_t*) noexcept = 0;
@@ -392,14 +392,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiPolyphonicKeyPressureMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiPolyphonicKeyPressureMessage(uint8_t, uint8_t, uint8_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiProgramChangeMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Channel(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Program(uint8_t*) noexcept = 0;
@@ -407,42 +407,42 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiProgramChangeMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiProgramChangeMessage(uint8_t, uint8_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiSongPositionPointerMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Beats(uint16_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiSongPositionPointerMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiSongPositionPointerMessage(uint16_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiSongSelectMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Song(uint8_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiSongSelectMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiSongSelectMessage(uint8_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiSynthesizer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AudioDevice(void**) noexcept = 0;
             virtual int32_t __stdcall get_Volume(double*) noexcept = 0;
@@ -451,7 +451,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiSynthesizerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAsync(void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromAudioDeviceAsync(void*, void**) noexcept = 0;
@@ -460,14 +460,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiSystemExclusiveMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiSystemExclusiveMessage(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiTimeCodeMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameType(uint8_t*) noexcept = 0;
             virtual int32_t __stdcall get_Values(uint8_t*) noexcept = 0;
@@ -475,7 +475,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Midi::IMidiTimeCodeMessageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMidiTimeCodeMessage(uint8_t, uint8_t, void**) noexcept = 0;
         };
@@ -524,7 +524,7 @@ namespace winrt::impl
     {
         auto MessageReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Midi::MidiInPort, winrt::Windows::Devices::Midi::MidiMessageReceivedEventArgs> const& handler) const;
         using MessageReceived_revoker = impl::event_revoker<winrt::Windows::Devices::Midi::IMidiInPort, &impl::abi_t<winrt::Windows::Devices::Midi::IMidiInPort>::remove_MessageReceived>;
-        [[nodiscard]] MessageReceived_revoker MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Midi::MidiInPort, winrt::Windows::Devices::Midi::MidiMessageReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Midi::MidiInPort, winrt::Windows::Devices::Midi::MidiMessageReceivedEventArgs> const& handler) const;
         auto MessageReceived(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto DeviceId() const;
     };

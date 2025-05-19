@@ -11,6 +11,7 @@ import "EventToken.idl";
 import "windowscontracts.idl";
 import "Windows.Foundation.idl";
 import "Windows.AI.Actions.idl";
+import "Windows.UI.idl";
 
 // Forward Declare
 namespace Windows
@@ -19,6 +20,8 @@ namespace Windows
     {
         namespace Actions
         {
+            runtimeclass ActionEntity;
+
             typedef enum ActionEntityKind ActionEntityKind;
 
             runtimeclass ActionFeedback;
@@ -40,21 +43,34 @@ namespace Windows
 }
 namespace Windows
 {
+    namespace UI
+    {
+        typedef struct WindowId WindowId;
+    }
+}
+namespace Windows
+{
     namespace AI
     {
         namespace Actions
         {
             namespace Hosting
             {
-                typedef enum ActionDisclaimerKind ActionDisclaimerKind;
-
                 interface IActionCatalog;
+
+                interface IActionCatalog2;
 
                 interface IActionDefinition;
 
                 interface IActionDefinition2;
 
+                interface IActionDefinition3;
+
                 interface IActionEntityRegistrationInfo;
+
+                interface IActionInstance;
+
+                interface IActionInstanceDisplayInfo;
 
                 interface IActionOverload;
 
@@ -65,6 +81,10 @@ namespace Windows
                 runtimeclass ActionDefinition;
 
                 runtimeclass ActionEntityRegistrationInfo;
+
+                runtimeclass ActionInstance;
+
+                runtimeclass ActionInstanceDisplayInfo;
 
                 runtimeclass ActionOverload;
             }
@@ -99,17 +119,8 @@ namespace Windows
         {
             namespace Hosting
             {
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)]
-                [experimental]
-                enum ActionDisclaimerKind
-                {
-                    None   = 0,
-                    UsesAI = 1
-                };
-
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
                 [exclusiveto(Windows.AI.Actions.Hosting.ActionCatalog)]
-                [experimental]
                 [uuid(DBE7C537-66EA-5394-9085-4FC19D78375C)]
                 interface IActionCatalog : IInspectable
                 {
@@ -118,9 +129,18 @@ namespace Windows
                     [eventremove] HRESULT Changed([in] EventRegistrationToken token);
                 }
 
+                [contract(Windows.AI.Actions.ActionsContract, 4.0)]
+                [exclusiveto(Windows.AI.Actions.Hosting.ActionCatalog)]
+                [experimental]
+                [uuid(370360B1-A14B-5EA8-B611-B5F70342BA44)]
+                interface IActionCatalog2 : IInspectable
+                {
+                    [overload("GetActionsForInputs")] HRESULT GetActionsForInputs([in] UINT32 __inputEntitiesSize, [in] [size_is(__inputEntitiesSize)] Windows.AI.Actions.ActionEntity** inputEntities, [out] UINT32* __resultSize, [out] [retval] [size_is(, *__resultSize)] Windows.AI.Actions.Hosting.ActionInstance*** result);
+                    [overload("GetActionsForInputs")] HRESULT GetActionsForInputs2([in] UINT32 __inputEntitiesSize, [in] [size_is(__inputEntitiesSize)] Windows.AI.Actions.ActionEntity** inputEntities, [in] Windows.UI.WindowId invokerWindowId, [out] UINT32* __resultSize, [out] [retval] [size_is(, *__resultSize)] Windows.AI.Actions.Hosting.ActionInstance*** result);
+                }
+
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
                 [exclusiveto(Windows.AI.Actions.Hosting.ActionDefinition)]
-                [experimental]
                 [uuid(FE766ADD-924D-5231-855E-DAC9E82C7E6C)]
                 interface IActionDefinition : IInspectable
                 {
@@ -135,19 +155,25 @@ namespace Windows
 
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)]
                 [exclusiveto(Windows.AI.Actions.Hosting.ActionDefinition)]
-                [experimental]
-                [uuid(27283794-8014-5DC5-97E3-BE19D3FA1971)]
+                [uuid(C1F44733-F563-54E2-BD2B-DC4C732054CF)]
                 interface IActionDefinition2 : IInspectable
                 {
                     [propget] HRESULT DisplaysUI([out] [retval] boolean* value);
-                    [propget] HRESULT DisclaimerKind([out] [retval] Windows.AI.Actions.Hosting.ActionDisclaimerKind* value);
+                    [propget] HRESULT UsesGenerativeAI([out] [retval] boolean* value);
                     [propget] HRESULT SchemaVersion([out] [retval] UINT32* value);
+                }
+
+                [contract(Windows.AI.Actions.ActionsContract, 3.0)]
+                [exclusiveto(Windows.AI.Actions.Hosting.ActionDefinition)]
+                [experimental]
+                [uuid(89C9A7E0-4BFD-55F4-9EED-DCE2250114FA)]
+                interface IActionDefinition3 : IInspectable
+                {
                     [propget] HRESULT PackageRelativeApplicationId([out] [retval] HSTRING* value);
                 }
 
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
                 [exclusiveto(Windows.AI.Actions.Hosting.ActionEntityRegistrationInfo)]
-                [experimental]
                 [uuid(C3B92BDB-03C3-5A9E-B049-002FA0405699)]
                 interface IActionEntityRegistrationInfo : IInspectable
                 {
@@ -157,9 +183,29 @@ namespace Windows
                     [propput] HRESULT Kind([in] Windows.AI.Actions.ActionEntityKind value);
                 }
 
+                [contract(Windows.AI.Actions.ActionsContract, 4.0)]
+                [exclusiveto(Windows.AI.Actions.Hosting.ActionInstance)]
+                [experimental]
+                [uuid(809BCB6E-E6EF-5F16-B89A-06B8893DF20E)]
+                interface IActionInstance : IInspectable
+                {
+                    [propget] HRESULT DisplayInfo([out] [retval] Windows.AI.Actions.Hosting.ActionInstanceDisplayInfo** value);
+                    [propget] HRESULT Definition([out] [retval] Windows.AI.Actions.Hosting.ActionDefinition** value);
+                    [propget] HRESULT Context([out] [retval] Windows.AI.Actions.ActionInvocationContext** value);
+                    HRESULT InvokeAsync([out] [retval] Windows.Foundation.IAsyncAction** operation);
+                }
+
+                [contract(Windows.AI.Actions.ActionsContract, 4.0)]
+                [exclusiveto(Windows.AI.Actions.Hosting.ActionInstanceDisplayInfo)]
+                [experimental]
+                [uuid(FCFDCE21-678B-5602-B9DC-2F4533A6F4B2)]
+                interface IActionInstanceDisplayInfo : IInspectable
+                {
+                    [propget] HRESULT Description([out] [retval] HSTRING* value);
+                }
+
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
                 [exclusiveto(Windows.AI.Actions.Hosting.ActionOverload)]
-                [experimental]
                 [uuid(5D184610-D09D-5375-9849-505C359DCA01)]
                 interface IActionOverload : IInspectable
                 {
@@ -168,7 +214,7 @@ namespace Windows
                     HRESULT InvokeAsync([in] Windows.AI.Actions.ActionInvocationContext* context, [out] [retval] Windows.Foundation.IAsyncAction** operation);
                 }
 
-                [contract(Windows.AI.Actions.ActionsContract, 2.0)]
+                [contract(Windows.AI.Actions.ActionsContract, 3.0)]
                 [exclusiveto(Windows.AI.Actions.Hosting.ActionOverload)]
                 [experimental]
                 [uuid(57EC9906-8231-5A9E-929F-BF39E952EB93)]
@@ -179,40 +225,54 @@ namespace Windows
                 }
 
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-                [experimental]
                 [marshaling_behavior(agile)]
                 runtimeclass ActionCatalog
                 {
-                    [default] [experimental] interface Windows.AI.Actions.Hosting.IActionCatalog;
+                    [default] interface Windows.AI.Actions.Hosting.IActionCatalog;
+                    [contract(Windows.AI.Actions.ActionsContract, 4.0)] [experimental] interface Windows.AI.Actions.Hosting.IActionCatalog2;
                     interface Windows.Foundation.IClosable;
                 }
 
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-                [experimental]
                 [marshaling_behavior(agile)]
                 runtimeclass ActionDefinition
                 {
-                    [default] [experimental] interface Windows.AI.Actions.Hosting.IActionDefinition;
-                    [contract(Windows.AI.Actions.ActionsContract, 2.0)] [experimental] interface Windows.AI.Actions.Hosting.IActionDefinition2;
+                    [default] interface Windows.AI.Actions.Hosting.IActionDefinition;
+                    [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.Hosting.IActionDefinition2;
+                    [contract(Windows.AI.Actions.ActionsContract, 3.0)] [experimental] interface Windows.AI.Actions.Hosting.IActionDefinition3;
                     interface Windows.Foundation.IClosable;
                 }
 
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
-                [experimental]
                 [marshaling_behavior(agile)]
                 runtimeclass ActionEntityRegistrationInfo
                 {
-                    [default] [experimental] interface Windows.AI.Actions.Hosting.IActionEntityRegistrationInfo;
+                    [default] interface Windows.AI.Actions.Hosting.IActionEntityRegistrationInfo;
                     interface Windows.Foundation.IClosable;
                 }
 
-                [contract(Windows.AI.Actions.ActionsContract, 1.0)]
+                [contract(Windows.AI.Actions.ActionsContract, 4.0)]
                 [experimental]
+                [marshaling_behavior(agile)]
+                runtimeclass ActionInstance
+                {
+                    [default] [experimental] interface Windows.AI.Actions.Hosting.IActionInstance;
+                }
+
+                [contract(Windows.AI.Actions.ActionsContract, 4.0)]
+                [experimental]
+                [marshaling_behavior(agile)]
+                runtimeclass ActionInstanceDisplayInfo
+                {
+                    [default] [experimental] interface Windows.AI.Actions.Hosting.IActionInstanceDisplayInfo;
+                }
+
+                [contract(Windows.AI.Actions.ActionsContract, 1.0)]
                 [marshaling_behavior(agile)]
                 runtimeclass ActionOverload
                 {
-                    [default] [experimental] interface Windows.AI.Actions.Hosting.IActionOverload;
-                    [contract(Windows.AI.Actions.ActionsContract, 2.0)] [experimental] interface Windows.AI.Actions.Hosting.IActionOverload2;
+                    [default] interface Windows.AI.Actions.Hosting.IActionOverload;
+                    [contract(Windows.AI.Actions.ActionsContract, 3.0)] [experimental] interface Windows.AI.Actions.Hosting.IActionOverload2;
                     interface Windows.Foundation.IClosable;
                 }
             }

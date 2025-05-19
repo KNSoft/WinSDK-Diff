@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,13 +8,13 @@
 #define WINRT_Windows_UI_Core_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
     struct Point;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -223,6 +223,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::Core
     struct CoreProximityEvaluation;
     struct DispatchedHandler;
     struct IdleDispatchedHandler;
+    struct CoreWindowDialogsContract;
 }
 namespace winrt::impl
 {
@@ -414,6 +415,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Core::IWindowSizeChangedEventArgs> = L"Windows.UI.Core.IWindowSizeChangedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Core::DispatchedHandler> = L"Windows.UI.Core.DispatchedHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Core::IdleDispatchedHandler> = L"Windows.UI.Core.IdleDispatchedHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Core::CoreWindowDialogsContract> = L"Windows.UI.Core.CoreWindowDialogsContract";
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Core::IAcceleratorKeyEventArgs>{ 0xFF1C4C4A,0x9287,0x470B,{ 0x83,0x6E,0x90,0x86,0xE3,0x12,0x6A,0xDE } }; // FF1C4C4A-9287-470B-836E-9086E3126ADE
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Core::IAcceleratorKeyEventArgs2>{ 0xD300A9F6,0x2F7E,0x4873,{ 0xA5,0x55,0x16,0x6E,0x59,0x6E,0xE1,0xC5 } }; // D300A9F6-2F7E-4873-A555-166E596EE1C5
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Core::IAutomationProviderRequestedEventArgs>{ 0x961FF258,0x21BF,0x4B42,{ 0xA2,0x98,0xFA,0x47,0x9D,0x4C,0x52,0xE2 } }; // 961FF258-21BF-4B42-A298-FA479D4C52E2
@@ -496,7 +498,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Core::WindowSizeChangedEventArgs>{ using type = winrt::Windows::UI::Core::IWindowSizeChangedEventArgs; };
     template <> struct abi<winrt::Windows::UI::Core::IAcceleratorKeyEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EventType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_VirtualKey(int32_t*) noexcept = 0;
@@ -505,14 +507,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::IAcceleratorKeyEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IAutomationProviderRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutomationProvider(void**) noexcept = 0;
             virtual int32_t __stdcall put_AutomationProvider(void*) noexcept = 0;
@@ -520,7 +522,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::IBackRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -528,7 +530,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICharacterReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyCode(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_KeyStatus(struct struct_Windows_UI_Core_CorePhysicalKeyStatus*) noexcept = 0;
@@ -536,7 +538,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::IClosestInteractiveBoundsRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointerPosition(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_SearchBounds(winrt::Windows::Foundation::Rect*) noexcept = 0;
@@ -546,7 +548,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreAcceleratorKeys>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AcceleratorKeyActivated(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AcceleratorKeyActivated(winrt::event_token) noexcept = 0;
@@ -554,7 +556,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreClosestInteractiveBoundsRequested>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ClosestInteractiveBoundsRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ClosestInteractiveBoundsRequested(winrt::event_token) noexcept = 0;
@@ -562,7 +564,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreComponentFocusable>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasFocus(bool*) noexcept = 0;
             virtual int32_t __stdcall add_GotFocus(void*, winrt::event_token*) noexcept = 0;
@@ -573,7 +575,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreCursor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
@@ -581,14 +583,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreCursorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCursor(int32_t, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreDispatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasThreadAccess(bool*) noexcept = 0;
             virtual int32_t __stdcall ProcessEvents(int32_t) noexcept = 0;
@@ -598,7 +600,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreDispatcher2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryRunAsync(int32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryRunIdleAsync(void*, void**) noexcept = 0;
@@ -606,7 +608,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreDispatcherWithTaskPriority>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentPriority(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_CurrentPriority(int32_t) noexcept = 0;
@@ -617,7 +619,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreIndependentInputSourceController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTransparentForUncontrolledInput(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsTransparentForUncontrolledInput(bool) noexcept = 0;
@@ -630,7 +632,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreIndependentInputSourceControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForVisual(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateForIVisualElement(void*, void**) noexcept = 0;
@@ -638,7 +640,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreInputSourceBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Dispatcher(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsInputEnabled(bool*) noexcept = 0;
@@ -649,7 +651,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreKeyboardInputSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentKeyState(int32_t, uint32_t*) noexcept = 0;
             virtual int32_t __stdcall add_CharacterReceived(void*, winrt::event_token*) noexcept = 0;
@@ -662,14 +664,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreKeyboardInputSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentKeyEventDeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICorePointerInputSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReleasePointerCapture() noexcept = 0;
             virtual int32_t __stdcall SetPointerCapture() noexcept = 0;
@@ -695,14 +697,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICorePointerInputSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DispatcherQueue(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICorePointerRedirector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PointerRoutedAway(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PointerRoutedAway(winrt::event_token) noexcept = 0;
@@ -714,7 +716,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreTouchHitTesting>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_TouchHitTesting(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_TouchHitTesting(winrt::event_token) noexcept = 0;
@@ -722,7 +724,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AutomationHostProvider(void**) noexcept = 0;
             virtual int32_t __stdcall get_Bounds(winrt::Windows::Foundation::Rect*) noexcept = 0;
@@ -780,14 +782,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindow2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_PointerPosition(winrt::Windows::Foundation::Point) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindow3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ClosestInteractiveBoundsRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ClosestInteractiveBoundsRequested(winrt::event_token) noexcept = 0;
@@ -796,7 +798,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindow4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ResizeStarted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ResizeStarted(winrt::event_token) noexcept = 0;
@@ -806,7 +808,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindow5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DispatcherQueue(void**) noexcept = 0;
             virtual int32_t __stdcall get_ActivationMode(int32_t*) noexcept = 0;
@@ -814,7 +816,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowDialog>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Showing(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Showing(winrt::event_token) noexcept = 0;
@@ -836,14 +838,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowDialogFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithTitle(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -851,7 +853,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowFlyout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Showing(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Showing(winrt::event_token) noexcept = 0;
@@ -871,7 +873,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowFlyoutFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(winrt::Windows::Foundation::Point, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTitle(winrt::Windows::Foundation::Point, void*, void**) noexcept = 0;
@@ -879,21 +881,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowPopupShowingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetDesiredSize(winrt::Windows::Foundation::Size) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowResizeManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall NotifyLayoutCompleted() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowResizeManagerLayoutCapability>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ShouldWaitForLayoutCompletion(bool) noexcept = 0;
             virtual int32_t __stdcall get_ShouldWaitForLayoutCompletion(bool*) noexcept = 0;
@@ -901,49 +903,49 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowResizeManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowStatic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentThread(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ICoreWindowWithContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UIContext(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IIdleDispatchedHandlerArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDispatcherIdle(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IInitializeWithCoreWindow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Initialize(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IInputEnabledEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputEnabled(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IKeyEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VirtualKey(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_KeyStatus(struct struct_Windows_UI_Core_CorePhysicalKeyStatus*) noexcept = 0;
@@ -951,14 +953,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::IKeyEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IPointerEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentPoint(void**) noexcept = 0;
             virtual int32_t __stdcall get_KeyModifiers(uint32_t*) noexcept = 0;
@@ -967,7 +969,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ISystemNavigationManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_BackRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_BackRequested(winrt::event_token) noexcept = 0;
@@ -975,7 +977,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ISystemNavigationManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppViewBackButtonVisibility(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_AppViewBackButtonVisibility(int32_t) noexcept = 0;
@@ -983,14 +985,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::ISystemNavigationManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::ITouchHitTestingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProximityEvaluation(struct struct_Windows_UI_Core_CoreProximityEvaluation*) noexcept = 0;
             virtual int32_t __stdcall put_ProximityEvaluation(struct struct_Windows_UI_Core_CoreProximityEvaluation) noexcept = 0;
@@ -1002,35 +1004,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::IVisibilityChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Visible(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IWindowActivatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WindowActivationState(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IWindowSizeChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Size(winrt::Windows::Foundation::Size*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::DispatchedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::IdleDispatchedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -1102,7 +1104,7 @@ namespace winrt::impl
     {
         auto AcceleratorKeyActivated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreDispatcher, winrt::Windows::UI::Core::AcceleratorKeyEventArgs> const& handler) const;
         using AcceleratorKeyActivated_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreAcceleratorKeys, &impl::abi_t<winrt::Windows::UI::Core::ICoreAcceleratorKeys>::remove_AcceleratorKeyActivated>;
-        [[nodiscard]] AcceleratorKeyActivated_revoker AcceleratorKeyActivated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreDispatcher, winrt::Windows::UI::Core::AcceleratorKeyEventArgs> const& handler) const;
+        [[nodiscard]] auto AcceleratorKeyActivated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreDispatcher, winrt::Windows::UI::Core::AcceleratorKeyEventArgs> const& handler) const;
         auto AcceleratorKeyActivated(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICoreAcceleratorKeys>
@@ -1114,7 +1116,7 @@ namespace winrt::impl
     {
         auto ClosestInteractiveBoundsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreComponentInputSource, winrt::Windows::UI::Core::ClosestInteractiveBoundsRequestedEventArgs> const& handler) const;
         using ClosestInteractiveBoundsRequested_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreClosestInteractiveBoundsRequested, &impl::abi_t<winrt::Windows::UI::Core::ICoreClosestInteractiveBoundsRequested>::remove_ClosestInteractiveBoundsRequested>;
-        [[nodiscard]] ClosestInteractiveBoundsRequested_revoker ClosestInteractiveBoundsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreComponentInputSource, winrt::Windows::UI::Core::ClosestInteractiveBoundsRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ClosestInteractiveBoundsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreComponentInputSource, winrt::Windows::UI::Core::ClosestInteractiveBoundsRequestedEventArgs> const& handler) const;
         auto ClosestInteractiveBoundsRequested(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICoreClosestInteractiveBoundsRequested>
@@ -1127,11 +1129,11 @@ namespace winrt::impl
         [[nodiscard]] auto HasFocus() const;
         auto GotFocus(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
         using GotFocus_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreComponentFocusable, &impl::abi_t<winrt::Windows::UI::Core::ICoreComponentFocusable>::remove_GotFocus>;
-        [[nodiscard]] GotFocus_revoker GotFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
+        [[nodiscard]] auto GotFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
         auto GotFocus(winrt::event_token const& cookie) const noexcept;
         auto LostFocus(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
         using LostFocus_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreComponentFocusable, &impl::abi_t<winrt::Windows::UI::Core::ICoreComponentFocusable>::remove_LostFocus>;
-        [[nodiscard]] LostFocus_revoker LostFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
+        [[nodiscard]] auto LostFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
         auto LostFocus(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICoreComponentFocusable>
@@ -1225,7 +1227,7 @@ namespace winrt::impl
         auto IsInputEnabled(bool value) const;
         auto InputEnabled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::InputEnabledEventArgs> const& handler) const;
         using InputEnabled_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreInputSourceBase, &impl::abi_t<winrt::Windows::UI::Core::ICoreInputSourceBase>::remove_InputEnabled>;
-        [[nodiscard]] InputEnabled_revoker InputEnabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::InputEnabledEventArgs> const& handler) const;
+        [[nodiscard]] auto InputEnabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::InputEnabledEventArgs> const& handler) const;
         auto InputEnabled(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICoreInputSourceBase>
@@ -1238,15 +1240,15 @@ namespace winrt::impl
         auto GetCurrentKeyState(winrt::Windows::System::VirtualKey const& virtualKey) const;
         auto CharacterReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CharacterReceivedEventArgs> const& handler) const;
         using CharacterReceived_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreKeyboardInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICoreKeyboardInputSource>::remove_CharacterReceived>;
-        [[nodiscard]] CharacterReceived_revoker CharacterReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CharacterReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto CharacterReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::CharacterReceivedEventArgs> const& handler) const;
         auto CharacterReceived(winrt::event_token const& cookie) const noexcept;
         auto KeyDown(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
         using KeyDown_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreKeyboardInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICoreKeyboardInputSource>::remove_KeyDown>;
-        [[nodiscard]] KeyDown_revoker KeyDown(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
+        [[nodiscard]] auto KeyDown(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
         auto KeyDown(winrt::event_token const& cookie) const noexcept;
         auto KeyUp(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
         using KeyUp_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreKeyboardInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICoreKeyboardInputSource>::remove_KeyUp>;
-        [[nodiscard]] KeyUp_revoker KeyUp(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
+        [[nodiscard]] auto KeyUp(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
         auto KeyUp(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICoreKeyboardInputSource>
@@ -1273,31 +1275,31 @@ namespace winrt::impl
         auto PointerCursor(winrt::Windows::UI::Core::CoreCursor const& value) const;
         auto PointerCaptureLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerCaptureLost_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerInputSource>::remove_PointerCaptureLost>;
-        [[nodiscard]] PointerCaptureLost_revoker PointerCaptureLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerCaptureLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerCaptureLost(winrt::event_token const& cookie) const noexcept;
         auto PointerEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerEntered_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerInputSource>::remove_PointerEntered>;
-        [[nodiscard]] PointerEntered_revoker PointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerEntered(winrt::event_token const& cookie) const noexcept;
         auto PointerExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerExited_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerInputSource>::remove_PointerExited>;
-        [[nodiscard]] PointerExited_revoker PointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerExited(winrt::event_token const& cookie) const noexcept;
         auto PointerMoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerMoved_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerInputSource>::remove_PointerMoved>;
-        [[nodiscard]] PointerMoved_revoker PointerMoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerMoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerMoved(winrt::event_token const& cookie) const noexcept;
         auto PointerPressed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerPressed_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerInputSource>::remove_PointerPressed>;
-        [[nodiscard]] PointerPressed_revoker PointerPressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerPressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerPressed(winrt::event_token const& cookie) const noexcept;
         auto PointerReleased(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerReleased_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerInputSource>::remove_PointerReleased>;
-        [[nodiscard]] PointerReleased_revoker PointerReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerReleased(winrt::event_token const& cookie) const noexcept;
         auto PointerWheelChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerWheelChanged_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerInputSource, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerInputSource>::remove_PointerWheelChanged>;
-        [[nodiscard]] PointerWheelChanged_revoker PointerWheelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerWheelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerWheelChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICorePointerInputSource>
@@ -1318,15 +1320,15 @@ namespace winrt::impl
     {
         auto PointerRoutedAway(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerRoutedAway_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerRedirector, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerRedirector>::remove_PointerRoutedAway>;
-        [[nodiscard]] PointerRoutedAway_revoker PointerRoutedAway(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerRoutedAway(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerRoutedAway(winrt::event_token const& cookie) const noexcept;
         auto PointerRoutedTo(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerRoutedTo_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerRedirector, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerRedirector>::remove_PointerRoutedTo>;
-        [[nodiscard]] PointerRoutedTo_revoker PointerRoutedTo(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerRoutedTo(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerRoutedTo(winrt::event_token const& cookie) const noexcept;
         auto PointerRoutedReleased(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerRoutedReleased_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICorePointerRedirector, &impl::abi_t<winrt::Windows::UI::Core::ICorePointerRedirector>::remove_PointerRoutedReleased>;
-        [[nodiscard]] PointerRoutedReleased_revoker PointerRoutedReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerRoutedReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::ICorePointerRedirector, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerRoutedReleased(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICorePointerRedirector>
@@ -1338,7 +1340,7 @@ namespace winrt::impl
     {
         auto TouchHitTesting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::TouchHitTestingEventArgs> const& handler) const;
         using TouchHitTesting_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreTouchHitTesting, &impl::abi_t<winrt::Windows::UI::Core::ICoreTouchHitTesting>::remove_TouchHitTesting>;
-        [[nodiscard]] TouchHitTesting_revoker TouchHitTesting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::TouchHitTestingEventArgs> const& handler) const;
+        [[nodiscard]] auto TouchHitTesting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Core::TouchHitTestingEventArgs> const& handler) const;
         auto TouchHitTesting(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICoreTouchHitTesting>
@@ -1368,71 +1370,71 @@ namespace winrt::impl
         auto SetPointerCapture() const;
         auto Activated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::WindowActivatedEventArgs> const& handler) const;
         using Activated_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_Activated>;
-        [[nodiscard]] Activated_revoker Activated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::WindowActivatedEventArgs> const& handler) const;
+        [[nodiscard]] auto Activated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::WindowActivatedEventArgs> const& handler) const;
         auto Activated(winrt::event_token const& cookie) const noexcept;
         auto AutomationProviderRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::AutomationProviderRequestedEventArgs> const& handler) const;
         using AutomationProviderRequested_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_AutomationProviderRequested>;
-        [[nodiscard]] AutomationProviderRequested_revoker AutomationProviderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::AutomationProviderRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto AutomationProviderRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::AutomationProviderRequestedEventArgs> const& handler) const;
         auto AutomationProviderRequested(winrt::event_token const& cookie) const noexcept;
         auto CharacterReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CharacterReceivedEventArgs> const& handler) const;
         using CharacterReceived_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_CharacterReceived>;
-        [[nodiscard]] CharacterReceived_revoker CharacterReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CharacterReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto CharacterReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CharacterReceivedEventArgs> const& handler) const;
         auto CharacterReceived(winrt::event_token const& cookie) const noexcept;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowEventArgs> const& handler) const;
         auto Closed(winrt::event_token const& cookie) const noexcept;
         auto InputEnabled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::InputEnabledEventArgs> const& handler) const;
         using InputEnabled_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_InputEnabled>;
-        [[nodiscard]] InputEnabled_revoker InputEnabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::InputEnabledEventArgs> const& handler) const;
+        [[nodiscard]] auto InputEnabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::InputEnabledEventArgs> const& handler) const;
         auto InputEnabled(winrt::event_token const& cookie) const noexcept;
         auto KeyDown(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
         using KeyDown_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_KeyDown>;
-        [[nodiscard]] KeyDown_revoker KeyDown(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
+        [[nodiscard]] auto KeyDown(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
         auto KeyDown(winrt::event_token const& cookie) const noexcept;
         auto KeyUp(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
         using KeyUp_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_KeyUp>;
-        [[nodiscard]] KeyUp_revoker KeyUp(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
+        [[nodiscard]] auto KeyUp(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::KeyEventArgs> const& handler) const;
         auto KeyUp(winrt::event_token const& cookie) const noexcept;
         auto PointerCaptureLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerCaptureLost_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_PointerCaptureLost>;
-        [[nodiscard]] PointerCaptureLost_revoker PointerCaptureLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerCaptureLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerCaptureLost(winrt::event_token const& cookie) const noexcept;
         auto PointerEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerEntered_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_PointerEntered>;
-        [[nodiscard]] PointerEntered_revoker PointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerEntered(winrt::event_token const& cookie) const noexcept;
         auto PointerExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerExited_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_PointerExited>;
-        [[nodiscard]] PointerExited_revoker PointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerExited(winrt::event_token const& cookie) const noexcept;
         auto PointerMoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerMoved_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_PointerMoved>;
-        [[nodiscard]] PointerMoved_revoker PointerMoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerMoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerMoved(winrt::event_token const& cookie) const noexcept;
         auto PointerPressed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerPressed_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_PointerPressed>;
-        [[nodiscard]] PointerPressed_revoker PointerPressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerPressed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerPressed(winrt::event_token const& cookie) const noexcept;
         auto PointerReleased(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerReleased_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_PointerReleased>;
-        [[nodiscard]] PointerReleased_revoker PointerReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerReleased(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerReleased(winrt::event_token const& cookie) const noexcept;
         auto TouchHitTesting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::TouchHitTestingEventArgs> const& handler) const;
         using TouchHitTesting_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_TouchHitTesting>;
-        [[nodiscard]] TouchHitTesting_revoker TouchHitTesting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::TouchHitTestingEventArgs> const& handler) const;
+        [[nodiscard]] auto TouchHitTesting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::TouchHitTestingEventArgs> const& handler) const;
         auto TouchHitTesting(winrt::event_token const& cookie) const noexcept;
         auto PointerWheelChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerWheelChanged_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_PointerWheelChanged>;
-        [[nodiscard]] PointerWheelChanged_revoker PointerWheelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerWheelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerWheelChanged(winrt::event_token const& cookie) const noexcept;
         auto SizeChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::WindowSizeChangedEventArgs> const& handler) const;
         using SizeChanged_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_SizeChanged>;
-        [[nodiscard]] SizeChanged_revoker SizeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::WindowSizeChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SizeChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::WindowSizeChangedEventArgs> const& handler) const;
         auto SizeChanged(winrt::event_token const& cookie) const noexcept;
         auto VisibilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::VisibilityChangedEventArgs> const& handler) const;
         using VisibilityChanged_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow>::remove_VisibilityChanged>;
-        [[nodiscard]] VisibilityChanged_revoker VisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::VisibilityChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto VisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::VisibilityChangedEventArgs> const& handler) const;
         auto VisibilityChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICoreWindow>
@@ -1453,7 +1455,7 @@ namespace winrt::impl
     {
         auto ClosestInteractiveBoundsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::ClosestInteractiveBoundsRequestedEventArgs> const& handler) const;
         using ClosestInteractiveBoundsRequested_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow3, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow3>::remove_ClosestInteractiveBoundsRequested>;
-        [[nodiscard]] ClosestInteractiveBoundsRequested_revoker ClosestInteractiveBoundsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::ClosestInteractiveBoundsRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ClosestInteractiveBoundsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::ClosestInteractiveBoundsRequestedEventArgs> const& handler) const;
         auto ClosestInteractiveBoundsRequested(winrt::event_token const& cookie) const noexcept;
         auto GetCurrentKeyEventDeviceId() const;
     };
@@ -1466,11 +1468,11 @@ namespace winrt::impl
     {
         auto ResizeStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ResizeStarted_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow4, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow4>::remove_ResizeStarted>;
-        [[nodiscard]] ResizeStarted_revoker ResizeStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ResizeStarted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ResizeStarted(winrt::event_token const& cookie) const noexcept;
         auto ResizeCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ResizeCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindow4, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindow4>::remove_ResizeCompleted>;
-        [[nodiscard]] ResizeCompleted_revoker ResizeCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ResizeCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ResizeCompleted(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ICoreWindow4>
@@ -1492,7 +1494,7 @@ namespace winrt::impl
     {
         auto Showing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowPopupShowingEventArgs> const& handler) const;
         using Showing_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindowDialog, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindowDialog>::remove_Showing>;
-        [[nodiscard]] Showing_revoker Showing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowPopupShowingEventArgs> const& handler) const;
+        [[nodiscard]] auto Showing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowPopupShowingEventArgs> const& handler) const;
         auto Showing(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto MaxSize() const;
         [[nodiscard]] auto MinSize() const;
@@ -1537,7 +1539,7 @@ namespace winrt::impl
     {
         auto Showing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowPopupShowingEventArgs> const& handler) const;
         using Showing_revoker = impl::event_revoker<winrt::Windows::UI::Core::ICoreWindowFlyout, &impl::abi_t<winrt::Windows::UI::Core::ICoreWindowFlyout>::remove_Showing>;
-        [[nodiscard]] Showing_revoker Showing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowPopupShowingEventArgs> const& handler) const;
+        [[nodiscard]] auto Showing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Core::CoreWindow, winrt::Windows::UI::Core::CoreWindowPopupShowingEventArgs> const& handler) const;
         auto Showing(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto MaxSize() const;
         [[nodiscard]] auto MinSize() const;
@@ -1683,7 +1685,7 @@ namespace winrt::impl
     {
         auto BackRequested(winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Core::BackRequestedEventArgs> const& handler) const;
         using BackRequested_revoker = impl::event_revoker<winrt::Windows::UI::Core::ISystemNavigationManager, &impl::abi_t<winrt::Windows::UI::Core::ISystemNavigationManager>::remove_BackRequested>;
-        [[nodiscard]] BackRequested_revoker BackRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Core::BackRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto BackRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::UI::Core::BackRequestedEventArgs> const& handler) const;
         auto BackRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Core::ISystemNavigationManager>

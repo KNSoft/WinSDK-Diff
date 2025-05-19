@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_Media_Devices_Core_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
@@ -174,7 +174,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Devices::Core::VariablePhotoSequenceController>{ using type = winrt::Windows::Media::Devices::Core::IVariablePhotoSequenceController; };
     template <> struct abi<winrt::Windows::Media::Devices::Core::ICameraIntrinsics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FocalLength(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall get_PrincipalPoint(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
@@ -190,7 +190,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::ICameraIntrinsics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UndistortedProjectionTransform(winrt::Windows::Foundation::Numerics::float4x4*) noexcept = 0;
             virtual int32_t __stdcall DistortPoint(winrt::Windows::Foundation::Point, winrt::Windows::Foundation::Point*) noexcept = 0;
@@ -201,14 +201,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::ICameraIntrinsicsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(winrt::Windows::Foundation::Numerics::float2, winrt::Windows::Foundation::Numerics::float2, winrt::Windows::Foundation::Numerics::float3, winrt::Windows::Foundation::Numerics::float2, uint32_t, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IDepthCorrelatedCoordinateMapper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UnprojectPoint(winrt::Windows::Foundation::Point, void*, winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall UnprojectPoints(uint32_t, winrt::Windows::Foundation::Point*, void*, uint32_t, winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
@@ -218,7 +218,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameControlCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Exposure(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExposureCompensation(void**) noexcept = 0;
@@ -229,14 +229,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameControlCapabilities2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Flash(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExposureControl(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExposureCompensationControl(void**) noexcept = 0;
@@ -248,14 +248,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameController2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FlashControl(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameExposureCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Min(int64_t*) noexcept = 0;
@@ -265,7 +265,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameExposureCompensationCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Min(float*) noexcept = 0;
@@ -275,7 +275,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameExposureCompensationControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
             virtual int32_t __stdcall put_Value(void*) noexcept = 0;
@@ -283,7 +283,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameExposureControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Auto(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Auto(bool) noexcept = 0;
@@ -293,7 +293,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameFlashCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_RedEyeReductionSupported(bool*) noexcept = 0;
@@ -302,7 +302,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameFlashControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -316,7 +316,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameFocusCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Min(uint32_t*) noexcept = 0;
@@ -326,7 +326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameFocusControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
             virtual int32_t __stdcall put_Value(void*) noexcept = 0;
@@ -334,7 +334,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameIsoSpeedCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Min(uint32_t*) noexcept = 0;
@@ -344,7 +344,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IFrameIsoSpeedControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Auto(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Auto(bool) noexcept = 0;
@@ -354,7 +354,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Devices::Core::IVariablePhotoSequenceController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Supported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_MaxPhotosPerSecond(float*) noexcept = 0;

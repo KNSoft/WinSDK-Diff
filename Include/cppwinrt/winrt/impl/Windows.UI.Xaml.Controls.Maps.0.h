@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,15 +16,15 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -848,7 +848,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Controls::Maps::StreetsidePanorama>{ using type = winrt::Windows::UI::Xaml::Controls::Maps::IStreetsidePanorama; };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::ICustomMapTileDataSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_BitmapRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_BitmapRequested(winrt::event_token) noexcept = 0;
@@ -856,14 +856,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::ICustomMapTileDataSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IHttpMapTileDataSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UriFormatString(void**) noexcept = 0;
             virtual int32_t __stdcall put_UriFormatString(void*) noexcept = 0;
@@ -876,7 +876,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IHttpMapTileDataSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithUriFormatString(void*, void*, void**, void**) noexcept = 0;
@@ -884,7 +884,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::ILocalMapTileDataSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UriFormatString(void**) noexcept = 0;
             virtual int32_t __stdcall put_UriFormatString(void*) noexcept = 0;
@@ -894,7 +894,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::ILocalMapTileDataSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithUriFormatString(void*, void*, void**, void**) noexcept = 0;
@@ -902,35 +902,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapActualCameraChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Camera(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapActualCameraChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeReason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapActualCameraChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Camera(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapActualCameraChangingEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeReason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapBillboard>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
             virtual int32_t __stdcall put_Location(void*) noexcept = 0;
@@ -945,14 +945,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapBillboardFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceFromCamera(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapBillboardStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocationProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_NormalizedAnchorPointProperty(void**) noexcept = 0;
@@ -961,7 +961,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapCamera>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
             virtual int32_t __stdcall put_Location(void*) noexcept = 0;
@@ -977,7 +977,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapCameraFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithLocation(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithLocationAndHeading(void*, double, void**) noexcept = 0;
@@ -987,7 +987,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapContextRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -996,7 +996,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Center(void**) noexcept = 0;
             virtual int32_t __stdcall put_Center(void*) noexcept = 0;
@@ -1061,7 +1061,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BusinessLandmarksVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_BusinessLandmarksVisible(bool) noexcept = 0;
@@ -1116,7 +1116,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_MapRightTapped(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_MapRightTapped(winrt::event_token) noexcept = 0;
@@ -1124,7 +1124,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BusinessLandmarksEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_BusinessLandmarksEnabled(bool) noexcept = 0;
@@ -1135,7 +1135,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapProjection(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MapProjection(int32_t) noexcept = 0;
@@ -1155,7 +1155,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Layers(void**) noexcept = 0;
             virtual int32_t __stdcall put_Layers(void*) noexcept = 0;
@@ -1165,7 +1165,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Region(void**) noexcept = 0;
             virtual int32_t __stdcall put_Region(void*) noexcept = 0;
@@ -1173,7 +1173,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanTiltDown(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanTiltUp(bool*) noexcept = 0;
@@ -1183,35 +1183,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlBusinessLandmarkClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalLocations(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlBusinessLandmarkPointerEnteredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalLocations(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlBusinessLandmarkPointerExitedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalLocations(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlBusinessLandmarkRightTappedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalLocations(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_BusinessLandmarkClick(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_BusinessLandmarkClick(winrt::event_token) noexcept = 0;
@@ -1225,7 +1225,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_BusinessLandmarkPointerEntered(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_BusinessLandmarkPointerEntered(winrt::event_token) noexcept = 0;
@@ -1239,21 +1239,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelperFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMapControl(bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChildrenProperty(void**) noexcept = 0;
@@ -1283,7 +1283,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BusinessLandmarksVisibleProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TransitFeaturesVisibleProperty(void**) noexcept = 0;
@@ -1298,7 +1298,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BusinessLandmarksEnabledProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TransitFeaturesEnabledProperty(void**) noexcept = 0;
@@ -1306,7 +1306,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapProjectionProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StyleSheetProperty(void**) noexcept = 0;
@@ -1315,21 +1315,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlStatics6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LayersProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlStatics7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RegionProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlStatics8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanTiltDownProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanTiltUpProperty(void**) noexcept = 0;
@@ -1339,7 +1339,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlTransitFeatureClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1348,7 +1348,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlTransitFeaturePointerEnteredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1357,7 +1357,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlTransitFeaturePointerExitedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1366,7 +1366,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlTransitFeatureRightTappedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1375,26 +1375,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapCustomExperience>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapCustomExperienceChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapCustomExperienceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ZIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_ZIndex(int32_t) noexcept = 0;
@@ -1404,7 +1404,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElement2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapTabIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MapTabIndex(int32_t) noexcept = 0;
@@ -1412,7 +1412,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElement3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapStyleSheetEntry(void**) noexcept = 0;
             virtual int32_t __stdcall put_MapStyleSheetEntry(void*) noexcept = 0;
@@ -1424,7 +1424,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElement3D>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
             virtual int32_t __stdcall put_Location(void*) noexcept = 0;
@@ -1442,7 +1442,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElement3DStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocationProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_HeadingProperty(void**) noexcept = 0;
@@ -1453,7 +1453,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElement4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -1461,7 +1461,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1470,14 +1470,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementPointerEnteredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1486,7 +1486,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementPointerExitedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1495,7 +1495,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ZIndexProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_VisibleProperty(void**) noexcept = 0;
@@ -1503,14 +1503,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapTabIndexProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapStyleSheetEntryProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_MapStyleSheetEntryStateProperty(void**) noexcept = 0;
@@ -1519,14 +1519,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabledProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapElements(void**) noexcept = 0;
             virtual int32_t __stdcall put_MapElements(void*) noexcept = 0;
@@ -1542,7 +1542,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayerClickEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1551,7 +1551,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayerContextRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1560,7 +1560,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayerPointerEnteredEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1569,7 +1569,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayerPointerExitedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1578,14 +1578,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapElementsProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
             virtual int32_t __stdcall put_Location(void*) noexcept = 0;
@@ -1599,7 +1599,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapIcon2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CollisionBehaviorDesired(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_CollisionBehaviorDesired(int32_t) noexcept = 0;
@@ -1607,7 +1607,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapIconStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocationProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_TitleProperty(void**) noexcept = 0;
@@ -1616,14 +1616,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapIconStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CollisionBehaviorDesiredProperty(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapInputEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1631,7 +1631,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapItemsControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_ItemsSource(void*) noexcept = 0;
@@ -1642,7 +1642,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapItemsControlStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemsSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ItemsProperty(void**) noexcept = 0;
@@ -1651,7 +1651,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapLayer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapTabIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MapTabIndex(int32_t) noexcept = 0;
@@ -1663,14 +1663,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapLayerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapLayerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MapTabIndexProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_VisibleProperty(void**) noexcept = 0;
@@ -1679,20 +1679,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapModel3D>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapModel3DFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapModel3DStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFrom3MFAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFrom3MFWithShadingOptionAsync(void*, int32_t, void**) noexcept = 0;
@@ -1700,7 +1700,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapPolygon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
             virtual int32_t __stdcall put_Path(void*) noexcept = 0;
@@ -1716,14 +1716,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapPolygon2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Paths(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapPolygonStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PathProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StrokeThicknessProperty(void**) noexcept = 0;
@@ -1732,7 +1732,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapPolyline>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
             virtual int32_t __stdcall put_Path(void*) noexcept = 0;
@@ -1746,7 +1746,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapPolylineStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PathProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_StrokeDashedProperty(void**) noexcept = 0;
@@ -1754,7 +1754,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapRightTappedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Point*) noexcept = 0;
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
@@ -1762,7 +1762,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapRouteView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RouteColor(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_RouteColor(struct struct_Windows_UI_Color) noexcept = 0;
@@ -1773,14 +1773,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapRouteViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithMapRoute(void*, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapScene>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetCamera(void**) noexcept = 0;
             virtual int32_t __stdcall add_TargetCameraChanged(void*, winrt::event_token*) noexcept = 0;
@@ -1789,7 +1789,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapSceneStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromBoundingBox(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromBoundingBoxWithHeadingAndPitch(void*, double, double, void**) noexcept = 0;
@@ -1804,13 +1804,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapStyleSheet>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapStyleSheetEntriesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Area(void**) noexcept = 0;
             virtual int32_t __stdcall get_Airport(void**) noexcept = 0;
@@ -1880,7 +1880,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapStyleSheetEntryStatesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Disabled(void**) noexcept = 0;
             virtual int32_t __stdcall get_Hover(void**) noexcept = 0;
@@ -1889,7 +1889,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapStyleSheetStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Aerial(void**) noexcept = 0;
             virtual int32_t __stdcall AerialWithOverlay(void**) noexcept = 0;
@@ -1904,21 +1904,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTargetCameraChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Camera(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTargetCameraChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeReason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileBitmapRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelData(void**) noexcept = 0;
             virtual int32_t __stdcall put_PixelData(void*) noexcept = 0;
@@ -1927,14 +1927,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileBitmapRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileBitmapRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_X(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Y(int32_t*) noexcept = 0;
@@ -1944,27 +1944,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileBitmapRequestedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameIndex(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileDataSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileDataSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_DataSource(void*) noexcept = 0;
@@ -1992,7 +1992,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnimationState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AutoPlay(bool*) noexcept = 0;
@@ -2008,7 +2008,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithDataSource(void*, void*, void**, void**) noexcept = 0;
@@ -2019,7 +2019,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataSourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_LayerProperty(void**) noexcept = 0;
@@ -2036,7 +2036,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileSourceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnimationStateProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_AutoPlayProperty(void**) noexcept = 0;
@@ -2046,7 +2046,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileUriRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall put_Uri(void*) noexcept = 0;
@@ -2055,14 +2055,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileUriRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileUriRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_X(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Y(int32_t*) noexcept = 0;
@@ -2072,14 +2072,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IMapTileUriRequestedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FrameIndex(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IStreetsideExperience>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AddressTextVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AddressTextVisible(bool) noexcept = 0;
@@ -2097,7 +2097,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IStreetsideExperienceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithPanorama(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithPanoramaHeadingPitchAndFieldOfView(void*, double, double, double, void**) noexcept = 0;
@@ -2105,14 +2105,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IStreetsidePanorama>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Location(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Controls::Maps::IStreetsidePanoramaStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindNearbyWithLocationAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindNearbyWithLocationAndRadiusAsync(void*, double, void**) noexcept = 0;
@@ -2123,7 +2123,7 @@ namespace winrt::impl
     {
         auto BitmapRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::CustomMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileBitmapRequestedEventArgs> const& handler) const;
         using BitmapRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::ICustomMapTileDataSource, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::ICustomMapTileDataSource>::remove_BitmapRequested>;
-        [[nodiscard]] BitmapRequested_revoker BitmapRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::CustomMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileBitmapRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto BitmapRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::CustomMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileBitmapRequestedEventArgs> const& handler) const;
         auto BitmapRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::Maps::ICustomMapTileDataSource>
@@ -2149,7 +2149,7 @@ namespace winrt::impl
         auto AllowCaching(bool value) const;
         auto UriRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::HttpMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileUriRequestedEventArgs> const& handler) const;
         using UriRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IHttpMapTileDataSource, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IHttpMapTileDataSource>::remove_UriRequested>;
-        [[nodiscard]] UriRequested_revoker UriRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::HttpMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileUriRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto UriRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::HttpMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileUriRequestedEventArgs> const& handler) const;
         auto UriRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::Maps::IHttpMapTileDataSource>
@@ -2173,7 +2173,7 @@ namespace winrt::impl
         auto UriFormatString(param::hstring const& value) const;
         auto UriRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::LocalMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileUriRequestedEventArgs> const& handler) const;
         using UriRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::ILocalMapTileDataSource, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::ILocalMapTileDataSource>::remove_UriRequested>;
-        [[nodiscard]] UriRequested_revoker UriRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::LocalMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileUriRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto UriRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::LocalMapTileDataSource, winrt::Windows::UI::Xaml::Controls::Maps::MapTileUriRequestedEventArgs> const& handler) const;
         auto UriRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::Maps::ILocalMapTileDataSource>
@@ -2341,39 +2341,39 @@ namespace winrt::impl
         [[nodiscard]] auto TileSources() const;
         auto CenterChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CenterChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_CenterChanged>;
-        [[nodiscard]] CenterChanged_revoker CenterChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CenterChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CenterChanged(winrt::event_token const& token) const noexcept;
         auto HeadingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using HeadingChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_HeadingChanged>;
-        [[nodiscard]] HeadingChanged_revoker HeadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto HeadingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto HeadingChanged(winrt::event_token const& token) const noexcept;
         auto LoadingStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using LoadingStatusChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_LoadingStatusChanged>;
-        [[nodiscard]] LoadingStatusChanged_revoker LoadingStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto LoadingStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto LoadingStatusChanged(winrt::event_token const& token) const noexcept;
         auto MapDoubleTapped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
         using MapDoubleTapped_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_MapDoubleTapped>;
-        [[nodiscard]] MapDoubleTapped_revoker MapDoubleTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
+        [[nodiscard]] auto MapDoubleTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
         auto MapDoubleTapped(winrt::event_token const& token) const noexcept;
         auto MapHolding(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
         using MapHolding_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_MapHolding>;
-        [[nodiscard]] MapHolding_revoker MapHolding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
+        [[nodiscard]] auto MapHolding(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
         auto MapHolding(winrt::event_token const& token) const noexcept;
         auto MapTapped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
         using MapTapped_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_MapTapped>;
-        [[nodiscard]] MapTapped_revoker MapTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
+        [[nodiscard]] auto MapTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapInputEventArgs> const& handler) const;
         auto MapTapped(winrt::event_token const& token) const noexcept;
         auto PitchChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using PitchChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_PitchChanged>;
-        [[nodiscard]] PitchChanged_revoker PitchChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto PitchChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto PitchChanged(winrt::event_token const& token) const noexcept;
         auto TransformOriginChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using TransformOriginChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_TransformOriginChanged>;
-        [[nodiscard]] TransformOriginChanged_revoker TransformOriginChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto TransformOriginChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto TransformOriginChanged(winrt::event_token const& token) const noexcept;
         auto ZoomLevelChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ZoomLevelChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl>::remove_ZoomLevelChanged>;
-        [[nodiscard]] ZoomLevelChanged_revoker ZoomLevelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ZoomLevelChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ZoomLevelChanged(winrt::event_token const& token) const noexcept;
         auto FindMapElementsAtOffset(winrt::Windows::Foundation::Point const& offset) const;
         auto GetLocationFromOffset(winrt::Windows::Foundation::Point const& offset, winrt::Windows::Devices::Geolocation::Geopoint& location) const;
@@ -2414,31 +2414,31 @@ namespace winrt::impl
         auto CustomExperience(winrt::Windows::UI::Xaml::Controls::Maps::MapCustomExperience const& value) const;
         auto MapElementClick(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementClickEventArgs> const& handler) const;
         using MapElementClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2>::remove_MapElementClick>;
-        [[nodiscard]] MapElementClick_revoker MapElementClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementClickEventArgs> const& handler) const;
+        [[nodiscard]] auto MapElementClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementClickEventArgs> const& handler) const;
         auto MapElementClick(winrt::event_token const& token) const noexcept;
         auto MapElementPointerEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementPointerEnteredEventArgs> const& handler) const;
         using MapElementPointerEntered_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2>::remove_MapElementPointerEntered>;
-        [[nodiscard]] MapElementPointerEntered_revoker MapElementPointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementPointerEnteredEventArgs> const& handler) const;
+        [[nodiscard]] auto MapElementPointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementPointerEnteredEventArgs> const& handler) const;
         auto MapElementPointerEntered(winrt::event_token const& token) const noexcept;
         auto MapElementPointerExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementPointerExitedEventArgs> const& handler) const;
         using MapElementPointerExited_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2>::remove_MapElementPointerExited>;
-        [[nodiscard]] MapElementPointerExited_revoker MapElementPointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementPointerExitedEventArgs> const& handler) const;
+        [[nodiscard]] auto MapElementPointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapElementPointerExitedEventArgs> const& handler) const;
         auto MapElementPointerExited(winrt::event_token const& token) const noexcept;
         auto ActualCameraChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapActualCameraChangedEventArgs> const& handler) const;
         using ActualCameraChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2>::remove_ActualCameraChanged>;
-        [[nodiscard]] ActualCameraChanged_revoker ActualCameraChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapActualCameraChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ActualCameraChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapActualCameraChangedEventArgs> const& handler) const;
         auto ActualCameraChanged(winrt::event_token const& token) const noexcept;
         auto ActualCameraChanging(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapActualCameraChangingEventArgs> const& handler) const;
         using ActualCameraChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2>::remove_ActualCameraChanging>;
-        [[nodiscard]] ActualCameraChanging_revoker ActualCameraChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapActualCameraChangingEventArgs> const& handler) const;
+        [[nodiscard]] auto ActualCameraChanging(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapActualCameraChangingEventArgs> const& handler) const;
         auto ActualCameraChanging(winrt::event_token const& token) const noexcept;
         auto TargetCameraChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapTargetCameraChangedEventArgs> const& handler) const;
         using TargetCameraChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2>::remove_TargetCameraChanged>;
-        [[nodiscard]] TargetCameraChanged_revoker TargetCameraChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapTargetCameraChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TargetCameraChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapTargetCameraChangedEventArgs> const& handler) const;
         auto TargetCameraChanged(winrt::event_token const& token) const noexcept;
         auto CustomExperienceChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapCustomExperienceChangedEventArgs> const& handler) const;
         using CustomExperienceChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl2>::remove_CustomExperienceChanged>;
-        [[nodiscard]] CustomExperienceChanged_revoker CustomExperienceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapCustomExperienceChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto CustomExperienceChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapCustomExperienceChangedEventArgs> const& handler) const;
         auto CustomExperienceChanged(winrt::event_token const& token) const noexcept;
         auto StartContinuousRotate(double rateInDegreesPerSecond) const;
         auto StopContinuousRotate() const;
@@ -2465,7 +2465,7 @@ namespace winrt::impl
     {
         auto MapRightTapped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapRightTappedEventArgs> const& handler) const;
         using MapRightTapped_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl3, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl3>::remove_MapRightTapped>;
-        [[nodiscard]] MapRightTapped_revoker MapRightTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapRightTappedEventArgs> const& handler) const;
+        [[nodiscard]] auto MapRightTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapRightTappedEventArgs> const& handler) const;
         auto MapRightTapped(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl3>
@@ -2496,7 +2496,7 @@ namespace winrt::impl
         auto ViewPadding(winrt::Windows::UI::Xaml::Thickness const& value) const;
         auto MapContextRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapContextRequestedEventArgs> const& handler) const;
         using MapContextRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl5, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControl5>::remove_MapContextRequested>;
-        [[nodiscard]] MapContextRequested_revoker MapContextRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapContextRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto MapContextRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapContextRequestedEventArgs> const& handler) const;
         auto MapContextRequested(winrt::event_token const& token) const noexcept;
         auto FindMapElementsAtOffset(winrt::Windows::Foundation::Point const& offset, double radius) const;
         auto GetLocationFromOffset(winrt::Windows::Foundation::Point const& offset, winrt::Windows::Devices::Geolocation::AltitudeReferenceSystem const& desiredReferenceSystem, winrt::Windows::Devices::Geolocation::Geopoint& location) const;
@@ -2584,19 +2584,19 @@ namespace winrt::impl
     {
         auto BusinessLandmarkClick(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkClickEventArgs> const& value) const;
         using BusinessLandmarkClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper>::remove_BusinessLandmarkClick>;
-        [[nodiscard]] BusinessLandmarkClick_revoker BusinessLandmarkClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkClickEventArgs> const& value) const;
+        [[nodiscard]] auto BusinessLandmarkClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkClickEventArgs> const& value) const;
         auto BusinessLandmarkClick(winrt::event_token const& token) const noexcept;
         auto TransitFeatureClick(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeatureClickEventArgs> const& value) const;
         using TransitFeatureClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper>::remove_TransitFeatureClick>;
-        [[nodiscard]] TransitFeatureClick_revoker TransitFeatureClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeatureClickEventArgs> const& value) const;
+        [[nodiscard]] auto TransitFeatureClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeatureClickEventArgs> const& value) const;
         auto TransitFeatureClick(winrt::event_token const& token) const noexcept;
         auto BusinessLandmarkRightTapped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkRightTappedEventArgs> const& value) const;
         using BusinessLandmarkRightTapped_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper>::remove_BusinessLandmarkRightTapped>;
-        [[nodiscard]] BusinessLandmarkRightTapped_revoker BusinessLandmarkRightTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkRightTappedEventArgs> const& value) const;
+        [[nodiscard]] auto BusinessLandmarkRightTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkRightTappedEventArgs> const& value) const;
         auto BusinessLandmarkRightTapped(winrt::event_token const& token) const noexcept;
         auto TransitFeatureRightTapped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeatureRightTappedEventArgs> const& value) const;
         using TransitFeatureRightTapped_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper>::remove_TransitFeatureRightTapped>;
-        [[nodiscard]] TransitFeatureRightTapped_revoker TransitFeatureRightTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeatureRightTappedEventArgs> const& value) const;
+        [[nodiscard]] auto TransitFeatureRightTapped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeatureRightTappedEventArgs> const& value) const;
         auto TransitFeatureRightTapped(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper>
@@ -2608,19 +2608,19 @@ namespace winrt::impl
     {
         auto BusinessLandmarkPointerEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkPointerEnteredEventArgs> const& value) const;
         using BusinessLandmarkPointerEntered_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2>::remove_BusinessLandmarkPointerEntered>;
-        [[nodiscard]] BusinessLandmarkPointerEntered_revoker BusinessLandmarkPointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkPointerEnteredEventArgs> const& value) const;
+        [[nodiscard]] auto BusinessLandmarkPointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkPointerEnteredEventArgs> const& value) const;
         auto BusinessLandmarkPointerEntered(winrt::event_token const& token) const noexcept;
         auto TransitFeaturePointerEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeaturePointerEnteredEventArgs> const& value) const;
         using TransitFeaturePointerEntered_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2>::remove_TransitFeaturePointerEntered>;
-        [[nodiscard]] TransitFeaturePointerEntered_revoker TransitFeaturePointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeaturePointerEnteredEventArgs> const& value) const;
+        [[nodiscard]] auto TransitFeaturePointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeaturePointerEnteredEventArgs> const& value) const;
         auto TransitFeaturePointerEntered(winrt::event_token const& token) const noexcept;
         auto BusinessLandmarkPointerExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkPointerExitedEventArgs> const& value) const;
         using BusinessLandmarkPointerExited_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2>::remove_BusinessLandmarkPointerExited>;
-        [[nodiscard]] BusinessLandmarkPointerExited_revoker BusinessLandmarkPointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkPointerExitedEventArgs> const& value) const;
+        [[nodiscard]] auto BusinessLandmarkPointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlBusinessLandmarkPointerExitedEventArgs> const& value) const;
         auto BusinessLandmarkPointerExited(winrt::event_token const& token) const noexcept;
         auto TransitFeaturePointerExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeaturePointerExitedEventArgs> const& value) const;
         using TransitFeaturePointerExited_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2>::remove_TransitFeaturePointerExited>;
-        [[nodiscard]] TransitFeaturePointerExited_revoker TransitFeaturePointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeaturePointerExitedEventArgs> const& value) const;
+        [[nodiscard]] auto TransitFeaturePointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapControl, winrt::Windows::UI::Xaml::Controls::Maps::MapControlTransitFeaturePointerExitedEventArgs> const& value) const;
         auto TransitFeaturePointerExited(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::Maps::IMapControlDataHelper2>
@@ -2981,19 +2981,19 @@ namespace winrt::impl
         auto MapElements(param::vector<winrt::Windows::UI::Xaml::Controls::Maps::MapElement> const& value) const;
         auto MapElementClick(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerClickEventArgs> const& handler) const;
         using MapElementClick_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer>::remove_MapElementClick>;
-        [[nodiscard]] MapElementClick_revoker MapElementClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerClickEventArgs> const& handler) const;
+        [[nodiscard]] auto MapElementClick(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerClickEventArgs> const& handler) const;
         auto MapElementClick(winrt::event_token const& token) const noexcept;
         auto MapElementPointerEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerPointerEnteredEventArgs> const& handler) const;
         using MapElementPointerEntered_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer>::remove_MapElementPointerEntered>;
-        [[nodiscard]] MapElementPointerEntered_revoker MapElementPointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerPointerEnteredEventArgs> const& handler) const;
+        [[nodiscard]] auto MapElementPointerEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerPointerEnteredEventArgs> const& handler) const;
         auto MapElementPointerEntered(winrt::event_token const& token) const noexcept;
         auto MapElementPointerExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerPointerExitedEventArgs> const& handler) const;
         using MapElementPointerExited_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer>::remove_MapElementPointerExited>;
-        [[nodiscard]] MapElementPointerExited_revoker MapElementPointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerPointerExitedEventArgs> const& handler) const;
+        [[nodiscard]] auto MapElementPointerExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerPointerExitedEventArgs> const& handler) const;
         auto MapElementPointerExited(winrt::event_token const& token) const noexcept;
         auto MapContextRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerContextRequestedEventArgs> const& handler) const;
         using MapContextRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer>::remove_MapContextRequested>;
-        [[nodiscard]] MapContextRequested_revoker MapContextRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerContextRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto MapContextRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayer, winrt::Windows::UI::Xaml::Controls::Maps::MapElementsLayerContextRequestedEventArgs> const& handler) const;
         auto MapContextRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::Maps::IMapElementsLayer>
@@ -3296,7 +3296,7 @@ namespace winrt::impl
         [[nodiscard]] auto TargetCamera() const;
         auto TargetCameraChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapScene, winrt::Windows::UI::Xaml::Controls::Maps::MapTargetCameraChangedEventArgs> const& handler) const;
         using TargetCameraChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Controls::Maps::IMapScene, &impl::abi_t<winrt::Windows::UI::Xaml::Controls::Maps::IMapScene>::remove_TargetCameraChanged>;
-        [[nodiscard]] TargetCameraChanged_revoker TargetCameraChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapScene, winrt::Windows::UI::Xaml::Controls::Maps::MapTargetCameraChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TargetCameraChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Controls::Maps::MapScene, winrt::Windows::UI::Xaml::Controls::Maps::MapTargetCameraChangedEventArgs> const& handler) const;
         auto TargetCameraChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Controls::Maps::IMapScene>

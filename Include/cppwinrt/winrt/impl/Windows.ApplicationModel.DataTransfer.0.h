@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,16 +9,16 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
 {
@@ -378,7 +378,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::DataTransfer::TargetApplicationChosenEventArgs>{ using type = winrt::Windows::ApplicationModel::DataTransfer::ITargetApplicationChosenEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IClipboardContentOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsRoamable(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsRoamable(bool) noexcept = 0;
@@ -390,13 +390,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IClipboardHistoryChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IClipboardHistoryItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
@@ -405,7 +405,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IClipboardHistoryItemsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Items(void**) noexcept = 0;
@@ -413,7 +413,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetContent(void**) noexcept = 0;
             virtual int32_t __stdcall SetContent(void*) noexcept = 0;
@@ -425,7 +425,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetHistoryItemsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ClearHistory(bool*) noexcept = 0;
@@ -444,7 +444,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetView(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -468,7 +468,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetApplicationLink(void*) noexcept = 0;
             virtual int32_t __stdcall SetWebLink(void*) noexcept = 0;
@@ -476,7 +476,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ShareCompleted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ShareCompleted(winrt::event_token) noexcept = 0;
@@ -484,7 +484,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ShareCanceled(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ShareCanceled(winrt::event_token) noexcept = 0;
@@ -492,7 +492,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySet>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -509,7 +509,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySet2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentSourceWebLink(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContentSourceWebLink(void*) noexcept = 0;
@@ -525,7 +525,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySet3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnterpriseId(void**) noexcept = 0;
             virtual int32_t __stdcall put_EnterpriseId(void*) noexcept = 0;
@@ -533,7 +533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySet4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentSourceUserActivityJson(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContentSourceUserActivityJson(void*) noexcept = 0;
@@ -541,7 +541,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySetView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
@@ -553,7 +553,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySetView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PackageFamilyName(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContentSourceWebLink(void**) noexcept = 0;
@@ -564,28 +564,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySetView3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnterpriseId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySetView4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentSourceUserActivityJson(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackagePropertySetView5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFromRoamingClipboard(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackageView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
             virtual int32_t __stdcall get_RequestedOperation(uint32_t*) noexcept = 0;
@@ -605,7 +605,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackageView2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetApplicationLinkAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetWebLinkAsync(void**) noexcept = 0;
@@ -613,7 +613,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackageView3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RequestAccessWithEnterpriseIdAsync(void*, void**) noexcept = 0;
@@ -622,21 +622,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataPackageView4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetAcceptedFormatId(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataProviderDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataProviderRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FormatId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Deadline(int64_t*) noexcept = 0;
@@ -646,7 +646,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall put_Data(void*) noexcept = 0;
@@ -657,21 +657,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_DataRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_DataRequested(winrt::event_token) noexcept = 0;
@@ -681,7 +681,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ShareProvidersRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ShareProvidersRequested(winrt::event_token) noexcept = 0;
@@ -689,7 +689,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowShareUI() noexcept = 0;
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
@@ -697,21 +697,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowShareUIWithOptions(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IHtmlFormatHelperStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStaticFragment(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateHtmlFormat(void*, void**) noexcept = 0;
@@ -719,28 +719,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IOperationCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Operation(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IOperationCompletedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AcceptedFormatId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IShareCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShareTarget(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IShareProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayIcon(void**) noexcept = 0;
@@ -751,14 +751,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IShareProviderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, struct struct_Windows_UI_Color, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IShareProviderOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall get_Provider(void**) noexcept = 0;
@@ -767,7 +767,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IShareProvidersRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Providers(void**) noexcept = 0;
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
@@ -776,7 +776,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IShareTargetInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppUserModelId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ShareProvider(void**) noexcept = 0;
@@ -784,7 +784,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IShareUIOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Theme(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Theme(int32_t) noexcept = 0;
@@ -794,7 +794,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::ISharedStorageAccessManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddFile(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RedeemTokenForFileAsync(void*, void**) noexcept = 0;
@@ -803,7 +803,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IStandardDataFormatsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
@@ -815,7 +815,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IStandardDataFormatsStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebLink(void**) noexcept = 0;
             virtual int32_t __stdcall get_ApplicationLink(void**) noexcept = 0;
@@ -823,28 +823,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::IStandardDataFormatsStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserActivityJsonArray(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::ITargetApplicationChosenEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ApplicationName(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::DataProviderHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::ShareProviderHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -901,7 +901,7 @@ namespace winrt::impl
         auto Clear() const;
         auto ContentChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ContentChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics>::remove_ContentChanged>;
-        [[nodiscard]] ContentChanged_revoker ContentChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ContentChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ContentChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics>
@@ -920,15 +920,15 @@ namespace winrt::impl
         auto SetContentWithOptions(winrt::Windows::ApplicationModel::DataTransfer::DataPackage const& content, winrt::Windows::ApplicationModel::DataTransfer::ClipboardContentOptions const& options) const;
         auto HistoryChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::DataTransfer::ClipboardHistoryChangedEventArgs> const& handler) const;
         using HistoryChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics2, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics2>::remove_HistoryChanged>;
-        [[nodiscard]] HistoryChanged_revoker HistoryChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::DataTransfer::ClipboardHistoryChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto HistoryChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::ApplicationModel::DataTransfer::ClipboardHistoryChangedEventArgs> const& handler) const;
         auto HistoryChanged(winrt::event_token const& token) const noexcept;
         auto RoamingEnabledChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using RoamingEnabledChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics2, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics2>::remove_RoamingEnabledChanged>;
-        [[nodiscard]] RoamingEnabledChanged_revoker RoamingEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto RoamingEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto RoamingEnabledChanged(winrt::event_token const& token) const noexcept;
         auto HistoryEnabledChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using HistoryEnabledChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics2, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics2>::remove_HistoryEnabledChanged>;
-        [[nodiscard]] HistoryEnabledChanged_revoker HistoryEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto HistoryEnabledChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto HistoryEnabledChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::DataTransfer::IClipboardStatics2>
@@ -944,11 +944,11 @@ namespace winrt::impl
         auto RequestedOperation(winrt::Windows::ApplicationModel::DataTransfer::DataPackageOperation const& value) const;
         auto OperationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::ApplicationModel::DataTransfer::OperationCompletedEventArgs> const& handler) const;
         using OperationCompleted_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage>::remove_OperationCompleted>;
-        [[nodiscard]] OperationCompleted_revoker OperationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::ApplicationModel::DataTransfer::OperationCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto OperationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::ApplicationModel::DataTransfer::OperationCompletedEventArgs> const& handler) const;
         auto OperationCompleted(winrt::event_token const& token) const noexcept;
         auto Destroyed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Destroyed_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage>::remove_Destroyed>;
-        [[nodiscard]] Destroyed_revoker Destroyed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Destroyed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Destroyed(winrt::event_token const& token) const noexcept;
         auto SetData(param::hstring const& formatId, winrt::Windows::Foundation::IInspectable const& value) const;
         auto SetDataProvider(param::hstring const& formatId, winrt::Windows::ApplicationModel::DataTransfer::DataProviderHandler const& delayRenderer) const;
@@ -980,7 +980,7 @@ namespace winrt::impl
     {
         auto ShareCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::ApplicationModel::DataTransfer::ShareCompletedEventArgs> const& handler) const;
         using ShareCompleted_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage3, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage3>::remove_ShareCompleted>;
-        [[nodiscard]] ShareCompleted_revoker ShareCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::ApplicationModel::DataTransfer::ShareCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto ShareCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::ApplicationModel::DataTransfer::ShareCompletedEventArgs> const& handler) const;
         auto ShareCompleted(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage3>
@@ -992,7 +992,7 @@ namespace winrt::impl
     {
         auto ShareCanceled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ShareCanceled_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage4, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage4>::remove_ShareCanceled>;
-        [[nodiscard]] ShareCanceled_revoker ShareCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ShareCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataPackage, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ShareCanceled(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::DataTransfer::IDataPackage4>
@@ -1219,11 +1219,11 @@ namespace winrt::impl
     {
         auto DataRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::DataRequestedEventArgs> const& handler) const;
         using DataRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager>::remove_DataRequested>;
-        [[nodiscard]] DataRequested_revoker DataRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::DataRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto DataRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::DataRequestedEventArgs> const& handler) const;
         auto DataRequested(winrt::event_token const& token) const noexcept;
         auto TargetApplicationChosen(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::TargetApplicationChosenEventArgs> const& handler) const;
         using TargetApplicationChosen_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager>::remove_TargetApplicationChosen>;
-        [[nodiscard]] TargetApplicationChosen_revoker TargetApplicationChosen(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::TargetApplicationChosenEventArgs> const& handler) const;
+        [[nodiscard]] auto TargetApplicationChosen(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::TargetApplicationChosenEventArgs> const& handler) const;
         auto TargetApplicationChosen(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager>
@@ -1235,7 +1235,7 @@ namespace winrt::impl
     {
         auto ShareProvidersRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::ShareProvidersRequestedEventArgs> const& handler) const;
         using ShareProvidersRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager2, &impl::abi_t<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager2>::remove_ShareProvidersRequested>;
-        [[nodiscard]] ShareProvidersRequested_revoker ShareProvidersRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::ShareProvidersRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto ShareProvidersRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::DataTransfer::DataTransferManager, winrt::Windows::ApplicationModel::DataTransfer::ShareProvidersRequestedEventArgs> const& handler) const;
         auto ShareProvidersRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::DataTransfer::IDataTransferManager2>

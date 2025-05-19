@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -200,7 +200,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Data::Xml::Dom::XmlText>{ using type = winrt::Windows::Data::Xml::Dom::IXmlText; };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IDtdEntity>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PublicId(void**) noexcept = 0;
             virtual int32_t __stdcall get_SystemId(void**) noexcept = 0;
@@ -209,7 +209,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IDtdNotation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PublicId(void**) noexcept = 0;
             virtual int32_t __stdcall get_SystemId(void**) noexcept = 0;
@@ -217,7 +217,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlAttribute>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Specified(bool*) noexcept = 0;
@@ -227,13 +227,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlCDataSection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlCharacterData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall put_Data(void*) noexcept = 0;
@@ -247,13 +247,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlComment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlDocument>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Doctype(void**) noexcept = 0;
             virtual int32_t __stdcall get_Implementation(void**) noexcept = 0;
@@ -276,13 +276,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlDocumentFragment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlDocumentIO>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadXml(void*) noexcept = 0;
             virtual int32_t __stdcall LoadXmlWithSettings(void*, void*) noexcept = 0;
@@ -291,7 +291,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlDocumentIO2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadXmlFromBuffer(void*) noexcept = 0;
             virtual int32_t __stdcall LoadXmlFromBufferWithSettings(void*, void*) noexcept = 0;
@@ -299,7 +299,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlDocumentStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadFromUriAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall LoadFromUriWithSettingsAsync(void*, void*, void**) noexcept = 0;
@@ -309,7 +309,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlDocumentType>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Entities(void**) noexcept = 0;
@@ -318,14 +318,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlDomImplementation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall HasFeature(void*, void*, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TagName(void**) noexcept = 0;
             virtual int32_t __stdcall GetAttribute(void*, void**) noexcept = 0;
@@ -344,13 +344,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlEntityReference>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlLoadSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxElementDepth(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MaxElementDepth(uint32_t) noexcept = 0;
@@ -366,7 +366,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlNamedNodeMap>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Length(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall Item(uint32_t, void**) noexcept = 0;
@@ -380,7 +380,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlNode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NodeValue(void**) noexcept = 0;
             virtual int32_t __stdcall put_NodeValue(void*) noexcept = 0;
@@ -409,7 +409,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlNodeList>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Length(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall Item(uint32_t, void**) noexcept = 0;
@@ -417,7 +417,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlNodeSelector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectSingleNode(void*, void**) noexcept = 0;
             virtual int32_t __stdcall SelectNodes(void*, void**) noexcept = 0;
@@ -427,7 +427,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlNodeSerializer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetXml(void**) noexcept = 0;
             virtual int32_t __stdcall get_InnerText(void**) noexcept = 0;
@@ -436,7 +436,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlProcessingInstruction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Target(void**) noexcept = 0;
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
@@ -445,7 +445,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Data::Xml::Dom::IXmlText>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SplitText(uint32_t, void**) noexcept = 0;
         };

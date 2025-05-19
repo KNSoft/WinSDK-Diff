@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -18,48 +18,50 @@ WINRT_EXPORT namespace winrt::Windows::Management::Setup
         template <typename F> DeploymentSessionHeartbeatRequested(F* function);
         template <typename O, typename M> DeploymentSessionHeartbeatRequested(O* object, M method);
         template <typename O, typename M> DeploymentSessionHeartbeatRequested(com_ptr<O>&& object, M method);
-        template <typename O, typename M> DeploymentSessionHeartbeatRequested(weak_ref<O>&& object, M method);
+        template <typename O, typename LM> DeploymentSessionHeartbeatRequested(weak_ref<O>&& object, LM&& lambda_or_method);
+        template <typename O, typename M> DeploymentSessionHeartbeatRequested(std::shared_ptr<O>&& object, M method);
+        template <typename O, typename LM> DeploymentSessionHeartbeatRequested(std::weak_ptr<O>&& object, LM&& lambda_or_method);
         auto operator()(winrt::Windows::Management::Setup::DeploymentSessionHeartbeatRequestedEventArgs const& eventArgs) const;
     };
-    struct __declspec(empty_bases) AgentProvisioningProgressReport : winrt::Windows::Management::Setup::IAgentProvisioningProgressReport
+    struct WINRT_IMPL_EMPTY_BASES AgentProvisioningProgressReport : winrt::Windows::Management::Setup::IAgentProvisioningProgressReport
     {
         AgentProvisioningProgressReport(std::nullptr_t) noexcept {}
         AgentProvisioningProgressReport(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Setup::IAgentProvisioningProgressReport(ptr, take_ownership_from_abi) {}
         AgentProvisioningProgressReport();
     };
-    struct __declspec(empty_bases) DeploymentSessionConnectionChangedEventArgs : winrt::Windows::Management::Setup::IDeploymentSessionConnectionChangedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES DeploymentSessionConnectionChangedEventArgs : winrt::Windows::Management::Setup::IDeploymentSessionConnectionChangedEventArgs
     {
         DeploymentSessionConnectionChangedEventArgs(std::nullptr_t) noexcept {}
         DeploymentSessionConnectionChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Setup::IDeploymentSessionConnectionChangedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DeploymentSessionHeartbeatRequestedEventArgs : winrt::Windows::Management::Setup::IDeploymentSessionHeartbeatRequestedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES DeploymentSessionHeartbeatRequestedEventArgs : winrt::Windows::Management::Setup::IDeploymentSessionHeartbeatRequestedEventArgs
     {
         DeploymentSessionHeartbeatRequestedEventArgs(std::nullptr_t) noexcept {}
         DeploymentSessionHeartbeatRequestedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Setup::IDeploymentSessionHeartbeatRequestedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DeploymentSessionStateChangedEventArgs : winrt::Windows::Management::Setup::IDeploymentSessionStateChangedEventArgs
+    struct WINRT_IMPL_EMPTY_BASES DeploymentSessionStateChangedEventArgs : winrt::Windows::Management::Setup::IDeploymentSessionStateChangedEventArgs
     {
         DeploymentSessionStateChangedEventArgs(std::nullptr_t) noexcept {}
         DeploymentSessionStateChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Setup::IDeploymentSessionStateChangedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) DeploymentWorkload : winrt::Windows::Management::Setup::IDeploymentWorkload
+    struct WINRT_IMPL_EMPTY_BASES DeploymentWorkload : winrt::Windows::Management::Setup::IDeploymentWorkload
     {
         DeploymentWorkload(std::nullptr_t) noexcept {}
         DeploymentWorkload(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Setup::IDeploymentWorkload(ptr, take_ownership_from_abi) {}
         explicit DeploymentWorkload(param::hstring const& id);
     };
-    struct __declspec(empty_bases) DeploymentWorkloadBatch : winrt::Windows::Management::Setup::IDeploymentWorkloadBatch
+    struct WINRT_IMPL_EMPTY_BASES DeploymentWorkloadBatch : winrt::Windows::Management::Setup::IDeploymentWorkloadBatch
     {
         DeploymentWorkloadBatch(std::nullptr_t) noexcept {}
         DeploymentWorkloadBatch(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Setup::IDeploymentWorkloadBatch(ptr, take_ownership_from_abi) {}
         explicit DeploymentWorkloadBatch(uint32_t id);
     };
-    struct __declspec(empty_bases) DevicePreparationExecutionContext : winrt::Windows::Management::Setup::IDevicePreparationExecutionContext
+    struct WINRT_IMPL_EMPTY_BASES DevicePreparationExecutionContext : winrt::Windows::Management::Setup::IDevicePreparationExecutionContext
     {
         DevicePreparationExecutionContext(std::nullptr_t) noexcept {}
         DevicePreparationExecutionContext(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Setup::IDevicePreparationExecutionContext(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) MachineProvisioningProgressReporter : winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter
+    struct WINRT_IMPL_EMPTY_BASES MachineProvisioningProgressReporter : winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter
     {
         MachineProvisioningProgressReporter(std::nullptr_t) noexcept {}
         MachineProvisioningProgressReporter(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Setup::IMachineProvisioningProgressReporter(ptr, take_ownership_from_abi) {}

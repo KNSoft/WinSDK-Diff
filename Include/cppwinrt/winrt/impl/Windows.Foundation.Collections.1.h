@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
     template <typename T>
-    struct __declspec(empty_bases) IIterable :
+    struct WINRT_IMPL_EMPTY_BASES IIterable :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IIterable<T>>
     {
@@ -19,7 +19,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IIterable(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     template <typename T>
-    struct __declspec(empty_bases) IIterator :
+    struct WINRT_IMPL_EMPTY_BASES IIterator :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IIterator<T>>
     {
@@ -35,7 +35,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         using reference = T;
     };
     template <typename K, typename V>
-    struct __declspec(empty_bases) IKeyValuePair :
+    struct WINRT_IMPL_EMPTY_BASES IKeyValuePair :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IKeyValuePair<K, V>>
     {
@@ -45,7 +45,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IKeyValuePair(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     template <typename K>
-    struct __declspec(empty_bases) IMapChangedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IMapChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IMapChangedEventArgs<K>>
     {
@@ -54,7 +54,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IMapChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     template <typename K, typename V>
-    struct __declspec(empty_bases) IMapView :
+    struct WINRT_IMPL_EMPTY_BASES IMapView :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IMapView<K, V>>,
         impl::require<winrt::Windows::Foundation::Collections::IMapView<K, V>, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Foundation::Collections::IKeyValuePair<K, V>>>
@@ -65,7 +65,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IMapView(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     template <typename K, typename V>
-    struct __declspec(empty_bases) IMap :
+    struct WINRT_IMPL_EMPTY_BASES IMap :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IMap<K, V>>,
         impl::require<winrt::Windows::Foundation::Collections::IMap<K, V>, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Foundation::Collections::IKeyValuePair<K, V>>>
@@ -76,7 +76,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IMap(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     template <typename K, typename V>
-    struct __declspec(empty_bases) IObservableMap :
+    struct WINRT_IMPL_EMPTY_BASES IObservableMap :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IObservableMap<K, V>>,
         impl::require<winrt::Windows::Foundation::Collections::IObservableMap<K, V>, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Foundation::Collections::IKeyValuePair<K, V>>, winrt::Windows::Foundation::Collections::IMap<K, V>>
@@ -87,7 +87,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IObservableMap(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     template <typename T>
-    struct __declspec(empty_bases) IObservableVector :
+    struct WINRT_IMPL_EMPTY_BASES IObservableVector :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IObservableVector<T>>,
         impl::require<winrt::Windows::Foundation::Collections::IObservableVector<T>, winrt::Windows::Foundation::Collections::IIterable<T>, winrt::Windows::Foundation::Collections::IVector<T>>
@@ -96,7 +96,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IObservableVector(std::nullptr_t = nullptr) noexcept {}
         IObservableVector(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IPropertySet :
+    struct WINRT_IMPL_EMPTY_BASES IPropertySet :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IPropertySet>,
         impl::require<winrt::Windows::Foundation::Collections::IPropertySet, winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Foundation::IInspectable>>, winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Foundation::IInspectable>, winrt::Windows::Foundation::Collections::IObservableMap<hstring, winrt::Windows::Foundation::IInspectable>>
@@ -104,7 +104,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IPropertySet(std::nullptr_t = nullptr) noexcept {}
         IPropertySet(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IVectorChangedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IVectorChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IVectorChangedEventArgs>
     {
@@ -112,7 +112,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IVectorChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     template <typename T>
-    struct __declspec(empty_bases) IVectorView :
+    struct WINRT_IMPL_EMPTY_BASES IVectorView :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IVectorView<T>>,
         impl::require<winrt::Windows::Foundation::Collections::IVectorView<T>, winrt::Windows::Foundation::Collections::IIterable<T>>
@@ -122,7 +122,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
         IVectorView(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     template <typename T>
-    struct __declspec(empty_bases) IVector :
+    struct WINRT_IMPL_EMPTY_BASES IVector :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<winrt::Windows::Foundation::Collections::IVector<T>>,
         impl::require<winrt::Windows::Foundation::Collections::IVector<T>, winrt::Windows::Foundation::Collections::IIterable<T>>

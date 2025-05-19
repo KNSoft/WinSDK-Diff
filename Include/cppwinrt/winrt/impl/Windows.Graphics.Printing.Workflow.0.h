@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -18,12 +18,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintTicket
 {
@@ -433,7 +433,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowXpsDataAvailableEventArgs>{ using type = winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowXpsDataAvailableEventArgs; };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowBackgroundSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SetupRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SetupRequested(winrt::event_token) noexcept = 0;
@@ -445,7 +445,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowBackgroundSetupRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetUserPrintTicketAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
@@ -455,7 +455,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceAppDisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall get_JobTitle(void**) noexcept = 0;
@@ -464,14 +464,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowConfiguration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AbortPrintFlow(int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowForegroundSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SetupRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SetupRequested(winrt::event_token) noexcept = 0;
@@ -483,7 +483,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowForegroundSetupRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetUserPrintTicketAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
@@ -492,14 +492,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobActivatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_JobStarting(void*, winrt::event_token*) noexcept = 0;
@@ -511,7 +511,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_JobIssueDetected(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_JobIssueDetected(winrt::event_token) noexcept = 0;
@@ -519,7 +519,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobIssueDetectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_JobIssueKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -533,7 +533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobNotificationEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrinterJob(void**) noexcept = 0;
@@ -542,7 +542,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobStartingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_Printer(void**) noexcept = 0;
@@ -552,7 +552,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobStartingEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsIppCompressionEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall DisableIppCompressionForJob() noexcept = 0;
@@ -562,14 +562,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrintWorkflowJobSession(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_PdlDataAvailable(void*, winrt::event_token*) noexcept = 0;
@@ -581,7 +581,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_VirtualPrinterUIDataAvailable(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_VirtualPrinterUIDataAvailable(winrt::event_token) noexcept = 0;
@@ -589,40 +589,40 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowObjectModelSourceFileContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowObjectModelSourceFileContentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowObjectModelTargetPackage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlConverter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConvertPdlAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlConverter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConvertPdlAsync(void*, void*, void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlDataAvailableEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrinterJob(void**) noexcept = 0;
@@ -632,7 +632,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlModificationRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrinterJob(void**) noexcept = 0;
@@ -647,7 +647,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlModificationRequestedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateJobOnPrinterWithAttributes(void*, void*, void*, int32_t, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateJobOnPrinterWithAttributesBuffer(void*, void*, void*, int32_t, int32_t, void**) noexcept = 0;
@@ -655,7 +655,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlSourceContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentType(void**) noexcept = 0;
             virtual int32_t __stdcall GetInputStream(void**) noexcept = 0;
@@ -664,7 +664,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlTargetStream>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetOutputStream(void**) noexcept = 0;
             virtual int32_t __stdcall CompleteStreamSubmission(int32_t) noexcept = 0;
@@ -672,7 +672,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_JobId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Printer(void**) noexcept = 0;
@@ -686,14 +686,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConvertPrintTicketToJobAttributes(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSourceContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetJobPrintTicketAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetSourceSpoolDataAsStreamContent(void**) noexcept = 0;
@@ -702,21 +702,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSpoolStreamContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetInputStream(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowStreamTarget>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetOutputStream(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSubmittedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Operation(void**) noexcept = 0;
             virtual int32_t __stdcall GetTarget(void*, void**) noexcept = 0;
@@ -725,7 +725,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSubmittedOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
@@ -734,7 +734,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowTarget>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetAsStream(void**) noexcept = 0;
             virtual int32_t __stdcall get_TargetAsXpsObjectModelPackage(void**) noexcept = 0;
@@ -742,21 +742,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrintWorkflowSession(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowUIActivatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrintWorkflowSession(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowUILauncher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsUILaunchEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall LaunchAndCompleteUIAsync(void**) noexcept = 0;
@@ -764,7 +764,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowVirtualPrinterDataAvailableEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_SourceContent(void**) noexcept = 0;
@@ -777,7 +777,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowVirtualPrinterSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Printer(void**) noexcept = 0;
@@ -788,14 +788,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowVirtualPrinterTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_VirtualPrinterSession(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowVirtualPrinterUIEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_Printer(void**) noexcept = 0;
@@ -806,7 +806,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowXpsDataAvailableEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Operation(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -817,11 +817,11 @@ namespace winrt::impl
     {
         auto SetupRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSetupRequestedEventArgs> const& setupEventHandler) const;
         using SetupRequested_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowBackgroundSession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowBackgroundSession>::remove_SetupRequested>;
-        [[nodiscard]] SetupRequested_revoker SetupRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSetupRequestedEventArgs> const& setupEventHandler) const;
+        [[nodiscard]] auto SetupRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSetupRequestedEventArgs> const& setupEventHandler) const;
         auto SetupRequested(winrt::event_token const& token) const noexcept;
         auto Submitted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowSubmittedEventArgs> const& submittedEventHandler) const;
         using Submitted_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowBackgroundSession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowBackgroundSession>::remove_Submitted>;
-        [[nodiscard]] Submitted_revoker Submitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowSubmittedEventArgs> const& submittedEventHandler) const;
+        [[nodiscard]] auto Submitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowSubmittedEventArgs> const& submittedEventHandler) const;
         auto Submitted(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;
@@ -867,11 +867,11 @@ namespace winrt::impl
     {
         auto SetupRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSetupRequestedEventArgs> const& setupEventHandler) const;
         using SetupRequested_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowForegroundSession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowForegroundSession>::remove_SetupRequested>;
-        [[nodiscard]] SetupRequested_revoker SetupRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSetupRequestedEventArgs> const& setupEventHandler) const;
+        [[nodiscard]] auto SetupRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSetupRequestedEventArgs> const& setupEventHandler) const;
         auto SetupRequested(winrt::event_token const& token) const noexcept;
         auto XpsDataAvailable(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowXpsDataAvailableEventArgs> const& xpsDataAvailableEventHandler) const;
         using XpsDataAvailable_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowForegroundSession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowForegroundSession>::remove_XpsDataAvailable>;
-        [[nodiscard]] XpsDataAvailable_revoker XpsDataAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowXpsDataAvailableEventArgs> const& xpsDataAvailableEventHandler) const;
+        [[nodiscard]] auto XpsDataAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowForegroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowXpsDataAvailableEventArgs> const& xpsDataAvailableEventHandler) const;
         auto XpsDataAvailable(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Status() const;
         auto Start() const;
@@ -906,11 +906,11 @@ namespace winrt::impl
         [[nodiscard]] auto Status() const;
         auto JobStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobStartingEventArgs> const& handler) const;
         using JobStarting_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession>::remove_JobStarting>;
-        [[nodiscard]] JobStarting_revoker JobStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobStartingEventArgs> const& handler) const;
+        [[nodiscard]] auto JobStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobStartingEventArgs> const& handler) const;
         auto JobStarting(winrt::event_token const& token) const noexcept;
         auto PdlModificationRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowPdlModificationRequestedEventArgs> const& handler) const;
         using PdlModificationRequested_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession>::remove_PdlModificationRequested>;
-        [[nodiscard]] PdlModificationRequested_revoker PdlModificationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowPdlModificationRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto PdlModificationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowPdlModificationRequestedEventArgs> const& handler) const;
         auto PdlModificationRequested(winrt::event_token const& token) const noexcept;
         auto Start() const;
     };
@@ -923,7 +923,7 @@ namespace winrt::impl
     {
         auto JobIssueDetected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobIssueDetectedEventArgs> const& handler) const;
         using JobIssueDetected_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession2, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession2>::remove_JobIssueDetected>;
-        [[nodiscard]] JobIssueDetected_revoker JobIssueDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobIssueDetectedEventArgs> const& handler) const;
+        [[nodiscard]] auto JobIssueDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobIssueDetectedEventArgs> const& handler) const;
         auto JobIssueDetected(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession2>
@@ -996,11 +996,11 @@ namespace winrt::impl
         [[nodiscard]] auto Status() const;
         auto PdlDataAvailable(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowPdlDataAvailableEventArgs> const& handler) const;
         using PdlDataAvailable_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession>::remove_PdlDataAvailable>;
-        [[nodiscard]] PdlDataAvailable_revoker PdlDataAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowPdlDataAvailableEventArgs> const& handler) const;
+        [[nodiscard]] auto PdlDataAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowPdlDataAvailableEventArgs> const& handler) const;
         auto PdlDataAvailable(winrt::event_token const& token) const noexcept;
         auto JobNotification(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobNotificationEventArgs> const& handler) const;
         using JobNotification_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession>::remove_JobNotification>;
-        [[nodiscard]] JobNotification_revoker JobNotification(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobNotificationEventArgs> const& handler) const;
+        [[nodiscard]] auto JobNotification(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobNotificationEventArgs> const& handler) const;
         auto JobNotification(winrt::event_token const& token) const noexcept;
         auto Start() const;
     };
@@ -1013,7 +1013,7 @@ namespace winrt::impl
     {
         auto VirtualPrinterUIDataAvailable(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterUIEventArgs> const& handler) const;
         using VirtualPrinterUIDataAvailable_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession2, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession2>::remove_VirtualPrinterUIDataAvailable>;
-        [[nodiscard]] VirtualPrinterUIDataAvailable_revoker VirtualPrinterUIDataAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterUIEventArgs> const& handler) const;
+        [[nodiscard]] auto VirtualPrinterUIDataAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowJobUISession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterUIEventArgs> const& handler) const;
         auto VirtualPrinterUIDataAvailable(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobUISession2>
@@ -1259,7 +1259,7 @@ namespace winrt::impl
         [[nodiscard]] auto Printer() const;
         auto VirtualPrinterDataAvailable(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterDataAvailableEventArgs> const& handler) const;
         using VirtualPrinterDataAvailable_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowVirtualPrinterSession, &impl::abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowVirtualPrinterSession>::remove_VirtualPrinterDataAvailable>;
-        [[nodiscard]] VirtualPrinterDataAvailable_revoker VirtualPrinterDataAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterDataAvailableEventArgs> const& handler) const;
+        [[nodiscard]] auto VirtualPrinterDataAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowVirtualPrinterDataAvailableEventArgs> const& handler) const;
         auto VirtualPrinterDataAvailable(winrt::event_token const& token) const noexcept;
         auto Start() const;
     };

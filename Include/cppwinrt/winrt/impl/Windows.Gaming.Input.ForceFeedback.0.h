@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -116,7 +116,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::Input::ForceFeedback::RampForceEffect>{ using type = winrt::Windows::Gaming::Input::ForceFeedback::IForceFeedbackEffect; };
     template <> struct abi<winrt::Windows::Gaming::Input::ForceFeedback::IConditionForceEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall SetParameters(winrt::Windows::Foundation::Numerics::float3, float, float, float, float, float, float) noexcept = 0;
@@ -124,14 +124,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::ForceFeedback::IConditionForceEffectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::ForceFeedback::IConstantForceEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetParameters(winrt::Windows::Foundation::Numerics::float3, int64_t) noexcept = 0;
             virtual int32_t __stdcall SetParametersWithEnvelope(winrt::Windows::Foundation::Numerics::float3, float, float, float, int64_t, int64_t, int64_t, int64_t, uint32_t) noexcept = 0;
@@ -139,7 +139,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::ForceFeedback::IForceFeedbackEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Gain(double*) noexcept = 0;
             virtual int32_t __stdcall put_Gain(double) noexcept = 0;
@@ -150,7 +150,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::ForceFeedback::IForceFeedbackMotor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AreEffectsPaused(bool*) noexcept = 0;
             virtual int32_t __stdcall get_MasterGain(double*) noexcept = 0;
@@ -169,7 +169,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::ForceFeedback::IPeriodicForceEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall SetParameters(winrt::Windows::Foundation::Numerics::float3, float, float, float, int64_t) noexcept = 0;
@@ -178,14 +178,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::ForceFeedback::IPeriodicForceEffectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Input::ForceFeedback::IRampForceEffect>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetParameters(winrt::Windows::Foundation::Numerics::float3, winrt::Windows::Foundation::Numerics::float3, int64_t) noexcept = 0;
             virtual int32_t __stdcall SetParametersWithEnvelope(winrt::Windows::Foundation::Numerics::float3, winrt::Windows::Foundation::Numerics::float3, float, float, float, int64_t, int64_t, int64_t, int64_t, uint32_t) noexcept = 0;

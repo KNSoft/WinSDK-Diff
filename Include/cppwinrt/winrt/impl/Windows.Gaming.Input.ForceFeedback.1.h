@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 #include "winrt/impl/Windows.Gaming.Input.ForceFeedback.0.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input::ForceFeedback
 {
-    struct __declspec(empty_bases) IConditionForceEffect :
+    struct WINRT_IMPL_EMPTY_BASES IConditionForceEffect :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IConditionForceEffect>,
         impl::require<winrt::Windows::Gaming::Input::ForceFeedback::IConditionForceEffect, winrt::Windows::Gaming::Input::ForceFeedback::IForceFeedbackEffect>
@@ -17,14 +17,14 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::Input::ForceFeedback
         IConditionForceEffect(std::nullptr_t = nullptr) noexcept {}
         IConditionForceEffect(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IConditionForceEffectFactory :
+    struct WINRT_IMPL_EMPTY_BASES IConditionForceEffectFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IConditionForceEffectFactory>
     {
         IConditionForceEffectFactory(std::nullptr_t = nullptr) noexcept {}
         IConditionForceEffectFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IConstantForceEffect :
+    struct WINRT_IMPL_EMPTY_BASES IConstantForceEffect :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IConstantForceEffect>,
         impl::require<winrt::Windows::Gaming::Input::ForceFeedback::IConstantForceEffect, winrt::Windows::Gaming::Input::ForceFeedback::IForceFeedbackEffect>
@@ -32,21 +32,21 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::Input::ForceFeedback
         IConstantForceEffect(std::nullptr_t = nullptr) noexcept {}
         IConstantForceEffect(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IForceFeedbackEffect :
+    struct WINRT_IMPL_EMPTY_BASES IForceFeedbackEffect :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IForceFeedbackEffect>
     {
         IForceFeedbackEffect(std::nullptr_t = nullptr) noexcept {}
         IForceFeedbackEffect(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IForceFeedbackMotor :
+    struct WINRT_IMPL_EMPTY_BASES IForceFeedbackMotor :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IForceFeedbackMotor>
     {
         IForceFeedbackMotor(std::nullptr_t = nullptr) noexcept {}
         IForceFeedbackMotor(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IPeriodicForceEffect :
+    struct WINRT_IMPL_EMPTY_BASES IPeriodicForceEffect :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IPeriodicForceEffect>,
         impl::require<winrt::Windows::Gaming::Input::ForceFeedback::IPeriodicForceEffect, winrt::Windows::Gaming::Input::ForceFeedback::IForceFeedbackEffect>
@@ -54,14 +54,14 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::Input::ForceFeedback
         IPeriodicForceEffect(std::nullptr_t = nullptr) noexcept {}
         IPeriodicForceEffect(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IPeriodicForceEffectFactory :
+    struct WINRT_IMPL_EMPTY_BASES IPeriodicForceEffectFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IPeriodicForceEffectFactory>
     {
         IPeriodicForceEffectFactory(std::nullptr_t = nullptr) noexcept {}
         IPeriodicForceEffectFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IRampForceEffect :
+    struct WINRT_IMPL_EMPTY_BASES IRampForceEffect :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IRampForceEffect>,
         impl::require<winrt::Windows::Gaming::Input::ForceFeedback::IRampForceEffect, winrt::Windows::Gaming::Input::ForceFeedback::IForceFeedbackEffect>

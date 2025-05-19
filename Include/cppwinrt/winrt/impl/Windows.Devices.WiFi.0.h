@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,8 +10,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking::Connectivity
 {
@@ -235,7 +235,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::WiFi::WiFiWpsConfigurationResult>{ using type = winrt::Windows::Devices::WiFi::IWiFiWpsConfigurationResult; };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiAdapter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAdapter(void**) noexcept = 0;
             virtual int32_t __stdcall ScanAsync(void**) noexcept = 0;
@@ -250,7 +250,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiAdapter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetWpsConfigurationAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ConnectWithPasswordCredentialAndSsidAndConnectionMethodAsync(void*, int32_t, void*, void*, int32_t, void**) noexcept = 0;
@@ -258,7 +258,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiAdapterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAllAdaptersAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -268,7 +268,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiAvailableNetwork>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uptime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Ssid(void**) noexcept = 0;
@@ -285,14 +285,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiConnectionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConnectionStatus(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiNetworkReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AvailableNetworks(void**) noexcept = 0;
@@ -300,7 +300,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiOnDemandHotspotConnectTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestedNetwork(void**) noexcept = 0;
             virtual int32_t __stdcall ReportError(int32_t) noexcept = 0;
@@ -310,14 +310,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiOnDemandHotspotConnectionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiOnDemandHotspotNetwork>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetProperties(void**) noexcept = 0;
             virtual int32_t __stdcall UpdateProperties(void*) noexcept = 0;
@@ -326,7 +326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiOnDemandHotspotNetworkProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayName(void*) noexcept = 0;
@@ -346,14 +346,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiOnDemandHotspotNetworkStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetOrCreateById(winrt::guid, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::WiFi::IWiFiWpsConfigurationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SupportedWpsKinds(void**) noexcept = 0;
@@ -367,7 +367,7 @@ namespace winrt::impl
         [[nodiscard]] auto NetworkReport() const;
         auto AvailableNetworksChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFi::WiFiAdapter, winrt::Windows::Foundation::IInspectable> const& args) const;
         using AvailableNetworksChanged_revoker = impl::event_revoker<winrt::Windows::Devices::WiFi::IWiFiAdapter, &impl::abi_t<winrt::Windows::Devices::WiFi::IWiFiAdapter>::remove_AvailableNetworksChanged>;
-        [[nodiscard]] AvailableNetworksChanged_revoker AvailableNetworksChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFi::WiFiAdapter, winrt::Windows::Foundation::IInspectable> const& args) const;
+        [[nodiscard]] auto AvailableNetworksChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::WiFi::WiFiAdapter, winrt::Windows::Foundation::IInspectable> const& args) const;
         auto AvailableNetworksChanged(winrt::event_token const& eventCookie) const noexcept;
         auto ConnectAsync(winrt::Windows::Devices::WiFi::WiFiAvailableNetwork const& availableNetwork, winrt::Windows::Devices::WiFi::WiFiReconnectionKind const& reconnectionKind) const;
         auto ConnectAsync(winrt::Windows::Devices::WiFi::WiFiAvailableNetwork const& availableNetwork, winrt::Windows::Devices::WiFi::WiFiReconnectionKind const& reconnectionKind, winrt::Windows::Security::Credentials::PasswordCredential const& passwordCredential) const;

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,22 +9,22 @@
 #include "winrt/impl/Windows.Perception.Spatial.Surfaces.1.h"
 WINRT_EXPORT namespace winrt::Windows::Perception::Spatial::Surfaces
 {
-    struct __declspec(empty_bases) SpatialSurfaceInfo : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceInfo
+    struct WINRT_IMPL_EMPTY_BASES SpatialSurfaceInfo : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceInfo
     {
         SpatialSurfaceInfo(std::nullptr_t) noexcept {}
         SpatialSurfaceInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceInfo(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SpatialSurfaceMesh : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMesh
+    struct WINRT_IMPL_EMPTY_BASES SpatialSurfaceMesh : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMesh
     {
         SpatialSurfaceMesh(std::nullptr_t) noexcept {}
         SpatialSurfaceMesh(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMesh(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SpatialSurfaceMeshBuffer : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshBuffer
+    struct WINRT_IMPL_EMPTY_BASES SpatialSurfaceMeshBuffer : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshBuffer
     {
         SpatialSurfaceMeshBuffer(std::nullptr_t) noexcept {}
         SpatialSurfaceMeshBuffer(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshBuffer(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) SpatialSurfaceMeshOptions : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshOptions
+    struct WINRT_IMPL_EMPTY_BASES SpatialSurfaceMeshOptions : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshOptions
     {
         SpatialSurfaceMeshOptions(std::nullptr_t) noexcept {}
         SpatialSurfaceMeshOptions(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceMeshOptions(ptr, take_ownership_from_abi) {}
@@ -33,7 +33,7 @@ WINRT_EXPORT namespace winrt::Windows::Perception::Spatial::Surfaces
         [[nodiscard]] static auto SupportedTriangleIndexFormats();
         [[nodiscard]] static auto SupportedVertexNormalFormats();
     };
-    struct __declspec(empty_bases) SpatialSurfaceObserver : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserver
+    struct WINRT_IMPL_EMPTY_BASES SpatialSurfaceObserver : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserver
     {
         SpatialSurfaceObserver(std::nullptr_t) noexcept {}
         SpatialSurfaceObserver(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Perception::Spatial::Surfaces::ISpatialSurfaceObserver(ptr, take_ownership_from_abi) {}

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Display::Core
 {
@@ -73,7 +73,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Display::Core::HdmiDisplayMode>{ using type = winrt::Windows::Graphics::Display::Core::IHdmiDisplayMode; };
     template <> struct abi<winrt::Windows::Graphics::Display::Core::IHdmiDisplayInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetSupportedDisplayModes(void**) noexcept = 0;
             virtual int32_t __stdcall GetCurrentDisplayMode(void**) noexcept = 0;
@@ -87,14 +87,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::Core::IHdmiDisplayInformationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Display::Core::IHdmiDisplayMode>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResolutionWidthInRawPixels(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ResolutionHeightInRawPixels(uint32_t*) noexcept = 0;
@@ -111,7 +111,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Display::Core::IHdmiDisplayMode2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDolbyVisionLowLatencySupported(bool*) noexcept = 0;
         };
@@ -127,7 +127,7 @@ namespace winrt::impl
         auto RequestSetCurrentDisplayModeAsync(winrt::Windows::Graphics::Display::Core::HdmiDisplayMode const& mode, winrt::Windows::Graphics::Display::Core::HdmiDisplayHdrOption const& hdrOption, winrt::Windows::Graphics::Display::Core::HdmiDisplayHdr2086Metadata const& hdrMetadata) const;
         auto DisplayModesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::Core::HdmiDisplayInformation, winrt::Windows::Foundation::IInspectable> const& value) const;
         using DisplayModesChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Display::Core::IHdmiDisplayInformation, &impl::abi_t<winrt::Windows::Graphics::Display::Core::IHdmiDisplayInformation>::remove_DisplayModesChanged>;
-        [[nodiscard]] DisplayModesChanged_revoker DisplayModesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::Core::HdmiDisplayInformation, winrt::Windows::Foundation::IInspectable> const& value) const;
+        [[nodiscard]] auto DisplayModesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Display::Core::HdmiDisplayInformation, winrt::Windows::Foundation::IInspectable> const& value) const;
         auto DisplayModesChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Display::Core::IHdmiDisplayInformation>

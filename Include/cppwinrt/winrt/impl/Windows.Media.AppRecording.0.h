@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,7 +12,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -39,6 +39,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::AppRecording
     struct AppRecordingSavedScreenshotInfo;
     struct AppRecordingStatus;
     struct AppRecordingStatusDetails;
+    struct AppRecordingContract;
 }
 namespace winrt::impl
 {
@@ -70,6 +71,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Media::AppRecording::IAppRecordingSavedScreenshotInfo> = L"Windows.Media.AppRecording.IAppRecordingSavedScreenshotInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::AppRecording::IAppRecordingStatus> = L"Windows.Media.AppRecording.IAppRecordingStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::AppRecording::IAppRecordingStatusDetails> = L"Windows.Media.AppRecording.IAppRecordingStatusDetails";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::AppRecording::AppRecordingContract> = L"Windows.Media.AppRecording.AppRecordingContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Media::AppRecording::IAppRecordingManager>{ 0xE7E26076,0xA044,0x48E2,{ 0xA5,0x12,0x30,0x94,0xD5,0x74,0xC7,0xCC } }; // E7E26076-A044-48E2-A512-3094D574C7CC
     template <> inline constexpr guid guid_v<winrt::Windows::Media::AppRecording::IAppRecordingManagerStatics>{ 0x50E709F7,0x38CE,0x4BD3,{ 0x9D,0xB2,0xE7,0x2B,0xBE,0x9D,0xE1,0x1D } }; // 50E709F7-38CE-4BD3-9DB2-E72BBE9DE11D
     template <> inline constexpr guid guid_v<winrt::Windows::Media::AppRecording::IAppRecordingResult>{ 0x3A900864,0xC66D,0x46F9,{ 0xB2,0xD9,0x5B,0xC2,0xDA,0xD0,0x70,0xD7 } }; // 3A900864-C66D-46F9-B2D9-5BC2DAD070D7
@@ -85,7 +87,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::AppRecording::AppRecordingStatusDetails>{ using type = winrt::Windows::Media::AppRecording::IAppRecordingStatusDetails; };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStatus(void**) noexcept = 0;
             virtual int32_t __stdcall StartRecordingToFileAsync(void*, void**) noexcept = 0;
@@ -96,14 +98,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -113,7 +115,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingSaveScreenshotResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -122,7 +124,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingSavedScreenshotInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_File(void**) noexcept = 0;
             virtual int32_t __stdcall get_MediaEncodingSubtype(void**) noexcept = 0;
@@ -130,7 +132,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanRecord(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanRecordTimeSpan(bool*) noexcept = 0;
@@ -140,7 +142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingStatusDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAnyAppBroadcasting(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsCaptureResourceUnavailable(bool*) noexcept = 0;

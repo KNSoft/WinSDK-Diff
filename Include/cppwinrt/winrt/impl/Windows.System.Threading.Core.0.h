@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -51,14 +51,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Threading::Core::SignalNotifier>{ using type = winrt::Windows::System::Threading::Core::ISignalNotifier; };
     template <> struct abi<winrt::Windows::System::Threading::Core::IPreallocatedWorkItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RunAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Threading::Core::IPreallocatedWorkItemFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWorkItem(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWorkItemWithPriority(void*, int32_t, void**) noexcept = 0;
@@ -67,7 +67,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Threading::Core::ISignalNotifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Enable() noexcept = 0;
             virtual int32_t __stdcall Terminate() noexcept = 0;
@@ -75,7 +75,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Threading::Core::ISignalNotifierStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AttachToEvent(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall AttachToEventWithTimeout(void*, void*, int64_t, void**) noexcept = 0;
@@ -85,7 +85,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Threading::Core::SignalHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, bool) noexcept = 0;
         };

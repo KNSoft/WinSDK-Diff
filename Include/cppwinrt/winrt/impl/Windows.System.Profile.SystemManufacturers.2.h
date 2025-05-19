@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 #include "winrt/impl/Windows.System.Profile.SystemManufacturers.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Profile::SystemManufacturers
 {
-    struct __declspec(empty_bases) OemSupportInfo : winrt::Windows::System::Profile::SystemManufacturers::IOemSupportInfo
+    struct WINRT_IMPL_EMPTY_BASES OemSupportInfo : winrt::Windows::System::Profile::SystemManufacturers::IOemSupportInfo
     {
         OemSupportInfo(std::nullptr_t) noexcept {}
         OemSupportInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::System::Profile::SystemManufacturers::IOemSupportInfo(ptr, take_ownership_from_abi) {}
@@ -19,7 +19,7 @@ WINRT_EXPORT namespace winrt::Windows::System::Profile::SystemManufacturers
         SmbiosInformation() = delete;
         [[nodiscard]] static auto SerialNumber();
     };
-    struct __declspec(empty_bases) SystemSupportDeviceInfo : winrt::Windows::System::Profile::SystemManufacturers::ISystemSupportDeviceInfo
+    struct WINRT_IMPL_EMPTY_BASES SystemSupportDeviceInfo : winrt::Windows::System::Profile::SystemManufacturers::ISystemSupportDeviceInfo
     {
         SystemSupportDeviceInfo(std::nullptr_t) noexcept {}
         SystemSupportDeviceInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::System::Profile::SystemManufacturers::ISystemSupportDeviceInfo(ptr, take_ownership_from_abi) {}

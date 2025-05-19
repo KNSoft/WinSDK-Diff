@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -94,7 +94,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Foundation::Metadata::IApiInformationStatics>{ 0x997439FE,0xF681,0x4A11,{ 0xB4,0x16,0xC1,0x3A,0x47,0xE8,0xBA,0x36 } }; // 997439FE-F681-4A11-B416-C13A47E8BA36
     template <> struct abi<winrt::Windows::Foundation::Metadata::IApiInformationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsTypePresent(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall IsMethodPresent(void*, void*, bool*) noexcept = 0;

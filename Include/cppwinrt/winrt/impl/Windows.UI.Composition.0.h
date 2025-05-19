@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,16 +11,16 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
     struct Point;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IMap;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMap;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -1401,7 +1401,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Composition::VisualUnorderedCollection>{ using type = winrt::Windows::UI::Composition::IVisualUnorderedCollection; };
     template <> struct abi<winrt::Windows::UI::Composition::IAmbientLight>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -1409,7 +1409,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IAmbientLight2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Intensity(float*) noexcept = 0;
             virtual int32_t __stdcall put_Intensity(float) noexcept = 0;
@@ -1417,7 +1417,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IAnimationController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlaybackRate(float*) noexcept = 0;
             virtual int32_t __stdcall put_PlaybackRate(float) noexcept = 0;
@@ -1431,7 +1431,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IAnimationControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxPlaybackRate(float*) noexcept = 0;
             virtual int32_t __stdcall get_MinPlaybackRate(float*) noexcept = 0;
@@ -1439,14 +1439,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IAnimationObject>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PopulatePropertyInfo(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IAnimationPropertyInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AccessMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_AccessMode(int32_t) noexcept = 0;
@@ -1454,7 +1454,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IAnimationPropertyInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetResolvedCompositionObject(void**) noexcept = 0;
             virtual int32_t __stdcall GetResolvedCompositionObjectProperty(void**) noexcept = 0;
@@ -1462,7 +1462,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IBackEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Amplitude(float*) noexcept = 0;
@@ -1470,14 +1470,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IBooleanKeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertKeyFrame(float, bool) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IBounceEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Bounces(int32_t*) noexcept = 0;
@@ -1486,7 +1486,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IBounceScalarNaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Acceleration(float*) noexcept = 0;
             virtual int32_t __stdcall put_Acceleration(float) noexcept = 0;
@@ -1496,7 +1496,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IBounceVector2NaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Acceleration(float*) noexcept = 0;
             virtual int32_t __stdcall put_Acceleration(float) noexcept = 0;
@@ -1506,7 +1506,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IBounceVector3NaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Acceleration(float*) noexcept = 0;
             virtual int32_t __stdcall put_Acceleration(float) noexcept = 0;
@@ -1516,14 +1516,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICircleEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IColorKeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InterpolationColorSpace(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_InterpolationColorSpace(int32_t) noexcept = 0;
@@ -1533,7 +1533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ClearAllParameters() noexcept = 0;
             virtual int32_t __stdcall ClearParameter(void*) noexcept = 0;
@@ -1550,7 +1550,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionAnimation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetBooleanParameter(void*, bool) noexcept = 0;
             virtual int32_t __stdcall get_Target(void**) noexcept = 0;
@@ -1559,33 +1559,33 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionAnimation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InitialValueExpressions(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionAnimation4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetExpressionReferenceParameter(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionAnimationBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionAnimationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionAnimationGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Count(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Add(void*) noexcept = 0;
@@ -1595,31 +1595,31 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionBackdropBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionBatchCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AreEffectsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall AreEffectsFast(bool*) noexcept = 0;
@@ -1629,20 +1629,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionCapabilitiesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionClip>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionClip2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnchorPoint(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_AnchorPoint(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -1662,13 +1662,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionClipFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionColorBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -1676,7 +1676,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionColorGradientStop>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -1686,13 +1686,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionColorGradientStopCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionCommitBatch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsEnded(bool*) noexcept = 0;
@@ -1702,14 +1702,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionContainerShape>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Shapes(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionDrawingSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AlphaMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PixelFormat(int32_t*) noexcept = 0;
@@ -1718,7 +1718,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionDrawingSurface2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SizeInt32(struct struct_Windows_Graphics_SizeInt32*) noexcept = 0;
             virtual int32_t __stdcall Resize(struct struct_Windows_Graphics_SizeInt32) noexcept = 0;
@@ -1730,25 +1730,25 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionDrawingSurfaceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionEasingFunctionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionEasingFunctionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCubicBezierEasingFunction(void*, winrt::Windows::Foundation::Numerics::float2, winrt::Windows::Foundation::Numerics::float2, void**) noexcept = 0;
             virtual int32_t __stdcall CreateLinearEasingFunction(void*, void**) noexcept = 0;
@@ -1765,7 +1765,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionEffectBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetSourceParameter(void*, void**) noexcept = 0;
             virtual int32_t __stdcall SetSourceParameter(void*, void*) noexcept = 0;
@@ -1773,7 +1773,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionEffectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateBrush(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -1782,21 +1782,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionEffectSourceParameter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionEffectSourceParameterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionEllipseGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Center(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_Center(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -1806,7 +1806,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGeometricClip>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Geometry(void**) noexcept = 0;
             virtual int32_t __stdcall put_Geometry(void*) noexcept = 0;
@@ -1816,7 +1816,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TrimEnd(float*) noexcept = 0;
             virtual int32_t __stdcall put_TrimEnd(float) noexcept = 0;
@@ -1828,13 +1828,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGeometryFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGradientBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnchorPoint(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_AnchorPoint(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -1859,7 +1859,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGradientBrush2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MappingMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MappingMode(int32_t) noexcept = 0;
@@ -1867,13 +1867,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGradientBrushFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGraphicsDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDrawingSurface(winrt::Windows::Foundation::Size, int32_t, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall add_RenderingDeviceReplaced(void*, winrt::event_token*) noexcept = 0;
@@ -1882,7 +1882,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGraphicsDevice2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDrawingSurface2(struct struct_Windows_Graphics_SizeInt32, int32_t, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateVirtualDrawingSurface(struct struct_Windows_Graphics_SizeInt32, int32_t, int32_t, void**) noexcept = 0;
@@ -1890,7 +1890,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGraphicsDevice3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateMipmapSurface(struct struct_Windows_Graphics_SizeInt32, int32_t, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall Trim() noexcept = 0;
@@ -1898,28 +1898,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionGraphicsDevice4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CaptureAsync(void*, struct struct_Windows_Graphics_SizeInt32, int32_t, int32_t, float, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionLight>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Targets(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionLight2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExclusionsFromTargets(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionLight3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -1927,13 +1927,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionLightFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionLineGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Start(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_Start(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -1943,7 +1943,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionLinearGradientBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EndPoint(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_EndPoint(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -1953,7 +1953,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionMaskBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mask(void**) noexcept = 0;
             virtual int32_t __stdcall put_Mask(void*) noexcept = 0;
@@ -1963,7 +1963,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionMipmapSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LevelCount(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AlphaMode(int32_t*) noexcept = 0;
@@ -1974,7 +1974,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionNineGridBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BottomInset(float*) noexcept = 0;
             virtual int32_t __stdcall put_BottomInset(float) noexcept = 0;
@@ -2004,7 +2004,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionObject>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Compositor(void**) noexcept = 0;
             virtual int32_t __stdcall get_Dispatcher(void**) noexcept = 0;
@@ -2015,7 +2015,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionObject2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Comment(void**) noexcept = 0;
             virtual int32_t __stdcall put_Comment(void*) noexcept = 0;
@@ -2027,34 +2027,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionObject3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DispatcherQueue(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionObject4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetAnimationController(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionObject5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAnimationWithController(void*, void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionObjectFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionObjectStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAnimationWithIAnimationObject(void*, void*, void*) noexcept = 0;
             virtual int32_t __stdcall StartAnimationGroupWithIAnimationObject(void*, void*) noexcept = 0;
@@ -2062,20 +2062,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionPath>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionPathFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionPathGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
             virtual int32_t __stdcall put_Path(void*) noexcept = 0;
@@ -2083,7 +2083,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionProjectedShadow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BlurRadiusMultiplier(float*) noexcept = 0;
             virtual int32_t __stdcall put_BlurRadiusMultiplier(float) noexcept = 0;
@@ -2099,7 +2099,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionProjectedShadowCaster>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Brush(void**) noexcept = 0;
             virtual int32_t __stdcall put_Brush(void*) noexcept = 0;
@@ -2109,7 +2109,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionProjectedShadowCasterCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Count(int32_t*) noexcept = 0;
             virtual int32_t __stdcall InsertAbove(void*, void*) noexcept = 0;
@@ -2122,14 +2122,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionProjectedShadowCasterCollectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxRespectedCasters(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionProjectedShadowReceiver>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReceivingVisual(void**) noexcept = 0;
             virtual int32_t __stdcall put_ReceivingVisual(void*) noexcept = 0;
@@ -2137,7 +2137,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionProjectedShadowReceiverUnorderedCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Add(void*) noexcept = 0;
             virtual int32_t __stdcall get_Count(int32_t*) noexcept = 0;
@@ -2147,7 +2147,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionPropertySet>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertColor(void*, struct struct_Windows_UI_Color) noexcept = 0;
             virtual int32_t __stdcall InsertMatrix3x2(void*, winrt::Windows::Foundation::Numerics::float3x2) noexcept = 0;
@@ -2169,7 +2169,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionPropertySet2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertBoolean(void*, bool) noexcept = 0;
             virtual int32_t __stdcall TryGetBoolean(void*, bool*, int32_t*) noexcept = 0;
@@ -2177,7 +2177,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionRadialGradientBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EllipseCenter(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_EllipseCenter(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -2189,7 +2189,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionRectangleGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Offset(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_Offset(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -2199,7 +2199,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionRoundedRectangleGeometry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CornerRadius(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_CornerRadius(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -2211,7 +2211,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionScopedBatch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsEnded(bool*) noexcept = 0;
@@ -2224,19 +2224,19 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionShadow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionShadowFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionShape>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CenterPoint(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_CenterPoint(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -2254,13 +2254,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionShapeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionSpriteShape>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FillBrush(void**) noexcept = 0;
             virtual int32_t __stdcall put_FillBrush(void*) noexcept = 0;
@@ -2289,7 +2289,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionSupportsSystemBackdrop>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SystemBackdrop(void**) noexcept = 0;
             virtual int32_t __stdcall put_SystemBackdrop(void*) noexcept = 0;
@@ -2297,13 +2297,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionSurfaceBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BitmapInterpolationMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_BitmapInterpolationMode(int32_t) noexcept = 0;
@@ -2319,7 +2319,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionSurfaceBrush2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnchorPoint(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_AnchorPoint(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -2339,7 +2339,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionSurfaceBrush3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SnapToPixels(bool*) noexcept = 0;
             virtual int32_t __stdcall put_SnapToPixels(bool) noexcept = 0;
@@ -2347,14 +2347,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionSurfaceFacade>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetRealSurface(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionTarget>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Root(void**) noexcept = 0;
             virtual int32_t __stdcall put_Root(void*) noexcept = 0;
@@ -2362,13 +2362,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionTargetFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionTexture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceRect(struct struct_Windows_Graphics_RectInt32*) noexcept = 0;
             virtual int32_t __stdcall put_SourceRect(struct struct_Windows_Graphics_RectInt32) noexcept = 0;
@@ -2380,25 +2380,25 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionTextureFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionTransform>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionTransformFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionViewBox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HorizontalAlignmentRatio(float*) noexcept = 0;
             virtual int32_t __stdcall put_HorizontalAlignmentRatio(float) noexcept = 0;
@@ -2414,20 +2414,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionVirtualDrawingSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Trim(uint32_t, struct struct_Windows_Graphics_RectInt32*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionVirtualDrawingSurfaceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositionVisualSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceVisual(void**) noexcept = 0;
             virtual int32_t __stdcall put_SourceVisual(void*) noexcept = 0;
@@ -2439,7 +2439,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateColorKeyFrameAnimation(void**) noexcept = 0;
             virtual int32_t __stdcall CreateColorBrush(void**) noexcept = 0;
@@ -2469,7 +2469,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAmbientLight(void**) noexcept = 0;
             virtual int32_t __stdcall CreateAnimationGroup(void**) noexcept = 0;
@@ -2488,14 +2488,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositor3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateHostBackdropBrush(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositor4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateColorGradientStop(void**) noexcept = 0;
             virtual int32_t __stdcall CreateColorGradientStopWithOffsetAndColor(float, struct struct_Windows_UI_Color, void**) noexcept = 0;
@@ -2507,7 +2507,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositor5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Comment(void**) noexcept = 0;
             virtual int32_t __stdcall put_Comment(void*) noexcept = 0;
@@ -2533,7 +2533,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositor6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateGeometricClip(void**) noexcept = 0;
             virtual int32_t __stdcall CreateGeometricClipWithGeometry(void*, void**) noexcept = 0;
@@ -2544,7 +2544,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositor7>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DispatcherQueue(void**) noexcept = 0;
             virtual int32_t __stdcall CreateAnimationPropertyInfo(void**) noexcept = 0;
@@ -2555,14 +2555,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositor8>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAnimationController(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxGlobalPlaybackRate(float*) noexcept = 0;
             virtual int32_t __stdcall get_MinGlobalPlaybackRate(float*) noexcept = 0;
@@ -2570,14 +2570,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositorWithBlurredWallpaperBackdropBrush>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateBlurredWallpaperBackdropBrush(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositorWithProjectedShadow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateProjectedShadowCaster(void**) noexcept = 0;
             virtual int32_t __stdcall CreateProjectedShadow(void**) noexcept = 0;
@@ -2586,34 +2586,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositorWithRadialGradient>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateRadialGradientBrush(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICompositorWithVisualSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateVisualSurface(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IContainerVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Children(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IContainerVisualFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ICubicBezierEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ControlPoint1(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall get_ControlPoint2(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
@@ -2621,7 +2621,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IDelegatedInkTrailVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddTrailPoints(uint32_t, struct struct_Windows_UI_Composition_InkTrailPoint*, uint32_t*) noexcept = 0;
             virtual int32_t __stdcall AddTrailPointsWithPrediction(uint32_t, struct struct_Windows_UI_Composition_InkTrailPoint*, uint32_t, struct struct_Windows_UI_Composition_InkTrailPoint*, uint32_t*) noexcept = 0;
@@ -2631,7 +2631,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IDelegatedInkTrailVisualStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateForSwapChain(void*, void*, void**) noexcept = 0;
@@ -2639,7 +2639,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IDistantLight>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -2651,7 +2651,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IDistantLight2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Intensity(float*) noexcept = 0;
             virtual int32_t __stdcall put_Intensity(float) noexcept = 0;
@@ -2659,7 +2659,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IDropShadow>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BlurRadius(float*) noexcept = 0;
             virtual int32_t __stdcall put_BlurRadius(float) noexcept = 0;
@@ -2675,7 +2675,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IDropShadow2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourcePolicy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_SourcePolicy(int32_t) noexcept = 0;
@@ -2683,7 +2683,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IElasticEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Oscillations(int32_t*) noexcept = 0;
@@ -2692,7 +2692,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IExponentialEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Exponent(float*) noexcept = 0;
@@ -2700,7 +2700,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IExpressionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Expression(void**) noexcept = 0;
             virtual int32_t __stdcall put_Expression(void*) noexcept = 0;
@@ -2708,13 +2708,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IImplicitAnimationCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IInsetClip>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BottomInset(float*) noexcept = 0;
             virtual int32_t __stdcall put_BottomInset(float) noexcept = 0;
@@ -2728,7 +2728,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IKeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DelayTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_DelayTime(int64_t) noexcept = 0;
@@ -2747,7 +2747,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IKeyFrameAnimation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Direction(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Direction(int32_t) noexcept = 0;
@@ -2755,7 +2755,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IKeyFrameAnimation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DelayBehavior(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DelayBehavior(int32_t) noexcept = 0;
@@ -2763,13 +2763,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IKeyFrameAnimationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ILayerVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Effect(void**) noexcept = 0;
             virtual int32_t __stdcall put_Effect(void*) noexcept = 0;
@@ -2777,7 +2777,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ILayerVisual2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Shadow(void**) noexcept = 0;
             virtual int32_t __stdcall put_Shadow(void*) noexcept = 0;
@@ -2785,13 +2785,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ILinearEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::INaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DelayBehavior(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_DelayBehavior(int32_t) noexcept = 0;
@@ -2803,13 +2803,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::INaturalMotionAnimationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IPathKeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertKeyFrame(float, void*) noexcept = 0;
             virtual int32_t __stdcall InsertKeyFrameWithEasingFunction(float, void*, void*) noexcept = 0;
@@ -2817,7 +2817,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IPointLight>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Color(struct struct_Windows_UI_Color*) noexcept = 0;
             virtual int32_t __stdcall put_Color(struct struct_Windows_UI_Color) noexcept = 0;
@@ -2835,7 +2835,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IPointLight2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Intensity(float*) noexcept = 0;
             virtual int32_t __stdcall put_Intensity(float) noexcept = 0;
@@ -2843,7 +2843,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IPointLight3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinAttenuationCutoff(float*) noexcept = 0;
             virtual int32_t __stdcall put_MinAttenuationCutoff(float) noexcept = 0;
@@ -2853,7 +2853,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IPowerEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Power(float*) noexcept = 0;
@@ -2861,7 +2861,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IQuaternionKeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertKeyFrame(float, winrt::Windows::Foundation::Numerics::quaternion) noexcept = 0;
             virtual int32_t __stdcall InsertKeyFrameWithEasingFunction(float, winrt::Windows::Foundation::Numerics::quaternion, void*) noexcept = 0;
@@ -2869,7 +2869,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IRectangleClip>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Bottom(float*) noexcept = 0;
             virtual int32_t __stdcall put_Bottom(float) noexcept = 0;
@@ -2891,7 +2891,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IRedirectVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall put_Source(void*) noexcept = 0;
@@ -2899,14 +2899,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IRenderingDeviceReplacedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GraphicsDevice(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IScalarKeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertKeyFrame(float, float) noexcept = 0;
             virtual int32_t __stdcall InsertKeyFrameWithEasingFunction(float, float, void*) noexcept = 0;
@@ -2914,7 +2914,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IScalarNaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FinalValue(void**) noexcept = 0;
             virtual int32_t __stdcall put_FinalValue(void*) noexcept = 0;
@@ -2926,13 +2926,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IScalarNaturalMotionAnimationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IShapeVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Shapes(void**) noexcept = 0;
             virtual int32_t __stdcall get_ViewBox(void**) noexcept = 0;
@@ -2941,14 +2941,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISineEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISpotLight>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConstantAttenuation(float*) noexcept = 0;
             virtual int32_t __stdcall put_ConstantAttenuation(float) noexcept = 0;
@@ -2978,7 +2978,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISpotLight2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InnerConeIntensity(float*) noexcept = 0;
             virtual int32_t __stdcall put_InnerConeIntensity(float) noexcept = 0;
@@ -2988,7 +2988,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISpotLight3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinAttenuationCutoff(float*) noexcept = 0;
             virtual int32_t __stdcall put_MinAttenuationCutoff(float) noexcept = 0;
@@ -2998,7 +2998,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISpringScalarNaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DampingRatio(float*) noexcept = 0;
             virtual int32_t __stdcall put_DampingRatio(float) noexcept = 0;
@@ -3008,7 +3008,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISpringVector2NaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DampingRatio(float*) noexcept = 0;
             virtual int32_t __stdcall put_DampingRatio(float) noexcept = 0;
@@ -3018,7 +3018,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISpringVector3NaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DampingRatio(float*) noexcept = 0;
             virtual int32_t __stdcall put_DampingRatio(float) noexcept = 0;
@@ -3028,7 +3028,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISpriteVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Brush(void**) noexcept = 0;
             virtual int32_t __stdcall put_Brush(void*) noexcept = 0;
@@ -3036,7 +3036,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::ISpriteVisual2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Shadow(void**) noexcept = 0;
             virtual int32_t __stdcall put_Shadow(void*) noexcept = 0;
@@ -3044,7 +3044,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IStepEasingFunction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FinalStep(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_FinalStep(int32_t) noexcept = 0;
@@ -3060,7 +3060,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVector2KeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertKeyFrame(float, winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
             virtual int32_t __stdcall InsertKeyFrameWithEasingFunction(float, winrt::Windows::Foundation::Numerics::float2, void*) noexcept = 0;
@@ -3068,7 +3068,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVector2NaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FinalValue(void**) noexcept = 0;
             virtual int32_t __stdcall put_FinalValue(void*) noexcept = 0;
@@ -3080,13 +3080,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVector2NaturalMotionAnimationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVector3KeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertKeyFrame(float, winrt::Windows::Foundation::Numerics::float3) noexcept = 0;
             virtual int32_t __stdcall InsertKeyFrameWithEasingFunction(float, winrt::Windows::Foundation::Numerics::float3, void*) noexcept = 0;
@@ -3094,7 +3094,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVector3NaturalMotionAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FinalValue(void**) noexcept = 0;
             virtual int32_t __stdcall put_FinalValue(void*) noexcept = 0;
@@ -3106,13 +3106,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVector3NaturalMotionAnimationFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVector4KeyFrameAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InsertKeyFrame(float, winrt::Windows::Foundation::Numerics::float4) noexcept = 0;
             virtual int32_t __stdcall InsertKeyFrameWithEasingFunction(float, winrt::Windows::Foundation::Numerics::float4, void*) noexcept = 0;
@@ -3120,7 +3120,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisual>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AnchorPoint(winrt::Windows::Foundation::Numerics::float2*) noexcept = 0;
             virtual int32_t __stdcall put_AnchorPoint(winrt::Windows::Foundation::Numerics::float2) noexcept = 0;
@@ -3159,7 +3159,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisual2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ParentForTransform(void**) noexcept = 0;
             virtual int32_t __stdcall put_ParentForTransform(void*) noexcept = 0;
@@ -3171,7 +3171,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisual3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsHitTestVisible(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsHitTestVisible(bool) noexcept = 0;
@@ -3179,7 +3179,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisual4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPixelSnappingEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsPixelSnappingEnabled(bool) noexcept = 0;
@@ -3187,7 +3187,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisualCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Count(int32_t*) noexcept = 0;
             virtual int32_t __stdcall InsertAbove(void*, void*) noexcept = 0;
@@ -3200,26 +3200,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisualElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisualElement2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetVisualInternal(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisualFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::IVisualUnorderedCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Count(int32_t*) noexcept = 0;
             virtual int32_t __stdcall Add(void*) noexcept = 0;
@@ -3504,7 +3504,7 @@ namespace winrt::impl
         auto AreEffectsFast() const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::CompositionCapabilities, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::UI::Composition::ICompositionCapabilities, &impl::abi_t<winrt::Windows::UI::Composition::ICompositionCapabilities>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::CompositionCapabilities, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::CompositionCapabilities, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Composition::ICompositionCapabilities>
@@ -3595,7 +3595,7 @@ namespace winrt::impl
         [[nodiscard]] auto IsEnded() const;
         auto Completed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Composition::CompositionBatchCompletedEventArgs> const& handler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::UI::Composition::ICompositionCommitBatch, &impl::abi_t<winrt::Windows::UI::Composition::ICompositionCommitBatch>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Composition::CompositionBatchCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Composition::CompositionBatchCompletedEventArgs> const& handler) const;
         auto Completed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Composition::ICompositionCommitBatch>
@@ -3815,7 +3815,7 @@ namespace winrt::impl
         auto CreateDrawingSurface(winrt::Windows::Foundation::Size const& sizePixels, winrt::Windows::Graphics::DirectX::DirectXPixelFormat const& pixelFormat, winrt::Windows::Graphics::DirectX::DirectXAlphaMode const& alphaMode) const;
         auto RenderingDeviceReplaced(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::CompositionGraphicsDevice, winrt::Windows::UI::Composition::RenderingDeviceReplacedEventArgs> const& handler) const;
         using RenderingDeviceReplaced_revoker = impl::event_revoker<winrt::Windows::UI::Composition::ICompositionGraphicsDevice, &impl::abi_t<winrt::Windows::UI::Composition::ICompositionGraphicsDevice>::remove_RenderingDeviceReplaced>;
-        [[nodiscard]] RenderingDeviceReplaced_revoker RenderingDeviceReplaced(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::CompositionGraphicsDevice, winrt::Windows::UI::Composition::RenderingDeviceReplacedEventArgs> const& handler) const;
+        [[nodiscard]] auto RenderingDeviceReplaced(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Composition::CompositionGraphicsDevice, winrt::Windows::UI::Composition::RenderingDeviceReplacedEventArgs> const& handler) const;
         auto RenderingDeviceReplaced(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Composition::ICompositionGraphicsDevice>
@@ -4227,7 +4227,7 @@ namespace winrt::impl
         auto Suspend() const;
         auto Completed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Composition::CompositionBatchCompletedEventArgs> const& handler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::UI::Composition::ICompositionScopedBatch, &impl::abi_t<winrt::Windows::UI::Composition::ICompositionScopedBatch>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Composition::CompositionBatchCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::IInspectable, winrt::Windows::UI::Composition::CompositionBatchCompletedEventArgs> const& handler) const;
         auto Completed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Composition::ICompositionScopedBatch>

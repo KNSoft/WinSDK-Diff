@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -17,13 +17,13 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -500,7 +500,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Display::Core::DisplayWireFormat>{ using type = winrt::Windows::Devices::Display::Core::IDisplayWireFormat; };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayAdapter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(struct struct_Windows_Graphics_DisplayAdapterId*) noexcept = 0;
             virtual int32_t __stdcall get_DeviceInterfacePath(void**) noexcept = 0;
@@ -514,7 +514,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayAdapter2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsIndirectDisplayDevice(bool*) noexcept = 0;
             virtual int32_t __stdcall get_PreferredRenderAdapter(void**) noexcept = 0;
@@ -522,14 +522,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayAdapterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromId(struct struct_Windows_Graphics_DisplayAdapterId, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateScanoutSource(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreatePrimary(void*, void*, void**) noexcept = 0;
@@ -542,27 +542,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayDevice2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSimpleScanoutWithDirtyRectsAndOptions(void*, void*, uint32_t, uint32_t, void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayDeviceRenderAdapter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RenderAdapterId(struct struct_Windows_Graphics_DisplayAdapterId*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayFence>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentTargets(void**) noexcept = 0;
             virtual int32_t __stdcall GetCurrentAdapters(void**) noexcept = 0;
@@ -587,21 +587,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryReadCurrentStateForModeQuery(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManager3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateDisplayDeviceForIndirectAdapter(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManagerChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -610,7 +610,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManagerDisabledEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -619,7 +619,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManagerEnabledEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -628,7 +628,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManagerPathsFailedOrInvalidatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -637,7 +637,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManagerResultWithState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ErrorCode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedErrorCode(winrt::hresult*) noexcept = 0;
@@ -646,14 +646,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayModeInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceResolution(struct struct_Windows_Graphics_SizeInt32*) noexcept = 0;
             virtual int32_t __stdcall get_IsStereo(bool*) noexcept = 0;
@@ -668,14 +668,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayModeInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PhysicalPresentationRate(struct struct_Windows_Devices_Display_Core_DisplayPresentationRate*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayMuxDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
@@ -691,7 +691,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayMuxDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -699,7 +699,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayPath>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_View(void**) noexcept = 0;
             virtual int32_t __stdcall get_Target(void**) noexcept = 0;
@@ -729,7 +729,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayPath2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PhysicalPresentationRate(void**) noexcept = 0;
             virtual int32_t __stdcall put_PhysicalPresentationRate(void*) noexcept = 0;
@@ -737,7 +737,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayPrimaryDescription>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Width(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Height(uint32_t*) noexcept = 0;
@@ -750,27 +750,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayPrimaryDescriptionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(uint32_t, uint32_t, int32_t, int32_t, bool, struct struct_Windows_Graphics_DirectX_Direct3D11_Direct3DMultisampleDescription, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayPrimaryDescriptionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithProperties(void*, uint32_t, uint32_t, int32_t, int32_t, bool, struct struct_Windows_Graphics_DirectX_Direct3D11_Direct3DMultisampleDescription, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayScanout>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplaySource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AdapterId(struct struct_Windows_Graphics_DisplayAdapterId*) noexcept = 0;
             virtual int32_t __stdcall get_SourceId(uint32_t*) noexcept = 0;
@@ -779,7 +779,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplaySource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_StatusChanged(void*, winrt::event_token*) noexcept = 0;
@@ -788,7 +788,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReadOnly(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsStale(bool*) noexcept = 0;
@@ -808,7 +808,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayStateOperationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedErrorCode(winrt::hresult*) noexcept = 0;
@@ -816,13 +816,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplaySurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayTarget>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Adapter(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeviceInterfacePath(void**) noexcept = 0;
@@ -842,7 +842,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayTask>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetScanout(void*) noexcept = 0;
             virtual int32_t __stdcall SetWait(void*, uint64_t) noexcept = 0;
@@ -850,14 +850,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayTask2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetSignal(int32_t, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayTaskPool>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateTask(void**) noexcept = 0;
             virtual int32_t __stdcall ExecuteTask(void*) noexcept = 0;
@@ -865,14 +865,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayTaskPool2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryExecuteTask(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayTaskResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PresentStatus(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PresentId(uint64_t*) noexcept = 0;
@@ -881,7 +881,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Paths(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContentResolution(void**) noexcept = 0;
@@ -892,7 +892,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayWireFormat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PixelEncoding(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_BitsPerChannel(int32_t*) noexcept = 0;
@@ -904,14 +904,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayWireFormatFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, int32_t, int32_t, int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::Core::IDisplayWireFormatStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithProperties(void*, int32_t, int32_t, int32_t, int32_t, int32_t, void**) noexcept = 0;
         };
@@ -1006,19 +1006,19 @@ namespace winrt::impl
         auto CreateDisplayDevice(winrt::Windows::Devices::Display::Core::DisplayAdapter const& adapter) const;
         auto Enabled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerEnabledEventArgs> const& handler) const;
         using Enabled_revoker = impl::event_revoker<winrt::Windows::Devices::Display::Core::IDisplayManager, &impl::abi_t<winrt::Windows::Devices::Display::Core::IDisplayManager>::remove_Enabled>;
-        [[nodiscard]] Enabled_revoker Enabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerEnabledEventArgs> const& handler) const;
+        [[nodiscard]] auto Enabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerEnabledEventArgs> const& handler) const;
         auto Enabled(winrt::event_token const& token) const noexcept;
         auto Disabled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerDisabledEventArgs> const& handler) const;
         using Disabled_revoker = impl::event_revoker<winrt::Windows::Devices::Display::Core::IDisplayManager, &impl::abi_t<winrt::Windows::Devices::Display::Core::IDisplayManager>::remove_Disabled>;
-        [[nodiscard]] Disabled_revoker Disabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerDisabledEventArgs> const& handler) const;
+        [[nodiscard]] auto Disabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerDisabledEventArgs> const& handler) const;
         auto Disabled(winrt::event_token const& token) const noexcept;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerChangedEventArgs> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::Devices::Display::Core::IDisplayManager, &impl::abi_t<winrt::Windows::Devices::Display::Core::IDisplayManager>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerChangedEventArgs> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
         auto PathsFailedOrInvalidated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerPathsFailedOrInvalidatedEventArgs> const& handler) const;
         using PathsFailedOrInvalidated_revoker = impl::event_revoker<winrt::Windows::Devices::Display::Core::IDisplayManager, &impl::abi_t<winrt::Windows::Devices::Display::Core::IDisplayManager>::remove_PathsFailedOrInvalidated>;
-        [[nodiscard]] PathsFailedOrInvalidated_revoker PathsFailedOrInvalidated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerPathsFailedOrInvalidatedEventArgs> const& handler) const;
+        [[nodiscard]] auto PathsFailedOrInvalidated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayManager, winrt::Windows::Devices::Display::Core::DisplayManagerPathsFailedOrInvalidatedEventArgs> const& handler) const;
         auto PathsFailedOrInvalidated(winrt::event_token const& token) const noexcept;
         auto Start() const;
         auto Stop() const;
@@ -1148,7 +1148,7 @@ namespace winrt::impl
         auto SetAutomaticTargetSwitching() const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayMuxDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::Devices::Display::Core::IDisplayMuxDevice, &impl::abi_t<winrt::Windows::Devices::Display::Core::IDisplayMuxDevice>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayMuxDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplayMuxDevice, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Changed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Display::Core::IDisplayMuxDevice>
@@ -1265,7 +1265,7 @@ namespace winrt::impl
         [[nodiscard]] auto Status() const;
         auto StatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplaySource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using StatusChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Display::Core::IDisplaySource2, &impl::abi_t<winrt::Windows::Devices::Display::Core::IDisplaySource2>::remove_StatusChanged>;
-        [[nodiscard]] StatusChanged_revoker StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplaySource, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto StatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Display::Core::DisplaySource, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto StatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Display::Core::IDisplaySource2>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,14 +8,14 @@
 #define WINRT_Windows_System_UserProfile_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Globalization
 {
@@ -85,6 +85,8 @@ WINRT_EXPORT namespace winrt::Windows::System::UserProfile
     struct LockScreen;
     struct UserInformation;
     struct UserProfilePersonalizationSettings;
+    struct UserProfileContract;
+    struct UserProfileLockScreenContract;
 }
 namespace winrt::impl
 {
@@ -150,6 +152,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::System::UserProfile::IUserInformationStatics> = L"Windows.System.UserProfile.IUserInformationStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::System::UserProfile::IUserProfilePersonalizationSettings> = L"Windows.System.UserProfile.IUserProfilePersonalizationSettings";
     template <> inline constexpr auto& name_v<winrt::Windows::System::UserProfile::IUserProfilePersonalizationSettingsStatics> = L"Windows.System.UserProfile.IUserProfilePersonalizationSettingsStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::System::UserProfile::UserProfileContract> = L"Windows.System.UserProfile.UserProfileContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::System::UserProfile::UserProfileLockScreenContract> = L"Windows.System.UserProfile.UserProfileLockScreenContract";
     template <> inline constexpr guid guid_v<winrt::Windows::System::UserProfile::IAdvertisingManagerForUser>{ 0x928BF3D0,0xCF7C,0x4AB0,{ 0xA7,0xDC,0x6D,0xC5,0xBC,0xD4,0x42,0x52 } }; // 928BF3D0-CF7C-4AB0-A7DC-6DC5BCD44252
     template <> inline constexpr guid guid_v<winrt::Windows::System::UserProfile::IAdvertisingManagerStatics>{ 0xADD3468C,0xA273,0x48CB,{ 0xB3,0x46,0x35,0x44,0x52,0x2D,0x55,0x81 } }; // ADD3468C-A273-48CB-B346-3544522D5581
     template <> inline constexpr guid guid_v<winrt::Windows::System::UserProfile::IAdvertisingManagerStatics2>{ 0xDD0947AF,0x1A6D,0x46B0,{ 0x95,0xBC,0xF3,0xF9,0xD6,0xBE,0xB9,0xFB } }; // DD0947AF-1A6D-46B0-95BC-F3F9D6BEB9FB
@@ -176,7 +180,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::UserProfile::UserProfilePersonalizationSettings>{ using type = winrt::Windows::System::UserProfile::IUserProfilePersonalizationSettings; };
     template <> struct abi<winrt::Windows::System::UserProfile::IAdvertisingManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AdvertisingId(void**) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -184,21 +188,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IAdvertisingManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AdvertisingId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IAdvertisingManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IAssignedAccessSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsSingleAppKioskMode(bool*) noexcept = 0;
@@ -207,7 +211,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IAssignedAccessSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -215,7 +219,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IDiagnosticsSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanUseDiagnosticsToTailorExperiences(bool*) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -223,7 +227,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IDiagnosticsSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -231,20 +235,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IFirstSignInSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IFirstSignInSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IGlobalizationPreferencesForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
             virtual int32_t __stdcall get_Calendars(void**) noexcept = 0;
@@ -257,7 +261,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IGlobalizationPreferencesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Calendars(void**) noexcept = 0;
             virtual int32_t __stdcall get_Clocks(void**) noexcept = 0;
@@ -269,7 +273,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IGlobalizationPreferencesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TrySetHomeGeographicRegion(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall TrySetLanguages(void*, bool*) noexcept = 0;
@@ -277,14 +281,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IGlobalizationPreferencesStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::UserProfile::ILockScreenImageFeedStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestSetImageFeedAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryRemoveImageFeed(bool*) noexcept = 0;
@@ -292,7 +296,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::ILockScreenStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OriginalImageFile(void**) noexcept = 0;
             virtual int32_t __stdcall GetImageStream(void**) noexcept = 0;
@@ -302,7 +306,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IUserInformationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AccountPictureChangeEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_NameAccessAllowed(bool*) noexcept = 0;
@@ -323,7 +327,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IUserProfilePersonalizationSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TrySetLockScreenImageAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TrySetWallpaperImageAsync(void*, void**) noexcept = 0;
@@ -331,7 +335,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::UserProfile::IUserProfilePersonalizationSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
@@ -505,7 +509,7 @@ namespace winrt::impl
         auto SetAccountPicturesFromStreamsAsync(winrt::Windows::Storage::Streams::IRandomAccessStream const& smallImage, winrt::Windows::Storage::Streams::IRandomAccessStream const& largeImage, winrt::Windows::Storage::Streams::IRandomAccessStream const& video) const;
         auto AccountPictureChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& changeHandler) const;
         using AccountPictureChanged_revoker = impl::event_revoker<winrt::Windows::System::UserProfile::IUserInformationStatics, &impl::abi_t<winrt::Windows::System::UserProfile::IUserInformationStatics>::remove_AccountPictureChanged>;
-        [[nodiscard]] AccountPictureChanged_revoker AccountPictureChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& changeHandler) const;
+        [[nodiscard]] auto AccountPictureChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& changeHandler) const;
         auto AccountPictureChanged(winrt::event_token const& token) const noexcept;
         auto GetDisplayNameAsync() const;
         auto GetFirstNameAsync() const;

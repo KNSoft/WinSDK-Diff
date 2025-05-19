@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -109,7 +109,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Lights::LampInfo>{ using type = winrt::Windows::Devices::Lights::ILampInfo; };
     template <> struct abi<winrt::Windows::Devices::Lights::ILamp>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
@@ -125,7 +125,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::ILampArray>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_HardwareVendorId(uint16_t*) noexcept = 0;
@@ -157,7 +157,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::ILampArray2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAvailable(bool*) noexcept = 0;
             virtual int32_t __stdcall add_AvailabilityChanged(void*, winrt::event_token*) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::ILampArrayStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -174,14 +174,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::ILampAvailabilityChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAvailable(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Lights::ILampInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Index(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Purposes(uint32_t*) noexcept = 0;
@@ -197,7 +197,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Lights::ILampStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
@@ -217,7 +217,7 @@ namespace winrt::impl
         auto Color(winrt::Windows::UI::Color const& value) const;
         auto AvailabilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Lamp, winrt::Windows::Devices::Lights::LampAvailabilityChangedEventArgs> const& handler) const;
         using AvailabilityChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Lights::ILamp, &impl::abi_t<winrt::Windows::Devices::Lights::ILamp>::remove_AvailabilityChanged>;
-        [[nodiscard]] AvailabilityChanged_revoker AvailabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Lamp, winrt::Windows::Devices::Lights::LampAvailabilityChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AvailabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::Lamp, winrt::Windows::Devices::Lights::LampAvailabilityChangedEventArgs> const& handler) const;
         auto AvailabilityChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Lights::ILamp>
@@ -264,7 +264,7 @@ namespace winrt::impl
         [[nodiscard]] auto IsAvailable() const;
         auto AvailabilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::LampArray, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using AvailabilityChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Lights::ILampArray2, &impl::abi_t<winrt::Windows::Devices::Lights::ILampArray2>::remove_AvailabilityChanged>;
-        [[nodiscard]] AvailabilityChanged_revoker AvailabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::LampArray, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto AvailabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Lights::LampArray, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto AvailabilityChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Lights::ILampArray2>

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Media::Audio
 {
@@ -319,7 +319,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::ConversationalAgent::DetectionConfigurationAvailabilityInfo>{ using type = winrt::Windows::ApplicationModel::ConversationalAgent::IDetectionConfigurationAvailabilityInfo; };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IActivationSignalDetectionConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SignalId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ModelId(void**) noexcept = 0;
@@ -349,7 +349,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IActivationSignalDetectionConfiguration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetModelDataWithResult(void*, void*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall SetModelDataWithResultAsync(void*, void*, void**) noexcept = 0;
@@ -360,7 +360,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IActivationSignalDetectionConfigurationCreationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
@@ -368,7 +368,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IActivationSignalDetector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProviderId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -390,7 +390,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IActivationSignalDetector2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAvailableModelIdsForSignalIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetAvailableModelIdsForSignalId(void*, void**) noexcept = 0;
@@ -403,7 +403,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentDetectorManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAllActivationSignalDetectors(void**) noexcept = 0;
             virtual int32_t __stdcall GetAllActivationSignalDetectorsAsync(void**) noexcept = 0;
@@ -413,7 +413,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentDetectorManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetActivationSignalDetectorFromId(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetActivationSignalDetectorFromIdAsync(void*, void**) noexcept = 0;
@@ -421,14 +421,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentDetectorManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Default(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SessionInterrupted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SessionInterrupted(winrt::event_token) noexcept = 0;
@@ -468,7 +468,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestActivationAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall RequestActivation(int32_t, int32_t*) noexcept = 0;
@@ -480,13 +480,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSessionInterruptedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSessionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentSessionAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetCurrentSessionSync(void**) noexcept = 0;
@@ -494,7 +494,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSignal>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSignalVerificationRequired(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsSignalVerificationRequired(bool) noexcept = 0;
@@ -512,7 +512,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSignal2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DetectorId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DetectorKind(int32_t*) noexcept = 0;
@@ -520,27 +520,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSignalDetectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSystemStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SystemStateChangeType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IDetectionConfigurationAvailabilityChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IDetectionConfigurationAvailabilityInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HasSystemResourceAccess(bool*) noexcept = 0;
@@ -550,7 +550,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::ConversationalAgent::IDetectionConfigurationAvailabilityInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UnavailableSystemResources(void**) noexcept = 0;
         };
@@ -567,7 +567,7 @@ namespace winrt::impl
         [[nodiscard]] auto AvailabilityInfo() const;
         auto AvailabilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ActivationSignalDetectionConfiguration, winrt::Windows::ApplicationModel::ConversationalAgent::DetectionConfigurationAvailabilityChangedEventArgs> const& handler) const;
         using AvailabilityChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::ConversationalAgent::IActivationSignalDetectionConfiguration, &impl::abi_t<winrt::Windows::ApplicationModel::ConversationalAgent::IActivationSignalDetectionConfiguration>::remove_AvailabilityChanged>;
-        [[nodiscard]] AvailabilityChanged_revoker AvailabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ActivationSignalDetectionConfiguration, winrt::Windows::ApplicationModel::ConversationalAgent::DetectionConfigurationAvailabilityChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AvailabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ActivationSignalDetectionConfiguration, winrt::Windows::ApplicationModel::ConversationalAgent::DetectionConfigurationAvailabilityChangedEventArgs> const& handler) const;
         auto AvailabilityChanged(winrt::event_token const& token) const noexcept;
         auto SetModelData(param::hstring const& dataType, winrt::Windows::Storage::Streams::IInputStream const& data) const;
         auto SetModelDataAsync(param::hstring const& dataType, winrt::Windows::Storage::Streams::IInputStream const& data) const;
@@ -687,15 +687,15 @@ namespace winrt::impl
     {
         auto SessionInterrupted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSessionInterruptedEventArgs> const& handler) const;
         using SessionInterrupted_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSession, &impl::abi_t<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSession>::remove_SessionInterrupted>;
-        [[nodiscard]] SessionInterrupted_revoker SessionInterrupted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSessionInterruptedEventArgs> const& handler) const;
+        [[nodiscard]] auto SessionInterrupted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSessionInterruptedEventArgs> const& handler) const;
         auto SessionInterrupted(winrt::event_token const& token) const noexcept;
         auto SignalDetected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSignalDetectedEventArgs> const& handler) const;
         using SignalDetected_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSession, &impl::abi_t<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSession>::remove_SignalDetected>;
-        [[nodiscard]] SignalDetected_revoker SignalDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSignalDetectedEventArgs> const& handler) const;
+        [[nodiscard]] auto SignalDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSignalDetectedEventArgs> const& handler) const;
         auto SignalDetected(winrt::event_token const& token) const noexcept;
         auto SystemStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSystemStateChangedEventArgs> const& handler) const;
         using SystemStateChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSession, &impl::abi_t<winrt::Windows::ApplicationModel::ConversationalAgent::IConversationalAgentSession>::remove_SystemStateChanged>;
-        [[nodiscard]] SystemStateChanged_revoker SystemStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSystemStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SystemStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSession, winrt::Windows::ApplicationModel::ConversationalAgent::ConversationalAgentSystemStateChangedEventArgs> const& handler) const;
         auto SystemStateChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto AgentState() const;
         [[nodiscard]] auto Signal() const;

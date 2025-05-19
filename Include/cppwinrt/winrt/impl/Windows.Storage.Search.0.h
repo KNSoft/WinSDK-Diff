@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,12 +10,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -217,7 +217,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Storage::Search::ValueAndLanguage>{ using type = winrt::Windows::Storage::Search::IValueAndLanguage; };
     template <> struct abi<winrt::Windows::Storage::Search::IContentIndexer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall UpdateAsync(void*, void**) noexcept = 0;
@@ -230,7 +230,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IContentIndexerQuery>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCountAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetPropertiesAsync(void**) noexcept = 0;
@@ -242,7 +242,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IContentIndexerQueryOperations>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateQueryWithSortOrderAndLanguage(void*, void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateQueryWithSortOrder(void*, void*, void*, void**) noexcept = 0;
@@ -251,7 +251,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IContentIndexerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetIndexerWithName(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetIndexer(void**) noexcept = 0;
@@ -259,7 +259,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IIndexableContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall put_Id(void*) noexcept = 0;
@@ -272,7 +272,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IQueryOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FileTypeFilter(void**) noexcept = 0;
             virtual int32_t __stdcall get_FolderDepth(int32_t*) noexcept = 0;
@@ -296,7 +296,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IQueryOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCommonFileQuery(int32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateCommonFolderQuery(int32_t, void**) noexcept = 0;
@@ -304,14 +304,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IQueryOptionsWithProviderFilter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StorageProviderIdFilter(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Search::IStorageFileQueryResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFilesAsync(uint32_t, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetFilesAsyncDefaultStartAndCount(void**) noexcept = 0;
@@ -319,14 +319,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IStorageFileQueryResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetMatchingPropertiesWithRanges(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Storage::Search::IStorageFolderQueryOperations>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetIndexedStateAsync(void**) noexcept = 0;
             virtual int32_t __stdcall CreateFileQueryOverloadDefault(void**) noexcept = 0;
@@ -349,7 +349,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IStorageFolderQueryResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFoldersAsync(uint32_t, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetFoldersAsyncDefaultStartAndCount(void**) noexcept = 0;
@@ -357,7 +357,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IStorageItemQueryResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetItemsAsync(uint32_t, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetItemsAsyncDefaultStartAndCount(void**) noexcept = 0;
@@ -365,7 +365,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IStorageLibraryChangeTrackerTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Folder(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChangeTracker(void**) noexcept = 0;
@@ -373,7 +373,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IStorageLibraryContentChangedTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Folder(void**) noexcept = 0;
             virtual int32_t __stdcall CreateModifiedSinceQuery(int64_t, void**) noexcept = 0;
@@ -381,7 +381,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IStorageQueryResultBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetItemCountAsync(void**) noexcept = 0;
             virtual int32_t __stdcall get_Folder(void**) noexcept = 0;
@@ -396,7 +396,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Storage::Search::IValueAndLanguage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
             virtual int32_t __stdcall put_Language(void*) noexcept = 0;
@@ -605,11 +605,11 @@ namespace winrt::impl
         [[nodiscard]] auto Folder() const;
         auto ContentsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Search::IStorageQueryResultBase, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ContentsChanged_revoker = impl::event_revoker<winrt::Windows::Storage::Search::IStorageQueryResultBase, &impl::abi_t<winrt::Windows::Storage::Search::IStorageQueryResultBase>::remove_ContentsChanged>;
-        [[nodiscard]] ContentsChanged_revoker ContentsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Search::IStorageQueryResultBase, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ContentsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Search::IStorageQueryResultBase, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ContentsChanged(winrt::event_token const& eventCookie) const noexcept;
         auto OptionsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Search::IStorageQueryResultBase, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
         using OptionsChanged_revoker = impl::event_revoker<winrt::Windows::Storage::Search::IStorageQueryResultBase, &impl::abi_t<winrt::Windows::Storage::Search::IStorageQueryResultBase>::remove_OptionsChanged>;
-        [[nodiscard]] OptionsChanged_revoker OptionsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Search::IStorageQueryResultBase, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
+        [[nodiscard]] auto OptionsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Storage::Search::IStorageQueryResultBase, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
         auto OptionsChanged(winrt::event_token const& eventCookie) const noexcept;
         auto FindStartIndexAsync(winrt::Windows::Foundation::IInspectable const& value) const;
         auto GetCurrentQueryOptions() const;

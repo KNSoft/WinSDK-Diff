@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,21 +9,21 @@
 #include "winrt/impl/Windows.Security.Authentication.Web.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web
 {
-    struct __declspec(empty_bases) IWebAuthenticationBrokerStatics :
+    struct WINRT_IMPL_EMPTY_BASES IWebAuthenticationBrokerStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebAuthenticationBrokerStatics>
     {
         IWebAuthenticationBrokerStatics(std::nullptr_t = nullptr) noexcept {}
         IWebAuthenticationBrokerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebAuthenticationBrokerStatics2 :
+    struct WINRT_IMPL_EMPTY_BASES IWebAuthenticationBrokerStatics2 :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebAuthenticationBrokerStatics2>
     {
         IWebAuthenticationBrokerStatics2(std::nullptr_t = nullptr) noexcept {}
         IWebAuthenticationBrokerStatics2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebAuthenticationResult :
+    struct WINRT_IMPL_EMPTY_BASES IWebAuthenticationResult :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebAuthenticationResult>
     {

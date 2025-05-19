@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -33,7 +33,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Authentication::Identity::EnterpriseKeyCredentialRegistrationManager>{ using type = winrt::Windows::Security::Authentication::Identity::IEnterpriseKeyCredentialRegistrationManager; };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::IEnterpriseKeyCredentialRegistrationInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TenantId(void**) noexcept = 0;
             virtual int32_t __stdcall get_TenantName(void**) noexcept = 0;
@@ -44,14 +44,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::IEnterpriseKeyCredentialRegistrationManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetRegistrationsAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::IEnterpriseKeyCredentialRegistrationManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
         };

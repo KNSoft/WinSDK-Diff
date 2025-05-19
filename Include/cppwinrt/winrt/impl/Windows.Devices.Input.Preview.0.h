@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::HumanInterfaceDevice
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Input::Preview
 {
@@ -116,7 +116,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Input::Preview::GazePointPreview>{ using type = winrt::Windows::Devices::Input::Preview::IGazePointPreview; };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeDevicePreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_CanTrackEyes(bool*) noexcept = 0;
@@ -129,14 +129,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherAddedPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Added(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Added(winrt::event_token) noexcept = 0;
@@ -152,21 +152,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherRemovedPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherUpdatedPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeEnteredPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -175,7 +175,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeExitedPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -184,7 +184,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_GazeMoved(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_GazeMoved(winrt::event_token) noexcept = 0;
@@ -196,7 +196,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall CreateWatcher(void**) noexcept = 0;
@@ -204,7 +204,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazeMovedPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Handled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Handled(bool) noexcept = 0;
@@ -214,7 +214,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Input::Preview::IGazePointPreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceDevice(void**) noexcept = 0;
             virtual int32_t __stdcall get_EyeGazePosition(void**) noexcept = 0;
@@ -252,19 +252,19 @@ namespace winrt::impl
     {
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherAddedPreviewEventArgs> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview, &impl::abi_t<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherAddedPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherAddedPreviewEventArgs> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherRemovedPreviewEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview, &impl::abi_t<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherRemovedPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherRemovedPreviewEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherUpdatedPreviewEventArgs> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview, &impl::abi_t<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherUpdatedPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherUpdatedPreviewEventArgs> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview, &impl::abi_t<winrt::Windows::Devices::Input::Preview::IGazeDeviceWatcherPreview>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeDeviceWatcherPreview, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Start() const;
         auto Stop() const;
@@ -318,15 +318,15 @@ namespace winrt::impl
     {
         auto GazeMoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeMovedPreviewEventArgs> const& handler) const;
         using GazeMoved_revoker = impl::event_revoker<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreview, &impl::abi_t<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreview>::remove_GazeMoved>;
-        [[nodiscard]] GazeMoved_revoker GazeMoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeMovedPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto GazeMoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeMovedPreviewEventArgs> const& handler) const;
         auto GazeMoved(winrt::event_token const& token) const noexcept;
         auto GazeEntered(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeEnteredPreviewEventArgs> const& handler) const;
         using GazeEntered_revoker = impl::event_revoker<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreview, &impl::abi_t<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreview>::remove_GazeEntered>;
-        [[nodiscard]] GazeEntered_revoker GazeEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeEnteredPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto GazeEntered(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeEnteredPreviewEventArgs> const& handler) const;
         auto GazeEntered(winrt::event_token const& token) const noexcept;
         auto GazeExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeExitedPreviewEventArgs> const& handler) const;
         using GazeExited_revoker = impl::event_revoker<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreview, &impl::abi_t<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreview>::remove_GazeExited>;
-        [[nodiscard]] GazeExited_revoker GazeExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeExitedPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto GazeExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Input::Preview::GazeInputSourcePreview, winrt::Windows::Devices::Input::Preview::GazeExitedPreviewEventArgs> const& handler) const;
         auto GazeExited(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Input::Preview::IGazeInputSourcePreview>

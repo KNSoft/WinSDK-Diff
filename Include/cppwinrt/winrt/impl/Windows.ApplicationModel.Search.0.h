@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,11 +9,11 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -53,6 +53,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Search
     struct SearchSuggestionCollection;
     struct SearchSuggestionsRequest;
     struct SearchSuggestionsRequestDeferral;
+    struct SearchContract;
 }
 namespace winrt::impl
 {
@@ -120,6 +121,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Search::ISearchSuggestionCollection> = L"Windows.ApplicationModel.Search.ISearchSuggestionCollection";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Search::ISearchSuggestionsRequest> = L"Windows.ApplicationModel.Search.ISearchSuggestionsRequest";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Search::ISearchSuggestionsRequestDeferral> = L"Windows.ApplicationModel.Search.ISearchSuggestionsRequestDeferral";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Search::SearchContract> = L"Windows.ApplicationModel.Search.SearchContract";
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Search::ILocalContentSuggestionSettings>{ 0xEEAEB062,0x743D,0x456E,{ 0x84,0xA3,0x23,0xF0,0x6F,0x2D,0x15,0xD7 } }; // EEAEB062-743D-456E-84A3-23F06F2D15D7
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Search::ISearchPane>{ 0xFDACEC38,0x3700,0x4D73,{ 0x91,0xA1,0x2F,0x99,0x86,0x74,0x23,0x8A } }; // FDACEC38-3700-4D73-91A1-2F998674238A
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Search::ISearchPaneQueryChangedEventArgs>{ 0x3C064FE9,0x2351,0x4248,{ 0xA5,0x29,0x71,0x10,0xF4,0x64,0xA7,0x85 } }; // 3C064FE9-2351-4248-A529-7110F464A785
@@ -154,7 +156,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Search::SearchSuggestionsRequestDeferral>{ using type = winrt::Windows::ApplicationModel::Search::ISearchSuggestionsRequestDeferral; };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ILocalContentSuggestionSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Enabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
@@ -166,7 +168,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPane>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_SearchHistoryEnabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_SearchHistoryEnabled(bool*) noexcept = 0;
@@ -197,7 +199,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneQueryChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryText(void**) noexcept = 0;
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
@@ -206,7 +208,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneQueryLinguisticDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryTextAlternatives(void**) noexcept = 0;
             virtual int32_t __stdcall get_QueryTextCompositionStart(uint32_t*) noexcept = 0;
@@ -215,7 +217,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneQuerySubmittedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryText(void**) noexcept = 0;
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
@@ -223,35 +225,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneQuerySubmittedEventArgsWithLinguisticDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LinguisticDetails(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneResultSuggestionChosenEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tag(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneStaticsWithHideThisApplication>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall HideThisApplication() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneSuggestionsRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCanceled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SearchSuggestionCollection(void**) noexcept = 0;
@@ -260,28 +262,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneSuggestionsRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneSuggestionsRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchPaneVisibilityChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Visible(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchQueryLinguisticDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QueryTextAlternatives(void**) noexcept = 0;
             virtual int32_t __stdcall get_QueryTextCompositionStart(uint32_t*) noexcept = 0;
@@ -290,14 +292,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchQueryLinguisticDetailsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, uint32_t, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchSuggestionCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall AppendQuerySuggestion(void*) noexcept = 0;
@@ -308,7 +310,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchSuggestionsRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCanceled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SearchSuggestionCollection(void**) noexcept = 0;
@@ -317,7 +319,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Search::ISearchSuggestionsRequestDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
@@ -350,23 +352,23 @@ namespace winrt::impl
         [[nodiscard]] auto Visible() const;
         auto VisibilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneVisibilityChangedEventArgs> const& handler) const;
         using VisibilityChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Search::ISearchPane, &impl::abi_t<winrt::Windows::ApplicationModel::Search::ISearchPane>::remove_VisibilityChanged>;
-        [[nodiscard]] VisibilityChanged_revoker VisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneVisibilityChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto VisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneVisibilityChangedEventArgs> const& handler) const;
         auto VisibilityChanged(winrt::event_token const& token) const noexcept;
         auto QueryChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneQueryChangedEventArgs> const& handler) const;
         using QueryChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Search::ISearchPane, &impl::abi_t<winrt::Windows::ApplicationModel::Search::ISearchPane>::remove_QueryChanged>;
-        [[nodiscard]] QueryChanged_revoker QueryChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneQueryChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto QueryChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneQueryChangedEventArgs> const& handler) const;
         auto QueryChanged(winrt::event_token const& token) const noexcept;
         auto SuggestionsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneSuggestionsRequestedEventArgs> const& handler) const;
         using SuggestionsRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Search::ISearchPane, &impl::abi_t<winrt::Windows::ApplicationModel::Search::ISearchPane>::remove_SuggestionsRequested>;
-        [[nodiscard]] SuggestionsRequested_revoker SuggestionsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneSuggestionsRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto SuggestionsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneSuggestionsRequestedEventArgs> const& handler) const;
         auto SuggestionsRequested(winrt::event_token const& token) const noexcept;
         auto QuerySubmitted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneQuerySubmittedEventArgs> const& handler) const;
         using QuerySubmitted_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Search::ISearchPane, &impl::abi_t<winrt::Windows::ApplicationModel::Search::ISearchPane>::remove_QuerySubmitted>;
-        [[nodiscard]] QuerySubmitted_revoker QuerySubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneQuerySubmittedEventArgs> const& handler) const;
+        [[nodiscard]] auto QuerySubmitted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneQuerySubmittedEventArgs> const& handler) const;
         auto QuerySubmitted(winrt::event_token const& token) const noexcept;
         auto ResultSuggestionChosen(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneResultSuggestionChosenEventArgs> const& handler) const;
         using ResultSuggestionChosen_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Search::ISearchPane, &impl::abi_t<winrt::Windows::ApplicationModel::Search::ISearchPane>::remove_ResultSuggestionChosen>;
-        [[nodiscard]] ResultSuggestionChosen_revoker ResultSuggestionChosen(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneResultSuggestionChosenEventArgs> const& handler) const;
+        [[nodiscard]] auto ResultSuggestionChosen(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Search::SearchPane, winrt::Windows::ApplicationModel::Search::SearchPaneResultSuggestionChosenEventArgs> const& handler) const;
         auto ResultSuggestionChosen(winrt::event_token const& token) const noexcept;
         auto SetLocalContentSuggestionSettings(winrt::Windows::ApplicationModel::Search::LocalContentSuggestionSettings const& settings) const;
         auto Show() const;

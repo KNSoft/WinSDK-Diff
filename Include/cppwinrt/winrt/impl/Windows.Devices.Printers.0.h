@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,8 +13,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing
 {
@@ -135,6 +135,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     struct VirtualPrinterInstallationResult;
     struct VirtualPrinterManager;
     struct VirtualPrinterSupportedFormat;
+    struct PrintersContract;
 }
 namespace winrt::impl
 {
@@ -236,6 +237,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IVirtualPrinterManagerStatics> = L"Windows.Devices.Printers.IVirtualPrinterManagerStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat> = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormat";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormatFactory> = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::PrintersContract> = L"Windows.Devices.Printers.PrintersContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeError>{ 0x750FEDA1,0x9EEF,0x5C39,{ 0x93,0xE4,0x46,0x14,0x9B,0xBC,0xEF,0x27 } }; // 750FEDA1-9EEF-5C39-93E4-46149BBCEF27
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeValue>{ 0x99407FED,0xE2BB,0x59A3,{ 0x98,0x8B,0x28,0xA9,0x74,0x05,0x2A,0x26 } }; // 99407FED-E2BB-59A3-988B-28A974052A26
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeValueStatics>{ 0x10D43942,0xDD94,0x5998,{ 0xB2,0x35,0xAF,0xAF,0xB6,0xFA,0x79,0x35 } }; // 10D43942-DD94-5998-B235-AFAFB6FA7935
@@ -279,7 +281,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Printers::VirtualPrinterSupportedFormat>{ using type = winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat; };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppAttributeError>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -288,7 +290,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppAttributeValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall GetIntegerArray(void**) noexcept = 0;
@@ -313,7 +315,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppAttributeValueStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateUnsupported(void**) noexcept = 0;
             virtual int32_t __stdcall CreateUnknown(void**) noexcept = 0;
@@ -358,7 +360,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppIntegerRange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Start(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_End(int32_t*) noexcept = 0;
@@ -366,14 +368,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppIntegerRangeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppPrintDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrinterName(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrinterUri(void**) noexcept = 0;
@@ -385,7 +387,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppPrintDevice2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetMaxSupportedPdfSize(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall GetMaxSupportedPdfVersion(void**) noexcept = 0;
@@ -395,14 +397,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppPrintDevice3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsIppFaxOutPrinter(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppPrintDevice4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_CanModifyUserDefaultPrintTicket(bool*) noexcept = 0;
@@ -414,7 +416,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppPrintDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromId(void*, void**) noexcept = 0;
@@ -424,7 +426,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppResolution>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Width(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Height(int32_t*) noexcept = 0;
@@ -433,14 +435,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppResolutionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppSetAttributesResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
             virtual int32_t __stdcall get_AttributeErrors(void**) noexcept = 0;
@@ -448,7 +450,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppTextWithLanguage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Language(void**) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -456,14 +458,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppTextWithLanguageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IPageConfigurationSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OrientationSource(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_OrientationSource(int32_t) noexcept = 0;
@@ -473,7 +475,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IPdlPassthroughProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SupportedPdlContentTypes(void**) noexcept = 0;
             virtual int32_t __stdcall StartPrintJobWithTaskOptions(void*, void*, void*, void*, void**) noexcept = 0;
@@ -482,7 +484,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IPdlPassthroughTarget>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrintJobId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall GetOutputStream(void**) noexcept = 0;
@@ -491,14 +493,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IPrint3DDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrintSchema(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IPrint3DDeviceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -506,7 +508,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IPrintSchema>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefaultPrintTicketAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetCapabilitiesAsync(void*, void**) noexcept = 0;
@@ -515,7 +517,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IVirtualPrinterInstallationParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrinterName(void**) noexcept = 0;
             virtual int32_t __stdcall put_PrinterName(void*) noexcept = 0;
@@ -535,7 +537,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IVirtualPrinterInstallationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -543,7 +545,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IVirtualPrinterManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InstallVirtualPrinterAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall InstallVirtualPrinterAsync2(void*, void*, void**) noexcept = 0;
@@ -557,7 +559,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentType(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContentType(void*) noexcept = 0;
@@ -567,7 +569,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormatFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void**) noexcept = 0;
         };

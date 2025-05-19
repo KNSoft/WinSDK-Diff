@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -29,13 +29,13 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Management::Core::ApplicationDataManager>{ using type = winrt::Windows::Management::Core::IApplicationDataManager; };
     template <> struct abi<winrt::Windows::Management::Core::IApplicationDataManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Management::Core::IApplicationDataManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateForPackageFamily(void*, void**) noexcept = 0;
         };

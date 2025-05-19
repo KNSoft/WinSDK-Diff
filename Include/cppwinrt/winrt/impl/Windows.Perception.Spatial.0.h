@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,15 +8,15 @@
 #define WINRT_Windows_Perception_Spatial_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename K, typename V> struct __declspec(empty_bases) IKeyValuePair;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IKeyValuePair;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
@@ -310,7 +310,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Perception::Spatial::SpatialStationaryFrameOfReference>{ using type = winrt::Windows::Perception::Spatial::ISpatialStationaryFrameOfReference; };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CoordinateSystem(void**) noexcept = 0;
             virtual int32_t __stdcall get_RawCoordinateSystem(void**) noexcept = 0;
@@ -320,14 +320,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemovedByUser(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchorExportSufficiency>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsMinimallySufficient(bool*) noexcept = 0;
             virtual int32_t __stdcall get_SufficiencyLevel(double*) noexcept = 0;
@@ -336,7 +336,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchorExporter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAnchorExportSufficiencyAsync(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall TryExportAnchorAsync(void*, int32_t, void*, void**) noexcept = 0;
@@ -344,7 +344,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchorExporterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
@@ -352,21 +352,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchorManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchorRawCoordinateSystemAdjustedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldRawCoordinateSystemToNewRawCoordinateSystemTransform(winrt::Windows::Foundation::Numerics::float4x4*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateRelativeTo(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryCreateWithPositionRelativeTo(void*, winrt::Windows::Foundation::Numerics::float3, void**) noexcept = 0;
@@ -375,7 +375,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchorStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAllSavedAnchors(void**) noexcept = 0;
             virtual int32_t __stdcall TrySave(void*, void*, bool*) noexcept = 0;
@@ -385,7 +385,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialAnchorTransferManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryImportAnchorsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryExportAnchorsAsync(void*, void*, void**) noexcept = 0;
@@ -394,13 +394,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialBoundingVolume>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialBoundingVolumeStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromBox(void*, struct struct_Windows_Perception_Spatial_SpatialBoundingBox, void**) noexcept = 0;
             virtual int32_t __stdcall FromOrientedBox(void*, struct struct_Windows_Perception_Spatial_SpatialBoundingOrientedBox, void**) noexcept = 0;
@@ -410,14 +410,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialCoordinateSystem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetTransformTo(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialEntity>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Anchor(void**) noexcept = 0;
@@ -426,14 +426,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialEntityAddedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Entity(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialEntityFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithSpatialAnchor(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithSpatialAnchorAndProperties(void*, void*, void**) noexcept = 0;
@@ -441,14 +441,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialEntityRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Entity(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialEntityStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SaveAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RemoveAsync(void*, void**) noexcept = 0;
@@ -457,7 +457,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialEntityStoreStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall TryGetForRemoteSystemSession(void*, void**) noexcept = 0;
@@ -465,14 +465,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialEntityUpdatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Entity(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_Added(void*, winrt::event_token*) noexcept = 0;
@@ -489,7 +489,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialLocation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall get_Orientation(winrt::Windows::Foundation::Numerics::quaternion*) noexcept = 0;
@@ -501,7 +501,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialLocation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AbsoluteAngularVelocityAxisAngle(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall get_AbsoluteAngularAccelerationAxisAngle(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
@@ -509,7 +509,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialLocator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Locatability(int32_t*) noexcept = 0;
             virtual int32_t __stdcall add_LocatabilityChanged(void*, winrt::event_token*) noexcept = 0;
@@ -529,7 +529,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialLocatorAttachedFrameOfReference>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RelativePosition(winrt::Windows::Foundation::Numerics::float3*) noexcept = 0;
             virtual int32_t __stdcall put_RelativePosition(winrt::Windows::Foundation::Numerics::float3) noexcept = 0;
@@ -542,7 +542,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialLocatorPositionalTrackingDeactivatingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Canceled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Canceled(bool) noexcept = 0;
@@ -550,14 +550,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialLocatorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialStageFrameOfReference>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CoordinateSystem(void**) noexcept = 0;
             virtual int32_t __stdcall get_MovementRange(int32_t*) noexcept = 0;
@@ -568,7 +568,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialStageFrameOfReferenceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
             virtual int32_t __stdcall add_CurrentChanged(void*, winrt::event_token*) noexcept = 0;
@@ -578,7 +578,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::ISpatialStationaryFrameOfReference>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CoordinateSystem(void**) noexcept = 0;
         };
@@ -590,7 +590,7 @@ namespace winrt::impl
         [[nodiscard]] auto RawCoordinateSystem() const;
         auto RawCoordinateSystemAdjusted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialAnchor, winrt::Windows::Perception::Spatial::SpatialAnchorRawCoordinateSystemAdjustedEventArgs> const& handler) const;
         using RawCoordinateSystemAdjusted_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::ISpatialAnchor, &impl::abi_t<winrt::Windows::Perception::Spatial::ISpatialAnchor>::remove_RawCoordinateSystemAdjusted>;
-        [[nodiscard]] RawCoordinateSystemAdjusted_revoker RawCoordinateSystemAdjusted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialAnchor, winrt::Windows::Perception::Spatial::SpatialAnchorRawCoordinateSystemAdjustedEventArgs> const& handler) const;
+        [[nodiscard]] auto RawCoordinateSystemAdjusted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialAnchor, winrt::Windows::Perception::Spatial::SpatialAnchorRawCoordinateSystemAdjustedEventArgs> const& handler) const;
         auto RawCoordinateSystemAdjusted(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Perception::Spatial::ISpatialAnchor>
@@ -793,19 +793,19 @@ namespace winrt::impl
         [[nodiscard]] auto Status() const;
         auto Added(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityAddedEventArgs> const& handler) const;
         using Added_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher, &impl::abi_t<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher>::remove_Added>;
-        [[nodiscard]] Added_revoker Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityAddedEventArgs> const& handler) const;
+        [[nodiscard]] auto Added(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityAddedEventArgs> const& handler) const;
         auto Added(winrt::event_token const& token) const noexcept;
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityUpdatedEventArgs> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher, &impl::abi_t<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityUpdatedEventArgs> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityUpdatedEventArgs> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityRemovedEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher, &impl::abi_t<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Perception::Spatial::SpatialEntityRemovedEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto EnumerationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using EnumerationCompleted_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher, &impl::abi_t<winrt::Windows::Perception::Spatial::ISpatialEntityWatcher>::remove_EnumerationCompleted>;
-        [[nodiscard]] EnumerationCompleted_revoker EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto EnumerationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialEntityWatcher, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto EnumerationCompleted(winrt::event_token const& token) const noexcept;
         auto Start() const;
         auto Stop() const;
@@ -844,11 +844,11 @@ namespace winrt::impl
         [[nodiscard]] auto Locatability() const;
         auto LocatabilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialLocator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using LocatabilityChanged_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::ISpatialLocator, &impl::abi_t<winrt::Windows::Perception::Spatial::ISpatialLocator>::remove_LocatabilityChanged>;
-        [[nodiscard]] LocatabilityChanged_revoker LocatabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialLocator, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto LocatabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialLocator, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto LocatabilityChanged(winrt::event_token const& cookie) const noexcept;
         auto PositionalTrackingDeactivating(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialLocator, winrt::Windows::Perception::Spatial::SpatialLocatorPositionalTrackingDeactivatingEventArgs> const& handler) const;
         using PositionalTrackingDeactivating_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::ISpatialLocator, &impl::abi_t<winrt::Windows::Perception::Spatial::ISpatialLocator>::remove_PositionalTrackingDeactivating>;
-        [[nodiscard]] PositionalTrackingDeactivating_revoker PositionalTrackingDeactivating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialLocator, winrt::Windows::Perception::Spatial::SpatialLocatorPositionalTrackingDeactivatingEventArgs> const& handler) const;
+        [[nodiscard]] auto PositionalTrackingDeactivating(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Perception::Spatial::SpatialLocator, winrt::Windows::Perception::Spatial::SpatialLocatorPositionalTrackingDeactivatingEventArgs> const& handler) const;
         auto PositionalTrackingDeactivating(winrt::event_token const& cookie) const noexcept;
         auto TryLocateAtTimestamp(winrt::Windows::Perception::PerceptionTimestamp const& timestamp, winrt::Windows::Perception::Spatial::SpatialCoordinateSystem const& coordinateSystem) const;
         auto CreateAttachedFrameOfReferenceAtCurrentHeading() const;
@@ -917,7 +917,7 @@ namespace winrt::impl
         [[nodiscard]] auto Current() const;
         auto CurrentChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CurrentChanged_revoker = impl::event_revoker<winrt::Windows::Perception::Spatial::ISpatialStageFrameOfReferenceStatics, &impl::abi_t<winrt::Windows::Perception::Spatial::ISpatialStageFrameOfReferenceStatics>::remove_CurrentChanged>;
-        [[nodiscard]] CurrentChanged_revoker CurrentChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CurrentChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CurrentChanged(winrt::event_token const& cookie) const noexcept;
         auto RequestNewStageAsync() const;
     };

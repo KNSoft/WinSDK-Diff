@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,35 +9,35 @@
 #include "winrt/impl/Windows.Devices.Gpio.Provider.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Gpio::Provider
 {
-    struct __declspec(empty_bases) IGpioControllerProvider :
+    struct WINRT_IMPL_EMPTY_BASES IGpioControllerProvider :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGpioControllerProvider>
     {
         IGpioControllerProvider(std::nullptr_t = nullptr) noexcept {}
         IGpioControllerProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IGpioPinProvider :
+    struct WINRT_IMPL_EMPTY_BASES IGpioPinProvider :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGpioPinProvider>
     {
         IGpioPinProvider(std::nullptr_t = nullptr) noexcept {}
         IGpioPinProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IGpioPinProviderValueChangedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IGpioPinProviderValueChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGpioPinProviderValueChangedEventArgs>
     {
         IGpioPinProviderValueChangedEventArgs(std::nullptr_t = nullptr) noexcept {}
         IGpioPinProviderValueChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IGpioPinProviderValueChangedEventArgsFactory :
+    struct WINRT_IMPL_EMPTY_BASES IGpioPinProviderValueChangedEventArgsFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGpioPinProviderValueChangedEventArgsFactory>
     {
         IGpioPinProviderValueChangedEventArgsFactory(std::nullptr_t = nullptr) noexcept {}
         IGpioPinProviderValueChangedEventArgsFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IGpioProvider :
+    struct WINRT_IMPL_EMPTY_BASES IGpioProvider :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGpioProvider>
     {

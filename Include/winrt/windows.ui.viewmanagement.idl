@@ -982,7 +982,7 @@ namespace Windows
             [uuid(595C97A5-F8F6-41CF-B0FB-AACDB81FD5F6)]
             interface IUIViewSettingsStatics : IInspectable
             {
-                HRESULT GetForCurrentView([out] [retval] Windows.UI.ViewManagement.UIViewSettings** current);
+                HRESULT GetForCurrentView([out] [retval] Windows.UI.ViewManagement.UIViewSettings** result);
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 4.0)]
@@ -1158,6 +1158,7 @@ namespace Windows
             [contract(Windows.Foundation.UniversalApiContract, 1.0)]
             [marshaling_behavior(agile)]
             [static(Windows.UI.ViewManagement.IUIViewSettingsStatics, Windows.Foundation.UniversalApiContract, 1.0)]
+            [threading(both)]
             runtimeclass UIViewSettings
             {
                 [default] interface Windows.UI.ViewManagement.IUIViewSettings;

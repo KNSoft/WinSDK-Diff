@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Credentials
 {
@@ -85,6 +85,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::ApplicationSettings
     struct CredentialCommandCredentialDeletedHandler;
     struct WebAccountCommandInvokedHandler;
     struct WebAccountProviderCommandInvokedHandler;
+    struct ApplicationsSettingsContract;
 }
 namespace winrt::impl
 {
@@ -162,6 +163,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ApplicationSettings::CredentialCommandCredentialDeletedHandler> = L"Windows.UI.ApplicationSettings.CredentialCommandCredentialDeletedHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ApplicationSettings::WebAccountCommandInvokedHandler> = L"Windows.UI.ApplicationSettings.WebAccountCommandInvokedHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::ApplicationSettings::WebAccountProviderCommandInvokedHandler> = L"Windows.UI.ApplicationSettings.WebAccountProviderCommandInvokedHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::ApplicationSettings::ApplicationsSettingsContract> = L"Windows.UI.ApplicationSettings.ApplicationsSettingsContract";
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPane>{ 0x81EA942C,0x4F09,0x4406,{ 0xA5,0x38,0x83,0x8D,0x9B,0x14,0xB7,0xE6 } }; // 81EA942C-4F09-4406-A538-838D9B14B7E6
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPaneCommandsRequestedEventArgs>{ 0x3B68C099,0xDB19,0x45D0,{ 0x9A,0xBF,0x95,0xD3,0x77,0x3C,0x93,0x30 } }; // 3B68C099-DB19-45D0-9ABF-95D3773C9330
     template <> inline constexpr guid guid_v<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPaneCommandsRequestedEventArgs2>{ 0x362F7BAD,0x4E37,0x4967,{ 0x8C,0x40,0xE7,0x8E,0xE7,0xA1,0xE5,0xBB } }; // 362F7BAD-4E37-4967-8C40-E78EE7A1E5BB
@@ -198,7 +200,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::ApplicationSettings::WebAccountProviderCommand>{ using type = winrt::Windows::UI::ApplicationSettings::IWebAccountProviderCommand; };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPane>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AccountCommandsRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AccountCommandsRequested(winrt::event_token) noexcept = 0;
@@ -206,7 +208,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPaneCommandsRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebAccountProviderCommands(void**) noexcept = 0;
             virtual int32_t __stdcall get_WebAccountCommands(void**) noexcept = 0;
@@ -219,21 +221,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPaneCommandsRequestedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPaneEventDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPaneStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall Show() noexcept = 0;
@@ -241,7 +243,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPaneStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowManageAccountsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ShowAddAccountAsync(void**) noexcept = 0;
@@ -249,7 +251,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPaneStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowManageAccountsForUserAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ShowAddAccountForUserAsync(void*, void**) noexcept = 0;
@@ -257,7 +259,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::ICredentialCommand>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PasswordCredential(void**) noexcept = 0;
             virtual int32_t __stdcall get_CredentialDeleted(void**) noexcept = 0;
@@ -265,7 +267,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::ICredentialCommandFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCredentialCommand(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateCredentialCommandWithHandler(void*, void*, void**) noexcept = 0;
@@ -273,21 +275,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::ISettingsCommandFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateSettingsCommand(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::ISettingsCommandStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AccountsCommand(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::ISettingsPane>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CommandsRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CommandsRequested(winrt::event_token) noexcept = 0;
@@ -295,21 +297,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::ISettingsPaneCommandsRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ApplicationCommands(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::ISettingsPaneCommandsRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::ISettingsPaneStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall Show() noexcept = 0;
@@ -318,7 +320,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IWebAccountCommand>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebAccount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Invoked(void**) noexcept = 0;
@@ -327,21 +329,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IWebAccountCommandFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWebAccountCommand(void*, void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IWebAccountInvokedArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Action(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IWebAccountProviderCommand>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebAccountProvider(void**) noexcept = 0;
             virtual int32_t __stdcall get_Invoked(void**) noexcept = 0;
@@ -349,28 +351,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::IWebAccountProviderCommandFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWebAccountProviderCommand(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::CredentialCommandCredentialDeletedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::WebAccountCommandInvokedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::ApplicationSettings::WebAccountProviderCommandInvokedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -380,7 +382,7 @@ namespace winrt::impl
     {
         auto AccountCommandsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ApplicationSettings::AccountsSettingsPane, winrt::Windows::UI::ApplicationSettings::AccountsSettingsPaneCommandsRequestedEventArgs> const& handler) const;
         using AccountCommandsRequested_revoker = impl::event_revoker<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPane, &impl::abi_t<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPane>::remove_AccountCommandsRequested>;
-        [[nodiscard]] AccountCommandsRequested_revoker AccountCommandsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ApplicationSettings::AccountsSettingsPane, winrt::Windows::UI::ApplicationSettings::AccountsSettingsPaneCommandsRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto AccountCommandsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ApplicationSettings::AccountsSettingsPane, winrt::Windows::UI::ApplicationSettings::AccountsSettingsPaneCommandsRequestedEventArgs> const& handler) const;
         auto AccountCommandsRequested(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ApplicationSettings::IAccountsSettingsPane>
@@ -493,7 +495,7 @@ namespace winrt::impl
     {
         auto CommandsRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ApplicationSettings::SettingsPane, winrt::Windows::UI::ApplicationSettings::SettingsPaneCommandsRequestedEventArgs> const& handler) const;
         using CommandsRequested_revoker = impl::event_revoker<winrt::Windows::UI::ApplicationSettings::ISettingsPane, &impl::abi_t<winrt::Windows::UI::ApplicationSettings::ISettingsPane>::remove_CommandsRequested>;
-        [[nodiscard]] CommandsRequested_revoker CommandsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ApplicationSettings::SettingsPane, winrt::Windows::UI::ApplicationSettings::SettingsPaneCommandsRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto CommandsRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::ApplicationSettings::SettingsPane, winrt::Windows::UI::ApplicationSettings::SettingsPaneCommandsRequestedEventArgs> const& handler) const;
         auto CommandsRequested(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::ApplicationSettings::ISettingsPane>

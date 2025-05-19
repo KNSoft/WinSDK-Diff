@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts::Provider
 {
@@ -51,7 +51,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Contacts::Provider::ContactRemovedEventArgs>{ using type = winrt::Windows::ApplicationModel::Contacts::Provider::IContactRemovedEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::Provider::IContactPickerUI>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddContact(void*, void*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall RemoveContact(void*) noexcept = 0;
@@ -64,7 +64,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::Provider::IContactPickerUI2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddContact(void*, int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DesiredFieldsWithContactFieldType(void**) noexcept = 0;
@@ -72,7 +72,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Contacts::Provider::IContactRemovedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
         };
@@ -87,7 +87,7 @@ namespace winrt::impl
         [[nodiscard]] auto SelectionMode() const;
         auto ContactRemoved(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::Provider::ContactPickerUI, winrt::Windows::ApplicationModel::Contacts::Provider::ContactRemovedEventArgs> const& handler) const;
         using ContactRemoved_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Contacts::Provider::IContactPickerUI, &impl::abi_t<winrt::Windows::ApplicationModel::Contacts::Provider::IContactPickerUI>::remove_ContactRemoved>;
-        [[nodiscard]] ContactRemoved_revoker ContactRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::Provider::ContactPickerUI, winrt::Windows::ApplicationModel::Contacts::Provider::ContactRemovedEventArgs> const& handler) const;
+        [[nodiscard]] auto ContactRemoved(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Contacts::Provider::ContactPickerUI, winrt::Windows::ApplicationModel::Contacts::Provider::ContactRemovedEventArgs> const& handler) const;
         auto ContactRemoved(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Contacts::Provider::IContactPickerUI>

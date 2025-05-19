@@ -1072,6 +1072,7 @@ typedef struct _CAINFO
 #define wszPROPENDORSEMENTCERTIFICATEHASH       TEXT("EndorsementCertificateHash")
 #define wszPROPRAWPRECERTIFICATE                TEXT("RawPrecertificate")
 #define wszPROPCRLPARTITIONINDEX                TEXT("CRLPartitionIndex")
+#define wszPROPLINTERCERTIFICATE                TEXT("LinterCertificate")
 
 //+--------------------------------------------------------------------------
 // Request attribute properties:
@@ -1123,6 +1124,7 @@ typedef struct _CAINFO
 #define wszAT_EKCERTINF			TEXT("@EKCert")
 #define wszAT_TESTROOT			TEXT("@TestRoot")
 
+#define wszPROPLINTCERTIFICATE	TEXT("LintCertificate")
 
 //+--------------------------------------------------------------------------
 // "System" properties

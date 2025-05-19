@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -75,7 +75,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Display::DisplayMonitor>{ using type = winrt::Windows::Devices::Display::IDisplayMonitor; };
     template <> struct abi<winrt::Windows::Devices::Display::IDisplayMonitor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -101,14 +101,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Display::IDisplayMonitor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsDolbyVisionSupportedInHdrMode(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Display::IDisplayMonitorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;

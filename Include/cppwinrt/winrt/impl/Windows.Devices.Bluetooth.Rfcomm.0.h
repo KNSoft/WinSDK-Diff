@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -92,7 +92,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Bluetooth::Rfcomm::RfcommServiceProvider>{ using type = winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceProvider; };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceService>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConnectionHostName(void**) noexcept = 0;
             virtual int32_t __stdcall get_ConnectionServiceName(void**) noexcept = 0;
@@ -105,14 +105,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceService2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Device(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceService3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceAccessInformation(void**) noexcept = 0;
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
@@ -120,7 +120,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceServiceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void*, void**) noexcept = 0;
@@ -128,7 +128,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceServiceStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeviceSelectorForBluetoothDevice(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelectorForBluetoothDeviceWithCacheMode(void*, int32_t, void**) noexcept = 0;
@@ -138,7 +138,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommDeviceServicesResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Services(void**) noexcept = 0;
@@ -146,7 +146,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceId>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uuid(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall AsShortId(uint32_t*) noexcept = 0;
@@ -155,7 +155,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceIdStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromUuid(winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall FromShortId(uint32_t, void**) noexcept = 0;
@@ -169,7 +169,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServiceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_SdpRawAttributes(void**) noexcept = 0;
@@ -179,14 +179,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAdvertisingWithRadioDiscoverability(void*, bool) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Rfcomm::IRfcommServiceProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAsync(void*, void**) noexcept = 0;
         };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -23,7 +23,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web
         static auto AuthenticateSilentlyAsync(winrt::Windows::Foundation::Uri const& requestUri);
         static auto AuthenticateSilentlyAsync(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Security::Authentication::Web::WebAuthenticationOptions const& options);
     };
-    struct __declspec(empty_bases) WebAuthenticationResult : winrt::Windows::Security::Authentication::Web::IWebAuthenticationResult
+    struct WINRT_IMPL_EMPTY_BASES WebAuthenticationResult : winrt::Windows::Security::Authentication::Web::IWebAuthenticationResult
     {
         WebAuthenticationResult(std::nullptr_t) noexcept {}
         WebAuthenticationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Authentication::Web::IWebAuthenticationResult(ptr, take_ownership_from_abi) {}

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,12 +11,12 @@
 #include "winrt/impl/Windows.Devices.Adc.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Adc
 {
-    struct __declspec(empty_bases) AdcChannel : winrt::Windows::Devices::Adc::IAdcChannel
+    struct WINRT_IMPL_EMPTY_BASES AdcChannel : winrt::Windows::Devices::Adc::IAdcChannel
     {
         AdcChannel(std::nullptr_t) noexcept {}
         AdcChannel(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Adc::IAdcChannel(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) AdcController : winrt::Windows::Devices::Adc::IAdcController
+    struct WINRT_IMPL_EMPTY_BASES AdcController : winrt::Windows::Devices::Adc::IAdcController
     {
         AdcController(std::nullptr_t) noexcept {}
         AdcController(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Adc::IAdcController(ptr, take_ownership_from_abi) {}

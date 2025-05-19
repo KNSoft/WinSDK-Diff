@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,14 +9,14 @@
 #include "winrt/impl/Windows.Devices.Custom.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Custom
 {
-    struct __declspec(empty_bases) CustomDevice : winrt::Windows::Devices::Custom::ICustomDevice
+    struct WINRT_IMPL_EMPTY_BASES CustomDevice : winrt::Windows::Devices::Custom::ICustomDevice
     {
         CustomDevice(std::nullptr_t) noexcept {}
         CustomDevice(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Custom::ICustomDevice(ptr, take_ownership_from_abi) {}
         static auto GetDeviceSelector(winrt::guid const& classGuid);
         static auto FromIdAsync(param::hstring const& deviceId, winrt::Windows::Devices::Custom::DeviceAccessMode const& desiredAccess, winrt::Windows::Devices::Custom::DeviceSharingMode const& sharingMode);
     };
-    struct __declspec(empty_bases) IOControlCode : winrt::Windows::Devices::Custom::IIOControlCode
+    struct WINRT_IMPL_EMPTY_BASES IOControlCode : winrt::Windows::Devices::Custom::IIOControlCode
     {
         IOControlCode(std::nullptr_t) noexcept {}
         IOControlCode(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Custom::IIOControlCode(ptr, take_ownership_from_abi) {}

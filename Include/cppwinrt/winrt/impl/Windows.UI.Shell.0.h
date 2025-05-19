@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct Deferral;
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
@@ -97,6 +97,8 @@ WINRT_EXPORT namespace winrt::Windows::UI::Shell
     struct WindowTabSwitchRequestedEventArgs;
     struct WindowTabTearOutRequestedEventArgs;
     struct WindowTabThumbnailRequestedEventArgs;
+    struct SecurityAppManagerContract;
+    struct WindowTabManagerContract;
 }
 namespace winrt::impl
 {
@@ -188,6 +190,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Shell::IWindowTabSwitchRequestedEventArgs> = L"Windows.UI.Shell.IWindowTabSwitchRequestedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Shell::IWindowTabTearOutRequestedEventArgs> = L"Windows.UI.Shell.IWindowTabTearOutRequestedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Shell::IWindowTabThumbnailRequestedEventArgs> = L"Windows.UI.Shell.IWindowTabThumbnailRequestedEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Shell::SecurityAppManagerContract> = L"Windows.UI.Shell.SecurityAppManagerContract";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Shell::WindowTabManagerContract> = L"Windows.UI.Shell.WindowTabManagerContract";
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Shell::IAdaptiveCard>{ 0x72D0568C,0xA274,0x41CD,{ 0x82,0xA8,0x98,0x9D,0x40,0xB9,0xB0,0x5E } }; // 72D0568C-A274-41CD-82A8-989D40B9B05E
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Shell::IAdaptiveCardBuilderStatics>{ 0x766D8F08,0xD3FE,0x4347,{ 0xA0,0xBC,0xB9,0xEA,0x9A,0x6D,0xC2,0x8E } }; // 766D8F08-D3FE-4347-A0BC-B9EA9A6DC28E
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Shell::IFocusSession>{ 0x069FBAB8,0x0E84,0x5F2F,{ 0x86,0x14,0x9B,0x65,0x44,0x32,0x62,0x77 } }; // 069FBAB8-0E84-5F2F-8614-9B6544326277
@@ -229,21 +233,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Shell::WindowTabThumbnailRequestedEventArgs>{ using type = winrt::Windows::UI::Shell::IWindowTabThumbnailRequestedEventArgs; };
     template <> struct abi<winrt::Windows::UI::Shell::IAdaptiveCard>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ToJson(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::IAdaptiveCardBuilderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAdaptiveCardFromJson(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::IFocusSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall End() noexcept = 0;
@@ -251,7 +255,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IFocusSessionManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsFocusActive(bool*) noexcept = 0;
             virtual int32_t __stdcall GetSession(void*, void**) noexcept = 0;
@@ -264,7 +268,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IFocusSessionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
@@ -272,7 +276,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::ISecurityAppManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Register(int32_t, void*, void*, bool, winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall Unregister(int32_t, winrt::guid) noexcept = 0;
@@ -281,7 +285,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IShareWindowCommandEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WindowId(struct struct_Windows_UI_WindowId*) noexcept = 0;
             virtual int32_t __stdcall get_Command(int32_t*) noexcept = 0;
@@ -290,7 +294,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IShareWindowCommandSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Start() noexcept = 0;
             virtual int32_t __stdcall Stop() noexcept = 0;
@@ -303,14 +307,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IShareWindowCommandSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::ITaskbarManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsPinningAllowed(bool*) noexcept = 0;
@@ -322,7 +326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::ITaskbarManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSecondaryTilePinnedAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestPinSecondaryTileAsync(void*, void**) noexcept = 0;
@@ -331,20 +335,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::ITaskbarManagerDesktopAppSupportStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::ITaskbarManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTab>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tag(void**) noexcept = 0;
             virtual int32_t __stdcall put_Tag(void*) noexcept = 0;
@@ -361,21 +365,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabCloseRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tab(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MoveTab(void*, uint32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -385,13 +389,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabIcon>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabIconStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromFontGlyph(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromFontGlyphWithUri(void*, void*, void*, void**) noexcept = 0;
@@ -400,7 +404,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tabs(void**) noexcept = 0;
             virtual int32_t __stdcall SetActiveTab(void*) noexcept = 0;
@@ -416,7 +420,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForWindow(struct struct_Windows_UI_WindowId, void**) noexcept = 0;
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
@@ -425,14 +429,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabSwitchRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tab(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabTearOutRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tab(void**) noexcept = 0;
             virtual int32_t __stdcall get_WindowId(uint64_t*) noexcept = 0;
@@ -442,7 +446,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Shell::IWindowTabThumbnailRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tab(void**) noexcept = 0;
             virtual int32_t __stdcall get_RequestedSize(struct struct_Windows_Graphics_Imaging_BitmapSize*) noexcept = 0;
@@ -490,7 +494,7 @@ namespace winrt::impl
         auto DeactivateFocus() const;
         auto IsFocusActiveChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::FocusSessionManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsFocusActiveChanged_revoker = impl::event_revoker<winrt::Windows::UI::Shell::IFocusSessionManager, &impl::abi_t<winrt::Windows::UI::Shell::IFocusSessionManager>::remove_IsFocusActiveChanged>;
-        [[nodiscard]] IsFocusActiveChanged_revoker IsFocusActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::FocusSessionManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsFocusActiveChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::FocusSessionManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsFocusActiveChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Shell::IFocusSessionManager>
@@ -537,11 +541,11 @@ namespace winrt::impl
         auto ReportCommandChanged() const;
         auto CommandRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::ShareWindowCommandSource, winrt::Windows::UI::Shell::ShareWindowCommandEventArgs> const& handler) const;
         using CommandRequested_revoker = impl::event_revoker<winrt::Windows::UI::Shell::IShareWindowCommandSource, &impl::abi_t<winrt::Windows::UI::Shell::IShareWindowCommandSource>::remove_CommandRequested>;
-        [[nodiscard]] CommandRequested_revoker CommandRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::ShareWindowCommandSource, winrt::Windows::UI::Shell::ShareWindowCommandEventArgs> const& handler) const;
+        [[nodiscard]] auto CommandRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::ShareWindowCommandSource, winrt::Windows::UI::Shell::ShareWindowCommandEventArgs> const& handler) const;
         auto CommandRequested(winrt::event_token const& token) const noexcept;
         auto CommandInvoked(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::ShareWindowCommandSource, winrt::Windows::UI::Shell::ShareWindowCommandEventArgs> const& handler) const;
         using CommandInvoked_revoker = impl::event_revoker<winrt::Windows::UI::Shell::IShareWindowCommandSource, &impl::abi_t<winrt::Windows::UI::Shell::IShareWindowCommandSource>::remove_CommandInvoked>;
-        [[nodiscard]] CommandInvoked_revoker CommandInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::ShareWindowCommandSource, winrt::Windows::UI::Shell::ShareWindowCommandEventArgs> const& handler) const;
+        [[nodiscard]] auto CommandInvoked(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::ShareWindowCommandSource, winrt::Windows::UI::Shell::ShareWindowCommandEventArgs> const& handler) const;
         auto CommandInvoked(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Shell::IShareWindowCommandSource>
@@ -674,19 +678,19 @@ namespace winrt::impl
         auto SetActiveTab(winrt::Windows::UI::Shell::WindowTab const& tab) const;
         auto TabSwitchRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabSwitchRequestedEventArgs> const& handler) const;
         using TabSwitchRequested_revoker = impl::event_revoker<winrt::Windows::UI::Shell::IWindowTabManager, &impl::abi_t<winrt::Windows::UI::Shell::IWindowTabManager>::remove_TabSwitchRequested>;
-        [[nodiscard]] TabSwitchRequested_revoker TabSwitchRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabSwitchRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto TabSwitchRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabSwitchRequestedEventArgs> const& handler) const;
         auto TabSwitchRequested(winrt::event_token const& token) const noexcept;
         auto TabCloseRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabCloseRequestedEventArgs> const& handler) const;
         using TabCloseRequested_revoker = impl::event_revoker<winrt::Windows::UI::Shell::IWindowTabManager, &impl::abi_t<winrt::Windows::UI::Shell::IWindowTabManager>::remove_TabCloseRequested>;
-        [[nodiscard]] TabCloseRequested_revoker TabCloseRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabCloseRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto TabCloseRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabCloseRequestedEventArgs> const& handler) const;
         auto TabCloseRequested(winrt::event_token const& token) const noexcept;
         auto TabTearOutRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabTearOutRequestedEventArgs> const& handler) const;
         using TabTearOutRequested_revoker = impl::event_revoker<winrt::Windows::UI::Shell::IWindowTabManager, &impl::abi_t<winrt::Windows::UI::Shell::IWindowTabManager>::remove_TabTearOutRequested>;
-        [[nodiscard]] TabTearOutRequested_revoker TabTearOutRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabTearOutRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto TabTearOutRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabTearOutRequestedEventArgs> const& handler) const;
         auto TabTearOutRequested(winrt::event_token const& token) const noexcept;
         auto TabThumbnailRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabThumbnailRequestedEventArgs> const& handler) const;
         using TabThumbnailRequested_revoker = impl::event_revoker<winrt::Windows::UI::Shell::IWindowTabManager, &impl::abi_t<winrt::Windows::UI::Shell::IWindowTabManager>::remove_TabThumbnailRequested>;
-        [[nodiscard]] TabThumbnailRequested_revoker TabThumbnailRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabThumbnailRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto TabThumbnailRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Shell::WindowTabManager, winrt::Windows::UI::Shell::WindowTabThumbnailRequestedEventArgs> const& handler) const;
         auto TabThumbnailRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Shell::IWindowTabManager>

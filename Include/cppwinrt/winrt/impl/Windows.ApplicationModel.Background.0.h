@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -57,12 +57,12 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Sms
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
@@ -384,6 +384,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Background
     struct BackgroundTaskCanceledEventHandler;
     struct BackgroundTaskCompletedEventHandler;
     struct BackgroundTaskProgressEventHandler;
+    struct BackgroundAlarmApplicationContract;
 }
 namespace winrt::impl
 {
@@ -761,6 +762,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Background::BackgroundTaskCanceledEventHandler> = L"Windows.ApplicationModel.Background.BackgroundTaskCanceledEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Background::BackgroundTaskCompletedEventHandler> = L"Windows.ApplicationModel.Background.BackgroundTaskCompletedEventHandler";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Background::BackgroundTaskProgressEventHandler> = L"Windows.ApplicationModel.Background.BackgroundTaskProgressEventHandler";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Background::BackgroundAlarmApplicationContract> = L"Windows.ApplicationModel.Background.BackgroundAlarmApplicationContract";
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Background::IActivitySensorTrigger>{ 0xD0DD4342,0xE37B,0x4823,{ 0xA5,0xFE,0x6B,0x31,0xDF,0xEF,0xDE,0xB0 } }; // D0DD4342-E37B-4823-A5FE-6B31DFEFDEB0
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Background::IActivitySensorTriggerFactory>{ 0xA72691C3,0x3837,0x44F7,{ 0x83,0x1B,0x01,0x32,0xCC,0x87,0x2B,0xC3 } }; // A72691C3-3837-44F7-831B-0132CC872BC3
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Background::IAlarmApplicationManagerStatics>{ 0xCA03FA3B,0xCCE6,0x4DE2,{ 0xB0,0x9B,0x96,0x28,0xBD,0x33,0xBB,0xBE } }; // CA03FA3B-CCE6-4DE2-B09B-9628BD33BBBE
@@ -933,7 +935,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Background::WiFiOnDemandHotspotUpdateMetadataTrigger>{ using type = winrt::Windows::ApplicationModel::Background::IBackgroundTrigger; };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IActivitySensorTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SubscribedActivities(void**) noexcept = 0;
             virtual int32_t __stdcall get_ReportInterval(uint32_t*) noexcept = 0;
@@ -943,14 +945,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IActivitySensorTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IAlarmApplicationManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetAccessStatus(int32_t*) noexcept = 0;
@@ -958,7 +960,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IAppBroadcastTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_ProviderInfo(void*) noexcept = 0;
             virtual int32_t __stdcall get_ProviderInfo(void**) noexcept = 0;
@@ -966,14 +968,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IAppBroadcastTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAppBroadcastTrigger(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IAppBroadcastTriggerProviderInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_DisplayNameResource(void*) noexcept = 0;
             virtual int32_t __stdcall get_DisplayNameResource(void**) noexcept = 0;
@@ -991,7 +993,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IApplicationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RequestAsyncWithArguments(void*, void**) noexcept = 0;
@@ -999,26 +1001,26 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IApplicationTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Arguments(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IAppointmentStoreNotificationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundCondition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundExecutionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RequestAccessForApplicationAsync(void*, void**) noexcept = 0;
@@ -1030,14 +1032,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundExecutionManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessKindAsync(int32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundExecutionManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAccessKindForModernStandbyAsync(int32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetAccessStatusForModernStandby(int32_t*) noexcept = 0;
@@ -1046,14 +1048,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTask>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Run(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskBuilder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_TaskEntryPoint(void*) noexcept = 0;
             virtual int32_t __stdcall get_TaskEntryPoint(void**) noexcept = 0;
@@ -1066,7 +1068,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskBuilder2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_CancelOnConditionLoss(bool) noexcept = 0;
             virtual int32_t __stdcall get_CancelOnConditionLoss(bool*) noexcept = 0;
@@ -1074,7 +1076,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskBuilder3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsNetworkRequested(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsNetworkRequested(bool*) noexcept = 0;
@@ -1082,7 +1084,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskBuilder4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TaskGroup(void**) noexcept = 0;
             virtual int32_t __stdcall put_TaskGroup(void*) noexcept = 0;
@@ -1090,14 +1092,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskBuilder5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetTaskEntryPointClsid(winrt::guid) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskBuilder6>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowRunningTaskInStandby(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowRunningTaskInStandby(bool) noexcept = 0;
@@ -1107,14 +1109,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskBuilderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsRunningTaskInStandbySupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InstanceId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall CheckResult() noexcept = 0;
@@ -1122,14 +1124,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskInstance>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InstanceId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Task(void**) noexcept = 0;
@@ -1144,21 +1146,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskInstance2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetThrottleCount(int32_t, uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskInstance4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskProgressEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InstanceId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Progress(uint32_t*) noexcept = 0;
@@ -1166,7 +1168,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TaskId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -1179,21 +1181,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistration2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Trigger(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistration3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TaskGroup(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistration4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TaskLastThrottledInStandbyTimestamp(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AppEnergyUsePredictionContribution(double*) noexcept = 0;
@@ -1201,7 +1203,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistrationGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -1212,7 +1214,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistrationGroupFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithName(void*, void*, void**) noexcept = 0;
@@ -1220,14 +1222,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistrationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllTasks(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistrationStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllTaskGroups(void**) noexcept = 0;
             virtual int32_t __stdcall GetTaskGroup(void*, void**) noexcept = 0;
@@ -1235,20 +1237,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundWorkCostStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentBackgroundWorkCost(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBackgroundWorkCostStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppEnergyUseLevel(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AppEnergyUsePrediction(int32_t*) noexcept = 0;
@@ -1257,14 +1259,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBluetoothLEAdvertisementPublisherTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Advertisement(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBluetoothLEAdvertisementPublisherTrigger2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PreferredTransmitPowerLevelInDBm(void**) noexcept = 0;
             virtual int32_t __stdcall put_PreferredTransmitPowerLevelInDBm(void*) noexcept = 0;
@@ -1278,7 +1280,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBluetoothLEAdvertisementPublisherTrigger3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryPhy(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_PrimaryPhy(int32_t) noexcept = 0;
@@ -1288,7 +1290,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBluetoothLEAdvertisementWatcherTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinSamplingInterval(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_MaxSamplingInterval(int64_t*) noexcept = 0;
@@ -1302,7 +1304,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBluetoothLEAdvertisementWatcherTrigger2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowExtendedAdvertisements(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowExtendedAdvertisements(bool) noexcept = 0;
@@ -1310,7 +1312,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IBluetoothLEAdvertisementWatcherTrigger3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UseUncoded1MPhy(bool*) noexcept = 0;
             virtual int32_t __stdcall put_UseUncoded1MPhy(bool) noexcept = 0;
@@ -1322,13 +1324,13 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ICachedFileUpdaterTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ICachedFileUpdaterTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UpdateTarget(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_UpdateRequest(void**) noexcept = 0;
@@ -1337,45 +1339,45 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IChatMessageNotificationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IChatMessageReceivedNotificationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ICommunicationBlockingAppSetAsActiveTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IContactStoreNotificationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IContentPrefetchTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WaitInterval(int64_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IContentPrefetchTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int64_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ICustomSystemEventTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TriggerId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Recurrence(int32_t*) noexcept = 0;
@@ -1383,14 +1385,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ICustomSystemEventTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IDeviceConnectionChangeTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_CanMaintainConnection(bool*) noexcept = 0;
@@ -1400,14 +1402,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IDeviceConnectionChangeTriggerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IDeviceManufacturerNotificationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TriggerQualifier(void**) noexcept = 0;
             virtual int32_t __stdcall get_OneShot(bool*) noexcept = 0;
@@ -1415,14 +1417,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IDeviceManufacturerNotificationTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IDeviceServicingTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAsyncSimple(void*, int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall RequestAsyncWithArguments(void*, int64_t, void*, void**) noexcept = 0;
@@ -1430,7 +1432,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IDeviceUseTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAsyncSimple(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestAsyncWithArguments(void*, void*, void**) noexcept = 0;
@@ -1438,47 +1440,47 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IDeviceWatcherTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IEmailStoreNotificationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IGattCharacteristicNotificationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Characteristic(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IGattCharacteristicNotificationTrigger2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EventTriggeringMode(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IGattCharacteristicNotificationTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IGattCharacteristicNotificationTriggerFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithEventTriggeringMode(void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IGattServiceProviderTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TriggerId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Service(void**) noexcept = 0;
@@ -1488,7 +1490,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IGattServiceProviderTriggerResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Trigger(void**) noexcept = 0;
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
@@ -1496,14 +1498,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IGattServiceProviderTriggerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAsync(void*, winrt::guid, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IGeovisitTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MonitoringScope(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MonitoringScope(int32_t) noexcept = 0;
@@ -1511,21 +1513,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ILocationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TriggerType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ILocationTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IMaintenanceTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FreshnessTime(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_OneShot(bool*) noexcept = 0;
@@ -1533,14 +1535,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IMaintenanceTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IMediaProcessingTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RequestAsyncWithArguments(void*, void**) noexcept = 0;
@@ -1548,27 +1550,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::INetworkOperatorHotspotAuthenticationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::INetworkOperatorNotificationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NetworkAccountId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::INetworkOperatorNotificationTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IPhoneTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OneShot(bool*) noexcept = 0;
             virtual int32_t __stdcall get_TriggerType(int32_t*) noexcept = 0;
@@ -1576,27 +1578,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IPhoneTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IPushNotificationTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IRcsEndUserMessageAvailableTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IRfcommConnectionTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InboundConnection(void**) noexcept = 0;
             virtual int32_t __stdcall get_OutboundConnection(void**) noexcept = 0;
@@ -1610,67 +1612,67 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISecondaryAuthenticationFactorAuthenticationTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISensorDataThresholdTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISensorDataThresholdTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISmartCardTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TriggerType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISmartCardTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISmsMessageReceivedTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISocketActivityTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsWakeFromLowPowerSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IStorageLibraryChangeTrackerTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IStorageLibraryContentChangedTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IStorageLibraryContentChangedTriggerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromLibraries(void*, void**) noexcept = 0;
@@ -1678,21 +1680,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISystemCondition>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConditionType(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISystemConditionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISystemTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OneShot(bool*) noexcept = 0;
             virtual int32_t __stdcall get_TriggerType(int32_t*) noexcept = 0;
@@ -1700,14 +1702,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ISystemTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ITimeTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FreshnessTime(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_OneShot(bool*) noexcept = 0;
@@ -1715,49 +1717,49 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::ITimeTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IToastNotificationActionTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IToastNotificationHistoryChangedTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::IUserNotificationChangedTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::BackgroundTaskCanceledEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::BackgroundTaskCompletedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Background::BackgroundTaskProgressEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -2014,7 +2016,7 @@ namespace winrt::impl
         [[nodiscard]] auto TriggerDetails() const;
         auto Canceled(winrt::Windows::ApplicationModel::Background::BackgroundTaskCanceledEventHandler const& cancelHandler) const;
         using Canceled_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Background::IBackgroundTaskInstance, &impl::abi_t<winrt::Windows::ApplicationModel::Background::IBackgroundTaskInstance>::remove_Canceled>;
-        [[nodiscard]] Canceled_revoker Canceled(auto_revoke_t, winrt::Windows::ApplicationModel::Background::BackgroundTaskCanceledEventHandler const& cancelHandler) const;
+        [[nodiscard]] auto Canceled(auto_revoke_t, winrt::Windows::ApplicationModel::Background::BackgroundTaskCanceledEventHandler const& cancelHandler) const;
         auto Canceled(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto SuspendedCount() const;
         auto GetDeferral() const;
@@ -2058,11 +2060,11 @@ namespace winrt::impl
         [[nodiscard]] auto Name() const;
         auto Progress(winrt::Windows::ApplicationModel::Background::BackgroundTaskProgressEventHandler const& handler) const;
         using Progress_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistration, &impl::abi_t<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistration>::remove_Progress>;
-        [[nodiscard]] Progress_revoker Progress(auto_revoke_t, winrt::Windows::ApplicationModel::Background::BackgroundTaskProgressEventHandler const& handler) const;
+        [[nodiscard]] auto Progress(auto_revoke_t, winrt::Windows::ApplicationModel::Background::BackgroundTaskProgressEventHandler const& handler) const;
         auto Progress(winrt::event_token const& cookie) const noexcept;
         auto Completed(winrt::Windows::ApplicationModel::Background::BackgroundTaskCompletedEventHandler const& handler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistration, &impl::abi_t<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistration>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::ApplicationModel::Background::BackgroundTaskCompletedEventHandler const& handler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::ApplicationModel::Background::BackgroundTaskCompletedEventHandler const& handler) const;
         auto Completed(winrt::event_token const& cookie) const noexcept;
         auto Unregister(bool cancelTask) const;
     };
@@ -2105,7 +2107,7 @@ namespace winrt::impl
         [[nodiscard]] auto Name() const;
         auto BackgroundActivated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Background::BackgroundTaskRegistrationGroup, winrt::Windows::ApplicationModel::Activation::BackgroundActivatedEventArgs> const& handler) const;
         using BackgroundActivated_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistrationGroup, &impl::abi_t<winrt::Windows::ApplicationModel::Background::IBackgroundTaskRegistrationGroup>::remove_BackgroundActivated>;
-        [[nodiscard]] BackgroundActivated_revoker BackgroundActivated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Background::BackgroundTaskRegistrationGroup, winrt::Windows::ApplicationModel::Activation::BackgroundActivatedEventArgs> const& handler) const;
+        [[nodiscard]] auto BackgroundActivated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Background::BackgroundTaskRegistrationGroup, winrt::Windows::ApplicationModel::Activation::BackgroundActivatedEventArgs> const& handler) const;
         auto BackgroundActivated(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto AllTasks() const;
     };

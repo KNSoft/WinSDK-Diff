@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
@@ -100,6 +100,7 @@ WINRT_EXPORT namespace winrt::Windows::Services::TargetedContent
     struct TargetedContentSubscription;
     struct TargetedContentSubscriptionOptions;
     struct TargetedContentValue;
+    struct TargetedContentContract;
 }
 namespace winrt::impl
 {
@@ -171,6 +172,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Services::TargetedContent::ITargetedContentSubscriptionOptions> = L"Windows.Services.TargetedContent.ITargetedContentSubscriptionOptions";
     template <> inline constexpr auto& name_v<winrt::Windows::Services::TargetedContent::ITargetedContentSubscriptionStatics> = L"Windows.Services.TargetedContent.ITargetedContentSubscriptionStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Services::TargetedContent::ITargetedContentValue> = L"Windows.Services.TargetedContent.ITargetedContentValue";
+    template <> inline constexpr auto& name_v<winrt::Windows::Services::TargetedContent::TargetedContentContract> = L"Windows.Services.TargetedContent.TargetedContentContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Services::TargetedContent::ITargetedContentAction>{ 0xD75B691E,0x6CD6,0x4CA0,{ 0x9D,0x8F,0x47,0x28,0xB0,0xB7,0xE6,0xB6 } }; // D75B691E-6CD6-4CA0-9D8F-4728B0B7E6B6
     template <> inline constexpr guid guid_v<winrt::Windows::Services::TargetedContent::ITargetedContentAvailabilityChangedEventArgs>{ 0xE0F59D26,0x5927,0x4450,{ 0x96,0x5C,0x1C,0xEB,0x7B,0xEC,0xDE,0x65 } }; // E0F59D26-5927-4450-965C-1CEB7BECDE65
     template <> inline constexpr guid guid_v<winrt::Windows::Services::TargetedContent::ITargetedContentChangedEventArgs>{ 0x99D488C9,0x587E,0x4586,{ 0x8E,0xF7,0xB5,0x4C,0xA9,0x45,0x3A,0x16 } }; // 99D488C9-587E-4586-8EF7-B54CA9453A16
@@ -202,21 +204,21 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Services::TargetedContent::TargetedContentValue>{ using type = winrt::Windows::Services::TargetedContent::ITargetedContentValue; };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentAction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InvokeAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentAvailabilityChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
             virtual int32_t __stdcall get_HasPreviousContentExpired(bool*) noexcept = 0;
@@ -224,7 +226,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentCollection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall ReportInteraction(int32_t) noexcept = 0;
@@ -237,7 +239,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentContainer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Timestamp(int64_t*) noexcept = 0;
@@ -248,14 +250,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentContainerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentImage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Height(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Width(uint32_t*) noexcept = 0;
@@ -263,7 +265,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
             virtual int32_t __stdcall ReportInteraction(int32_t) noexcept = 0;
@@ -275,7 +277,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentItemState>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShouldDisplay(bool*) noexcept = 0;
             virtual int32_t __stdcall get_AppInstallationState(int32_t*) noexcept = 0;
@@ -283,7 +285,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentObject>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ObjectKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Collection(void**) noexcept = 0;
@@ -293,14 +295,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentSubscription>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall GetContentContainerAsync(void**) noexcept = 0;
@@ -314,7 +316,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentSubscriptionOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SubscriptionId(void**) noexcept = 0;
             virtual int32_t __stdcall get_AllowPartialContentAvailability(bool*) noexcept = 0;
@@ -326,7 +328,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentSubscriptionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetOptions(void*, void**) noexcept = 0;
@@ -334,7 +336,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Services::TargetedContent::ITargetedContentValue>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ValueKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
@@ -481,15 +483,15 @@ namespace winrt::impl
         auto GetContentContainerAsync() const;
         auto ContentChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentChangedEventArgs> const& handler) const;
         using ContentChanged_revoker = impl::event_revoker<winrt::Windows::Services::TargetedContent::ITargetedContentSubscription, &impl::abi_t<winrt::Windows::Services::TargetedContent::ITargetedContentSubscription>::remove_ContentChanged>;
-        [[nodiscard]] ContentChanged_revoker ContentChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ContentChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentChangedEventArgs> const& handler) const;
         auto ContentChanged(winrt::event_token const& cookie) const noexcept;
         auto AvailabilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentAvailabilityChangedEventArgs> const& handler) const;
         using AvailabilityChanged_revoker = impl::event_revoker<winrt::Windows::Services::TargetedContent::ITargetedContentSubscription, &impl::abi_t<winrt::Windows::Services::TargetedContent::ITargetedContentSubscription>::remove_AvailabilityChanged>;
-        [[nodiscard]] AvailabilityChanged_revoker AvailabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentAvailabilityChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AvailabilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentAvailabilityChangedEventArgs> const& handler) const;
         auto AvailabilityChanged(winrt::event_token const& cookie) const noexcept;
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentStateChangedEventArgs> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Services::TargetedContent::ITargetedContentSubscription, &impl::abi_t<winrt::Windows::Services::TargetedContent::ITargetedContentSubscription>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Services::TargetedContent::TargetedContentSubscription, winrt::Windows::Services::TargetedContent::TargetedContentStateChangedEventArgs> const& handler) const;
         auto StateChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Services::TargetedContent::ITargetedContentSubscription>

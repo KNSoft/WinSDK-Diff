@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,11 +10,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct HResult;
     struct IAsyncAction;
-    template <typename TResult> struct __declspec(empty_bases) IAsyncOperation;
+    template <typename TResult> struct WINRT_IMPL_EMPTY_BASES IAsyncOperation;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -118,7 +118,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Authentication::OnlineId::UserIdentity>{ using type = winrt::Windows::Security::Authentication::OnlineId::IUserIdentity; };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IOnlineIdAuthenticator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AuthenticateUserAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall AuthenticateUserAsyncAdvanced(void*, int32_t, void**) noexcept = 0;
@@ -131,7 +131,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IOnlineIdServiceTicket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
@@ -140,7 +140,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IOnlineIdServiceTicketRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Service(void**) noexcept = 0;
             virtual int32_t __stdcall get_Policy(void**) noexcept = 0;
@@ -148,7 +148,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IOnlineIdServiceTicketRequestFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateOnlineIdServiceTicketRequest(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateOnlineIdServiceTicketRequestAdvanced(void*, void**) noexcept = 0;
@@ -156,7 +156,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IOnlineIdSystemAuthenticatorForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetTicketAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall put_ApplicationId(winrt::guid) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IOnlineIdSystemAuthenticatorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Default(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -174,7 +174,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IOnlineIdSystemIdentity>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Ticket(void**) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
@@ -182,7 +182,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IOnlineIdSystemTicketResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Identity(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -191,7 +191,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::OnlineId::IUserIdentity>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Tickets(void**) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;

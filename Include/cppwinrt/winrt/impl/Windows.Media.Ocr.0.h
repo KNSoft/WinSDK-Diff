@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -61,7 +61,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Ocr::OcrWord>{ using type = winrt::Windows::Media::Ocr::IOcrWord; };
     template <> struct abi<winrt::Windows::Media::Ocr::IOcrEngine>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RecognizeAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_RecognizerLanguage(void**) noexcept = 0;
@@ -69,7 +69,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Ocr::IOcrEngineStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxImageDimension(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AvailableRecognizerLanguages(void**) noexcept = 0;
@@ -80,7 +80,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Ocr::IOcrLine>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Words(void**) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
@@ -88,7 +88,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Ocr::IOcrResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Lines(void**) noexcept = 0;
             virtual int32_t __stdcall get_TextAngle(void**) noexcept = 0;
@@ -97,7 +97,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Ocr::IOcrWord>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BoundingRect(winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;

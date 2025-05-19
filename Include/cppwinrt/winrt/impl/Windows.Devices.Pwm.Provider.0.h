@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -21,7 +21,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Pwm::Provider::IPwmProvider>{ 0xA3301228,0x52F1,0x47B0,{ 0x93,0x49,0x66,0xBA,0x43,0xD2,0x59,0x02 } }; // A3301228-52F1-47B0-9349-66BA43D25902
     template <> struct abi<winrt::Windows::Devices::Pwm::Provider::IPwmControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PinCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ActualFrequency(double*) noexcept = 0;
@@ -37,7 +37,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Pwm::Provider::IPwmProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetControllers(void**) noexcept = 0;
         };

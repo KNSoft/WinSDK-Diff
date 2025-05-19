@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -75,7 +75,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Popups::UICommandSeparator>{ using type = winrt::Windows::UI::Popups::IUICommand; };
     template <> struct abi<winrt::Windows::UI::Popups::IMessageDialog>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -93,7 +93,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Popups::IMessageDialogFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTitle(void*, void*, void**) noexcept = 0;
@@ -101,7 +101,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Popups::IPopupMenu>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Commands(void**) noexcept = 0;
             virtual int32_t __stdcall ShowAsync(winrt::Windows::Foundation::Point, void**) noexcept = 0;
@@ -111,7 +111,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Popups::IUICommand>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
             virtual int32_t __stdcall put_Label(void*) noexcept = 0;
@@ -123,7 +123,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Popups::IUICommandFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithHandler(void*, void*, void**) noexcept = 0;
@@ -132,7 +132,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Popups::UICommandInvokedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };

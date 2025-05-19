@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,7 +15,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -541,13 +541,13 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintTaskSourceRequestedDeferral>{ using type = winrt::Windows::Graphics::Printing::IPrintTaskSourceRequestedDeferral; };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintDocumentSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PrintTaskRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PrintTaskRequested(winrt::event_token) noexcept = 0;
@@ -555,7 +555,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintManagerStatic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
             virtual int32_t __stdcall ShowPrintUIAsync(void**) noexcept = 0;
@@ -563,14 +563,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintManagerStatic2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintPageInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_MediaSize(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_MediaSize(int32_t*) noexcept = 0;
@@ -586,7 +586,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintPageRange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FirstPageNumber(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_LastPageNumber(int32_t*) noexcept = 0;
@@ -594,7 +594,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintPageRangeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int32_t, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithSinglePage(int32_t, void**) noexcept = 0;
@@ -602,7 +602,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintPageRangeOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_AllowAllPages(bool) noexcept = 0;
             virtual int32_t __stdcall get_AllowAllPages(bool*) noexcept = 0;
@@ -614,7 +614,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTask>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
@@ -631,7 +631,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTask2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsPreviewEnabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsPreviewEnabled(bool*) noexcept = 0;
@@ -639,14 +639,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Completion(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Bordering(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_Bordering(int32_t*) noexcept = 0;
@@ -655,7 +655,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PageRangeOptions(void**) noexcept = 0;
             virtual int32_t __stdcall get_CustomPageRanges(void**) noexcept = 0;
@@ -663,14 +663,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskOptionsCore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPageDescription(uint32_t, struct struct_Windows_Graphics_Printing_PrintPageDescription*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskOptionsCoreProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_MediaSize(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_MediaSize(int32_t*) noexcept = 0;
@@ -700,21 +700,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskOptionsCoreUIConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayedOptions(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskProgressingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DocumentPageCount(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Deadline(int64_t*) noexcept = 0;
             virtual int32_t __stdcall CreatePrintTask(void*, void*, void**) noexcept = 0;
@@ -723,21 +723,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskRequestedDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskSourceRequestedArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Deadline(int64_t*) noexcept = 0;
             virtual int32_t __stdcall SetSource(void*) noexcept = 0;
@@ -746,14 +746,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskSourceRequestedDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IPrintTaskTargetDeviceSupport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_IsPrinterTargetEnabled(bool) noexcept = 0;
             virtual int32_t __stdcall get_IsPrinterTargetEnabled(bool*) noexcept = 0;
@@ -763,7 +763,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IStandardPrintTaskOptionsStatic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaSize(void**) noexcept = 0;
             virtual int32_t __stdcall get_MediaType(void**) noexcept = 0;
@@ -782,21 +782,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IStandardPrintTaskOptionsStatic2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Bordering(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::IStandardPrintTaskOptionsStatic3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CustomPageRanges(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintTaskSourceRequestedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -814,7 +814,7 @@ namespace winrt::impl
     {
         auto PrintTaskRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintManager, winrt::Windows::Graphics::Printing::PrintTaskRequestedEventArgs> const& eventHandler) const;
         using PrintTaskRequested_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::IPrintManager, &impl::abi_t<winrt::Windows::Graphics::Printing::IPrintManager>::remove_PrintTaskRequested>;
-        [[nodiscard]] PrintTaskRequested_revoker PrintTaskRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintManager, winrt::Windows::Graphics::Printing::PrintTaskRequestedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto PrintTaskRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintManager, winrt::Windows::Graphics::Printing::PrintTaskRequestedEventArgs> const& eventHandler) const;
         auto PrintTaskRequested(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing::IPrintManager>
@@ -900,19 +900,19 @@ namespace winrt::impl
         [[nodiscard]] auto Options() const;
         auto Previewing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using Previewing_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::IPrintTask, &impl::abi_t<winrt::Windows::Graphics::Printing::IPrintTask>::remove_Previewing>;
-        [[nodiscard]] Previewing_revoker Previewing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto Previewing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto Previewing(winrt::event_token const& eventCookie) const noexcept;
         auto Submitting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         using Submitting_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::IPrintTask, &impl::abi_t<winrt::Windows::Graphics::Printing::IPrintTask>::remove_Submitting>;
-        [[nodiscard]] Submitting_revoker Submitting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
+        [[nodiscard]] auto Submitting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Foundation::IInspectable> const& eventHandler) const;
         auto Submitting(winrt::event_token const& eventCookie) const noexcept;
         auto Progressing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Graphics::Printing::PrintTaskProgressingEventArgs> const& eventHandler) const;
         using Progressing_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::IPrintTask, &impl::abi_t<winrt::Windows::Graphics::Printing::IPrintTask>::remove_Progressing>;
-        [[nodiscard]] Progressing_revoker Progressing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Graphics::Printing::PrintTaskProgressingEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto Progressing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Graphics::Printing::PrintTaskProgressingEventArgs> const& eventHandler) const;
         auto Progressing(winrt::event_token const& eventCookie) const noexcept;
         auto Completed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Graphics::Printing::PrintTaskCompletedEventArgs> const& eventHandler) const;
         using Completed_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::IPrintTask, &impl::abi_t<winrt::Windows::Graphics::Printing::IPrintTask>::remove_Completed>;
-        [[nodiscard]] Completed_revoker Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Graphics::Printing::PrintTaskCompletedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto Completed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintTask, winrt::Windows::Graphics::Printing::PrintTaskCompletedEventArgs> const& eventHandler) const;
         auto Completed(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing::IPrintTask>

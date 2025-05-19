@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -55,14 +55,14 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface>{ 0x0BF4A146,0x13C1,0x4694,{ 0xBE,0xE3,0x7A,0xBF,0x15,0xEA,0xF5,0x86 } }; // 0BF4A146-13C1-4694-BEE3-7ABF15EAF586
     template <> struct abi<winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DDevice>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Trim() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Description(struct struct_Windows_Graphics_DirectX_Direct3D11_Direct3DSurfaceDescription*) noexcept = 0;
         };

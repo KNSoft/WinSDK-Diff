@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -52,7 +52,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Composition::Diagnostics::CompositionDebugSettings>{ using type = winrt::Windows::UI::Composition::Diagnostics::ICompositionDebugSettings; };
     template <> struct abi<winrt::Windows::UI::Composition::Diagnostics::ICompositionDebugHeatMaps>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Hide(void*) noexcept = 0;
             virtual int32_t __stdcall ShowMemoryUsage(void*) noexcept = 0;
@@ -62,14 +62,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Composition::Diagnostics::ICompositionDebugSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HeatMaps(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Composition::Diagnostics::ICompositionDebugSettingsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetSettings(void*, void**) noexcept = 0;
         };

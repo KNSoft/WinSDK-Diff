@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -63,7 +63,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Threading::ThreadPoolTimer>{ using type = winrt::Windows::System::Threading::IThreadPoolTimer; };
     template <> struct abi<winrt::Windows::System::Threading::IThreadPoolStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RunAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RunWithPriorityAsync(void*, int32_t, void**) noexcept = 0;
@@ -72,7 +72,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Threading::IThreadPoolTimer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Period(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_Delay(int64_t*) noexcept = 0;
@@ -81,7 +81,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Threading::IThreadPoolTimerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePeriodicTimer(void*, int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateTimer(void*, int64_t, void**) noexcept = 0;
@@ -91,21 +91,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Threading::TimerDestroyedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Threading::TimerElapsedHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Threading::WorkItemHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };

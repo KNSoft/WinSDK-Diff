@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
@@ -118,7 +118,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::UserDataAccounts::UserDataAccountStoreChangedEventArgs>{ using type = winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStoreChangedEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccount>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_UserDisplayName(void**) noexcept = 0;
@@ -138,7 +138,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccount2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnterpriseId(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsProtectedUnderLock(bool*) noexcept = 0;
@@ -146,7 +146,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccount3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExplictReadAccessPackageFamilyNames(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -155,7 +155,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccount4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanShowCreateContactGroup(bool*) noexcept = 0;
             virtual int32_t __stdcall put_CanShowCreateContactGroup(bool) noexcept = 0;
@@ -169,7 +169,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
@@ -177,7 +177,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall ShowAddAccountAsync(uint32_t, void**) noexcept = 0;
@@ -187,14 +187,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAccountsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetAccountAsync(void*, void**) noexcept = 0;
@@ -203,7 +203,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAccountWithPackageRelativeAppIdAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall add_StoreChanged(void*, winrt::event_token*) noexcept = 0;
@@ -212,14 +212,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAccountWithPackageRelativeAppIdAndEnterpriseIdAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStoreChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
@@ -331,7 +331,7 @@ namespace winrt::impl
         auto CreateAccountAsync(param::hstring const& userDisplayName, param::hstring const& packageRelativeAppId) const;
         auto StoreChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserDataAccounts::UserDataAccountStore, winrt::Windows::ApplicationModel::UserDataAccounts::UserDataAccountStoreChangedEventArgs> const& handler) const;
         using StoreChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore2, &impl::abi_t<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore2>::remove_StoreChanged>;
-        [[nodiscard]] StoreChanged_revoker StoreChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserDataAccounts::UserDataAccountStore, winrt::Windows::ApplicationModel::UserDataAccounts::UserDataAccountStoreChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StoreChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserDataAccounts::UserDataAccountStore, winrt::Windows::ApplicationModel::UserDataAccounts::UserDataAccountStoreChangedEventArgs> const& handler) const;
         auto StoreChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccountStore2>

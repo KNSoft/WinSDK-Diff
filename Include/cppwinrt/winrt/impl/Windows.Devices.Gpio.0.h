@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,7 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Gpio
 {
@@ -137,7 +137,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Gpio::GpioPinValueChangedEventArgs>{ using type = winrt::Windows::Devices::Gpio::IGpioPinValueChangedEventArgs; };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioChangeCounter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Polarity(int32_t) noexcept = 0;
             virtual int32_t __stdcall get_Polarity(int32_t*) noexcept = 0;
@@ -150,14 +150,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioChangeCounterFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioChangeReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Capacity(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Length(int32_t*) noexcept = 0;
@@ -177,7 +177,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioChangeReaderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithCapacity(void*, int32_t, void**) noexcept = 0;
@@ -185,7 +185,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioController>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PinCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall OpenPin(int32_t, void**) noexcept = 0;
@@ -195,14 +195,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioControllerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioControllerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetControllersAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDefaultAsync(void**) noexcept = 0;
@@ -210,7 +210,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioPin>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ValueChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ValueChanged(winrt::event_token) noexcept = 0;
@@ -227,7 +227,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Gpio::IGpioPinValueChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Edge(int32_t*) noexcept = 0;
         };
@@ -324,7 +324,7 @@ namespace winrt::impl
     {
         auto ValueChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Gpio::GpioPin, winrt::Windows::Devices::Gpio::GpioPinValueChangedEventArgs> const& handler) const;
         using ValueChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Gpio::IGpioPin, &impl::abi_t<winrt::Windows::Devices::Gpio::IGpioPin>::remove_ValueChanged>;
-        [[nodiscard]] ValueChanged_revoker ValueChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Gpio::GpioPin, winrt::Windows::Devices::Gpio::GpioPinValueChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ValueChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Devices::Gpio::GpioPin, winrt::Windows::Devices::Gpio::GpioPinValueChangedEventArgs> const& handler) const;
         auto ValueChanged(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto DebounceTimeout() const;
         auto DebounceTimeout(winrt::Windows::Foundation::TimeSpan const& value) const;

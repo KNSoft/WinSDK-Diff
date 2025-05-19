@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -12,7 +12,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct IAsyncAction;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Composition
 {
@@ -91,6 +91,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Hosting
     struct XamlSourceFocusNavigationRequest;
     struct XamlSourceFocusNavigationResult;
     struct XamlUIPresenter;
+    struct HostingContract;
 }
 namespace winrt::impl
 {
@@ -168,6 +169,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenterHost3> = L"Windows.UI.Xaml.Hosting.IXamlUIPresenterHost3";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenterStatics> = L"Windows.UI.Xaml.Hosting.IXamlUIPresenterStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenterStatics2> = L"Windows.UI.Xaml.Hosting.IXamlUIPresenterStatics2";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Xaml::Hosting::HostingContract> = L"Windows.UI.Xaml.Hosting.HostingContract";
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Xaml::Hosting::IDesignerAppExitedEventArgs>{ 0xF6AAC86A,0x0CAD,0x410C,{ 0x8F,0x62,0xDC,0x29,0x36,0x15,0x1C,0x74 } }; // F6AAC86A-0CAD-410C-8F62-DC2936151C74
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Xaml::Hosting::IDesignerAppManager>{ 0xA6272CAA,0xD5C6,0x40CB,{ 0xAB,0xD9,0x27,0xBA,0x43,0x83,0x1B,0xB7 } }; // A6272CAA-D5C6-40CB-ABD9-27BA43831BB7
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Xaml::Hosting::IDesignerAppManagerFactory>{ 0x8F9D633B,0x1266,0x4C0E,{ 0x84,0x99,0x0D,0xB8,0x5B,0xBD,0x4C,0x43 } }; // 8F9D633B-1266-4C0E-8499-0DB85BBD4C43
@@ -205,14 +207,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Hosting::XamlUIPresenter>{ using type = winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenter; };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IDesignerAppExitedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExitCode(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IDesignerAppManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppUserModelId(void**) noexcept = 0;
             virtual int32_t __stdcall add_DesignerAppExited(void*, winrt::event_token*) noexcept = 0;
@@ -223,14 +225,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IDesignerAppManagerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IDesignerAppView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ApplicationViewId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AppUserModelId(void**) noexcept = 0;
@@ -241,7 +243,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IDesktopWindowXamlSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Content(void**) noexcept = 0;
             virtual int32_t __stdcall put_Content(void*) noexcept = 0;
@@ -255,34 +257,34 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IDesktopWindowXamlSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IDesktopWindowXamlSourceGotFocusEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IDesktopWindowXamlSourceTakeFocusRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IElementCompositionPreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IElementCompositionPreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetElementVisual(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetElementChildVisual(void*, void**) noexcept = 0;
@@ -292,7 +294,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IElementCompositionPreviewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetImplicitShowAnimation(void*, void*) noexcept = 0;
             virtual int32_t __stdcall SetImplicitHideAnimation(void*, void*) noexcept = 0;
@@ -302,7 +304,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IElementCompositionPreviewStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetAppWindowContent(void*, void*) noexcept = 0;
             virtual int32_t __stdcall GetAppWindowContent(void*, void**) noexcept = 0;
@@ -310,20 +312,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IWindowsXamlManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IWindowsXamlManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall InitializeForCurrentThread(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlSourceFocusNavigationRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_HintRect(winrt::Windows::Foundation::Rect*) noexcept = 0;
@@ -332,7 +334,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlSourceFocusNavigationRequestFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceWithHintRect(int32_t, winrt::Windows::Foundation::Rect, void**) noexcept = 0;
@@ -341,21 +343,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlSourceFocusNavigationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WasFocusMoved(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlSourceFocusNavigationResultFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RootElement(void**) noexcept = 0;
             virtual int32_t __stdcall put_RootElement(void*) noexcept = 0;
@@ -370,28 +372,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenterHost>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ResolveFileResource(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenterHost2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetGenericXamlFilePath(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenterHost3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ResolveDictionaryResource(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenterStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CompleteTimelinesAutomatically(bool*) noexcept = 0;
             virtual int32_t __stdcall put_CompleteTimelinesAutomatically(bool) noexcept = 0;
@@ -401,7 +403,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Hosting::IXamlUIPresenterStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFlyoutPlacementTargetInfo(void*, int32_t, int32_t*, bool*, winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall GetFlyoutPlacement(winrt::Windows::Foundation::Rect, winrt::Windows::Foundation::Size, winrt::Windows::Foundation::Size, winrt::Windows::Foundation::Rect, int32_t, bool, int32_t*, winrt::Windows::Foundation::Rect*) noexcept = 0;
@@ -422,7 +424,7 @@ namespace winrt::impl
         [[nodiscard]] auto AppUserModelId() const;
         auto DesignerAppExited(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesignerAppManager, winrt::Windows::UI::Xaml::Hosting::DesignerAppExitedEventArgs> const& handler) const;
         using DesignerAppExited_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Hosting::IDesignerAppManager, &impl::abi_t<winrt::Windows::UI::Xaml::Hosting::IDesignerAppManager>::remove_DesignerAppExited>;
-        [[nodiscard]] DesignerAppExited_revoker DesignerAppExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesignerAppManager, winrt::Windows::UI::Xaml::Hosting::DesignerAppExitedEventArgs> const& handler) const;
+        [[nodiscard]] auto DesignerAppExited(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesignerAppManager, winrt::Windows::UI::Xaml::Hosting::DesignerAppExitedEventArgs> const& handler) const;
         auto DesignerAppExited(winrt::event_token const& token) const noexcept;
         auto CreateNewViewAsync(winrt::Windows::UI::Xaml::Hosting::DesignerAppViewState const& initialViewState, winrt::Windows::Foundation::Size const& initialViewSize) const;
         auto LoadObjectIntoAppAsync(param::hstring const& dllName, winrt::guid const& classId, param::hstring const& initializationData) const;
@@ -461,11 +463,11 @@ namespace winrt::impl
         [[nodiscard]] auto HasFocus() const;
         auto TakeFocusRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource, winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSourceTakeFocusRequestedEventArgs> const& handler) const;
         using TakeFocusRequested_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Hosting::IDesktopWindowXamlSource, &impl::abi_t<winrt::Windows::UI::Xaml::Hosting::IDesktopWindowXamlSource>::remove_TakeFocusRequested>;
-        [[nodiscard]] TakeFocusRequested_revoker TakeFocusRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource, winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSourceTakeFocusRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto TakeFocusRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource, winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSourceTakeFocusRequestedEventArgs> const& handler) const;
         auto TakeFocusRequested(winrt::event_token const& token) const noexcept;
         auto GotFocus(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource, winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSourceGotFocusEventArgs> const& handler) const;
         using GotFocus_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Hosting::IDesktopWindowXamlSource, &impl::abi_t<winrt::Windows::UI::Xaml::Hosting::IDesktopWindowXamlSource>::remove_GotFocus>;
-        [[nodiscard]] GotFocus_revoker GotFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource, winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSourceGotFocusEventArgs> const& handler) const;
+        [[nodiscard]] auto GotFocus(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource, winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSourceGotFocusEventArgs> const& handler) const;
         auto GotFocus(winrt::event_token const& token) const noexcept;
         auto NavigateFocus(winrt::Windows::UI::Xaml::Hosting::XamlSourceFocusNavigationRequest const& request) const;
     };

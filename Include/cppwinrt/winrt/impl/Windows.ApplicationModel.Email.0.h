@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,12 +14,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Cryptography::Certificates
 {
@@ -684,7 +684,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Email::EmailStoreNotificationTriggerDetails>{ using type = winrt::Windows::ApplicationModel::Email::IEmailStoreNotificationTriggerDetails; };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailAttachment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FileName(void**) noexcept = 0;
             virtual int32_t __stdcall put_FileName(void*) noexcept = 0;
@@ -694,7 +694,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailAttachment2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_ContentId(void**) noexcept = 0;
@@ -714,21 +714,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailAttachmentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailAttachmentFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailConversation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_MailboxId(void**) noexcept = 0;
@@ -749,7 +749,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailConversationBatch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Conversations(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -757,14 +757,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailConversationReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailFolder>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemoteId(void**) noexcept = 0;
@@ -795,7 +795,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailIrmInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanEdit(bool*) noexcept = 0;
             virtual int32_t __stdcall put_CanEdit(bool) noexcept = 0;
@@ -825,14 +825,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailIrmInfoFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(int64_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailIrmTemplate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall put_Id(void*) noexcept = 0;
@@ -844,14 +844,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailIrmTemplateFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailItemCounts>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Flagged(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Important(uint32_t*) noexcept = 0;
@@ -861,7 +861,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailbox>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Capabilities(void**) noexcept = 0;
             virtual int32_t __stdcall get_ChangeTracker(void**) noexcept = 0;
@@ -917,7 +917,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailbox2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LinkedMailboxId(void**) noexcept = 0;
             virtual int32_t __stdcall get_NetworkAccountId(void**) noexcept = 0;
@@ -926,7 +926,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailbox3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ResolveRecipientsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ValidateCertificatesAsync(void*, void**) noexcept = 0;
@@ -937,21 +937,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailbox4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterSyncManagerAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailbox5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetChangeTracker(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxAction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ChangeNumber(uint64_t*) noexcept = 0;
@@ -959,7 +959,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxAutoReply>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -969,7 +969,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxAutoReplySettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -986,7 +986,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanForwardMeetings(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanGetAndSetExternalAutoReplies(bool*) noexcept = 0;
@@ -1000,7 +1000,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxCapabilities2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanResolveRecipients(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanValidateCertificates(bool*) noexcept = 0;
@@ -1012,7 +1012,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxCapabilities3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_CanForwardMeetings(bool) noexcept = 0;
             virtual int32_t __stdcall put_CanGetAndSetExternalAutoReplies(bool) noexcept = 0;
@@ -1032,7 +1032,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxChange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MailboxActions(void**) noexcept = 0;
@@ -1042,7 +1042,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxChangeReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AcceptChanges() noexcept = 0;
             virtual int32_t __stdcall AcceptChangesThrough(void*) noexcept = 0;
@@ -1051,7 +1051,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxChangeTracker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsTracking(bool*) noexcept = 0;
             virtual int32_t __stdcall Enable() noexcept = 0;
@@ -1061,21 +1061,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxChangedDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxCreateFolderResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Folder(void**) noexcept = 0;
@@ -1083,7 +1083,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxPolicies>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowedSmimeEncryptionAlgorithmNegotiation(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_AllowSmimeSoftCertificates(bool*) noexcept = 0;
@@ -1093,7 +1093,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxPolicies2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MustEncryptSmimeMessages(bool*) noexcept = 0;
             virtual int32_t __stdcall get_MustSignSmimeMessages(bool*) noexcept = 0;
@@ -1101,7 +1101,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxPolicies3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_AllowedSmimeEncryptionAlgorithmNegotiation(int32_t) noexcept = 0;
             virtual int32_t __stdcall put_AllowSmimeSoftCertificates(bool) noexcept = 0;
@@ -1113,7 +1113,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxSyncManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_LastSuccessfulSyncTime(int64_t*) noexcept = 0;
@@ -1125,7 +1125,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMailboxSyncManager2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Status(int32_t) noexcept = 0;
             virtual int32_t __stdcall put_LastSuccessfulSyncTime(int64_t) noexcept = 0;
@@ -1134,7 +1134,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailManagerForUser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowComposeNewEmailAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall RequestStoreAsync(int32_t, void**) noexcept = 0;
@@ -1143,28 +1143,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowComposeNewEmailAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStoreAsync(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMeetingInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowNewTimeProposal(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowNewTimeProposal(bool) noexcept = 0;
@@ -1196,14 +1196,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMeetingInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReportedOutOfDateByServer(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Subject(void**) noexcept = 0;
             virtual int32_t __stdcall put_Subject(void*) noexcept = 0;
@@ -1217,7 +1217,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMessage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemoteId(void**) noexcept = 0;
@@ -1268,7 +1268,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMessage3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SmimeData(void**) noexcept = 0;
             virtual int32_t __stdcall put_SmimeData(void*) noexcept = 0;
@@ -1278,7 +1278,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMessage4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReplyTo(void**) noexcept = 0;
             virtual int32_t __stdcall get_SentRepresenting(void**) noexcept = 0;
@@ -1287,7 +1287,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMessageBatch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Messages(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -1295,14 +1295,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailMessageReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailQueryOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TextSearch(void**) noexcept = 0;
             virtual int32_t __stdcall get_SortDirection(int32_t*) noexcept = 0;
@@ -1316,7 +1316,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailQueryOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithText(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTextAndFields(void*, uint32_t, void**) noexcept = 0;
@@ -1324,7 +1324,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailQueryTextSearch>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Fields(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Fields(uint32_t) noexcept = 0;
@@ -1336,7 +1336,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailRecipient>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall put_Name(void*) noexcept = 0;
@@ -1346,7 +1346,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailRecipientFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithName(void*, void*, void**) noexcept = 0;
@@ -1354,7 +1354,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailRecipientResolutionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PublicKeys(void**) noexcept = 0;
@@ -1362,7 +1362,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailRecipientResolutionResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall put_Status(int32_t) noexcept = 0;
             virtual int32_t __stdcall SetPublicKeys(void*) noexcept = 0;
@@ -1370,7 +1370,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindMailboxesAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetConversationReader(void**) noexcept = 0;
@@ -1387,7 +1387,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Email::IEmailStoreNotificationTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
@@ -1644,7 +1644,7 @@ namespace winrt::impl
         auto TryProposeNewTimeForMeetingAsync(winrt::Windows::ApplicationModel::Email::EmailMessage const& meeting, winrt::Windows::Foundation::DateTime const& newStartTime, winrt::Windows::Foundation::TimeSpan const& newDuration, param::hstring const& subject, param::hstring const& comment) const;
         auto MailboxChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::EmailMailbox, winrt::Windows::ApplicationModel::Email::EmailMailboxChangedEventArgs> const& pHandler) const;
         using MailboxChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::IEmailMailbox, &impl::abi_t<winrt::Windows::ApplicationModel::Email::IEmailMailbox>::remove_MailboxChanged>;
-        [[nodiscard]] MailboxChanged_revoker MailboxChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::EmailMailbox, winrt::Windows::ApplicationModel::Email::EmailMailboxChangedEventArgs> const& pHandler) const;
+        [[nodiscard]] auto MailboxChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::EmailMailbox, winrt::Windows::ApplicationModel::Email::EmailMailboxChangedEventArgs> const& pHandler) const;
         auto MailboxChanged(winrt::event_token const& token) const noexcept;
         auto SendMessageAsync(winrt::Windows::ApplicationModel::Email::EmailMessage const& message, bool smartSend) const;
         auto TrySetAutoReplySettingsAsync(winrt::Windows::ApplicationModel::Email::EmailMailboxAutoReplySettings const& autoReplySettings) const;
@@ -1897,7 +1897,7 @@ namespace winrt::impl
         auto SyncAsync() const;
         auto SyncStatusChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::EmailMailboxSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SyncStatusChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Email::IEmailMailboxSyncManager, &impl::abi_t<winrt::Windows::ApplicationModel::Email::IEmailMailboxSyncManager>::remove_SyncStatusChanged>;
-        [[nodiscard]] SyncStatusChanged_revoker SyncStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::EmailMailboxSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SyncStatusChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::EmailMailboxSyncManager, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SyncStatusChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Email::IEmailMailboxSyncManager>

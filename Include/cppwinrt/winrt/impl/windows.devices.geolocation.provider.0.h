@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,7 +13,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation::Provider
@@ -40,7 +40,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Geolocation::Provider::GeolocationProvider>{ using type = winrt::Windows::Devices::Geolocation::Provider::IGeolocationProvider; };
     template <> struct abi<winrt::Windows::Devices::Geolocation::Provider::IGeolocationProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOverridden(bool*) noexcept = 0;
             virtual int32_t __stdcall SetOverridePosition(struct struct_Windows_Devices_Geolocation_BasicGeoposition, int32_t, double, int32_t*) noexcept = 0;
@@ -57,7 +57,7 @@ namespace winrt::impl
         auto ClearOverridePosition() const;
         auto IsOverriddenChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using IsOverriddenChanged_revoker = impl::event_revoker<winrt::Windows::Devices::Geolocation::Provider::IGeolocationProvider, &impl::abi_t<winrt::Windows::Devices::Geolocation::Provider::IGeolocationProvider>::remove_IsOverriddenChanged>;
-        [[nodiscard]] IsOverriddenChanged_revoker IsOverriddenChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsOverriddenChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto IsOverriddenChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Devices::Geolocation::Provider::IGeolocationProvider>

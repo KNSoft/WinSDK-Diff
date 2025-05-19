@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
 {
@@ -110,6 +110,7 @@ WINRT_EXPORT namespace winrt::Windows::Networking::XboxLive
     struct XboxLiveQualityOfServiceMeasurement;
     struct XboxLiveQualityOfServiceMetricResult;
     struct XboxLiveQualityOfServicePrivatePayloadResult;
+    struct XboxLiveSecureSocketsContract;
 }
 namespace winrt::impl
 {
@@ -171,6 +172,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::XboxLive::IXboxLiveQualityOfServiceMeasurementStatics> = L"Windows.Networking.XboxLive.IXboxLiveQualityOfServiceMeasurementStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::XboxLive::IXboxLiveQualityOfServiceMetricResult> = L"Windows.Networking.XboxLive.IXboxLiveQualityOfServiceMetricResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::XboxLive::IXboxLiveQualityOfServicePrivatePayloadResult> = L"Windows.Networking.XboxLive.IXboxLiveQualityOfServicePrivatePayloadResult";
+    template <> inline constexpr auto& name_v<winrt::Windows::Networking::XboxLive::XboxLiveSecureSocketsContract> = L"Windows.Networking.XboxLive.XboxLiveSecureSocketsContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::XboxLive::IXboxLiveDeviceAddress>{ 0xF5BBD279,0x3C86,0x4B57,{ 0xA3,0x1A,0xB9,0x46,0x24,0x08,0xFD,0x01 } }; // F5BBD279-3C86-4B57-A31A-B9462408FD01
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::XboxLive::IXboxLiveDeviceAddressStatics>{ 0x5954A819,0x4A79,0x4931,{ 0x82,0x7C,0x7F,0x50,0x3E,0x96,0x32,0x63 } }; // 5954A819-4A79-4931-827C-7F503E963263
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPair>{ 0x1E9A839B,0x813E,0x44E0,{ 0xB8,0x7F,0xC8,0x7A,0x09,0x34,0x75,0xE4 } }; // 1E9A839B-813E-44E0-B87F-C87A093475E4
@@ -195,7 +197,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::XboxLive::XboxLiveQualityOfServicePrivatePayloadResult>{ using type = winrt::Windows::Networking::XboxLive::IXboxLiveQualityOfServicePrivatePayloadResult; };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveDeviceAddress>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_SnapshotChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_SnapshotChanged(winrt::event_token) noexcept = 0;
@@ -210,7 +212,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveDeviceAddressStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromSnapshotBase64(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateFromSnapshotBuffer(void*, void**) noexcept = 0;
@@ -221,7 +223,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPair>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_StateChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_StateChanged(winrt::event_token) noexcept = 0;
@@ -239,7 +241,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPairCreationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceAddress(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -249,7 +251,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPairStateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewState(int32_t*) noexcept = 0;
@@ -257,7 +259,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPairStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindEndpointPairBySocketAddressBytes(uint32_t, uint8_t*, uint32_t, uint8_t*, void**) noexcept = 0;
             virtual int32_t __stdcall FindEndpointPairByHostNamesAndPorts(void*, void*, void*, void*, void**) noexcept = 0;
@@ -265,7 +267,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPairTemplate>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_InboundEndpointPairCreated(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_InboundEndpointPairCreated(winrt::event_token) noexcept = 0;
@@ -284,7 +286,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPairTemplateStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetTemplateByName(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_Templates(void**) noexcept = 0;
@@ -292,14 +294,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveInboundEndpointPairCreatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EndpointPair(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveQualityOfServiceMeasurement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MeasureAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetMetricResultsForDevice(void*, void**) noexcept = 0;
@@ -321,7 +323,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveQualityOfServiceMeasurementStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PublishPrivatePayloadBytes(uint32_t, uint8_t*) noexcept = 0;
             virtual int32_t __stdcall ClearPrivatePayload() noexcept = 0;
@@ -338,7 +340,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveQualityOfServiceMetricResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DeviceAddress(void**) noexcept = 0;
@@ -348,7 +350,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::XboxLive::IXboxLiveQualityOfServicePrivatePayloadResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_DeviceAddress(void**) noexcept = 0;
@@ -360,7 +362,7 @@ namespace winrt::impl
     {
         auto SnapshotChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveDeviceAddress, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SnapshotChanged_revoker = impl::event_revoker<winrt::Windows::Networking::XboxLive::IXboxLiveDeviceAddress, &impl::abi_t<winrt::Windows::Networking::XboxLive::IXboxLiveDeviceAddress>::remove_SnapshotChanged>;
-        [[nodiscard]] SnapshotChanged_revoker SnapshotChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveDeviceAddress, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto SnapshotChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveDeviceAddress, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto SnapshotChanged(winrt::event_token const& token) const noexcept;
         auto GetSnapshotAsBase64() const;
         auto GetSnapshotAsBuffer() const;
@@ -392,7 +394,7 @@ namespace winrt::impl
     {
         auto StateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveEndpointPair, winrt::Windows::Networking::XboxLive::XboxLiveEndpointPairStateChangedEventArgs> const& handler) const;
         using StateChanged_revoker = impl::event_revoker<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPair, &impl::abi_t<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPair>::remove_StateChanged>;
-        [[nodiscard]] StateChanged_revoker StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveEndpointPair, winrt::Windows::Networking::XboxLive::XboxLiveEndpointPairStateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveEndpointPair, winrt::Windows::Networking::XboxLive::XboxLiveEndpointPairStateChangedEventArgs> const& handler) const;
         auto StateChanged(winrt::event_token const& token) const noexcept;
         auto DeleteAsync() const;
         auto GetRemoteSocketAddressBytes(array_view<uint8_t> socketAddress) const;
@@ -446,7 +448,7 @@ namespace winrt::impl
     {
         auto InboundEndpointPairCreated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveEndpointPairTemplate, winrt::Windows::Networking::XboxLive::XboxLiveInboundEndpointPairCreatedEventArgs> const& handler) const;
         using InboundEndpointPairCreated_revoker = impl::event_revoker<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPairTemplate, &impl::abi_t<winrt::Windows::Networking::XboxLive::IXboxLiveEndpointPairTemplate>::remove_InboundEndpointPairCreated>;
-        [[nodiscard]] InboundEndpointPairCreated_revoker InboundEndpointPairCreated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveEndpointPairTemplate, winrt::Windows::Networking::XboxLive::XboxLiveInboundEndpointPairCreatedEventArgs> const& handler) const;
+        [[nodiscard]] auto InboundEndpointPairCreated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::XboxLive::XboxLiveEndpointPairTemplate, winrt::Windows::Networking::XboxLive::XboxLiveInboundEndpointPairCreatedEventArgs> const& handler) const;
         auto InboundEndpointPairCreated(winrt::event_token const& token) const noexcept;
         auto CreateEndpointPairAsync(winrt::Windows::Networking::XboxLive::XboxLiveDeviceAddress const& deviceAddress) const;
         auto CreateEndpointPairAsync(winrt::Windows::Networking::XboxLive::XboxLiveDeviceAddress const& deviceAddress, winrt::Windows::Networking::XboxLive::XboxLiveEndpointPairCreationBehaviors const& behaviors) const;

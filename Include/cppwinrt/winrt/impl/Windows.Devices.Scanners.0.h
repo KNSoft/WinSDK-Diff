@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -70,6 +70,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Scanners
     struct ImageScannerPreviewResult;
     struct ImageScannerScanResult;
     struct ImageScannerResolution;
+    struct ScannerDeviceContract;
 }
 namespace winrt::impl
 {
@@ -109,6 +110,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Scanners::IImageScannerScanResult> = L"Windows.Devices.Scanners.IImageScannerScanResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Scanners::IImageScannerSourceConfiguration> = L"Windows.Devices.Scanners.IImageScannerSourceConfiguration";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Scanners::IImageScannerStatics> = L"Windows.Devices.Scanners.IImageScannerStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Scanners::ScannerDeviceContract> = L"Windows.Devices.Scanners.ScannerDeviceContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Scanners::IImageScanner>{ 0x53A88F78,0x5298,0x48A0,{ 0x8D,0xA3,0x80,0x87,0x51,0x96,0x65,0xE0 } }; // 53A88F78-5298-48A0-8DA3-8087519665E0
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Scanners::IImageScannerFeederConfiguration>{ 0x74BDACEE,0xFA97,0x4C17,{ 0x82,0x80,0x40,0xE3,0x9C,0x6D,0xCC,0x67 } }; // 74BDACEE-FA97-4C17-8280-40E39C6DCC67
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Scanners::IImageScannerFormatConfiguration>{ 0xAE275D11,0xDADF,0x4010,{ 0xBF,0x10,0xCC,0xA5,0xC8,0x3D,0xCB,0xB0 } }; // AE275D11-DADF-4010-BF10-CCA5C83DCBB0
@@ -124,7 +126,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Scanners::ImageScannerScanResult>{ using type = winrt::Windows::Devices::Scanners::IImageScannerScanResult; };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScanner>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DefaultScanSource(int32_t*) noexcept = 0;
@@ -139,7 +141,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerFeederConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanAutoDetectPageSize(bool*) noexcept = 0;
             virtual int32_t __stdcall get_AutoDetectPageSize(bool*) noexcept = 0;
@@ -162,7 +164,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerFormatConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultFormat(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
@@ -172,7 +174,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerPreviewResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
@@ -180,14 +182,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerScanResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ScannedFiles(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerSourceConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinScanArea(winrt::Windows::Foundation::Size*) noexcept = 0;
             virtual int32_t __stdcall get_MaxScanArea(winrt::Windows::Foundation::Size*) noexcept = 0;
@@ -222,7 +224,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;

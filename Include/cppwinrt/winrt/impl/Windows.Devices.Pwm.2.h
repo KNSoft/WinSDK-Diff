@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@
 #include "winrt/impl/Windows.Devices.Pwm.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Pwm
 {
-    struct __declspec(empty_bases) PwmController : winrt::Windows::Devices::Pwm::IPwmController
+    struct WINRT_IMPL_EMPTY_BASES PwmController : winrt::Windows::Devices::Pwm::IPwmController
     {
         PwmController(std::nullptr_t) noexcept {}
         PwmController(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Pwm::IPwmController(ptr, take_ownership_from_abi) {}
@@ -21,7 +21,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Pwm
         static auto GetDeviceSelector(param::hstring const& friendlyName);
         static auto FromIdAsync(param::hstring const& deviceId);
     };
-    struct __declspec(empty_bases) PwmPin : winrt::Windows::Devices::Pwm::IPwmPin
+    struct WINRT_IMPL_EMPTY_BASES PwmPin : winrt::Windows::Devices::Pwm::IPwmPin
     {
         PwmPin(std::nullptr_t) noexcept {}
         PwmPin(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Pwm::IPwmPin(ptr, take_ownership_from_abi) {}

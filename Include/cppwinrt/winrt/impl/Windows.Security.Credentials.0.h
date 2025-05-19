@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -182,14 +182,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Credentials::WebAccountProvider>{ using type = winrt::Windows::Security::Credentials::IWebAccountProvider; };
     template <> struct abi<winrt::Windows::Security::Credentials::ICredentialFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePasswordCredential(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredential>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall RetrievePublicKeyWithDefaultBlobType(void**) noexcept = 0;
@@ -200,7 +200,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialAttestationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CertificateChainBuffer(void**) noexcept = 0;
             virtual int32_t __stdcall get_AttestationBuffer(void**) noexcept = 0;
@@ -209,7 +209,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupportedAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RenewAttestationAsync(void**) noexcept = 0;
@@ -220,7 +220,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialOperationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Result(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -228,7 +228,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialRetrievalResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Credential(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -236,7 +236,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IPasswordCredential>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Resource(void**) noexcept = 0;
             virtual int32_t __stdcall put_Resource(void*) noexcept = 0;
@@ -250,7 +250,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IPasswordVault>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Add(void*) noexcept = 0;
             virtual int32_t __stdcall Remove(void*) noexcept = 0;
@@ -262,7 +262,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IWebAccount>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebAccountProvider(void**) noexcept = 0;
             virtual int32_t __stdcall get_UserName(void**) noexcept = 0;
@@ -271,7 +271,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IWebAccount2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -282,14 +282,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IWebAccountFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWebAccount(void*, void*, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IWebAccountProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -298,7 +298,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IWebAccountProvider2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayPurpose(void**) noexcept = 0;
             virtual int32_t __stdcall get_Authority(void**) noexcept = 0;
@@ -306,21 +306,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IWebAccountProvider3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_User(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IWebAccountProvider4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSystemProvider(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IWebAccountProviderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWebAccountProvider(void*, void*, void*, void**) noexcept = 0;
         };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -130,7 +130,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Bluetooth::Background::RfcommOutboundConnectionInformation>{ using type = winrt::Windows::Devices::Bluetooth::Background::IRfcommOutboundConnectionInformation; };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IBluetoothLEAdvertisementPublisherTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
@@ -138,14 +138,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IBluetoothLEAdvertisementPublisherTriggerDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SelectedTransmitPowerLevelInDBm(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IBluetoothLEAdvertisementWatcherTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Advertisements(void**) noexcept = 0;
@@ -154,7 +154,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IGattCharacteristicNotificationTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Characteristic(void**) noexcept = 0;
             virtual int32_t __stdcall get_Value(void**) noexcept = 0;
@@ -162,7 +162,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IGattCharacteristicNotificationTriggerDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Error(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_EventTriggeringMode(int32_t*) noexcept = 0;
@@ -171,7 +171,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IGattServiceProviderConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TriggerId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Service(void**) noexcept = 0;
@@ -180,28 +180,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IGattServiceProviderConnection2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UpdateAdvertisingParameters(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IGattServiceProviderConnectionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllServices(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IGattServiceProviderTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Connection(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IRfcommConnectionTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Socket(void**) noexcept = 0;
             virtual int32_t __stdcall get_Incoming(bool*) noexcept = 0;
@@ -210,7 +210,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IRfcommInboundConnectionInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SdpRecord(void**) noexcept = 0;
             virtual int32_t __stdcall put_SdpRecord(void*) noexcept = 0;
@@ -222,7 +222,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Bluetooth::Background::IRfcommOutboundConnectionInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteServiceId(void**) noexcept = 0;
             virtual int32_t __stdcall put_RemoteServiceId(void*) noexcept = 0;

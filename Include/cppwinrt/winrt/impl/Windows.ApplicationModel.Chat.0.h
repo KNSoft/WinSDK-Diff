@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,15 +8,15 @@
 #define WINRT_Windows_ApplicationModel_Chat_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Media::MediaProperties
 {
@@ -528,7 +528,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Chat::RemoteParticipantComposingChangedEventArgs>{ using type = winrt::Windows::ApplicationModel::Chat::IRemoteParticipantComposingChangedEventArgs; };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatCapabilities>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsOnline(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsChatCapable(bool*) noexcept = 0;
@@ -539,7 +539,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatCapabilitiesManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCachedCapabilitiesAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetCapabilitiesFromNetworkAsync(void*, void**) noexcept = 0;
@@ -547,7 +547,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatCapabilitiesManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCachedCapabilitiesForTransportAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetCapabilitiesFromNetworkForTransportAsync(void*, void*, void**) noexcept = 0;
@@ -555,7 +555,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatConversation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HasUnreadMessages(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
@@ -579,7 +579,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatConversation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanModifyParticipants(bool*) noexcept = 0;
             virtual int32_t __stdcall put_CanModifyParticipants(bool) noexcept = 0;
@@ -587,7 +587,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatConversationReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ReadBatchWithCountAsync(int32_t, void**) noexcept = 0;
@@ -595,7 +595,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatConversationThreadingInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContactId(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContactId(void*) noexcept = 0;
@@ -610,14 +610,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ItemKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Attachments(void**) noexcept = 0;
             virtual int32_t __stdcall get_Body(void**) noexcept = 0;
@@ -640,7 +640,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EstimatedDownloadSize(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall put_EstimatedDownloadSize(uint64_t) noexcept = 0;
@@ -674,14 +674,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessage3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessage4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SyncId(void**) noexcept = 0;
             virtual int32_t __stdcall put_SyncId(void*) noexcept = 0;
@@ -689,7 +689,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageAttachment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataStreamReference(void**) noexcept = 0;
             virtual int32_t __stdcall put_DataStreamReference(void*) noexcept = 0;
@@ -703,7 +703,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageAttachment2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Thumbnail(void**) noexcept = 0;
             virtual int32_t __stdcall put_Thumbnail(void*) noexcept = 0;
@@ -715,21 +715,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageAttachmentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateChatMessageAttachment(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageBlockingStatic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MarkMessageAsBlockedAsync(void*, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageChange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
@@ -737,7 +737,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageChangeReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AcceptChanges() noexcept = 0;
             virtual int32_t __stdcall AcceptChangesThrough(void*) noexcept = 0;
@@ -746,7 +746,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageChangeTracker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Enable() noexcept = 0;
             virtual int32_t __stdcall GetChangeReader(void**) noexcept = 0;
@@ -755,21 +755,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageChangedDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageManager2Statics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterTransportAsync(void**) noexcept = 0;
             virtual int32_t __stdcall GetTransportAsync(void*, void**) noexcept = 0;
@@ -777,7 +777,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageManagerStatic>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetTransportsAsync(void**) noexcept = 0;
             virtual int32_t __stdcall RequestStoreAsync(void**) noexcept = 0;
@@ -787,21 +787,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestSyncManagerAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageNotificationTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChatMessage(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageNotificationTriggerDetails2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShouldDisplayToast(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ShouldUpdateDetailText(bool*) noexcept = 0;
@@ -811,21 +811,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageReader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchWithCountAsync(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageStore>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChangeTracker(void**) noexcept = 0;
             virtual int32_t __stdcall DeleteMessageAsync(void*, void**) noexcept = 0;
@@ -843,7 +843,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageStore2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ForwardMessageAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetConversationAsync(void*, void**) noexcept = 0;
@@ -866,14 +866,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageStore3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetMessageBySyncIdAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageStoreChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Kind(int32_t*) noexcept = 0;
@@ -881,7 +881,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageTransport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAppSetAsNotificationProvider(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
@@ -892,7 +892,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageTransport2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_TransportKind(int32_t*) noexcept = 0;
@@ -900,7 +900,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageTransportConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxAttachmentCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MaxMessageSizeInKilobytes(int32_t*) noexcept = 0;
@@ -911,7 +911,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatMessageValidationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxPartCount(void**) noexcept = 0;
             virtual int32_t __stdcall get_PartCount(void**) noexcept = 0;
@@ -921,7 +921,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatQueryOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SearchString(void**) noexcept = 0;
             virtual int32_t __stdcall put_SearchString(void*) noexcept = 0;
@@ -929,7 +929,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatRecipientDeliveryInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransportAddress(void**) noexcept = 0;
             virtual int32_t __stdcall put_TransportAddress(void*) noexcept = 0;
@@ -946,7 +946,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatSearchReader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReadBatchAsync(void**) noexcept = 0;
             virtual int32_t __stdcall ReadBatchWithCountAsync(int32_t, void**) noexcept = 0;
@@ -954,7 +954,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatSyncConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSyncEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsSyncEnabled(bool) noexcept = 0;
@@ -964,7 +964,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IChatSyncManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Configuration(void**) noexcept = 0;
             virtual int32_t __stdcall AssociateAccountAsync(void*, void**) noexcept = 0;
@@ -976,7 +976,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsEndUserMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransportId(void**) noexcept = 0;
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
@@ -989,14 +989,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsEndUserMessageAction>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Label(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsEndUserMessageAvailableEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsMessageAvailable(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Message(void**) noexcept = 0;
@@ -1004,7 +1004,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsEndUserMessageAvailableTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
@@ -1012,7 +1012,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsEndUserMessageManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_MessageAvailableChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_MessageAvailableChanged(winrt::event_token) noexcept = 0;
@@ -1020,7 +1020,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetEndUserMessageManager(void**) noexcept = 0;
             virtual int32_t __stdcall GetTransportsAsync(void**) noexcept = 0;
@@ -1030,7 +1030,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_TransportListChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_TransportListChanged(winrt::event_token) noexcept = 0;
@@ -1038,14 +1038,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsServiceKindSupportedChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServiceKind(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsTransport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedProperties(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsActive(bool*) noexcept = 0;
@@ -1060,7 +1060,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRcsTransportConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxAttachmentCount(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MaxMessageSizeInKilobytes(int32_t*) noexcept = 0;
@@ -1072,7 +1072,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Chat::IRemoteParticipantComposingChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TransportId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ParticipantAddress(void**) noexcept = 0;
@@ -1133,7 +1133,7 @@ namespace winrt::impl
         auto NotifyRemoteParticipantComposing(param::hstring const& transportId, param::hstring const& participantAddress, bool isComposing) const;
         auto RemoteParticipantComposingChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatConversation, winrt::Windows::ApplicationModel::Chat::RemoteParticipantComposingChangedEventArgs> const& handler) const;
         using RemoteParticipantComposingChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Chat::IChatConversation, &impl::abi_t<winrt::Windows::ApplicationModel::Chat::IChatConversation>::remove_RemoteParticipantComposingChanged>;
-        [[nodiscard]] RemoteParticipantComposingChanged_revoker RemoteParticipantComposingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatConversation, winrt::Windows::ApplicationModel::Chat::RemoteParticipantComposingChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto RemoteParticipantComposingChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatConversation, winrt::Windows::ApplicationModel::Chat::RemoteParticipantComposingChangedEventArgs> const& handler) const;
         auto RemoteParticipantComposingChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Chat::IChatConversation>
@@ -1449,7 +1449,7 @@ namespace winrt::impl
         auto ValidateMessage(winrt::Windows::ApplicationModel::Chat::ChatMessage const& chatMessage) const;
         auto MessageChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatMessageStore, winrt::Windows::ApplicationModel::Chat::ChatMessageChangedEventArgs> const& value) const;
         using MessageChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Chat::IChatMessageStore, &impl::abi_t<winrt::Windows::ApplicationModel::Chat::IChatMessageStore>::remove_MessageChanged>;
-        [[nodiscard]] MessageChanged_revoker MessageChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatMessageStore, winrt::Windows::ApplicationModel::Chat::ChatMessageChangedEventArgs> const& value) const;
+        [[nodiscard]] auto MessageChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatMessageStore, winrt::Windows::ApplicationModel::Chat::ChatMessageChangedEventArgs> const& value) const;
         auto MessageChanged(winrt::event_token const& value) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Chat::IChatMessageStore>
@@ -1476,7 +1476,7 @@ namespace winrt::impl
         auto TryCancelSendMessageAsync(param::hstring const& localChatMessageId) const;
         auto StoreChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatMessageStore, winrt::Windows::ApplicationModel::Chat::ChatMessageStoreChangedEventArgs> const& handler) const;
         using StoreChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Chat::IChatMessageStore2, &impl::abi_t<winrt::Windows::ApplicationModel::Chat::IChatMessageStore2>::remove_StoreChanged>;
-        [[nodiscard]] StoreChanged_revoker StoreChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatMessageStore, winrt::Windows::ApplicationModel::Chat::ChatMessageStoreChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto StoreChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::ChatMessageStore, winrt::Windows::ApplicationModel::Chat::ChatMessageStoreChangedEventArgs> const& handler) const;
         auto StoreChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Chat::IChatMessageStore2>
@@ -1664,7 +1664,7 @@ namespace winrt::impl
     {
         auto MessageAvailableChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::RcsEndUserMessageManager, winrt::Windows::ApplicationModel::Chat::RcsEndUserMessageAvailableEventArgs> const& handler) const;
         using MessageAvailableChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Chat::IRcsEndUserMessageManager, &impl::abi_t<winrt::Windows::ApplicationModel::Chat::IRcsEndUserMessageManager>::remove_MessageAvailableChanged>;
-        [[nodiscard]] MessageAvailableChanged_revoker MessageAvailableChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::RcsEndUserMessageManager, winrt::Windows::ApplicationModel::Chat::RcsEndUserMessageAvailableEventArgs> const& handler) const;
+        [[nodiscard]] auto MessageAvailableChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::RcsEndUserMessageManager, winrt::Windows::ApplicationModel::Chat::RcsEndUserMessageAvailableEventArgs> const& handler) const;
         auto MessageAvailableChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Chat::IRcsEndUserMessageManager>
@@ -1688,7 +1688,7 @@ namespace winrt::impl
     {
         auto TransportListChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using TransportListChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Chat::IRcsManagerStatics2, &impl::abi_t<winrt::Windows::ApplicationModel::Chat::IRcsManagerStatics2>::remove_TransportListChanged>;
-        [[nodiscard]] TransportListChanged_revoker TransportListChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto TransportListChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto TransportListChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Chat::IRcsManagerStatics2>
@@ -1716,7 +1716,7 @@ namespace winrt::impl
         auto IsServiceKindSupported(winrt::Windows::ApplicationModel::Chat::RcsServiceKind const& serviceKind) const;
         auto ServiceKindSupportedChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::RcsTransport, winrt::Windows::ApplicationModel::Chat::RcsServiceKindSupportedChangedEventArgs> const& handler) const;
         using ServiceKindSupportedChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Chat::IRcsTransport, &impl::abi_t<winrt::Windows::ApplicationModel::Chat::IRcsTransport>::remove_ServiceKindSupportedChanged>;
-        [[nodiscard]] ServiceKindSupportedChanged_revoker ServiceKindSupportedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::RcsTransport, winrt::Windows::ApplicationModel::Chat::RcsServiceKindSupportedChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto ServiceKindSupportedChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Chat::RcsTransport, winrt::Windows::ApplicationModel::Chat::RcsServiceKindSupportedChangedEventArgs> const& handler) const;
         auto ServiceKindSupportedChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Chat::IRcsTransport>

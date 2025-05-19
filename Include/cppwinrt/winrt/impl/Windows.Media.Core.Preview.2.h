@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,7 +16,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::Core::Preview
         [[nodiscard]] static auto SoundLevel();
         static auto SoundLevelChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         using SoundLevelChanged_revoker = impl::factory_event_revoker<winrt::Windows::Media::Core::Preview::ISoundLevelBrokerStatics, &impl::abi_t<winrt::Windows::Media::Core::Preview::ISoundLevelBrokerStatics>::remove_SoundLevelChanged>;
-        [[nodiscard]] static SoundLevelChanged_revoker SoundLevelChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
+        [[nodiscard]] static auto SoundLevelChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         static auto SoundLevelChanged(winrt::event_token const& token);
     };
 }

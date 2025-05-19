@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Media
 {
@@ -129,13 +129,13 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Control::TimelinePropertiesChangedEventArgs>{ using type = winrt::Windows::Media::Control::ITimelinePropertiesChangedEventArgs; };
     template <> struct abi<winrt::Windows::Media::Control::ICurrentSessionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceAppUserModelId(void**) noexcept = 0;
             virtual int32_t __stdcall TryGetMediaPropertiesAsync(void**) noexcept = 0;
@@ -166,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentSession(void**) noexcept = 0;
             virtual int32_t __stdcall GetSessions(void**) noexcept = 0;
@@ -178,14 +178,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionMediaProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall get_Subtitle(void**) noexcept = 0;
@@ -201,7 +201,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionPlaybackControls>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsPlayEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsPauseEnabled(bool*) noexcept = 0;
@@ -222,7 +222,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionPlaybackInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Controls(void**) noexcept = 0;
             virtual int32_t __stdcall get_PlaybackStatus(int32_t*) noexcept = 0;
@@ -234,7 +234,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionTimelineProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_EndTime(int64_t*) noexcept = 0;
@@ -246,25 +246,25 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Control::IMediaPropertiesChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Control::IPlaybackInfoChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Control::ISessionsChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Control::ITimelinePropertiesChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
@@ -300,15 +300,15 @@ namespace winrt::impl
         auto TryChangePlaybackPositionAsync(int64_t requestedPlaybackPosition) const;
         auto TimelinePropertiesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::TimelinePropertiesChangedEventArgs> const& handler) const;
         using TimelinePropertiesChanged_revoker = impl::event_revoker<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSession, &impl::abi_t<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSession>::remove_TimelinePropertiesChanged>;
-        [[nodiscard]] TimelinePropertiesChanged_revoker TimelinePropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::TimelinePropertiesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TimelinePropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::TimelinePropertiesChangedEventArgs> const& handler) const;
         auto TimelinePropertiesChanged(winrt::event_token const& token) const noexcept;
         auto PlaybackInfoChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::PlaybackInfoChangedEventArgs> const& handler) const;
         using PlaybackInfoChanged_revoker = impl::event_revoker<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSession, &impl::abi_t<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSession>::remove_PlaybackInfoChanged>;
-        [[nodiscard]] PlaybackInfoChanged_revoker PlaybackInfoChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::PlaybackInfoChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PlaybackInfoChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::PlaybackInfoChangedEventArgs> const& handler) const;
         auto PlaybackInfoChanged(winrt::event_token const& token) const noexcept;
         auto MediaPropertiesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::MediaPropertiesChangedEventArgs> const& handler) const;
         using MediaPropertiesChanged_revoker = impl::event_revoker<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSession, &impl::abi_t<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSession>::remove_MediaPropertiesChanged>;
-        [[nodiscard]] MediaPropertiesChanged_revoker MediaPropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::MediaPropertiesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto MediaPropertiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSession, winrt::Windows::Media::Control::MediaPropertiesChangedEventArgs> const& handler) const;
         auto MediaPropertiesChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSession>
@@ -322,11 +322,11 @@ namespace winrt::impl
         auto GetSessions() const;
         auto CurrentSessionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSessionManager, winrt::Windows::Media::Control::CurrentSessionChangedEventArgs> const& handler) const;
         using CurrentSessionChanged_revoker = impl::event_revoker<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionManager, &impl::abi_t<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionManager>::remove_CurrentSessionChanged>;
-        [[nodiscard]] CurrentSessionChanged_revoker CurrentSessionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSessionManager, winrt::Windows::Media::Control::CurrentSessionChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto CurrentSessionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSessionManager, winrt::Windows::Media::Control::CurrentSessionChangedEventArgs> const& handler) const;
         auto CurrentSessionChanged(winrt::event_token const& token) const noexcept;
         auto SessionsChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSessionManager, winrt::Windows::Media::Control::SessionsChangedEventArgs> const& handler) const;
         using SessionsChanged_revoker = impl::event_revoker<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionManager, &impl::abi_t<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionManager>::remove_SessionsChanged>;
-        [[nodiscard]] SessionsChanged_revoker SessionsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSessionManager, winrt::Windows::Media::Control::SessionsChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto SessionsChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Control::GlobalSystemMediaTransportControlsSessionManager, winrt::Windows::Media::Control::SessionsChangedEventArgs> const& handler) const;
         auto SessionsChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Control::IGlobalSystemMediaTransportControlsSessionManager>

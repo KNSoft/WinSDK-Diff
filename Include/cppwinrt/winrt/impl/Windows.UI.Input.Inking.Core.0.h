@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,11 +10,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct Rect;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
@@ -106,7 +106,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource>{ using type = winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource; };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreIncrementalInkStroke>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AppendInkPoints(void*, winrt::Windows::Foundation::Rect*) noexcept = 0;
             virtual int32_t __stdcall CreateInkStroke(void**) noexcept = 0;
@@ -117,14 +117,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreIncrementalInkStrokeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, winrt::Windows::Foundation::Numerics::float3x2, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PointerEntering(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PointerEntering(winrt::event_token) noexcept = 0;
@@ -145,7 +145,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PointerCursor(void**) noexcept = 0;
             virtual int32_t __stdcall put_PointerCursor(void*) noexcept = 0;
@@ -153,14 +153,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreInkPresenterHost>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InkPresenter(void**) noexcept = 0;
             virtual int32_t __stdcall get_RootVisual(void**) noexcept = 0;
@@ -169,7 +169,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NewInkPoints(void**) noexcept = 0;
             virtual int32_t __stdcall get_PointerId(uint32_t*) noexcept = 0;
@@ -179,7 +179,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_WetStrokeStarting(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_WetStrokeStarting(winrt::event_token) noexcept = 0;
@@ -196,7 +196,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
@@ -228,31 +228,31 @@ namespace winrt::impl
     {
         auto PointerEntering(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerEntering_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource>::remove_PointerEntering>;
-        [[nodiscard]] PointerEntering_revoker PointerEntering(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerEntering(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerEntering(winrt::event_token const& cookie) const noexcept;
         auto PointerHovering(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerHovering_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource>::remove_PointerHovering>;
-        [[nodiscard]] PointerHovering_revoker PointerHovering(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerHovering(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerHovering(winrt::event_token const& cookie) const noexcept;
         auto PointerExiting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerExiting_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource>::remove_PointerExiting>;
-        [[nodiscard]] PointerExiting_revoker PointerExiting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerExiting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerExiting(winrt::event_token const& cookie) const noexcept;
         auto PointerPressing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerPressing_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource>::remove_PointerPressing>;
-        [[nodiscard]] PointerPressing_revoker PointerPressing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerPressing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerPressing(winrt::event_token const& cookie) const noexcept;
         auto PointerMoving(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerMoving_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource>::remove_PointerMoving>;
-        [[nodiscard]] PointerMoving_revoker PointerMoving(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerMoving(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerMoving(winrt::event_token const& cookie) const noexcept;
         auto PointerReleasing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerReleasing_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource>::remove_PointerReleasing>;
-        [[nodiscard]] PointerReleasing_revoker PointerReleasing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerReleasing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerReleasing(winrt::event_token const& cookie) const noexcept;
         auto PointerLost(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         using PointerLost_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreInkIndependentInputSource>::remove_PointerLost>;
-        [[nodiscard]] PointerLost_revoker PointerLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
+        [[nodiscard]] auto PointerLost(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreInkIndependentInputSource, winrt::Windows::UI::Core::PointerEventArgs> const& handler) const;
         auto PointerLost(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto InkPresenter() const;
     };
@@ -307,23 +307,23 @@ namespace winrt::impl
     {
         auto WetStrokeStarting(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         using WetStrokeStarting_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource>::remove_WetStrokeStarting>;
-        [[nodiscard]] WetStrokeStarting_revoker WetStrokeStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
+        [[nodiscard]] auto WetStrokeStarting(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         auto WetStrokeStarting(winrt::event_token const& cookie) const noexcept;
         auto WetStrokeContinuing(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         using WetStrokeContinuing_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource>::remove_WetStrokeContinuing>;
-        [[nodiscard]] WetStrokeContinuing_revoker WetStrokeContinuing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
+        [[nodiscard]] auto WetStrokeContinuing(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         auto WetStrokeContinuing(winrt::event_token const& cookie) const noexcept;
         auto WetStrokeStopping(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         using WetStrokeStopping_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource>::remove_WetStrokeStopping>;
-        [[nodiscard]] WetStrokeStopping_revoker WetStrokeStopping(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
+        [[nodiscard]] auto WetStrokeStopping(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         auto WetStrokeStopping(winrt::event_token const& cookie) const noexcept;
         auto WetStrokeCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         using WetStrokeCompleted_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource>::remove_WetStrokeCompleted>;
-        [[nodiscard]] WetStrokeCompleted_revoker WetStrokeCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
+        [[nodiscard]] auto WetStrokeCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         auto WetStrokeCompleted(winrt::event_token const& cookie) const noexcept;
         auto WetStrokeCanceled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         using WetStrokeCanceled_revoker = impl::event_revoker<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource, &impl::abi_t<winrt::Windows::UI::Input::Inking::Core::ICoreWetStrokeUpdateSource>::remove_WetStrokeCanceled>;
-        [[nodiscard]] WetStrokeCanceled_revoker WetStrokeCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
+        [[nodiscard]] auto WetStrokeCanceled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateSource, winrt::Windows::UI::Input::Inking::Core::CoreWetStrokeUpdateEventArgs> const& handler) const;
         auto WetStrokeCanceled(winrt::event_token const& cookie) const noexcept;
         [[nodiscard]] auto InkPresenter() const;
     };

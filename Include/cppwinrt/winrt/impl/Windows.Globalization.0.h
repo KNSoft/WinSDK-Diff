@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::System
 {
@@ -77,6 +77,7 @@ WINRT_EXPORT namespace winrt::Windows::Globalization
     struct JapanesePhoneticAnalyzer;
     struct Language;
     struct NumeralSystemIdentifiers;
+    struct GlobalizationJapanesePhoneticAnalyzerContract;
 }
 namespace winrt::impl
 {
@@ -166,6 +167,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Globalization::INumeralSystemIdentifiersStatics> = L"Windows.Globalization.INumeralSystemIdentifiersStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Globalization::INumeralSystemIdentifiersStatics2> = L"Windows.Globalization.INumeralSystemIdentifiersStatics2";
     template <> inline constexpr auto& name_v<winrt::Windows::Globalization::ITimeZoneOnCalendar> = L"Windows.Globalization.ITimeZoneOnCalendar";
+    template <> inline constexpr auto& name_v<winrt::Windows::Globalization::GlobalizationJapanesePhoneticAnalyzerContract> = L"Windows.Globalization.GlobalizationJapanesePhoneticAnalyzerContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Globalization::IApplicationLanguagesStatics>{ 0x75B40847,0x0A4C,0x4A92,{ 0x95,0x65,0xFD,0x63,0xC9,0x5F,0x7A,0xED } }; // 75B40847-0A4C-4A92-9565-FD63C95F7AED
     template <> inline constexpr guid guid_v<winrt::Windows::Globalization::IApplicationLanguagesStatics2>{ 0x1DF0DE4F,0x072B,0x4D7B,{ 0x8F,0x06,0xCB,0x2D,0xB4,0x0F,0x2B,0xB5 } }; // 1DF0DE4F-072B-4D7B-8F06-CB2DB40F2BB5
     template <> inline constexpr guid guid_v<winrt::Windows::Globalization::ICalendar>{ 0xCA30221D,0x86D9,0x40FB,{ 0xA2,0x6B,0xD4,0x4E,0xB7,0xCF,0x08,0xEA } }; // CA30221D-86D9-40FB-A26B-D44EB7CF08EA
@@ -203,7 +205,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Globalization::Language>{ using type = winrt::Windows::Globalization::ILanguage; };
     template <> struct abi<winrt::Windows::Globalization::IApplicationLanguagesStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrimaryLanguageOverride(void**) noexcept = 0;
             virtual int32_t __stdcall put_PrimaryLanguageOverride(void*) noexcept = 0;
@@ -213,14 +215,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::IApplicationLanguagesStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetLanguagesForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ICalendar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Clone(void**) noexcept = 0;
             virtual int32_t __stdcall SetToMin() noexcept = 0;
@@ -324,7 +326,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ICalendarFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCalendarDefaultCalendarAndClock(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateCalendar(void*, void*, void*, void**) noexcept = 0;
@@ -332,14 +334,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ICalendarFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCalendarWithTimeZone(void*, void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ICalendarIdentifiersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Gregorian(void**) noexcept = 0;
             virtual int32_t __stdcall get_Hebrew(void**) noexcept = 0;
@@ -354,14 +356,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ICalendarIdentifiersStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Persian(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ICalendarIdentifiersStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ChineseLunar(void**) noexcept = 0;
             virtual int32_t __stdcall get_JapaneseLunar(void**) noexcept = 0;
@@ -372,7 +374,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::IClockIdentifiersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TwelveHour(void**) noexcept = 0;
             virtual int32_t __stdcall get_TwentyFourHour(void**) noexcept = 0;
@@ -380,7 +382,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ICurrencyAmount>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Amount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Currency(void**) noexcept = 0;
@@ -388,14 +390,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ICurrencyAmountFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ICurrencyIdentifiersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AED(void**) noexcept = 0;
             virtual int32_t __stdcall get_AFN(void**) noexcept = 0;
@@ -558,14 +560,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ICurrencyIdentifiersStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BYN(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ICurrencyIdentifiersStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MRU(void**) noexcept = 0;
             virtual int32_t __stdcall get_SSP(void**) noexcept = 0;
@@ -575,7 +577,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::IGeographicRegion>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Code(void**) noexcept = 0;
             virtual int32_t __stdcall get_CodeTwoLetter(void**) noexcept = 0;
@@ -588,21 +590,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::IGeographicRegionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateGeographicRegion(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::IGeographicRegionStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsSupported(void*, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::IJapanesePhoneme>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayText(void**) noexcept = 0;
             virtual int32_t __stdcall get_YomiText(void**) noexcept = 0;
@@ -611,7 +613,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::IJapanesePhoneticAnalyzerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetWords(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetWordsWithMonoRubyOption(void*, bool, void**) noexcept = 0;
@@ -619,7 +621,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ILanguage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LanguageTag(void**) noexcept = 0;
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
@@ -629,35 +631,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ILanguage2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LayoutDirection(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ILanguage3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AbbreviatedName(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ILanguageExtensionSubtags>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetExtensionSubtags(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ILanguageFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateLanguage(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ILanguageStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsWellFormed(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall get_CurrentInputMethodLanguageTag(void**) noexcept = 0;
@@ -665,21 +667,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ILanguageStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TrySetInputMethodLanguageTag(void*, bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::ILanguageStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetMuiCompatibleLanguageListFromLanguageTags(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Globalization::INumeralSystemIdentifiersStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Arab(void**) noexcept = 0;
             virtual int32_t __stdcall get_ArabExt(void**) noexcept = 0;
@@ -721,7 +723,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::INumeralSystemIdentifiersStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Brah(void**) noexcept = 0;
             virtual int32_t __stdcall get_Osma(void**) noexcept = 0;
@@ -739,7 +741,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Globalization::ITimeZoneOnCalendar>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetTimeZone(void**) noexcept = 0;
             virtual int32_t __stdcall ChangeTimeZone(void*) noexcept = 0;

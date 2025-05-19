@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -23,11 +23,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct HResult;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintTicket
 {
@@ -231,7 +231,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportSettingsUISession>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsUISession; };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ErrorKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -241,7 +241,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Printer(void**) noexcept = 0;
             virtual int32_t __stdcall add_PrintTicketValidationRequested(void*, winrt::event_token*) noexcept = 0;
@@ -253,7 +253,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PrinterSelected(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PrinterSelected(winrt::event_token) noexcept = 0;
@@ -261,7 +261,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CommunicationErrorDetected(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CommunicationErrorDetected(winrt::event_token) noexcept = 0;
@@ -269,14 +269,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportIppCommunicationConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommunicationKind(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_CanModifyTimeouts(bool*) noexcept = 0;
@@ -286,7 +286,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportIppCommunicationTimeouts>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ConnectTimeout(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_ConnectTimeout(int64_t) noexcept = 0;
@@ -298,7 +298,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportMxdcImageQualityConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NormalOutputQuality(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_NormalOutputQuality(int32_t) noexcept = 0;
@@ -318,7 +318,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCurrentPrintDeviceCapabilities(void**) noexcept = 0;
             virtual int32_t __stdcall UpdatePrintDeviceCapabilities(void*) noexcept = 0;
@@ -327,7 +327,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetSupportedPdlPassthroughContentTypes(void*) noexcept = 0;
             virtual int32_t __stdcall get_ResourceLanguage(void**) noexcept = 0;
@@ -338,27 +338,27 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CommunicationConfiguration(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MxdcImageQualityConfiguration(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreatePeriodicRefresh(int64_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreatePrintJobRefresh(uint32_t, void**) noexcept = 0;
@@ -366,7 +366,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketElement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalName(void**) noexcept = 0;
             virtual int32_t __stdcall put_LocalName(void*) noexcept = 0;
@@ -376,7 +376,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PrintTicket(void**) noexcept = 0;
             virtual int32_t __stdcall SetPrintTicketValidationStatus(int32_t) noexcept = 0;
@@ -385,7 +385,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrinterSelectedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceAppInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrintTicket(void**) noexcept = 0;
@@ -399,7 +399,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSessionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceAppInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_Printer(void**) noexcept = 0;
@@ -407,7 +407,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Session(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -415,14 +415,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OwnerWindowId(struct struct_Windows_UI_WindowId*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsUISession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionPrintTicket(void**) noexcept = 0;
             virtual int32_t __stdcall get_DocumentTitle(void**) noexcept = 0;
@@ -449,11 +449,11 @@ namespace winrt::impl
         [[nodiscard]] auto Printer() const;
         auto PrintTicketValidationRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrintTicketValidationRequestedEventArgs> const& handler) const;
         using PrintTicketValidationRequested_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession, &impl::abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession>::remove_PrintTicketValidationRequested>;
-        [[nodiscard]] PrintTicketValidationRequested_revoker PrintTicketValidationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrintTicketValidationRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto PrintTicketValidationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrintTicketValidationRequestedEventArgs> const& handler) const;
         auto PrintTicketValidationRequested(winrt::event_token const& token) const noexcept;
         auto PrintDeviceCapabilitiesChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrintDeviceCapabilitiesChangedEventArgs> const& handler) const;
         using PrintDeviceCapabilitiesChanged_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession, &impl::abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession>::remove_PrintDeviceCapabilitiesChanged>;
-        [[nodiscard]] PrintDeviceCapabilitiesChanged_revoker PrintDeviceCapabilitiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrintDeviceCapabilitiesChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PrintDeviceCapabilitiesChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrintDeviceCapabilitiesChangedEventArgs> const& handler) const;
         auto PrintDeviceCapabilitiesChanged(winrt::event_token const& token) const noexcept;
         auto Start() const;
     };
@@ -466,7 +466,7 @@ namespace winrt::impl
     {
         auto PrinterSelected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrinterSelectedEventArgs> const& handler) const;
         using PrinterSelected_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2, &impl::abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2>::remove_PrinterSelected>;
-        [[nodiscard]] PrinterSelected_revoker PrinterSelected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrinterSelectedEventArgs> const& handler) const;
+        [[nodiscard]] auto PrinterSelected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportPrinterSelectedEventArgs> const& handler) const;
         auto PrinterSelected(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2>
@@ -478,7 +478,7 @@ namespace winrt::impl
     {
         auto CommunicationErrorDetected(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportCommunicationErrorDetectedEventArgs> const& handler) const;
         using CommunicationErrorDetected_revoker = impl::event_revoker<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3, &impl::abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3>::remove_CommunicationErrorDetected>;
-        [[nodiscard]] CommunicationErrorDetected_revoker CommunicationErrorDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportCommunicationErrorDetectedEventArgs> const& handler) const;
+        [[nodiscard]] auto CommunicationErrorDetected(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportCommunicationErrorDetectedEventArgs> const& handler) const;
         auto CommunicationErrorDetected(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3>

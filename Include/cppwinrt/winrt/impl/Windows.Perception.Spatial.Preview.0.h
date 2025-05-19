@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -40,7 +40,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Perception::Spatial::Preview::SpatialGraphInteropFrameOfReferencePreview>{ using type = winrt::Windows::Perception::Spatial::Preview::ISpatialGraphInteropFrameOfReferencePreview; };
     template <> struct abi<winrt::Windows::Perception::Spatial::Preview::ISpatialGraphInteropFrameOfReferencePreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CoordinateSystem(void**) noexcept = 0;
             virtual int32_t __stdcall get_NodeId(winrt::guid*) noexcept = 0;
@@ -49,7 +49,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Preview::ISpatialGraphInteropPreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateCoordinateSystemForNode(winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall CreateCoordinateSystemForNodeWithPosition(winrt::guid, winrt::Windows::Foundation::Numerics::float3, void**) noexcept = 0;
@@ -59,7 +59,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Perception::Spatial::Preview::ISpatialGraphInteropPreviewStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryCreateFrameOfReference(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryCreateFrameOfReferenceWithPosition(void*, winrt::Windows::Foundation::Numerics::float3, void**) noexcept = 0;

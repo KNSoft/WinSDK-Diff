@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -66,7 +66,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Authentication::Web::WebAuthenticationResult>{ using type = winrt::Windows::Security::Authentication::Web::IWebAuthenticationResult; };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::IWebAuthenticationBrokerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AuthenticateWithCallbackUriAsync(uint32_t, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall AuthenticateWithoutCallbackUriAsync(uint32_t, void*, void**) noexcept = 0;
@@ -75,7 +75,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::IWebAuthenticationBrokerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AuthenticateAndContinue(void*) noexcept = 0;
             virtual int32_t __stdcall AuthenticateWithCallbackUriAndContinue(void*, void*) noexcept = 0;
@@ -86,7 +86,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::IWebAuthenticationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResponseData(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResponseStatus(int32_t*) noexcept = 0;

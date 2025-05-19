@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,7 +8,7 @@
 #define WINRT_Windows_Security_Authentication_Identity_Provider_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct IAsyncAction;
 }
@@ -221,7 +221,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Authentication::Identity::Provider::SecondaryAuthenticationFactorRegistrationResult>{ using type = winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistrationResult; };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthentication>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServiceAuthenticationHmac(void**) noexcept = 0;
             virtual int32_t __stdcall get_SessionNonce(void**) noexcept = 0;
@@ -233,7 +233,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Authentication(void**) noexcept = 0;
@@ -241,14 +241,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStageChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_StageInfo(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStageInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Stage(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Scenario(int32_t*) noexcept = 0;
@@ -257,7 +257,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowNotificationMessageAsync(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall StartAuthenticationAsync(void*, void*, void**) noexcept = 0;
@@ -268,7 +268,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterDevicePresenceMonitoringAsync(void*, void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall RegisterDevicePresenceMonitoringWithNewDeviceAsync(void*, void*, int32_t, void*, void*, void*, void**) noexcept = 0;
@@ -278,7 +278,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DeviceFriendlyName(void**) noexcept = 0;
@@ -288,7 +288,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PresenceMonitoringMode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall UpdateDevicePresenceAsync(int32_t, void**) noexcept = 0;
@@ -297,7 +297,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FinishRegisteringDeviceAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall AbortRegisteringDeviceAsync(void*, void**) noexcept = 0;
@@ -305,7 +305,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistrationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Registration(void**) noexcept = 0;
@@ -313,7 +313,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorRegistrationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestStartRegisteringDeviceAsync(void*, uint32_t, void*, void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindAllRegisteredDeviceInfoAsync(int32_t, void**) noexcept = 0;
@@ -372,7 +372,7 @@ namespace winrt::impl
         auto StartAuthenticationAsync(param::hstring const& deviceId, winrt::Windows::Storage::Streams::IBuffer const& serviceAuthenticationNonce) const;
         auto AuthenticationStageChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::Authentication::Identity::Provider::SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs> const& handler) const;
         using AuthenticationStageChanged_revoker = impl::event_revoker<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStatics, &impl::abi_t<winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthenticationStatics>::remove_AuthenticationStageChanged>;
-        [[nodiscard]] AuthenticationStageChanged_revoker AuthenticationStageChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::Authentication::Identity::Provider::SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto AuthenticationStageChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Security::Authentication::Identity::Provider::SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs> const& handler) const;
         auto AuthenticationStageChanged(winrt::event_token const& token) const noexcept;
         auto GetAuthenticationStageInfoAsync() const;
     };

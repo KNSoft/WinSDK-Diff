@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,7 +16,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Networking
@@ -256,6 +256,7 @@ WINRT_EXPORT namespace winrt::Windows::Networking::Sockets
     struct WebSocketServerCustomValidationRequestedEventArgs;
     struct BandwidthStatistics;
     struct RoundTripTimeStatistics;
+    struct ControlChannelTriggerContract;
 }
 namespace winrt::impl
 {
@@ -473,6 +474,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::Sockets::IWebSocketInformation> = L"Windows.Networking.Sockets.IWebSocketInformation";
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::Sockets::IWebSocketInformation2> = L"Windows.Networking.Sockets.IWebSocketInformation2";
     template <> inline constexpr auto& name_v<winrt::Windows::Networking::Sockets::IWebSocketServerCustomValidationRequestedEventArgs> = L"Windows.Networking.Sockets.IWebSocketServerCustomValidationRequestedEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::Networking::Sockets::ControlChannelTriggerContract> = L"Windows.Networking.Sockets.ControlChannelTriggerContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::Sockets::IControlChannelTrigger>{ 0x7D1431A7,0xEE96,0x40E8,{ 0xA1,0x99,0x87,0x03,0xCD,0x96,0x9E,0xC3 } }; // 7D1431A7-EE96-40E8-A199-8703CD969EC3
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::Sockets::IControlChannelTrigger2>{ 0xAF00D237,0x51BE,0x4514,{ 0x97,0x25,0x35,0x56,0xE1,0x87,0x95,0x80 } }; // AF00D237-51BE-4514-9725-3556E1879580
     template <> inline constexpr guid guid_v<winrt::Windows::Networking::Sockets::IControlChannelTriggerEventDetails>{ 0x1B36E047,0x89BB,0x4236,{ 0x96,0xAC,0x71,0xD0,0x12,0xBB,0x48,0x69 } }; // 1B36E047-89BB-4236-96AC-71D012BB4869
@@ -566,7 +568,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Networking::Sockets::WebSocketServerCustomValidationRequestedEventArgs>{ using type = winrt::Windows::Networking::Sockets::IWebSocketServerCustomValidationRequestedEventArgs; };
     template <> struct abi<winrt::Windows::Networking::Sockets::IControlChannelTrigger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ControlChannelTriggerId(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServerKeepAliveIntervalInMinutes(uint32_t*) noexcept = 0;
@@ -583,21 +585,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IControlChannelTrigger2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsWakeFromLowPowerSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IControlChannelTriggerEventDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ControlChannelTrigger(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IControlChannelTriggerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateControlChannelTrigger(void*, uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall CreateControlChannelTriggerEx(void*, uint32_t, int32_t, void**) noexcept = 0;
@@ -605,7 +607,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IControlChannelTriggerResetEventDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResetReason(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_HardwareSlotReset(bool*) noexcept = 0;
@@ -614,7 +616,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Control(void**) noexcept = 0;
             virtual int32_t __stdcall get_Information(void**) noexcept = 0;
@@ -632,14 +634,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocket2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall BindServiceNameAndAdapterAsync(void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocket3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CancelIOAsync(void**) noexcept = 0;
             virtual int32_t __stdcall EnableTransferOwnership(winrt::guid) noexcept = 0;
@@ -651,7 +653,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocketControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QualityOfService(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_QualityOfService(int32_t) noexcept = 0;
@@ -661,7 +663,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocketControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InboundBufferSizeInBytes(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_InboundBufferSizeInBytes(uint32_t) noexcept = 0;
@@ -671,7 +673,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocketControl3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MulticastOnly(bool*) noexcept = 0;
             virtual int32_t __stdcall put_MulticastOnly(bool) noexcept = 0;
@@ -679,7 +681,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocketInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalAddress(void**) noexcept = 0;
             virtual int32_t __stdcall get_LocalPort(void**) noexcept = 0;
@@ -689,7 +691,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocketMessageReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RemoteAddress(void**) noexcept = 0;
             virtual int32_t __stdcall get_RemotePort(void**) noexcept = 0;
@@ -700,7 +702,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IDatagramSocketStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetEndpointPairsAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetEndpointPairsWithSortOptionsAsync(void*, void*, uint32_t, void**) noexcept = 0;
@@ -708,7 +710,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IMessageWebSocket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Control(void**) noexcept = 0;
             virtual int32_t __stdcall get_Information(void**) noexcept = 0;
@@ -718,7 +720,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IMessageWebSocket2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ServerCustomValidationRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ServerCustomValidationRequested(winrt::event_token) noexcept = 0;
@@ -726,7 +728,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IMessageWebSocket3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendNonfinalFrameAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall SendFinalFrameAsync(void*, void**) noexcept = 0;
@@ -734,7 +736,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IMessageWebSocketControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MaxMessageSize(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MaxMessageSize(uint32_t) noexcept = 0;
@@ -744,7 +746,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IMessageWebSocketControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredUnsolicitedPongInterval(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_DesiredUnsolicitedPongInterval(int64_t) noexcept = 0;
@@ -757,7 +759,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IMessageWebSocketMessageReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MessageType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall GetDataReader(void**) noexcept = 0;
@@ -766,14 +768,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IMessageWebSocketMessageReceivedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsMessageComplete(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IServerMessageWebSocket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_MessageReceived(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_MessageReceived(winrt::event_token) noexcept = 0;
@@ -787,7 +789,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IServerMessageWebSocketControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MessageType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MessageType(int32_t) noexcept = 0;
@@ -795,7 +797,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IServerMessageWebSocketInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BandwidthStatistics(struct struct_Windows_Networking_Sockets_BandwidthStatistics*) noexcept = 0;
             virtual int32_t __stdcall get_Protocol(void**) noexcept = 0;
@@ -804,7 +806,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IServerStreamWebSocket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Information(void**) noexcept = 0;
             virtual int32_t __stdcall get_InputStream(void**) noexcept = 0;
@@ -816,7 +818,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IServerStreamWebSocketInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BandwidthStatistics(struct struct_Windows_Networking_Sockets_BandwidthStatistics*) noexcept = 0;
             virtual int32_t __stdcall get_Protocol(void**) noexcept = 0;
@@ -825,21 +827,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::ISocketActivityContext>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::ISocketActivityContextFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::ISocketActivityInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TaskId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
@@ -852,14 +854,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::ISocketActivityInformationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllSockets(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::ISocketActivityTriggerDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_SocketInformation(void**) noexcept = 0;
@@ -867,14 +869,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::ISocketErrorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStatus(int32_t, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Control(void**) noexcept = 0;
             virtual int32_t __stdcall get_Information(void**) noexcept = 0;
@@ -889,14 +891,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocket2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ConnectWithProtectionLevelAndAdapterAsync(void*, void*, int32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocket3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CancelIOAsync(void**) noexcept = 0;
             virtual int32_t __stdcall EnableTransferOwnership(winrt::guid) noexcept = 0;
@@ -908,7 +910,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NoDelay(bool*) noexcept = 0;
             virtual int32_t __stdcall put_NoDelay(bool) noexcept = 0;
@@ -924,14 +926,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IgnorableServerCertificateErrors(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketControl3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SerializeConnectionAttempts(bool*) noexcept = 0;
             virtual int32_t __stdcall put_SerializeConnectionAttempts(bool) noexcept = 0;
@@ -941,7 +943,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketControl4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinProtectionLevel(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_MinProtectionLevel(int32_t) noexcept = 0;
@@ -949,7 +951,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalAddress(void**) noexcept = 0;
             virtual int32_t __stdcall get_LocalPort(void**) noexcept = 0;
@@ -965,7 +967,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketInformation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerCertificateErrorSeverity(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ServerCertificateErrors(void**) noexcept = 0;
@@ -975,7 +977,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketListener>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Control(void**) noexcept = 0;
             virtual int32_t __stdcall get_Information(void**) noexcept = 0;
@@ -987,7 +989,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketListener2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall BindServiceNameWithProtectionLevelAsync(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall BindServiceNameWithProtectionLevelAndAdapterAsync(void*, int32_t, void*, void**) noexcept = 0;
@@ -995,7 +997,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketListener3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CancelIOAsync(void**) noexcept = 0;
             virtual int32_t __stdcall EnableTransferOwnership(winrt::guid) noexcept = 0;
@@ -1006,14 +1008,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketListenerConnectionReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Socket(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketListenerControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_QualityOfService(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_QualityOfService(int32_t) noexcept = 0;
@@ -1021,7 +1023,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketListenerControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NoDelay(bool*) noexcept = 0;
             virtual int32_t __stdcall put_NoDelay(bool) noexcept = 0;
@@ -1035,14 +1037,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketListenerInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalPort(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamSocketStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetEndpointPairsAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetEndpointPairsWithSortOptionsAsync(void*, void*, uint32_t, void**) noexcept = 0;
@@ -1050,7 +1052,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamWebSocket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Control(void**) noexcept = 0;
             virtual int32_t __stdcall get_Information(void**) noexcept = 0;
@@ -1059,7 +1061,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamWebSocket2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_ServerCustomValidationRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_ServerCustomValidationRequested(winrt::event_token) noexcept = 0;
@@ -1067,7 +1069,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamWebSocketControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NoDelay(bool*) noexcept = 0;
             virtual int32_t __stdcall put_NoDelay(bool) noexcept = 0;
@@ -1075,7 +1077,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IStreamWebSocketControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DesiredUnsolicitedPongInterval(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_DesiredUnsolicitedPongInterval(int64_t) noexcept = 0;
@@ -1086,7 +1088,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IWebSocket>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OutputStream(void**) noexcept = 0;
             virtual int32_t __stdcall ConnectAsync(void*, void**) noexcept = 0;
@@ -1098,7 +1100,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IWebSocketClosedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Code(uint16_t*) noexcept = 0;
             virtual int32_t __stdcall get_Reason(void**) noexcept = 0;
@@ -1106,7 +1108,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IWebSocketControl>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OutboundBufferSizeInBytes(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_OutboundBufferSizeInBytes(uint32_t) noexcept = 0;
@@ -1119,21 +1121,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IWebSocketControl2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IgnorableServerCertificateErrors(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IWebSocketErrorStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStatus(int32_t, int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IWebSocketInformation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LocalAddress(void**) noexcept = 0;
             virtual int32_t __stdcall get_BandwidthStatistics(struct struct_Windows_Networking_Sockets_BandwidthStatistics*) noexcept = 0;
@@ -1142,7 +1144,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IWebSocketInformation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerCertificate(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServerCertificateErrorSeverity(int32_t*) noexcept = 0;
@@ -1152,7 +1154,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Networking::Sockets::IWebSocketServerCustomValidationRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ServerCertificate(void**) noexcept = 0;
             virtual int32_t __stdcall get_ServerCertificateErrorSeverity(int32_t*) noexcept = 0;
@@ -1235,7 +1237,7 @@ namespace winrt::impl
         auto GetOutputStreamAsync(winrt::Windows::Networking::EndpointPair const& endpointPair) const;
         auto MessageReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::DatagramSocket, winrt::Windows::Networking::Sockets::DatagramSocketMessageReceivedEventArgs> const& eventHandler) const;
         using MessageReceived_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IDatagramSocket, &impl::abi_t<winrt::Windows::Networking::Sockets::IDatagramSocket>::remove_MessageReceived>;
-        [[nodiscard]] MessageReceived_revoker MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::DatagramSocket, winrt::Windows::Networking::Sockets::DatagramSocketMessageReceivedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::DatagramSocket, winrt::Windows::Networking::Sockets::DatagramSocketMessageReceivedEventArgs> const& eventHandler) const;
         auto MessageReceived(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::Sockets::IDatagramSocket>
@@ -1341,7 +1343,7 @@ namespace winrt::impl
         [[nodiscard]] auto Information() const;
         auto MessageReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::MessageWebSocket, winrt::Windows::Networking::Sockets::MessageWebSocketMessageReceivedEventArgs> const& eventHandler) const;
         using MessageReceived_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IMessageWebSocket, &impl::abi_t<winrt::Windows::Networking::Sockets::IMessageWebSocket>::remove_MessageReceived>;
-        [[nodiscard]] MessageReceived_revoker MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::MessageWebSocket, winrt::Windows::Networking::Sockets::MessageWebSocketMessageReceivedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::MessageWebSocket, winrt::Windows::Networking::Sockets::MessageWebSocketMessageReceivedEventArgs> const& eventHandler) const;
         auto MessageReceived(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::Sockets::IMessageWebSocket>
@@ -1353,7 +1355,7 @@ namespace winrt::impl
     {
         auto ServerCustomValidationRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::MessageWebSocket, winrt::Windows::Networking::Sockets::WebSocketServerCustomValidationRequestedEventArgs> const& eventHandler) const;
         using ServerCustomValidationRequested_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IMessageWebSocket2, &impl::abi_t<winrt::Windows::Networking::Sockets::IMessageWebSocket2>::remove_ServerCustomValidationRequested>;
-        [[nodiscard]] ServerCustomValidationRequested_revoker ServerCustomValidationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::MessageWebSocket, winrt::Windows::Networking::Sockets::WebSocketServerCustomValidationRequestedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto ServerCustomValidationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::MessageWebSocket, winrt::Windows::Networking::Sockets::WebSocketServerCustomValidationRequestedEventArgs> const& eventHandler) const;
         auto ServerCustomValidationRequested(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::Sockets::IMessageWebSocket2>
@@ -1422,14 +1424,14 @@ namespace winrt::impl
     {
         auto MessageReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerMessageWebSocket, winrt::Windows::Networking::Sockets::MessageWebSocketMessageReceivedEventArgs> const& value) const;
         using MessageReceived_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IServerMessageWebSocket, &impl::abi_t<winrt::Windows::Networking::Sockets::IServerMessageWebSocket>::remove_MessageReceived>;
-        [[nodiscard]] MessageReceived_revoker MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerMessageWebSocket, winrt::Windows::Networking::Sockets::MessageWebSocketMessageReceivedEventArgs> const& value) const;
+        [[nodiscard]] auto MessageReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerMessageWebSocket, winrt::Windows::Networking::Sockets::MessageWebSocketMessageReceivedEventArgs> const& value) const;
         auto MessageReceived(winrt::event_token const& token) const noexcept;
         [[nodiscard]] auto Control() const;
         [[nodiscard]] auto Information() const;
         [[nodiscard]] auto OutputStream() const;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerMessageWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& value) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IServerMessageWebSocket, &impl::abi_t<winrt::Windows::Networking::Sockets::IServerMessageWebSocket>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerMessageWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& value) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerMessageWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& value) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto Close(uint16_t code, param::hstring const& reason) const;
     };
@@ -1466,7 +1468,7 @@ namespace winrt::impl
         [[nodiscard]] auto OutputStream() const;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerStreamWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& value) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IServerStreamWebSocket, &impl::abi_t<winrt::Windows::Networking::Sockets::IServerStreamWebSocket>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerStreamWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& value) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::ServerStreamWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& value) const;
         auto Closed(winrt::event_token const& token) const noexcept;
         auto Close(uint16_t code, param::hstring const& reason) const;
     };
@@ -1674,7 +1676,7 @@ namespace winrt::impl
         auto BindEndpointAsync(winrt::Windows::Networking::HostName const& localHostName, param::hstring const& localServiceName) const;
         auto ConnectionReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::StreamSocketListener, winrt::Windows::Networking::Sockets::StreamSocketListenerConnectionReceivedEventArgs> const& eventHandler) const;
         using ConnectionReceived_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IStreamSocketListener, &impl::abi_t<winrt::Windows::Networking::Sockets::IStreamSocketListener>::remove_ConnectionReceived>;
-        [[nodiscard]] ConnectionReceived_revoker ConnectionReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::StreamSocketListener, winrt::Windows::Networking::Sockets::StreamSocketListenerConnectionReceivedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto ConnectionReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::StreamSocketListener, winrt::Windows::Networking::Sockets::StreamSocketListenerConnectionReceivedEventArgs> const& eventHandler) const;
         auto ConnectionReceived(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::Sockets::IStreamSocketListener>
@@ -1774,7 +1776,7 @@ namespace winrt::impl
     {
         auto ServerCustomValidationRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::StreamWebSocket, winrt::Windows::Networking::Sockets::WebSocketServerCustomValidationRequestedEventArgs> const& eventHandler) const;
         using ServerCustomValidationRequested_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IStreamWebSocket2, &impl::abi_t<winrt::Windows::Networking::Sockets::IStreamWebSocket2>::remove_ServerCustomValidationRequested>;
-        [[nodiscard]] ServerCustomValidationRequested_revoker ServerCustomValidationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::StreamWebSocket, winrt::Windows::Networking::Sockets::WebSocketServerCustomValidationRequestedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto ServerCustomValidationRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::StreamWebSocket, winrt::Windows::Networking::Sockets::WebSocketServerCustomValidationRequestedEventArgs> const& eventHandler) const;
         auto ServerCustomValidationRequested(winrt::event_token const& eventCookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Networking::Sockets::IStreamWebSocket2>
@@ -1812,7 +1814,7 @@ namespace winrt::impl
         auto SetRequestHeader(param::hstring const& headerName, param::hstring const& headerValue) const;
         auto Closed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::IWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& eventHandler) const;
         using Closed_revoker = impl::event_revoker<winrt::Windows::Networking::Sockets::IWebSocket, &impl::abi_t<winrt::Windows::Networking::Sockets::IWebSocket>::remove_Closed>;
-        [[nodiscard]] Closed_revoker Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::IWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& eventHandler) const;
+        [[nodiscard]] auto Closed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Networking::Sockets::IWebSocket, winrt::Windows::Networking::Sockets::WebSocketClosedEventArgs> const& eventHandler) const;
         auto Closed(winrt::event_token const& eventCookie) const noexcept;
         auto Close(uint16_t code, param::hstring const& reason) const;
     };

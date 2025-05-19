@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_System_RemoteDesktop_Input_H
 #define WINRT_Windows_System_RemoteDesktop_Input_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.230511.6"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.230511.6"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
 #include "winrt/Windows.System.RemoteDesktop.h"
 #include "winrt/impl/Windows.Foundation.2.h"
 #include "winrt/impl/Windows.System.RemoteDesktop.Input.2.h"
@@ -17,39 +17,135 @@ namespace winrt::impl
     template <typename D> auto consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnection<D>::IsEnabled() const
     {
         bool value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection)->get_IsEnabled(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsEnabled(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)this;
+            check_hresult(_winrt_abi_type->get_IsEnabled(&value));
+        }
         return value;
     }
     template <typename D> auto consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnection<D>::IsEnabled(bool value) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection)->put_IsEnabled(value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_IsEnabled(value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)this;
+            check_hresult(_winrt_abi_type->put_IsEnabled(value));
+        }
     }
     template <typename D> auto consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnection<D>::RegisterThread(uint32_t threadId) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection)->RegisterThread(threadId));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RegisterThread(threadId));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)this;
+            check_hresult(_winrt_abi_type->RegisterThread(threadId));
+        }
     }
     template <typename D> auto consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnection<D>::UnregisterThread(uint32_t threadId) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection)->UnregisterThread(threadId));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->UnregisterThread(threadId));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)this;
+            check_hresult(_winrt_abi_type->UnregisterThread(threadId));
+        }
     }
     template <typename D> auto consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnection<D>::ReportDataReceived(array_view<uint8_t const> pduData) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection)->ReportDataReceived(pduData.size(), get_abi(pduData)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ReportDataReceived(pduData.size(), get_abi(pduData)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>**)this;
+            check_hresult(_winrt_abi_type->ReportDataReceived(pduData.size(), get_abi(pduData)));
+        }
     }
     template <typename D> auto consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnection2<D>::ReportPredictedKeyEvent(uint16_t scanCode, winrt::Windows::System::RemoteDesktop::Input::RemoteKeyEventAttributes const& attributes) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection2)->ReportPredictedKeyEvent(scanCode, static_cast<uint32_t>(attributes)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ReportPredictedKeyEvent(scanCode, static_cast<uint32_t>(attributes)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection2>**)this;
+            check_hresult(_winrt_abi_type->ReportPredictedKeyEvent(scanCode, static_cast<uint32_t>(attributes)));
+        }
     }
     template <typename D> auto consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnectionFactory<D>::CreateInstance(winrt::guid const& connectionId, winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnectionDataHandler const& pduForwarder) const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory)->CreateInstance(impl::bind_in(connectionId), *(void**)(&pduForwarder), &value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->CreateInstance(impl::bind_in(connectionId), *(void**)(&pduForwarder), &value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory>**)this;
+            check_hresult(_winrt_abi_type->CreateInstance(impl::bind_in(connectionId), *(void**)(&pduForwarder), &value));
+        }
         return winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnection{ value, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnectionFactory2<D>::CreateInstance(winrt::guid const& connectionId, winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnectionDataHandler const& pduForwarder, winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnectionOptions const& options) const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory2)->CreateInstance(impl::bind_in(connectionId), *(void**)(&pduForwarder), static_cast<uint32_t>(options), &value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->CreateInstance(impl::bind_in(connectionId), *(void**)(&pduForwarder), static_cast<uint32_t>(options), &value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory2>**)this;
+            check_hresult(_winrt_abi_type->CreateInstance(impl::bind_in(connectionId), *(void**)(&pduForwarder), static_cast<uint32_t>(options), &value));
+        }
         return winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnection{ value, take_ownership_from_abi };
     }
     template <typename H> struct delegate<winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnectionDataHandler, H> final : implements_delegate<winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnectionDataHandler, H>
@@ -234,8 +330,22 @@ WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop::Input
         RemoteTextConnectionDataHandler([o = std::move(object), method](auto&&... args) { return ((*o).*(method))(args...); })
     {
     }
-    template <typename O, typename M> RemoteTextConnectionDataHandler::RemoteTextConnectionDataHandler(weak_ref<O>&& object, M method) :
-        RemoteTextConnectionDataHandler([o = std::move(object), method](auto&&... args) { if (auto s = o.get()) { ((*s).*(method))(args...); } })
+    template <typename O, typename LM> RemoteTextConnectionDataHandler::RemoteTextConnectionDataHandler(weak_ref<O>&& object, LM&& lambda_or_method) :
+        RemoteTextConnectionDataHandler([o = std::move(object), lm = std::forward<LM>(lambda_or_method)](auto&&... args) { if (auto s = o.get()) {
+            if constexpr (std::is_member_function_pointer_v<LM>) ((*s).*(lm))(args...);
+            else lm(args...);
+        } })
+    {
+    }
+    template <typename O, typename M> RemoteTextConnectionDataHandler::RemoteTextConnectionDataHandler(std::shared_ptr<O>&& object, M method) :
+        RemoteTextConnectionDataHandler([o = std::move(object), method](auto&&... args) { return ((*o).*(method))(args...); })
+    {
+    }
+    template <typename O, typename LM> RemoteTextConnectionDataHandler::RemoteTextConnectionDataHandler(std::weak_ptr<O>&& object, LM&& lambda_or_method) :
+        RemoteTextConnectionDataHandler([o = std::move(object), lm = std::forward<LM>(lambda_or_method)](auto&&... args) { if (auto s = o.lock()) {
+            if constexpr (std::is_member_function_pointer_v<LM>) ((*s).*(lm))(args...);
+            else lm(args...);
+        } })
     {
     }
     inline auto RemoteTextConnectionDataHandler::operator()(array_view<uint8_t const> pduData) const

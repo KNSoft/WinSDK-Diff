@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,8 +10,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct HResult;
-    template <typename T> struct __declspec(empty_bases) IReference;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
@@ -248,7 +248,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourcePlaybackBitrateChangedEventArgs>{ using type = winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourcePlaybackBitrateChangedEventArgs; };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsLive(bool*) noexcept = 0;
             virtual int32_t __stdcall get_DesiredLiveOffset(int64_t*) noexcept = 0;
@@ -280,14 +280,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AdvancedSettings(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinLiveOffset(void**) noexcept = 0;
             virtual int32_t __stdcall get_MaxSeekableWindowSize(void**) noexcept = 0;
@@ -299,7 +299,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceAdvancedSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllSegmentsIndependent(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllSegmentsIndependent(bool) noexcept = 0;
@@ -311,7 +311,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceCorrelatedTimes>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Position(void**) noexcept = 0;
             virtual int32_t __stdcall get_PresentationTimeStamp(void**) noexcept = 0;
@@ -320,7 +320,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceCreationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_MediaSource(void**) noexcept = 0;
@@ -329,14 +329,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceCreationResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDiagnosticAvailableEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DiagnosticType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_RequestId(void**) noexcept = 0;
@@ -351,14 +351,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDiagnosticAvailableEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDiagnosticAvailableEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceDuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResourceContentType(void**) noexcept = 0;
@@ -366,7 +366,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDiagnostics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_DiagnosticAvailable(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_DiagnosticAvailable(winrt::event_token) noexcept = 0;
@@ -374,7 +374,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadBitrateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldValue(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewValue(uint32_t*) noexcept = 0;
@@ -382,14 +382,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadBitrateChangedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Reason(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ResourceUri(void**) noexcept = 0;
@@ -400,7 +400,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadCompletedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Statistics(void**) noexcept = 0;
@@ -409,7 +409,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadCompletedEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceDuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResourceContentType(void**) noexcept = 0;
@@ -417,7 +417,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadFailedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ResourceUri(void**) noexcept = 0;
@@ -428,7 +428,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadFailedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -438,7 +438,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadFailedEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceDuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResourceContentType(void**) noexcept = 0;
@@ -446,14 +446,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadRequestedDeferral>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Complete() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ResourceUri(void**) noexcept = 0;
@@ -465,7 +465,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadRequestedEventArgs2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_RequestId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Position(void**) noexcept = 0;
@@ -473,7 +473,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadRequestedEventArgs3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceDuration(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResourceContentType(void**) noexcept = 0;
@@ -481,7 +481,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_ResourceUri(void*) noexcept = 0;
@@ -497,7 +497,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResourceByteRangeOffset(void**) noexcept = 0;
             virtual int32_t __stdcall put_ResourceByteRangeOffset(void*) noexcept = 0;
@@ -507,7 +507,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDownloadStatistics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentBytesReceivedCount(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_TimeToHeadersReceived(void**) noexcept = 0;
@@ -517,7 +517,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourcePlaybackBitrateChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OldValue(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewValue(uint32_t*) noexcept = 0;
@@ -526,7 +526,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsContentTypeSupported(void*, bool*) noexcept = 0;
             virtual int32_t __stdcall CreateFromUriAsync(void*, void**) noexcept = 0;
@@ -556,23 +556,23 @@ namespace winrt::impl
         auto InboundBitsPerSecondWindow(winrt::Windows::Foundation::TimeSpan const& value) const;
         auto DownloadBitrateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadBitrateChangedEventArgs> const& handler) const;
         using DownloadBitrateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource, &impl::abi_t<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource>::remove_DownloadBitrateChanged>;
-        [[nodiscard]] DownloadBitrateChanged_revoker DownloadBitrateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadBitrateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto DownloadBitrateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadBitrateChangedEventArgs> const& handler) const;
         auto DownloadBitrateChanged(winrt::event_token const& token) const noexcept;
         auto PlaybackBitrateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourcePlaybackBitrateChangedEventArgs> const& handler) const;
         using PlaybackBitrateChanged_revoker = impl::event_revoker<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource, &impl::abi_t<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource>::remove_PlaybackBitrateChanged>;
-        [[nodiscard]] PlaybackBitrateChanged_revoker PlaybackBitrateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourcePlaybackBitrateChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto PlaybackBitrateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourcePlaybackBitrateChangedEventArgs> const& handler) const;
         auto PlaybackBitrateChanged(winrt::event_token const& token) const noexcept;
         auto DownloadRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadRequestedEventArgs> const& handler) const;
         using DownloadRequested_revoker = impl::event_revoker<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource, &impl::abi_t<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource>::remove_DownloadRequested>;
-        [[nodiscard]] DownloadRequested_revoker DownloadRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto DownloadRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadRequestedEventArgs> const& handler) const;
         auto DownloadRequested(winrt::event_token const& token) const noexcept;
         auto DownloadCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadCompletedEventArgs> const& handler) const;
         using DownloadCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource, &impl::abi_t<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource>::remove_DownloadCompleted>;
-        [[nodiscard]] DownloadCompleted_revoker DownloadCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto DownloadCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadCompletedEventArgs> const& handler) const;
         auto DownloadCompleted(winrt::event_token const& token) const noexcept;
         auto DownloadFailed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadFailedEventArgs> const& handler) const;
         using DownloadFailed_revoker = impl::event_revoker<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource, &impl::abi_t<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource>::remove_DownloadFailed>;
-        [[nodiscard]] DownloadFailed_revoker DownloadFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadFailedEventArgs> const& handler) const;
+        [[nodiscard]] auto DownloadFailed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSource, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDownloadFailedEventArgs> const& handler) const;
         auto DownloadFailed(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource>
@@ -688,7 +688,7 @@ namespace winrt::impl
     {
         auto DiagnosticAvailable(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDiagnostics, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDiagnosticAvailableEventArgs> const& handler) const;
         using DiagnosticAvailable_revoker = impl::event_revoker<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDiagnostics, &impl::abi_t<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDiagnostics>::remove_DiagnosticAvailable>;
-        [[nodiscard]] DiagnosticAvailable_revoker DiagnosticAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDiagnostics, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDiagnosticAvailableEventArgs> const& handler) const;
+        [[nodiscard]] auto DiagnosticAvailable(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDiagnostics, winrt::Windows::Media::Streaming::Adaptive::AdaptiveMediaSourceDiagnosticAvailableEventArgs> const& handler) const;
         auto DiagnosticAvailable(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSourceDiagnostics>

@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 MIT License
 
@@ -1664,6 +1664,12 @@ EXPERIMENTAL_WebAuthNPluginAuthenticatorGetAllCredentials(
     _In_ LPCWSTR pwszPluginClsId,
     _Outptr_result_maybenull_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST *ppCredentialDetailsList);
 
+// Plugin Authenticator API: WebAuthNPluginAuthenticatorFreeCredentialDetailsList: Free Credential Metadata cached for Browser AutoFill Scenarios
+void
+WINAPI
+EXPERIMENTAL_WebAuthNPluginAuthenticatorFreeCredentialDetailsList(
+    _In_opt_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST pCredentialDetailsList);
+
 //
 // Hello UV API for Plugin: WebAuthNPluginPerformUv: Perform Hello UV related operations
 //
@@ -1700,6 +1706,16 @@ void
 WINAPI
 EXPERIMENTAL_WebAuthNPluginFreePerformUvResponse(
     _In_opt_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_PERFORM_UV_RESPONSE ppPluginPerformUvResponse);
+
+HRESULT
+WINAPI
+EXPERIMENTAL_WebAuthNPluginGetOperationSigningPublicKey(
+    _In_ PWSTR pwszPluginClsId,
+    _Out_ DWORD* cbOpSignPubKey,
+    _Outptr_result_buffer_maybenull_(*cbOpSignPubKey) BYTE** pbOpSignPubKey);
+
+void WINAPI EXPERIMENTAL_WebAuthNPluginFreeGetOperationSigningPublicKeyResponse(
+    _In_opt_ PBYTE pbOpSignPubKey);
 
 #define EXPERIMENTAL_WEBAUTHN_CTAPCBOR_AUTHENTICATOR_OPTIONS_VERSION_1 1
 #define EXPERIMENTAL_WEBAUTHN_CTAPCBOR_AUTHENTICATOR_OPTIONS_CURRENT_VERSION EXPERIMENTAL_WEBAUTHN_CTAPCBOR_AUTHENTICATOR_OPTIONS_VERSION_1

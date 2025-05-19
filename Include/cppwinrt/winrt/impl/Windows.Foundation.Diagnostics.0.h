@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,12 +9,12 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     enum class AsyncStatus : int32_t;
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     struct Point;
     struct Rect;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
@@ -258,7 +258,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Foundation::Diagnostics::TracingStatusChangedEventArgs>{ using type = winrt::Windows::Foundation::Diagnostics::ITracingStatusChangedEventArgs; };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::IAsyncCausalityTracerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TraceOperationCreation(int32_t, int32_t, winrt::guid, uint64_t, void*, uint64_t) noexcept = 0;
             virtual int32_t __stdcall TraceOperationCompletion(int32_t, int32_t, winrt::guid, uint64_t, int32_t) noexcept = 0;
@@ -271,7 +271,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::IErrorDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
             virtual int32_t __stdcall get_LongDescription(void**) noexcept = 0;
@@ -280,14 +280,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::IErrorDetailsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateFromHResultAsync(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::IErrorReportingSettings>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetErrorOptions(uint32_t) noexcept = 0;
             virtual int32_t __stdcall GetErrorOptions(uint32_t*) noexcept = 0;
@@ -295,7 +295,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::IFileLoggingSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall AddLoggingChannel(void*) noexcept = 0;
@@ -308,21 +308,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::IFileLoggingSessionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILogFileGeneratedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_File(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingActivity>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Id(winrt::guid*) noexcept = 0;
@@ -330,7 +330,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingActivity2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Channel(void**) noexcept = 0;
             virtual int32_t __stdcall StopActivity(void*) noexcept = 0;
@@ -340,7 +340,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingActivityFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateLoggingActivity(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateLoggingActivityWithLevel(void*, void*, int32_t, void**) noexcept = 0;
@@ -348,7 +348,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingChannel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
@@ -363,21 +363,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingChannel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(winrt::guid*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingChannelFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingChannelFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithOptions(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithOptionsAndId(void*, void*, winrt::guid, void**) noexcept = 0;
@@ -385,7 +385,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingChannelOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Group(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall put_Group(winrt::guid) noexcept = 0;
@@ -393,14 +393,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingChannelOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(winrt::guid, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingFields>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Clear() noexcept = 0;
             virtual int32_t __stdcall BeginStruct(void*) noexcept = 0;
@@ -521,7 +521,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Keywords(int64_t*) noexcept = 0;
             virtual int32_t __stdcall put_Keywords(int64_t) noexcept = 0;
@@ -539,14 +539,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingOptionsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithKeywords(int64_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
             virtual int32_t __stdcall SaveToFileAsync(void*, void*, void**) noexcept = 0;
@@ -557,14 +557,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingSessionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ILoggingTarget>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall IsEnabledWithLevel(int32_t, bool*) noexcept = 0;
@@ -581,7 +581,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Foundation::Diagnostics::ITracingStatusChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Enabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_TraceLevel(int32_t*) noexcept = 0;
@@ -597,7 +597,7 @@ namespace winrt::impl
         auto TraceSynchronousWorkCompletion(winrt::Windows::Foundation::Diagnostics::CausalityTraceLevel const& traceLevel, winrt::Windows::Foundation::Diagnostics::CausalitySource const& source, winrt::Windows::Foundation::Diagnostics::CausalitySynchronousWork const& work) const;
         auto TracingStatusChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::Diagnostics::TracingStatusChangedEventArgs> const& handler) const;
         using TracingStatusChanged_revoker = impl::event_revoker<winrt::Windows::Foundation::Diagnostics::IAsyncCausalityTracerStatics, &impl::abi_t<winrt::Windows::Foundation::Diagnostics::IAsyncCausalityTracerStatics>::remove_TracingStatusChanged>;
-        [[nodiscard]] TracingStatusChanged_revoker TracingStatusChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::Diagnostics::TracingStatusChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TracingStatusChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::Diagnostics::TracingStatusChangedEventArgs> const& handler) const;
         auto TracingStatusChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Foundation::Diagnostics::IAsyncCausalityTracerStatics>
@@ -644,7 +644,7 @@ namespace winrt::impl
         auto CloseAndSaveToFileAsync() const;
         auto LogFileGenerated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::Diagnostics::IFileLoggingSession, winrt::Windows::Foundation::Diagnostics::LogFileGeneratedEventArgs> const& handler) const;
         using LogFileGenerated_revoker = impl::event_revoker<winrt::Windows::Foundation::Diagnostics::IFileLoggingSession, &impl::abi_t<winrt::Windows::Foundation::Diagnostics::IFileLoggingSession>::remove_LogFileGenerated>;
-        [[nodiscard]] LogFileGenerated_revoker LogFileGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::Diagnostics::IFileLoggingSession, winrt::Windows::Foundation::Diagnostics::LogFileGeneratedEventArgs> const& handler) const;
+        [[nodiscard]] auto LogFileGenerated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::Diagnostics::IFileLoggingSession, winrt::Windows::Foundation::Diagnostics::LogFileGeneratedEventArgs> const& handler) const;
         auto LogFileGenerated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Foundation::Diagnostics::IFileLoggingSession>
@@ -713,7 +713,7 @@ namespace winrt::impl
         auto LogValuePair(param::hstring const& value1, int32_t value2, winrt::Windows::Foundation::Diagnostics::LoggingLevel const& level) const;
         auto LoggingEnabled(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::Diagnostics::ILoggingChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using LoggingEnabled_revoker = impl::event_revoker<winrt::Windows::Foundation::Diagnostics::ILoggingChannel, &impl::abi_t<winrt::Windows::Foundation::Diagnostics::ILoggingChannel>::remove_LoggingEnabled>;
-        [[nodiscard]] LoggingEnabled_revoker LoggingEnabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::Diagnostics::ILoggingChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto LoggingEnabled(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Foundation::Diagnostics::ILoggingChannel, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto LoggingEnabled(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Foundation::Diagnostics::ILoggingChannel>

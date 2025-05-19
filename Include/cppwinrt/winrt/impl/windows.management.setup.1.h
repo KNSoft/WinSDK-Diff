@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,77 +9,77 @@
 #include "winrt/impl/Windows.Management.Setup.0.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Setup
 {
-    struct __declspec(empty_bases) IAgentProvisioningProgressReport :
+    struct WINRT_IMPL_EMPTY_BASES IAgentProvisioningProgressReport :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAgentProvisioningProgressReport>
     {
         IAgentProvisioningProgressReport(std::nullptr_t = nullptr) noexcept {}
         IAgentProvisioningProgressReport(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDeploymentSessionConnectionChangedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IDeploymentSessionConnectionChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeploymentSessionConnectionChangedEventArgs>
     {
         IDeploymentSessionConnectionChangedEventArgs(std::nullptr_t = nullptr) noexcept {}
         IDeploymentSessionConnectionChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDeploymentSessionHeartbeatRequestedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IDeploymentSessionHeartbeatRequestedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeploymentSessionHeartbeatRequestedEventArgs>
     {
         IDeploymentSessionHeartbeatRequestedEventArgs(std::nullptr_t = nullptr) noexcept {}
         IDeploymentSessionHeartbeatRequestedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDeploymentSessionStateChangedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IDeploymentSessionStateChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeploymentSessionStateChangedEventArgs>
     {
         IDeploymentSessionStateChangedEventArgs(std::nullptr_t = nullptr) noexcept {}
         IDeploymentSessionStateChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDeploymentWorkload :
+    struct WINRT_IMPL_EMPTY_BASES IDeploymentWorkload :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeploymentWorkload>
     {
         IDeploymentWorkload(std::nullptr_t = nullptr) noexcept {}
         IDeploymentWorkload(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDeploymentWorkloadBatch :
+    struct WINRT_IMPL_EMPTY_BASES IDeploymentWorkloadBatch :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeploymentWorkloadBatch>
     {
         IDeploymentWorkloadBatch(std::nullptr_t = nullptr) noexcept {}
         IDeploymentWorkloadBatch(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDeploymentWorkloadBatchFactory :
+    struct WINRT_IMPL_EMPTY_BASES IDeploymentWorkloadBatchFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeploymentWorkloadBatchFactory>
     {
         IDeploymentWorkloadBatchFactory(std::nullptr_t = nullptr) noexcept {}
         IDeploymentWorkloadBatchFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDeploymentWorkloadFactory :
+    struct WINRT_IMPL_EMPTY_BASES IDeploymentWorkloadFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDeploymentWorkloadFactory>
     {
         IDeploymentWorkloadFactory(std::nullptr_t = nullptr) noexcept {}
         IDeploymentWorkloadFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IDevicePreparationExecutionContext :
+    struct WINRT_IMPL_EMPTY_BASES IDevicePreparationExecutionContext :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IDevicePreparationExecutionContext>
     {
         IDevicePreparationExecutionContext(std::nullptr_t = nullptr) noexcept {}
         IDevicePreparationExecutionContext(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMachineProvisioningProgressReporter :
+    struct WINRT_IMPL_EMPTY_BASES IMachineProvisioningProgressReporter :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMachineProvisioningProgressReporter>
     {
         IMachineProvisioningProgressReporter(std::nullptr_t = nullptr) noexcept {}
         IMachineProvisioningProgressReporter(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IMachineProvisioningProgressReporterStatics :
+    struct WINRT_IMPL_EMPTY_BASES IMachineProvisioningProgressReporterStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMachineProvisioningProgressReporterStatics>
     {

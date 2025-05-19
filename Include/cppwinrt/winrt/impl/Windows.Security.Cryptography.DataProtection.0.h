@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -35,7 +35,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Cryptography::DataProtection::DataProtectionProvider>{ using type = winrt::Windows::Security::Cryptography::DataProtection::IDataProtectionProvider; };
     template <> struct abi<winrt::Windows::Security::Cryptography::DataProtection::IDataProtectionProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ProtectAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall UnprotectAsync(void*, void**) noexcept = 0;
@@ -45,7 +45,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Cryptography::DataProtection::IDataProtectionProviderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateOverloadExplicit(void*, void**) noexcept = 0;
         };

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -182,7 +182,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::Diagnostics::SystemMemoryUsageReport>{ using type = winrt::Windows::System::Diagnostics::ISystemMemoryUsageReport; };
     template <> struct abi<winrt::Windows::System::Diagnostics::IDiagnosticActionResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_Results(void**) noexcept = 0;
@@ -190,21 +190,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IDiagnosticInvoker>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RunDiagnosticActionAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IDiagnosticInvoker2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RunDiagnosticActionFromStringAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IDiagnosticInvokerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
@@ -213,14 +213,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessCpuUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetReport(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessCpuUsageReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KernelTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_UserTime(int64_t*) noexcept = 0;
@@ -228,7 +228,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessDiagnosticInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProcessId(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExecutableFileName(void**) noexcept = 0;
@@ -241,7 +241,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessDiagnosticInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAppDiagnosticInfos(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsPackaged(bool*) noexcept = 0;
@@ -249,7 +249,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessDiagnosticInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForProcesses(void**) noexcept = 0;
             virtual int32_t __stdcall GetForCurrentProcess(void**) noexcept = 0;
@@ -257,21 +257,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessDiagnosticInfoStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryGetForProcessId(uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessDiskUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetReport(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessDiskUsageReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ReadOperationCount(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_WriteOperationCount(int64_t*) noexcept = 0;
@@ -283,14 +283,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessMemoryUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetReport(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::IProcessMemoryUsageReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_NonPagedPoolSizeInBytes(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_PageFaultCount(uint32_t*) noexcept = 0;
@@ -308,14 +308,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::ISystemCpuUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetReport(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::ISystemCpuUsageReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KernelTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall get_UserTime(int64_t*) noexcept = 0;
@@ -324,7 +324,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::ISystemDiagnosticInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MemoryUsage(void**) noexcept = 0;
             virtual int32_t __stdcall get_CpuUsage(void**) noexcept = 0;
@@ -332,14 +332,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::ISystemDiagnosticInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentSystem(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::ISystemDiagnosticInfoStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall IsArchitectureSupported(int32_t, bool*) noexcept = 0;
             virtual int32_t __stdcall get_PreferredArchitecture(int32_t*) noexcept = 0;
@@ -347,14 +347,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::ISystemMemoryUsage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetReport(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Diagnostics::ISystemMemoryUsageReport>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TotalPhysicalSizeInBytes(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_AvailableSizeInBytes(uint64_t*) noexcept = 0;

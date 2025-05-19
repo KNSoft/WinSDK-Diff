@@ -8156,6 +8156,15 @@ DEFINE_PROPERTYKEY(PKEY_Search_MatchKind, 0x49691C90, 0x7E17, 0x101A, 0xA9, 0x1C
 DEFINE_PROPERTYKEY(PKEY_Search_MatchTags, 0x49691C90, 0x7E17, 0x101A, 0xA9, 0x1C, 0x08, 0x00, 0x2B, 0x2E, 0xCD, 0xA9, 30);
 #define INIT_PKEY_Search_MatchTags { { 0x49691C90, 0x7E17, 0x101A, 0xA9, 0x1C, 0x08, 0x00, 0x2B, 0x2E, 0xCD, 0xA9 }, 30 }
 
+//  Name:     System.Search.OcrContent -- PKEY_Search_OcrContent
+//  Type:     String -- VT_LPWSTR  (For variants: VT_BSTR)
+//  FormatID: (FMTID_Storage) {B725F130-47EF-101A-A5F1-02608C9EEBAC}, 28
+//  
+//  The OCR contents of the Images. This property is for query restrictions only; it cannot be retrieved in a 
+//  query result.
+DEFINE_PROPERTYKEY(PKEY_Search_OcrContent, 0xB725F130, 0x47EF, 0x101A, 0xA5, 0xF1, 0x02, 0x60, 0x8C, 0x9E, 0xEB, 0xAC, 28);
+#define INIT_PKEY_Search_OcrContent { { 0xB725F130, 0x47EF, 0x101A, 0xA5, 0xF1, 0x02, 0x60, 0x8C, 0x9E, 0xEB, 0xAC }, 28 }
+
 //  Name:     System.Search.QueryFocusedSummary -- PKEY_Search_QueryFocusedSummary
 //  Type:     String -- VT_LPWSTR  (For variants: VT_BSTR)
 //  FormatID: {560C36C0-503A-11CF-BAA1-00004C752A9A}, 3

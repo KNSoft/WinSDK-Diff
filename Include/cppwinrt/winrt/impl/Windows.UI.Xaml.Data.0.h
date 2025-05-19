@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,12 +8,12 @@
 #define WINRT_Windows_UI_Xaml_Data_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) EventHandler;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml
 {
@@ -232,7 +232,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Data::RelativeSource>{ using type = winrt::Windows::UI::Xaml::Data::IRelativeSource; };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBinding>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Path(void**) noexcept = 0;
             virtual int32_t __stdcall put_Path(void*) noexcept = 0;
@@ -254,7 +254,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBinding2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FallbackValue(void**) noexcept = 0;
             virtual int32_t __stdcall put_FallbackValue(void*) noexcept = 0;
@@ -266,20 +266,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingBaseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingExpression>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DataItem(void**) noexcept = 0;
             virtual int32_t __stdcall get_ParentBinding(void**) noexcept = 0;
@@ -288,45 +288,45 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingExpressionBase>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingExpressionBaseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingExpressionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingOperations>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IBindingOperationsStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetBinding(void*, void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICollectionView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CurrentItem(void**) noexcept = 0;
             virtual int32_t __stdcall get_CurrentPosition(int32_t*) noexcept = 0;
@@ -349,14 +349,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICollectionViewFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICollectionViewGroup>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Group(void**) noexcept = 0;
             virtual int32_t __stdcall get_GroupItems(void**) noexcept = 0;
@@ -364,7 +364,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICollectionViewSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Source(void**) noexcept = 0;
             virtual int32_t __stdcall put_Source(void*) noexcept = 0;
@@ -377,7 +377,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICollectionViewSourceStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SourceProperty(void**) noexcept = 0;
             virtual int32_t __stdcall get_ViewProperty(void**) noexcept = 0;
@@ -387,7 +387,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICurrentChangingEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Cancel(bool*) noexcept = 0;
             virtual int32_t __stdcall put_Cancel(bool) noexcept = 0;
@@ -396,7 +396,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICurrentChangingEventArgsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithCancelableParameter(bool, void*, void**, void**) noexcept = 0;
@@ -404,7 +404,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICustomProperty>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(struct struct_Windows_UI_Xaml_Interop_TypeName*) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -418,7 +418,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ICustomPropertyProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetCustomProperty(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetIndexedProperty(void*, struct struct_Windows_UI_Xaml_Interop_TypeName, void**) noexcept = 0;
@@ -428,7 +428,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IItemIndexRange>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FirstIndex(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Length(uint32_t*) noexcept = 0;
@@ -437,21 +437,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IItemIndexRangeFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, uint32_t, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IItemsRangeInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RangesChanged(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::INotifyPropertyChanged>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_PropertyChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_PropertyChanged(winrt::event_token) noexcept = 0;
@@ -459,21 +459,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IPropertyChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PropertyName(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IPropertyChangedEventArgsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IRelativeSource>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Mode(int32_t*) noexcept = 0;
             virtual int32_t __stdcall put_Mode(int32_t) noexcept = 0;
@@ -481,14 +481,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IRelativeSourceFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ISelectionInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SelectRange(void*) noexcept = 0;
             virtual int32_t __stdcall DeselectRange(void*) noexcept = 0;
@@ -498,7 +498,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::ISupportIncrementalLoading>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall LoadMoreItemsAsync(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall get_HasMoreItems(bool*) noexcept = 0;
@@ -506,7 +506,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::IValueConverter>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Convert(void*, struct struct_Windows_UI_Xaml_Interop_TypeName, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall ConvertBack(void*, struct struct_Windows_UI_Xaml_Interop_TypeName, void*, void*, void**) noexcept = 0;
@@ -514,14 +514,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::CurrentChangingEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -653,11 +653,11 @@ namespace winrt::impl
         [[nodiscard]] auto HasMoreItems() const;
         auto CurrentChanged(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         using CurrentChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Data::ICollectionView, &impl::abi_t<winrt::Windows::UI::Xaml::Data::ICollectionView>::remove_CurrentChanged>;
-        [[nodiscard]] CurrentChanged_revoker CurrentChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto CurrentChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto CurrentChanged(winrt::event_token const& token) const noexcept;
         auto CurrentChanging(winrt::Windows::UI::Xaml::Data::CurrentChangingEventHandler const& handler) const;
         using CurrentChanging_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Data::ICollectionView, &impl::abi_t<winrt::Windows::UI::Xaml::Data::ICollectionView>::remove_CurrentChanging>;
-        [[nodiscard]] CurrentChanging_revoker CurrentChanging(auto_revoke_t, winrt::Windows::UI::Xaml::Data::CurrentChangingEventHandler const& handler) const;
+        [[nodiscard]] auto CurrentChanging(auto_revoke_t, winrt::Windows::UI::Xaml::Data::CurrentChangingEventHandler const& handler) const;
         auto CurrentChanging(winrt::event_token const& token) const noexcept;
         auto MoveCurrentTo(winrt::Windows::Foundation::IInspectable const& item) const;
         auto MoveCurrentToPosition(int32_t index) const;
@@ -800,7 +800,7 @@ namespace winrt::impl
     {
         auto PropertyChanged(winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler) const;
         using PropertyChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Data::INotifyPropertyChanged, &impl::abi_t<winrt::Windows::UI::Xaml::Data::INotifyPropertyChanged>::remove_PropertyChanged>;
-        [[nodiscard]] PropertyChanged_revoker PropertyChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler) const;
+        [[nodiscard]] auto PropertyChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler) const;
         auto PropertyChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Data::INotifyPropertyChanged>

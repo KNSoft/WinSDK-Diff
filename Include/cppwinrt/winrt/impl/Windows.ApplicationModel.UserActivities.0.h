@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,12 +11,12 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct Deferral;
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Credentials
 {
@@ -176,7 +176,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::UserActivities::UserActivityVisualElements>{ using type = winrt::Windows::ApplicationModel::UserActivities::IUserActivityVisualElements; };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivity>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ActivityId(void**) noexcept = 0;
@@ -197,14 +197,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivity2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ToJson(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivity3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsRoamable(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsRoamable(bool) noexcept = 0;
@@ -212,7 +212,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityAttribution>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IconUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_IconUri(void*) noexcept = 0;
@@ -224,14 +224,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityAttributionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithUri(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityChannel>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetOrCreateUserActivityAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall DeleteActivityAsync(void*, void**) noexcept = 0;
@@ -240,7 +240,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityChannel2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetRecentUserActivitiesAsync(int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall GetSessionHistoryItemsForUserActivityAsync(void*, int64_t, void**) noexcept = 0;
@@ -248,14 +248,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityChannelStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityChannelStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DisableAutoSessionCreation() noexcept = 0;
             virtual int32_t __stdcall TryGetForWebAccount(void*, void**) noexcept = 0;
@@ -263,42 +263,42 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityChannelStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForUser(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityContentInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ToJson(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityContentInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromJson(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithActivityId(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetUserActivity(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityRequestManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_UserActivityRequested(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_UserActivityRequested(winrt::event_token) noexcept = 0;
@@ -306,14 +306,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityRequestManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityRequestedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Request(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
@@ -321,14 +321,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivitySession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ActivityId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivitySessionHistoryItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_UserActivity(void**) noexcept = 0;
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
@@ -337,7 +337,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryParseFromJson(void*, void**) noexcept = 0;
             virtual int32_t __stdcall TryParseFromJsonArray(void*, void**) noexcept = 0;
@@ -346,7 +346,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityVisualElements>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayText(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayText(void*) noexcept = 0;
@@ -362,7 +362,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::UserActivities::IUserActivityVisualElements2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AttributionDisplayText(void**) noexcept = 0;
             virtual int32_t __stdcall put_AttributionDisplayText(void*) noexcept = 0;
@@ -523,7 +523,7 @@ namespace winrt::impl
     {
         auto UserActivityRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserActivities::UserActivityRequestManager, winrt::Windows::ApplicationModel::UserActivities::UserActivityRequestedEventArgs> const& handler) const;
         using UserActivityRequested_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::UserActivities::IUserActivityRequestManager, &impl::abi_t<winrt::Windows::ApplicationModel::UserActivities::IUserActivityRequestManager>::remove_UserActivityRequested>;
-        [[nodiscard]] UserActivityRequested_revoker UserActivityRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserActivities::UserActivityRequestManager, winrt::Windows::ApplicationModel::UserActivities::UserActivityRequestedEventArgs> const& handler) const;
+        [[nodiscard]] auto UserActivityRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserActivities::UserActivityRequestManager, winrt::Windows::ApplicationModel::UserActivities::UserActivityRequestedEventArgs> const& handler) const;
         auto UserActivityRequested(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::UserActivities::IUserActivityRequestManager>

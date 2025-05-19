@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,7 +10,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Media::Capture
 {
@@ -44,7 +44,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Capture::Core::VariablePhotoSequenceCapture>{ using type = winrt::Windows::Media::Capture::Core::IVariablePhotoSequenceCapture; };
     template <> struct abi<winrt::Windows::Media::Capture::Core::IVariablePhotoCapturedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Frame(void**) noexcept = 0;
             virtual int32_t __stdcall get_CaptureTimeOffset(int64_t*) noexcept = 0;
@@ -54,7 +54,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Core::IVariablePhotoSequenceCapture>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall StartAsync(void**) noexcept = 0;
             virtual int32_t __stdcall StopAsync(void**) noexcept = 0;
@@ -67,7 +67,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Capture::Core::IVariablePhotoSequenceCapture2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall UpdateSettingsAsync(void**) noexcept = 0;
         };
@@ -92,11 +92,11 @@ namespace winrt::impl
         auto FinishAsync() const;
         auto PhotoCaptured(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Core::VariablePhotoSequenceCapture, winrt::Windows::Media::Capture::Core::VariablePhotoCapturedEventArgs> const& handler) const;
         using PhotoCaptured_revoker = impl::event_revoker<winrt::Windows::Media::Capture::Core::IVariablePhotoSequenceCapture, &impl::abi_t<winrt::Windows::Media::Capture::Core::IVariablePhotoSequenceCapture>::remove_PhotoCaptured>;
-        [[nodiscard]] PhotoCaptured_revoker PhotoCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Core::VariablePhotoSequenceCapture, winrt::Windows::Media::Capture::Core::VariablePhotoCapturedEventArgs> const& handler) const;
+        [[nodiscard]] auto PhotoCaptured(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Core::VariablePhotoSequenceCapture, winrt::Windows::Media::Capture::Core::VariablePhotoCapturedEventArgs> const& handler) const;
         auto PhotoCaptured(winrt::event_token const& token) const noexcept;
         auto Stopped(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Core::VariablePhotoSequenceCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using Stopped_revoker = impl::event_revoker<winrt::Windows::Media::Capture::Core::IVariablePhotoSequenceCapture, &impl::abi_t<winrt::Windows::Media::Capture::Core::IVariablePhotoSequenceCapture>::remove_Stopped>;
-        [[nodiscard]] Stopped_revoker Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Core::VariablePhotoSequenceCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto Stopped(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Capture::Core::VariablePhotoSequenceCapture, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto Stopped(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Media::Capture::Core::IVariablePhotoSequenceCapture>

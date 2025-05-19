@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -13,8 +13,8 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Isolation
 {
@@ -187,6 +187,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::Isolation
     struct IsolatedWindowsEnvironmentCreateProgress;
     struct HostMessageReceivedCallback;
     struct MessageReceivedCallback;
+    struct IsolatedWindowsEnvironmentContract;
 }
 namespace winrt::impl
 {
@@ -324,6 +325,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Isolation::IIsolatedWindowsHostMessengerStatics2> = L"Windows.Security.Isolation.IIsolatedWindowsHostMessengerStatics2";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Isolation::HostMessageReceivedCallback> = L"Windows.Security.Isolation.HostMessageReceivedCallback";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Isolation::MessageReceivedCallback> = L"Windows.Security.Isolation.MessageReceivedCallback";
+    template <> inline constexpr auto& name_v<winrt::Windows::Security::Isolation::IsolatedWindowsEnvironmentContract> = L"Windows.Security.Isolation.IsolatedWindowsEnvironmentContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironment>{ 0x41D24597,0xC328,0x4467,{ 0xB3,0x7F,0x4D,0xFC,0x6F,0x60,0xB6,0xBC } }; // 41D24597-C328-4467-B37F-4DFC6F60B6BC
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironment2>{ 0x2D365F39,0x88BD,0x4AB4,{ 0x93,0xCF,0x7E,0x2B,0xCE,0xF3,0x37,0xC0 } }; // 2D365F39-88BD-4AB4-93CF-7E2BCEF337C0
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironment3>{ 0xCB7FC7D2,0xD06E,0x4C26,{ 0x8A,0xDA,0xDA,0xCD,0xAA,0xAD,0x03,0xF5 } }; // CB7FC7D2-D06E-4C26-8ADA-DACDAAAD03F5
@@ -373,7 +375,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Isolation::IsolatedWindowsEnvironmentUserInfo>{ using type = winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentUserInfo; };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironment>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall StartProcessSilentlyAsync(void*, void*, int32_t, void**) noexcept = 0;
@@ -390,7 +392,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironment2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PostMessageToReceiverAsync(winrt::guid, void*, void**) noexcept = 0;
             virtual int32_t __stdcall PostMessageToReceiverWithTelemetryAsync(winrt::guid, void*, void*, void**) noexcept = 0;
@@ -398,7 +400,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironment3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetUserInfo(void**) noexcept = 0;
             virtual int32_t __stdcall ShareFileAsync(void*, void*, void**) noexcept = 0;
@@ -407,14 +409,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironment4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ChangePriority(int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentCreateResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -423,14 +425,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentCreateResult2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ChangeCreationPriority(int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTelemetryAsync(void*, void*, void**) noexcept = 0;
@@ -440,7 +442,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentFile>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Id(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_HostPath(void**) noexcept = 0;
@@ -449,7 +451,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentFile2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GuestPath(void**) noexcept = 0;
             virtual int32_t __stdcall get_IsReadOnly(bool*) noexcept = 0;
@@ -457,7 +459,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentHostStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsReady(bool*) noexcept = 0;
             virtual int32_t __stdcall get_HostErrors(void**) noexcept = 0;
@@ -465,7 +467,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentLaunchFileResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -474,7 +476,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnvironmentOwnerId(void**) noexcept = 0;
             virtual int32_t __stdcall put_EnvironmentOwnerId(void*) noexcept = 0;
@@ -497,7 +499,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentOptions2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WindowAnnotationOverride(void**) noexcept = 0;
             virtual int32_t __stdcall put_WindowAnnotationOverride(void*) noexcept = 0;
@@ -505,7 +507,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentOptions3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowedClipboardFormatsToEnvironment(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall put_AllowedClipboardFormatsToEnvironment(uint32_t) noexcept = 0;
@@ -517,7 +519,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentOwnerRegistrationData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShareableFolders(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProcessesRunnableAsSystem(void**) noexcept = 0;
@@ -527,7 +529,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentOwnerRegistrationResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -535,7 +537,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentOwnerRegistrationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Register(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall Unregister(void*) noexcept = 0;
@@ -543,7 +545,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentPostMessageResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -551,7 +553,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentProcess>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_State(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExitCode(uint32_t*) noexcept = 0;
@@ -562,7 +564,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentShareFileRequestOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowWrite(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowWrite(bool) noexcept = 0;
@@ -570,7 +572,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentShareFileResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -579,7 +581,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentShareFolderRequestOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AllowWrite(bool*) noexcept = 0;
             virtual int32_t __stdcall put_AllowWrite(bool) noexcept = 0;
@@ -587,7 +589,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentShareFolderResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -595,7 +597,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentStartProcessResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -604,7 +606,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentTelemetryParameters>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CorrelationId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall put_CorrelationId(winrt::guid) noexcept = 0;
@@ -612,7 +614,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentUserInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_EnvironmentUserSid(void**) noexcept = 0;
             virtual int32_t __stdcall get_EnvironmentUserName(void**) noexcept = 0;
@@ -621,14 +623,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsEnvironmentUserInfo2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall TryWaitForSignInWithProgressAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsHostMessengerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall PostMessageToReceiver(winrt::guid, void*) noexcept = 0;
             virtual int32_t __stdcall GetFileId(void*, winrt::guid*) noexcept = 0;
@@ -636,7 +638,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::IIsolatedWindowsHostMessengerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RegisterHostMessageReceiver(winrt::guid, void*) noexcept = 0;
             virtual int32_t __stdcall UnregisterHostMessageReceiver(winrt::guid) noexcept = 0;
@@ -644,14 +646,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Isolation::HostMessageReceivedCallback>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(winrt::guid, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Isolation::MessageReceivedCallback>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(winrt::guid, void*) noexcept = 0;
         };

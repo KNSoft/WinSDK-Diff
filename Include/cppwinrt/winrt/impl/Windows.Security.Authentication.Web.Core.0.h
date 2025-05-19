@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -10,11 +10,11 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Security::Credentials
 {
@@ -204,7 +204,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Security::Authentication::Web::Core::WebTokenResponse>{ using type = winrt::Windows::Security::Authentication::Web::Core::IWebTokenResponse; };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IFindAllAccountsResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Accounts(void**) noexcept = 0;
             virtual int32_t __stdcall get_Status(int32_t*) noexcept = 0;
@@ -213,14 +213,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAccountEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Account(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_Updated(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_Updated(winrt::event_token) noexcept = 0;
@@ -232,7 +232,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_AccountPictureUpdated(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_AccountPictureUpdated(winrt::event_token) noexcept = 0;
@@ -240,7 +240,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResponse>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebAccount(void**) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
@@ -248,14 +248,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResponseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithAccount(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationAddAccountResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResponseData(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResponseStatus(int32_t*) noexcept = 0;
@@ -264,7 +264,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationCoreManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetTokenSilentlyAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetTokenSilentlyWithWebAccountAsync(void*, void*, void**) noexcept = 0;
@@ -277,21 +277,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationCoreManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAccountProviderWithAuthorityForUserAsync(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationCoreManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWebAccountMonitor(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationCoreManagerStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAllAccountsAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAccountsWithClientIdAsync(void*, void*, void**) noexcept = 0;
@@ -302,14 +302,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationCoreManagerStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall AddAccountWithTransferTokenAsync(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationTransferTokenRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebAccountProvider(void**) noexcept = 0;
             virtual int32_t __stdcall get_TransferToken(void**) noexcept = 0;
@@ -321,7 +321,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebAuthenticationTransferTokenRequestFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithCorrelationId(void*, void*, void*, void**) noexcept = 0;
@@ -329,7 +329,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebProviderError>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ErrorCode(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ErrorMessage(void**) noexcept = 0;
@@ -338,14 +338,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebProviderErrorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(uint32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_WebAccountProvider(void**) noexcept = 0;
             virtual int32_t __stdcall get_Scope(void**) noexcept = 0;
@@ -356,14 +356,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AppProperties(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequest3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CorrelationId(void**) noexcept = 0;
             virtual int32_t __stdcall put_CorrelationId(void*) noexcept = 0;
@@ -371,7 +371,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequestFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Create(void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithPromptType(void*, void*, void*, int32_t, void**) noexcept = 0;
@@ -381,7 +381,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebTokenRequestResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResponseData(void**) noexcept = 0;
             virtual int32_t __stdcall get_ResponseStatus(int32_t*) noexcept = 0;
@@ -391,7 +391,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebTokenResponse>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Token(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProviderError(void**) noexcept = 0;
@@ -401,7 +401,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Security::Authentication::Web::Core::IWebTokenResponseFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateWithToken(void*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateWithTokenAndAccount(void*, void*, void**) noexcept = 0;
@@ -433,15 +433,15 @@ namespace winrt::impl
     {
         auto Updated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
         using Updated_revoker = impl::event_revoker<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor, &impl::abi_t<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor>::remove_Updated>;
-        [[nodiscard]] Updated_revoker Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
+        [[nodiscard]] auto Updated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
         auto Updated(winrt::event_token const& token) const noexcept;
         auto Removed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
         using Removed_revoker = impl::event_revoker<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor, &impl::abi_t<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor>::remove_Removed>;
-        [[nodiscard]] Removed_revoker Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
+        [[nodiscard]] auto Removed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
         auto Removed(winrt::event_token const& token) const noexcept;
         auto DefaultSignInAccountChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using DefaultSignInAccountChanged_revoker = impl::event_revoker<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor, &impl::abi_t<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor>::remove_DefaultSignInAccountChanged>;
-        [[nodiscard]] DefaultSignInAccountChanged_revoker DefaultSignInAccountChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto DefaultSignInAccountChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto DefaultSignInAccountChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor>
@@ -453,7 +453,7 @@ namespace winrt::impl
     {
         auto AccountPictureUpdated(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
         using AccountPictureUpdated_revoker = impl::event_revoker<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor2, &impl::abi_t<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor2>::remove_AccountPictureUpdated>;
-        [[nodiscard]] AccountPictureUpdated_revoker AccountPictureUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
+        [[nodiscard]] auto AccountPictureUpdated(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Security::Authentication::Web::Core::WebAccountMonitor, winrt::Windows::Security::Authentication::Web::Core::WebAccountEventArgs> const& handler) const;
         auto AccountPictureUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Security::Authentication::Web::Core::IWebAccountMonitor2>

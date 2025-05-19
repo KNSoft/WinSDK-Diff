@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -82,14 +82,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Xaml::Interop::NotifyCollectionChangedEventArgs>{ using type = winrt::Windows::UI::Xaml::Interop::INotifyCollectionChangedEventArgs; };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::IBindableIterable>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall First(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::IBindableIterator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Current(void**) noexcept = 0;
             virtual int32_t __stdcall get_HasCurrent(bool*) noexcept = 0;
@@ -98,7 +98,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::IBindableObservableVector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_VectorChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_VectorChanged(winrt::event_token) noexcept = 0;
@@ -106,7 +106,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::IBindableVector>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAt(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
@@ -122,7 +122,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::IBindableVectorView>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetAt(uint32_t, void**) noexcept = 0;
             virtual int32_t __stdcall get_Size(uint32_t*) noexcept = 0;
@@ -131,7 +131,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::INotifyCollectionChanged>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_CollectionChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_CollectionChanged(winrt::event_token) noexcept = 0;
@@ -139,7 +139,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::INotifyCollectionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Action(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_NewItems(void**) noexcept = 0;
@@ -150,21 +150,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::INotifyCollectionChangedEventArgsFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceWithAllParameters(int32_t, void*, void*, int32_t, int32_t, void*, void**, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::BindableVectorChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Xaml::Interop::NotifyCollectionChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*, void*) noexcept = 0;
         };
@@ -217,7 +217,7 @@ namespace winrt::impl
     {
         auto VectorChanged(winrt::Windows::UI::Xaml::Interop::BindableVectorChangedEventHandler const& handler) const;
         using VectorChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Interop::IBindableObservableVector, &impl::abi_t<winrt::Windows::UI::Xaml::Interop::IBindableObservableVector>::remove_VectorChanged>;
-        [[nodiscard]] VectorChanged_revoker VectorChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Interop::BindableVectorChangedEventHandler const& handler) const;
+        [[nodiscard]] auto VectorChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Interop::BindableVectorChangedEventHandler const& handler) const;
         auto VectorChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Interop::IBindableObservableVector>
@@ -258,7 +258,7 @@ namespace winrt::impl
     {
         auto CollectionChanged(winrt::Windows::UI::Xaml::Interop::NotifyCollectionChangedEventHandler const& handler) const;
         using CollectionChanged_revoker = impl::event_revoker<winrt::Windows::UI::Xaml::Interop::INotifyCollectionChanged, &impl::abi_t<winrt::Windows::UI::Xaml::Interop::INotifyCollectionChanged>::remove_CollectionChanged>;
-        [[nodiscard]] CollectionChanged_revoker CollectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Interop::NotifyCollectionChangedEventHandler const& handler) const;
+        [[nodiscard]] auto CollectionChanged(auto_revoke_t, winrt::Windows::UI::Xaml::Interop::NotifyCollectionChangedEventHandler const& handler) const;
         auto CollectionChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::UI::Xaml::Interop::INotifyCollectionChanged>

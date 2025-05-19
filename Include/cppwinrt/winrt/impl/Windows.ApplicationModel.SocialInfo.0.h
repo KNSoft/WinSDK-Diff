@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -55,6 +55,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::SocialInfo
     struct SocialFeedSharedItem;
     struct SocialItemThumbnail;
     struct SocialUserInfo;
+    struct SocialInfoContract;
 }
 namespace winrt::impl
 {
@@ -90,6 +91,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::SocialInfo::ISocialFeedSharedItem> = L"Windows.ApplicationModel.SocialInfo.ISocialFeedSharedItem";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::SocialInfo::ISocialItemThumbnail> = L"Windows.ApplicationModel.SocialInfo.ISocialItemThumbnail";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::SocialInfo::ISocialUserInfo> = L"Windows.ApplicationModel.SocialInfo.ISocialUserInfo";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::SocialInfo::SocialInfoContract> = L"Windows.ApplicationModel.SocialInfo.SocialInfoContract";
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::SocialInfo::ISocialFeedChildItem>{ 0x0B6A985A,0xD59D,0x40BE,{ 0x98,0x0C,0x48,0x8A,0x2A,0xB3,0x0A,0x83 } }; // 0B6A985A-D59D-40BE-980C-488A2AB30A83
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::SocialInfo::ISocialFeedContent>{ 0xA234E429,0x3E39,0x494D,{ 0xA3,0x7C,0xF4,0x62,0xA2,0x49,0x45,0x14 } }; // A234E429-3E39-494D-A37C-F462A2494514
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::SocialInfo::ISocialFeedItem>{ 0x4F1392AB,0x1F72,0x4D33,{ 0xB6,0x95,0xDE,0x3E,0x1D,0xB6,0x03,0x17 } }; // 4F1392AB-1F72-4D33-B695-DE3E1DB60317
@@ -104,7 +106,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::SocialInfo::SocialUserInfo>{ using type = winrt::Windows::ApplicationModel::SocialInfo::ISocialUserInfo; };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::ISocialFeedChildItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Author(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrimaryContent(void**) noexcept = 0;
@@ -120,7 +122,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::ISocialFeedContent>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -132,7 +134,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::ISocialFeedItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Author(void**) noexcept = 0;
             virtual int32_t __stdcall get_PrimaryContent(void**) noexcept = 0;
@@ -158,7 +160,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::ISocialFeedSharedItem>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_OriginalSource(void**) noexcept = 0;
             virtual int32_t __stdcall put_OriginalSource(void*) noexcept = 0;
@@ -173,7 +175,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::ISocialItemThumbnail>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_TargetUri(void**) noexcept = 0;
             virtual int32_t __stdcall put_TargetUri(void*) noexcept = 0;
@@ -186,7 +188,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::SocialInfo::ISocialUserInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayName(void*) noexcept = 0;

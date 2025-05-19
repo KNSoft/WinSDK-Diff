@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -45,7 +45,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::ShareOperation>{ using type = winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IShareOperation; };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IQuickLink>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall put_Title(void*) noexcept = 0;
@@ -59,7 +59,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IShareOperation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Data(void**) noexcept = 0;
             virtual int32_t __stdcall get_QuickLinkId(void**) noexcept = 0;
@@ -74,14 +74,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IShareOperation2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DismissUI() noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IShareOperation3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Contacts(void**) noexcept = 0;
         };

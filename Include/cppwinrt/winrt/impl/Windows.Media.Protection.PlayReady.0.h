@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,15 +11,15 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct HResult;
     struct IAsyncAction;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IIterator;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterator;
     struct IPropertySet;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IVector;
 }
 WINRT_EXPORT namespace winrt::Windows::Media::Core
 {
@@ -491,7 +491,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::Protection::PlayReady::PlayReadySoapMessage>{ using type = winrt::Windows::Media::Protection::PlayReady::IPlayReadySoapMessage; };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDClient>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall add_RegistrationCompleted(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_RegistrationCompleted(winrt::event_token) noexcept = 0;
@@ -511,14 +511,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDClientFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDClosedCaptionDataReceivedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ClosedCaptionDataFormat(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PresentationTimestamp(int64_t*) noexcept = 0;
@@ -527,7 +527,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDCustomData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CustomDataTypeID(uint32_t* __customDataTypeIDBytesSize, uint8_t**) noexcept = 0;
             virtual int32_t __stdcall get_CustomData(uint32_t* __customDataBytesSize, uint8_t**) noexcept = 0;
@@ -535,14 +535,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDCustomDataFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(uint32_t, uint8_t*, uint32_t, uint8_t*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDDownloadEngine>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall Open(void*, uint32_t, uint8_t*) noexcept = 0;
             virtual int32_t __stdcall Pause() noexcept = 0;
@@ -557,7 +557,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDDownloadEngineNotifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnStreamOpened() noexcept = 0;
             virtual int32_t __stdcall OnPlayReadyObjectReceived(uint32_t, uint8_t*) noexcept = 0;
@@ -569,14 +569,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResponseCustomData(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchDescriptor>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentIDType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_ContentID(uint32_t* __contentIDBytesSize, uint8_t**) noexcept = 0;
@@ -586,21 +586,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchDescriptorFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, uint32_t, uint8_t*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResponseCustomData(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDMessenger>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SendRegistrationRequestAsync(uint32_t, uint8_t*, uint32_t, uint8_t*, void**) noexcept = 0;
             virtual int32_t __stdcall SendProximityDetectionStartAsync(int32_t, uint32_t, uint8_t*, uint32_t, uint8_t*, uint32_t, uint8_t*, void**) noexcept = 0;
@@ -610,14 +610,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDProximityDetectionCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ProximityDetectionRetryCount(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDRegistrationCompletedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ResponseCustomData(void**) noexcept = 0;
             virtual int32_t __stdcall get_TransmitterProperties(void**) noexcept = 0;
@@ -627,28 +627,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDSendResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Response(uint32_t* __responseDataBytesSize, uint8_t**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDStartResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MediaStreamSource(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDStorageFileHelper>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetFileURLs(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDStreamParser>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ParseData(uint32_t, uint8_t*) noexcept = 0;
             virtual int32_t __stdcall GetStreamInformation(void*, int32_t*, uint32_t*) noexcept = 0;
@@ -659,7 +659,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDStreamParserNotifier>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall OnContentIDReceived(void*) noexcept = 0;
             virtual int32_t __stdcall OnMediaStreamDescriptorCreated(void*, void*) noexcept = 0;
@@ -669,14 +669,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDTCPMessengerFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::INDTransmitterProperties>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CertificateType(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_PlatformIdentifier(int32_t*) noexcept = 0;
@@ -693,7 +693,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyContentHeader>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_KeyIdString(void**) noexcept = 0;
@@ -709,7 +709,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyContentHeader2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_KeyIds(uint32_t* __contentKeyIdsSize, winrt::guid**) noexcept = 0;
             virtual int32_t __stdcall get_KeyIdStrings(uint32_t* __contentKeyIdStringsSize, void***) noexcept = 0;
@@ -717,7 +717,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyContentHeaderFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceFromWindowsMediaDrmHeader(uint32_t, uint8_t*, void*, void*, void*, winrt::guid, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceFromComponents(winrt::guid, void*, int32_t, void*, void*, void*, winrt::guid, void**) noexcept = 0;
@@ -726,21 +726,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyContentHeaderFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstanceFromComponents2(uint32_t, uint32_t, winrt::guid*, uint32_t, void**, int32_t, void*, void*, void*, winrt::guid, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyContentResolver>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ServiceRequest(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyDomain>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_AccountId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_ServiceId(winrt::guid*) noexcept = 0;
@@ -751,14 +751,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyDomainIterableFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(winrt::guid, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyDomainJoinServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DomainAccountId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall put_DomainAccountId(winrt::guid) noexcept = 0;
@@ -770,7 +770,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyDomainLeaveServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DomainAccountId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall put_DomainAccountId(winrt::guid) noexcept = 0;
@@ -780,20 +780,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyITADataGenerator>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GenerateData(winrt::guid, uint32_t, void*, int32_t, uint32_t* __dataBytesSize, uint8_t**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyIndividualizationServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicense>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_FullyEvaluated(bool*) noexcept = 0;
             virtual int32_t __stdcall get_UsableForPlay(bool*) noexcept = 0;
@@ -806,7 +806,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicense2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SecureStopId(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_SecurityLevel(uint32_t*) noexcept = 0;
@@ -816,7 +816,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicenseAcquisitionServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ContentHeader(void**) noexcept = 0;
             virtual int32_t __stdcall put_ContentHeader(void*) noexcept = 0;
@@ -826,35 +826,35 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicenseAcquisitionServiceRequest2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionId(winrt::guid*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicenseAcquisitionServiceRequest3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateLicenseIterable(void*, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicenseIterableFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicenseManagement>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall DeleteLicenses(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicenseSession>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateLAServiceRequest(void**) noexcept = 0;
             virtual int32_t __stdcall ConfigureMediaProtectionManager(void*) noexcept = 0;
@@ -862,21 +862,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicenseSession2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateLicenseIterable(void*, bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyLicenseSessionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyMeteringReportServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MeteringCertificate(uint32_t* __meteringCertBytesSize, uint8_t**) noexcept = 0;
             virtual int32_t __stdcall put_MeteringCertificate(uint32_t, uint8_t*) noexcept = 0;
@@ -884,20 +884,20 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyRevocationServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadySecureStopIterableFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(uint32_t, uint8_t*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadySecureStopServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SessionID(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_StartTime(int64_t*) noexcept = 0;
@@ -908,7 +908,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadySecureStopServiceRequestFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(uint32_t, uint8_t*, void**) noexcept = 0;
             virtual int32_t __stdcall CreateInstanceFromSessionID(winrt::guid, uint32_t, uint8_t*, void**) noexcept = 0;
@@ -916,7 +916,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyServiceRequest>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall put_Uri(void*) noexcept = 0;
@@ -931,7 +931,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadySoapMessage>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetMessageBody(uint32_t* __messageBodyBytesSize, uint8_t**) noexcept = 0;
             virtual int32_t __stdcall get_MessageHeaders(void**) noexcept = 0;
@@ -940,7 +940,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DomainJoinServiceRequestType(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall get_DomainLeaveServiceRequestType(winrt::guid*) noexcept = 0;
@@ -954,14 +954,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_PlayReadyCertificateSecurityLevel(uint32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_SecureStopServiceRequestType(winrt::guid*) noexcept = 0;
             virtual int32_t __stdcall CheckSupportedHardware(int32_t, bool*) noexcept = 0;
@@ -969,7 +969,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyStatics4>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InputTrustAuthorityToCreate(void**) noexcept = 0;
             virtual int32_t __stdcall get_ProtectionSystemId(winrt::guid*) noexcept = 0;
@@ -977,7 +977,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::Protection::PlayReady::IPlayReadyStatics5>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_HardwareDRMDisabledAtTime(void**) noexcept = 0;
             virtual int32_t __stdcall get_HardwareDRMDisabledUntilTime(void**) noexcept = 0;
@@ -989,23 +989,23 @@ namespace winrt::impl
     {
         auto RegistrationCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDRegistrationCompletedEventArgs> const& handler) const;
         using RegistrationCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Protection::PlayReady::INDClient, &impl::abi_t<winrt::Windows::Media::Protection::PlayReady::INDClient>::remove_RegistrationCompleted>;
-        [[nodiscard]] RegistrationCompleted_revoker RegistrationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDRegistrationCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto RegistrationCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDRegistrationCompletedEventArgs> const& handler) const;
         auto RegistrationCompleted(winrt::event_token const& token) const noexcept;
         auto ProximityDetectionCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDProximityDetectionCompletedEventArgs> const& handler) const;
         using ProximityDetectionCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Protection::PlayReady::INDClient, &impl::abi_t<winrt::Windows::Media::Protection::PlayReady::INDClient>::remove_ProximityDetectionCompleted>;
-        [[nodiscard]] ProximityDetectionCompleted_revoker ProximityDetectionCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDProximityDetectionCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto ProximityDetectionCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDProximityDetectionCompletedEventArgs> const& handler) const;
         auto ProximityDetectionCompleted(winrt::event_token const& token) const noexcept;
         auto LicenseFetchCompleted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchCompletedEventArgs> const& handler) const;
         using LicenseFetchCompleted_revoker = impl::event_revoker<winrt::Windows::Media::Protection::PlayReady::INDClient, &impl::abi_t<winrt::Windows::Media::Protection::PlayReady::INDClient>::remove_LicenseFetchCompleted>;
-        [[nodiscard]] LicenseFetchCompleted_revoker LicenseFetchCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchCompletedEventArgs> const& handler) const;
+        [[nodiscard]] auto LicenseFetchCompleted(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchCompletedEventArgs> const& handler) const;
         auto LicenseFetchCompleted(winrt::event_token const& token) const noexcept;
         auto ReRegistrationNeeded(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using ReRegistrationNeeded_revoker = impl::event_revoker<winrt::Windows::Media::Protection::PlayReady::INDClient, &impl::abi_t<winrt::Windows::Media::Protection::PlayReady::INDClient>::remove_ReRegistrationNeeded>;
-        [[nodiscard]] ReRegistrationNeeded_revoker ReRegistrationNeeded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto ReRegistrationNeeded(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Foundation::IInspectable> const& handler) const;
         auto ReRegistrationNeeded(winrt::event_token const& token) const noexcept;
         auto ClosedCaptionDataReceived(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDClosedCaptionDataReceivedEventArgs> const& handler) const;
         using ClosedCaptionDataReceived_revoker = impl::event_revoker<winrt::Windows::Media::Protection::PlayReady::INDClient, &impl::abi_t<winrt::Windows::Media::Protection::PlayReady::INDClient>::remove_ClosedCaptionDataReceived>;
-        [[nodiscard]] ClosedCaptionDataReceived_revoker ClosedCaptionDataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDClosedCaptionDataReceivedEventArgs> const& handler) const;
+        [[nodiscard]] auto ClosedCaptionDataReceived(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Media::Protection::PlayReady::NDClient, winrt::Windows::Media::Protection::PlayReady::INDClosedCaptionDataReceivedEventArgs> const& handler) const;
         auto ClosedCaptionDataReceived(winrt::event_token const& token) const noexcept;
         auto StartAsync(winrt::Windows::Foundation::Uri const& contentUrl, uint32_t startAsyncOptions, winrt::Windows::Media::Protection::PlayReady::INDCustomData const& registrationCustomData, winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchDescriptor const& licenseFetchDescriptor) const;
         auto LicenseFetchAsync(winrt::Windows::Media::Protection::PlayReady::INDLicenseFetchDescriptor const& licenseFetchDescriptor) const;

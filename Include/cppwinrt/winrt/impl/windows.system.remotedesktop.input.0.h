@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -54,7 +54,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnection>{ using type = winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection; };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -65,28 +65,28 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnection2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ReportPredictedKeyEvent(uint16_t, uint32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(winrt::guid, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Input::IRemoteTextConnectionFactory2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(winrt::guid, void*, uint32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::RemoteDesktop::Input::RemoteTextConnectionDataHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(uint32_t, uint8_t*, bool*) noexcept = 0;
         };

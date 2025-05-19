@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
@@ -52,7 +52,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Management::Policies::NamedPolicyData>{ using type = winrt::Windows::Management::Policies::INamedPolicyData; };
     template <> struct abi<winrt::Windows::Management::Policies::INamedPolicyData>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Area(void**) noexcept = 0;
             virtual int32_t __stdcall get_Name(void**) noexcept = 0;
@@ -71,7 +71,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Management::Policies::INamedPolicyStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetPolicyFromPath(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetPolicyFromPathForUser(void*, void*, void*, void**) noexcept = 0;
@@ -93,7 +93,7 @@ namespace winrt::impl
         auto GetString() const;
         auto Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Policies::NamedPolicyData, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
         using Changed_revoker = impl::event_revoker<winrt::Windows::Management::Policies::INamedPolicyData, &impl::abi_t<winrt::Windows::Management::Policies::INamedPolicyData>::remove_Changed>;
-        [[nodiscard]] Changed_revoker Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Policies::NamedPolicyData, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
+        [[nodiscard]] auto Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Management::Policies::NamedPolicyData, winrt::Windows::Foundation::IInspectable> const& changedHandler) const;
         auto Changed(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Management::Policies::INamedPolicyData>

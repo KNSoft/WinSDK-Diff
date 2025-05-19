@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.230511.6
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -48,7 +48,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Calls::Provider::PhoneCallOrigin>{ using type = winrt::Windows::ApplicationModel::Calls::Provider::IPhoneCallOrigin; };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Provider::IPhoneCallOrigin>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Category(void**) noexcept = 0;
             virtual int32_t __stdcall put_Category(void*) noexcept = 0;
@@ -60,7 +60,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Provider::IPhoneCallOrigin2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayName(void*) noexcept = 0;
@@ -68,7 +68,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Provider::IPhoneCallOrigin3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayPicture(void**) noexcept = 0;
             virtual int32_t __stdcall put_DisplayPicture(void*) noexcept = 0;
@@ -76,7 +76,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Provider::IPhoneCallOriginManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCurrentAppActiveCallOriginApp(bool*) noexcept = 0;
             virtual int32_t __stdcall ShowPhoneCallOriginSettingsUI() noexcept = 0;
@@ -85,14 +85,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Provider::IPhoneCallOriginManagerStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestSetAsActiveCallOriginAppAsync(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Calls::Provider::IPhoneCallOriginManagerStatics3>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
         };
