@@ -820,7 +820,7 @@ typedef EVT_IDD_CX_MONITOR_I2C_TRANSMIT *PFN_IDD_CX_MONITOR_I2C_TRANSMIT;
 /// receiving the data from the I2C device, sending acknowledgments, and signaling the stop condition.
 /// For details about the I2C bus, see the I2C Bus Specification, published by Philips Semiconductors.
 /// The specification defines a protocol for initiating I2C communication, reading and writing bytes over the I2C data
-/// line, and terminating I2C communication. (This resource may not be available in some languages and countries.)
+/// line, and terminating I2C communication. (This resource may not be available in some languages and regions.)
 ///
 /// I2CReceiveDataFromDisplay is required to receive data from an I2C device that has address 0x6F but is
 /// permitted to refuse to receive data from any I2C device that has a different address.

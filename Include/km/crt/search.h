@@ -56,11 +56,18 @@ _Check_return_ _CRTIMP void * __cdecl _lfind(_In_ const void * _Key, _In_reads_b
         _Inout_ unsigned int * _NumOfElements, _In_ unsigned int _SizeOfElements, 
 	_In_ int (__cdecl * _PtFuncCompare)(const void *, const void *));
 
-_Check_return_ _CRTIMP void * __cdecl _lsearch_s(_In_ const void * _Key, _Inout_updates_bytes_((*_NumOfElements ) * _SizeOfElements) void  * _Base, 
-        _Inout_ unsigned int * _NumOfElements, _In_ size_t _SizeOfElements, 
-	_In_ int (__cdecl * _PtFuncCompare)(void *, const void *, const void *), void * _Context);
-_Check_return_ _CRTIMP void * __cdecl _lsearch(_In_ const void * _Key, _Inout_updates_bytes_((*_NumOfElements ) * _SizeOfElements) void  * _Base, 
-        _Inout_ unsigned int * _NumOfElements, _In_ unsigned int _SizeOfElements, 
+_Check_return_ _CRTIMP void * __cdecl _lsearch_s(
+        _In_reads_bytes_(_SizeOfElements) const void * _Key,
+        _Inout_updates_bytes_((*_NumOfElements + 1) * _SizeOfElements) void  * _Base, 
+        _Inout_ unsigned int * _NumOfElements,
+        _In_ size_t _SizeOfElements, 
+	_In_ int (__cdecl * _PtFuncCompare)(void *, const void *, const void *),
+        void * _Context);
+_Check_return_ _CRTIMP void * __cdecl _lsearch(
+        _In_reads_bytes_(_SizeOfElements) const void * _Key,
+        _Inout_updates_bytes_((*_NumOfElements + 1) * _SizeOfElements) void  * _Base, 
+        _Inout_ unsigned int * _NumOfElements,
+        _In_ unsigned int _SizeOfElements, 
 	_In_ int (__cdecl * _PtFuncCompare)(const void *, const void *));
 
 #if _MSC_VER >= 1400 && defined(__cplusplus) && defined(_M_CEE)

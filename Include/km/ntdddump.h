@@ -32,6 +32,7 @@ Revision History:
 #endif
 
 #define DUMP_FILTER_MINOR_VERSION   0
+#define DUMP_FILTER_MINOR_VERSION_2 2
 
 #define DUMP_FILTER_CRITICAL 0x00000001
 
@@ -49,6 +50,11 @@ typedef enum _FILTER_CALLBACK {
 #if (NTDDI_VERSION >= NTDDI_WIN8)
     CallbackDumpRead,
 #endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+    CallbackDumpPreReadWrite,
+#endif
+
     CallbackMaxCallback
 } FILTER_CALLBACK, *PFILTER_CALLBACK;
 
@@ -154,7 +160,24 @@ DUMP_READ (
     _In_ PMDL Mdl
     );
 typedef DUMP_READ *PDUMP_READ;
-#endif 
+#endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+typedef enum _DUMP_IO_MODE DUMP_IO_MODE, *PDUMP_IO_MODE;
+typedef struct _DUMP_READWRITE_PARAMETERS* PDUMP_READWRITE_PARAMETERS;
+
+typedef
+NTSTATUS
+DUMP_PRE_READ_WRITE (
+    _In_ PFILTER_EXTENSION FilterExtension,
+    _In_ DUMP_IO_MODE IoMode,
+    _In_ BOOLEAN IsWrite,
+    _Inout_ PLARGE_INTEGER DiskByteOffset,
+    _Inout_ PMDL Mdl,
+    _Inout_ PDUMP_READWRITE_PARAMETERS ReadWriteParameters
+    );
+typedef DUMP_PRE_READ_WRITE *PDUMP_PRE_READ_WRITE;
+#endif
 
 //
 // Define the filter driver call table structure
@@ -169,8 +192,8 @@ typedef struct _FILTER_INITIALIZATION_DATA {
     ULONG MajorVersion;
 
     //
-    // Major version of the structure
-    // Set to DUMP_FILTER_MINOR_VERSION
+    // Minor version of the structure
+    // Set to DUMP_FILTER_MINOR_VERSION(_2)
     //
     ULONG MinorVersion;
 
@@ -222,6 +245,15 @@ typedef struct _FILTER_INITIALIZATION_DATA {
     PDUMP_READ  DumpRead;
 #endif
 
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
+    //
+    // Pointer to a callback that is invoked prior to read/write operations.
+    //
+    PDUMP_PRE_READ_WRITE DumpPreReadWrite;
+
+#endif
+
 } FILTER_INITIALIZATION_DATA, *PFILTER_INITIALIZATION_DATA;
 
 //
@@ -248,6 +280,12 @@ typedef struct _FILTER_INITIALIZATION_DATA {
 // is supported
 //
 #define DUMP_FILTER_FLAG_EARLY_DUMP_SUPPORTED                0x10
+
+//
+// Indicates to the dump filter driver that the dump stack
+// supports a hardware inline crypto engine.
+//
+#define DUMP_FILTER_FLAG_INLINE_CRYPTO_SUPPORTED             0x20
 
 #endif // __NTDDDUMP_H__
 

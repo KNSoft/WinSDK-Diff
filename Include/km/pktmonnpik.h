@@ -136,6 +136,15 @@ typedef struct _PKTMON_PACKET_CONTEXT_IN
 #if (NTDDI_VERSION >= NTDDI_WIN11_ZN)
 
 #ifndef USER_MODE
+//
+// Packet Monitor NetEvt NMR provider characteristics
+//
+typedef struct _PKTMON_NETEVT_PROVIDER_CHARACTERISTICS
+{
+    PKTMON_HEADER Header;
+
+} PKTMON_NETEVT_PROVIDER_CHARACTERISTICS;
+
 typedef struct _PKTMON_NETEVT_DISPATCH_HEADER
 {
     UINT16 Version;
@@ -144,7 +153,7 @@ typedef struct _PKTMON_NETEVT_DISPATCH_HEADER
 } PKTMON_NETEVT_DISPATCH_HEADER;
 
 //
-// Packet Monitor NMR provider dispatch table
+// Packet Monitor NetEvt NMR provider dispatch table
 //
 typedef struct _PKTMON_NETEVT_PROVIDER_DISPATCH
 {
@@ -166,6 +175,18 @@ typedef struct _PKTMON_NETEVT_CLIENT_DISPATCH
 } PKTMON_NETEVT_CLIENT_DISPATCH;
 
 //
+// Packet Monitor NetEvt NMR client V2 dispatch table
+//
+typedef struct _PKTMON_NETEVT_CLIENT_DISPATCH_V2
+{
+    PKTMON_NETEVT_DISPATCH_HEADER Header;
+    PKTMON_CAPTURE_TYPE CaptureType;
+    UINT32 HandlerCount;
+    UINT64* Handlers;
+
+} PKTMON_NETEVT_CLIENT_DISPATCH_V2;
+
+//
 // Packet monitor NetEvt NMR client context
 //
 typedef struct _PKTMON_NETEVT_CLIENT_CONTEXT
@@ -184,6 +205,13 @@ typedef struct _PKTMON_NETEVT_CLIENT_CONTEXT
 
 } PKTMON_NETEVT_CLIENT_CONTEXT;
 #endif // USER_MODE
+
+//
+// Packet Monitor NetEvt event types/IDs that can be reported
+//
+typedef UCHAR PKTMON_NETEVT_EVENT_TYPE;
+#define PKTMON_EVENT_TYPE_PACKET_DROP     ((PKTMON_NETEVT_EVENT_TYPE)100)
+#define PKTMON_EVENT_TYPE_PACKET_FLOW     ((PKTMON_NETEVT_EVENT_TYPE)101)
 
 #pragma pack(push, 1)
 
@@ -237,11 +265,20 @@ typedef struct _PKTMON_NETEVT_CLIENT_REPORT_PACKET_DROP_OUT
     UCHAR* BufferEnd;
 } PKTMON_NETEVT_CLIENT_REPORT_PACKET_DROP_OUT;
 
+//
+// Start and end pointer of the buffer containing the packet information
+//
+typedef struct _PKTMON_NETEVT_CLIENT_REPORT_PACKET_EVENT_OUT
+{
+    PKTMON_EVT_STREAM_PACKET_HEADER* BufferStart;
+    UCHAR* BufferEnd;
+} PKTMON_NETEVT_CLIENT_REPORT_PACKET_EVENT_OUT;
+
+#endif // (NTDDI_VERSION >= NTDDI_WIN11_ZN)
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
-
-#endif // (NTDDI_VERSION >= NTDDI_WIN11_ZN)
 
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_RS5)
 

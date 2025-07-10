@@ -21,13 +21,6 @@
 
 extern void * __cdecl operator new(size_t _Size, ULONG_PTR AllocationContext) throw();
 
-#ifndef _KERNEL_MODE
-// This applies exclusively to the user-mode WIFICX driver.
-// The current API surface is in preview,
-// and the final version may differ in implementation.
-extern void __cdecl operator delete(void*, ULONG_PTR) noexcept;
-#endif
-
 template <class ContentType>
 struct ArrayOfElements
 {

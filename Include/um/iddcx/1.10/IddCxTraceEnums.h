@@ -62,4 +62,3 @@ WDF_EXTERN_C_END
 
 #endif // _IDDTRACEENUMS_H_
 
-

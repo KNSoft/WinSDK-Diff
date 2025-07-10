@@ -1920,6 +1920,7 @@ typedef struct _IMAGE_LOAD_CONFIG_DIRECTORY32 {
     ULONG   GuardXFGTableDispatchFunctionPointer; // VA
     ULONG   CastGuardOsDeterminedFailureMode; // VA
     ULONG   GuardMemcpyFunctionPointer;     // VA
+    ULONG   UmaFunctionPointers;            // VA
 } IMAGE_LOAD_CONFIG_DIRECTORY32, *PIMAGE_LOAD_CONFIG_DIRECTORY32;
 
 typedef struct _IMAGE_LOAD_CONFIG_DIRECTORY64 {
@@ -1972,6 +1973,7 @@ typedef struct _IMAGE_LOAD_CONFIG_DIRECTORY64 {
     ULONGLONG  GuardXFGTableDispatchFunctionPointer; // VA
     ULONGLONG  CastGuardOsDeterminedFailureMode; // VA
     ULONGLONG  GuardMemcpyFunctionPointer;     // VA
+    ULONGLONG  UmaFunctionPointers;            // VA
 } IMAGE_LOAD_CONFIG_DIRECTORY64, *PIMAGE_LOAD_CONFIG_DIRECTORY64;
 
 // end_ntoshvp
@@ -2401,6 +2403,7 @@ typedef PIMAGE_ENCLAVE_CONFIG32         PIMAGE_ENCLAVE_CONFIG;
 #define IMAGE_ENCLAVE_MINIMUM_CONFIG_SIZE   FIELD_OFFSET(IMAGE_ENCLAVE_CONFIG, EnclaveFlags)
 
 #define IMAGE_ENCLAVE_POLICY_DEBUGGABLE     0x00000001
+#define IMAGE_ENCLAVE_POLICY_STRICT_MEMORY  0x00000002
 
 #define IMAGE_ENCLAVE_FLAG_PRIMARY_IMAGE    0x00000001
 

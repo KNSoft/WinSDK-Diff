@@ -1372,6 +1372,7 @@ typedef enum _TOKEN_INFORMATION_CLASS {
     TokenIsSandboxed,
     TokenIsAppSilo,
     TokenLoggingInformation,
+    TokenLearningMode,
     MaxTokenInfoClass  // MaxTokenInfoClass should always be the last enum
 } TOKEN_INFORMATION_CLASS, *PTOKEN_INFORMATION_CLASS;
 
@@ -1521,7 +1522,7 @@ typedef struct _TOKEN_LOGGING_INFORMATION {
 // Valid bits for each TOKEN_AUDIT_POLICY policy mask field.
 //
 
-#define POLICY_AUDIT_SUBCATEGORY_COUNT (59)
+#define POLICY_AUDIT_SUBCATEGORY_COUNT (60)
 
 typedef struct _TOKEN_AUDIT_POLICY {
     UCHAR PerUserPolicy[((POLICY_AUDIT_SUBCATEGORY_COUNT) >> 1) + 1];
@@ -19424,6 +19425,7 @@ SeMarkLogonSessionForTerminationNotificationEx(
                                                  TokenInformationClass == TokenHasRestrictions       || \
                                                  TokenInformationClass == TokenAppContainerNumber    || \
                                                  TokenInformationClass == TokenIsAppSilo             || \
+                                                 TokenInformationClass == TokenLearningMode          || \
                                                  TokenInformationClass == TokenPrivateNameSpace)
 
 _When_(QUERY_TYPE_ULONG(TokenInformationClass), _At_((PULONG)TokenInformation, _Out_))

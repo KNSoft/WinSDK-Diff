@@ -566,6 +566,8 @@ typedef PEPCALLBACKPOWERONCRASHDUMPDEVICE *PPEPCALLBACKPOWERONCRASHDUMPDEVICE;
 #define PEP_NOTIFY_PPM_QUERY_AUTONOMOUS_SUPPORT          0x2F // PEPFX
 #define PEP_NOTIFY_PPM_QUERY_PROVISIONING_SOC_IDENTIFIER 0x30 // PEPFX
 
+#define PEP_NOTIFY_PPM_WPS_QUERY_CAPABILITIES            0x32 // PEPFX
+#define PEP_NOTIFY_PPM_WPS_QUERY_INFORMATION             0x33 // PEPFX
 
 typedef struct _PEP_PREPARE_DEVICE {
     PCUNICODE_STRING DeviceId;
@@ -1313,6 +1315,52 @@ typedef struct _PEP_PPM_ALLOCATE_VETO_REASONS {
     ULONG VetoCount;
     PEP_PPM_VETO_REASON_ID VetoReasons[ANYSIZE_ARRAY];
 } PEP_PPM_ALLOCATE_VETO_REASONS, *PPEP_PPM_ALLOCATE_VETO_REASONS;
+
+typedef struct _PEP_WPS_QUERY_CAPABILITIES {
+    BOOLEAN WpsSupported;
+    BOOLEAN WpsLlcContainmentSupported;
+    UCHAR Reserved[2];
+} PEP_WPS_QUERY_CAPABILITIES, *PPEP_WPS_QUERY_CAPABILITIES;
+
+//{8D34BB3F-9729-4E25-9AA3-06536BCC66F7}
+DEFINE_GUID(GUID_PEP_PPM_WPS_INFORMATION_CHANGE,
+0x8d34bb3f, 0x9729, 0x4e25, 0x9a, 0xa3, 0x6, 0x53, 0x6b, 0xcc, 0x66, 0xf7);
+
+typedef enum _PEP_PPM_WPS_PARK_PREFERENCE {
+    NoPreference = 0,
+    PreferToPark = 1,
+    ForcePark = 2
+} PEP_PPM_WPS_PARK_PREFERENCE, *PPEP_PPM_WPS_PARK_PREFERENCE;
+
+typedef enum _PEP_WPS_PARK_PREFERENCE_REASON {
+    ParkReasonNone                     = 0x00000000,  // No specific reason
+    ParkReasonPowerSaving              = 0x00000001,  // Power saving preference
+    ParkReasonThermalManagement        = 0x00000002,  // Thermal management preference
+    ParkReasonPerformance              = 0x00000004,  // Performance optimization
+    ParkReasonFwRequestStopUsingLp     = 0x00000008,  // FW request to stop using Lp
+    ParkReasonLpBelowPowerConstraints  = 0x00000010,  // Lp below Power Constraints
+    ParkReasonOverClockingDriver       = 0x00000020,  // Over-Clocking driver request
+    ParkReasonTuning                   = 0x00000040   // Platform Tuning reason
+} PEP_PPM_WPS_PARK_PREFERENCE_REASON, *PPEP_PPM_WPS_PARK_PREFERENCE_REASON;
+
+typedef struct _PEP_PPM_WPS_INFORMATION {
+    UCHAR PerformanceRankingScore;
+    UCHAR EfficiencyRankingScore;
+    PEP_PPM_WPS_PARK_PREFERENCE ParkingPreference;
+    PEP_PPM_WPS_PARK_PREFERENCE_REASON ParkPreferenceReason;
+    UCHAR UnparkOrderingValue;
+    UCHAR Reserved[3];
+} PEP_PPM_WPS_INFORMATION, *PPEP_PPM_WPS_INFORMATION;
+
+typedef struct _PEP_PPM_WPS_TABLE_ENTRY {
+        PEPHANDLE Processor; 
+    PEP_PPM_WPS_INFORMATION WpsInformation;
+} PEP_PPM_WPS_TABLE_ENTRY, *PPEP_PPM_WPS_TABLE_ENTRY;
+
+typedef struct _PEP_PPM_QUERY_WPS_TABLE {
+    ULONG EntryCount; // Number of entries in the WPS table
+    _Field_size_(EntryCount)  PEP_PPM_WPS_TABLE_ENTRY WpsTableEntries[ANYSIZE_ARRAY]; // WPS table entries
+} PEP_PPM_QUERY_WPS_TABLE, *PPEP_PPM_QUERY_WPS_TABLE;
 
 #if (NTDDI_VERSION >= NTDDI_WINTHRESHOLD)
 

@@ -5478,7 +5478,7 @@ typedef enum _PROCESSINFOCLASS {
     ProcessWin32kSyscallFilterInformation        = 79,
     ProcessEnergyTrackingState                   = 82,
     ProcessNetworkIoCounters                     = 114,
-    MaxProcessInfoClass                          = 116 // MaxProcessInfoClass should always be the last enum
+    MaxProcessInfoClass                          = 117 // MaxProcessInfoClass should always be the last enum
 } PROCESSINFOCLASS;
 
 //
@@ -10158,6 +10158,25 @@ VOID
 ExRaiseAccessViolation (
     VOID
     );
+
+#endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN2K)
+
+FORCEINLINE
+VOID
+ExProbeAlignment (
+    __in_data_source(USER_MODE) const volatile VOID *Address,
+    _In_ SIZE_T Length,
+    _In_ ULONG Alignment
+    )
+{
+    if (Length != 0) {
+        if (((ULONG_PTR)Address & (Alignment - 1)) != 0) {
+            ExRaiseDatatypeMisalignment();
+        }
+    }
+}
 
 #endif
 

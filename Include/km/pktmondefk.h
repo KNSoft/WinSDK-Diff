@@ -75,6 +75,17 @@ typedef enum _PKTMON_COMPONENT_PROPERTY_ID
     PktMonCompProp_Max,
 } PKTMON_COMPONENT_PROPERTY_ID;
 
+//
+// Packet capture type
+//
+typedef enum _PKTMON_CAPTURE_TYPE
+{
+    PktMonCapture_All = 1,
+    PktMonCapture_Flow,
+    PktMonCapture_Drop,
+    PktMonCapture_None
+} PKTMON_CAPTURE_TYPE;
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif

@@ -2060,7 +2060,7 @@ typedef struct threadlocaleinfostruct {
             int *wrefcount;
         } lc_category[6];
         int lc_clike;
-        int mb_cur_max;
+        _Field_range_(1, 2) int mb_cur_max;
         int * lconv_intl_refcount;
         int * lconv_num_refcount;
         int * lconv_mon_refcount;

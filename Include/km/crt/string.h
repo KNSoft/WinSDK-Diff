@@ -58,6 +58,7 @@ _Post_equal_to_(_Dst)
 _At_buffer_((unsigned char*)_Dst, _Iter_, _MaxCount, _Post_satisfies_(((unsigned char*)_Dst)[_Iter_] == ((unsigned char*)_Src)[_Iter_]))
 void *  __cdecl memcpy(_Out_writes_bytes_all_(_MaxCount) void * _Dst, _In_reads_bytes_(_MaxCount) const void * _Src, _In_ size_t _MaxCount);
 #if __STDC_WANT_SECURE_LIB__
+_Success_(return == 0)
 _CRTIMP_ALT errno_t  __ALTDECL memcpy_s(_Out_writes_bytes_to_opt_(_DstSize, _MaxCount) void * _Dst, _In_ rsize_t _DstSize, _In_reads_bytes_opt_(_MaxCount) const void * _Src, _In_ rsize_t _MaxCount);
 #endif
 #if defined(_M_ARM) || defined(_M_ARM64)
@@ -109,6 +110,7 @@ size_t  __CRTDECL strnlen_s(_In_reads_or_z_(_MaxCount)  const char * _Str, _In_ 
 }
 #endif
 #if __STDC_WANT_SECURE_LIB__
+_Success_(return == 0)
 _Check_return_wat_ _CRTIMP_ALT errno_t __ALTDECL memmove_s(_Out_writes_bytes_to_opt_(_DstSize,_MaxCount) void * _Dst, _In_ rsize_t _DstSize, _In_reads_bytes_opt_(_MaxCount) const void * _Src, _In_ rsize_t _MaxCount);
 #endif
 

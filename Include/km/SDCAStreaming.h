@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <soundwirecontroller.h>
+
 #ifndef ANYSIZE_ARRAY
 #define ANYSIZE_ARRAY 1
 #endif
@@ -24,11 +26,13 @@ typedef enum {
     KSPROPERTY_SDCA_VENDOR_SPECIFIC         = 2,   // get/set. Vendor defined data may follow KSPROPERTY header
     KSPROPERTY_SDCA_FUNCTION_CAPABILITY     = 3,
     KSPROPERTY_SDCA_PATH_DESCRIPTORS        = 4,
-    KSPROPERTY_SDCA_CREATE_PATH             = 5,
+    KSPROPERTY_SDCA_CREATE_PATH             = 5,   // set, takes SDCA_PATH_DESCRIPTORS
     KSPROPERTY_SDCA_DESTROY_PATH            = 6,
     KSPROPERTY_SDCA_START_PATH              = 7,
     KSPROPERTY_SDCA_STOP_PATH               = 8,
-    KSPROPERTY_SDCA_ACCESS_EVENTS           = 9,    // set
+    KSPROPERTY_SDCA_ACCESS_EVENTS           = 9,   // set
+    KSPROPERTY_SDCA_PATH_DESCRIPTORS2       = 10,
+    KSPROPERTY_SDCA_CREATE_PATH2            = 11,  // set, takes SDCA_PATH_DESCRIPTORS2
 } KSPROPERTY_SDCA;
 
 typedef enum _SDCA_PATH {
@@ -36,6 +40,7 @@ typedef enum _SDCA_PATH {
     SdcaPathUltrasoundCapture               = 0x2, 
     SdcaPathReferenceStream                 = 0x4,
     SdcaPathIvSense                         = 0x8,
+    SdcaPathDefault                         = 0x10,
 } SDCA_PATH, *PSDCA_PATH;
 
 typedef enum _SDCA_STREAMING_FUNCTION_INFORMATION_FLAGS
@@ -88,6 +93,49 @@ typedef struct
     ULONG EndpointId;
     ULONG DescriptorCount;
 } SDCA_PATH_DESCRIPTORS, * PSDCA_PATH_DESCRIPTORS;
+
+#define MAX_DATAPORT_PER_TERMINAL2 4
+
+#define SDCA_PATH_DESCRIPTOR2_VERSION_1 1
+
+typedef enum _SDCA_DATAPORT_MAP
+{
+    SdcaDataPortMapIndexA = 0x00000001,
+    SdcaDataPortMapIndexB = 0x00000002,
+    SdcaDataPortMapIndexC = 0x00000004,
+    SdcaDataPortMapIndexD = 0x00000008
+} SDCA_DATAPORT_MAP;
+
+typedef struct _SDCA_PATH_DESCRIPTOR2
+{
+    ULONG                         Size;                         // Size of this struct
+    UINT8                         Version;                      // Version of this struct
+    ULONG                         FunctionInformationId;        // Function Information Id
+    ULONG                         TerminalEntityId;             // Entity Id of the IT/OT
+    ULONG                         DataPortMap;                  // Bit map of Dataports to be used.Bit 0->Index_A,Bit 1->Index_B, Bit 2->Index_C, Bit 3->Index_D
+
+    // EndpointId in DataPortConfig structures is ignored
+    SOUNDWIRE_DATAPORT_CONFIGURATION DataPortConfig[MAX_DATAPORT_PER_TERMINAL2];
+} SDCA_PATH_DESCRIPTOR2, *PSDCA_PATH_DESCRIPTOR2;
+
+typedef struct _SDCA_PATH_DESCRIPTORS2
+{
+    ULONG                         Size;                         // Size of this struct including all Descriptor array entries
+    UINT8                         Version;                      // Version of this struct
+    SDCA_PATH                     SdcaPath;                     // SdcaPathDefault for normal stream
+    ULONG                         EndpointId;                   // EndpointId
+    union
+    {
+        WAVEFORMATEXTENSIBLE      SpecialPathFormat;            // Format for a special path
+        BYTE                      Reserved[sizeof(WAVEFORMATEXTENSIBLE)]; // all 0 for normal stream
+    };
+    ULONG                         DescriptorCount;              // Count of Descriptors
+    SDCA_PATH_DESCRIPTOR2         Descriptor[ANYSIZE_ARRAY];    // Detailed description of each Descriptor
+} SDCA_PATH_DESCRIPTORS2, *PSDCA_PATH_DESCRIPTORS2;
+
+#ifdef DECLARE_CONST_ACXOBJECTBAG_SOUNDWIRE_PROPERTY_NAME
+DECLARE_CONST_ACXOBJECTBAG_SOUNDWIRE_PROPERTY_NAME(SdcaPropertyPathDescriptors2);
+#endif
 
 //
 // KSPROPERTYSETID_SdcaKws

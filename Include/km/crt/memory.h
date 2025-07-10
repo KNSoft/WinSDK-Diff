@@ -39,6 +39,7 @@ _Post_equal_to_(_Dst)
 _At_buffer_((unsigned char*)_Dst, _Iter_, _Size, _Post_satisfies_(((unsigned char*)_Dst)[_Iter_] == ((unsigned char*)_Src)[_Iter_]))
 void *  __cdecl memcpy(_Out_writes_bytes_all_(_Size) void * _Dst, _In_reads_bytes_(_Size) const void * _Src, _In_ size_t _Size);
 #if __STDC_WANT_SECURE_LIB__
+_Success_(return == 0)
 _CRTIMP_ALT errno_t  __cdecl memcpy_s(_Out_writes_bytes_to_opt_(_DstSize, _MaxCount) void * _Dst, _In_ rsize_t _DstSize, _In_reads_bytes_opt_(_MaxCount) const void * _Src, _In_ rsize_t _MaxCount);
 #endif
         void *  __cdecl memset(_Out_writes_bytes_all_opt_(_Size) void * _Dst, _In_ int _Val, _In_ size_t _Size);

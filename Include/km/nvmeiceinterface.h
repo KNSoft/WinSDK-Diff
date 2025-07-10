@@ -20,6 +20,7 @@ Environment:
 #ifndef _NTSTORPORTP_
 #include <storport.h>
 #endif // !defined _NTSTORPORTP_
+#include <icekeymaninterface.h>
 
 //
 // GUID_DEVINTERFACE_NVME_ICE is the device interface class for NVMe ICE devices.
@@ -30,8 +31,12 @@ DEFINE_GUID( GUID_DEVINTERFACE_NVME_ICE, 0x0d08b5d3, 0x4ffe, 0x4017, 0x8c, 0x99,
 
 //
 // GUID_NVME_ICE_INTERFACE is the interface that is exposed by NVMe ICE drivers.
+//  This interface provides a way for drivers to offload crypto operations
+//  to supporting NVMe ICE hardware using non-wrapped (clear/direct) keys.
 //
 // {ff05a26d-65df-4437-819b-3a7b20b41d42}
+//
+// Note: This interface is deprecated and will eventually be removed.
 //
 DEFINE_GUID( GUID_NVME_ICE_INTERFACE, 0xff05a26d, 0x65df, 0x4437, 0x81, 0x9b, 0x3a, 0x7b, 0x20, 0xb4, 0x1d, 0x42);
 
@@ -48,6 +53,25 @@ typedef struct NVME_PCI_ADDRESS {
 #pragma warning(push)
 #pragma warning(disable:4201) // nameless struct/unions
 
+typedef union NVME_ICE_PAGE_SIZE_BITMASK {
+    struct {
+        UCHAR PageSize4K : 1;
+        UCHAR PageSize2M : 1;
+        UCHAR Reserved : 6;
+    };
+    _Field_range_(>, 0) UCHAR AsUchar;
+} NVME_ICE_PAGE_SIZE_BITMASK;
+
+typedef union NVME_ICE_DATA_ALIGNMENT_BITMASK {
+    struct {
+        UCHAR Alignment4B : 1;
+        UCHAR Alignment8B : 1;
+        UCHAR Alignment16B : 1;
+        UCHAR Reserved : 5;
+    };
+    _Field_range_(>, 0) UCHAR AsUchar;
+} NVME_ICE_DATA_ALIGNMENT_BITMASK;
+
 #define NVME_ICE_CAPABILITIES_VERSION_1               1
 
 typedef struct NVME_ICE_CAPABILITIES {
@@ -59,34 +83,13 @@ typedef struct NVME_ICE_CAPABILITIES {
     USHORT Size;
 
     // Supported page sizes. Multiple bits may be set.
-    union {
-        struct {
-            UCHAR PageSize4K : 1;
-            UCHAR PageSize2M : 1;
-            UCHAR Reserved : 6;
-        };
-        _Field_range_(>, 0) UCHAR AsUchar;
-    } PageSizeBitmask;
+    NVME_ICE_PAGE_SIZE_BITMASK PageSizeBitmask;
 
     // Supported data alignments. Multiple bits may be set.
-    union {
-        struct {
-            UCHAR Alignment4B : 1;
-            UCHAR Alignment8B : 1;
-            UCHAR Alignment16B : 1;
-            UCHAR Reserved : 5;
-        };
-        _Field_range_(>, 0) UCHAR AsUchar;
-    } DataTransferAlignmentBitmask;
+    NVME_ICE_DATA_ALIGNMENT_BITMASK DataTransferAlignmentBitmask;
 
     // Compliant security standards at the hardware level. Multiple bits may be set.
-    union {
-        struct {
-            UCHAR FIPS : 1;
-            UCHAR Reserved : 7;
-        };
-        UCHAR AsUchar;
-    } SecurityComplianceBitmask;
+    STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask;
 
     UCHAR Reserved;
 
@@ -317,7 +320,7 @@ _IRQL_requires_max_(DISPATCH_LEVEL)
 typedef
 ULONG
 (__stdcall *PIO_START)(
-    _In_ const PVOID InterfaceContext,
+    _In_ PVOID InterfaceContext,
     _Inout_ NVME_ICE_IO_DESCRIPTOR* IODescriptor
     );
 
@@ -333,8 +336,7 @@ Routine Description:
 Arguments:
 
     InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
-    IOContext        - Specifies which I/O to complete as returned from IOStart. If no work is
-                       required, set value to NULL.
+    IOContext        - Specifies which I/O to complete as returned in NVME_ICE_IO_DESCRIPTOR::IoContext.
 
 Return Value:
 
@@ -346,9 +348,14 @@ _IRQL_requires_(DISPATCH_LEVEL)
 typedef
 ULONG
 (__stdcall *PIO_COMPLETE)(
-    _In_ const PVOID InterfaceContext,
-    _In_ const PVOID IOContext
+    _In_ PVOID InterfaceContext,
+    _In_ PVOID IOContext
     );
+
+//
+// NOTE: This interface is deprecated and will be removed.
+// Use and implement NVME_ICE_INTERFACE_V2
+//
 
 #define NVME_ICE_INTERFACE_VERSION_1                  1
 
@@ -377,3 +384,489 @@ typedef struct NVME_ICE_INTERFACE {
     PIO_COMPLETE IOComplete;
 
 } NVME_ICE_INTERFACE;
+
+//
+// GUID_NVME_ICE_INTERFACE_V2 is the interface that is exposed by NVMe ICE drivers.
+//
+//  This interface is exposed via a separate interface GUID from the original
+//  GUID_NVME_ICE_INTERFACE in order to be compatible with the WDF device interface
+//  management system. GUID_NVME_ICE_INTERFACE is deprecated and will be removed.
+//
+//  NVME_ICE_INTERFACE_V2 supports:
+//     * A simplified model for programming crypto keys, with support for "key wrapping"
+//       to hide key material from the CPU.
+//
+//     * Support for dump and hibernate/resume workflows
+//
+// {cf5226e9-21f4-44ca-8d8f-7160f4df5237}
+//
+DEFINE_GUID( GUID_NVME_ICE_INTERFACE_V2, 0xcf5226e9, 0x21f4, 0x44ca, 0x8d, 0x8f, 0x71, 0x60, 0xf4, 0xdf, 0x52, 0x37);
+
+#pragma warning(push)
+#pragma warning(disable:4201) // nameless struct/unions
+
+typedef struct NVME_ICE_CAPABILITIES_V2 {
+
+    // Supported page sizes. Multiple bits may be set.
+    NVME_ICE_PAGE_SIZE_BITMASK PageSizeBitmask;
+
+    // Supported data alignments. Multiple bits may be set.
+    NVME_ICE_DATA_ALIGNMENT_BITMASK DataTransferAlignmentBitmask;
+
+    // Compliant security standards at the hardware level. Multiple bits may be set.
+    STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask;
+
+    // Supported key types. Multiple bits may be set.
+    STORAGE_CRYPTO_KEY_TYPE KeyTypeBitmask;
+
+    // Maximum supported transfer size in KB
+    USHORT MaxTransferSizeKBytes;
+
+    // Contains supported crypto configurations
+    STOR_CRYPTO_CAPABILITIES_DATA CryptoCapabilitiesData;
+
+} NVME_ICE_CAPABILITIES_V2;
+
+#pragma warning(pop)
+
+/*++
+
+PQUERY_CAPABILITIES_V2
+
+Routine Description:
+
+    Returns information about the capabilities of a SoC that supports NVMe ICE.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    PciAddress       - The PCI SBDF of the NVMe device.
+    Capabilities     - The capabilities of the SoC. Can be NULL to query CapabilitiesSize.
+    CapabilitiesSize - On input, provides size of the Capabilities struct or can be
+                       0 when querying required size. On output, contains actual size of
+                       Capabilities struct or required size.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    STOR_STATUS_BUFFER_TOO_SMALL if Capabilities is NULL or if CapabilitiesSize is too small.
+    STOR_STATUS_INVALID_DEVICE_REQUEST if NVMe device is not supported.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_(PASSIVE_LEVEL)
+typedef
+ULONG
+(__stdcall *PQUERY_CAPABILITIES_V2)(
+    _In_ PVOID InterfaceContext,
+    _In_ const NVME_PCI_ADDRESS* PciAddress,
+    _Out_ NVME_ICE_CAPABILITIES_V2* Capabilities,
+    _Inout_ PULONG CapabilitiesSize
+    );
+
+typedef struct NVME_ICE_PROGRAM_KEY_DATA_V2 {
+
+    // IN: Crypto capability to configure as reported by QueryCapabilities.
+    USHORT ReportedCryptoCapabilityIndex;
+
+    // IN: Chosen maximum supported transfer size in KB
+    USHORT MaxTransferSizeKBytes;
+
+    // IN: Chosen size of an LBA in bytes
+    ULONG LBASize;
+
+    // IN: Chosen size of PRP Page Size in bytes
+    ULONG PRPPageSize;
+
+    // IN: Chosen key type
+    STORAGE_ICE_KEY_TYPE KeyType;
+
+    // IN: The key's size
+    USHORT KeyContentSize;
+
+    // IN: Namespace ID for the key
+    GUID KeyNamespaceId;
+
+    // IN_OUT: If NULL, driver is expected to return an unused key handle.
+    //         If non-NULL, driver is expected to replace key associated with provided handle with new key.
+    PVOID KeyHandle;
+
+    // IN: Contains the key
+    _Field_size_bytes_(KeyContentSize) UCHAR KeyContent[ANYSIZE_ARRAY];
+
+} NVME_ICE_PROGRAM_KEY_DATA_V2;
+
+/*++
+
+PPROGRAM_KEY_V2
+
+Routine Description:
+
+    Programs a key to a SoC that supports NVMe ICE. If this function needs to perform any memory
+    allocations then it must ensure that those memory allocations do not fail.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    KeyData          - The key data to be programmed to the SoC.
+    KeyDataSize      - Provides size of KeyData struct.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    STOR_STATUS_BUSY on transient error. This suggests a retry.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_max_(DISPATCH_LEVEL)
+typedef
+ULONG
+(__stdcall *PPROGRAM_KEY_V2)(
+    _In_ PVOID InterfaceContext,
+    _Inout_ NVME_ICE_PROGRAM_KEY_DATA_V2* KeyData,
+    _In_ PULONG KeyDataSize
+    );
+
+typedef enum _NVME_ICE_DUMP_TYPE {
+    NVME_ICE_DUMP_TYPE_UNKNOWN = 0,
+    NVME_ICE_DUMP_TYPE_CRASH = 1,
+    NVME_ICE_DUMP_TYPE_HIBERNATE = 2,
+    NVME_ICE_DUMP_TYPE_HIBER_RESUME = 3,
+} NVME_ICE_DUMP_TYPE;
+
+/*++
+
+PVNME_ICE_DUMP_INITIALIZE
+
+Routine Description:
+
+    This function is called during normal execution when the system
+    is setting up dump support. This callback is an appropriate place
+    to allocate any resources that are needed for a later crashdump.
+
+    NOTE: This will be called once each for crash dump and hibernate.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE_V2 structure.
+
+    DumpType - The type of dump being initialized.
+
+Return Value:
+
+    NTSTATUS.
+
+--*/
+_IRQL_requires_max_(PASSIVE_LEVEL)
+typedef
+NTSTATUS
+(__stdcall *PNVME_ICE_DUMP_INITIALIZE)(
+    _In_ PVOID InterfaceContext,
+    _In_ NVME_ICE_DUMP_TYPE DumpType
+    );
+
+/*++
+
+PVNME_ICE_DUMP_CLEANUP
+
+Routine Description:
+
+    This function is called when the system is cleaning up dump support.
+    This is an appropriate place to free any resources that were allocated
+    during DumpInitialize.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE_V2 structure.
+
+    DumpType - The type of dump being initialized.
+
+Return Value:
+
+    None.
+
+--*/
+_IRQL_requires_max_(PASSIVE_LEVEL)
+typedef
+VOID
+(__stdcall *PNVME_ICE_DUMP_CLEANUP)(
+    _In_ PVOID InterfaceContext,
+    _In_ NVME_ICE_DUMP_TYPE DumpType
+    );
+
+/*++
+
+PVNME_ICE_MARK_HIBER_RESUME_MEMORY
+
+Routine Description:
+
+    The ICE driver must call this function to mark memory that it requires during
+    hibernate and resume. This function is called from a crash/hibernate context
+    and must not call any DDIs that are illegal in those contexts.
+
+    Examples of marked memory:
+    * Driver code pages (pass a length of 0 to mark the entire section).
+    * Context structures needed to process DumpIOStart/DumpIOComplete/DumpProgramKeyV2.
+
+Arguments:
+
+    Address - The address of the memory to mark.
+
+    Length - The length of the memory to mark. If zero is passed, the entire
+        section containing the address is marked.
+
+Return Value:
+
+    None.
+
+--*/
+_IRQL_requires_(HIGH_LEVEL)
+typedef
+VOID
+(__stdcall *PVNME_ICE_MARK_HIBER_RESUME_MEMORY)(
+    _In_ PVOID Address,
+    _In_ ULONG_PTR Length
+    );
+
+typedef struct NVME_ICE_DUMP_START_PARAMETERS {
+
+    // IN: The size of the structure, used for versioning.
+    ULONG Size;
+
+    // IN [optional]: The ICE driver must call this function to mark
+    // memory that it requires during hibernate and resume.
+    PVNME_ICE_MARK_HIBER_RESUME_MEMORY MarkHiberResumeMemoryCallback;
+
+} NVME_ICE_DUMP_START_PARAMETERS;
+
+/*++
+
+PVNME_ICE_DUMP_START
+
+Routine Description:
+
+    This function is called when the system is about to read/write a crash dump or
+    hiberfile. This function will be called after the dump storage adapter is
+    reset.
+
+    This function is called from a crash/hibernate context and must not call
+    any DDIs that are illegal in those contexts.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE_V2 structure.
+
+    DumpType - The type of dump being initialized.
+
+    DumpStartParameters - An extensible set of parameters specific to the dump
+        type that will commence.
+
+Return Value:
+
+    NTSTATUS.
+
+--*/
+_IRQL_requires_(HIGH_LEVEL)
+typedef
+NTSTATUS
+(__stdcall *PNVME_ICE_DUMP_START)(
+    _In_ PVOID InterfaceContext,
+    _In_ NVME_ICE_DUMP_TYPE DumpType,
+    _In_ NVME_ICE_DUMP_START_PARAMETERS *DumpStartParameters
+    );
+
+/*++
+
+PVNME_ICE_DUMP_FINISH
+
+Routine Description:
+
+    This function is called when the system is finished reading/writing a crash dump
+    or hiberfile. This function is called after all IOs are complete. It is called
+    from a crash/hibernate context and must not call any DDIs that are illegal in
+    those contexts.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE_V2 structure.
+
+    DumpType - The type of dump being finished.
+
+Return Value:
+
+    None.
+
+--*/
+_IRQL_requires_(HIGH_LEVEL)
+typedef
+VOID
+(__stdcall *PNVME_ICE_DUMP_FINISH)(
+    _In_ PVOID InterfaceContext,
+    _In_ NVME_ICE_DUMP_TYPE DumpType
+    );
+
+/*++
+
+PDUMP_IO_START
+
+Routine Description:
+
+    Starts a crypto I/O during crashdump/hibernate on a SoC that supports NVMe ICE.
+
+    This routine should not acquire any locks or call any DDIs that are illegal
+    during crash.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    IODescriptor     - Parameters to be used for crypto I/O.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    STOR_STATUS_BUSY on transient error. This suggests a retry.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_(HIGH_LEVEL)
+typedef
+ULONG
+(__stdcall *PDUMP_IO_START)(
+    _In_ const PVOID InterfaceContext,
+    _Inout_ NVME_ICE_IO_DESCRIPTOR* IODescriptor
+    );
+
+/*++
+
+PIO_COMPLETE
+
+Routine Description:
+
+    Completes a crypto I/O during dump/hibernate on a SoC that supports NVMe ICE.
+
+    This routine should not acquire any locks or call any DDIs that are illegal
+    during crash.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    IOContext        - Specifies which I/O to complete as returned in NVME_ICE_IO_DESCRIPTOR::IoContext.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_(HIGH_LEVEL)
+typedef
+ULONG
+(__stdcall *PDUMP_IO_COMPLETE)(
+    _In_ const PVOID InterfaceContext,
+    _In_ const PVOID IOContext
+    );
+
+/*++
+
+PNVME_ICE_QUERY_STORAGE_DEVICE_SUPPORT
+
+Routine Description:
+
+    Returns whether the storage device is supported by the NVMe ICE driver.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    PciAddress       - The PCI SBDF of the NVMe device.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS if the storage device is supported.
+    STOR_STATUS_INVALID_DEVICE_REQUEST if the storage device is not supported.
+
+--*/
+_IRQL_requires_(PASSIVE_LEVEL)
+typedef
+ULONG
+(__stdcall *PNVME_ICE_QUERY_STORAGE_DEVICE_SUPPORT)(
+    _In_ PVOID InterfaceContext,
+    _In_ const NVME_PCI_ADDRESS* PciAddress
+    );
+
+/*++
+
+PNVME_ICE_QUERY_PLATFORM_CAPABILITIES
+
+Routine Description:
+
+    Returns information about the capabilities of the platform that supports NVMe ICE.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    Capabilities     - The capabilities of the platform. Can be NULL to query CapabilitiesSize.
+    CapabilitiesSize - On input, provides size of the Capabilities struct or can be
+                       0 when querying required size. On output, contains actual size of
+                       Capabilities struct or required size.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    STOR_STATUS_BUFFER_TOO_SMALL if Capabilities is NULL or if CapabilitiesSize is too small.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_(PASSIVE_LEVEL)
+typedef
+ULONG
+(__stdcall *PNVME_ICE_QUERY_PLATFORM_CAPABILITIES)(
+    _In_ PVOID InterfaceContext,
+    _Out_ NVME_ICE_CAPABILITIES_V2* Capabilities,
+    _Inout_ PULONG CapabilitiesSize
+    );
+
+#define NVME_ICE_INTERFACE_VERSION_2                  2
+
+typedef struct NVME_ICE_INTERFACE_V2 {
+
+    //
+    // Generic interface header
+    //
+    USHORT Size;
+    USHORT Version;
+    PVOID Context;
+    PINTERFACE_REFERENCE InterfaceReference;
+    PINTERFACE_DEREFERENCE InterfaceDereference;
+
+    //
+    // Required NVMe ICE V2 interface functions
+    //
+
+    PQUERY_CAPABILITIES_V2 QueryCapabilitiesV2;
+    PPROGRAM_KEY_V2 ProgramKeyV2;
+
+    PPROGRAM_KEY_V2 DumpProgramKeyV2;
+
+    //
+    // Optional NVMe ICE V2 interface functions
+    //
+    PIO_START IOStart;
+    PIO_COMPLETE IOComplete;
+
+    //
+    // Note: The DumpIOStart/DumpIOComplete interfaces
+    // will only be called after DumpProgramKeyV2 has been called.
+    //
+    PDUMP_IO_START DumpIOStart;
+    PDUMP_IO_COMPLETE DumpIOComplete;
+
+    PNVME_ICE_DUMP_INITIALIZE DumpInitialize;
+    PNVME_ICE_DUMP_CLEANUP DumpCleanup;
+
+    PNVME_ICE_DUMP_START DumpStart;
+    PNVME_ICE_DUMP_FINISH DumpFinish;
+
+    PNVME_ICE_QUERY_STORAGE_DEVICE_SUPPORT QueryStorageDeviceSupport;
+    PNVME_ICE_QUERY_PLATFORM_CAPABILITIES QueryPlatformCapabilities;
+
+} NVME_ICE_INTERFACE_V2;

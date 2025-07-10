@@ -137,6 +137,17 @@ typedef enum _CLASS_DEBUG_LEVEL {
 #define CLEAR_FLAG(Flags, Bit)  ((Flags) &= ~(Bit))
 #define TEST_FLAG(Flags, Bit)   (((Flags) & (Bit)) != 0)
 
+
+#define SET_FLAG_NOFENCE(Flags, Bit) \
+    WriteUShortNoFence(&(Flags), (ReadUShortNoFence(&(Flags)) | (Bit)))
+
+#define TEST_FLAG_NOFENCE(Flags, Bit) \
+    (((ReadUShortNoFence(&(Flags))) & (Bit)) != 0)
+
+#define CLEAR_FLAG_NOFENCE(Flags, Bit) \
+    WriteUShortNoFence(&(Flags), (ReadUShortNoFence(&(Flags)) & ~(Bit)))
+
+
 //
 // neat little hacks to count number of bits set efficiently
 //
@@ -2304,7 +2315,7 @@ typedef struct _FUNCTIONAL_DEVICE_EXTENSION {
     // Values for the flags are below.
     //
 
-    USHORT  DeviceFlags;
+    volatile USHORT  DeviceFlags;
 
     //
     // Log2 of sector size

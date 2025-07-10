@@ -512,7 +512,7 @@ typedef struct _SCSI_PNP_REQUEST_BLOCK {
 #define POINTER_ALIGN
 #endif
 
-#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
 
 //
 // This is the STOR_ADDRESS type used by StorMQ.
@@ -8362,6 +8362,87 @@ Returns:
 //
 
 
+#ifndef STORAGE_CRYPTO_ALGORITHMS_DEFINED
+#define STORAGE_CRYPTO_ALGORITHMS_DEFINED
+
+//
+// Output buffer for StorageAdapterCryptoProperty & PropertyStandardQuery
+//
+
+typedef enum _STORAGE_CRYPTO_ALGORITHM_ID {
+
+    StorageCryptoAlgorithmUnknown = 0,
+    StorageCryptoAlgorithmXTSAES = 1,
+    StorageCryptoAlgorithmBitlockerAESCBC,
+    StorageCryptoAlgorithmAESECB,
+    StorageCryptoAlgorithmESSIVAESCBC,
+    StorageCryptoAlgorithmMax,
+
+    //
+    // Legacy compatibility algorithm names.
+    // Use the names above.
+    //
+
+    StorCryptoAlgorithmUnknown = StorageCryptoAlgorithmUnknown,
+    StorCryptoAlgorithmXTSAES = StorageCryptoAlgorithmXTSAES,
+    StorCryptoAlgorithmBitlockerAESCBC = StorageCryptoAlgorithmBitlockerAESCBC,
+    StorCryptoAlgorithmAESECB = StorageCryptoAlgorithmAESECB,
+    StorCryptoAlgorithmESSIVAESCBC = StorageCryptoAlgorithmESSIVAESCBC,
+} STORAGE_CRYPTO_ALGORITHM_ID, *PSTORAGE_CRYPTO_ALGORITHM_ID;
+
+typedef enum _STORAGE_CRYPTO_KEY_SIZE {
+
+    StorageCryptoKeySizeUnknown = 0,
+    StorageCryptoKeySize128Bits = 1,
+    StorageCryptoKeySize192Bits,
+    StorageCryptoKeySize256Bits,
+    StorageCryptoKeySize512Bits,
+    StorageCryptoKeySizeMax,
+
+    //
+    // Legacy compatibility key size names.
+    // Use the names above.
+    //
+    StorCryptoKeySizeUnknown = StorageCryptoKeySizeUnknown,
+    StorCryptoKeySize128Bits = StorageCryptoKeySize128Bits,
+    StorCryptoKeySize192Bits = StorageCryptoKeySize192Bits,
+    StorCryptoKeySize256Bits = StorageCryptoKeySize256Bits,
+    StorCryptoKeySize512Bits = StorageCryptoKeySize512Bits,
+} STORAGE_CRYPTO_KEY_SIZE, *PSTORAGE_CRYPTO_KEY_SIZE;
+
+#endif // STORAGE_CRYPTO_ALGORITHMS_DEFINED
+
+
+#ifndef STORAGE_SECURITY_COMPLIANCE_BITMASK_DEFINED
+#define STORAGE_SECURITY_COMPLIANCE_BITMASK_DEFINED
+
+typedef union _STORAGE_SECURITY_COMPLIANCE_BITMASK {
+    struct {
+        UCHAR FIPS : 1;
+        UCHAR Reserved : 7;
+    };
+    UCHAR AsUchar;
+} STORAGE_SECURITY_COMPLIANCE_BITMASK;
+
+#endif
+
+#ifndef STORAGE_CRYPTO_KEY_TYPE_DEFINED
+#define STORAGE_CRYPTO_KEY_TYPE_DEFINED
+
+typedef union _STORAGE_CRYPTO_KEY_TYPE {
+    struct {
+        UCHAR DirectKey : 1;
+        UCHAR PlatformWrappedKey : 1;
+        UCHAR PlutonWrappedKey : 1;
+        UCHAR Reserved : 5;
+    };
+    UCHAR AsUchar;
+} STORAGE_CRYPTO_KEY_TYPE;
+
+#endif
+
+        
+
 //
 // For backwards compatability, use SCSIPORT definitions.
 //
@@ -9161,6 +9242,7 @@ typedef enum _SCSI_UNIT_CONTROL_TYPE {
     ScsiUnitQueryFruId,
     ScsiUnitReportInternalData,
     ScsiUnitKsrPowerDown,
+    ScsiUnitNvmeIceInformation,
     ScsiUnitControlMax,
     MakeUnitControlTypeSizeOfUlong = 0xffffffff
 } SCSI_UNIT_CONTROL_TYPE, *PSCSI_UNIT_CONTROL_TYPE;
@@ -9171,7 +9253,8 @@ typedef enum _SCSI_UNIT_CONTROL_TYPE {
 
 typedef enum _SCSI_UNIT_CONTROL_STATUS {
     ScsiUnitControlSuccess = 0,
-    ScsiUnitControlUnsuccessful
+    ScsiUnitControlUnsuccessful,
+    ScsiUnitControlNotSupported,
 } SCSI_UNIT_CONTROL_STATUS, *PSCSI_UNIT_CONTROL_STATUS;
 
 //
@@ -9189,7 +9272,8 @@ typedef enum _SCSI_UC_DEVICE_USAGE_TYPE {
     ScsiDeviceUsageTypePaging,
     ScsiDeviceUsageTypeHibernation,
     ScsiDeviceUsageTypeDumpFile,
-    ScsiDeviceUsageTypeBoot
+    ScsiDeviceUsageTypeBoot,
+    ScsiDeviceUsageTypeInlineCryptoEngine = 7
 } SCSI_UC_DEVICE_USAGE_TYPE;
 
 typedef struct _STOR_UC_DEVICE_USAGE {
@@ -9476,6 +9560,32 @@ typedef struct _STOR_REPORT_INTERNAL_DATA {
 
 } STOR_REPORT_INTERNAL_DATA, *PSTOR_REPORT_INTERNAL_DATA;
 
+typedef struct _NVME_ICE_ENTRY *PNVME_ICE_ENTRY;
+
+//
+// Parameter to miniport for ScsiUnitNvmeIceInformation.
+// This will be invoked during bus enumeration to determine
+// if a unit can be used with NVME inline crypto.
+//
+
+typedef struct _STOR_UNIT_NVME_ICE_INFORMATION {
+    //
+    // Sizeof(STOR_UNIT_NVME_ICE_INFORMATION)
+    //
+    ULONG Version;
+
+    //
+    // Address of the associated unit object.
+    //
+    PSTOR_ADDRESS Address;
+
+    //
+    // [Out] A pointer to the NVME ICE entry.
+    //
+    PNVME_ICE_ENTRY NvmeIceEntry;
+
+} STOR_UNIT_NVME_ICE_INFORMATION, *PSTOR_UNIT_NVME_ICE_INFORMATION;
+
 //
 // Parameter to miniport driver for ScsiAdapterResetBusSynchronous.
 // This will only be invoked if the miniport has declared support for
@@ -9756,23 +9866,21 @@ typedef struct _STOR_RPMB_CAPABILITIES_DATA {
 // Adapter Crypto Engine definitions
 //
 
-typedef enum _STOR_CRYPTO_ALGORITHM_ID {
-    StorCryptoAlgorithmUnknown = 0,
-    StorCryptoAlgorithmXTSAES = 1,
-    StorCryptoAlgorithmBitlockerAESCBC,
-    StorCryptoAlgorithmAESECB,
-    StorCryptoAlgorithmESSIVAESCBC,
-    StorCryptoAlgorithmMax
-} STOR_CRYPTO_ALGORITHM_ID, *PSTOR_CRYPTO_ALGORITHM_ID;
+//
+// These enums are defined in ntddstor.h and related headers.
+//
 
-typedef enum _STOR_CRYPTO_KEY_SIZE {
-    StorCryptoKeySizeUnknown = 0,
-    StorCryptoKeySize128Bits = 1,
-    StorCryptoKeySize192Bits,
-    StorCryptoKeySize256Bits,
-    StorCryptoKeySize512Bits,
-    StorCryptoKeySizeMax
-} STOR_CRYPTO_KEY_SIZE, *PSTOR_CRYPTO_KEY_SIZE;
+typedef enum _STORAGE_CRYPTO_ALGORITHM_ID STORAGE_CRYPTO_ALGORITHM_ID;
+typedef enum _STORAGE_CRYPTO_KEY_SIZE STORAGE_CRYPTO_KEY_SIZE;
+
+//
+// Legacy algorithm id type.
+// Use STORAGE_CRYPTO_ALGORITHM_ID.
+//
+
+typedef STORAGE_CRYPTO_ALGORITHM_ID STOR_CRYPTO_ALGORITHM_ID, *PSTOR_CRYPTO_ALGORITHM_ID;
+
+typedef STORAGE_CRYPTO_KEY_SIZE STOR_CRYPTO_KEY_SIZE, *PSTOR_CRYPTO_KEY_SIZE;
 
 #define STOR_CRYPTO_ALGORITHM_ID_OFFSET                  StorCryptoAlgorithmXTSAES
 
@@ -9781,11 +9889,16 @@ typedef enum _STOR_CRYPTO_KEY_SIZE {
 
 typedef struct _STOR_CRYPTO_CAPABILITY {
     ULONG Version;
+
+    //
+    // Set to sizeof(STOR_CRYPTO_CAPABILITY)
+    //
     ULONG Size;
+
     USHORT CryptoCapabilityIndex;
     USHORT DataUnitSizeBitmask;
-    STOR_CRYPTO_ALGORITHM_ID AlgorithmId;
-    STOR_CRYPTO_KEY_SIZE KeySize;
+    STORAGE_CRYPTO_ALGORITHM_ID AlgorithmId;
+    STORAGE_CRYPTO_KEY_SIZE KeySize;
 
     //
     // Start of STOR_CRYPTO_CAPABILITY_VERSION_2 fields
@@ -9802,13 +9915,7 @@ typedef struct _STOR_CRYPTO_CAPABILITY {
     //
     // Bitmask of compliant security standards at the algorithm level. Multiple bits may be set.
     //
-    union {
-        struct  {
-            UCHAR FIPS : 1;
-            UCHAR Reserved : 7;
-        };
-        UCHAR AsUchar;
-    } SecurityComplianceBitmask;
+    STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask;
 #endif
 
 } STOR_CRYPTO_CAPABILITY, *PSTOR_CRYPTO_CAPABILITY;
@@ -11102,7 +11209,132 @@ typedef struct _MINIPORT_DUMP_POINTERS {
     
     
 
+//
+// Miniport information for adapter managing
+// one or more dump disks.
+//
+// To get the miniport info for an adapter,
+// storport sends SRB_FUNCTION_GET_DUMP_INFO
+// to the miniport targeted to that adapter.
+// The input is GET_MINIPORT_DUMP_INFO which
+// has the storage device address for all
+// the dump disks managed by the adapter.
+// The miniport populates the output as
+// MINIPORT_DUMP_INFO which contains its
+// context that is required for hardware
+// initialization by the dump stack.
+//
+// To free the miniport info, storport sends
+// SRB_FUNCTION_FREE_DUMP_INFO to the miniport.
+// The input buffer is FREE_MINIPORT_DUMP_INFO
+// which has the miniport context to free.
+//
 
+// Miniport dump info signature - "MPDI" in ASCII
+#define MINIPORT_DUMP_INFO_SIGNATURE 0x4D504449
+
+typedef struct _MINIPORT_DUMP_INFO {
+
+    //
+    // Size of this structure serves
+    // as the version
+    //
+
+    ULONG Version;
+
+    //
+    // Size of this structure plus
+    // all the variable sized fields
+    //
+
+    ULONG Size;
+
+    //
+    // Signature of this response
+    //
+
+    _Field_range_(MINIPORT_DUMP_INFO_SIGNATURE, MINIPORT_DUMP_INFO_SIGNATURE)
+    ULONG Signature;
+
+    //
+    // Miniport private context
+    //
+
+    PVOID Context;
+
+} MINIPORT_DUMP_INFO, *PMINIPORT_DUMP_INFO;
+
+
+// Get miniport dump info signature - "GMDI" in ASCII
+#define GET_DUMP_INFO_SIGNATURE 0x474D4449
+
+typedef struct _GET_MINIPORT_DUMP_INFO {
+
+    //
+    // Size of this structure serves
+    // as the version
+    //
+
+    ULONG Version;
+
+    //
+    // Size of this structure plus
+    // all the variable sized fields
+    //
+
+    ULONG Size;
+
+    //
+    // Signature of this request
+    //
+
+    _Field_range_(GET_DUMP_INFO_SIGNATURE, GET_DUMP_INFO_SIGNATURE)
+    ULONG Signature;
+
+    //
+    // Storage device address of
+    // dump disks on this adapter
+    //
+
+    ULONG DiskCount;
+    STOR_ADDRESS Address[ANYSIZE_ARRAY];
+
+} GET_MINIPORT_DUMP_INFO, *PGET_MINIPORT_DUMP_INFO;
+
+
+// FRee miniport dump info signature - "FMDI" in ASCII
+#define FREE_DUMP_INFO_SIGNATURE 0x464D4449
+
+typedef struct _FREE_MINIPORT_DUMP_INFO {
+
+    //
+    // Size of this structure serves
+    // as the version
+    //
+
+    ULONG Version;
+
+    //
+    // Size of this structure plus
+    // all the variable sized fields
+    //
+
+    ULONG Size;
+
+    //
+    // Signature of this request
+    //
+
+    _Field_range_(FREE_DUMP_INFO_SIGNATURE, FREE_DUMP_INFO_SIGNATURE)
+    ULONG Signature;
+
+    //
+    // Miniport private context
+    //
+
+    PVOID Context;
+
+} FREE_MINIPORT_DUMP_INFO, *PFREE_MINIPORT_DUMP_INFO;
 
 //
 //  Structure used with StorPortLogSystemEvent
@@ -14871,6 +15103,47 @@ StorPortNvmeIceIoStart(
     return status;
 }
 
+
+ULONG
+FORCEINLINE
+StorPortNvmeIceIoStartEx(
+    _In_ PVOID HwDeviceExtension,
+    _In_ PSCSI_REQUEST_BLOCK Srb,
+    _In_ ULONGLONG LbaOffset,
+    _In_ ULONG LbaCount,
+    _In_ ULONG PrpCount,
+    _Inout_ PULONGLONG Prp1,
+    _Inout_ PULONGLONG Prp2,
+    _Inout_ PULONGLONG PrpList
+    )
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
+    status = StorPortExtendedFunction(ExtFunctionNvmeIceIoStartEx,
+                                      HwDeviceExtension,
+                                      Srb,
+                                      LbaOffset,
+                                      LbaCount,
+                                      PrpCount,
+                                      Prp1,
+                                      Prp2,
+                                      PrpList);
+#else
+    UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(Srb);
+    UNREFERENCED_PARAMETER(LbaOffset);
+    UNREFERENCED_PARAMETER(LbaCount);
+    UNREFERENCED_PARAMETER(PrpCount);
+    UNREFERENCED_PARAMETER(Prp1);
+    UNREFERENCED_PARAMETER(Prp2);
+    UNREFERENCED_PARAMETER(PrpList);
+#endif
+
+    return status;
+}
+
 ULONG
 FORCEINLINE
 StorPortNvmeIceIoComplete(
@@ -14880,7 +15153,7 @@ StorPortNvmeIceIoComplete(
 {
     ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
 
-#if (NTDDI_VERSION >= NTDDI_WIN11_GA)
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
 
     status = StorPortExtendedFunction(ExtFunctionNvmeIceIoComplete,
                                       HwDeviceExtension,
@@ -14888,6 +15161,59 @@ StorPortNvmeIceIoComplete(
 #else
     UNREFERENCED_PARAMETER(HwDeviceExtension);
     UNREFERENCED_PARAMETER(Srb);
+#endif
+
+    return status;
+}
+
+ULONG
+FORCEINLINE
+StorPortQueryNvmeIceSupport(
+    _In_ PVOID HwDeviceExtension,
+    _In_ ULONG SegmentAndBus,
+    _In_ ULONG SlotNumber,
+    _Out_ PNVME_ICE_ENTRY *NvmeIceEntry
+    )
+/*++
+
+Routine Description:
+
+    This routine is used to determine if a given PCI device is
+    supported by the NVME ICE hardware.
+
+    This function should be called in the context of HwUnitControl
+    with the control code of ScsiUnitNvmeIceInformation.
+
+Arguments:
+
+    HwDeviceExtension - Supplies the miniport driver's adapter data storage
+    SegmentAndBus - Supplies the bus address in the format of PCI_SEGMENT_BUS_NUMBER::u.AsULONG.
+    SlotNumber - Supplies PCI slot number in the format for PCI_SLOT_NUMBER::u.AsULONG.
+    NvmeIceEntry - Returns the NVME ICE information associated with the device.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS if the device is supported by the NVME ICE hardware.
+
+--*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
+    status = StorPortExtendedFunction(ExtFunctionQueryNvmeIceSupport,
+                                      HwDeviceExtension,
+                                      SegmentAndBus,
+                                      SlotNumber,
+                                      NvmeIceEntry);
+
+#else
+
+    UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(SegmentAndBus);
+    UNREFERENCED_PARAMETER(SlotNumber);
+    UNREFERENCED_PARAMETER(NvmeIceEntry);
+
 #endif
 
     return status;
@@ -18156,7 +18482,7 @@ typedef PHYSICAL_ADDRESS SCSI_PHYSICAL_ADDRESS, *PSCSI_PHYSICAL_ADDRESS;
 
 #endif // STOR_USE_SCSI_ALIASES
 
-#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
 
 //
 // StorMQ-related definitions
@@ -18534,7 +18860,7 @@ Returns:
 {
     ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
 
-#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
 
     status = StorPortExtendedFunction(ExtFunctionStorMQAddController,
                                       HwAdapterExtension,
@@ -18588,7 +18914,7 @@ Returns:
 {
     ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
 
-#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
 
     status = StorPortExtendedFunction(ExtFunctionStorMQRemoveController,
                                       HwAdapterExtension,
@@ -18604,7 +18930,7 @@ Returns:
     return status;
 }
 
-#endif // if (NTDDI_VERSION >= NTDDI_WIN11_DT) block for StorMQ
+#endif // if (NTDDI_VERSION >= NTDDI_WIN11_GE) block for StorMQ
 
 
 

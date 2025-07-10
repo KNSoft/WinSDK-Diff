@@ -33,6 +33,11 @@ DEFINE_GUID(SDCAXU_INTERFACE,
 #define SDCAXU_INTERFACE_VERSION_0101   (0x0101)
 
 //
+// Version 1.2
+//
+#define SDCAXU_INTERFACE_VERSION_0102   (0x0102)
+
+//
 // EvtSetXUEntities
 // Set all the XU Entities which should be enabled
 // params:
@@ -334,6 +339,54 @@ typedef NTSTATUS EVT_SDCAXU_REMOVE_ENDPOINT_CONFIG
 typedef EVT_SDCAXU_REMOVE_ENDPOINT_CONFIG *PFN_SDCAXU_REMOVE_ENDPOINT_CONFIG;
 
 //
+// EvtRetrieveSwftFileOverride
+// SDCA class driver will call to allow SdcaXu to override an SWFT file used for File Download (FDL) 
+//
+// The SDCA class driver will provide the Version and Length of the file data it has found in the SWFT.
+// If no file was found in the SWFT, Version and Length will be 0.
+//
+// The SdcaXu driver is not required to use the SwftFileVersion to determine if it has a suitable override.
+// If the SdcaXu returns a file, that file will be used by the SDCA class driver regardless of the version.
+//
+// The SDCA class driver may first call with 0 NewFileBufferLength and NULL NewFileBuffer.
+// The SdcaXu driver would fill out the correct NewFileLength if it will override.
+// The SDCA class driver will then allocate the NewFileBuffer based on that length.
+// 
+// params:
+//   * Context                  - SdcaXu Driver supplied context
+//   * VendorID                 - Vendor_ID for file
+//   * FileID                   - File_ID for file
+//   * SwftFileVersion          - Version of the SWFT file class driver intends to use
+//   * SwftFileLength           - Length of the SWFT file class driver intends to use, not including the SWFT file header
+//   * NewFileVersion           - Version of the new file
+//   * NewFileLength            - Length of the new file, not including any header
+//   * NewFileBufferLength      - Length in bytes of the NewFileBuffer if allocated
+//                                0 is used when querying the size to allocate
+//   * NewFileBuffer            - Buffer that receives the override file bytes without header
+//
+// return:
+//   STATUS_NOT_FOUND           - The SdcaXu driver has no suitable override for the file
+//   STATUS_BUFFER_OVERFLOW     - NewFileBufferLength was 0 but the SdcaXu has an override file.
+//                                The SdcaXu also fills out NewFileLength to the correct size.
+//   STATUS_INVALID_PARAMETER   - Parameters were invalid
+//   STATUS_SUCCESS             - A new file override is returned
+//
+typedef NTSTATUS EVT_SDCAXU_RETRIEVE_SWFT_FILE_OVERRIDE
+(
+    _In_        PVOID   Context,
+    _In_        USHORT  VendorID,
+    _In_        ULONG   FileID,
+    _In_        USHORT  SwftFileVersion,
+    _In_        ULONG   SwftFileLength,
+    _Out_       PUSHORT NewFileVersion,
+    _Out_       PULONG  NewFileLength,
+    _In_        ULONG   NewFileBufferLength,
+    _Out_writes_bytes_opt_(NewFileBufferLength)
+                PVOID   NewFileBuffer
+);
+typedef EVT_SDCAXU_RETRIEVE_SWFT_FILE_OVERRIDE *PFN_SDCAXU_RETRIEVE_SWFT_FILE_OVERRIDE;
+
+//
 // EvtSetJackOverride
 // SdcaXu driver will call this method to indicate that jack type
 // will be overridden by the SdcaXu driver upon detection.
@@ -499,3 +552,29 @@ typedef struct _SDCAXU_INTERFACE_V0101
     PFN_SDCAXU_READ_DEFERRED_AUDIO_CONTROLS         EvtReadDeferredAudioControls;
     PFN_SDCAXU_WRITE_DEFERRED_AUDIO_CONTROLS        EvtWriteDeferredAudioControls;
 } SDCAXU_INTERFACE_V0101, *PSDCAXU_INTERFACE_V0101;
+
+typedef struct _SDCAXU_INTERFACE_V0102
+{
+    //
+    // SDCA To SdcaXu Interface
+    //
+    INTERFACE InterfaceHeader;
+    PFN_SDCAXU_SET_HW_CONFIG                        EvtSetHwConfig;
+    PFN_SDCAXU_SET_ENDPOINT_CONFIG                  EvtSetEndpointConfig;
+    PFN_SDCAXU_REMOVE_ENDPOINT_CONFIG               EvtRemoveEndpointConfig;
+    PFN_SDCAXU_INTERRUPT_HANDLER                    EvtInterruptHandler;
+    PFN_SDCAXU_CHANGE_NOTIFICATION                  EvtChangeNotification;
+    PFN_SDCAXU_RETRIEVE_SWFT_FILE_OVERRIDE          EvtRetrieveSwftFileOverride;
+
+    //
+    // SdcaXu to SDCA Interface
+    //
+    PFN_SDCAXU_SET_XU_ENTITIES                      EvtSetXUEntities;
+    PFN_SDCAXU_REGISTER_FOR_INTERRUPTS              EvtRegisterForInterrupts;
+    PFN_SDCAXU_SET_JACK_OVERRIDE                    EvtSetJackOverride;
+    PFN_SDCAXU_SET_JACK_SELECTED_MODE               EvtSetJackSelectedMode;
+    PFN_SDCAXU_PDE_POWER_REFERENCE_ACQUIRE          EvtPDEPowerReferenceAcquire;
+    PFN_SDCAXU_PDE_POWER_REFERENCE_RELEASE          EvtPDEPowerReferenceRelease;
+    PFN_SDCAXU_READ_DEFERRED_AUDIO_CONTROLS         EvtReadDeferredAudioControls;
+    PFN_SDCAXU_WRITE_DEFERRED_AUDIO_CONTROLS        EvtWriteDeferredAudioControls;
+} SDCAXU_INTERFACE_V0102, *PSDCAXU_INTERFACE_V0102;
