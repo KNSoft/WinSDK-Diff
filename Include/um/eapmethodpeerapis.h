@@ -132,7 +132,7 @@ extern "C"
             _Out_ BOOL* pfInvokeUI,
             _Out_ DWORD* pdwSizeOfUserDataOut,
             _Outptr_result_buffer_(*pdwSizeOfUserDataOut) BYTE** ppUserDataOut,
-            _Outptr_ WCHAR** ppwszIdentity,
+            _Outptr_ LPWSTR* ppwszIdentity,
             _Outptr_ EAP_ERROR** ppEapError);
 
         DWORD(APIENTRY* EapPeerBeginSession)(

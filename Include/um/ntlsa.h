@@ -1203,6 +1203,12 @@ typedef NTSTATUS
     _Out_ PLSA_OPERATIONAL_MODE SecurityMode
     );
 
+typedef NTSTATUS
+(NTAPI *PFN_LSA_LOGON_SMA) (
+    _In_ LUID LogonId,
+    _Out_ PHANDLE Token
+    );
+
 typedef struct _LSA_AUTH_CALLBACKS {
     PFN_LSA_CALL_AUTH_PKG       LsaCallAuthPkgFn;
     PFN_LSA_DEREGISTER_PROC     LsaDeregisterProcFn;
@@ -1210,6 +1216,7 @@ typedef struct _LSA_AUTH_CALLBACKS {
     PFN_LSA_LOGON_USER          LsaLogonUserFn;
     PFN_LOOKUP_AUTH_PKG         LsaLookupAuthPkgFn;
     PFN_LSA_REGISTER_PROC       LsaRegisterProcFn;
+    PFN_LSA_LOGON_SMA           LsaLogonSystemManagedAdminFn;
 } LSA_AUTH_CALLBACKS, *PLSA_AUTH_CALLBACKS;
 
 typedef CONST LSA_AUTH_CALLBACKS *PCLSA_AUTH_CALLBACKS;

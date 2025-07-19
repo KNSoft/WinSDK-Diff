@@ -163,13 +163,8 @@ extern "C" {
 // Information about an RP Entity
 //-------------------------------------------------------------------------------------------
 
-#define WEBAUTHN_RP_ENTITY_INFORMATION_CURRENT_VERSION          1
-
-#ifdef __midl
-typedef [string] wchar_t* PWSTR;
-typedef [string] wchar_t* const PCWSTR;
-typedef unsigned char* PBYTE;
-#endif
+#define WEBAUTHN_RP_ENTITY_INFORMATION_VERSION_1                1
+#define WEBAUTHN_RP_ENTITY_INFORMATION_CURRENT_VERSION          WEBAUTHN_RP_ENTITY_INFORMATION_VERSION_1
 
 typedef struct _WEBAUTHN_RP_ENTITY_INFORMATION {
     // Version of this structure, to allow for modifications in the future.
@@ -193,7 +188,8 @@ typedef const WEBAUTHN_RP_ENTITY_INFORMATION *PCWEBAUTHN_RP_ENTITY_INFORMATION;
 //-------------------------------------------------------------------------------------------
 #define WEBAUTHN_MAX_USER_ID_LENGTH                             64
 
-#define WEBAUTHN_USER_ENTITY_INFORMATION_CURRENT_VERSION        1
+#define WEBAUTHN_USER_ENTITY_INFORMATION_VERSION_1              1
+#define WEBAUTHN_USER_ENTITY_INFORMATION_CURRENT_VERSION        WEBAUTHN_USER_ENTITY_INFORMATION_VERSION_1
 
 typedef struct _WEBAUTHN_USER_ENTITY_INFORMATION {
     // Version of this structure, to allow for modifications in the future.
@@ -203,11 +199,7 @@ typedef struct _WEBAUTHN_USER_ENTITY_INFORMATION {
     // Identifier for the User. This field is required.
     DWORD cbId;
 
-    #ifdef __midl
-    [size_is(cbId)]
-    #else
     _Field_size_bytes_(cbId)
-    #endif
     PBYTE pbId;
 
     // Contains a detailed name for this account, such as "john.p.smith@example.com".
@@ -221,8 +213,6 @@ typedef struct _WEBAUTHN_USER_ENTITY_INFORMATION {
     PCWSTR pwszDisplayName;
 } WEBAUTHN_USER_ENTITY_INFORMATION, *PWEBAUTHN_USER_ENTITY_INFORMATION;
 typedef const WEBAUTHN_USER_ENTITY_INFORMATION *PCWEBAUTHN_USER_ENTITY_INFORMATION;
-
-#ifndef __midl
 
 //+------------------------------------------------------------------------------------------
 // Information about client data.
@@ -250,8 +240,6 @@ typedef struct _WEBAUTHN_CLIENT_DATA {
 } WEBAUTHN_CLIENT_DATA, *PWEBAUTHN_CLIENT_DATA;
 typedef const WEBAUTHN_CLIENT_DATA *PCWEBAUTHN_CLIENT_DATA;
 
-#endif //__midl
-
 //+------------------------------------------------------------------------------------------
 // Information about credential parameters.
 //-------------------------------------------------------------------------------------------
@@ -277,11 +265,7 @@ typedef struct _WEBAUTHN_COSE_CREDENTIAL_PARAMETER {
     DWORD dwVersion;
 
     // Well-known credential type specifying a credential to create.
-    #ifdef __midl
-    PCWSTR pwszCredentialType;
-    #else
     LPCWSTR pwszCredentialType;
-    #endif
 
     // Well-known COSE algorithm specifying the algorithm to use for the credential.
     LONG lAlg;
@@ -290,11 +274,7 @@ typedef const WEBAUTHN_COSE_CREDENTIAL_PARAMETER *PCWEBAUTHN_COSE_CREDENTIAL_PAR
 
 typedef struct _WEBAUTHN_COSE_CREDENTIAL_PARAMETERS {
     DWORD cCredentialParameters;
-    #ifdef __midl
-    [size_is(cCredentialParameters)]
-    #else
     _Field_size_(cCredentialParameters)
-    #endif
     PWEBAUTHN_COSE_CREDENTIAL_PARAMETER pCredentialParameters;
 } WEBAUTHN_COSE_CREDENTIAL_PARAMETERS, *PWEBAUTHN_COSE_CREDENTIAL_PARAMETERS;
 typedef const WEBAUTHN_COSE_CREDENTIAL_PARAMETERS *PCWEBAUTHN_COSE_CREDENTIAL_PARAMETERS;
@@ -310,30 +290,18 @@ typedef struct _WEBAUTHN_CREDENTIAL {
 
     // Unique ID for this particular credential.
     DWORD cbId;
-    #ifdef __midl
-    [size_is(cbId)]
-    #else
     _Field_size_bytes_(cbId)
     PBYTE pbId;
-    #endif
 
     // Well-known credential type specifying what this particular credential is.
-    #ifdef __midl
-    PWSTR pwszCredentialType;
-    #else
     PCWSTR pwszCredentialType;
-    #endif
 
 } WEBAUTHN_CREDENTIAL, *PWEBAUTHN_CREDENTIAL;
 typedef const WEBAUTHN_CREDENTIAL *PCWEBAUTHN_CREDENTIAL;
 
 typedef struct _WEBAUTHN_CREDENTIALS {
     DWORD cCredentials;
-    #ifdef __midl
-    [size_is(cCredentials)]
-    #else
     _Field_size_(cCredentials)
-    #endif
     PWEBAUTHN_CREDENTIAL pCredentials;
 } WEBAUTHN_CREDENTIALS, *PWEBAUTHN_CREDENTIALS;
 typedef const WEBAUTHN_CREDENTIALS *PCWEBAUTHN_CREDENTIALS;
@@ -358,19 +326,11 @@ typedef struct _WEBAUTHN_CREDENTIAL_EX {
 
     // Size of pbID.
     DWORD cbId;
-    #ifdef __midl
-    [size_is(cbId)]
-    #else
     _Field_size_bytes_(cbId)
-    #endif
     PBYTE pbId;
 
     // Well-known credential type specifying what this particular credential is.
-    #ifdef __midl
-    PCWSTR pwszCredentialType;
-    #else
     LPCWSTR pwszCredentialType;
-    #endif
 
     // Transports. 0 implies no transport restrictions.
     DWORD dwTransports;
@@ -383,16 +343,10 @@ typedef const WEBAUTHN_CREDENTIAL_EX *PCWEBAUTHN_CREDENTIAL_EX;
 
 typedef struct _WEBAUTHN_CREDENTIAL_LIST {
     DWORD cCredentials;
-    #ifdef __midl
-    [size_is(cCredentials)]
-    #else
     _Field_size_(cCredentials)
-    #endif
     PWEBAUTHN_CREDENTIAL_EX *ppCredentials;
 } WEBAUTHN_CREDENTIAL_LIST, *PWEBAUTHN_CREDENTIAL_LIST;
 typedef const WEBAUTHN_CREDENTIAL_LIST *PCWEBAUTHN_CREDENTIAL_LIST;
-
-#ifndef __midl
 
 //+------------------------------------------------------------------------------------------
 // Information about linked devices
@@ -437,7 +391,6 @@ typedef struct _CTAPCBOR_HYBRID_STORAGE_LINKED_DATA
 } CTAPCBOR_HYBRID_STORAGE_LINKED_DATA, *PCTAPCBOR_HYBRID_STORAGE_LINKED_DATA;
 typedef const CTAPCBOR_HYBRID_STORAGE_LINKED_DATA *PCCTAPCBOR_HYBRID_STORAGE_LINKED_DATA;
 
-#endif //__midl
 //+------------------------------------------------------------------------------------------
 // Credential Information for WebAuthNGetPlatformCredentialList API
 //-------------------------------------------------------------------------------------------
@@ -454,23 +407,13 @@ typedef struct _WEBAUTHN_CREDENTIAL_DETAILS {
     // Size of pbCredentialID.
     DWORD cbCredentialID;
 
-    #ifdef __midl
-    [size_is(cbCredentialID)]
-    #else
     _Field_size_bytes_(cbCredentialID)
-    #endif
     PBYTE pbCredentialID;
 
     // RP Info
-    #ifdef __midl
-    [unique]
-    #endif
     PWEBAUTHN_RP_ENTITY_INFORMATION     pRpInformation;
 
     // User Info
-    #ifdef __midl
-    [unique]
-    #endif
     PWEBAUTHN_USER_ENTITY_INFORMATION   pUserInformation;
 
     // Removable or not.
@@ -491,11 +434,7 @@ typedef struct _WEBAUTHN_CREDENTIAL_DETAILS {
     // The logo is expected to be in the svg format
     DWORD cbAuthenticatorLogo;
 
-    #ifdef __midl
-    [size_is(cbAuthenticatorLogo)]
-    #else
     _Field_size_bytes_(cbAuthenticatorLogo)
-    #endif
     PBYTE pbAuthenticatorLogo;
 
     // ThirdPartyPayment Credential or not.
@@ -506,11 +445,7 @@ typedef const WEBAUTHN_CREDENTIAL_DETAILS *PCWEBAUTHN_CREDENTIAL_DETAILS;
 
 typedef struct _WEBAUTHN_CREDENTIAL_DETAILS_LIST {
     DWORD cCredentialDetails;
-    #ifdef __midl
-    [size_is(cCredentialDetails)]
-    #else
     _Field_size_(cCredentialDetails)
-    #endif
     PWEBAUTHN_CREDENTIAL_DETAILS *ppCredentialDetails;
 } WEBAUTHN_CREDENTIAL_DETAILS_LIST, *PWEBAUTHN_CREDENTIAL_DETAILS_LIST;
 typedef const WEBAUTHN_CREDENTIAL_DETAILS_LIST *PCWEBAUTHN_CREDENTIAL_DETAILS_LIST;
@@ -546,25 +481,15 @@ typedef const WEBAUTHN_GET_CREDENTIALS_OPTIONS *PCWEBAUTHN_GET_CREDENTIALS_OPTIO
 typedef struct _WEBAUTHN_HMAC_SECRET_SALT {
     // Size of pbFirst.
     DWORD cbFirst;
-    #ifdef __midl
-    [size_is(cbFirst)]
-    #else
     _Field_size_bytes_(cbFirst)
-    #endif
     PBYTE pbFirst;                                  // Required
 
     // Size of pbSecond.
     DWORD cbSecond;
-    #ifdef __midl
-    [size_is(cbSecond)]
-    #else
     _Field_size_bytes_(cbSecond)
-    #endif
     PBYTE pbSecond;
 } WEBAUTHN_HMAC_SECRET_SALT, *PWEBAUTHN_HMAC_SECRET_SALT;
 typedef const WEBAUTHN_HMAC_SECRET_SALT *PCWEBAUTHN_HMAC_SECRET_SALT;
-
-#ifndef __midl
 
 typedef struct _WEBAUTHN_CRED_WITH_HMAC_SECRET_SALT {
     // Size of pbCredID.
@@ -676,40 +601,23 @@ typedef const WEBAUTHN_CRED_BLOB_EXTENSION *PCWEBAUTHN_CRED_BLOB_EXTENSION;
 // GetAssertion Input Type:     Not Supported
 // GetAssertion Output Type:    Not Supported
 
-#endif //__midl
-
 //+------------------------------------------------------------------------------------------
 // Information about Extensions.
 //-------------------------------------------------------------------------------------------
 typedef struct _WEBAUTHN_EXTENSION {
-    #ifdef __midl
-    PWSTR pwszExtensionIdentifier;
-    #else
     LPCWSTR pwszExtensionIdentifier;
-    #endif
 
     DWORD cbExtension;
-    #ifdef __midl
-    [size_is(cbExtension)]
-    PBYTE pvExtension;
-    #else
     PVOID pvExtension;
-    #endif
 } WEBAUTHN_EXTENSION, *PWEBAUTHN_EXTENSION;
 typedef const WEBAUTHN_EXTENSION *PCWEBAUTHN_EXTENSION;
 
 typedef struct _WEBAUTHN_EXTENSIONS {
     DWORD cExtensions;
-    #ifdef __midl
-    [size_is(cExtensions)]
-    #else
     _Field_size_(cExtensions)
-    #endif
     PWEBAUTHN_EXTENSION pExtensions;
 } WEBAUTHN_EXTENSIONS, *PWEBAUTHN_EXTENSIONS;
 typedef const WEBAUTHN_EXTENSIONS *PCWEBAUTHN_EXTENSIONS;
-
-#ifndef __midl
 
 //+------------------------------------------------------------------------------------------
 // Options.
@@ -851,13 +759,8 @@ typedef struct _WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS {
     // PublicKeyCredentialHints (https://w3c.github.io/webauthn/#enum-hints)
     DWORD cCredentialHints;
 
-    #ifdef __midl
-    [size_is(cCredentialHints)]
-    PCWSTR *ppwszCredentialHints;
-    #else
     _Field_size_(cCredentialHints)
     LPCWSTR *ppwszCredentialHints;
-    #endif
 
     // Enable ThirdPartyPayment
     BOOL bThirdPartyPayment;
@@ -978,13 +881,8 @@ typedef struct _WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS {
     // PublicKeyCredentialHints (https://w3c.github.io/webauthn/#enum-hints)
     DWORD cCredentialHints;
 
-    #ifdef __midl
-    [size_is(cCredentialHints)]
-    PCWSTR *ppwszCredentialHints;
-    #else
     _Field_size_(cCredentialHints)
     LPCWSTR *ppwszCredentialHints;
-    #endif
 
 } WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS,  *PWEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS;
 typedef const WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS  *PCWEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS;
@@ -1053,8 +951,6 @@ typedef struct _WEBAUTHN_COMMON_ATTESTATION {
 } WEBAUTHN_COMMON_ATTESTATION, *PWEBAUTHN_COMMON_ATTESTATION;
 typedef const WEBAUTHN_COMMON_ATTESTATION *PCWEBAUTHN_COMMON_ATTESTATION;
 
-#endif //__midl
-
 #define WEBAUTHN_ATTESTATION_TYPE_PACKED                                L"packed"
 #define WEBAUTHN_ATTESTATION_TYPE_U2F                                   L"fido-u2f"
 #define WEBAUTHN_ATTESTATION_TYPE_TPM                                   L"tpm"
@@ -1074,31 +970,19 @@ typedef struct _WEBAUTHN_CREDENTIAL_ATTESTATION {
     DWORD dwVersion;
 
     // Attestation format type
-    #ifdef __midl
-    PWSTR pwszFormatType;
-    #else
     PCWSTR pwszFormatType;
-    #endif
 
     // Size of cbAuthenticatorData.
     DWORD cbAuthenticatorData;
     // Authenticator data that was created for this credential.
-    #ifdef __midl
-    [size_is(cbAuthenticatorData)]
-    #else
     _Field_size_bytes_(cbAuthenticatorData)
-    #endif
     PBYTE pbAuthenticatorData;
 
     // Size of CBOR encoded attestation information
     //0 => encoded as CBOR null value.
     DWORD cbAttestation;
     //Encoded CBOR attestation information
-    #ifdef __midl
-    [size_is(cbAttestation)]
-    #else
     _Field_size_bytes_(cbAttestation)
-    #endif
     PBYTE pbAttestation;
 
     DWORD dwAttestationDecodeType;
@@ -1107,29 +991,17 @@ typedef struct _WEBAUTHN_CREDENTIAL_ATTESTATION {
     //      NULL - not able to decode the CBOR attestation information
     //  WEBAUTHN_ATTESTATION_DECODE_COMMON
     //      PWEBAUTHN_COMMON_ATTESTATION;
-    #ifdef __midl
-    PBYTE pvAttestationDecode;
-    #else
     PVOID pvAttestationDecode;
-    #endif
 
     // The CBOR encoded Attestation Object to be returned to the RP.
     DWORD cbAttestationObject;
-    #ifdef __midl
-    [size_is(cbAttestationObject)]
-    #else
     _Field_size_bytes_(cbAttestationObject)
-    #endif
     PBYTE pbAttestationObject;
 
     // The CredentialId bytes extracted from the Authenticator Data.
     // Used by Edge to return to the RP.
     DWORD cbCredentialId;
-    #ifdef __midl
-    [size_is(cbCredentialId)]
-    #else
     _Field_size_bytes_(cbCredentialId)
-    #endif
     PBYTE pbCredentialId;
 
     //
@@ -1165,11 +1037,7 @@ typedef struct _WEBAUTHN_CREDENTIAL_ATTESTATION {
     //
 
     DWORD cbUnsignedExtensionOutputs;
-    #ifdef __midl
-    [size_is(cbUnsignedExtensionOutputs)]
-    #else
     _Field_size_bytes_(cbUnsignedExtensionOutputs)
-    #endif
     PBYTE pbUnsignedExtensionOutputs;
 
     //
@@ -1212,20 +1080,12 @@ typedef struct _WEBAUTHN_ASSERTION {
 
     // Authenticator data that was created for this assertion.
     DWORD cbAuthenticatorData;
-    #ifdef __midl
-    [size_is(cbAuthenticatorData)]
-    #else
     _Field_size_bytes_(cbAuthenticatorData)
-    #endif
     PBYTE pbAuthenticatorData;
 
     // Signature that was generated for this assertion.
     DWORD cbSignature;
-    #ifdef __midl
-    [size_is(cbSignature)]
-    #else
     _Field_size_bytes_(cbSignature)
-    #endif
     PBYTE pbSignature;
 
     // Credential that was used for this assertion.
@@ -1233,11 +1093,7 @@ typedef struct _WEBAUTHN_ASSERTION {
 
     // UserId
     DWORD cbUserId;
-    #ifdef __midl
-    [size_is(cbUserId)]
-    #else
     _Field_size_bytes_(cbUserId)
-    #endif
     PBYTE pbUserId;
 
     //
@@ -1248,11 +1104,7 @@ typedef struct _WEBAUTHN_ASSERTION {
 
     // Size of pbCredLargeBlob
     DWORD cbCredLargeBlob;
-    #ifdef __midl
-    [size_is(cbCredLargeBlob)]
-    #else
     _Field_size_bytes_(cbCredLargeBlob)
-    #endif
     PBYTE pbCredLargeBlob;
 
     DWORD dwCredLargeBlobStatus;
@@ -1261,9 +1113,6 @@ typedef struct _WEBAUTHN_ASSERTION {
     // Following fields have been added in WEBAUTHN_ASSERTION_VERSION_3
     //
 
-    #ifdef __midl
-    [unique]
-    #endif
     PWEBAUTHN_HMAC_SECRET_SALT pHmacSecret;
 
     //
@@ -1279,17 +1128,11 @@ typedef struct _WEBAUTHN_ASSERTION {
     //
 
     DWORD cbUnsignedExtensionOutputs;
-    #ifdef __midl
-    [size_is(cbUnsignedExtensionOutputs)]
-    #else
     _Field_size_bytes_(cbUnsignedExtensionOutputs)
-    #endif
     PBYTE pbUnsignedExtensionOutputs;
 
 } WEBAUTHN_ASSERTION, *PWEBAUTHN_ASSERTION;
 typedef const WEBAUTHN_ASSERTION *PCWEBAUTHN_ASSERTION;
-
-#ifndef __midl
 
 //+------------------------------------------------------------------------------------------
 // APIs.
@@ -1567,8 +1410,6 @@ WINAPI
 EXPERIMENTAL2_WebAuthNPluginUpdateAuthenticatorDetails(
     _In_ EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS pPluginUpdateAuthenticatorDetails);
 
-#endif //__midl
-
 //
 // Plugin Authenticator API: WebAuthNPluginAuthenticatorAddCredentials: Add Credential Metadata for Browser AutoFill Scenarios
 //
@@ -1579,11 +1420,7 @@ typedef struct _EXPERIMENTAL_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS {
     DWORD cbCredentialId;
 
     // Credential Identifier bytes. This field is required.
-    #ifdef __midl
-    [size_is(cbCredentialId)]
-    #else
     _Field_size_bytes_(cbCredentialId)
-    #endif
     PBYTE pbCredentialId;
 
     // Identifier for the RP. This field is required.
@@ -1597,11 +1434,7 @@ typedef struct _EXPERIMENTAL_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS {
     DWORD cbUserId;
 
     // User Identifier bytes. This field is required.
-    #ifdef __midl
-    [size_is(cbUserId)]
-    #else
     _Field_size_bytes_(cbUserId)
-    #endif
     PBYTE pbUserId;
 
     // Contains a detailed name for this account, such as "john.p.smith@example.com".
@@ -1620,17 +1453,11 @@ typedef struct _EXPERIMENTAL_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST {
     // count of credentials
     DWORD cCredentialDetails;
 
-    #ifdef __midl
-    [size_is(cCredentialDetails)]
-    #else
     _Field_size_(cCredentialDetails)
-    #endif
     EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS *pCredentialDetails;
 
 } EXPERIMENTAL_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST, *EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST;
 typedef const EXPERIMENTAL_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST *EXPERIMENTAL_PCWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST;
-
-#ifndef __midl
 
 HRESULT
 WINAPI
@@ -1992,8 +1819,6 @@ EXPERIMENTAL_WebAuthNEncodeGetAssertionResponse(
     _Out_ DWORD *pcbResp,
     _Outptr_result_buffer_maybenull_(*pcbResp) BYTE **ppbResp
     );
-
-#endif //__midl
 
 
 #ifdef __cplusplus

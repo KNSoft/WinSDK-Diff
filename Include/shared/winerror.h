@@ -3913,13 +3913,13 @@
 #define ERROR_VOLUME_ROLLBACK_DETECTED   521L
 
 //
-// MessageId: ERROR_CLOUD_FILE_ARCHIVED_HYDRATION_DENIED
+// MessageId: ERROR_CLOUD_FILE_HYDRATION_NOT_AVAILABLE
 //
 // MessageText:
 //
-// The hydration of the cloud archive file has been denied.
+// Cloud file cannot be retrieved from your cloud provider. Try again after responding to your cloud provider's request for action.
 //
-#define ERROR_CLOUD_FILE_ARCHIVED_HYDRATION_DENIED 522L
+#define ERROR_CLOUD_FILE_HYDRATION_NOT_AVAILABLE 523L
 
 //
 // **** Available SYSTEM error codes ****
@@ -16959,9 +16959,38 @@
 
 ///////////////////////////////////////////////////
 //                                               //
+//             Camera Error codes                //
+//                                               //
+//                 6350 to 6399                  //
+///////////////////////////////////////////////////
+
+#define E_CAMERA_ERROR_MIN HRESULT_FROM_WIN32(6350)
+#define E_CAMERA_ERROR_MAX HRESULT_FROM_WIN32(6399)
+#define IS_CAMERA_ERROR_CODE(xhr)  ((xhr) >= E_CAMERA_ERROR_MIN && (xhr) <= E_CAMERA_ERROR_MAX)
+//
+// MessageId: ERROR_CAMERA_INVALID_CONFIGURATION
+//
+// MessageText:
+//
+// A camera's configuration contains some invalid settings.
+//
+#define ERROR_CAMERA_INVALID_CONFIGURATION 6350L
+
+//
+// MessageId: ERROR_CAMERA_INSUFFICIENT_BANDWIDTH
+//
+// MessageText:
+//
+// A camera interface doesn't have the desired bandwidth for data transfer.
+//
+#define ERROR_CAMERA_INSUFFICIENT_BANDWIDTH 6351L
+
+
+///////////////////////////////////////////////////
+//                                               //
 //                  Available                    //
 //                                               //
-//                 6350 to 6599                  //
+//                 6400 to 6599                  //
 ///////////////////////////////////////////////////
 
 
@@ -28982,6 +29011,22 @@
 // The interrupt requested to be unmasked is not masked.
 //
 #define ERROR_GPIO_INTERRUPT_ALREADY_UNMASKED 15327L
+
+//////////////////////////////////////////////////
+//                                              //
+//         Start of API Set error codes         //
+//                15380 - 15399                 //
+//                                              //
+//////////////////////////////////////////////////
+
+//
+// MessageId: ERROR_CANNOT_COMPOSE_APISET_EXTENSION
+//
+// MessageText:
+//
+// An API Set schema extension failed to compose.
+//
+#define ERROR_CANNOT_COMPOSE_APISET_EXTENSION 15380L
 
 //////////////////////////////////////////////////
 //                                              //
@@ -51186,6 +51231,33 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_AAD_SERVER_FAIL_BACKOFF    _HRESULT_TYPEDEF_(0x80310112L)
 
 //
+// MessageId: FVE_E_FAILED_TO_UNWRAP_HW_WRAPPED_KEY
+//
+// MessageText:
+//
+// The hardware crypto key manager failed to unwrap a hardware wrapped key.
+//
+#define FVE_E_FAILED_TO_UNWRAP_HW_WRAPPED_KEY _HRESULT_TYPEDEF_(0xC0310113L)
+
+//
+// MessageId: FVE_E_HARDWARE_CRYPTO_ACCELERATOR_NOT_FIPS_COMPLIANT
+//
+// MessageText:
+//
+// FIPS compliance is required, but the hardware crypto accelerator does not report compliance with this standard.
+//
+#define FVE_E_HARDWARE_CRYPTO_ACCELERATOR_NOT_FIPS_COMPLIANT _HRESULT_TYPEDEF_(0xC0310114L)
+
+//
+// MessageId: FVE_E_HARDWARE_CRYPTO_KEY_MANAGER_NOT_FIPS_COMPLIANT
+//
+// MessageText:
+//
+// FIPS compliance is required, but the hardware crypto key manager does not report compliance with this standard.
+//
+#define FVE_E_HARDWARE_CRYPTO_KEY_MANAGER_NOT_FIPS_COMPLIANT _HRESULT_TYPEDEF_(0xC0310115L)
+
+//
 // =======================================================
 // Windows Filtering Platform Error Messages
 // =======================================================
@@ -60543,6 +60615,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // The scan index is invalid.
 //
 #define WINCODEC_ERR_INVALIDJPEGSCANINDEX _HRESULT_TYPEDEF_(0x88982F96L)
+
+//
+// MessageId: WINCODEC_ERR_UNSUPPORTEDTONEMAPPING
+//
+// MessageText:
+//
+// The tone mapping mode is not supported.
+//
+#define WINCODEC_ERR_UNSUPPORTEDTONEMAPPING _HRESULT_TYPEDEF_(0x88982F97L)
 
 
 //

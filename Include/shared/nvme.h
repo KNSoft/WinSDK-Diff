@@ -460,7 +460,7 @@ typedef struct {
 //
 // Command completion status
 //
-typedef union {
+typedef union _NVME_COMMAND_STATUS {
 
     struct {
         USHORT  P           : 1;        // Phase Tag (P)
@@ -523,7 +523,7 @@ typedef enum {
 //
 typedef enum {
 
-    NVME_ASYNC_ERROR_INVALID_SUBMISSION_QUEUE           = 0,
+    NVME_ASYNC_ERROR_WRITE_TO_INVALID_DOORBELL_REGISTER = 0,
     NVME_ASYNC_ERROR_INVALID_DOORBELL_WRITE_VALUE       = 1,
     NVME_ASYNC_ERROR_DIAG_FAILURE                       = 2,
     NVME_ASYNC_ERROR_PERSISTENT_INTERNAL_DEVICE_ERROR   = 3,
@@ -724,7 +724,7 @@ typedef enum {
     NVME_STATUS_ZONE_INVALID_FORMAT                                 = 0x7F,         // Namespace Management
 
     NVME_STATUS_NVM_CONFLICTING_ATTRIBUTES                          = 0x80,         // Dataset Management, Read, Write
-    NVME_STATUS_NVM_INVALID_PROTECTION_INFORMATION                  = 0x81,         // Compare, Read, Write, Write Zeroes
+    NVME_STATUS_NVM_INVALID_PROTECTION_INFORMATION                  = 0x81,         // Compare, Read, Write, Write Zeroes, Verify
     NVME_STATUS_NVM_ATTEMPTED_WRITE_TO_READ_ONLY_RANGE              = 0x82,         // Dataset Management, Write, Write Uncorrectable, Write Zeroes
     NVME_STATUS_NVM_COMMAND_SIZE_LIMIT_EXCEEDED                     = 0x83,         // Dataset Management
 
@@ -5227,6 +5227,37 @@ typedef union {
 } NVME_CDW11_DATASET_MANAGEMENT, *PNVME_CDW11_DATASET_MANAGEMENT;
 
 //
+// Data structure of CDW12 for Verify command
+//
+typedef union {
+
+    struct {
+        ULONG   NLB         : 16;       // Number of Logical Blocks (NLB). Zero based. 
+        ULONG   Reserved    : 10;
+        ULONG   PRINFO      : 4;        // Protection Information Field (PRINFO)
+        ULONG   FUA         : 1;        // Force Unit Access (FUA)
+        ULONG   LR          : 1;        // Limited Retry (LR)
+    } DUMMYSTRUCTNAME;
+
+    ULONG   AsUlong;
+
+} NVME_CDW12_VERIFYCOMMAND, *PNVME_CDW12_VERIFYCOMMAND;
+
+//
+// Data structure of CDW15 for Verify command
+//
+typedef union {
+
+    struct {
+        ULONG   ELBAT       : 16;       // Expected Logical Block Application Tag (ELBAT)
+        ULONG   ELBATM      : 16;       // Expected Logical Block Application Tag Mask (ELBATM)
+    } DUMMYSTRUCTNAME;
+
+    ULONG   AsUlong;
+
+} NVME_CDW15_VERIFY_COMMAND, *PNVME_CDW15_VERIFY_COMMAND;
+
+//
 // Zone Descriptor
 //
 typedef struct {
@@ -5886,6 +5917,18 @@ typedef struct {
             ULONG                       CDW15;
         } VENDORSPECIFIC;
 
+        //
+        // NVM Command: Verify command
+        //
+        struct {
+            ULONG                       LBALOW;
+            ULONG                       LBAHIGH;
+            NVME_CDW12_VERIFYCOMMAND    CDW12;
+            ULONG                       CDW13;
+            ULONG                       EILBRT;
+            NVME_CDW15_VERIFY_COMMAND   CDW15;
+        } VERIFYCOMMAND;
+
     } u;
 
 } NVME_COMMAND, *PNVME_COMMAND;
@@ -6150,8 +6193,8 @@ C_ASSERT(sizeof(NVME_SGL_TRANSPORTDATA_DESC) == 2 * sizeof(ULONGLONG));
 #define NVMEOF_IOQ_MIN_DEPTH               2
 #define NVMEOF_IOQ_MAX_DEPTH               65536
 
-#define NVMEOF_NUM_AEN_DISC_CTRL           1 // Number of AEN commands for Discovery controller
-#define NVMEOF_NUM_AEN_IO_CTRL             1 // Number of AEN commands for IO controller
+#define NVMEOF_PROPERTY_SIZE_4Bytes        0x00
+#define NVMEOF_PROPERTY_SIZE_8Bytes        0x01
 
 //
 // Fabrics Command Types
@@ -6402,9 +6445,6 @@ C_ASSERT(sizeof(NVMEOF_DISCONNECT_RESPONSE) == 16);
 //
 // NVMeoF Property Get Command
 //
-
-#define NVMEOF_PROPERTY_SIZE_4Bytes        0x00
-#define NVMEOF_PROPERTY_SIZE_8Bytes        0x01
 
 typedef struct _NVMEOF_PROPERTY_GET_COMMAND {
 
@@ -6826,6 +6866,299 @@ typedef struct _NVME_DISCOVERY_INFO_MGMT_HEADER {
 } NVME_DISCOVERY_INFO_MGMT_HEADER, *PNVME_DISCOVERY_INFO_MGMT_HEADER;
 
 C_ASSERT(sizeof(NVME_DISCOVERY_INFO_MGMT_HEADER) == 1024);
+
+//
+// NVMeof Authentication and Secure Channel definitions
+//
+
+//
+// Authentication Security Protocols (SECP)
+//
+typedef enum _NVMEOF_AUTH_PROTOCOL {
+
+    NvmeofAuthProtocolDHCHAP = 0xe9
+
+} NVMEOF_AUTH_PROTOCOL;
+
+//
+// Authentication Types (AUTH_TYPE)
+//
+typedef enum _NVMEOF_AUTH_TYPE {
+
+    NvmeofAuthTypeCommonMessages = 0x00,
+    NvmeofAuthTypeDHCHAPMessages = 0x01
+
+} NVMEOF_AUTH_TYPE;
+
+//
+// Authentication IDs (AUTH_ID)
+//
+typedef enum _NVMEOF_AUTH_ID {
+
+    NvmeofAuthIdNegotiate = 0x00,
+    NvmeofAuthIdChallenge = 0x01,
+    NvmeofAuthIdReply     = 0x02,
+    NvmeofAuthIdSuccess1  = 0x03,
+    NvmeofAuthIdSuccess2  = 0x04,
+    NvmeofAuthIdFailure2  = 0xf0,
+    NvmeofAuthIdFailure1  = 0xf1
+
+} NVMEOF_AUTH_ID;
+
+//
+// Secure Channel Protocol Identifiers (SC_C)
+//
+typedef enum _NVMEOF_SECURE_CHANNEL_PROTOCOL {
+
+    NvmeofSecureChannelConcatNone    = 0x00,
+    NvmeofSecureChannelConcatWithTLS = 0x01,
+    NvmeofSecureChannelNewTLSPSK     = 0x02,
+    NvmeofSecureChannelReplaceTLSPSK = 0x02,
+
+} NVMEOF_SECURE_CHANNEL_PROTOCOL;
+
+//
+// Authentication Failure Reason Codes (RCODE)
+//
+typedef enum _NVMEOF_AUTH_FAIL_REASON_CODE {
+
+    NvmeofAuthFailureReasonFailed = 0x01,
+
+} NVMEOF_AUTH_FAIL_REASON_CODE;
+
+//
+// Authentication Failure Reason Explanations (RCODEEX)
+//
+typedef enum _NVMEOF_AUTH_FAIL_REASON_EXPLANATION {
+
+    NvmeofAuthFailed                      = 0x01,
+    NvmeofAuthProtocolNotUsable           = 0x02,
+    NvmeofAuthSecureChannelConcatMismatch = 0x03,
+    NvmeofAuthHashFunctionNotUsable       = 0x04,
+    NvmeofAuthDHGroupNotUsable            = 0x05,
+    NvmeofAuthIncorrectPayload            = 0x06,
+    NvmeofAuthIncorrectProtocolMessage    = 0x07
+
+} NVMEOF_AUTH_FAIL_REASON_EXPLANATION;
+
+//
+// Authentication Negotiate message
+//
+typedef struct _NVMEOF_AUTH_NEGOTIATE {
+
+    UCHAR AUTH_TYPE;  // NVMEOF_AUTH_TYPE: NvmeofAuthTypeCommonMessages
+    UCHAR AUTH_ID;    // NVMEOF_AUTH_ID: NvmeofAuthIdNegotiate
+
+    USHORT Reserved0;
+    USHORT T_ID;      // Transaction identifier
+
+    UCHAR SC_C;       // NVMEOF_SECURE_CHANNEL_PROTOCOL
+    UCHAR NAPD;       // Number of authentication protocol descriptors
+
+    //
+    // Followed by one or more authentication
+    // protocol descriptors
+    //
+
+} NVMEOF_AUTH_NEGOTIATE, *PNVMEOF_AUTH_NEGOTIATE;
+
+//
+// Authentication Failure message
+//
+typedef struct _NVMEOF_AUTH_FAILURE {
+
+    UCHAR AUTH_TYPE;  // NVMEOF_AUTH_TYPE: NvmeofAuthTypeCommonMessages
+    UCHAR AUTH_ID;    // NVMEOF_AUTH_ID: NvmeofAuthIdFailure1, NvmeofAuthIdFailure2
+
+    USHORT Reserved0;
+    USHORT T_ID;      // Transaction identifier
+
+    UCHAR ReasonCode;        // NVMEOF_AUTH_FAIL_REASON_CODE
+    UCHAR ReasonExplanation; // NVMEOF_AUTH_FAIL_REASON_EXPLANATION
+
+} NVMEOF_AUTH_FAILURE, *PNVMEOF_AUTH_FAILURE;
+
+C_ASSERT(sizeof(NVMEOF_AUTH_FAILURE) == 8);
+
+//
+// DH-HMAC-CHAP Protocol definitions
+//
+#define NVMEOF_DHCHAP_PROTOCOL_ID           0x01
+
+#define NVMEOF_DHCHAP_PREFIX_V1             "DHHC-1:"
+
+typedef enum _NVMEOF_AUTH_DHCHAP_HASH_ID {
+
+    NvmeofAuthDHCHAPHashReserved = 0x00,
+    NvmeofAuthDHCHAPHashSha256   = 0x01,
+    NvmeofAuthDHCHAPHashSha384   = 0x02,
+    NvmeofAuthDHCHAPHashSha512   = 0x03,
+    NvmeofAuthDHCHAPHashMax      = 0xFF
+
+} NVMEOF_AUTH_DHCHAP_HASH_ID;
+
+typedef enum _NVMEOF_AUTH_DHCHAP_GROUP_ID {
+
+    NvmeofAuthDHCHAPGroupNull    = 0x00,
+    NvmeofAuthDHCHAPGroup2048    = 0x01,
+    NvmeofAuthDHCHAPGroup3072    = 0x02,
+    NvmeofAuthDHCHAPGroup4096    = 0x03,
+    NvmeofAuthDHCHAPGroup6144    = 0x04,
+    NvmeofAuthDHCHAPGroup8192    = 0x05,
+    NvmeofAuthDHCHAPGroupMax     = 0xFF
+
+} NVMEOF_AUTH_DHCHAP_GROUP_ID;
+
+UCHAR
+FORCEINLINE
+NVMEOF_AUTH_GET_HASH_LENGTH (
+    _In_ UCHAR HashId
+    )
+{
+    UCHAR Length = 0;
+
+    switch(HashId) {
+
+        case NvmeofAuthDHCHAPHashSha256:
+            Length = 32;
+            break;
+
+        case NvmeofAuthDHCHAPHashSha384:
+            Length = 48;
+            break;
+
+        case NvmeofAuthDHCHAPHashSha512:
+            Length = 64;
+            break;
+    }
+
+    return Length;
+}
+
+typedef struct _NVMEOF_AUTH_DHCHAP_DESCRIPTOR {
+
+    UCHAR AuthId; // Authentication protocol identifier (NVMEOF_DHCHAP_PROTOCOL_ID)
+    UCHAR Reserved0;
+
+    UCHAR HALEN; // HashIDList Length: Number of hash function identifiers (1 to 30)
+    UCHAR DHLEN; // DHgIDList Length: Number of Diffie-Hellman group identifiers (1 to 30)
+
+    UCHAR IdList[60]; // List of HashIDList (NVMEOF_AUTH_DHCHAP_HASH_ID)
+                      // and DHgIDList (NVMEOF_AUTH_DHCHAP_GROUP_ID)
+
+} NVMEOF_AUTH_DHCHAP_DESCRIPTOR, *PNVMEOF_AUTH_DHCHAP_DESCRIPTOR;
+
+C_ASSERT(sizeof(NVMEOF_AUTH_DHCHAP_DESCRIPTOR) == 64);
+
+typedef struct _NVMEOF_AUTH_DHCHAP_CHALLENGE {
+
+    UCHAR AUTH_TYPE;  // NVMEOF_AUTH_TYPE: NvmeofAuthTypeDHCHAPMessages
+    UCHAR AUTH_ID;    // NVMEOF_AUTH_ID: NvmeofAuthIdChallenge
+
+    USHORT Reserved0;
+    USHORT T_ID;      // Transaction identifier
+
+    UCHAR HL; // Hash Length, Length in bytes of the selected hash function
+    UCHAR Reserved1;
+
+    UCHAR HashID; // Identifier of selected hash function
+    UCHAR DHgID; // Identifier of selected Diffie-Hellman group
+
+    USHORT DHVLEN; // DH Value Length, Length in bytes of DH value.
+                   // If no DH value is included in the message,
+                   // then this field is cleared to 0h.
+                   // This should be a multiple of 4.
+
+    ULONG SEQNUM; // Sequence Number
+
+    //
+    // Followed by Challenge Value (CVAL) bytes
+    // of HL length
+    //
+
+    //
+    // Followed by DH Value (DHV) bytes
+    // of DHVLEN length
+    //
+
+} NVMEOF_AUTH_DHCHAP_CHALLENGE, *PNVMEOF_AUTH_DHCHAP_CHALLENGE;
+
+#define NVMEOF_DHCHAP_REPLY_CVAL_NOTVALID         0x00
+#define NVMEOF_DHCHAP_REPLY_CVAL_VALID            0x01
+
+typedef struct _NVMEOF_AUTH_DHCHAP_REPLY {
+
+    UCHAR AUTH_TYPE;  // NVMEOF_AUTH_TYPE: NvmeofAuthTypeDHCHAPMessages
+    UCHAR AUTH_ID;    // NVMEOF_AUTH_ID: NvmeofAuthIdReply
+
+    USHORT Reserved0;
+    USHORT T_ID;      // Transaction identifier
+
+    UCHAR HL; // Hash Length, Length in bytes of the selected hash function
+    UCHAR Reserved1;
+
+    UCHAR CVALID; // Challenge Valid
+    UCHAR Reserved2;
+
+    USHORT DHVLEN; // DH Value Length, Length in bytes of DH value.
+                   // If no DH value is included in the message,
+                   // then this field is cleared to 0h.
+                   // This should be a multiple of 4.
+
+    ULONG SEQNUM; // Sequence Number
+
+    //
+    // Followed by Response Value (RVAL) bytes
+    // of HL length
+    //
+
+    //
+    // Followed by Challenge Value (CVAL) bytes
+    // of HL length
+    //
+
+    //
+    // Followed by DH Value (DHV) bytes
+    // of DHVLEN length
+    //
+
+} NVMEOF_AUTH_DHCHAP_REPLY, *PNVMEOF_AUTH_DHCHAP_REPLY;
+
+#define NVMEOF_DHCHAP_SUCCESS1_RVAL_NOTVALID      0x00
+#define NVMEOF_DHCHAP_SUCCESS1_RVAL_VALID         0x01
+
+typedef struct _NVMEOF_AUTH_DHCHAP_SUCCESS1 {
+
+    UCHAR AUTH_TYPE;  // NVMEOF_AUTH_TYPE: NvmeofAuthTypeDHCHAPMessages
+    UCHAR AUTH_ID;    // NVMEOF_AUTH_ID: NvmeofAuthIdSuccess1
+
+    USHORT Reserved0;
+    USHORT T_ID;      // Transaction identifier
+
+    UCHAR HL; // Hash Length, Length in bytes of the selected hash function
+    UCHAR Reserved1;
+
+    UCHAR RVALID; // Response Valid
+    UCHAR Reserved2[7];
+
+    //
+    // Followed by Response Value (RVAL) bytes
+    // of HL length
+    //
+
+} NVMEOF_AUTH_DHCHAP_SUCCESS1, *PNVMEOF_AUTH_DHCHAP_SUCCESS1;
+
+typedef struct _NVMEOF_AUTH_DHCHAP_SUCCESS2 {
+
+    UCHAR AUTH_TYPE;  // NVMEOF_AUTH_TYPE: NvmeofAuthTypeDHCHAPMessages
+    UCHAR AUTH_ID;    // NVMEOF_AUTH_ID: NvmeofAuthIdSuccess2
+
+    USHORT Reserved0;
+    USHORT T_ID;      // Transaction identifier
+
+    UCHAR Reserved1[10];
+
+} NVMEOF_AUTH_DHCHAP_SUCCESS2, *PNVMEOF_AUTH_DHCHAP_SUCCESS2;
 
 #if _MSC_VER >= 1200
 #pragma warning(pop)

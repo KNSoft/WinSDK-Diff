@@ -116,6 +116,7 @@ Notes:
 #define FACILITY_FILTER_MANAGER          0x1C
 #define FACILITY_MONITOR                 0x1D
 #define FACILITY_GRAPHICS_KERNEL         0x1E
+#define FACILITY_CAMERA                  0x1F
 #define FACILITY_DRIVER_FRAMEWORK        0x20
 #define FACILITY_FVE_ERROR_CODE          0x21
 #define FACILITY_FWP_ERROR_CODE          0x22
@@ -12336,6 +12337,20 @@ Notes:
 
 /*++
 
+ MessageId's 0xa161 - 0xa180 (inclusive) are for API Set support.
+
+--*/
+//
+// MessageId: STATUS_APISET_COMPOSE_FAILURE
+//
+// MessageText:
+//
+// An API Set schema extension failed to compose.
+//
+#define STATUS_APISET_COMPOSE_FAILURE    ((NTSTATUS)0xC000A161L)
+
+/*++
+
  MessageId's 0xa200 - 0xa280 (inclusive) are reserved for app container specific messages.
 
 --*/
@@ -12883,13 +12898,13 @@ Notes:
 #define STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT ((NTSTATUS)0xC000CF21L)
 
 //
-// MessageId: STATUS_CLOUD_FILE_ARCHIVED_HYDRATION_DENIED
+// MessageId: STATUS_CLOUD_FILE_HYDRATION_NOT_AVAILABLE
 //
 // MessageText:
 //
-// The hydration of the cloud archive file has been denied.
+// Cloud file cannot be retrieved from your cloud provider. Try again after responding to your cloud provider's request for action.
 //
-#define STATUS_CLOUD_FILE_ARCHIVED_HYDRATION_DENIED ((NTSTATUS)0xC000CF22L)
+#define STATUS_CLOUD_FILE_HYDRATION_NOT_AVAILABLE ((NTSTATUS)0xC000CF22L)
 
 /*++
 
@@ -18979,6 +18994,35 @@ Notes:
 
 
 //
+// Camera Error messages (ks.sys, usbvideo.sys)
+// The first 50 NTSTATUS are reserved for Camera drivers in Kernel mode, 
+// which has 1:1 mapping for Error code in WinError.mc file.
+//
+// The remaining NTSTATUS in camera category may not have mapping with System Error code.
+//
+
+#define IS_CAMERA_NTSTATUS(x) ( ((x) & 0x0FFF0000) == (FACILITY_CAMERA << 16) )
+
+//
+// MessageId: STATUS_CAMERA_INVALID_CONFIGURATION
+//
+// MessageText:
+//
+// A camera's configuration contains some invalid settings.
+//
+#define STATUS_CAMERA_INVALID_CONFIGURATION ((NTSTATUS)0xC01F0000L)
+
+//
+// MessageId: STATUS_CAMERA_INSUFFICIENT_BANDWIDTH
+//
+// MessageText:
+//
+// A camera interface doesn't have the desired bandwidth for data transfer.
+//
+#define STATUS_CAMERA_INSUFFICIENT_BANDWIDTH ((NTSTATUS)0xC01F0001L)
+
+
+//
 // Full Volume Encryption Error codes (fvevol.sys and fvevollib.lib)
 //
 
@@ -19683,6 +19727,33 @@ Notes:
 // BitLocker is prevented from using hardware accelerated encryption.
 //
 #define STATUS_FVE_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED ((NTSTATUS)0xC0210057L)
+
+//
+// MessageId: STATUS_FVE_FAILED_TO_UNWRAP_HW_WRAPPED_KEY
+//
+// MessageText:
+//
+// The hardware crypto key manager failed to unwrap a hardware wrapped key.
+//
+#define STATUS_FVE_FAILED_TO_UNWRAP_HW_WRAPPED_KEY ((NTSTATUS)0xC021005EL)
+
+//
+// MessageId: STATUS_FVE_HARDWARE_CRYPTO_ACCELERATOR_NOT_FIPS_COMPLIANT
+//
+// MessageText:
+//
+// FIPS compliance is required, but the hardware crypto accelerator does not report compliance with this standard.
+//
+#define STATUS_FVE_HARDWARE_CRYPTO_ACCELERATOR_NOT_FIPS_COMPLIANT ((NTSTATUS)0xC021005FL)
+
+//
+// MessageId: STATUS_FVE_HARDWARE_CRYPTO_KEY_MANAGER_NOT_FIPS_COMPLIANT
+//
+// MessageText:
+//
+// FIPS compliance is required, but the hardware crypto key manager does not report compliance with this standard.
+//
+#define STATUS_FVE_HARDWARE_CRYPTO_KEY_MANAGER_NOT_FIPS_COMPLIANT ((NTSTATUS)0xC0210060L)
 
 
 //

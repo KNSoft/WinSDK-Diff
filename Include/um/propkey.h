@@ -8276,8 +8276,10 @@ DEFINE_PROPERTYKEY(PKEY_Supplemental_Tag, 0x0C73B141, 0x39D6, 0x4653, 0xA6, 0x83
 //  Name:     System.ActivityInfo -- PKEY_ActivityInfo
 //  Type:     String -- VT_LPWSTR  (For variants: VT_BSTR)
 //  FormatID: {30C8EEF4-A832-41E2-AB32-E3C3CA28FD29}, 17
-//
-//  What is the activity that made the graph item show. For example, recently used or shared
+//  
+//  A user-friendly description of activity that took place on this file or folder.
+//  This can be used to provide context as to why an item has been recommended to the user, or to describe a recent action taken on the item.
+//  For example, "You edited this" for a file the user recently edited, or "John Doe shared this with you" for a file that was recently shared.
 DEFINE_PROPERTYKEY(PKEY_ActivityInfo, 0x30C8EEF4, 0xA832, 0x41E2, 0xAB, 0x32, 0xE3, 0xC3, 0xCA, 0x28, 0xFD, 0x29, 17);
 #define INIT_PKEY_ActivityInfo { { 0x30C8EEF4, 0xA832, 0x41E2, 0xAB, 0x32, 0xE3, 0xC3, 0xCA, 0x28, 0xFD, 0x29 }, 17 }
 

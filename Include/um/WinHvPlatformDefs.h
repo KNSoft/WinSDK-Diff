@@ -1675,7 +1675,11 @@ typedef union WHV_X64_PROCESSOR_FEATURES1
         UINT64 Reserved14 : 1;
         UINT64 SM3Support : 1;
         UINT64 SM4Support : 1;
-        UINT64 Reserved15 : 12;
+        UINT64 ReservedBank1_52_57:6;
+        UINT64 Reserved17 : 1;
+        UINT64 Reserved18 : 1;
+        UINT64 Reserved19 : 1;
+        UINT64 Reserved20 : 3;
     };
 
     UINT64 AsUINT64;

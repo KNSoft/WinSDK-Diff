@@ -1121,6 +1121,7 @@ typedef enum D3D12_FORMAT_SUPPORT2
     D3D12_FORMAT_SUPPORT2_TILED                                             = 0x00000200,
     D3D12_FORMAT_SUPPORT2_MULTIPLANE_OVERLAY                                = 0x00004000,
     D3D12_FORMAT_SUPPORT2_SAMPLER_FEEDBACK                                  = 0x00008000,
+    D3D12_FORMAT_SUPPORT2_DISPLAYABLE                                       = 0x00010000,
 } D3D12_FORMAT_SUPPORT2;
 cpp_quote( "DEFINE_ENUM_FLAG_OPERATORS( D3D12_FORMAT_SUPPORT2 );" )
 

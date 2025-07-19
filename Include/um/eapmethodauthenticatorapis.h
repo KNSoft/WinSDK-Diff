@@ -72,8 +72,7 @@ extern "C"
     // List of functions corresponding to the particular EAP method
     typedef struct _EAP_AUTHENTICATOR_METHOD_ROUTINES
     {
-        // FIXME: Why is the size needed?
-        DWORD dwSizeInBytes;
+        DWORD dwSizeInBytes; // unused
         EAP_METHOD_TYPE* pEapType;
 
         DWORD(APIENTRY* EapMethodAuthenticatorInitialize)(_In_ EAP_METHOD_TYPE* pEapType, _Outptr_ EAP_ERROR** ppEapError);
