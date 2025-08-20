@@ -16,6 +16,11 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
         PrintSupportCommunicationErrorDetectedEventArgs(std::nullptr_t) noexcept {}
         PrintSupportCommunicationErrorDetectedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES PrintSupportEnterpriseManagementUIEventArgs : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs
+    {
+        PrintSupportEnterpriseManagementUIEventArgs(std::nullptr_t) noexcept {}
+        PrintSupportEnterpriseManagementUIEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES PrintSupportExtensionSession : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession,
         impl::require<PrintSupportExtensionSession, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3>
     {

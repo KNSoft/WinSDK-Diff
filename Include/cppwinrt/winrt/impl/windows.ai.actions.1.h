@@ -114,6 +114,13 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         IActionRuntime3(std::nullptr_t = nullptr) noexcept {}
         IActionRuntime3(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IActionRuntime4 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionRuntime4>
+    {
+        IActionRuntime4(std::nullptr_t = nullptr) noexcept {}
+        IActionRuntime4(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IActionRuntimeFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionRuntimeFactory>

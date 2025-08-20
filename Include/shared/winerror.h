@@ -212,6 +212,7 @@
 #define FACILITY_USERMODE_UNIONFS        2341
 #define FACILITY_USERMODE_PRM            2342
 #define FACILITY_USERMODE_WIN_ACCEL      2343
+#define FACILITY_PPF                     2344
 #define FACILITY_PIX                     2748
 
 
@@ -29824,6 +29825,15 @@
 //
 #define ERROR_PACKAGE_MANIFEST_NOT_FOUND 15678L
 
+//
+// MessageId: ERROR_DEPLOYMENT_BLOCKED_BY_REMOVEDEFAULTPACKAGES_POLICY
+//
+// MessageText:
+//
+// The deployment operation on this package is blocked because the package family name is in RemoveDefaultMicrosoftStorePackages policy override.
+//
+#define ERROR_DEPLOYMENT_BLOCKED_BY_REMOVEDEFAULTPACKAGES_POLICY 15679L
+
 //////////////////////////
 //                      //
 // AppModel Error Codes //
@@ -51186,6 +51196,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_PCR_BOOT_LOCK_BOUNDARY     _HRESULT_TYPEDEF_(0xC0310102L)
 
 //
+// MessageId: FVE_E_FW_UPDATE_TPM_BINDINGS_NOT_REFRESHED
+//
+// MessageText:
+//
+// The firmware update was not applied because BitLocker TPM bindings do not include the latest measurements. Restart your computer to retry.
+//
+#define FVE_E_FW_UPDATE_TPM_BINDINGS_NOT_REFRESHED _HRESULT_TYPEDEF_(0xC0310103L)
+
+//
 // MessageId: FVE_E_EXCEED_MAX_LIMIT_RP_IN_MEID
 //
 // MessageText:
@@ -51195,6 +51214,42 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_EXCEED_MAX_LIMIT_RP_IN_MEID _HRESULT_TYPEDEF_(0xC0310104L)
 
 //
+// MessageId: FVE_E_INVALID_TPM_BINDING_CONFIGURATION
+//
+// MessageText:
+//
+// The BitLocker TPM binding configuration is invalid.
+//
+#define FVE_E_INVALID_TPM_BINDING_CONFIGURATION _HRESULT_TYPEDEF_(0xC0310105L)
+
+//
+// MessageId: FVE_E_TOO_MANY_TPM_BINDINGS
+//
+// MessageText:
+//
+// The BitLocker TPM protector cannot fit all the necessary TPM bindings.
+//
+#define FVE_E_TOO_MANY_TPM_BINDINGS      _HRESULT_TYPEDEF_(0xC0310106L)
+
+//
+// MessageId: FVE_E_TPM_BINDING_ASSOCIATION_FAILURE
+//
+// MessageText:
+//
+// A BitLocker TPM protector binding is badly formatted.
+//
+#define FVE_E_TPM_BINDING_ASSOCIATION_FAILURE _HRESULT_TYPEDEF_(0xC0310107L)
+
+//
+// MessageId: FVE_E_ORPHANED_PCR_DIGEST_DATUM
+//
+// MessageText:
+//
+// The dataset contains binding information without an associated TPM binding. Try re-enabling BitLocker.
+//
+#define FVE_E_ORPHANED_PCR_DIGEST_DATUM  _HRESULT_TYPEDEF_(0xC0310108L)
+
+//
 // MessageId: FVE_E_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED
 //
 // MessageText:
@@ -51202,6 +51257,51 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // BitLocker is prevented from using hardware accelerated encryption.
 //
 #define FVE_E_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED _HRESULT_TYPEDEF_(0xC0310109L)
+
+//
+// MessageId: FVE_E_NO_MATCHING_TPM_BINDINGS
+//
+// MessageText:
+//
+// BitLocker failed to find a TPM binding that can be used to unlock the drive.
+//
+#define FVE_E_NO_MATCHING_TPM_BINDINGS   _HRESULT_TYPEDEF_(0xC031010AL)
+
+//
+// MessageId: FVE_E_TPMPV2_USED_FAILURE
+//
+// MessageText:
+//
+// BitLocker failed to unlock the drive using a V2 TPM protector.
+//
+#define FVE_E_TPMPV2_USED_FAILURE        _HRESULT_TYPEDEF_(0xC031010BL)
+
+//
+// MessageId: FVE_E_NO_TPM_BINDINGS
+//
+// MessageText:
+//
+// BitLocker failed to find any TPM bindings that can be used to unlock the drive.
+//
+#define FVE_E_NO_TPM_BINDINGS            _HRESULT_TYPEDEF_(0xC031010CL)
+
+//
+// MessageId: FVE_E_FW_UPDATE_PCRS_BLOCK
+//
+// MessageText:
+//
+// The firmware update was not applied. To finish installation of the firmware, please suspend BitLocker and restart your device.
+//
+#define FVE_E_FW_UPDATE_PCRS_BLOCK       _HRESULT_TYPEDEF_(0xC031010EL)
+
+//
+// MessageId: FVE_E_FW_UPDATE_PCRS_NOT_EXCLUDED
+//
+// MessageText:
+//
+// The firmware update was not applied because TPM PCRs affected by the firmware installation were not excluded by BitLocker's TPM protector. Restart your computer to retry.
+//
+#define FVE_E_FW_UPDATE_PCRS_NOT_EXCLUDED _HRESULT_TYPEDEF_(0xC031010FL)
 
 //
 // MessageId: FVE_E_DEVICE_NOT_JOINED
@@ -66747,5 +66847,57 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // The accelerator submission queue is full.
 //
 #define ERROR_ACCELERATOR_SUBMISSION_QUEUE_FULL _HRESULT_TYPEDEF_(0xC9270000L)
+
+
+///////////////////////////////////////////////////
+//                                               //
+// PCR Prediction Framework (PPF) Error codes    //
+//                                               //
+///////////////////////////////////////////////////
+
+//
+// MessageId: PPF_E_TRANSFORM_DIGEST_ALGO_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The transform does not support the digest algorithm selected in the system.
+//
+#define PPF_E_TRANSFORM_DIGEST_ALGO_NOT_SUPPORTED _HRESULT_TYPEDEF_(0xC9280000L)
+
+//
+// MessageId: PPF_E_TRANSFORM_CONFLICT
+//
+// MessageText:
+//
+// The transform being added conflicts with an existing transform in the system.
+//
+#define PPF_E_TRANSFORM_CONFLICT         _HRESULT_TYPEDEF_(0xC9280001L)
+
+//
+// MessageId: PPF_E_TRANSFORM_CLEANED_UP_NA
+//
+// MessageText:
+//
+// The transform was cleaned up because it is no longer applicable.
+//
+#define PPF_E_TRANSFORM_CLEANED_UP_NA    _HRESULT_TYPEDEF_(0xC9280002L)
+
+//
+// MessageId: PPF_E_TRANSFORM_CLEANED_UP_STATE_CHANGE
+//
+// MessageText:
+//
+// The transform was cleaned up because the system state changed unexpectedly.
+//
+#define PPF_E_TRANSFORM_CLEANED_UP_STATE_CHANGE _HRESULT_TYPEDEF_(0xC9280003L)
+
+//
+// MessageId: PPF_E_TRANSFORM_DIGEST_ALGO_NOT_PRESENT
+//
+// MessageText:
+//
+// An event in the transform does not have a digest for the algorithm selected in the system.
+//
+#define PPF_E_TRANSFORM_DIGEST_ALGO_NOT_PRESENT _HRESULT_TYPEDEF_(0xC9280004L)
 
 #endif//_WINERROR_

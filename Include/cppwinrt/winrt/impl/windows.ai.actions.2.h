@@ -49,7 +49,7 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         ActionInvocationHelpDetails(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IActionInvocationHelpDetails(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES ActionRuntime : winrt::Windows::AI::Actions::IActionRuntime,
-        impl::require<ActionRuntime, winrt::Windows::AI::Actions::IActionRuntime2, winrt::Windows::AI::Actions::IActionRuntime3, winrt::Windows::Foundation::IClosable>
+        impl::require<ActionRuntime, winrt::Windows::AI::Actions::IActionRuntime2, winrt::Windows::AI::Actions::IActionRuntime3, winrt::Windows::AI::Actions::IActionRuntime4, winrt::Windows::Foundation::IClosable>
     {
         ActionRuntime(std::nullptr_t) noexcept {}
         ActionRuntime(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IActionRuntime(ptr, take_ownership_from_abi) {}

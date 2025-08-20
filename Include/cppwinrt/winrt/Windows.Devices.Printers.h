@@ -1472,6 +1472,42 @@ namespace winrt::impl
         }
         return hstring{ result, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDevice5<D>::GetDeviceProperties() const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppPrintDevice5>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppPrintDevice5, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDevice5>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetDeviceProperties(&result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDevice5>**)this;
+            check_hresult(_winrt_abi_type->GetDeviceProperties(&result));
+        }
+        return winrt::Windows::Foundation::Collections::ValueSet{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDevice5<D>::ReplaceDeviceProperties(param::iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Foundation::IInspectable>> const& deviceProperties) const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppPrintDevice5>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppPrintDevice5, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDevice5>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ReplaceDeviceProperties(*(void**)(&deviceProperties), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDevice5>**)this;
+            check_hresult(_winrt_abi_type->ReplaceDeviceProperties(*(void**)(&deviceProperties), &result));
+        }
+        return winrt::Windows::Devices::Printers::ReplaceDevicePropertiesResult{ result, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDeviceStatics<D>::GetDeviceSelector() const
     {
         void* result{};
@@ -1987,6 +2023,42 @@ namespace winrt::impl
             check_hresult(_winrt_abi_type->MergeAndValidateWithDefaultPrintTicketAsync(*(void**)(&deltaTicket), &operation));
         }
         return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Storage::Streams::IRandomAccessStreamWithContentType>{ operation, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IReplaceDevicePropertiesResult<D>::Status() const
+    {
+        winrt::Windows::Devices::Printers::ReplaceDevicePropertiesStatus value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Status(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult>**)this;
+            check_hresult(_winrt_abi_type->get_Status(reinterpret_cast<int32_t*>(&value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IReplaceDevicePropertiesResult<D>::ExtendedError() const
+    {
+        winrt::hresult value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_ExtendedError(put_abi(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult>**)this;
+            check_hresult(_winrt_abi_type->get_ExtendedError(put_abi(value)));
+        }
+        return value;
     }
     template <typename D> auto consume_Windows_Devices_Printers_IVirtualPrinterInstallationParameters<D>::PrinterName() const
     {
@@ -3187,6 +3259,28 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Devices::Printers::IIppPrintDevice5> : produce_base<D, winrt::Windows::Devices::Printers::IIppPrintDevice5>
+    {
+        int32_t __stdcall GetDeviceProperties(void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Foundation::Collections::ValueSet>(this->shim().GetDeviceProperties());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall ReplaceDeviceProperties(void* deviceProperties, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Devices::Printers::ReplaceDevicePropertiesResult>(this->shim().ReplaceDeviceProperties(*reinterpret_cast<winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Foundation::IInspectable>> const*>(&deviceProperties)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Devices::Printers::IIppPrintDeviceStatics> : produce_base<D, winrt::Windows::Devices::Printers::IIppPrintDeviceStatics>
     {
         int32_t __stdcall GetDeviceSelector(void** result) noexcept final try
@@ -3473,6 +3567,27 @@ namespace winrt::impl
             clear_abi(operation);
             typename D::abi_guard guard(this->shim());
             *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Storage::Streams::IRandomAccessStreamWithContentType>>(this->shim().MergeAndValidateWithDefaultPrintTicketAsync(*reinterpret_cast<winrt::Windows::Storage::Streams::IRandomAccessStreamWithContentType const*>(&deltaTicket)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult> : produce_base<D, winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult>
+    {
+        int32_t __stdcall get_Status(int32_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::Devices::Printers::ReplaceDevicePropertiesStatus>(this->shim().Status());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_ExtendedError(winrt::hresult* value) noexcept final try
+        {
+            zero_abi<winrt::hresult>(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::hresult>(this->shim().ExtendedError());
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -3982,6 +4097,7 @@ namespace std
     template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDevice2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDevice3> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDevice4> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDevice5> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDeviceStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppResolution> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppResolutionFactory> : winrt::impl::hash_base {};
@@ -3994,6 +4110,7 @@ namespace std
     template<> struct hash<winrt::Windows::Devices::Printers::IPrint3DDevice> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IPrint3DDeviceStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IPrintSchema> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IVirtualPrinterInstallationParameters> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IVirtualPrinterInstallationResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IVirtualPrinterManagerStatics> : winrt::impl::hash_base {};
@@ -4011,6 +4128,7 @@ namespace std
     template<> struct hash<winrt::Windows::Devices::Printers::PdlPassthroughTarget> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::Print3DDevice> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::PrintSchema> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::ReplaceDevicePropertiesResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::VirtualPrinterInstallationParameters> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::VirtualPrinterInstallationResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::VirtualPrinterManager> : winrt::impl::hash_base {};

@@ -1448,6 +1448,32 @@ interface IWICBitmapFlipRotator : IWICBitmapSource
 
 
 /*=========================================================================*\
+    IWICBitmapToneMapper
+\*=========================================================================*/
+
+[
+    object,
+    uuid(44728ded-1edf-4fe9-b50b-c89a264c9439)
+]
+interface IWICBitmapToneMapper : IWICBitmapSource
+{
+    HRESULT InitializeForHdrTarget(
+        [in] IWICBitmapSource *pISource,
+        [in] REFWICPixelFormatGUID guidDstFormat,
+        [in] FLOAT fLuminanceInNits,
+        [in] FLOAT fWhiteLevelInNits,
+        [in] WICBitmapToneMappingMode mode
+        );
+
+    HRESULT InitializeForSdrTarget(
+        [in] IWICBitmapSource *pISource,
+        [in] REFWICPixelFormatGUID guidDstFormat,
+        [in] WICBitmapToneMappingMode mode
+        );
+}
+
+
+/*=========================================================================*\
     IWICBitmapLock - WIC Lock object for bitmaps.
 \*=========================================================================*/
 
@@ -2642,6 +2668,20 @@ interface IWICImagingFactory2 : IWICImagingFactory
         [out] IWICImageEncoder **ppWICImageEncoder
         );
 };
+
+/*=========================================================================*\
+    IWICImagingFactory3
+\*=========================================================================*/
+[
+    object,
+    uuid(489b3d8b-624a-4258-b678-7eece70f299d)
+]
+interface IWICImagingFactory3 : IWICImagingFactory2
+{
+    HRESULT CreateBitmapToneMapper(
+        [out] IWICBitmapToneMapper **ppToneMapper
+        );
+}
 cpp_quote("#endif")
 
 /*=========================================================================*\

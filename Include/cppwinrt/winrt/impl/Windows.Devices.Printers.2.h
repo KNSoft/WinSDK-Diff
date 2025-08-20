@@ -68,7 +68,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         IppIntegerRange(int32_t start, int32_t end);
     };
     struct WINRT_IMPL_EMPTY_BASES IppPrintDevice : winrt::Windows::Devices::Printers::IIppPrintDevice,
-        impl::require<IppPrintDevice, winrt::Windows::Devices::Printers::IIppPrintDevice2, winrt::Windows::Devices::Printers::IIppPrintDevice3, winrt::Windows::Devices::Printers::IIppPrintDevice4>
+        impl::require<IppPrintDevice, winrt::Windows::Devices::Printers::IIppPrintDevice2, winrt::Windows::Devices::Printers::IIppPrintDevice3, winrt::Windows::Devices::Printers::IIppPrintDevice4, winrt::Windows::Devices::Printers::IIppPrintDevice5>
     {
         IppPrintDevice(std::nullptr_t) noexcept {}
         IppPrintDevice(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppPrintDevice(ptr, take_ownership_from_abi) {}
@@ -122,6 +122,11 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     {
         PrintSchema(std::nullptr_t) noexcept {}
         PrintSchema(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPrintSchema(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ReplaceDevicePropertiesResult : winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult
+    {
+        ReplaceDevicePropertiesResult(std::nullptr_t) noexcept {}
+        ReplaceDevicePropertiesResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES VirtualPrinterInstallationParameters : winrt::Windows::Devices::Printers::IVirtualPrinterInstallationParameters
     {

@@ -83,6 +83,7 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
     struct IActionRuntime;
     struct IActionRuntime2;
     struct IActionRuntime3;
+    struct IActionRuntime4;
     struct IActionRuntimeFactory;
     struct IContactActionEntity;
     struct IDocumentActionEntity;
@@ -133,6 +134,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::AI::Actions::IActionRuntime>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::IActionRuntime2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::IActionRuntime3>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Actions::IActionRuntime4>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::IActionRuntimeFactory>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::IContactActionEntity>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::IDocumentActionEntity>{ using type = interface_category; };
@@ -209,6 +211,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::IActionRuntime> = L"Windows.AI.Actions.IActionRuntime";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::IActionRuntime2> = L"Windows.AI.Actions.IActionRuntime2";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::IActionRuntime3> = L"Windows.AI.Actions.IActionRuntime3";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::IActionRuntime4> = L"Windows.AI.Actions.IActionRuntime4";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::IActionRuntimeFactory> = L"Windows.AI.Actions.IActionRuntimeFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::IContactActionEntity> = L"Windows.AI.Actions.IContactActionEntity";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::IDocumentActionEntity> = L"Windows.AI.Actions.IDocumentActionEntity";
@@ -238,6 +241,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::IActionRuntime>{ 0x206EFA2C,0xC909,0x508A,{ 0xB4,0xB0,0x94,0x82,0xBE,0x96,0xDB,0x9C } }; // 206EFA2C-C909-508A-B4B0-9482BE96DB9C
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::IActionRuntime2>{ 0x2DA4D2C0,0xE593,0x5350,{ 0x81,0x43,0x15,0xBB,0x24,0xF6,0x34,0x11 } }; // 2DA4D2C0-E593-5350-8143-15BB24F63411
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::IActionRuntime3>{ 0xF020C3C0,0xCAEC,0x5928,{ 0xAD,0x00,0x81,0x06,0x9B,0x80,0xFB,0xC1 } }; // F020C3C0-CAEC-5928-AD00-81069B80FBC1
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::IActionRuntime4>{ 0x06851DCD,0xC743,0x5C7F,{ 0x88,0xA1,0xBB,0xAE,0xB0,0x2F,0x5E,0x28 } }; // 06851DCD-C743-5C7F-88A1-BBAEB02F5E28
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::IActionRuntimeFactory>{ 0xD3F366E9,0x8DC9,0x50A0,{ 0x80,0x40,0xE5,0xC1,0x4F,0xA6,0x09,0xD6 } }; // D3F366E9-8DC9-50A0-8040-E5C14FA609D6
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::IContactActionEntity>{ 0x458C3E07,0x5892,0x5485,{ 0xBD,0x9B,0x8F,0x7A,0x54,0x0C,0x95,0x01 } }; // 458C3E07-5892-5485-BD9B-8F7A540C9501
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::IDocumentActionEntity>{ 0x56715297,0x960B,0x59FF,{ 0xAF,0x4B,0xEC,0xE1,0x09,0x8B,0x2E,0x36 } }; // 56715297-960B-59FF-AF4B-ECE1098B2E36
@@ -403,6 +407,13 @@ namespace winrt::impl
             virtual int32_t __stdcall CreateInvocationContextWithWindowId(void*, struct struct_Windows_UI_WindowId, void**) noexcept = 0;
             virtual int32_t __stdcall GetActionEntityById(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_LatestSupportedSchemaVersion(uint32_t*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Actions::IActionRuntime4>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall GetActionInvocationContextFromToken(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::Actions::IActionRuntimeFactory>
@@ -679,6 +690,15 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::AI::Actions::IActionRuntime3>
     {
         template <typename D> using type = consume_Windows_AI_Actions_IActionRuntime3<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Actions_IActionRuntime4
+    {
+        auto GetActionInvocationContextFromToken(param::hstring const& token) const;
+    };
+    template <> struct consume<winrt::Windows::AI::Actions::IActionRuntime4>
+    {
+        template <typename D> using type = consume_Windows_AI_Actions_IActionRuntime4<D>;
     };
     template <typename D>
     struct consume_Windows_AI_Actions_IActionRuntimeFactory

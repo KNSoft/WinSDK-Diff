@@ -8894,6 +8894,7 @@ typedef DWORD
 #define CLUSREG_NAME_CLOUDWITNESS_ACCOUNT_NAME          L"AccountName"
 #define CLUSREG_NAME_CLOUDWITNESS_ENDPOINT_INFO         L"EndpointInfo"
 #define CLUSREG_NAME_CLOUDWITNESS_CONTAINER_NAME        L"ContainerName"
+#define CLUSREG_NAME_CLOUDWITNESS_MANAGED_IDENTITY      L"IsManagedIdentity"
 #define CLOUD_WITNESS_CONTAINER_NAME                    L"msft-cloud-witness"
 
 // Storage Replica

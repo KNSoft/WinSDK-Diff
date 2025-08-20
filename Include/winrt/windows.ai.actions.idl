@@ -104,6 +104,8 @@ namespace Windows
 
             interface IActionRuntime3;
 
+            interface IActionRuntime4;
+
             interface IActionRuntimeFactory;
 
             interface IContactActionEntity;
@@ -191,7 +193,7 @@ namespace Windows
     {
         namespace Actions
         {
-            [contractversion(4.0)]
+            [contractversion(5.0)]
             apicontract ActionsContract
             {
             }
@@ -209,10 +211,8 @@ namespace Windows
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)]
                 RemoteFile    = 6,
                 [contract(Windows.AI.Actions.ActionsContract, 3.0)]
-                [experimental]
                 Table         = 7,
                 [contract(Windows.AI.Actions.ActionsContract, 3.0)]
-                [experimental]
                 Contact       = 8
             };
 
@@ -310,7 +310,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntityFactory)]
-            [experimental]
             [uuid(332EDA05-DE0E-5A58-B318-A2AD771F013D)]
             interface IActionEntityFactory4 : IInspectable
             {
@@ -399,13 +398,21 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [exclusiveto(Windows.AI.Actions.ActionRuntime)]
-            [experimental]
             [uuid(F020C3C0-CAEC-5928-AD00-81069B80FBC1)]
             interface IActionRuntime3 : IInspectable
             {
                 HRESULT CreateInvocationContextWithWindowId([in] HSTRING actionId, [in] Windows.UI.WindowId invokerWindowId, [out] [retval] Windows.AI.Actions.ActionInvocationContext** result);
                 HRESULT GetActionEntityById([in] HSTRING entityId, [out] [retval] Windows.AI.Actions.ActionEntity** result);
                 [propget] HRESULT LatestSupportedSchemaVersion([out] [retval] UINT32* value);
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 5.0)]
+            [exclusiveto(Windows.AI.Actions.ActionRuntime)]
+            [experimental]
+            [uuid(06851DCD-C743-5C7F-88A1-BBAEB02F5E28)]
+            interface IActionRuntime4 : IInspectable
+            {
+                HRESULT GetActionInvocationContextFromToken([in] HSTRING token, [out] [retval] Windows.AI.Actions.ActionInvocationContext** result);
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
@@ -417,7 +424,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [exclusiveto(Windows.AI.Actions.ContactActionEntity)]
-            [experimental]
             [uuid(458C3E07-5892-5485-BD9B-8F7A540C9501)]
             interface IContactActionEntity : IInspectable
             {
@@ -507,7 +513,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [exclusiveto(Windows.AI.Actions.TableActionEntity)]
-            [experimental]
             [uuid(0F252CDB-BA24-5DBB-9D17-1B300773D141)]
             interface ITableActionEntity : IInspectable
             {
@@ -559,7 +564,7 @@ namespace Windows
             {
                 [default] interface Windows.AI.Actions.IActionEntityFactory2;
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.IActionEntityFactory3;
-                [contract(Windows.AI.Actions.ActionsContract, 3.0)] [experimental] interface Windows.AI.Actions.IActionEntityFactory4;
+                [contract(Windows.AI.Actions.ActionsContract, 3.0)] interface Windows.AI.Actions.IActionEntityFactory4;
                 interface Windows.Foundation.IClosable;
             }
 
@@ -596,17 +601,17 @@ namespace Windows
             {
                 [default] interface Windows.AI.Actions.IActionRuntime;
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.IActionRuntime2;
-                [contract(Windows.AI.Actions.ActionsContract, 3.0)] [experimental] interface Windows.AI.Actions.IActionRuntime3;
+                [contract(Windows.AI.Actions.ActionsContract, 3.0)] interface Windows.AI.Actions.IActionRuntime3;
+                [contract(Windows.AI.Actions.ActionsContract, 5.0)] [experimental] interface Windows.AI.Actions.IActionRuntime4;
                 interface Windows.Foundation.IClosable;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 3.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass ContactActionEntity : Windows.AI.Actions.ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.IContactActionEntity;
+                [default] interface Windows.AI.Actions.IContactActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
@@ -673,12 +678,11 @@ namespace Windows
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 3.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass TableActionEntity : Windows.AI.Actions.ActionEntity
             {
-                [default] [experimental] interface Windows.AI.Actions.ITableActionEntity;
+                [default] interface Windows.AI.Actions.ITableActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]

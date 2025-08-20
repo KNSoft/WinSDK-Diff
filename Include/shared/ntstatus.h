@@ -19720,6 +19720,51 @@ Notes:
 #define STATUS_FVE_PCR_BOOT_LOCK_BOUNDARY ((NTSTATUS)0xC0210051L)
 
 //
+// MessageId: STATUS_FVE_FW_UPDATE_TPM_BINDINGS_NOT_REFRESHED
+//
+// MessageText:
+//
+// The firmware update was not applied because BitLocker TPM bindings do not include the latest measurements. Restart your computer to retry.
+//
+#define STATUS_FVE_FW_UPDATE_TPM_BINDINGS_NOT_REFRESHED ((NTSTATUS)0xC0210052L)
+
+//
+// MessageId: STATUS_FVE_INVALID_TPM_BINDING_CONFIGURATION
+//
+// MessageText:
+//
+// The BitLocker TPM binding configuration is invalid.
+//
+#define STATUS_FVE_INVALID_TPM_BINDING_CONFIGURATION ((NTSTATUS)0xC0210053L)
+
+//
+// MessageId: STATUS_FVE_TOO_MANY_TPM_BINDINGS
+//
+// MessageText:
+//
+// The BitLocker TPM protector cannot fit all the necessary TPM bindings.
+//
+#define STATUS_FVE_TOO_MANY_TPM_BINDINGS ((NTSTATUS)0xC0210054L)
+
+//
+// MessageId: STATUS_FVE_TPM_BINDING_ASSOCIATION_FAILURE
+//
+// MessageText:
+//
+// A BitLocker TPM protector binding is badly formatted.
+//
+#define STATUS_FVE_TPM_BINDING_ASSOCIATION_FAILURE ((NTSTATUS)0xC0210055L)
+
+//
+// MessageId: STATUS_FVE_ORPHANED_PCR_DIGEST_DATUM
+//
+// MessageText:
+//
+// The dataset contains binding information without an associated TPM binding. Try re-enabling BitLocker.
+//
+#define STATUS_FVE_ORPHANED_PCR_DIGEST_DATUM ((NTSTATUS)0xC0210056L)
+
+//
 // MessageId: STATUS_FVE_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED
 //
 // MessageText:
@@ -19727,6 +19772,51 @@ Notes:
 // BitLocker is prevented from using hardware accelerated encryption.
 //
 #define STATUS_FVE_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED ((NTSTATUS)0xC0210057L)
+
+//
+// MessageId: STATUS_FVE_NO_MATCHING_TPM_BINDINGS
+//
+// MessageText:
+//
+// BitLocker failed to find a TPM binding that can be used to unlock the drive.
+//
+#define STATUS_FVE_NO_MATCHING_TPM_BINDINGS ((NTSTATUS)0xC0210058L)
+
+//
+// MessageId: STATUS_FVE_TPMPV2_USED_FAILURE
+//
+// MessageText:
+//
+// BitLocker failed to unlock the drive using a V2 TPM protector.
+//
+#define STATUS_FVE_TPMPV2_USED_FAILURE   ((NTSTATUS)0xC0210059L)
+
+//
+// MessageId: STATUS_FVE_NO_TPM_BINDINGS
+//
+// MessageText:
+//
+// BitLocker failed to find any TPM bindings that can be used to unlock the drive.
+//
+#define STATUS_FVE_NO_TPM_BINDINGS       ((NTSTATUS)0xC021005AL)
+
+//
+// MessageId: STATUS_FVE_FW_UPDATE_PCRS_BLOCK
+//
+// MessageText:
+//
+// The firmware update was not applied. To finish installation of the firmware, please suspend BitLocker and restart your device.
+//
+#define STATUS_FVE_FW_UPDATE_PCRS_BLOCK  ((NTSTATUS)0xC021005CL)
+
+//
+// MessageId: STATUS_FVE_FW_UPDATE_PCRS_NOT_EXCLUDED
+//
+// MessageText:
+//
+// The firmware update was not applied because TPM PCRs affected by the firmware installation were not excluded by BitLocker's TPM protector. Restart your computer to retry.
+//
+#define STATUS_FVE_FW_UPDATE_PCRS_NOT_EXCLUDED ((NTSTATUS)0xC021005DL)
 
 //
 // MessageId: STATUS_FVE_FAILED_TO_UNWRAP_HW_WRAPPED_KEY

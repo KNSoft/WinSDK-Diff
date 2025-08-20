@@ -917,6 +917,7 @@ typedef struct tagWTSSESSION_NOTIFICATION
 #define WTS_SESSION_REMOTE_CONTROL         0x9
 #define WTS_SESSION_CREATE                 0xa
 #define WTS_SESSION_TERMINATE              0xb
+#define WTS_SESSION_DESKTOP_READY          0xf
 
 #endif /* _WIN32_WINNT >= 0x0501 */
 
@@ -960,6 +961,8 @@ typedef struct tagWTSSESSION_NOTIFICATION
 
 #if(_WIN32_WINNT >= 0x0602)
 #define HSHELL_MONITORCHANGED            16
+
+// Deprecated by Feature_NoMoreSwpIamNotifyPosChanged
 #if (NTDDI_VERSION >= NTDDI_WIN10_RS3)
 #endif // NTDDI_VERSION >= NTDDI_WIN10_RS3
 

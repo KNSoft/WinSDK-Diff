@@ -1711,6 +1711,11 @@ typedef struct _HTTP_REQUEST_DSCP_INFO
 
 } HTTP_REQUEST_DSCP_INFO, *PHTTP_REQUEST_DSCP_INFO;
 
+typedef struct _HTTP_REQUEST_INITIAL_PACKET_TTL_INFO
+{
+    BYTE InitialPacketTtl;
+} HTTP_REQUEST_INITIAL_PACKET_TTL_INFO, *PHTTP_REQUEST_INITIAL_PACKET_TTL_INFO;
+
 #if _WIN32_WINNT >= 0x0600
 
 //
@@ -1732,7 +1737,8 @@ typedef enum _HTTP_REQUEST_INFO_TYPE
     HttpRequestInfoTypeQuicStatsV2,
     HttpRequestInfoTypeTcpInfoV2,
     HttpRequestInfoTypeTransportIdleConnectionTimeout,
-    HttpRequestInfoTypeDscpTag
+    HttpRequestInfoTypeDscpTag,
+    HttpRequestInfoTypeInitialPacketTtl,
 
 } HTTP_REQUEST_INFO_TYPE, *PHTTP_REQUEST_INFO_TYPE;
 
@@ -2946,7 +2952,8 @@ typedef enum _HTTP_FEATURE_ID
     HttpFeatureDisableAiaFlag                       = 13,
     HttpFeatureDscp                                 = 14,
     HttpFeatureQueryCipherInfo                      = 15,
-    HttpFeatureLast                                 = 16,
+    HttpFeatureQueryInitialPacketTtl                = 16,
+    HttpFeatureLast                                 = 17,
 
 
     HttpFeaturemax              = 0xFFFFFFFF,
