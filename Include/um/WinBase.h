@@ -152,6 +152,10 @@ extern "C" {
 
 #define FILE_FLAG_OPEN_REQUIRING_OPLOCK 0x00040000
 
+#if defined(NTDDI_WIN10_FE) && (NTDDI_VERSION >= NTDDI_WIN10_FE)
+#define FILE_FLAG_IGNORE_IMPERSONATED_DEVICEMAP 0x00020000
+#endif
+
 #endif
 
 
@@ -9069,6 +9073,10 @@ typedef struct _FILE_ID_EXTD_DIR_INFO {
 #define RPI_FLAG_SMB2_SHARECAP_SCALEOUT                0x00000020
 #define RPI_FLAG_SMB2_SHARECAP_CLUSTER                 0x00000040
 #endif
+
+// Protocol specific SMB2 share flags
+
+#define RPI_SMB2_SHAREFLAG_ENCRYPT_DATA           0x00000001
 
 // Protocol specific SMB2 server capability flags.
 

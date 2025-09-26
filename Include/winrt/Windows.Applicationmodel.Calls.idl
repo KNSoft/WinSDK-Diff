@@ -1230,7 +1230,7 @@ namespace Windows
             runtimeclass VoipPhoneCall
             {
                 [default] interface Windows.ApplicationModel.Calls.IVoipPhoneCall;
-                [contract(Windows.ApplicationModel.Calls.CallsVoipContract, 2.0)] interface Windows.ApplicationModel.Calls.IVoipPhoneCall2;
+                [contract(Windows.ApplicationModel.Calls.CallsVoipContract, 3.0)] interface Windows.ApplicationModel.Calls.IVoipPhoneCall2;
                 [contract(Windows.ApplicationModel.Calls.CallsVoipContract, 3.0)] interface Windows.ApplicationModel.Calls.IVoipPhoneCall3;
             }
         }

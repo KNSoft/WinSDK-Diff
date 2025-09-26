@@ -1,4 +1,4 @@
-﻿
+
 /*++
 
 Copyright (c) 1996 Microsoft Corporation.  All rights reserved.
@@ -52,6 +52,7 @@ Revision History:
 #define NINETEEN_H2_UPGRADE_VERSION  2
 #define MN_UPGRADE_VERSION           3
 #define FE_UPGRADE_VERSION           4
+#define FE_22H2_UPGRADE_VERSION      5
 
 #define HCI_UPGRADE_BIT 0x8000
 
@@ -384,6 +385,7 @@ typedef enum {
     ClusGroupTypeCrossClusterOrchestrator = 121,
     ClusGroupTypeInfrastructureFileServer = 122,
     ClusGroupTypeCoreSddc           = 123,
+    ClusGroupTypeUserManager        = 124,
     ClusGroupTypeUnknown            = 9999
 } CLUSGROUP_TYPE, *PCLUSGROUP_TYPE;
 
@@ -3706,6 +3708,9 @@ typedef enum CLCTL_CODES {
     CLCTL_GET_COMMON_PROPERTY_FMTS          = CLCTL_EXTERNAL_CODE( 25, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_COMMON_RESOURCE_PROPERTY_FMTS = CLCTL_EXTERNAL_CODE( 26, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
 
+    CLCTL_CHECK_VOTER_EVICT_WITNESS         = CLCTL_EXTERNAL_CODE( 27, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
+    CLCTL_CHECK_VOTER_DOWN_WITNESS          = CLCTL_EXTERNAL_CODE( 28, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
+
     CLCTL_ENUM_PRIVATE_PROPERTIES           = CLCTL_EXTERNAL_CODE( 30, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_RO_PRIVATE_PROPERTIES         = CLCTL_EXTERNAL_CODE( 31, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_PRIVATE_PROPERTIES            = CLCTL_EXTERNAL_CODE( 32, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
@@ -3954,9 +3959,8 @@ typedef enum CLCTL_CODES {
     CLCTL_VALIDATE_CHANGE_GROUP             = CLCTL_INTERNAL_CODE( 2121, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
 #endif
 
-
-        CLCTL_CHECK_DRAIN_VETO                  = CLCTL_INTERNAL_CODE( 2123, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
-        CLCTL_NOTIFY_DRAIN_COMPLETE             = CLCTL_INTERNAL_CODE( 2124, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
+    CLCTL_CHECK_DRAIN_VETO                  = CLCTL_INTERNAL_CODE( 2123, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
+    CLCTL_NOTIFY_DRAIN_COMPLETE             = CLCTL_INTERNAL_CODE( 2124, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
 
 } CLCTL_CODES;
 
@@ -4366,7 +4370,7 @@ typedef enum CLUSCTL_RESOURCE_CODES {
     
     CLUSCTL_RESOURCE_GET_NODES_IN_FD =
         CLUSCTL_RESOURCE_CODE( CLCTL_GET_NODES_IN_FD ),
-                
+
 } CLUSCTL_RESOURCE_CODES;
 
 //
@@ -4727,7 +4731,6 @@ typedef enum CLUSCTL_NODE_CODES {
 
     CLUSCTL_NODE_GET_GEMID_VECTOR =
         CLUSCTL_NODE_CODE(CLCTL_GET_GEMID_VECTOR),
-
 } CLUSCTL_NODE_CODES;
 
 //
@@ -4967,15 +4970,21 @@ typedef enum CLUSCTL_CLUSTER_CODES {
 
     CLUSCTL_CLUSTER_RELOAD_AUTOLOGGER_CONFIG  =
         CLUSCTL_CLUSTER_CODE( CLCTL_RELOAD_AUTOLOGGER_CONFIG  ),
+  
+    CLUSCTL_CLUSTER_CHECK_VOTER_EVICT_WITNESS=
+        CLUSCTL_CLUSTER_CODE( CLCTL_CHECK_VOTER_EVICT_WITNESS ),
+
+    CLUSCTL_CLUSTER_CHECK_VOTER_DOWN_WITNESS =
+        CLUSCTL_CLUSTER_CODE( CLCTL_CHECK_VOTER_DOWN_WITNESS ),
 
     CLUSCTL_CLUSTER_ENUM_AFFINITY_RULE_NAMES =
         CLUSCTL_CLUSTER_CODE( CLCTL_ENUM_AFFINITY_RULE_NAMES ),
 
     CLUSCTL_CLUSTER_GET_NODES_IN_FD =
-            CLUSCTL_CLUSTER_CODE( CLCTL_GET_NODES_IN_FD ), 
+        CLUSCTL_CLUSTER_CODE( CLCTL_GET_NODES_IN_FD ),
 
-        CLUSCTL_CLUSTER_FORCE_FLUSH_DB = 
-            CLUSCTL_CLUSTER_CODE( CLCTL_FORCE_DB_FLUSH ),
+    CLUSCTL_CLUSTER_FORCE_FLUSH_DB =
+        CLUSCTL_CLUSTER_CODE( CLCTL_FORCE_DB_FLUSH ),
 
 } CLUSCTL_CLUSTER_CODES;
 
@@ -7213,6 +7222,7 @@ typedef DWORD
 #define CLUSREG_NAME_GROUP_DEPENDENCY_TIMEOUT      L"GroupDependencyTimeout"
 #define CLUSREG_NAME_PLACEMENT_OPTIONS             L"PlacementOptions"
 #define CLUSREG_NAME_ENABLED_EVENT_LOGS            L"EnabledEventLogs"
+#define CLUSREG_NAME_MAX_PARALLEL_MIGRATIONS       L"MaximumParallelMigrations"
 
 //
 // Properties and defaults for single and multi subnet delays and thresholds.
@@ -7250,6 +7260,8 @@ typedef DWORD
 #define CLUSREG_NAME_NODE_MODEL             L"Model"
 #define CLUSREG_NAME_NODE_SERIALNUMBER      L"SerialNumber"
 #define CLUSREG_NAME_NODE_MANUFACTURER      L"Manufacturer"
+#define CLUSREG_NAME_NODE_UNIQUEID          L"UniqueID"
+#define CLUSREG_NAME_NODE_DRAIN_ERROR_CODE  L"DrainErrorCode"
 
 
 //
@@ -7324,6 +7336,8 @@ typedef DWORD
 #define CLUSREG_NAME_RESTYPE_DUMP_SERVICES      L"DumpServices"
 #define CLUSREG_NAME_RESTYPE_ENABLED_EVENT_LOGS L"EnabledEventLogs"
 #define CLUSREG_NAME_RESTYPE_MAX_MONITORS       L"MaximumMonitors"
+#define CLUSREG_NAME_RESTYPE_WPR_START_AFTER    L"WprStartAfter"
+#define CLUSREG_NAME_RESTYPE_WPR_PROFILES       L"WprProfiles"
 
 //
 // Network common property names
@@ -7766,6 +7780,7 @@ typedef struct _SR_RESOURCE_TYPE_ADD_REPLICATION_GROUP
     DWORD       MinimumPartnersInSync;                   /**< Minimum number of synchronous Replication Partners to be actively in sync before allowing data access by applications on the primary Replica*/
     BOOLEAN     EnableWriteConsistency;                  /**< Set true to enable write consistency*/
     BOOLEAN     EnableEncryption;                        /**< true to enable encryption; otherwise, false*/
+    BOOLEAN     EnableCompression;                       /**< true to enable compression; otherwise, false*/
     WCHAR       CertificateThumbprint[MAX_PATH];         /**< The certificate thumbprint*/
     ULONG       VolumeNameCount;                         /**< Count of number of volumes in \ref VolumeNames field*/
     WCHAR       VolumeNames[ANYSIZE_ARRAY][MAX_PATH];    /**< A collection of volume names*/

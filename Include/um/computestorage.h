@@ -142,6 +142,24 @@ HcsSetupBaseOSVolume(
     _In_ PCWSTR options
     );
 
+// Sets up the unionFS layer storage filter on a writable container layer.
+
+HRESULT
+WINAPI
+HcsAttachOverlayFilter(
+    _In_ PCWSTR VolumeMountPoint,
+    _In_ PCWSTR LayerData
+    );
+
+// Detaches the UnionFS filter from a writable container layer.
+
+HRESULT
+WINAPI
+HcsDetachOverlayFilter(
+    _In_ PCWSTR VolumeMountPoint,
+    _In_ PCWSTR LayerData
+    );
+
 #ifdef __cplusplus
 }
 #endif
@@ -231,6 +249,18 @@ IsHcsGetLayerVhdMountPathPresent(
 BOOLEAN
 __stdcall
 IsHcsSetupBaseOSVolumePresent(
+    VOID
+    );
+
+BOOLEAN
+__stdcall
+IsHcsAttachOverlayFilterPresent(
+    VOID
+    );
+
+BOOLEAN
+__stdcall
+IsHcsDetachOverlayFilterPresent(
     VOID
     );
 

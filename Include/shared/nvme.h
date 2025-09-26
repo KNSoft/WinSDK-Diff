@@ -1344,6 +1344,16 @@ typedef enum {
 } NVME_IDENTIFIER_TYPE_LENGTH;
 
 //
+// Output of NVME_IDENTIFY_CNS_ACTIVE_NAMESPACES (0x02)
+//
+
+typedef struct {
+
+    ULONG   NSID[1024];  // List of Namespace ID upto 1024 entries
+
+} NVME_ACTIVE_NAMESPACE_ID_LIST, *PNVME_ACTIVE_NAMESPACE_ID_LIST;
+
+//
 // Output of NVME_IDENTIFY_CNS_DESCRIPTOR_NAMESPACE (0x03)
 //
 

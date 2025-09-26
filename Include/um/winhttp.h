@@ -72,10 +72,11 @@ typedef INTERNET_PORT * LPINTERNET_PORT;
 #define WINHTTP_FLAG_SECURE                0x00800000  // use SSL if applicable (HTTPS)
 #define WINHTTP_FLAG_ESCAPE_PERCENT        0x00000004  // if escaping enabled, escape percent as well
 #define WINHTTP_FLAG_NULL_CODEPAGE         0x00000008  // assume all symbols are ASCII, use fast convertion
-#define WINHTTP_FLAG_BYPASS_PROXY_CACHE    0x00000100 // add "pragma: no-cache" request header
-#define WINHTTP_FLAG_REFRESH               WINHTTP_FLAG_BYPASS_PROXY_CACHE
 #define WINHTTP_FLAG_ESCAPE_DISABLE        0x00000040  // disable escaping
 #define WINHTTP_FLAG_ESCAPE_DISABLE_QUERY  0x00000080  // if escaping enabled escape path part, but do not escape query
+#define WINHTTP_FLAG_BYPASS_PROXY_CACHE    0x00000100  // add "pragma: no-cache" request header
+#define WINHTTP_FLAG_REFRESH               WINHTTP_FLAG_BYPASS_PROXY_CACHE
+#define WINHTTP_FLAG_AUTOMATIC_CHUNKING    0x00000200  // Send request without content-length header or chunked TE
 
 
 #define SECURITY_FLAG_IGNORE_UNKNOWN_CA         0x00000100
@@ -723,8 +724,9 @@ typedef struct _WINHTTP_RESOLVER_CACHE_CONFIG
 #define WINHTTP_OPTION_NTSERVICE_FLAG_TEST              175
 #define WINHTTP_OPTION_DISABLE_PROXY_LINK_LOCAL_NAME_RESOLUTION 176
 
+#define WINHTTP_OPTION_USE_SESSION_SCH_CRED             196
 
-#define WINHTTP_LAST_OPTION                             WINHTTP_OPTION_FIRST_AVAILABLE_CONNECTION
+#define WINHTTP_LAST_OPTION                             WINHTTP_OPTION_USE_SESSION_SCH_CRED
 
 #define WINHTTP_OPTION_USERNAME                         0x1000
 #define WINHTTP_OPTION_PASSWORD                         0x1001

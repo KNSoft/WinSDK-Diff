@@ -148,7 +148,8 @@ Notes:
 #define FACILITY_LICENSING               0xEA
 #define FACILITY_PLATFORM_MANIFEST       0xEB
 #define FACILITY_APP_EXEC                0xEC
-#define FACILITY_MAXIMUM_VALUE           0xED
+#define FACILITY_UNIONFS                 0xED
+#define FACILITY_MAXIMUM_VALUE           0xEE
 
 
 //
@@ -10313,6 +10314,15 @@ Notes:
 //
 #define STATUS_PATCH_NOT_REGISTERED      ((NTSTATUS)0xC00004D4L)
 
+//
+// MessageId: STATUS_NOT_SUPPORTED_WITH_VIRTUALIZATION
+//
+// MessageText:
+//
+// The specified operation is not supported while virtualization is enabled on the target object.
+//
+#define STATUS_NOT_SUPPORTED_WITH_VIRTUALIZATION ((NTSTATUS)0xC00004D1L)
+
 
 //     **** New SYSTEM error codes can be inserted here ****
 
@@ -10532,6 +10542,15 @@ Notes:
 // The negotiated session key does not meet the minimum length requirement.
 //
 #define STATUS_SESSION_KEY_TOO_SHORT     ((NTSTATUS)0xC0000517L)
+
+//
+// MessageId: STATUS_FS_METADATA_INCONSISTENT
+//
+// MessageText:
+//
+// The file system encountered a metadata file with inconsistent data.
+//
+#define STATUS_FS_METADATA_INCONSISTENT  ((NTSTATUS)0xC0000518L)
 
 
 //     **** New SYSTEM error codes can be inserted here ****
@@ -11652,6 +11671,51 @@ Notes:
 //
 #define STATUS_INCORRECT_ACCOUNT_TYPE    ((NTSTATUS)0xC000A089L)
 
+//
+// MessageId: STATUS_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The local account policy modification request was rejected because the policy is controlled by a regional authority.
+//
+#define STATUS_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED ((NTSTATUS)0xC000A08AL)
+
+//
+// MessageId: STATUS_POLICY_CONTROLLED_ACCOUNT
+//
+// MessageText:
+//
+// The account is controlled by external policy and cannot be modified.
+//
+#define STATUS_POLICY_CONTROLLED_ACCOUNT ((NTSTATUS)0xC000A08BL)
+
+//
+// MessageId: STATUS_LAPS_LEGACY_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the legacy LAPS schema needs to be added to Active Directory.
+//
+#define STATUS_LAPS_LEGACY_SCHEMA_MISSING ((NTSTATUS)0xC000A08CL)
+
+//
+// MessageId: STATUS_LAPS_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the Windows LAPS schema needs to be added to Active Directory.
+//
+#define STATUS_LAPS_SCHEMA_MISSING       ((NTSTATUS)0xC000A08DL)
+
+//
+// MessageId: STATUS_LAPS_ENCRYPTION_REQUIRES_2016_DFL
+//
+// MessageText:
+//
+// The Local Administrator Password Solution encrypted password update operation failed because Active Directory is not yet running at the minimum required domain functional level (2016).
+//
+#define STATUS_LAPS_ENCRYPTION_REQUIRES_2016_DFL ((NTSTATUS)0xC000A08EL)
+
 /*++
 
  MessageId's 0xa100 - 0xa120 (inclusive) are for the SMB Hash Generation Service.
@@ -12344,6 +12408,15 @@ Notes:
 //
 #define STATUS_CLOUD_FILE_DEHYDRATION_DISALLOWED ((NTSTATUS)0xC000CF20L)
 
+//
+// MessageId: STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT
+//
+// MessageText:
+//
+// The cloud provider failed to acknowledge a message before the time-out expired.
+//
+#define STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT ((NTSTATUS)0xC000CF21L)
+
 /*++
 
  End of Cloud Files specific messages.
@@ -12413,6 +12486,92 @@ Notes:
  End of File Snap specific messages.
 
 --*/
+
+//
+//  UnionFS error values
+//
+
+//
+// MessageId: STATUS_UNIONFS_CANNOT_CROSS_UNION
+//
+// MessageText:
+//
+// This operation is not allowed across unions.
+//
+#define STATUS_UNIONFS_CANNOT_CROSS_UNION ((NTSTATUS)0xC0ED0001L)
+
+//
+// MessageId: STATUS_UNIONFS_CANNOT_EXIT_UNION
+//
+// MessageText:
+//
+// This operation is not allowed to have a destination outside of a union.
+//
+#define STATUS_UNIONFS_CANNOT_EXIT_UNION ((NTSTATUS)0xC0ED0002L)
+
+//
+// MessageId: STATUS_UNIONFS_CANNOT_PRESERVE_LINK
+//
+// MessageText:
+//
+// This file has one or more hard links in the scratch layer.
+//
+#define STATUS_UNIONFS_CANNOT_PRESERVE_LINK ((NTSTATUS)0xC0ED0003L)
+
+//
+// MessageId: STATUS_UNIONFS_INVALID_TOMBSTONE_STATE
+//
+// MessageText:
+//
+// The tombstone cannot be created in or transitioned to the given state.
+//
+#define STATUS_UNIONFS_INVALID_TOMBSTONE_STATE ((NTSTATUS)0xC0ED0004L)
+
+//
+// MessageId: STATUS_UNIONFS_LAYERS_PRESENT
+//
+// MessageText:
+//
+// This union has attached layers preventing this operation.
+//
+#define STATUS_UNIONFS_LAYERS_PRESENT    ((NTSTATUS)0xC0ED0005L)
+
+//
+// MessageId: STATUS_UNIONFS_NESTED_LAYER
+//
+// MessageText:
+//
+// A union layer root cannot be a descendant of another layer root.
+//
+#define STATUS_UNIONFS_NESTED_LAYER      ((NTSTATUS)0xC0ED0006L)
+
+//
+// MessageId: STATUS_UNIONFS_UNION_DUPLICATE_ID
+//
+// MessageText:
+//
+// A union with this union ID already exists.
+//
+#define STATUS_UNIONFS_UNION_DUPLICATE_ID ((NTSTATUS)0xC0ED0007L)
+
+//
+// MessageId: STATUS_UNIONFS_INACTIVE_UNION
+//
+// MessageText:
+//
+// The union this operation is being performed on is inactive.
+//
+#define STATUS_UNIONFS_INACTIVE_UNION    ((NTSTATUS)0xC0ED0008L)
+
+//
+// MessageId: STATUS_UNIONFS_TOO_MANY_LAYERS
+//
+// MessageText:
+//
+// There are too many layers to construct this union.
+//
+#define STATUS_UNIONFS_TOO_MANY_LAYERS   ((NTSTATUS)0xC0ED0009L)
+
 
 //     **** New SYSTEM error codes can be inserted here ****
 
@@ -25405,6 +25564,15 @@ Notes:
 #define STATUS_SPACES_CACHE_FULL         ((NTSTATUS)0xC0E70026L)
 
 //
+// MessageId: STATUS_SPACES_REPAIR_IN_PROGRESS
+//
+// MessageText:
+//
+// Repair is in progress.
+//
+#define STATUS_SPACES_REPAIR_IN_PROGRESS ((NTSTATUS)0xC0E70027L)
+
+//
 // Volsnap status codes (volsnap.sys)
 //
 //
@@ -25604,6 +25772,15 @@ Notes:
 // Failed to negotiate a signing hash function.
 //
 #define STATUS_SMB_NO_SIGNING_ALGORITHM_OVERLAP ((NTSTATUS)0xC05D0003L)
+
+//
+// MessageId: STATUS_SMB_TLS_ACCESS_DENIED
+//
+// MessageText:
+//
+// The SMB client was denied access to the SMB server during mutual authentication.
+//
+#define STATUS_SMB_TLS_ACCESS_DENIED     ((NTSTATUS)0xC05D0009L)
 
 //
 // Embedded Security Core
@@ -25837,6 +26014,146 @@ Notes:
 // The QUIC connection failed to negotiate a compatible ALPN.
 //
 #define STATUS_QUIC_ALPN_NEG_FAILURE     ((NTSTATUS)0xC0240007L)
+
+//
+// MessageId: STATUS_QUIC_STREAM_LIMIT_REACHED
+//
+// MessageText:
+//
+// The QUIC connection failed because there are not enough streams available.
+//
+#define STATUS_QUIC_STREAM_LIMIT_REACHED ((NTSTATUS)0xC0240008L)
+
+//
+// MessageId: STATUS_QUIC_ALPN_IN_USE
+//
+// MessageText:
+//
+// The QUIC connection failed because the ALPN is in use.
+//
+#define STATUS_QUIC_ALPN_IN_USE          ((NTSTATUS)0xC0240009L)
+
+
+//
+// QUIC TLS
+//
+
+//
+// MessageId: STATUS_QUIC_TLS_UNEXPECTED_MESSAGE
+//
+// MessageText:
+//
+// The QUIC connection encountered an unexpected message during TLS.
+//
+#define STATUS_QUIC_TLS_UNEXPECTED_MESSAGE ((NTSTATUS)0xC024010AL)
+
+//
+// MessageId: STATUS_QUIC_TLS_BAD_CERTIFICATE
+//
+// MessageText:
+//
+// The QUIC connection encountered a bad certificate during TLS.
+//
+#define STATUS_QUIC_TLS_BAD_CERTIFICATE  ((NTSTATUS)0xC024012AL)
+
+//
+// MessageId: STATUS_QUIC_TLS_UNSUPPORTED_CERTIFICATE
+//
+// MessageText:
+//
+// The QUIC connection encountered an unsupported certificate during TLS.
+//
+#define STATUS_QUIC_TLS_UNSUPPORTED_CERTIFICATE ((NTSTATUS)0xC024012BL)
+
+//
+// MessageId: STATUS_QUIC_TLS_CERTIFICATE_REVOKED
+//
+// MessageText:
+//
+// The QUIC connection encountered a revoked certificate during TLS.
+//
+#define STATUS_QUIC_TLS_CERTIFICATE_REVOKED ((NTSTATUS)0xC024012CL)
+
+//
+// MessageId: STATUS_QUIC_TLS_CERTIFICATE_EXPIRED
+//
+// MessageText:
+//
+// The QUIC connection encountered an expired certificate during TLS.
+//
+#define STATUS_QUIC_TLS_CERTIFICATE_EXPIRED ((NTSTATUS)0xC024012DL)
+
+//
+// MessageId: STATUS_QUIC_TLS_CERTIFICATE_UNKNOWN
+//
+// MessageText:
+//
+// The QUIC connection encountered an unknown certificate during TLS.
+//
+#define STATUS_QUIC_TLS_CERTIFICATE_UNKNOWN ((NTSTATUS)0xC024012EL)
+
+//
+// MessageId: STATUS_QUIC_TLS_ILLEGAL_PARAMETER
+//
+// MessageText:
+//
+// The QUIC connection encountered an illegal parameter during TLS.
+//
+#define STATUS_QUIC_TLS_ILLEGAL_PARAMETER ((NTSTATUS)0xC024012FL)
+
+//
+// MessageId: STATUS_QUIC_TLS_UNKNOWN_CA
+//
+// MessageText:
+//
+// The QUIC connection encountered a certificate with an unkown certificate authority during TLS.
+//
+#define STATUS_QUIC_TLS_UNKNOWN_CA       ((NTSTATUS)0xC0240130L)
+
+//
+// MessageId: STATUS_QUIC_TLS_ACCESS_DENIED
+//
+// MessageText:
+//
+// The QUIC connection attempt was denied by the peer during TLS.
+//
+#define STATUS_QUIC_TLS_ACCESS_DENIED    ((NTSTATUS)0xC0240131L)
+
+//
+// MessageId: STATUS_QUIC_TLS_INSUFFICIENT_SECURITY
+//
+// MessageText:
+//
+// The QUIC connection security was insufficient during TLS.
+//
+#define STATUS_QUIC_TLS_INSUFFICIENT_SECURITY ((NTSTATUS)0xC0240147L)
+
+//
+// MessageId: STATUS_QUIC_TLS_INTERNAL_ERROR
+//
+// MessageText:
+//
+// The QUIC connection encountered an internal error during TLS.
+//
+#define STATUS_QUIC_TLS_INTERNAL_ERROR   ((NTSTATUS)0xC0240150L)
+
+//
+// MessageId: STATUS_QUIC_TLS_USER_CANCELED
+//
+// MessageText:
+//
+// The QUIC connection was canceled by the user during TLS.
+//
+#define STATUS_QUIC_TLS_USER_CANCELED    ((NTSTATUS)0xC024015AL)
+
+//
+// MessageId: STATUS_QUIC_TLS_CERTIFICATE_REQUIRED
+//
+// MessageText:
+//
+// The QUIC connection required a certificate during TLS.
+//
+#define STATUS_QUIC_TLS_CERTIFICATE_REQUIRED ((NTSTATUS)0xC0240174L)
 
 //
 // Map a WIN32 error value into an NTSTATUS

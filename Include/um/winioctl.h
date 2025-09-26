@@ -1977,7 +1977,7 @@ typedef struct _STORAGE_CRYPTO_CAPABILITY {
     // Bit 0 represents 512 bytes, 1 represents 1 KB, bit 7 represents 64 KB
     //
 
-    DWORD DataUnitSizeBitmask;
+    DWORD DataUnitSizeBitmask;    
 
 } STORAGE_CRYPTO_CAPABILITY, *PSTORAGE_CRYPTO_CAPABILITY;
 
@@ -4293,7 +4293,11 @@ typedef struct _DEVICE_DSM_REPORT_ZONES_DATA {
 
     DWORD Size;
 
+    //
+    // Represents the number of ZoneDescriptors.
+    //
     DWORD ZoneCount;
+
     STORAGE_ZONES_ATTRIBUTES Attributes;
 
     DWORD Reserved0;
@@ -6496,6 +6500,12 @@ typedef _Struct_size_bytes_(Size) struct _STORAGE_COUNTERS {
 #define STORAGE_HW_FIRMWARE_REQUEST_FLAG_FIRST_SEGMENT                  0x00000004
 
 //
+// Indicate that any existing firmware in slot should be replaced with the downloaded image.
+// Only valid for IOCTL_STORAGE_FIRMWARE_ACTIVATE.
+//
+#define STORAGE_HW_FIRMWARE_REQUEST_FLAG_REPLACE_EXISTING_IMAGE         0x40000000
+
+//
 // Indicate that the existing firmware in slot should be activated.
 // Only valid for IOCTL_STORAGE_FIRMWARE_ACTIVATE.
 //
@@ -6809,6 +6819,7 @@ typedef struct _STORAGE_ATTRIBUTE_MGMT {
     DWORD Attribute;
 
 } STORAGE_ATTRIBUTE_MGMT, *PSTORAGE_ATTRIBUTE_MGMT;
+
 
 #if _MSC_VER >= 1200
 #pragma warning(pop)
@@ -11047,6 +11058,20 @@ typedef enum _CHANGER_DEVICE_PROBLEM_TYPE {
 #if (NTDDI_VERSION >= NTDDI_WIN10_FE)
 #define FSCTL_REFS_STREAM_SNAPSHOT_MANAGEMENT   CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 272, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #endif
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+#define FSCTL_MANAGE_BYPASS_IO                  CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 274, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_FE)
+#define FSCTL_REFS_DEALLOCATE_RANGES_EX         CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 275, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#endif
+#if (NTDDI_VERSION >= NTDDI_WIN10_FE)
+#define FSCTL_SET_CACHED_RUNS_STATE             CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 276, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+#define FSCTL_LMR_QUERY_INFO                    CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 286, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#endif
 //
 // AVIO IOCTLS.
 //
@@ -11735,6 +11760,8 @@ typedef struct _MARK_HANDLE_INFO32 {
 
 //
 //  Flags for the additional source information above.
+//  To set any of these values required a volume DASD handle to be specified in
+//  VolumeHandle field.
 //
 //      USN_SOURCE_DATA_MANAGEMENT - Service is not modifying the external view
 //          of any part of the file.  Typical case is HSM moving data to
@@ -11749,7 +11776,8 @@ typedef struct _MARK_HANDLE_INFO32 {
 //          replica set.
 //
 //      USN_SOURCE_CLIENT_REPLICATION_MANAGEMENT - Replication is being performed
-//          on client systems either from the cloud or servers
+//          on client systems either from the cloud or servers.  A volume handle
+//          is not required to set this value
 //
 
 #define USN_SOURCE_DATA_MANAGEMENT                  (0x00000001)
@@ -11763,7 +11791,7 @@ typedef struct _MARK_HANDLE_INFO32 {
                                      USN_SOURCE_CLIENT_REPLICATION_MANAGEMENT)
 
 //
-//  Flags for the HandleInfo field above
+//  Flags for the HandleInfo field above:
 //
 //  Introduced in W2K:
 //  MARK_HANDLE_PROTECT_CLUSTERS - disallow any defragmenting (FSCTL_MOVE_FILE) until the
@@ -11784,6 +11812,11 @@ typedef struct _MARK_HANDLE_INFO32 {
 //      to no longer do realtime streaming of video
 //
 //  MARK_HANDLE_CLOUD_SYNC - this flag is deprecated and is no longer used
+//
+//  MARK_HANDLE_SUPPRESS_VOLUME_OPEN_FLUSH - Normally, on the first read/write operation
+//      on a volume handle (DASD open) the file system flushes the volume.  This can
+//      have performance consequences in certain scenarios.  If this flag is set on
+//      a volume handle it will suppress that flush on first IO.
 //
 //  Introduced in Win8
 //  MARK_HANDLE_READ_COPY - indicates the data must be read from the specified copy
@@ -11856,6 +11889,12 @@ typedef struct _MARK_HANDLE_INFO32 {
 #define MARK_HANDLE_DISABLE_FILE_METADATA_OPTIMIZATION  (0x00001000)
 #define MARK_HANDLE_ENABLE_USN_SOURCE_ON_PAGING_IO      (0x00002000)
 #define MARK_HANDLE_SKIP_COHERENCY_SYNC_DISALLOW_WRITES (0x00004000)
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+#define MARK_HANDLE_SUPPRESS_VOLUME_OPEN_FLUSH          (0x00008000)
+
+#endif /*NTDDI_VERSION >= NTDDI_WIN10_RS5 */
 
 #endif /*NTDDI_VERSION >= NTDDI_WINTHRESHOLD */
 
@@ -13942,8 +13981,14 @@ typedef struct _REQUEST_OPLOCK_INPUT_BUFFER {
 
 } REQUEST_OPLOCK_INPUT_BUFFER, *PREQUEST_OPLOCK_INPUT_BUFFER;
 
-#define REQUEST_OPLOCK_OUTPUT_FLAG_ACK_REQUIRED     (0x00000001)
-#define REQUEST_OPLOCK_OUTPUT_FLAG_MODES_PROVIDED   (0x00000002)
+#define REQUEST_OPLOCK_OUTPUT_FLAG_ACK_REQUIRED                 (0x00000001)
+#define REQUEST_OPLOCK_OUTPUT_FLAG_MODES_PROVIDED               (0x00000002)
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_VB)
+// If the oplock request fails with STATUS_OPLOCK_NOT_GRANTED, this flag indicates that the oplock
+// could not be granted due to the presence of a writable user-mapped section.
+#define REQUEST_OPLOCK_OUTPUT_FLAG_WRITABLE_SECTION_PRESENT     (0x00000004)
+#endif
 
 typedef struct _REQUEST_OPLOCK_OUTPUT_BUFFER {
 
@@ -14714,6 +14759,25 @@ typedef struct _CSV_QUERY_MDS_PATH_V2 {
     DWORD PathLength;
 
 } CSV_QUERY_MDS_PATH_V2, *PCSV_QUERY_MDS_PATH_V2;
+
+//
+//========================= FSCTL_LMR_QUERY_INFO =============================
+//
+
+typedef enum _LMR_QUERY_INFO_CLASS {
+    LMRQuerySessionInfo = 1,
+} LMR_QUERY_INFO_CLASS, *PLMR_QUERY_INFO_CLASS;
+
+typedef struct _LMR_QUERY_INFO_PARAM {
+    LMR_QUERY_INFO_CLASS Operation;
+} LMR_QUERY_INFO_PARAM, *PLMR_QUERY_INFO_PARAM;
+
+//
+// Output for the LMRQuerySessionInfo
+//
+typedef struct _LMR_QUERY_SESSION_INFO {
+    UINT64 SessionId;
+} LMR_QUERY_SESSION_INFO, *PLMR_QUERY_SESSION_INFO;
 
 //
 //====================== FSCTL_CSV_QUERY_VETO_FILE_DIRECT_IO =========================

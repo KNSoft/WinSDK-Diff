@@ -822,7 +822,7 @@ namespace Windows
             runtimeclass HolographicCamera
             {
                 [default] interface Windows.Graphics.Holographic.IHolographicCamera;
-                [contract(Windows.Foundation.UniversalApiContract, 4.0)] interface Windows.Graphics.Holographic.IHolographicCamera2;
+                [contract(Windows.Foundation.UniversalApiContract, 5.0)] interface Windows.Graphics.Holographic.IHolographicCamera2;
                 [contract(Windows.Foundation.UniversalApiContract, 5.0)] interface Windows.Graphics.Holographic.IHolographicCamera3;
                 [contract(Windows.Foundation.UniversalApiContract, 6.0)] interface Windows.Graphics.Holographic.IHolographicCamera4;
                 [contract(Windows.Foundation.UniversalApiContract, 7.0)] interface Windows.Graphics.Holographic.IHolographicCamera5;
@@ -844,7 +844,7 @@ namespace Windows
             runtimeclass HolographicCameraRenderingParameters
             {
                 [default] interface Windows.Graphics.Holographic.IHolographicCameraRenderingParameters;
-                [contract(Windows.Foundation.UniversalApiContract, 4.0)] interface Windows.Graphics.Holographic.IHolographicCameraRenderingParameters2;
+                [contract(Windows.Foundation.UniversalApiContract, 5.0)] interface Windows.Graphics.Holographic.IHolographicCameraRenderingParameters2;
                 [contract(Windows.Foundation.UniversalApiContract, 5.0)] interface Windows.Graphics.Holographic.IHolographicCameraRenderingParameters3;
                 [contract(Windows.Foundation.UniversalApiContract, 11.0)] interface Windows.Graphics.Holographic.IHolographicCameraRenderingParameters4;
             }

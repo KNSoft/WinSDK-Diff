@@ -209,13 +209,13 @@ typedef union WHV_PROCESSOR_FEATURES1
         UINT64 TscInvariantSupport : 1;
         UINT64 ClZeroSupport : 1;
         UINT64 RdpruSupport : 1;
-        UINT64 Reserved2 : 2;
+        UINT64 Reserved4_5 : 2;
         UINT64 NestedVirtSupport : 1;
         UINT64 PsfdSupport: 1;
         UINT64 CetSsSupport : 1;
         UINT64 CetIbtSupport : 1;
         UINT64 VmxExceptionInjectSupport : 1;
-        UINT64 Reserved4 : 1;
+        UINT64 Reserved11 : 1;
         UINT64 UmwaitTpauseSupport : 1;
         UINT64 MovdiriSupport : 1;
         UINT64 Movdir64bSupport : 1;
@@ -226,7 +226,13 @@ typedef union WHV_PROCESSOR_FEATURES1
         UINT64 FZLRepMovsb : 1;
         UINT64 FSRepStosb : 1;
         UINT64 FSRepCmpsb : 1;
-        UINT64 Reserved5 : 42;
+        UINT64 Reserved22_42 : 21;
+        UINT64 BhiNoSupport : 1;
+        UINT64 BhiDisSupport : 1;
+        UINT64 Reserved45_47 : 3;
+        UINT64 RfdsNoSupport : 1;
+        UINT64 RfdsClearSupport : 1;
+        UINT64 Reserved50_63 : 14;
     };
 
     UINT64 AsUINT64;

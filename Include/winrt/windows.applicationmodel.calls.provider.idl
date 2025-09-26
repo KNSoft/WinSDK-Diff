@@ -141,7 +141,7 @@ namespace Windows
                 runtimeclass PhoneCallOrigin
                 {
                     [default] interface Windows.ApplicationModel.Calls.Provider.IPhoneCallOrigin;
-                    [contract(Windows.ApplicationModel.Calls.CallsPhoneContract, 2.0)] interface Windows.ApplicationModel.Calls.Provider.IPhoneCallOrigin2;
+                    [contract(Windows.ApplicationModel.Calls.CallsPhoneContract, 3.0)] interface Windows.ApplicationModel.Calls.Provider.IPhoneCallOrigin2;
                     [contract(Windows.ApplicationModel.Calls.CallsPhoneContract, 3.0)] interface Windows.ApplicationModel.Calls.Provider.IPhoneCallOrigin3;
                 }
 

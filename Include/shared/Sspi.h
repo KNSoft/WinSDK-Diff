@@ -373,6 +373,8 @@ typedef struct _SecBufferDesc {
 #define SECBUFFER_SUBSCRIBE_GENERIC_TLS_EXTENSION 26 // Buffer for subscribing to generic TLS extensions.
 #define SECBUFFER_FLAGS                         27  // ISC/ASC REQ Flags
 #define SECBUFFER_TRAFFIC_SECRETS               28  // Message sequence lengths and corresponding traffic secrets.
+#define SECBUFFER_CERTIFICATE_REQUEST_CONTEXT   29  // TLS 1.3 certificate request context.
+#define SECBUFFER_CHANNEL_BINDINGS_RESULT       30  // Output buffer for Channel Bindings Audit
 
 #define SECBUFFER_ATTRMASK                      0xF0000000
 #define SECBUFFER_READONLY                      0x80000000  // Buffer is read-only, no checksum
@@ -398,6 +400,43 @@ typedef struct _SEC_CHANNEL_BINDINGS {
     unsigned long  dwApplicationDataOffset;
 } SEC_CHANNEL_BINDINGS, * PSEC_CHANNEL_BINDINGS ;
 
+#define SEC_CHANNEL_BINDINGS_EX_MAGIC 'XEBC'
+
+typedef struct _SEC_CHANNEL_BINDINGS_EX {
+    unsigned long magicNumber; // contains SEC_CHANNEL_BINDINGS_VERSION_2.  distinguish ex buffer from normal channel bindings buffer. Shouldn't collide with any of assigned dwInitiatorAddrType values
+    unsigned long flags; // audit flag is set to indicate if audit is needed 
+    unsigned long cbHeaderLength;
+    unsigned long cbStructureLength;
+    unsigned long dwInitiatorAddrType;
+    unsigned long cbInitiatorLength;
+    unsigned long dwInitiatorOffset;
+    unsigned long dwAcceptorAddrType;
+    unsigned long cbAcceptorLength;
+    unsigned long dwAcceptorOffset;
+    unsigned long cbApplicationDataLength;
+    unsigned long dwApplicationDataOffset;
+} SEC_CHANNEL_BINDINGS_EX, * PSEC_CHANNEL_BINDINGS_EX ;
+
+#define SEC_CHANNEL_BINDINGS_AUDIT_BINDINGS 0x1
+
+#define SEC_CHANNEL_BINDINGS_VALID_FLAGS SEC_CHANNEL_BINDINGS_AUDIT_BINDINGS
+
+typedef struct _SEC_CHANNEL_BINDINGS_RESULT {
+    unsigned long flags;
+}SEC_CHANNEL_BINDINGS_RESULT, *PSEC_CHANNEL_BINDINGS_RESULT;
+
+#define SEC_CHANNEL_BINDINGS_RESULT_CLIENT_SUPPORT 0x1 // Auth package indicates client versions should support bindings
+#define SEC_CHANNEL_BINDINGS_RESULT_ABSENT 0x2 // The bindings are omitted or all zeroes
+#define SEC_CHANNEL_BINDINGS_RESULT_NOTVALID_MISMATCH 0x4 // The channel binding hash was incorrect
+#define SEC_CHANNEL_BINDINGS_RESULT_NOTVALID_MISSING 0x8 // Missing channel bindings are not allowed for this client
+#define SEC_CHANNEL_BINDINGS_RESULT_VALID_MATCHED 0x10 // The client and server bindings match
+#define SEC_CHANNEL_BINDINGS_RESULT_VALID_PROXY 0x20 // ASC_REQ_PROXY_BINDINGS required the client to provide a binding
+#define SEC_CHANNEL_BINDINGS_RESULT_VALID_MISSING 0x40 // Client permitted by ASC_REQ_ALLOW_MISSING_BINDINGS
+
+#define SEC_CHANNEL_BINDINGS_RESULT_VALID (SEC_CHANNEL_BINDINGS_RESULT_VALID_MATCHED | SEC_CHANNEL_BINDINGS_RESULT_VALID_PROXY | \
+    SEC_CHANNEL_BINDINGS_RESULT_VALID_MISSING)
+    
+#define SEC_CHANNEL_BINDINGS_RESULT_NOTVALID (SEC_CHANNEL_BINDINGS_RESULT_NOTVALID_MISMATCH | SEC_CHANNEL_BINDINGS_RESULT_NOTVALID_MISSING)
 
 typedef enum _SEC_APPLICATION_PROTOCOL_NEGOTIATION_EXT
 {
@@ -549,6 +588,8 @@ typedef struct _SEC_TRAFFIC_SECRETS {
 // Request that schannel perform server cert chain validation without failing the handshake on errors (deferred),
 // same as SCH_CRED_DEFERRED_CRED_VALIDATION except applies to context not credential handle.
 #define ISC_REQ_DEFERRED_CRED_VALIDATION 0x0000000200000000
+// Prevents the client sending the post_handshake_auth extension in the TLS 1.3 Client Hello.
+#define ISC_REQ_NO_POST_HANDSHAKE_AUTH   0x0000000400000000
 
 #define ISC_RET_DELEGATE                0x00000001
 #define ISC_RET_MUTUAL_AUTH             0x00000002
@@ -581,6 +622,7 @@ typedef struct _SEC_TRAFFIC_SECRETS {
 #define ISC_RET_CONFIDENTIALITY_ONLY    0x40000000 // honored by SPNEGO/Kerberos
 #define ISC_RET_MESSAGES                 0x0000000100000000 // Indicates that the TLS 1.3+ record layer is disabled, and the security context consumes and produces cleartext TLS messages, rather than records.
 #define ISC_RET_DEFERRED_CRED_VALIDATION 0x0000000200000000 // Indicates that SCH_CRED_DEFERRED_CRED_VALIDATION/ISC_REQ_DEFERRED_CRED_VALIDATION request will be honored.
+#define ISC_RET_NO_POST_HANDSHAKE_AUTH   0x0000000400000000 // Indicates that the TLS 1.3 Client Hello will not contain the post_handshake_auth extension.
 
 #define ASC_REQ_DELEGATE                0x00000001
 #define ASC_REQ_MUTUAL_AUTH             0x00000002
@@ -3166,6 +3208,10 @@ EXTERN_C __declspec(selectany) const GUID SEC_WINNT_AUTH_DATA_TYPE_FIDO =
 EXTERN_C __declspec(selectany) const GUID SEC_WINNT_AUTH_DATA_TYPE_KEYTAB =
 { 0xd587aae8, 0xf78f, 0x4455, { 0xa1, 0x12, 0xc9, 0x34, 0xbe, 0xee, 0x7c, 0xe1 } };
 
+// {12E52E0F-6F9B-4F83-9020-9DE42B226267}
+EXTERN_C __declspec(selectany) const GUID SEC_WINNT_AUTH_DATA_TYPE_DELEGATION_TOKEN =
+{ 0x12e52e0f, 0x6f9b, 0x4f83, { 0x90, 0x20, 0x9d, 0xe4, 0x2b, 0x22, 0x62, 0x67 } };
+
 typedef struct _SEC_WINNT_AUTH_DATA_PASSWORD {
    SEC_WINNT_AUTH_BYTE_VECTOR UnicodePassword;
 } SEC_WINNT_AUTH_DATA_PASSWORD, PSEC_WINNT_AUTH_DATA_PASSWORD;
@@ -3200,6 +3246,7 @@ typedef struct _SEC_WINNT_AUTH_NGC_DATA {
 #define NGC_DATA_FLAG_KERB_CERTIFICATE_LOGON_FLAG_CHECK_DUPLICATES     (0x1) //corresponds to KERB_CERTIFICATE_LOGON_FLAG_CHECK_DUPLICATES
 #define NGC_DATA_FLAG_KERB_CERTIFICATE_LOGON_FLAG_USE_CERTIFICATE_INFO (0x2) //corresponds to  KERB_CERTIFICATE_LOGON_FLAG_USE_CERTIFICATE_INFO
 #define NGC_DATA_FLAG_IS_SMARTCARD_DATA                                (0x4)
+#define NGC_DATA_FLAG_IS_CLOUD_TRUST_CRED                              (0x8) // credential should be treated as "cloud trust" - use Cloud TGTs instead of on-prem PKINIT
 
 typedef struct _SEC_WINNT_AUTH_DATA_TYPE_SMARTCARD_CONTEXTS_DATA
 {
@@ -3546,6 +3593,15 @@ SspiExcludePackage(
 #define SEC_WINNT_AUTH_IDENTITY_ONLY            0x8     // these credentials are for identity only - no PAC needed
 
 // end_ntifs
+
+// Set the requested flags in the channel bindings.  pBindings->Bindings may change if the structure gets
+// larger, but the caller's obligation to call FreeContextBuffer is unchanged.
+SECURITY_STATUS
+SEC_ENTRY
+SspiSetChannelBindingFlags(
+    _Inout_ SecPkgContext_Bindings* pBindings,
+    unsigned long flags
+    );
 
 //
 // Routines for manipulating packages

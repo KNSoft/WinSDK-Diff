@@ -271,6 +271,22 @@ typedef struct _BCRYPT_AUTHENTICATED_CIPHER_MODE_INFO
 #define BCRYPT_AES_WRAP_KEY_BLOB    L"Rfc3565KeyWrapBlob"
 #endif
 
+#if (NTDDI_VERSION >= NTDDI_WIN10_FE)
+
+#define BCRYPT_PKCS11_RSA_AES_WRAP_KEY_BLOB L"PKCS11RsaAesWrapBlob"
+
+#define BCRYPT_PKCS11_RSA_AES_WRAP_BLOB_MAGIC 0x57504152  // 'RAPW' for RSA-AES-PAD-WRAP (PKCS11-RSA-AES-WRAP)
+typedef struct _BCRYPT_PKCS11_RSA_AES_WRAP_BLOB {
+    ULONG dwMagic;         // BCRYPT_PKCS11_RSA_AES_WRAP_BLOB_MAGIC
+    ULONG cbKey;           // Number of bytes in the binary PKCS#11 wrapped key blob
+    ULONG cbPaddingAlgId;  // Number of bytes in OAEP Padding algorithm per OAEPParams in PKCS#11 specification
+    ULONG cbPaddingLabel;  // Number of bytes in OAEP Padding label per OAEPParams in PKCS#11 specification
+    // UCHAR Key[cbKey];                   -- PKCS#11 binary blob
+    // UCHAR PaddingAlgId[cbPaddingAlgId]; -- OAEP Padding information for PKCS#11 unwrapping
+    // UCHAR PaddingLabel[cbPaddingLabel]; -- OAEP Padding information for PKCS#11 unwrapping
+} BCRYPT_PKCS11_RSA_AES_WRAP_BLOB, *PBCRYPT_PKCS11_RSA_AES_WRAP_BLOB;
+
+#endif // #if (NTDDI_VERSION >= NTDDI_WIN10_FE)
 // BCryptGetProperty strings
 #define BCRYPT_OBJECT_LENGTH        L"ObjectLength"
 #define BCRYPT_ALGORITHM_NAME       L"AlgorithmName"

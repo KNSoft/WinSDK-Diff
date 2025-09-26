@@ -156,6 +156,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Activation
         StartupTask = 1020,
         CommandLineLaunch = 1021,
         BarcodeScannerProvider = 1022,
+        VpnForeground = 1026,
     };
     enum class ApplicationExecutionState : int32_t
     {

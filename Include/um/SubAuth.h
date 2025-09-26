@@ -230,7 +230,8 @@ typedef enum _NETLOGON_LOGON_INFO_CLASS {
     NetlogonGenericInformation,
     NetlogonInteractiveTransitiveInformation,
     NetlogonNetworkTransitiveInformation,
-    NetlogonServiceTransitiveInformation
+    NetlogonServiceTransitiveInformation,
+    NetlogonTicketLogonInformation,
 } NETLOGON_LOGON_INFO_CLASS;
 
 typedef struct _NETLOGON_LOGON_IDENTITY_INFO {
@@ -272,10 +273,28 @@ typedef struct _NETLOGON_GENERIC_INFO {
     PUCHAR LogonData;
 } NETLOGON_GENERIC_INFO, *PNETLOGON_GENERIC_INFO;
 
+//
+// Values of Type
+//
+
+#define NETLOGON_TARGET_INFO_TYPE_NTLM 1
+#define NETLOGON_TARGET_INFO_TYPE_KERBEROS 2
+
+typedef struct _NETLOGON_TARGET_INFO {
+    ULONG Type;
+    UNICODE_STRING NbComputerName;
+    UNICODE_STRING NbDomainName;
+    UNICODE_STRING DnsComputerName;
+    UNICODE_STRING DnsDomainName;
+    UNICODE_STRING DnsTreeName;
+    UNICODE_STRING TargetName;
+} NETLOGON_TARGET_INFO, *PNETLOGON_TARGET_INFO;
+
 
 // Values for Flags
 #define MSV1_0_PASSTHRU     0x01
 #define MSV1_0_GUEST_LOGON  0x02
+#define MSV1_0_KERBEROS_LOGON  0x04
 
 NTSTATUS NTAPI
 Msv1_0SubAuthenticationRoutine(

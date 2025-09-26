@@ -989,6 +989,7 @@ enum __MIDL___MIDL_itf_msclus_0000_0000_0001
         ClusGroupTypeCrossClusterOrchestrator	= 121,
         ClusGroupTypeInfrastructureFileServer	= 122,
         ClusGroupTypeCoreSddc	= 123,
+        ClusGroupTypeUserManager	= 124,
         ClusGroupTypeUnknown	= 9999
     } 	CLUSGROUP_TYPE;
 
@@ -1658,6 +1659,8 @@ enum CLCTL_CODES
         CLCTL_VALIDATE_COMMON_PROPERTIES	= ( ( ( 0x1 << 0 )  | ( ( 0 + 24 )  << 2 )  )  | ( 0 << 22 )  ) ,
         CLCTL_GET_COMMON_PROPERTY_FMTS	= ( ( ( 0x1 << 0 )  | ( ( 0 + 25 )  << 2 )  )  | ( 0 << 22 )  ) ,
         CLCTL_GET_COMMON_RESOURCE_PROPERTY_FMTS	= ( ( ( 0x1 << 0 )  | ( ( 0 + 26 )  << 2 )  )  | ( 0 << 22 )  ) ,
+        CLCTL_CHECK_VOTER_EVICT_WITNESS	= ( ( ( 0x1 << 0 )  | ( ( 0 + 27 )  << 2 )  )  | ( 0 << 22 )  ) ,
+        CLCTL_CHECK_VOTER_DOWN_WITNESS	= ( ( ( 0x1 << 0 )  | ( ( 0 + 28 )  << 2 )  )  | ( 0 << 22 )  ) ,
         CLCTL_ENUM_PRIVATE_PROPERTIES	= ( ( ( 0x1 << 0 )  | ( ( 0 + 30 )  << 2 )  )  | ( 0 << 22 )  ) ,
         CLCTL_GET_RO_PRIVATE_PROPERTIES	= ( ( ( 0x1 << 0 )  | ( ( 0 + 31 )  << 2 )  )  | ( 0 << 22 )  ) ,
         CLCTL_GET_PRIVATE_PROPERTIES	= ( ( ( 0x1 << 0 )  | ( ( 0 + 32 )  << 2 )  )  | ( 0 << 22 )  ) ,
@@ -2152,6 +2155,8 @@ enum CLUSCTL_CLUSTER_CODES
         CLUSCTL_CLUSTER_STORAGE_RENAME_SHARED_VOLUME	= ( ( CLUS_OBJECT_CLUSTER << 24 )  | CLCTL_STORAGE_RENAME_SHARED_VOLUME ) ,
         CLUSCTL_CLUSTER_STORAGE_RENAME_SHARED_VOLUME_GUID	= ( ( CLUS_OBJECT_CLUSTER << 24 )  | CLCTL_STORAGE_RENAME_SHARED_VOLUME_GUID ) ,
         CLUSCTL_CLUSTER_RELOAD_AUTOLOGGER_CONFIG	= ( ( CLUS_OBJECT_CLUSTER << 24 )  | CLCTL_RELOAD_AUTOLOGGER_CONFIG ) ,
+        CLUSCTL_CLUSTER_CHECK_VOTER_EVICT_WITNESS	= ( ( CLUS_OBJECT_CLUSTER << 24 )  | CLCTL_CHECK_VOTER_EVICT_WITNESS ) ,
+        CLUSCTL_CLUSTER_CHECK_VOTER_DOWN_WITNESS	= ( ( CLUS_OBJECT_CLUSTER << 24 )  | CLCTL_CHECK_VOTER_DOWN_WITNESS ) ,
         CLUSCTL_CLUSTER_ENUM_AFFINITY_RULE_NAMES	= ( ( CLUS_OBJECT_CLUSTER << 24 )  | CLCTL_ENUM_AFFINITY_RULE_NAMES ) ,
         CLUSCTL_CLUSTER_GET_NODES_IN_FD	= ( ( CLUS_OBJECT_CLUSTER << 24 )  | CLCTL_GET_NODES_IN_FD ) ,
         CLUSCTL_CLUSTER_FORCE_FLUSH_DB	= ( ( CLUS_OBJECT_CLUSTER << 24 )  | CLCTL_FORCE_DB_FLUSH ) 

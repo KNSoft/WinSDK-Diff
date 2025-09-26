@@ -1116,7 +1116,8 @@ typedef ICMP_MESSAGE ICMPV6_MESSAGE, *PICMPV6_MESSAGE;
 
 #define ICMP6_PARAMPROB_HEADER 0        // Erroneous header field.
 #define ICMP6_PARAMPROB_NEXTHEADER 1    // Unrecognized Next Header.
-#define ICMP6_PARAMPROB_OPTION 2    // Unrecognized IPv6 option.
+#define ICMP6_PARAMPROB_OPTION 2        // Unrecognized IPv6 option.
+#define ICMP6_PARAMPROB_FIRSTFRAGMENT 3 // IPv6 First Fragment is incomplete.
 
 #define ICMPV6_ECHO_REQUEST_FLAG_REVERSE 0x1
 
@@ -1948,6 +1949,7 @@ C_ASSERT(DL_ADDRESS_LENGTH_MAXIMUM >= sizeof(DL_TEREDO_ADDRESS));
 
 #include <ifdef.h>
 
+#define NMR_REG_KEY_PATH L"\\Registry\\Machine\\System\\CurrentControlSet\\Control\\NMR\\providers"
 
 typedef enum _NPI_MODULEID_TYPE {
     MIT_GUID = 1,

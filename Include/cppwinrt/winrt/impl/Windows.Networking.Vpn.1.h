@@ -51,6 +51,13 @@ WINRT_EXPORT namespace winrt::Windows::Networking::Vpn
         IVpnChannel5(std::nullptr_t = nullptr) noexcept {}
         IVpnChannel5(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IVpnChannel6 :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IVpnChannel6>
+    {
+        IVpnChannel6(std::nullptr_t = nullptr) noexcept {}
+        IVpnChannel6(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IVpnChannelActivityEventArgs :
         Windows::Foundation::IInspectable,
         impl::consume_t<IVpnChannelActivityEventArgs>
@@ -206,6 +213,20 @@ WINRT_EXPORT namespace winrt::Windows::Networking::Vpn
     {
         IVpnDomainNameInfoFactory(std::nullptr_t = nullptr) noexcept {}
         IVpnDomainNameInfoFactory(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IVpnForegroundActivatedEventArgs :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IVpnForegroundActivatedEventArgs>
+    {
+        IVpnForegroundActivatedEventArgs(std::nullptr_t = nullptr) noexcept {}
+        IVpnForegroundActivatedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IVpnForegroundActivationOperation :
+        Windows::Foundation::IInspectable,
+        impl::consume_t<IVpnForegroundActivationOperation>
+    {
+        IVpnForegroundActivationOperation(std::nullptr_t = nullptr) noexcept {}
+        IVpnForegroundActivationOperation(void* ptr, take_ownership_from_abi_t) noexcept : Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct __declspec(empty_bases) IVpnInterfaceId :
         Windows::Foundation::IInspectable,

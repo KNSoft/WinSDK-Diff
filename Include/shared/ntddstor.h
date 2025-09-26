@@ -1820,7 +1820,7 @@ typedef struct _STORAGE_CRYPTO_CAPABILITY {
     // Bit 0 represents 512 bytes, 1 represents 1 KB, bit 7 represents 64 KB
     //
 
-    ULONG DataUnitSizeBitmask;
+    ULONG DataUnitSizeBitmask;    
 
 } STORAGE_CRYPTO_CAPABILITY, *PSTORAGE_CRYPTO_CAPABILITY;
 
@@ -4138,7 +4138,11 @@ typedef struct _DEVICE_DSM_REPORT_ZONES_DATA {
 
     ULONG Size;
 
+    //
+    // Represents the number of ZoneDescriptors.
+    //
     ULONG ZoneCount;
+
     STORAGE_ZONES_ATTRIBUTES Attributes;
 
     ULONG Reserved0;
@@ -6341,6 +6345,12 @@ typedef _Struct_size_bytes_(Size) struct _STORAGE_COUNTERS {
 #define STORAGE_HW_FIRMWARE_REQUEST_FLAG_FIRST_SEGMENT                  0x00000004
 
 //
+// Indicate that any existing firmware in slot should be replaced with the downloaded image.
+// Only valid for IOCTL_STORAGE_FIRMWARE_ACTIVATE.
+//
+#define STORAGE_HW_FIRMWARE_REQUEST_FLAG_REPLACE_EXISTING_IMAGE         0x40000000
+
+//
 // Indicate that the existing firmware in slot should be activated.
 // Only valid for IOCTL_STORAGE_FIRMWARE_ACTIVATE.
 //
@@ -6654,6 +6664,7 @@ typedef struct _STORAGE_ATTRIBUTE_MGMT {
     ULONG Attribute;
 
 } STORAGE_ATTRIBUTE_MGMT, *PSTORAGE_ATTRIBUTE_MGMT;
+
 
 #if _MSC_VER >= 1200
 #pragma warning(pop)

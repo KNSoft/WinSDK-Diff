@@ -920,7 +920,7 @@ namespace Windows
                 runtimeclass SpatialInteractionController
                 {
                     [default] interface Windows.UI.Input.Spatial.ISpatialInteractionController;
-                    [contract(Windows.Foundation.UniversalApiContract, 5.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionController2;
+                    [contract(Windows.Foundation.UniversalApiContract, 6.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionController2;
                     [contract(Windows.Foundation.UniversalApiContract, 6.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionController3;
                 }
 
@@ -957,7 +957,7 @@ namespace Windows
                 runtimeclass SpatialInteractionSource
                 {
                     [default] interface Windows.UI.Input.Spatial.ISpatialInteractionSource;
-                    [contract(Windows.Foundation.UniversalApiContract, 4.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionSource2;
+                    [contract(Windows.Foundation.UniversalApiContract, 5.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionSource2;
                     [contract(Windows.Foundation.UniversalApiContract, 5.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionSource3;
                     [contract(Windows.Foundation.UniversalApiContract, 8.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionSource4;
                 }
@@ -995,7 +995,7 @@ namespace Windows
                 runtimeclass SpatialInteractionSourceState
                 {
                     [default] interface Windows.UI.Input.Spatial.ISpatialInteractionSourceState;
-                    [contract(Windows.Foundation.UniversalApiContract, 4.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionSourceState2;
+                    [contract(Windows.Foundation.UniversalApiContract, 8.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionSourceState2;
                     [contract(Windows.Foundation.UniversalApiContract, 8.0)] interface Windows.UI.Input.Spatial.ISpatialInteractionSourceState3;
                 }
 

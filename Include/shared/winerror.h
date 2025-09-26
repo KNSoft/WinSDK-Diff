@@ -204,6 +204,7 @@
 #define FACILITY_SYNCENGINE              2050
 #define FACILITY_XBOX                    2339
 #define FACILITY_GAME                    2340
+#define FACILITY_USERMODE_UNIONFS        2341
 #define FACILITY_PIX                     2748
 
 
@@ -3495,6 +3496,15 @@
 #define ERROR_INSUFFICIENT_VIRTUAL_ADDR_RESOURCES 473L
 
 //
+// MessageId: ERROR_CLOUD_FILE_US_MESSAGE_TIMEOUT
+//
+// MessageText:
+//
+// The cloud provider failed to acknowledge a message before the time-out expired.
+//
+#define ERROR_CLOUD_FILE_US_MESSAGE_TIMEOUT 475L
+
+//
 // **** Available SYSTEM error codes ****
 //
 //
@@ -3580,6 +3590,24 @@
 // The negotiated session key does not meet the minimum length requirement.
 //
 #define ERROR_SESSION_KEY_TOO_SHORT      501L
+
+//
+// MessageId: ERROR_NOT_SUPPORTED_WITH_VIRTUALIZATION
+//
+// MessageText:
+//
+// The specified operation is not supported while virtualization is enabled on the target object.
+//
+#define ERROR_NOT_SUPPORTED_WITH_VIRTUALIZATION 506L
+
+//
+// MessageId: ERROR_FS_METADATA_INCONSISTENT
+//
+// MessageText:
+//
+// The file system encountered a metadata file with inconsistent data.
+//
+#define ERROR_FS_METADATA_INCONSISTENT   510L
 
 //
 // **** Available SYSTEM error codes ****
@@ -6151,6 +6179,18 @@
 // The section creation request was failed because it would have been satisfied with a direct map and the caller explicitly signified this was not wanted.
 //
 #define ERROR_SECTION_DIRECT_MAP_ONLY    819L
+
+//
+// MessageId: ERROR_LINUX_SUBSYSTEM_UPDATE_REQUIRED_LIFTED_REQUIRED
+//
+// MessageText:
+//
+// The inbox version of the Windows Subsystem For Linux has been disabled by group policy.
+// To install WSL from the store, run 'wsl.exe --update'.
+// Installing WSL from the Microsoft Store will give you the latest WSL updates, faster.
+// For more information please visit https://aka.ms/wslstoreinfo
+//
+#define ERROR_LINUX_SUBSYSTEM_UPDATE_REQUIRED_LIFTED_REQUIRED 820L
 
 //
 // **** Available SYSTEM error codes ****
@@ -22032,6 +22072,60 @@
 //
 #define ERROR_WEAK_WHFBKEY_BLOCKED       8651L
 
+//
+// MessageId: ERROR_DS_PER_ATTRIBUTE_AUTHZ_FAILED_DURING_ADD
+//
+// MessageText:
+//
+// The add object operation failed because the caller was not authorized to add one or more attributes included in the request.
+//
+#define ERROR_DS_PER_ATTRIBUTE_AUTHZ_FAILED_DURING_ADD 8652L
+
+//
+// MessageId: ERROR_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The local account policy modification request was rejected because the policy is controlled by a regional authority.
+//
+#define ERROR_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED 8653L
+
+//
+// MessageId: ERROR_POLICY_CONTROLLED_ACCOUNT
+//
+// MessageText:
+//
+// The account is controlled by external policy and cannot be modified.
+//
+#define ERROR_POLICY_CONTROLLED_ACCOUNT  8654L
+
+//
+// MessageId: ERROR_LAPS_LEGACY_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the legacy LAPS schema needs to be added to Active Directory.
+//
+#define ERROR_LAPS_LEGACY_SCHEMA_MISSING 8655L
+
+//
+// MessageId: ERROR_LAPS_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the Windows LAPS schema needs to be added to Active Directory.
+//
+#define ERROR_LAPS_SCHEMA_MISSING        8656L
+
+//
+// MessageId: ERROR_LAPS_ENCRYPTION_REQUIRES_2016_DFL
+//
+// MessageText:
+//
+// The Local Administrator Password Solution encrypted password update operation failed because Active Directory is not yet running at the minimum required domain functional level (2016).
+//
+#define ERROR_LAPS_ENCRYPTION_REQUIRES_2016_DFL 8657L
+
 
 ///////////////////////////////////////////////////
 //                                                /
@@ -31061,6 +31155,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 //
 #define CONVERT10_E_STG_DIB_TO_BITMAP    _HRESULT_TYPEDEF_(0x800401C6L)
 
+//
+// MessageId: CONVERT10_E_OLELINK_DISABLED
+//
+// MessageText:
+//
+// OLE Links in OLESTREAM are disabled while converting the OLESTREAM to IStorage
+//
+#define CONVERT10_E_OLELINK_DISABLED     _HRESULT_TYPEDEF_(0x800401C7L)
+
 #define CLIPBRD_E_FIRST        0x800401D0L
 #define CLIPBRD_E_LAST         0x800401DFL
 #define CLIPBRD_S_FIRST        0x000401D0L
@@ -33658,6 +33761,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define APPX_E_INVALID_PACKAGE_FOLDER_ACLS _HRESULT_TYPEDEF_(0x80080217L)
 
 //
+// MessageId: APPX_E_DIGEST_MISMATCH
+//
+// MessageText:
+//
+// The expected digest value did not match the actual digest value of the content.
+//
+#define APPX_E_DIGEST_MISMATCH           _HRESULT_TYPEDEF_(0x80080219L)
+
+//
 // Codes 0x0300-0x030f are reserved for background task error codes.
 //
 //
@@ -35915,6 +36027,24 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // The operation cannot be completed from Terminal Server client sessions.
 //
 #define NTE_NOT_ACTIVE_CONSOLE           _HRESULT_TYPEDEF_(0x80090038L)
+
+//
+// MessageId: NTE_VBS_UNAVAILABLE
+//
+// MessageText:
+//
+// VBS key isolation is not available.
+//
+#define NTE_VBS_UNAVAILABLE              _HRESULT_TYPEDEF_(0x80090039L)
+
+//
+// MessageId: NTE_VBS_CANNOT_DECRYPT_KEY
+//
+// MessageText:
+//
+// Cannot decrypt a VBS-isolated key.
+//
+#define NTE_VBS_CANNOT_DECRYPT_KEY       _HRESULT_TYPEDEF_(0x8009003AL)
 
 //
 // MessageId: SEC_E_INSUFFICIENT_MEMORY
@@ -38328,6 +38458,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // The request is locked against edits until a response is received from the client.
 //
 #define CERTSRV_E_PENDING_CLIENT_RESPONSE _HRESULT_TYPEDEF_(0x80094820L)
+
+//
+// MessageId: CERTSRV_E_SEC_EXT_DIRECTORY_SID_REQUIRED
+//
+// MessageText:
+//
+// The Active Directory SID is unavailable and cannot be added to the custom security extension.
+//
+#define CERTSRV_E_SEC_EXT_DIRECTORY_SID_REQUIRED _HRESULT_TYPEDEF_(0x80094821L)
 
 //
 // The range 0x5000-0x51ff is reserved for XENROLL errors.
@@ -49886,6 +50025,69 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define FVE_E_EDRIVE_BAND_ENUMERATION_FAILED _HRESULT_TYPEDEF_(0x803100E3L)
 
 //
+// MessageId: FVE_E_PREDICTED_TPM_PROTECTOR_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Adding BitLocker predicted TPM based protector is not supported.
+//
+#define FVE_E_PREDICTED_TPM_PROTECTOR_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E5L)
+
+//
+// MessageId: FVE_E_SETUP_TPM_CALLBACK_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Registeration for TPM callback is not supported.
+//
+#define FVE_E_SETUP_TPM_CALLBACK_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E6L)
+
+//
+// MessageId: FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Creating new TPM context is not supported.
+//
+#define FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E7L)
+
+//
+// MessageId: FVE_E_UPDATE_INVALID_CONFIG
+//
+// MessageText:
+//
+// The Secure Boot update was not applied due to a known incompatibility with the current BitLocker configuration.
+//
+#define FVE_E_UPDATE_INVALID_CONFIG      _HRESULT_TYPEDEF_(0x803100E8L)
+
+//
+// MessageId: FVE_E_METADATA_FULL
+//
+// MessageText:
+//
+// This operation cannot be completed because BitLocker Drive Encryption metadata area is full. Consider removing unnecessary key protectors for this drive.
+//
+#define FVE_E_METADATA_FULL              _HRESULT_TYPEDEF_(0x803100ECL)
+
+//
+// MessageId: FVE_E_ENTRY_ALREADY_EXISTS
+//
+// MessageText:
+//
+// The operation failed because an entry with the given ID already exists.
+//
+#define FVE_E_ENTRY_ALREADY_EXISTS       _HRESULT_TYPEDEF_(0x803100F2L)
+
+//
+// MessageId: FVE_E_ENTRY_NOT_FOUND
+//
+// MessageText:
+//
+// The operation failed because an entry with the given ID was not found.
+//
+#define FVE_E_ENTRY_NOT_FOUND            _HRESULT_TYPEDEF_(0x803100F3L)
+
+//
 // =======================================================
 // Windows Filtering Platform Error Messages
 // =======================================================
@@ -57154,6 +57356,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define ERROR_SPACES_CACHE_FULL          _HRESULT_TYPEDEF_(0x80E70026L)
 
 //
+// MessageId: ERROR_SPACES_REPAIR_IN_PROGRESS
+//
+// MessageText:
+//
+// Repair is in progress.
+//
+#define ERROR_SPACES_REPAIR_IN_PROGRESS  _HRESULT_TYPEDEF_(0x80E70027L)
+
+//
 // Volsnap errors
 //
 // Success
@@ -61542,6 +61753,24 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define ERROR_SMB_NO_SIGNING_ALGORITHM_OVERLAP _HRESULT_TYPEDEF_(0xC05D0002L)
 
 //
+// MessageId: ERROR_SMB_CERT_NO_PRIVATE_KEY
+//
+// MessageText:
+//
+// The certificate does not have a private key.
+//
+#define ERROR_SMB_CERT_NO_PRIVATE_KEY    _HRESULT_TYPEDEF_(0xC05D0006L)
+
+//
+// MessageId: ERROR_SMB_TLS_ACCESS_DENIED
+//
+// MessageText:
+//
+// The SMB client was denied access to the SMB server during mutual authentication.
+//
+#define ERROR_SMB_TLS_ACCESS_DENIED      _HRESULT_TYPEDEF_(0xC05D0007L)
+
+//
 // WININET.DLL errors - propagated as HRESULT's using FACILITY=WIN32
 //
 //
@@ -63899,5 +64128,231 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // The QUIC connection failed to negotiate a compatible ALPN.
 //
 #define ERROR_QUIC_ALPN_NEG_FAILURE      _HRESULT_TYPEDEF_(0x80410007L)
+
+//
+// MessageId: ERROR_QUIC_STREAM_LIMIT_REACHED
+//
+// MessageText:
+//
+// The QUIC connection failed because there are not enough streams available.
+//
+#define ERROR_QUIC_STREAM_LIMIT_REACHED  _HRESULT_TYPEDEF_(0x80410008L)
+
+//
+// MessageId: ERROR_QUIC_ALPN_IN_USE
+//
+// MessageText:
+//
+// The QUIC connection failed because the ALPN is in use.
+//
+#define ERROR_QUIC_ALPN_IN_USE           _HRESULT_TYPEDEF_(0x80410009L)
+
+
+//
+// QUIC TLS
+//
+
+//
+// MessageId: ERROR_QUIC_TLS_UNEXPECTED_MESSAGE
+//
+// MessageText:
+//
+// The QUIC connection encountered an unexpected message during TLS.
+//
+#define ERROR_QUIC_TLS_UNEXPECTED_MESSAGE _HRESULT_TYPEDEF_(0x8041010AL)
+
+//
+// MessageId: ERROR_QUIC_TLS_BAD_CERTIFICATE
+//
+// MessageText:
+//
+// The QUIC connection encountered a bad certificate during TLS.
+//
+#define ERROR_QUIC_TLS_BAD_CERTIFICATE   _HRESULT_TYPEDEF_(0x8041012AL)
+
+//
+// MessageId: ERROR_QUIC_TLS_UNSUPPORTED_CERTIFICATE
+//
+// MessageText:
+//
+// The QUIC connection encountered an unsupported certificate during TLS.
+//
+#define ERROR_QUIC_TLS_UNSUPPORTED_CERTIFICATE _HRESULT_TYPEDEF_(0x8041012BL)
+
+//
+// MessageId: ERROR_QUIC_TLS_CERTIFICATE_REVOKED
+//
+// MessageText:
+//
+// The QUIC connection encountered a revoked certificate during TLS.
+//
+#define ERROR_QUIC_TLS_CERTIFICATE_REVOKED _HRESULT_TYPEDEF_(0x8041012CL)
+
+//
+// MessageId: ERROR_QUIC_TLS_CERTIFICATE_EXPIRED
+//
+// MessageText:
+//
+// The QUIC connection encountered an expired certificate during TLS.
+//
+#define ERROR_QUIC_TLS_CERTIFICATE_EXPIRED _HRESULT_TYPEDEF_(0x8041012DL)
+
+//
+// MessageId: ERROR_QUIC_TLS_CERTIFICATE_UNKNOWN
+//
+// MessageText:
+//
+// The QUIC connection encountered an unknown certificate during TLS.
+//
+#define ERROR_QUIC_TLS_CERTIFICATE_UNKNOWN _HRESULT_TYPEDEF_(0x8041012EL)
+
+//
+// MessageId: ERROR_QUIC_TLS_ILLEGAL_PARAMETER
+//
+// MessageText:
+//
+// The QUIC connection encountered an illegal parameter during TLS.
+//
+#define ERROR_QUIC_TLS_ILLEGAL_PARAMETER _HRESULT_TYPEDEF_(0x8041012FL)
+
+//
+// MessageId: ERROR_QUIC_TLS_UNKNOWN_CA
+//
+// MessageText:
+//
+// The QUIC connection encountered a certificate with an unkown certificate authority during TLS.
+//
+#define ERROR_QUIC_TLS_UNKNOWN_CA        _HRESULT_TYPEDEF_(0x80410130L)
+
+//
+// MessageId: ERROR_QUIC_TLS_ACCESS_DENIED
+//
+// MessageText:
+//
+// The QUIC connection attempt was denied by the peer during TLS.
+//
+#define ERROR_QUIC_TLS_ACCESS_DENIED     _HRESULT_TYPEDEF_(0x80410131L)
+
+//
+// MessageId: ERROR_QUIC_TLS_INSUFFICIENT_SECURITY
+//
+// MessageText:
+//
+// The QUIC connection security was insufficient during TLS.
+//
+#define ERROR_QUIC_TLS_INSUFFICIENT_SECURITY _HRESULT_TYPEDEF_(0x80410147L)
+
+//
+// MessageId: ERROR_QUIC_TLS_INTERNAL_ERROR
+//
+// MessageText:
+//
+// The QUIC connection encountered an internal error during TLS.
+//
+#define ERROR_QUIC_TLS_INTERNAL_ERROR    _HRESULT_TYPEDEF_(0x80410150L)
+
+//
+// MessageId: ERROR_QUIC_TLS_USER_CANCELED
+//
+// MessageText:
+//
+// The QUIC connection was canceled by the user during TLS.
+//
+#define ERROR_QUIC_TLS_USER_CANCELED     _HRESULT_TYPEDEF_(0x8041015AL)
+
+//
+// MessageId: ERROR_QUIC_TLS_CERTIFICATE_REQUIRED
+//
+// MessageText:
+//
+// The QUIC connection required a certificate during TLS.
+//
+#define ERROR_QUIC_TLS_CERTIFICATE_REQUIRED _HRESULT_TYPEDEF_(0x80410174L)
+
+
+//
+// UnionFS Error codes
+//
+
+//
+// MessageId: UNIONFS_E_CANNOT_CROSS_UNION
+//
+// MessageText:
+//
+// This operation is not allowed across unions.
+//
+#define UNIONFS_E_CANNOT_CROSS_UNION     _HRESULT_TYPEDEF_(0x89250001L)
+
+//
+// MessageId: UNIONFS_E_CANNOT_EXIT_UNION
+//
+// MessageText:
+//
+// This operation is not allowed to have a destination outside of a union.
+//
+#define UNIONFS_E_CANNOT_EXIT_UNION      _HRESULT_TYPEDEF_(0x89250002L)
+
+//
+// MessageId: UNIONFS_E_CANNOT_PRESERVE_LINK
+//
+// MessageText:
+//
+// This file has one or more hard links in the scratch layer.
+//
+#define UNIONFS_E_CANNOT_PRESERVE_LINK   _HRESULT_TYPEDEF_(0x89250003L)
+
+//
+// MessageId: UNIONFS_E_INVALID_TOMBSTONE_STATE
+//
+// MessageText:
+//
+// The tombstone cannot be created in or transitioned to the given state.
+//
+#define UNIONFS_E_INVALID_TOMBSTONE_STATE _HRESULT_TYPEDEF_(0x89250004L)
+
+//
+// MessageId: UNIONFS_E_LAYERS_PRESENT
+//
+// MessageText:
+//
+// This union has attached layers preventing this operation.
+//
+#define UNIONFS_E_LAYERS_PRESENT         _HRESULT_TYPEDEF_(0x89250005L)
+
+//
+// MessageId: UNIONFS_E_NESTED_LAYER
+//
+// MessageText:
+//
+// A union layer root cannot be a descendant of another layer root.
+//
+#define UNIONFS_E_NESTED_LAYER           _HRESULT_TYPEDEF_(0x89250006L)
+
+//
+// MessageId: UNIONFS_E_UNION_DUPLICATE_ID
+//
+// MessageText:
+//
+// A union with this union ID already exists.
+//
+#define UNIONFS_E_UNION_DUPLICATE_ID     _HRESULT_TYPEDEF_(0x89250007L)
+
+//
+// MessageId: UNIONFS_E_INACTIVE_UNION
+//
+// MessageText:
+//
+// The union this operation is being performed on is inactive.
+//
+#define UNIONFS_E_INACTIVE_UNION         _HRESULT_TYPEDEF_(0x89250008L)
+
+//
+// MessageId: UNIONFS_E_TOO_MANY_LAYERS
+//
+// MessageText:
+//
+// There are too many layers to construct this union.
+//
+#define UNIONFS_E_TOO_MANY_LAYERS        _HRESULT_TYPEDEF_(0x89250009L)
 
 #endif//_WINERROR_

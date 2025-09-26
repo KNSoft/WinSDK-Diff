@@ -67,6 +67,13 @@ KAPC_RECORD_FLAGS_CHECK_ALERT equ 00001H
 
 
 ;
+;  Apc Callback Data Structure Offset Definitions
+;
+
+AcdContextRecord equ 00008H
+KAPC_CALLBACK_DATA_LENGTH equ 00020H
+
+;
 ;  Bug Check Code Definitions
 ;
 
@@ -462,12 +469,10 @@ PrProcessFlags equ 00278H
 PrBasePriority equ 00280H
 PrQuantumReset equ 00281H
 PrCycleTime equ 00360H
-PrKernelTime equ 0037CH
-PrUserTime equ 00380H
 PrInstrumentationCallback equ 003D8H
 PrMitigationFlags2 equ 009D4H
 KernelProcessObjectLength equ 00438H
-ExecutiveProcessObjectLength equ 00B80H
+ExecutiveProcessObjectLength equ 00BC0H
 Win32BatchFlushCallout equ 00007H
 
 ;
@@ -948,6 +953,7 @@ PcDpcRoutineActive equ 0353AH
 PcInterruptCount equ 082C0H
 PcDebuggerSavedIRQL equ 082D8H
 PcStartCycles equ 08300H
+PcSelfIpiRequestSummary equ 00220H
 RTL_RETPOLINE_STUBS_UNWIND_INFO_MAX_SIZE equ 001F4H
 ProcessorControlRegisterLength equ 02C040H
 
@@ -1057,8 +1063,8 @@ PbMinorVersion equ 00088H
 PbMajorVersion equ 0008AH
 PbBuildType equ 0008CH
 PbCpuVendor equ 0008DH
-PbCoresPerPhysicalProcessor equ 0008EH
-PbLogicalProcessorsPerCore equ 0008FH
+PbCoresPerPhysicalProcessor equ 00098H
+PbLogicalProcessorsPerCore equ 0009CH
 PbApicMask equ 000DCH
 PbCFlushSize equ 000E8H
 PbAcpiReserved equ 000E0H
@@ -1124,7 +1130,7 @@ PbExceptionDispatchCount equ 08170H
 PbVendorString equ 08950H
 ProcessorBlockLength equ 0BF00H
 PbShadowFlags equ 09E98H
-PbTrappedSecurityDomain equ 000F0H
+PbTrappedSecurityDomain equ 006D8H
 PbKernelShadowStackInitial equ 09628H
 
 ;
@@ -1243,6 +1249,7 @@ MSR_GS_BASE equ 0C0000101H
 MSR_GS_SWAP equ 0C0000102H
 MSR_MCG_STATUS equ 0017AH
 MSR_AMD_ACCESS equ 09C5A203AH
+MSR_AMD_HWCR equ 0C0010015H
 MSR_IA32_MISC_ENABLE equ 001A0H
 MSR_IA32_U_CET equ 006A0H
 MSR_IA32_S_CET equ 006A2H
@@ -1287,6 +1294,12 @@ MSR_DEBUG_CTL_BTF equ 00002H
 ;
 
 MSR_IA32_MCG_STATUS_MCIP equ 00004H
+
+;
+;  Flags within MSR_AMD_HWCR
+;
+
+MSR_AMD_HWCR_FAST_TPR_LOWER_DISABLE_UPPER_BIT equ 00000H
 
 ;
 ;  Miscellaneous Definitions

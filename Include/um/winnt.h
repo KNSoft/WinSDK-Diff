@@ -2668,10 +2668,13 @@ typedef struct DECLSPEC_ALIGN(16) _XSAVE_AREA {
     XSAVE_AREA_HEADER Header;
 } XSAVE_AREA, *PXSAVE_AREA;
 
+#define XSTATE_CONTEXT_FLAG_LOOKASIDE    0x1
+
 typedef struct _XSTATE_CONTEXT {
     DWORD64 Mask;
     DWORD Length;
-    DWORD Reserved1;
+    BYTE  Flags;
+    BYTE  Reserved0[3];
     _Field_size_bytes_opt_(Length) PXSAVE_AREA Area;
 
 #if defined(_X86_)
@@ -11727,6 +11730,10 @@ typedef enum _SECURITY_IMPERSONATION_LEVEL {
                                        TOKEN_QUERY  |\
                                        TOKEN_QUERY_SOURCE )
 
+#define TOKEN_TRUST_ALLOWED_MASK    (TOKEN_TRUST_CONSTRAINT_MASK |\
+                                    TOKEN_DUPLICATE              |\
+                                    TOKEN_IMPERSONATE)
+
 #if (NTDDI_VERSION >= NTDDI_WIN8)
 
 #define TOKEN_ACCESS_PSEUDO_HANDLE_WIN8 (TOKEN_QUERY | TOKEN_QUERY_SOURCE)
@@ -12712,6 +12719,7 @@ typedef enum _PROCESS_MITIGATION_POLICY {
     ProcessSideChannelIsolationPolicy,
     ProcessUserShadowStackPolicy,
     ProcessRedirectionTrustPolicy,
+    ProcessActivationContextTrustPolicy,
     MaxProcessMitigationPolicy
 } PROCESS_MITIGATION_POLICY, *PPROCESS_MITIGATION_POLICY;
 
@@ -12969,6 +12977,27 @@ typedef struct _PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY {
     } DUMMYUNIONNAME;
 } PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY, *PPROCESS_MITIGATION_REDIRECTION_TRUST_POLICY;
 
+typedef struct _PROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY {
+    union {
+        DWORD Flags;
+        struct {
+            DWORD AssemblyManifestRedirectionTrust : 1;
+            DWORD ReservedFlags : 31;
+        } DUMMYSTRUCTNAME;
+    } DUMMYUNIONNAME;
+} PROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY, *PPROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY;
+
+//
+// Structure used for Network I/O accounting information.
+//
+
+typedef struct _PROCESS_NETWORK_COUNTERS {
+    DWORD64 BytesIn;
+    DWORD64 BytesOut;
+} PROCESS_NETWORK_COUNTERS, *PPROCESS_NETWORK_COUNTERS;
+
+//
+
 
 typedef struct _JOBOBJECT_BASIC_ACCOUNTING_INFORMATION {
     LARGE_INTEGER TotalUserTime;
@@ -13041,6 +13070,11 @@ typedef struct _JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION {
     JOBOBJECT_BASIC_ACCOUNTING_INFORMATION BasicInfo;
     IO_COUNTERS IoInfo;
 } JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION, *PJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION;
+
+typedef struct _JOBOBJECT_NETWORK_ACCOUNTING_INFORMATION {
+    DWORD64 DataBytesIn;
+    DWORD64 DataBytesOut;
+} JOBOBJECT_NETWORK_ACCOUNTING_INFORMATION;
 
 typedef struct _JOBOBJECT_JOBSET_INFORMATION {
     DWORD MemberLevel;
@@ -13463,6 +13497,8 @@ typedef enum _JOBOBJECTINFOCLASS {
     JobObjectReserved23Information = 45,
     JobObjectReserved24Information = 46,
     JobObjectReserved25Information = 47,
+    JobObjectReserved28Information = 50,
+    JobObjectNetworkAccountingInformation,
     MaxJobObjectInfoClass
 } JOBOBJECTINFOCLASS;
 
@@ -13491,6 +13527,12 @@ typedef struct _SERVERSILO_BASIC_INFORMATION {
     PVOID ApiSetSchema;
     PVOID HostApiSetSchema;
 } SERVERSILO_BASIC_INFORMATION, *PSERVERSILO_BASIC_INFORMATION;
+
+typedef struct _SERVERSILO_DIAGNOSTIC_INFORMATION {
+    GUID ReportId;
+    DWORD    ExitStatus;
+    WCHAR CriticalProcessName[15];
+} SERVERSILO_DIAGNOSTIC_INFORMATION, *PSERVERSILO_DIAGNOSTIC_INFORMATION;
 
 // begin_wdm
 
@@ -14160,6 +14202,7 @@ typedef struct _MEM_ADDRESS_REQUIREMENTS {
 #define MEM_EXTENDED_PARAMETER_NONPAGED_HUGE            0x00000010
 #define MEM_EXTENDED_PARAMETER_SOFT_FAULT_PAGES         0x00000020
 #define MEM_EXTENDED_PARAMETER_EC_CODE                  0x00000040
+#define MEM_EXTENDED_PARAMETER_IMAGE_NO_HPAT            0x00000080
 
 //
 // Use the high DWORD64 bit of the MEM_EXTENDED_PARAMETER to indicate
@@ -14487,7 +14530,7 @@ typedef struct DECLSPEC_ALIGN(8) _MEMORY_PARTITION_DEDICATED_MEMORY_INFORMATION 
 #define FILE_RETURNS_CLEANUP_RESULT_INFO    0x00000200  
 #define FILE_SUPPORTS_POSIX_UNLINK_RENAME   0x00000400  
 
-
+#define FILE_SUPPORTS_STREAM_SNAPSHOTS      0x00001000  
 
 
 #define FILE_VOLUME_IS_COMPRESSED           0x00008000  
@@ -14700,6 +14743,15 @@ typedef struct _REPARSE_GUID_DATA_BUFFER {
                            )
 
 //
+// Macro to determine whether a reparse point tag corresponds to a reserved
+// tag owned by Microsoft.
+//
+
+#define IsReparseTagReserved(_tag) (               \
+                           ((_tag) & 0x40000000)   \
+                           )
+
+//
 // Macro to determine whether a reparse point tag is a name surrogate
 //
 
@@ -14716,6 +14768,7 @@ typedef struct _REPARSE_GUID_DATA_BUFFER {
                            ((_tag) & 0x10000000)   \
                            )
 
+#define IO_REPARSE_TAG_RESERVED_INVALID         (0xC0008000L)       
 #define IO_REPARSE_TAG_MOUNT_POINT              (0xA0000003L)       
 #define IO_REPARSE_TAG_HSM                      (0xC0000004L)       
 #define IO_REPARSE_TAG_HSM2                     (0x80000006L)       

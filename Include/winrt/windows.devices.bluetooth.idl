@@ -768,7 +768,7 @@ namespace Windows
             {
                 [default] interface Windows.Devices.Bluetooth.IBluetoothDevice;
                 [contract(Windows.Foundation.UniversalApiContract, 1.0)] interface Windows.Foundation.IClosable;
-                [contract(Windows.Foundation.UniversalApiContract, 2.0)] interface Windows.Devices.Bluetooth.IBluetoothDevice2;
+                [contract(Windows.Foundation.UniversalApiContract, 3.0)] interface Windows.Devices.Bluetooth.IBluetoothDevice2;
                 [contract(Windows.Foundation.UniversalApiContract, 3.0)] interface Windows.Devices.Bluetooth.IBluetoothDevice3;
                 [contract(Windows.Foundation.UniversalApiContract, 5.0)] interface Windows.Devices.Bluetooth.IBluetoothDevice4;
                 [contract(Windows.Foundation.UniversalApiContract, 6.0)] interface Windows.Devices.Bluetooth.IBluetoothDevice5;
