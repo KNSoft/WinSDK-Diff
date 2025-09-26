@@ -2060,6 +2060,15 @@ DEFINE_GUID(
    0x9b, 0x98, 0x31, 0xd4, 0x58, 0x2f, 0x33, 0x61
 );
 
+// d58efb76-aab7-4148-a87e-9581134129b9
+DEFINE_GUID(
+   FWPM_CONDITION_RPC_OPNUM, 
+   0xd58efb76,
+   0xaab7,
+   0x4148,
+   0xa8, 0x7e, 0x95, 0x81, 0x13, 0x41, 0x29, 0xb9
+);
+
 // e31180a8-bbbd-4d14-a65e-7157b06233bb
 DEFINE_GUID(
     FWPM_CONDITION_PROCESS_WITH_RPC_IF_UUID,
@@ -4107,9 +4116,8 @@ FwpmBitmapIndexFree0(
 #endif // (NTDDI_VERSION >= NTDDI_WIN7)
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_RS3)
-// Enable S2S IPsec tunnel mode.
-#define FWPM_TUNNEL_FLAG_SITE_TO_SITE (0x00000004)
-
+// Reserved flags.
+#define FWPM_TUNNEL_FLAG_RESERVED0 (0x00000004)
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_RS3)
 
 DWORD

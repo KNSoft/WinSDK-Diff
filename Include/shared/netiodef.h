@@ -297,6 +297,7 @@ C_ASSERT(ETH_LENGTH_OF_SNAP_HEADER == sizeof(SNAP_HEADER));
 #define ETHERNET_TYPE_ARP 0x0806
 #define ETHERNET_TYPE_IPV6 0x86dd
 #define ETHERNET_TYPE_802_1Q 0x8100
+#define ETHERNET_TYPE_802_1AD 0x88a8
 
 //
 // VLAN_TAG
@@ -1107,7 +1108,8 @@ typedef ICMP_MESSAGE ICMPV6_MESSAGE, *PICMPV6_MESSAGE;
 
 #define ICMP6_PARAMPROB_HEADER 0        // Erroneous header field.
 #define ICMP6_PARAMPROB_NEXTHEADER 1    // Unrecognized Next Header.
-#define ICMP6_PARAMPROB_OPTION 2    // Unrecognized IPv6 option.
+#define ICMP6_PARAMPROB_OPTION 2        // Unrecognized IPv6 option.
+#define ICMP6_PARAMPROB_FIRSTFRAGMENT 3 // IPv6 First Fragment is incomplete.
 
 #define ICMPV6_ECHO_REQUEST_FLAG_REVERSE 0x1
 

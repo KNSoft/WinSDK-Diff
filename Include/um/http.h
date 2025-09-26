@@ -953,6 +953,7 @@ typedef struct _HTTP_VERSION
 #define HTTP_VERSION_1_0        { 1, 0 }
 #define HTTP_VERSION_1_1        { 1, 1 }
 #define HTTP_VERSION_2_0        { 2, 0 }
+#define HTTP_VERSION_3_0        { 3, 0 }
 
 #define HTTP_SET_VERSION(version, major, minor)             \
 do {                                                        \
@@ -1211,6 +1212,7 @@ typedef enum _HTTP_DATA_CHUNK_TYPE
     HttpDataChunkFromFileHandle,
     HttpDataChunkFromFragmentCache,
     HttpDataChunkFromFragmentCacheEx,
+    HttpDataChunkTrailers,
 
     HttpDataChunkMaximum
 
@@ -1279,6 +1281,16 @@ typedef struct _HTTP_DATA_CHUNK
 
         } FromFragmentCacheEx;
 
+        //
+        // Trailer data chunk that specifies Trailer headers.
+        //
+
+        struct
+        {
+            USHORT TrailerCount;
+            PHTTP_UNKNOWN_HEADER pTrailers;
+
+        } Trailers;
     };
 
 } HTTP_DATA_CHUNK, *PHTTP_DATA_CHUNK;
@@ -1346,6 +1358,41 @@ typedef struct _HTTP_RESPONSE_HEADERS
     HTTP_KNOWN_HEADER    KnownHeaders[HttpHeaderResponseMaximum];
 
 } HTTP_RESPONSE_HEADERS, *PHTTP_RESPONSE_HEADERS;
+
+//
+// Properties that can be passed down with IOCTL_HTTP_DELEGATE_REQUEST_EX
+//
+
+typedef enum _HTTP_DELEGATE_REQUEST_PROPERTY_ID
+{
+    DelegateRequestReservedProperty,
+    DelegateRequestDelegateUrlProperty,
+
+} HTTP_DELEGATE_REQUEST_PROPERTY_ID, *PHTTP_DELEGATE_REQUEST_PROPERTY_ID;
+
+typedef struct _HTTP_DELEGATE_REQUEST_PROPERTY_INFO
+{
+    HTTP_DELEGATE_REQUEST_PROPERTY_ID PropertyId;
+    ULONG PropertyInfoLength;
+    PVOID PropertyInfo;
+} HTTP_DELEGATE_REQUEST_PROPERTY_INFO, *PHTTP_DELEGATE_REQUEST_PROPERTY_INFO;
+
+//
+// Properties that can be passed down with IOCTL_HTTP_CREATE_REQUEST_QUEUE_EX
+//
+
+typedef enum _HTTP_CREATE_REQUEST_QUEUE_PROPERTY_ID
+{
+    CreateRequestQueueExternalIdProperty = 1,
+    CreateRequestQueueMax
+} HTTP_CREATE_REQUEST_QUEUE_PROPERTY_ID, *PHTTP_CREATE_REQUEST_QUEUE_PROPERTY_ID;
+
+typedef struct _HTTP_CREATE_REQUEST_QUEUE_PROPERTY_INFO
+{
+    HTTP_CREATE_REQUEST_QUEUE_PROPERTY_ID PropertyId;
+    ULONG PropertyInfoLength;
+    PVOID PropertyInfo;
+} HTTP_CREATE_REQUEST_QUEUE_PROPERTY_INFO, *PHTTP_CREATE_REQUEST_QUEUE_PROPERTY_INFO;
 
 //
 // Structure defining format of transport address. Use pLocalAddress->sa_family
@@ -1497,6 +1544,55 @@ typedef struct _HTTP_SSL_PROTOCOL_INFO
 
 } HTTP_SSL_PROTOCOL_INFO, *PHTTP_SSL_PROTOCOL_INFO;
 
+//
+// List of possible request timings for which information will be retured in
+// HTTP_REQUEST_TIMING_INFO. Not all timings apply for every request.
+//
+
+typedef enum  _HTTP_REQUEST_TIMING_TYPE
+{
+    HttpRequestTimingTypeConnectionStart,
+    HttpRequestTimingTypeDataStart,
+    HttpRequestTimingTypeTlsCertificateLoadStart,
+    HttpRequestTimingTypeTlsCertificateLoadEnd,
+    HttpRequestTimingTypeTlsHandshakeLeg1Start,
+    HttpRequestTimingTypeTlsHandshakeLeg1End,
+    HttpRequestTimingTypeTlsHandshakeLeg2Start,
+    HttpRequestTimingTypeTlsHandshakeLeg2End,
+    HttpRequestTimingTypeTlsAttributesQueryStart,
+    HttpRequestTimingTypeTlsAttributesQueryEnd,
+    HttpRequestTimingTypeTlsClientCertQueryStart,
+    HttpRequestTimingTypeTlsClientCertQueryEnd,
+    HttpRequestTimingTypeHttp2StreamStart,
+    HttpRequestTimingTypeHttp2HeaderDecodeStart,
+    HttpRequestTimingTypeHttp2HeaderDecodeEnd,
+    HttpRequestTimingTypeRequestHeaderParseStart,
+    HttpRequestTimingTypeRequestHeaderParseEnd,
+    HttpRequestTimingTypeRequestRoutingStart,
+    HttpRequestTimingTypeRequestRoutingEnd,
+    HttpRequestTimingTypeRequestQueuedForInspection,
+    HttpRequestTimingTypeRequestDeliveredForInspection,
+    HttpRequestTimingTypeRequestReturnedAfterInspection,
+    HttpRequestTimingTypeRequestQueuedForDelegation,
+    HttpRequestTimingTypeRequestDeliveredForDelegation,
+    HttpRequestTimingTypeRequestReturnedAfterDelegation,
+    HttpRequestTimingTypeRequestQueuedForIO,
+    HttpRequestTimingTypeRequestDeliveredForIO,
+    HttpRequestTimingTypeMax
+
+} HTTP_REQUEST_TIMING_TYPE, *PHTTP_REQUEST_TIMING_TYPE;
+
+//
+// HttpRequestInfoTypeTiming payload.  Contains information about how much
+// time was spent at each request processing stage.
+//
+
+typedef struct _HTTP_REQUEST_TIMING_INFO
+{
+    ULONG RequestTimingCount;
+    ULONGLONG RequestTiming[HttpRequestTimingTypeMax];
+
+} HTTP_REQUEST_TIMING_INFO, *PHTTP_REQUEST_TIMING_INFO;
 
 #if _WIN32_WINNT >= 0x0600
 
@@ -1510,7 +1606,8 @@ typedef enum _HTTP_REQUEST_INFO_TYPE
     HttpRequestInfoTypeChannelBind,
     HttpRequestInfoTypeSslProtocol,
     HttpRequestInfoTypeSslTokenBindingDraft,
-    HttpRequestInfoTypeSslTokenBinding
+    HttpRequestInfoTypeSslTokenBinding,
+    HttpRequestInfoTypeRequestTiming
 
 } HTTP_REQUEST_INFO_TYPE, *PHTTP_REQUEST_INFO_TYPE;
 
@@ -2014,6 +2111,10 @@ typedef enum _HTTP_SERVICE_CONFIG_ID
 
 #endif
 
+    HttpServiceConfigSslCertInfoEx,
+    HttpServiceConfigSslSniCertInfoEx,
+    HttpServiceConfigSslCcsCertInfoEx,
+
     HttpServiceConfigMax
 
 } HTTP_SERVICE_CONFIG_ID, *PHTTP_SERVICE_CONFIG_ID;
@@ -2039,6 +2140,11 @@ typedef struct _HTTP_SERVICE_CONFIG_SSL_KEY
 {
     PSOCKADDR pIpPort;
 } HTTP_SERVICE_CONFIG_SSL_KEY, *PHTTP_SERVICE_CONFIG_SSL_KEY;
+
+typedef struct _HTTP_SERVICE_CONFIG_SSL_KEY_EX
+{
+    SOCKADDR_STORAGE IpPort;
+} HTTP_SERVICE_CONFIG_SSL_KEY_EX, *PHTTP_SERVICE_CONFIG_SSL_KEY_EX;
 
 #if _WIN32_WINNT >= _WIN32_WINNT_WIN8
 
@@ -2121,6 +2227,63 @@ typedef struct _HTTP_SERVICE_CONFIG_SSL_PARAM
 
 } HTTP_SERVICE_CONFIG_SSL_PARAM, *PHTTP_SERVICE_CONFIG_SSL_PARAM;
 
+//
+// The extended param type for the SSL extended params.
+//
+
+typedef enum _HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE
+{
+    ExParamTypeTlsRestrictions = 3,
+    ExParamTypeMax
+} HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE, *PHTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE;
+
+typedef struct _HTTP_TLS_RESTRICTIONS_PARAM
+{
+    ULONG RestrictionCount;
+    PVOID TlsRestrictions;
+} HTTP_TLS_RESTRICTIONS_PARAM, *PHTTP_TLS_RESTRICTIONS_PARAM;
+
+typedef enum _HTTP_PERFORMANCE_PARAM_TYPE
+{
+    PerformanceParamMax,
+} HTTP_PERFORMANCE_PARAM_TYPE, *PHTTP_PERFORMANCE_PARAM_TYPE;
+
+typedef struct _HTTP_PERFORMANCE_PARAM
+{
+    HTTP_PERFORMANCE_PARAM_TYPE Type;
+    ULONG BufferSize;
+    PVOID Buffer;
+} HTTP_PERFORMANCE_PARAM, *PHTTP_PERFORMANCE_PARAM;
+
+//
+// This defines the exteded params for the ssl config record.
+//
+
+typedef struct _HTTP_SERVICE_CONFIG_SSL_PARAM_EX
+{
+    //
+    // The id that decides which param property is passed below.
+    //
+
+    HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE ParamType;
+
+    //
+    // Flags for future use, if any.
+    //
+
+    ULONGLONG Flags;
+
+    //
+    // The property.
+    //
+
+    union
+    {
+        HTTP_PERFORMANCE_PARAM HttpPerformanceParam;
+        HTTP_TLS_RESTRICTIONS_PARAM HttpTlsRestrictionsParam;
+    };
+} HTTP_SERVICE_CONFIG_SSL_PARAM_EX, *PHTTP_SERVICE_CONFIG_SSL_PARAM_EX;
+
 #define HTTP_SERVICE_CONFIG_SSL_FLAG_USE_DS_MAPPER         0x00000001
 #define HTTP_SERVICE_CONFIG_SSL_FLAG_NEGOTIATE_CLIENT_CERT 0x00000002
 #if _WIN32_WINNT < 0x0600
@@ -2133,6 +2296,8 @@ typedef struct _HTTP_SERVICE_CONFIG_SSL_PARAM
 #define HTTP_SERVICE_CONFIG_SSL_FLAG_DISABLE_TLS13         0x00000040
 
 #define HTTP_SERVICE_CONFIG_SSL_FLAG_DISABLE_OCSP_STAPLING 0x00000080
+#define HTTP_SERVICE_CONFIG_SSL_FLAG_DISABLE_LEGACY_TLS    0x00000400
+#define HTTP_SERVICE_CONFIG_SSL_FLAG_DISABLE_TLS12         0x00001000
 
 
 //
@@ -2165,6 +2330,24 @@ typedef struct _HTTP_SERVICE_CONFIG_SSL_CCS_SET
     HTTP_SERVICE_CONFIG_SSL_CCS_KEY KeyDesc;
     HTTP_SERVICE_CONFIG_SSL_PARAM   ParamDesc;
 } HTTP_SERVICE_CONFIG_SSL_CCS_SET, *PHTTP_SERVICE_CONFIG_SSL_CCS_SET;
+
+typedef struct _HTTP_SERVICE_CONFIG_SSL_SET_EX
+{
+    HTTP_SERVICE_CONFIG_SSL_KEY_EX   KeyDesc;
+    HTTP_SERVICE_CONFIG_SSL_PARAM_EX ParamDesc;
+} HTTP_SERVICE_CONFIG_SSL_SET_EX, *PHTTP_SERVICE_CONFIG_SSL_SET_EX;
+
+typedef struct _HTTP_SERVICE_CONFIG_SSL_SNI_SET_EX
+{
+    HTTP_SERVICE_CONFIG_SSL_SNI_KEY  KeyDesc;
+    HTTP_SERVICE_CONFIG_SSL_PARAM_EX ParamDesc;
+} HTTP_SERVICE_CONFIG_SSL_SNI_SET_EX, *PHTTP_SERVICE_CONFIG_SSL_SNI_SET_EX;
+
+typedef struct _HTTP_SERVICE_CONFIG_SSL_CCS_SET_EX
+{
+    HTTP_SERVICE_CONFIG_SSL_CCS_KEY  KeyDesc;
+    HTTP_SERVICE_CONFIG_SSL_PARAM_EX ParamDesc;
+} HTTP_SERVICE_CONFIG_SSL_CCS_SET_EX, *PHTTP_SERVICE_CONFIG_SSL_CCS_SET_EX;
 
 #endif
 
@@ -2208,6 +2391,30 @@ typedef struct _HTTP_SERVICE_CONFIG_SSL_CCS_QUERY
     HTTP_SERVICE_CONFIG_SSL_CCS_KEY KeyDesc;
     DWORD                           dwToken;
 } HTTP_SERVICE_CONFIG_SSL_CCS_QUERY, *PHTTP_SERVICE_CONFIG_SSL_CCS_QUERY;
+
+typedef struct _HTTP_SERVICE_CONFIG_SSL_QUERY_EX
+{
+    HTTP_SERVICE_CONFIG_QUERY_TYPE  QueryDesc;
+    HTTP_SERVICE_CONFIG_SSL_KEY_EX  KeyDesc;
+    DWORD                           dwToken;
+    HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE ParamType;
+} HTTP_SERVICE_CONFIG_SSL_QUERY_EX, *PHTTP_SERVICE_CONFIG_SSL_QUERY_EX;
+
+typedef struct _HTTP_SERVICE_CONFIG_SSL_SNI_QUERY_EX
+{
+    HTTP_SERVICE_CONFIG_QUERY_TYPE  QueryDesc;
+    HTTP_SERVICE_CONFIG_SSL_SNI_KEY KeyDesc;
+    DWORD                           dwToken;
+    HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE ParamType;
+} HTTP_SERVICE_CONFIG_SSL_SNI_QUERY_EX, *PHTTP_SERVICE_CONFIG_SSL_SNI_QUERY_EX;
+
+typedef struct _HTTP_SERVICE_CONFIG_SSL_CCS_QUERY_EX
+{
+    HTTP_SERVICE_CONFIG_QUERY_TYPE  QueryDesc;
+    HTTP_SERVICE_CONFIG_SSL_CCS_KEY KeyDesc;
+    DWORD                           dwToken;
+    HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE ParamType;
+} HTTP_SERVICE_CONFIG_SSL_CCS_QUERY_EX, *PHTTP_SERVICE_CONFIG_SSL_CCS_QUERY_EX;
 
 #endif
 
@@ -2328,6 +2535,33 @@ typedef struct {
     HTTP_SERVICE_CONFIG_CACHE_PARAM     ParamDesc;
 } HTTP_SERVICE_CONFIG_CACHE_SET, *PHTTP_SERVICE_CONFIG_CACHE_SET;
 
+typedef struct _HTTP_REQUEST_PROPERTY_STREAM_ERROR
+{
+    ULONG ErrorCode;
+} HTTP_REQUEST_PROPERTY_STREAM_ERROR, *PHTTP_REQUEST_PROPERTY_STREAM_ERROR;
+
+typedef enum _HTTP_REQUEST_PROPERTY
+{
+    HttpRequestPropertyIsb,
+    HttpRequestPropertyTcpInfoV0,
+    HttpRequestPropertyReserved_1,
+    HttpRequestPropertyReserved_2,
+    HttpRequestPropertyReserved_3,
+    HttpRequestPropertyStreamError
+} HTTP_REQUEST_PROPERTY, *PHTTP_REQUEST_PROPERTY;
+
+
+typedef enum _HTTP_FEATURE_ID
+{
+    HttpFeatureUnknown          = 0,
+    HttpFeatureResponseTrailers = 1,
+    HttpFeatureApiTimings       = 2,
+    HttpFeatureDelegateEx       = 3,
+
+    HttpFeaturemax              = 0xFFFFFFFF,
+
+} HTTP_FEATURE_ID, *PHTTP_FEATURE_ID;
+
 
 //
 // Define our API linkage.
@@ -2432,6 +2666,18 @@ HttpQueryRequestQueueProperty(
     _Reserved_ _In_ ULONG Reserved1,
     _Out_opt_ PULONG ReturnLength OPTIONAL,
     _Reserved_ _In_ PVOID Reserved2
+    );
+
+HTTPAPI_LINKAGE
+ULONG
+WINAPI
+HttpSetRequestProperty(
+    _In_ HANDLE RequestQueueHandle,
+    _In_ HTTP_OPAQUE_ID Id,
+    _In_ HTTP_REQUEST_PROPERTY PropertyId,
+    _In_reads_bytes_opt_(InputPropertySize) PVOID Input,
+    _In_ ULONG InputPropertySize,
+    _In_ LPOVERLAPPED Overlapped
     );
 
 HTTPAPI_LINKAGE
@@ -2761,6 +3007,12 @@ WINAPI
 HttpWaitForDemandStart(
     IN HANDLE RequestQueueHandle,
     IN LPOVERLAPPED Overlapped OPTIONAL
+    );
+
+BOOL
+WINAPI
+HttpIsFeatureSupported(
+    _In_ HTTP_FEATURE_ID FeatureId
     );
 
 

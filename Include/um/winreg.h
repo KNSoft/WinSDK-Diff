@@ -75,7 +75,9 @@ typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
 //
 // Flags for RegLoadAppKey
 //
-#define REG_PROCESS_APPKEY          0x00000001
+
+#define REG_PROCESS_APPKEY                  0x00000001
+#define REG_USE_CURRENT_SECURITY_CONTEXT    0x00000002
 
 //
 // Requested Key access mask type.
@@ -198,7 +200,9 @@ typedef PVALENTA PVALENT;
 //
 // RegConnectRegistryEx supported flags
 //
-#define REG_SECURE_CONNECTION   1
+#define REG_SECURE_CONNECTION         0x1
+#define REG_ALLOW_TRANSPORT_FALLBACK  0x2
+#define REG_ALLOW_UNSECURE_CONNECTION 0x4
 
 #endif /* WINVER >= 0x0400 */
 

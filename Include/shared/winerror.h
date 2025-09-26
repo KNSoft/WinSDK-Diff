@@ -3121,6 +3121,43 @@
 #define ERROR_CASE_DIFFERING_NAMES_IN_DIR 424L
 
 //
+// MessageId: ERROR_DLP_POLICY_WARNS_AGAINST_OPERATION
+//
+// MessageText:
+//
+// This action is blocked, but you can choose to allow it. Please refer to the data loss prevention notification for further information.
+//
+#define ERROR_DLP_POLICY_WARNS_AGAINST_OPERATION 445L
+
+//
+// MessageId: ERROR_DLP_POLICY_DENIES_OPERATION
+//
+// MessageText:
+//
+// This action is blocked. Please refer to the data loss prevention notification for further information.
+//
+#define ERROR_DLP_POLICY_DENIES_OPERATION 446L
+
+// Data Loss Prevention error code to suppress showing UX/error message. Still adding error text for consistency.
+//
+// MessageId: ERROR_DLP_POLICY_SILENTLY_FAIL
+//
+// MessageText:
+//
+// This action is blocked. Please refer to the data loss prevention notification for further information.
+//
+#define ERROR_DLP_POLICY_SILENTLY_FAIL   449L
+
+//
+// MessageId: ERROR_UNTRUSTED_MOUNT_POINT
+//
+// MessageText:
+//
+// The path cannot be traversed because it contains an untrusted mount point.
+//
+#define ERROR_UNTRUSTED_MOUNT_POINT      448L
+
+//
 // **** Available SYSTEM error codes ****
 //
 
@@ -3231,6 +3268,15 @@
 #define ERROR_CAPAUTHZ_SCCD_NO_CAPABILITY_MATCH 460L
 
 //
+// MessageId: ERROR_CLOUD_FILE_US_MESSAGE_TIMEOUT
+//
+// MessageText:
+//
+// The cloud provider failed to acknowledge a message before the time-out expired.
+//
+#define ERROR_CLOUD_FILE_US_MESSAGE_TIMEOUT 475L
+
+//
 // **** Available SYSTEM error codes ****
 //
 //
@@ -3279,6 +3325,15 @@
 #define ERROR_INVALID_ADDRESS            487L
 
 //
+// MessageId: ERROR_HAS_SYSTEM_CRITICAL_FILES
+//
+// MessageText:
+//
+// The volume contains paging, crash dump or other system critical files.
+//
+#define ERROR_HAS_SYSTEM_CRITICAL_FILES  488L
+
+//
 // MessageId: ERROR_VRF_CFG_ENABLED
 //
 // MessageText:
@@ -3307,6 +3362,15 @@
 // User profile cannot be loaded.
 //
 #define ERROR_USER_PROFILE_LOAD          500L
+
+//
+// MessageId: ERROR_FS_METADATA_INCONSISTENT
+//
+// MessageText:
+//
+// The file system encountered a metadata file with inconsistent data.
+//
+#define ERROR_FS_METADATA_INCONSISTENT   510L
 
 //
 // **** Available SYSTEM error codes ****
@@ -5842,6 +5906,15 @@
 // An attempt was made to access protected memory in violation of its secure access policy.
 //
 #define ERROR_ENCLAVE_VIOLATION          815L
+
+//
+// MessageId: ERROR_FT_READ_FROM_COPY_FAILURE
+//
+// MessageText:
+//
+// The specified copy of the requested data could not be read.
+//
+#define ERROR_FT_READ_FROM_COPY_FAILURE  817L
 
 //
 // **** Available SYSTEM error codes ****
@@ -15746,6 +15819,15 @@
 //
 #define ERROR_ENCRYPTION_POLICY_DENIES_OPERATION 6022L
 
+//
+// MessageId: ERROR_WIP_ENCRYPTION_FAILED
+//
+// MessageText:
+//
+// The specified file could not be encrypted with Windows Information Protection.
+//
+#define ERROR_WIP_ENCRYPTION_FAILED      6023L
+
 
 ///////////////////////////////////////////////////
 //                                               //
@@ -21405,6 +21487,60 @@
 // The link value specified was not found, but a link value with that key was found.
 //
 #define ERROR_DS_VALUE_KEY_NOT_UNIQUE    8650L
+
+//
+// MessageId: ERROR_DS_PER_ATTRIBUTE_AUTHZ_FAILED_DURING_ADD
+//
+// MessageText:
+//
+// The add object operation failed because the caller was not authorized to add one or more attributes included in the request.
+//
+#define ERROR_DS_PER_ATTRIBUTE_AUTHZ_FAILED_DURING_ADD 8652L
+
+//
+// MessageId: ERROR_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The local account policy modification request was rejected because the policy is controlled by a regional authority.
+//
+#define ERROR_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED 8653L
+
+//
+// MessageId: ERROR_POLICY_CONTROLLED_ACCOUNT
+//
+// MessageText:
+//
+// The account is controlled by external policy and cannot be modified.
+//
+#define ERROR_POLICY_CONTROLLED_ACCOUNT  8654L
+
+//
+// MessageId: ERROR_LAPS_LEGACY_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the legacy LAPS schema needs to be added to Active Directory.
+//
+#define ERROR_LAPS_LEGACY_SCHEMA_MISSING 8655L
+
+//
+// MessageId: ERROR_LAPS_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the Windows LAPS schema needs to be added to Active Directory.
+//
+#define ERROR_LAPS_SCHEMA_MISSING        8656L
+
+//
+// MessageId: ERROR_LAPS_ENCRYPTION_REQUIRES_2016_DFL
+//
+// MessageText:
+//
+// The Local Administrator Password Solution encrypted password update operation failed because Active Directory is not yet running at the minimum required domain functional level (2016).
+//
+#define ERROR_LAPS_ENCRYPTION_REQUIRES_2016_DFL 8657L
 
 
 ///////////////////////////////////////////////////
@@ -30209,6 +30345,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 //
 #define CONVERT10_E_STG_DIB_TO_BITMAP    _HRESULT_TYPEDEF_(0x800401C6L)
 
+//
+// MessageId: CONVERT10_E_OLELINK_DISABLED
+//
+// MessageText:
+//
+// OLE Links in OLESTREAM are disabled while converting the OLESTREAM to IStorage
+//
+#define CONVERT10_E_OLELINK_DISABLED     _HRESULT_TYPEDEF_(0x800401C7L)
+
 #define CLIPBRD_E_FIRST        0x800401D0L
 #define CLIPBRD_E_LAST         0x800401DFL
 #define CLIPBRD_S_FIRST        0x000401D0L
@@ -37440,6 +37585,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // The request is locked against edits until a response is received from the client.
 //
 #define CERTSRV_E_PENDING_CLIENT_RESPONSE _HRESULT_TYPEDEF_(0x80094820L)
+
+//
+// MessageId: CERTSRV_E_SEC_EXT_DIRECTORY_SID_REQUIRED
+//
+// MessageText:
+//
+// The Active Directory SID is unavailable and cannot be added to the custom security extension.
+//
+#define CERTSRV_E_SEC_EXT_DIRECTORY_SID_REQUIRED _HRESULT_TYPEDEF_(0x80094821L)
 
 //
 // The range 0x5000-0x51ff is reserved for XENROLL errors.
@@ -48403,6 +48557,78 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define FVE_E_OSV_KSR_NOT_ALLOWED        _HRESULT_TYPEDEF_(0x803100D9L)
 
 //
+// MessageId: FVE_E_AAD_ENDPOINT_BUSY
+//
+// MessageText:
+//
+// BitLocker recovery key backup endpoint is busy and cannot perform requested operation. Please retry after sometime.
+//
+#define FVE_E_AAD_ENDPOINT_BUSY          _HRESULT_TYPEDEF_(0x803100E1L)
+
+//
+// MessageId: FVE_E_PREDICTED_TPM_PROTECTOR_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Adding BitLocker predicted TPM based protector is not supported.
+//
+#define FVE_E_PREDICTED_TPM_PROTECTOR_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E5L)
+
+//
+// MessageId: FVE_E_SETUP_TPM_CALLBACK_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Registeration for TPM callback is not supported.
+//
+#define FVE_E_SETUP_TPM_CALLBACK_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E6L)
+
+//
+// MessageId: FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Creating new TPM context is not supported.
+//
+#define FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E7L)
+
+//
+// MessageId: FVE_E_UPDATE_INVALID_CONFIG
+//
+// MessageText:
+//
+// The Secure Boot update was not applied due to a known incompatibility with the current BitLocker configuration.
+//
+#define FVE_E_UPDATE_INVALID_CONFIG      _HRESULT_TYPEDEF_(0x803100E8L)
+
+//
+// MessageId: FVE_E_METADATA_FULL
+//
+// MessageText:
+//
+// This operation cannot be completed because BitLocker Drive Encryption metadata area is full. Consider removing unnecessary key protectors for this drive.
+//
+#define FVE_E_METADATA_FULL              _HRESULT_TYPEDEF_(0x803100ECL)
+
+//
+// MessageId: FVE_E_ENTRY_ALREADY_EXISTS
+//
+// MessageText:
+//
+// The operation failed because an entry with the given ID already exists.
+//
+#define FVE_E_ENTRY_ALREADY_EXISTS       _HRESULT_TYPEDEF_(0x803100F2L)
+
+//
+// MessageId: FVE_E_ENTRY_NOT_FOUND
+//
+// MessageText:
+//
+// The operation failed because an entry with the given ID was not found.
+//
+#define FVE_E_ENTRY_NOT_FOUND            _HRESULT_TYPEDEF_(0x803100F3L)
+
+//
 // =======================================================
 // Windows Filtering Platform Error Messages
 // =======================================================
@@ -50260,6 +50486,24 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // There is not enough memory in the root partition's pool to complete the operation.
 //
 #define ERROR_HV_INSUFFICIENT_ROOT_MEMORY _NDIS_ERROR_TYPEDEF_(0xC0350073L)
+
+//
+// MessageId: ERROR_HV_EVENT_BUFFER_ALREADY_FREED
+//
+// MessageText:
+//
+// The provided event log buffer was already marked as freed.
+//
+#define ERROR_HV_EVENT_BUFFER_ALREADY_FREED _NDIS_ERROR_TYPEDEF_(0xC0350074L)
+
+//
+// MessageId: ERROR_HV_INSUFFICIENT_CONTIGUOUS_MEMORY
+//
+// MessageText:
+//
+// There is not enough contiguous memory in the partition's pool to complete the operation.
+//
+#define ERROR_HV_INSUFFICIENT_CONTIGUOUS_MEMORY _NDIS_ERROR_TYPEDEF_(0xC0350075L)
 
 //
 // MessageId: ERROR_HV_NOT_PRESENT
@@ -52891,6 +53135,42 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // Default Namespace already exists
 //
 #define GCN_E_DEFAULTNAMESPACE_EXISTS    _HRESULT_TYPEDEF_(0x803B0029L)
+
+//
+// MessageId: HCN_E_ENDPOINT_NAMESPACE_ALREADY_EXISTS
+//
+// MessageText:
+//
+// This requested operation is invalid as endpoint is already part of a network namespace.
+//
+#define HCN_E_ENDPOINT_NAMESPACE_ALREADY_EXISTS _HRESULT_TYPEDEF_(0x803B002BL)
+
+//
+// MessageId: HCN_E_INVALID_INTERNAL_PORT
+//
+// MessageText:
+//
+// The internal port must exist and cannot be zero.
+//
+#define HCN_E_INVALID_INTERNAL_PORT      _HRESULT_TYPEDEF_(0x803B002DL)
+
+//
+// MessageId: HCN_E_NAMESPACE_ATTACH_FAILED
+//
+// MessageText:
+//
+// The requested operation for attach namespace failed.
+//
+#define HCN_E_NAMESPACE_ATTACH_FAILED    _HRESULT_TYPEDEF_(0x803B002EL)
+
+//
+// MessageId: HCN_E_INVALID_PREFIX
+//
+// MessageText:
+//
+// The prefix provided is invalid.
+//
+#define HCN_E_INVALID_PREFIX             _HRESULT_TYPEDEF_(0x803B0030L)
 
 //
 // =======================================================

@@ -624,7 +624,7 @@
 #define NERR_DS9DCNotFound                 (NERR_BASE + 625)   /* The domain controller does not meet the version requirement for this operation. See http://go.microsoft.com/fwlink/?LinkId=294288 for more information. */
 #define NERR_PlainTextSecretsRequired      (NERR_BASE + 626)   /* The local machine does not allow querying of LSA secrets in plain-text. */
 #define NERR_CannotUnjoinAadDomain         (NERR_BASE + 627)   /* Unable to leave the Azure AD domain that this machine is joined to. Check the event log for detailed error information. */
-
+#define NERR_AccountReuseBlockedByPolicy   (NERR_BASE + 632)   /* An account with the same name exists in Active Directory. Re-using the account was blocked by security policy.*/
 
 /***********WARNING ****************
  *The range 2750-2799 has been     *

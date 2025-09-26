@@ -253,6 +253,18 @@ extern "C" {
                                             0x0013)
 
 //
+// Describes the SMT (simultaneous multithreading or HyperThreading) status.
+// The potential values are as follows:
+//
+// 0 - SMT is disabled in firmware, or not supported by the platform.
+// 1 - SMT is enabled.
+// 2 - SMT is enabled in firmware, but disabled in software.
+//
+
+#define SIPAEVENT_SMT_STATUS               (SIPAEVENTTYPE_OSPARAMETER + \
+                                           0x0014)
+
+//
 // Describes the VSM/SMART identity decryption public key.
 //
 #define SIPAEVENT_VSM_IDK_INFO             (SIPAEVENTTYPE_OSPARAMETER + \
@@ -526,11 +538,19 @@ typedef struct _WBCL_Iterator
   // points to the table in the header that contains the mapping of algorithm ids to digest sizes.
   PVOID     digestSizes;
 
+  // Supported algorithm bitmap for the log
+  UINT32    supportedAlgorithms;
+
   // Hash algorithm ID used for the log. The value corresponds to one of the TPM 2.0 ALG_ID values.
   WBCL_DIGEST_ALG_ID    hashAlgorithm;
 } WBCL_Iterator, *PWBCL_Iterator;
 
 #if NTDDI_VERSION >= NTDDI_WIN10
+
+HRESULT
+WbclApiSetPreferredHashAlgID(
+    _In_   UINT16 algID,
+    _Out_   WBCL_Iterator* pWbclIterator);
 
 HRESULT
 WbclApiInitIterator(

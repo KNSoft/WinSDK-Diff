@@ -415,6 +415,7 @@ extern "C" {
 
 #define IOCTL_STORAGE_PROTOCOL_COMMAND              CTL_CODE(IOCTL_STORAGE_BASE, 0x04F0, METHOD_BUFFERED, FILE_READ_ACCESS | FILE_WRITE_ACCESS)
 
+
 #define IOCTL_STORAGE_QUERY_PROPERTY                CTL_CODE(IOCTL_STORAGE_BASE, 0x0500, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #define IOCTL_STORAGE_MANAGE_DATA_SET_ATTRIBUTES    CTL_CODE(IOCTL_STORAGE_BASE, 0x0501, METHOD_BUFFERED, FILE_WRITE_ACCESS)
 #define IOCTL_STORAGE_GET_LB_PROVISIONING_MAP_RESOURCES  CTL_CODE(IOCTL_STORAGE_BASE, 0x0502, METHOD_BUFFERED, FILE_READ_ACCESS)
@@ -1047,6 +1048,32 @@ typedef enum _STORAGE_QUERY_TYPE {
 } STORAGE_QUERY_TYPE, *PSTORAGE_QUERY_TYPE;
 
 //
+// IOCTL_STORAGE_SET_PROPERTY
+//
+// Input Buffer:
+//      a STORAGE_PROPERTY_SET structure which describes what type of property set
+//      is being done, what property is being set, and any additional
+//      parameters which a particular property set requires.
+//
+//  Output Buffer:
+//      Contains a buffer to place the results of the query into.  Since all
+//      property descriptors can be cast into a STORAGE_DESCRIPTOR_HEADER,
+//      the IOCTL can be called once with a small buffer then again using
+//      a buffer as large as the header reports is necessary.
+//
+
+
+//
+// Types of set operation
+//
+
+typedef enum _STORAGE_SET_TYPE {
+    PropertyStandardSet = 0,          // Sets the descriptor
+    PropertyExistsSet,                // Used to test whether the descriptor is supported
+    PropertySetMaxDefined             // use to validate the value
+} STORAGE_SET_TYPE, *PSTORAGE_SET_TYPE;
+
+//
 // define some initial property id's
 //
 
@@ -1085,6 +1112,7 @@ typedef enum __WRAPPED__ _STORAGE_PROPERTY_ID {
     StorageDeviceUnsafeShutdownCount
 } STORAGE_PROPERTY_ID, *PSTORAGE_PROPERTY_ID;
 
+
 //
 // Query structure - additional parameters for specific queries can follow
 // the header
@@ -1111,6 +1139,33 @@ typedef struct _STORAGE_PROPERTY_QUERY {
     BYTE  AdditionalParameters[1];
 
 } STORAGE_PROPERTY_QUERY, *PSTORAGE_PROPERTY_QUERY;
+
+//
+// Set structure - additional parameters for specific set property that can follow
+// the header
+//
+
+typedef struct _STORAGE_PROPERTY_SET {
+
+    //
+    // ID of the property being retrieved
+    //
+
+    STORAGE_PROPERTY_ID PropertyId;
+
+    //
+    // Flags indicating the type of set property being performed
+    //
+
+    STORAGE_SET_TYPE SetType;
+
+    //
+    // Space for additional parameters if necessary
+    //
+
+    BYTE  AdditionalParameters[1];
+
+} STORAGE_PROPERTY_SET, *PSTORAGE_PROPERTY_SET;
 
 //
 // Standard property descriptor header.  All property pages should use this
@@ -6321,6 +6376,7 @@ typedef struct _STORAGE_ATTRIBUTE_MGMT {
 
 } STORAGE_ATTRIBUTE_MGMT, *PSTORAGE_ATTRIBUTE_MGMT;
 
+
 #if _MSC_VER >= 1200
 #pragma warning(pop)
 #endif
@@ -10056,6 +10112,10 @@ typedef enum _CHANGER_DEVICE_PROBLEM_TYPE {
 #define FSCTL_ENABLE_PER_IO_FLAGS               CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 267, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #endif /* _WIN64 */
 #endif /* (_WIN32_WINNT >= _WIN32_WINNT_WIN10_RS5) */
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+#define FSCTL_LMR_QUERY_INFO                    CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 286, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#endif
 //
 // AVIO IOCTLS.
 //
@@ -10740,6 +10800,8 @@ typedef struct {
 
 //
 //  Flags for the additional source information above.
+//  To set any of these values required a volume DASD handle to be specified in
+//  VolumeHandle field.
 //
 //      USN_SOURCE_DATA_MANAGEMENT - Service is not modifying the external view
 //          of any part of the file.  Typical case is HSM moving data to
@@ -10754,7 +10816,8 @@ typedef struct {
 //          replica set.
 //
 //      USN_SOURCE_CLIENT_REPLICATION_MANAGEMENT - Replication is being performed
-//          on clint systems either from the cloud or servers
+//          on client systems either from the cloud or servers.  A volume handle
+//          is not required to set this value
 //
 
 #define USN_SOURCE_DATA_MANAGEMENT                  (0x00000001)
@@ -10769,7 +10832,7 @@ typedef struct {
 
 
 //
-//  Flags for the HandleInfo field above
+//  Flags for the HandleInfo field above:
 //
 //  MARK_HANDLE_PROTECT_CLUSTERS - disallow any defragmenting (FSCTL_MOVE_FILE) until the
 //      the handle is closed
@@ -10790,6 +10853,11 @@ typedef struct {
 //  MARK_HANDLE_NOT_READ_COPY - indicates the data is no longer to be read from a specific copy.
 //
 //  MARK_HANDLE_CLOUD_SYNC - indicates that the handle belongs to the cloud sync engine
+//
+//  MARK_HANDLE_SUPPRESS_VOLUME_OPEN_FLUSH - Normally, on the first read/write operation
+//      on a volume handle (DASD open) the file system flushes the volume.  This can
+//      have performance consequences in certain scenarios.  If this flag is set on
+//      a volume handle it will suppress that flush on first IO.
 //
 
 #define MARK_HANDLE_PROTECT_CLUSTERS                    (0x00000001)
@@ -10841,6 +10909,11 @@ typedef struct {
 
 #endif /* _WIN32_WINNT >= _WIN32_WINNT_WIN7 */
 
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+#define MARK_HANDLE_SUPPRESS_VOLUME_OPEN_FLUSH          (0x00008000)
+
+#endif /*NTDDI_VERSION >= NTDDI_WIN10_RS5 */
 
 #if (_WIN32_WINNT >= _WIN32_WINNT_WIN2K)
 //
@@ -12814,6 +12887,45 @@ typedef struct _FILE_FS_PERSISTENT_VOLUME_INFORMATION {
 
 #endif // #if (_WIN32_WINNT >= _WIN32_WINNT_WINTHRESHOLD)
 
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+//
+//  Always reallocate data writes
+//
+
+#define PERSISTENT_VOLUME_STATE_REALLOCATE_ALL_DATA_WRITES          (0x00000200)
+
+#endif // #if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+//
+//  This indicates that AutoChk modified this volume and is cleared by AutoChk
+//  after it ensured that the volume is dismounted or the system is rebooted.
+//  This can be set or queried.
+//
+
+#define PERSISTENT_VOLUME_STATE_CHKDSK_RAN_ONCE                     (0x00000400)
+
+//
+//  This again indicates that AutoChk modified this volume but is cleared by
+//  NTFS on next mount.  So if this flag is set it means that the volume was
+//  modified by AutoChk while it's still mounted and the on-disk state and
+//  the in memory state could be different.  This can only be queried.
+//
+
+#define PERSISTENT_VOLUME_STATE_MODIFIED_BY_CHKDSK                  (0x00000800)
+
+//
+//  The volume was formatted as DAX.  The volume may not be mounted as DAX
+//  if the storage is not DAX capable.  This can only be queried.
+//
+
+#define PERSISTENT_VOLUME_STATE_DAX_FORMATTED                       (0x00001000)
+
+#endif // #if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+
 //
 //==================== FSCTL_QUERY_FILE_SYSTEM_RECOGNITION ====================
 //
@@ -13641,6 +13753,26 @@ typedef struct _CSV_QUERY_MDS_PATH_V2 {
 
 
 //
+//========================= FSCTL_LMR_QUERY_INFO =============================
+//
+
+typedef enum _LMR_QUERY_INFO_CLASS {
+    LMRQuerySessionInfo = 1,
+} LMR_QUERY_INFO_CLASS, *PLMR_QUERY_INFO_CLASS;
+
+typedef struct _LMR_QUERY_INFO_PARAM {
+    LMR_QUERY_INFO_CLASS Operation;
+} LMR_QUERY_INFO_PARAM, *PLMR_QUERY_INFO_PARAM;
+
+//
+// Output for the LMRQuerySessionInfo
+//
+typedef struct _LMR_QUERY_SESSION_INFO {
+    UINT64 SessionId;
+} LMR_QUERY_SESSION_INFO, *PLMR_QUERY_SESSION_INFO;
+
+
+//
 //====================== FSCTL_CSV_QUERY_VETO_FILE_DIRECT_IO =========================
 //
 // In output buffer set Veto to TRUE to prevent CsvFs from
@@ -13806,7 +13938,8 @@ typedef struct _FILE_LEVEL_TRIM_OUTPUT {
 #define QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION                    (0x00000080)
 
 //
-//  Have QueryFileLayout include information on DSC streams.
+//  Have QueryFileLayout include information (defined by DesiredStorageClass in StreamInformation)
+//  on DSC streams.
 //  This flag must be used in conjunction with QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION
 //
 #define QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION_FOR_DSC_ATTRIBUTE  (0x00000100)
@@ -13835,6 +13968,24 @@ typedef struct _FILE_LEVEL_TRIM_OUTPUT {
 //  This must be used in conjunction with QUERY_FILE_LAYOUT_INCLUDE_ONLY_FILES_WITH_SPECIFIC_ATTRIBUTES
 //
 #define QUERY_FILE_LAYOUT_INCLUDE_FILES_WITH_DSC_ATTRIBUTE              (0x00001000)
+
+//
+//  Have QueryFileLayout include information (defined by DataStream in StreamInformation) on $DATA streams.
+//  This flag must be used in conjunction with QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION
+//
+#define QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION_FOR_DATA_ATTRIBUTE (0x00002000)
+
+//
+//  Have QueryFileLayout include information (defined by Reparse in StreamInformation) on $REPARSE_POINT streams.
+//  This flag must be used in conjunction with QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION
+//
+#define QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION_FOR_REPARSE_ATTRIBUTE  (0x00004000)
+
+//
+//  Have QueryFileLayout include information (defined by Ea as in StreamInformation) on $EA streams.
+//  This flag must be used in conjunction with QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION
+//
+#define QUERY_FILE_LAYOUT_INCLUDE_STREAM_INFORMATION_FOR_EA_ATTRIBUTE   (0x00008000)
 
 typedef enum _QUERY_FILE_LAYOUT_FILTER_TYPE {
 
@@ -14655,8 +14806,16 @@ typedef _Struct_size_bytes_(Size) struct _FSCTL_QUERY_STORAGE_CLASSES_OUTPUT {
 #define FSCTL_QUERY_STORAGE_CLASSES_OUTPUT_VERSION          sizeof(FSCTL_QUERY_STORAGE_CLASSES_OUTPUT)
 
 //
-// This structure lists information on the stream.
+//  Below are flags used by the Reparse union type within STREAM_INFORMATION_ENTRY.
 //
+
+#define QUERY_FILE_LAYOUT_REPARSE_DATA_INVALID              (0x0001)  // invalid reparse data, corresponds to ERROR_INVALID_REPARSE_DATA
+#define QUERY_FILE_LAYOUT_REPARSE_TAG_INVALID               (0x0002)  // invalid reparse tag, corresponds to ERROR_REPARSE_TAG_INVALID
+
+//
+//  This structure lists information on the stream.
+//
+
 typedef struct _STREAM_INFORMATION_ENTRY {
 
     //
@@ -14694,6 +14853,93 @@ typedef struct _STREAM_INFORMATION_ENTRY {
             DWORD                            Flags;
 
         } DesiredStorageClass;
+
+// $TODO: NTDDI_WIN10_19H2
+#if (NTDDI_VERSION >= NTDDI_WIN10_19H1)
+        struct _DataStream {
+
+            //
+            //  Total Length of STREAM_INFORMATION_ENTRY structure.
+            //
+
+            WORD        Length;
+
+            //
+            //  Flags (Reserved for future use)
+            //
+
+            WORD        Flags;
+
+            //
+            //  Reserved.
+            //
+
+            DWORD       Reserved;
+
+            //
+            //  The Vdl (Valid Data Length) of data stream.
+            //
+
+            DWORDLONG   Vdl;
+
+        } DataStream;
+
+        struct _Reparse {
+
+            //
+            //  Total Length of STREAM_INFORMATION_ENTRY structure.
+            //
+
+            WORD   Length;
+
+            //
+            //  Flags
+            //
+
+            WORD   Flags;
+
+            //
+            //  The size of Reparse data buffer.
+            //
+
+            DWORD ReparseDataSize;
+
+            //
+            //  Offset to reparse point data buffer (REPARSE_DATA_BUFFER or REPARSE_GUID_DATA_BUFFER).
+            //
+
+            DWORD ReparseDataOffset;
+
+        } Reparse;
+
+        struct _Ea {
+
+            //
+            //  Total Length of STREAM_INFORMATION_ENTRY structure.
+            //
+
+            WORD   Length;
+
+            //
+            //  Flags (Reserved for future use)
+            //
+
+            WORD   Flags;
+
+            //
+            //  The size of Ea.
+            //
+
+            DWORD EaSize;
+
+            //
+            //  Offset to EA (Extended Attributes) information buffer (FILE_FULL_EA_INFORMATION).
+            //
+
+            DWORD EaInformationOffset;
+
+        } Ea;
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_19H1)
 
     } StreamInformation;
 

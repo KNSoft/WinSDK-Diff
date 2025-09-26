@@ -464,8 +464,15 @@ typedef struct
 
 #define WINHTTP_OPTION_ENCODE_EXTRA                   138
 #define WINHTTP_OPTION_DISABLE_STREAM_QUEUE           139
+#define WINHTTP_OPTION_HTTP_PROTOCOL_REQUIRED         145
 
-#define WINHTTP_LAST_OPTION                           WINHTTP_OPTION_DISABLE_STREAM_QUEUE
+#define WINHTTP_OPTION_IGNORE_CERT_REVOCATION_OFFLINE   155
+#define WINHTTP_OPTION_TLS_PROTOCOL_INSECURE_FALLBACK   158
+#define WINHTTP_OPTION_STREAM_ERROR_CODE              159
+#define WINHTTP_OPTION_REQUIRE_STREAM_END             160
+#define WINHTTP_OPTION_ENABLE_HTTP2_PLUS_CLIENT_CERT    161
+
+#define WINHTTP_LAST_OPTION                           WINHTTP_OPTION_ENABLE_HTTP2_PLUS_CLIENT_CERT
 
 #define WINHTTP_OPTION_USERNAME                      0x1000
 #define WINHTTP_OPTION_PASSWORD                      0x1001
@@ -841,6 +848,13 @@ typedef WINHTTP_STATUS_CALLBACK * LPWINHTTP_STATUS_CALLBACK;
 
 #define WINHTTP_QUERY_FLAG_NUMBER64                0x08000000
 
+//
+// HTTP_QUERY_FLAG_TRAILERS - if this bit is set in the dwInfoLevel parameter of
+// WinHttpQueryHeaders(), then the response trailers will be queried, if they exist
+//
+
+#define WINHTTP_QUERY_FLAG_TRAILERS                0x02000000
+
 
 //
 // HTTP Response Status Codes:
@@ -1089,9 +1103,11 @@ typedef struct
 
 #define ERROR_WINHTTP_CLIENT_AUTH_CERT_NEEDED_PROXY         (WINHTTP_ERROR_BASE + 187)
 #define ERROR_WINHTTP_SECURE_FAILURE_PROXY                  (WINHTTP_ERROR_BASE + 188)
+#define ERROR_WINHTTP_RESERVED_189                          (WINHTTP_ERROR_BASE + 189)
+#define ERROR_WINHTTP_HTTP_PROTOCOL_MISMATCH                (WINHTTP_ERROR_BASE + 190)
 
 
-#define WINHTTP_ERROR_LAST                                  (WINHTTP_ERROR_BASE + 188)
+#define WINHTTP_ERROR_LAST                                  (ERROR_WINHTTP_HTTP_PROTOCOL_MISMATCH)
 
 #define WINHTTP_RESET_STATE                     0x00000001
 #define WINHTTP_RESET_SWPAD_CURRENT_NETWORK     0x00000002

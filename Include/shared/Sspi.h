@@ -268,35 +268,39 @@ typedef struct _SecPkgInfoA
 //
 //  Security Package Capabilities
 //
-#define SECPKG_FLAG_INTEGRITY                   0x00000001  // Supports integrity on messages
-#define SECPKG_FLAG_PRIVACY                     0x00000002  // Supports privacy (confidentiality)
-#define SECPKG_FLAG_TOKEN_ONLY                  0x00000004  // Only security token needed
-#define SECPKG_FLAG_DATAGRAM                    0x00000008  // Datagram RPC support
-#define SECPKG_FLAG_CONNECTION                  0x00000010  // Connection oriented RPC support
-#define SECPKG_FLAG_MULTI_REQUIRED              0x00000020  // Full 3-leg required for re-auth.
-#define SECPKG_FLAG_CLIENT_ONLY                 0x00000040  // Server side functionality not available
-#define SECPKG_FLAG_EXTENDED_ERROR              0x00000080  // Supports extended error msgs
-#define SECPKG_FLAG_IMPERSONATION               0x00000100  // Supports impersonation
-#define SECPKG_FLAG_ACCEPT_WIN32_NAME           0x00000200  // Accepts Win32 names
-#define SECPKG_FLAG_STREAM                      0x00000400  // Supports stream semantics
-#define SECPKG_FLAG_NEGOTIABLE                  0x00000800  // Can be used by the negotiate package
-#define SECPKG_FLAG_GSS_COMPATIBLE              0x00001000  // GSS Compatibility Available
-#define SECPKG_FLAG_LOGON                       0x00002000  // Supports common LsaLogonUser
-#define SECPKG_FLAG_ASCII_BUFFERS               0x00004000  // Token Buffers are in ASCII
-#define SECPKG_FLAG_FRAGMENT                    0x00008000  // Package can fragment to fit
-#define SECPKG_FLAG_MUTUAL_AUTH                 0x00010000  // Package can perform mutual authentication
-#define SECPKG_FLAG_DELEGATION                  0x00020000  // Package can delegate
-#define SECPKG_FLAG_READONLY_WITH_CHECKSUM      0x00040000  // Package can delegate
-#define SECPKG_FLAG_RESTRICTED_TOKENS           0x00080000  // Package supports restricted callers
-#define SECPKG_FLAG_NEGO_EXTENDER               0x00100000  // this package extends SPNEGO, there is at most one
-#define SECPKG_FLAG_NEGOTIABLE2                 0x00200000  // this package is negotiated under the NegoExtender
-#define SECPKG_FLAG_APPCONTAINER_PASSTHROUGH    0x00400000  // this package receives all calls from appcontainer apps
-#define SECPKG_FLAG_APPCONTAINER_CHECKS         0x00800000  // this package receives calls from appcontainer apps
-                                                            // if the following checks succeed
-                                                            // 1. Caller has domain auth capability or
-                                                            // 2. Target is a proxy server or
-                                                            // 3. The caller has supplied creds
-#define SECPKG_FLAG_CREDENTIAL_ISOLATION_ENABLED 0x01000000 // this package is running with Credential Guard enabled
+#define SECPKG_FLAG_INTEGRITY                    0x00000001  // Supports integrity on messages
+#define SECPKG_FLAG_PRIVACY                      0x00000002  // Supports privacy (confidentiality)
+#define SECPKG_FLAG_TOKEN_ONLY                   0x00000004  // Only security token needed
+#define SECPKG_FLAG_DATAGRAM                     0x00000008  // Datagram RPC support
+#define SECPKG_FLAG_CONNECTION                   0x00000010  // Connection oriented RPC support
+#define SECPKG_FLAG_MULTI_REQUIRED               0x00000020  // Full 3-leg required for re-auth.
+#define SECPKG_FLAG_CLIENT_ONLY                  0x00000040  // Server side functionality not available
+#define SECPKG_FLAG_EXTENDED_ERROR               0x00000080  // Supports extended error msgs
+#define SECPKG_FLAG_IMPERSONATION                0x00000100  // Supports impersonation
+#define SECPKG_FLAG_ACCEPT_WIN32_NAME            0x00000200  // Accepts Win32 names
+#define SECPKG_FLAG_STREAM                       0x00000400  // Supports stream semantics
+#define SECPKG_FLAG_NEGOTIABLE                   0x00000800  // Can be used by the negotiate package
+#define SECPKG_FLAG_GSS_COMPATIBLE               0x00001000  // GSS Compatibility Available
+#define SECPKG_FLAG_LOGON                        0x00002000  // Supports common LsaLogonUser
+#define SECPKG_FLAG_ASCII_BUFFERS                0x00004000  // Token Buffers are in ASCII
+#define SECPKG_FLAG_FRAGMENT                     0x00008000  // Package can fragment to fit
+#define SECPKG_FLAG_MUTUAL_AUTH                  0x00010000  // Package can perform mutual authentication
+#define SECPKG_FLAG_DELEGATION                   0x00020000  // Package can delegate
+#define SECPKG_FLAG_READONLY_WITH_CHECKSUM       0x00040000  // Package can delegate
+#define SECPKG_FLAG_RESTRICTED_TOKENS            0x00080000  // Package supports restricted callers
+#define SECPKG_FLAG_NEGO_EXTENDER                0x00100000  // this package extends SPNEGO, there is at most one
+#define SECPKG_FLAG_NEGOTIABLE2                  0x00200000  // this package is negotiated under the NegoExtender
+#define SECPKG_FLAG_APPCONTAINER_PASSTHROUGH     0x00400000  // this package receives all calls from appcontainer apps
+#define SECPKG_FLAG_APPCONTAINER_CHECKS          0x00800000  // this package receives calls from appcontainer apps
+                                                             // if the following checks succeed
+                                                             // 1. Caller has domain auth capability or
+                                                             // 2. Target is a proxy server or
+                                                             // 3. The caller has supplied creds
+#define SECPKG_FLAG_CREDENTIAL_ISOLATION_ENABLED 0x01000000  // this package is running with Credential Guard enabled
+#define SECPKG_FLAG_APPLY_LOOPBACK               0x02000000  // this package supports reliable detection of loopback
+                                                             // 1.) The client and server see the same sequence of tokens
+                                                             // 2.) The server enforces a unique exchange for each
+                                                             //     non-anonymous authentication. (Replay detection)
 
 #define SECPKG_ID_NONE      0xFFFF
 
@@ -365,7 +369,7 @@ typedef struct _SecBufferDesc {
 #define SECBUFFER_PRESHARED_KEY                 22  // Preshared key
 #define SECBUFFER_PRESHARED_KEY_IDENTITY        23  // Preshared key identity
 #define SECBUFFER_DTLS_MTU                      24  // DTLS path MTU setting
-
+#define SECBUFFER_CHANNEL_BINDINGS_RESULT       25  // Output buffer for Channel Bindings Audit
 
 #define SECBUFFER_ATTRMASK                      0xF0000000
 #define SECBUFFER_READONLY                      0x80000000  // Buffer is read-only, no checksum
@@ -391,6 +395,43 @@ typedef struct _SEC_CHANNEL_BINDINGS {
     unsigned long  dwApplicationDataOffset;
 } SEC_CHANNEL_BINDINGS, * PSEC_CHANNEL_BINDINGS ;
 
+#define SEC_CHANNEL_BINDINGS_EX_MAGIC 'XEBC'
+
+typedef struct _SEC_CHANNEL_BINDINGS_EX {
+    unsigned long magicNumber; // contains SEC_CHANNEL_BINDINGS_VERSION_2.  distinguish ex buffer from normal channel bindings buffer. Shouldn't collide with any of assigned dwInitiatorAddrType values
+    unsigned long flags; // audit flag is set to indicate if audit is needed 
+    unsigned long cbHeaderLength;
+    unsigned long cbStructureLength;
+    unsigned long dwInitiatorAddrType;
+    unsigned long cbInitiatorLength;
+    unsigned long dwInitiatorOffset;
+    unsigned long dwAcceptorAddrType;
+    unsigned long cbAcceptorLength;
+    unsigned long dwAcceptorOffset;
+    unsigned long cbApplicationDataLength;
+    unsigned long dwApplicationDataOffset;
+} SEC_CHANNEL_BINDINGS_EX, * PSEC_CHANNEL_BINDINGS_EX ;
+
+#define SEC_CHANNEL_BINDINGS_AUDIT_BINDINGS 0x1
+
+#define SEC_CHANNEL_BINDINGS_VALID_FLAGS SEC_CHANNEL_BINDINGS_AUDIT_BINDINGS
+
+typedef struct _SEC_CHANNEL_BINDINGS_RESULT {
+    unsigned long flags;
+}SEC_CHANNEL_BINDINGS_RESULT, *PSEC_CHANNEL_BINDINGS_RESULT;
+
+#define SEC_CHANNEL_BINDINGS_RESULT_CLIENT_SUPPORT 0x1 // Auth package indicates client versions should support bindings
+#define SEC_CHANNEL_BINDINGS_RESULT_ABSENT 0x2 // The bindings are omitted or all zeroes
+#define SEC_CHANNEL_BINDINGS_RESULT_NOTVALID_MISMATCH 0x4 // The channel binding hash was incorrect
+#define SEC_CHANNEL_BINDINGS_RESULT_NOTVALID_MISSING 0x8 // Missing channel bindings are not allowed for this client
+#define SEC_CHANNEL_BINDINGS_RESULT_VALID_MATCHED 0x10 // The client and server bindings match
+#define SEC_CHANNEL_BINDINGS_RESULT_VALID_PROXY 0x20 // ASC_REQ_PROXY_BINDINGS required the client to provide a binding
+#define SEC_CHANNEL_BINDINGS_RESULT_VALID_MISSING 0x40 // Client permitted by ASC_REQ_ALLOW_MISSING_BINDINGS
+
+#define SEC_CHANNEL_BINDINGS_RESULT_VALID (SEC_CHANNEL_BINDINGS_RESULT_VALID_MATCHED | SEC_CHANNEL_BINDINGS_RESULT_VALID_PROXY | \
+    SEC_CHANNEL_BINDINGS_RESULT_VALID_MISSING)
+    
+#define SEC_CHANNEL_BINDINGS_RESULT_NOTVALID (SEC_CHANNEL_BINDINGS_RESULT_NOTVALID_MISMATCH | SEC_CHANNEL_BINDINGS_RESULT_NOTVALID_MISSING)
 
 typedef enum _SEC_APPLICATION_PROTOCOL_NEGOTIATION_EXT
 {
@@ -3106,6 +3147,10 @@ EXTERN_C __declspec(selectany) const GUID SEC_WINNT_AUTH_DATA_TYPE_NGC =
 EXTERN_C __declspec(selectany) const GUID SEC_WINNT_AUTH_DATA_TYPE_FIDO =
 { 0x32e8f8d7, 0x7871, 0x4bcc, { 0x83, 0xc5, 0x46, 0xf, 0x66, 0xc6, 0x13, 0x5c } };
 
+// {D587AAE8-F78F-4455-A112-C934BEEE7CE1}
+EXTERN_C __declspec(selectany) const GUID SEC_WINNT_AUTH_DATA_TYPE_KEYTAB = 
+{ 0xd587aae8, 0xf78f, 0x4455, { 0xa1, 0x12, 0xc9, 0x34, 0xbe, 0xee, 0x7c, 0xe1 } };
+
 typedef struct _SEC_WINNT_AUTH_DATA_PASSWORD {
    SEC_WINNT_AUTH_BYTE_VECTOR UnicodePassword;
 } SEC_WINNT_AUTH_DATA_PASSWORD, PSEC_WINNT_AUTH_DATA_PASSWORD;
@@ -3477,6 +3522,15 @@ SspiExcludePackage(
 #define SEC_WINNT_AUTH_IDENTITY_ONLY            0x8     // these credentials are for identity only - no PAC needed
 
 // end_ntifs
+
+// Set the requested flags in the channel bindings.  pBindings->Bindings may change if the structure gets
+// larger, but the caller's obligation to call FreeContextBuffer is unchanged.
+SECURITY_STATUS
+SEC_ENTRY
+SspiSetChannelBindingFlags(
+    _Inout_ SecPkgContext_Bindings* pBindings,
+    unsigned long flags
+    );
 
 //
 // Routines for manipulating packages

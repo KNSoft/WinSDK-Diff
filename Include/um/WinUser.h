@@ -8560,11 +8560,11 @@ ScrollWindowEx(
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
 
-#define SW_SCROLLCHILDREN   0x0001  /* Scroll children within *lprcScroll. */
-#define SW_INVALIDATE       0x0002  /* Invalidate after scrolling */
-#define SW_ERASE            0x0004  /* If SW_INVALIDATE, don't send WM_ERASEBACKGROUND */
+#define SW_SCROLLCHILDREN           0x0001  /* Scroll children within *lprcScroll. */
+#define SW_INVALIDATE               0x0002  /* Invalidate after scrolling */
+#define SW_ERASE                    0x0004  /* If SW_INVALIDATE, don't send WM_ERASEBACKGROUND */
 #if(WINVER >= 0x0500)
-#define SW_SMOOTHSCROLL     0x0010  /* Use smooth scrolling */
+#define SW_SMOOTHSCROLL             0x0010  /* Use smooth scrolling */
 #endif /* WINVER >= 0x0500 */
 
 #pragma region Desktop Family
@@ -10075,6 +10075,7 @@ SetWindowsHookExW(
 #else
 #define SetWindowsHookEx  SetWindowsHookExA
 #endif // !UNICODE
+
 
 WINUSERAPI
 BOOL
@@ -14344,6 +14345,7 @@ typedef struct tagMENUBARINFO
     HWND hwndMenu;       // hwnd of item submenu if one
     BOOL fBarFocused:1;  // bar, popup has the focus
     BOOL fFocused:1;     // item has the focus
+    BOOL fUnused:30;     // clear to prevent Information Disclosure
 } MENUBARINFO, *PMENUBARINFO, *LPMENUBARINFO;
 
 WINUSERAPI

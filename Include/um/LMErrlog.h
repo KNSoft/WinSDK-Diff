@@ -1876,6 +1876,261 @@ NetErrorLogWrite (
      * changed the password.
      */
      
+#define NELOG_NetlogonDnsHostNameLowerCasingFailed       (ERRLOG2_BASE + 125)
+    /*
+     * The system failed to lowercase the currently configured host name. This
+     * conversion failed with the error code below. This may affect the system's
+     * ability to register SRV records, potentially affecting clients' ability
+     * to locate domain controllers.
+     *
+     * Error code: %1
+     *
+     * More information is available at https://aka.ms/lowercasehostnamesrvrecord
+     */
+
+#define NETLOG_NetlogonNonWindowsSupportsSecureRpc (ERRLOG2_BASE + 126)
+    /*
+     * The Netlogon service detected a non-windows account using secure RPC.
+     *
+     * %n%n Machine SamAccountName: %1
+     * %n Domain: %2
+     * %n Account Type: %3
+     * %n Machine Os: %4
+     * %n Machine Os Build Version: %5
+     * %n Machine Os Service Pack: %6
+     */
+
+#define NETLOG_NetlogonUnsecureRpcClient    (ERRLOG2_BASE + 127)
+    /*
+     * The Netlogon service denied a vulnerable Netlogon secure channel connection from a machine account.
+     *
+     * %n%n Machine SamAccountName: %1
+     * %n Domain: %2
+     * %n Account Type: %3
+     * %n Machine Operating System: %4
+     * %n Machine Operating System Build: %5
+     * %n Machine Operating System Service Pack: %6
+     *
+     * %n%nFor more information about why this was denied, please visit  https://go.microsoft.com/fwlink/?linkid=2133485.
+     */
+
+#define NETLOG_NetlogonUnsecureRpcTrust    (ERRLOG2_BASE + 128)
+    /*
+     * The Netlogon service denied a vulnerable Netlogon secure channel connection using a trust account.
+     *
+     * %n%n Account Type: %1
+     * %n Trust Name: %2
+     * %n Trust Target: %3
+     * %n Client IP Address: %4
+     *
+     * %n%nFor more information about why this was denied, please visit  https://go.microsoft.com/fwlink/?linkid=2133485.
+     */
+
+#define NETLOG_NetlogonUnsecuredRpcMachineTemporarilyAllowed (ERRLOG2_BASE + 129)
+    /*
+     * The Netlogon service allowed a vulnerable Netlogon secure channel connection.
+     *
+     * %n%nWarning: This connection will be denied once the enforcement phase is released. To better understand the enforcement phase, 
+     * please visit  https://go.microsoft.com/fwlink/?linkid=2133485.
+     *
+     * %n%n Machine SamAccountName: %1
+     * %n Domain: %2
+     * %n Account Type: %3
+     * %n Machine Operating System: %4
+     * %n Machine Operating System Build: %5
+     * %n Machine Operating System Service Pack: %6
+     * 
+     */
+
+#define NETLOG_NetlogonUnsecureRpcMachineAllowedBySsdl (ERRLOG2_BASE + 130)
+    /*
+     * The Netlogon service allowed a vulnerable Netlogon secure channel connection because the machine account is allowed in the 
+     * "Domain controller: Allow vulnerable Netlogon secure channel connections" group policy.
+     * 
+     * %n%nWarning: Using vulnerable Netlogon secure channels will expose the domain-joined devices to attack. To protect your device from attack, 
+     * remove a machine account from "Domain controller: Allow vulnerable Netlogon secure channel connections" group policy after the third-party 
+     * Netlogon client has been updated. To better understand the risk of configuring machine accounts to be allowed to use vulnerable Netlogon 
+     * secure channel connections, please visit  https://go.microsoft.com/fwlink/?linkid=2133485.
+     * 
+     * %n%n Machine SamAccountName: %1
+     * %n Domain: %2
+     * %n Account Type: %3
+     * %n Machine Os: %4
+     * %n Machine Os Build Version: %5
+     * %n Machine Os Service Pack: %6
+     */
+
+#define NETLOG_NetlogonUnsecureRpcTrustAllowedBySsdl (ERRLOG2_BASE + 131)
+    /*
+     * The Netlogon service allowed a vulnerable Netlogon secure channel connection because the trust account is allowed in the 
+     * "Domain controller: Allow vulnerable Netlogon secure channel connections" group policy.
+     * 
+     * %n%nWarning: Using vulnerable Netlogon secure channels will expose Active Directory forests to attack. To protect your 
+     * Active Directory forests from attack, all trusts must use secure RPC with Netlogon secure channel. Remove a trust account from 
+     * "Domain controller: Allow vulnerable Netlogon secure channel connections" group policy after the third-party Netlogon client on the domain controllers 
+     * have been updated. To better understand the risk of configuring trust accounts to be allowed to use vulnerable Netlogon secure channel connections, 
+     * please visit  https://go.microsoft.com/fwlink/?linkid=2133485.
+     * 
+     * %n%n Account Type: %1
+     * %n Trust Name: %2
+     * %n Trust Target: %3
+     * %n Client IP Address: %4
+     */
+
+#define NETLOG_PassThruFilterError_Summary_AdminOverride (ERRLOG2_BASE + 132)
+    /*
+     * The Netlogon service allowed one or more unsecure pass-through NTLM authentication requests from trusted domains and/or forests
+     * during the most recent event throttling window. These unsecure requests would normally be blocked but were allowed to proceed
+     * due to the current trust configuration.%n
+     *
+     * %n
+     *
+     * Warning: Allowing unsecure pass-through authentication requests will expose your Active Directory forest to attack.
+     * For more information about this issue please visit https://go.microsoft.com/fwlink/?linkid=276811&.%n
+     *
+     * %n
+     *
+     * Count of unsecure requests allowed due to administrative override: %1%n
+     */
+
+#define NETLOG_PassThruFilterError_Summary_Blocked (ERRLOG2_BASE + 133)
+    /*
+     * The Netlogon service blocked one or more unsecure pass-through NTLM authentication requests from trusted clients, domains,
+     * and/or forests during the most recent event throttling window. For more information about this issue, including how to enable
+     * more verbose logging, please visit https://go.microsoft.com/fwlink/?linkid=276811&.%n
+     *
+     * %n
+     *
+     * Count of unsecure requests blocked: %1%n
+     */
+
+#define NETLOG_PassThruFilterError_Request_AdminOverride (ERRLOG2_BASE + 134)
+    /*
+     * The Netlogon service allowed an unsecure pass-through NTLM authentication request from a trusted client, domain,
+     * or forest. This unsecure request would normally be blocked but was allowed to proceed due to the current trust
+     * configuration.%n
+     *
+     * %n
+     *
+     * Warning: Allowing unsecure pass-through authentication requests will expose your Active Directory forest to attack.
+     * For more information about this issue please visit https://go.microsoft.com/fwlink/?linkid=276811&.%n
+     *
+     * %n
+     *
+     * Account name: %1%n
+     * Trust name: %2%n
+     * Trust type: %3%n
+     * Client IP Address: %4%n
+     * Block reason: %5%n
+     * Resource server Netbios name: %6%n
+     * Resource server DNS name: %7%n
+     * Resource domain Netbios name: %8%n
+     * Resource domain DNS name: %9%n
+     */
+
+#define NETLOG_PassThruFilterError_Request_Blocked (ERRLOG2_BASE + 135)
+    /*
+     * The Netlogon service blocked an unsecure pass-through NTLM authentication requests from a trusted client, domain,
+     * or forest. For more information, please visit https://go.microsoft.com/fwlink/?linkid=276811&.
+     *
+     * %n%n
+     *
+     * Account name: %1%n
+     * Trust name: %2%n
+     * Trust type: %3%n
+     * Client IP Address: %4%n
+     * Block reason: %5%n
+     * Resource server Netbios name: %6%n
+     * Resource server DNS name: %7%n
+     * Resource domain Netbios name: %8%n
+     * Resource domain DNS name: %9%n
+     */
+#define NETLOG_NetlogonRpcBacklogLimitSet (ERRLOG2_BASE + 136)
+    /*
+     * The Netlogon service was able to bind to a TCP/IP port with the configured backlog size of %1.
+     */
+
+#define NETLOG_NetlogonRpcBacklogLimitFailure (ERRLOG2_BASE + 137)
+    /*
+     * The Netlogon service tried to bind to a TCP/IP port with the configured backlog size of %1 but failed. %n%n
+     *
+     * More information can be found in the following log file '%SystemRoot%\debug\netlogon.log' and, potentially, in the log file
+     * '%SystemRoot%\debug\netlogon.bak' created if the former log becomes full. For steps in enabling the log, please visit
+     *  https://go.microsoft.com/fwlink/?linkid=2163327
+     */ 
+
+#define NETLOG_NetlogonRpcSigningClient    (ERRLOG2_BASE + 138)
+    /*
+     * The Netlogon service encountered a client using RPC signing instead of RPC sealing.
+     *
+     * %n%n Machine SamAccountName: %1
+     * %n Domain: %2
+     * %n Account Type: %3
+     * %n Machine Operating System: %4
+     * %n Machine Operating System Build: %5
+     * %n Machine Operating System Service Pack: %6
+     * %n Client IP Address: %7%n
+     *
+     * %n%nFor more information about the impact of this, please visit  https://go.microsoft.com/fwlink/?linkid=2209514.
+     */
+
+#define NETLOG_NetlogonRpcSigningTrust    (ERRLOG2_BASE + 139)
+    /*
+     * The Netlogon service encountered a trust using RPC signing instead of RPC sealing.
+     *
+     * %n%n Account Type: %1
+     * %n Trust Name: %2
+     * %n Trust Target: %3
+     * %n Client IP Address: %4
+     *
+     * %n%nFor more information about the impact of this, please visit  https://go.microsoft.com/fwlink/?linkid=2209514.
+     */
+
+#define NETLOG_NetlogonRc4Allowed    (ERRLOG2_BASE + 140)
+    /*
+     * The Netlogon service created a secure channel with a client with RC4.
+     *
+     * %n%n Account Name: %1
+     * %n Domain: %2
+     * %n Account Type: %3
+     * %n Client IP Address: %4
+     * %n Negotiated Flags: %5
+     *
+     * %n%nFor more information about why this was logged, please visit  https://go.microsoft.com/fwlink/?linkid=2209514.
+     */
+
+#define NETLOG_NetlogonRc4Denied    (ERRLOG2_BASE + 141)
+    /*
+     * The Netlogon service denied a client using RC4 due to the 'RejectMd5Clients' setting.
+     *
+     * %n%n Account Name: %1
+     * %n Domain: %2
+     * %n Account Type: %3
+     * %n Client IP Address: %4
+     * %n Negotiated Flags: %5
+     *
+     * %n%nFor more information about why this was denied, please visit  https://go.microsoft.com/fwlink/?linkid=2209514.
+     */
+
+#define NETLOG_NetlogonKerberosTicketLogonUnexpectedFailure (ERRLOG2_BASE + 142)
+    /*
+     * The Netlogon service encountered an unexpected error when processing a Kerberos Network Ticket Logon request. For more information, please visit https://go.microsoft.com/fwlink/?linkid=2261497. 
+     * %n%n
+     * Service Ticket Account: %1%n
+     * Service Ticket Domain: %2%n
+     * Workstation Name: %3%n
+     * Status: %4%n
+     */
+
+#define NETLOG_NetlogonKerberosTicketLogonUnpatched (ERRLOG2_BASE + 143)
+    /*
+     * The Netlogon service failed to forward a Kerberos Network Ticket Logon request to the Domain Controller %1. For more information, please visit https://go.microsoft.com/fwlink/?linkid=2261497. 
+     * %n%n
+     * Service Ticket Account: %2%n
+     * Service Ticket Domain: %3%n
+     * Workstation Name: %4%n
+     */
+
 #ifdef __cplusplus
 }
 #endif

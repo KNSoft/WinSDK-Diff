@@ -932,6 +932,10 @@ extern "C" {
 #define CAL_SENGLISHABBREVERANAME 0x0000003c   // Japanese calendar only: return the English Abbreviated era names for .Net compatibility
 #endif
 
+// CAL_SJAPANESEERAFIRSTYEAR is only supported on machines with updates to support the "gannen" era first year behavior
+// Machines without that update will return 0 and ERROR_INVALID_FLAGS, in which case ichinen is presumed.
+#define CAL_SJAPANESEERAFIRSTYEAR 0x0000003d   // Japanese calendar only: return ichinen or gannen first year
+
 //
 //  Calendar Enumeration Value.
 //

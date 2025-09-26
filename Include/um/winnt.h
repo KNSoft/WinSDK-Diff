@@ -1574,7 +1574,6 @@ typedef EXCEPTION_ROUTINE *PEXCEPTION_ROUTINE;
 #define PRODUCT_HUBOS                               0x000000B4
 #define PRODUCT_ONECOREUPDATEOS                     0x000000B6
 #define PRODUCT_CLOUDE                              0x000000B7
-#define PRODUCT_ANDROMEDA                           0x000000B8
 #define PRODUCT_IOTOS                               0x000000B9
 #define PRODUCT_CLOUDEN                             0x000000BA
 
@@ -5812,7 +5811,7 @@ WriteNoFence64 (
 
 extern DWORD64 (*_os_wowa64_rdtsc) (VOID);
 
-#endif
+#endif // defined(_M_HYBRID_X86_ARM64)
 
 //
 // Define function to read the value of the time stamp counter.
@@ -5822,7 +5821,7 @@ extern DWORD64 (*_os_wowa64_rdtsc) (VOID);
 
 DECLSPEC_GUARDNOCF
 
-#endif
+#endif // defined(_M_HYBRID_X86_ARM64)
 
 FORCEINLINE
 DWORD64
@@ -5840,11 +5839,11 @@ ReadTimeStampCounter(
 
     return (*_os_wowa64_rdtsc)();
 
-#else
+#else // defined(_M_HYBRID_X86_ARM64)
 
     return (DWORD64)_ReadStatusReg(ARM64_PMCCNTR_EL0);
 
-#endif
+#endif // defined(_M_HYBRID_X86_ARM64)
 
 }
 
@@ -5954,7 +5953,7 @@ YieldProcessor (
 #define CONTEXT_EXCEPTION_REQUEST   0x40000000L
 #define CONTEXT_EXCEPTION_REPORTING 0x80000000L
 
-#endif
+#endif // defined(_ARM64_)
 
 #if defined(_ARM64_) || defined(_CHPE_X86_ARM64_) || defined(_X86_)
 
@@ -5968,7 +5967,7 @@ YieldProcessor (
 #define CONTEXT_UNWOUND_TO_CALL 0x20000000
 #define CONTEXT_RET_TO_GUEST    0x04000000
 
-#endif
+#endif // defined(_ARM64_) || defined(_CHPE_X86_ARM64_) || defined(_X86_)
 
 // begin_wx86
 
@@ -6031,7 +6030,7 @@ typedef union _ARM64_NT_NEON128 {
 
 typedef ARM64_NT_NEON128 NEON128, *PNEON128;
 
-#endif
+#endif // defined(_ARM64_)
 
 #if defined(_ARM64_)
 
@@ -6043,7 +6042,7 @@ typedef ARM64_NT_NEON128 NEON128, *PNEON128;
 #undef ARM64_NT_NEON128
 #define ARM64_NT_NEON128 NEON128
 
-#endif
+#endif // defined(_ARM64_)
 
 typedef struct DECLSPEC_ALIGN(16) _ARM64_NT_CONTEXT {
 
@@ -6127,7 +6126,7 @@ typedef struct DECLSPEC_ALIGN(16) _ARM64_NT_CONTEXT {
 
 typedef ARM64_NT_CONTEXT CONTEXT, *PCONTEXT;
 
-#endif
+#endif // defined(_ARM64_)
 
 // end_ntoshvp
 // end_wx86
@@ -6140,7 +6139,7 @@ typedef ARM64_NT_CONTEXT CONTEXT, *PCONTEXT;
 
 typedef struct _IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY RUNTIME_FUNCTION, *PRUNTIME_FUNCTION;
 
-#endif
+#endif // defined(_ARM64_)
 
 typedef struct _IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY ARM64_RUNTIME_FUNCTION, *PARM64_RUNTIME_FUNCTION;
 typedef SCOPE_TABLE_ARM64 SCOPE_TABLE, *PSCOPE_TABLE;
@@ -6181,7 +6180,7 @@ typedef struct _UNWIND_HISTORY_TABLE {
 #undef _DISPATCHER_CONTEXT_ARM64
 #define _DISPATCHER_CONTEXT_ARM64 _DISPATCHER_CONTEXT
 
-#endif
+#endif // defined(_ARM64_) || defined(_CHPE_X86_ARM64_)
 
 //
 // Define exception dispatch context structure.
@@ -6209,7 +6208,7 @@ typedef struct _DISPATCHER_CONTEXT_ARM64 {
 
 typedef DISPATCHER_CONTEXT_ARM64 DISPATCHER_CONTEXT, *PDISPATCHER_CONTEXT;
 
-#endif
+#endif // defined(_ARM64_) || defined(_CHPE_X86_ARM64_)
 
 #if defined(_ARM64_) || defined(_CHPE_X86_ARM64_)
 
@@ -6307,20 +6306,7 @@ typedef struct _KNONVOLATILE_CONTEXT_POINTERS_ARM64 {
 
 typedef KNONVOLATILE_CONTEXT_POINTERS_ARM64 KNONVOLATILE_CONTEXT_POINTERS, *PKNONVOLATILE_CONTEXT_POINTERS;
 
-#endif
-
-#if defined(_CHPE_X86_ARM64_)
-
-//
-// The following typedef works-around the fact that the dummy NV_C_P for x86
-// is defined in i386.h, which is incorrect because it doesn't have the
-// correct scope. This will not be needed after fixing that: moving the
-// definition to nti386_x.w with the same scoping as other architectures.
-//
-
-typedef struct _KNONVOLATILE_CONTEXT_POINTERS *PKNONVOLATILE_CONTEXT_POINTERS;
-
-#endif
+#endif // defined(_ARM64_)
 
 // begin_wudfwdm
 
@@ -7669,6 +7655,15 @@ typedef struct _LDT_ENTRY {
 } LDT_ENTRY, *PLDT_ENTRY;
 
 #endif
+
+
+#if defined(_X86_)
+
+typedef struct _KNONVOLATILE_CONTEXT_POINTERS {
+    DWORD   Dummy;
+} KNONVOLATILE_CONTEXT_POINTERS, *PKNONVOLATILE_CONTEXT_POINTERS;
+
+#endif // defined(_X86_)
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 // begin_wdm begin_ntminiport
@@ -10650,6 +10645,10 @@ typedef enum _SECURITY_IMPERSONATION_LEVEL {
                                        TOKEN_QUERY  |\
                                        TOKEN_QUERY_SOURCE )
 
+#define TOKEN_TRUST_ALLOWED_MASK    (TOKEN_TRUST_CONSTRAINT_MASK |\
+                                    TOKEN_DUPLICATE              |\
+                                    TOKEN_IMPERSONATE)
+
 #if (NTDDI_VERSION >= NTDDI_WIN8)
 
 #define TOKEN_ACCESS_PSEUDO_HANDLE_WIN8 (TOKEN_QUERY | TOKEN_QUERY_SOURCE)
@@ -11549,6 +11548,9 @@ typedef enum _PROCESS_MITIGATION_POLICY {
     ProcessPayloadRestrictionPolicy,
     ProcessChildProcessPolicy,
     ProcessSideChannelIsolationPolicy,
+    ProcessUserShadowStackPolicy,
+    ProcessRedirectionTrustPolicy,
+    ProcessActivationContextTrustPolicy,
     MaxProcessMitigationPolicy
 } PROCESS_MITIGATION_POLICY, *PPROCESS_MITIGATION_POLICY;
 
@@ -11772,6 +11774,27 @@ typedef struct _PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY {
         } DUMMYSTRUCTNAME;
     } DUMMYUNIONNAME;
 } PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY, *PPROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY;
+
+typedef struct _PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY {
+    union {
+        DWORD Flags;
+        struct {
+            DWORD EnforceRedirectionTrust : 1;
+            DWORD AuditRedirectionTrust : 1;
+            DWORD ReservedFlags : 30;
+        } DUMMYSTRUCTNAME;
+    } DUMMYUNIONNAME;
+} PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY, *PPROCESS_MITIGATION_REDIRECTION_TRUST_POLICY;
+
+typedef struct _PROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY {
+    union {
+        DWORD Flags;
+        struct {
+            DWORD AssemblyManifestRedirectionTrust : 1;
+            DWORD ReservedFlags : 31;
+        } DUMMYSTRUCTNAME;
+    } DUMMYUNIONNAME;
+} PROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY, *PPROCESS_MITIGATION_ACTIVATION_CONTEXT_TRUST_POLICY;
 
 
 typedef struct _JOBOBJECT_BASIC_ACCOUNTING_INFORMATION {
@@ -12265,6 +12288,7 @@ typedef enum _JOBOBJECTINFOCLASS {
     JobObjectReserved23Information = 45,
     JobObjectReserved24Information = 46,
     JobObjectReserved25Information = 47,
+    JobObjectReserved28Information = 50,
     MaxJobObjectInfoClass
 } JOBOBJECTINFOCLASS;
 
@@ -12291,6 +12315,12 @@ typedef struct _SERVERSILO_BASIC_INFORMATION {
     SERVERSILO_STATE State;
     DWORD    ExitStatus;
 } SERVERSILO_BASIC_INFORMATION, *PSERVERSILO_BASIC_INFORMATION;
+
+typedef struct _SERVERSILO_DIAGNOSTIC_INFORMATION {
+    GUID ReportId;
+    DWORD    ExitStatus;
+    WCHAR CriticalProcessName[15];
+} SERVERSILO_DIAGNOSTIC_INFORMATION, *PSERVERSILO_DIAGNOSTIC_INFORMATION;
 
 
 typedef enum _FIRMWARE_TYPE {
@@ -13243,6 +13273,15 @@ typedef struct _REPARSE_GUID_DATA_BUFFER {
                            )
 
 //
+// Macro to determine whether a reparse point tag corresponds to a reserved
+// tag owned by Microsoft.
+//
+
+#define IsReparseTagReserved(_tag) (               \
+                           ((_tag) & 0x40000000)   \
+                           )
+
+//
 // Macro to determine whether a reparse point tag is a name surrogate
 //
 
@@ -13259,6 +13298,7 @@ typedef struct _REPARSE_GUID_DATA_BUFFER {
                            ((_tag) & 0x10000000)   \
                            )
 
+#define IO_REPARSE_TAG_RESERVED_INVALID         (0xC0008000L)       
 #define IO_REPARSE_TAG_MOUNT_POINT              (0xA0000003L)       
 #define IO_REPARSE_TAG_HSM                      (0xC0000004L)       
 #define IO_REPARSE_TAG_HSM2                     (0x80000006L)       
@@ -15641,6 +15681,7 @@ typedef enum {
     EnergyTrackerCreate,
     EnergyTrackerQuery,
     UpdateBlackBoxRecorder,
+    SessionAllowExternalDmaDevices,
     PowerInformationLevelMaximum
 } POWER_INFORMATION_LEVEL;
 
@@ -15687,6 +15728,13 @@ typedef struct _POWER_SESSION_WINLOGON {
     BOOLEAN Console; // TRUE - for console session, FALSE - for remote session
     BOOLEAN Locked; // TRUE - lock, FALSE - unlock
 } POWER_SESSION_WINLOGON, *PPOWER_SESSION_WINLOGON;
+
+//
+// Winlogon notification to unblock external DMA devices.
+//
+typedef struct _POWER_SESSION_ALLOW_EXTERNAL_DMA_DEVICES {
+    BOOLEAN IsAllowed;
+} POWER_SESSION_ALLOW_EXTERNAL_DMA_DEVICES, *PPOWER_SESSION_ALLOW_EXTERNAL_DMA_DEVICES;
 
 //
 // Idle resiliency
@@ -18483,6 +18531,19 @@ typedef struct _IMAGE_ARM_RUNTIME_FUNCTION_ENTRY {
     } DUMMYUNIONNAME;
 } IMAGE_ARM_RUNTIME_FUNCTION_ENTRY, * PIMAGE_ARM_RUNTIME_FUNCTION_ENTRY;
 
+typedef enum ARM64_FNPDATA_FLAGS {
+    PdataRefToFullXdata = 0,
+    PdataPackedUnwindFunction = 1,
+    PdataPackedUnwindFragment = 2,
+} ARM64_FNPDATA_FLAGS;
+
+typedef enum ARM64_FNPDATA_CR {
+    PdataCrUnchained = 0,
+    PdataCrUnchainedSavedLr = 1,
+    PdataCrChainedWithPac = 2,
+    PdataCrChained = 3,
+} ARM64_FNPDATA_CR;
+
 typedef struct _IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
     DWORD BeginAddress;
     union {
@@ -18498,6 +18559,18 @@ typedef struct _IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
         } DUMMYSTRUCTNAME;
     } DUMMYUNIONNAME;
 } IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY, * PIMAGE_ARM64_RUNTIME_FUNCTION_ENTRY;
+
+typedef union IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
+    DWORD HeaderData;
+    struct {
+        DWORD FunctionLength : 18;      // in words (2 bytes)
+        DWORD Version : 2;
+        DWORD ExceptionDataPresent : 1;
+        DWORD EpilogInHeader : 1;
+        DWORD EpilogCount : 5;          // number of epilogs or byte index of the first unwind code for the one only epilog
+        DWORD CodeWords : 5;            // number of dwords with unwind codes
+    };
+} IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA;
 
 typedef struct _IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY {
     ULONGLONG BeginAddress;
@@ -19772,6 +19845,7 @@ typedef struct _RTL_BARRIER {
 #define FAST_FAIL_ADMINLESS_ACCESS_DENIED           55         // Telemetry, nonfatal
 #define FAST_FAIL_UNEXPECTED_CALL                   56
 #define FAST_FAIL_CONTROL_INVALID_RETURN_ADDRESS    57
+#define FAST_FAIL_UNEXPECTED_HOST_BEHAVIOR          58
 #define FAST_FAIL_INVALID_FAST_FAIL_CODE            0xFFFFFFFF
 
 #if _MSC_VER >= 1610
@@ -21297,6 +21371,7 @@ struct _PACKEDEVENTINFO
 #define REG_FLUSH_HIVE_FILE_GROWTH      (0x00001000L)   // Flush changes to primary hive file size as part of all flushes
 #define REG_OPEN_READ_ONLY              (0x00002000L)   // Open a hive's files in read-only mode
 #define REG_IMMUTABLE                   (0x00004000L)   // Load the hive, but don't allow any modification of it
+#define REG_NO_IMPERSONATION_FALLBACK   (0x00008000L)   // Do not fall back to impersonating the caller if hive file access fails
 #define REG_APP_HIVE_OPEN_READ_ONLY     (REG_OPEN_READ_ONLY)   // Open an app hive's files in read-only mode (if the hive was not previously loaded)
 
 //

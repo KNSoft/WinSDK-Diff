@@ -478,7 +478,7 @@ PrKernelTime equ 0009CH
 PrUserTime equ 000A0H
 PrInstrumentationCallback equ 0032CH
 KernelProcessObjectLength equ 000B0H
-ExecutiveProcessObjectLength equ 00408H
+ExecutiveProcessObjectLength equ 00410H
 Win32BatchFlushCallout equ 00007H
 
 ;
@@ -856,15 +856,17 @@ PcTeb equ 00018H
 PcUserEspShadow equ 05008H
 PcEspBaseShadow equ 05004H
 PcShadowFlags equ 0500CH
+PcVerwSelector equ 05028H
 PcUserDS equ 05010H
 PcUserES equ 05014H
 PcUserFS equ 05018H
 PcSavedEsi equ 05024H
 PcEspIretd equ 0501CH
-PcDbgLogs equ 05028H
-PcDbgCount equ 05828H
+PcDbgLogs equ 05030H
+PcDbgCount equ 05830H
 PcRestoreSegOption equ 05020H
 PcKernelDirectoryTableBase equ 05000H
+PcTaskSwitchCount equ 0502CH
 PcProcessorDescriptorArea equ 0003CH
 PcIrql equ 00024H
 PcIRR equ 00028H
@@ -1048,6 +1050,7 @@ PbEspBaseShadow equ 04EE4H
 
 PdaGdt equ 00000H
 PdaKernelTransitionStack equ 06000H
+PdaTaskSwitchTransitionStack equ 07000H
 KSHADOW_FLAG_KERNEL_DIRECTORY equ 00002H
 KSHADOW_FLAG_KERNEL_DIRECTORY_BIT equ 00001H
 PrAddressPolicy equ 00074H
@@ -1283,6 +1286,7 @@ INTERRUPT_FRAME equ 00000H
 EXCEPTION_FRAME equ 00001H
 SYSCALL_FRAME equ 00002H
 KXMM_FRAME_SIZE equ 00080H
+KTRANSITION_STACK_SIZE equ 01000H
 
 ;
 ;  Context Frame Offset and Flag Definitions

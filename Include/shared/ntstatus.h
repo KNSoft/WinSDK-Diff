@@ -5940,6 +5940,15 @@ Notes:
 #define STATUS_IO_DEVICE_INVALID_DATA    ((NTSTATUS)0xC00001B0L)
 
 //
+// MessageId: STATUS_IO_UNALIGNED_WRITE
+//
+// MessageText:
+//
+// The device reported an unaligned write error.
+//
+#define STATUS_IO_UNALIGNED_WRITE        ((NTSTATUS)0xC00001B1L)
+
+//
 //  Available range of NTSTATUS codes
 //
 //
@@ -10111,6 +10120,33 @@ Notes:
 //
 #define STATUS_CASE_DIFFERING_NAMES_IN_DIR ((NTSTATUS)0xC00004B3L)
 
+//
+// MessageId: STATUS_HAS_SYSTEM_CRITICAL_FILES
+//
+// MessageText:
+//
+// The volume contains paging, crash dump or other system critical files.
+//
+#define STATUS_HAS_SYSTEM_CRITICAL_FILES ((NTSTATUS)0xC00004BDL)
+
+//
+// MessageId: STATUS_FT_READ_FROM_COPY_FAILURE
+//
+// MessageText:
+//
+// The specified copy of the requested data could not be read.
+//
+#define STATUS_FT_READ_FROM_COPY_FAILURE ((NTSTATUS)0xC00004BEL)
+
+//
+// MessageId: STATUS_UNTRUSTED_MOUNT_POINT
+//
+// MessageText:
+//
+// The path cannot be traversed because it contains an untrusted mount point.
+//
+#define STATUS_UNTRUSTED_MOUNT_POINT     ((NTSTATUS)0xC00004BCL)
+
 
 //     **** New SYSTEM error codes can be inserted here ****
 
@@ -10303,6 +10339,18 @@ Notes:
 // The volume must undergo garbage collection.
 //
 #define STATUS_SMR_GARBAGE_COLLECTION_REQUIRED ((NTSTATUS)0xC0000514L)
+
+
+//     **** New SYSTEM error codes can be inserted here ****
+
+//
+// MessageId: STATUS_FS_METADATA_INCONSISTENT
+//
+// MessageText:
+//
+// The file system encountered a metadata file with inconsistent data.
+//
+#define STATUS_FS_METADATA_INCONSISTENT  ((NTSTATUS)0xC0000518L)
 
 
 //     **** New SYSTEM error codes can be inserted here ****
@@ -11246,6 +11294,51 @@ Notes:
 //
 #define STATUS_INCORRECT_ACCOUNT_TYPE    ((NTSTATUS)0xC000A089L)
 
+//
+// MessageId: STATUS_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The local account policy modification request was rejected because the policy is controlled by a regional authority.
+//
+#define STATUS_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED ((NTSTATUS)0xC000A08AL)
+
+//
+// MessageId: STATUS_POLICY_CONTROLLED_ACCOUNT
+//
+// MessageText:
+//
+// The account is controlled by external policy and cannot be modified.
+//
+#define STATUS_POLICY_CONTROLLED_ACCOUNT ((NTSTATUS)0xC000A08BL)
+
+//
+// MessageId: STATUS_LAPS_LEGACY_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the legacy LAPS schema needs to be added to Active Directory.
+//
+#define STATUS_LAPS_LEGACY_SCHEMA_MISSING ((NTSTATUS)0xC000A08CL)
+
+//
+// MessageId: STATUS_LAPS_SCHEMA_MISSING
+//
+// MessageText:
+//
+// The Local Administrator Password Solution password update operation failed because the Windows LAPS schema needs to be added to Active Directory.
+//
+#define STATUS_LAPS_SCHEMA_MISSING       ((NTSTATUS)0xC000A08DL)
+
+//
+// MessageId: STATUS_LAPS_ENCRYPTION_REQUIRES_2016_DFL
+//
+// MessageText:
+//
+// The Local Administrator Password Solution encrypted password update operation failed because Active Directory is not yet running at the minimum required domain functional level (2016).
+//
+#define STATUS_LAPS_ENCRYPTION_REQUIRES_2016_DFL ((NTSTATUS)0xC000A08EL)
+
 /*++
 
  MessageId's 0xa100 - 0xa120 (inclusive) are for the SMB Hash Generation Service.
@@ -11891,6 +11984,15 @@ Notes:
 // The file is not a cloud sync root.
 //
 #define STATUS_NOT_A_CLOUD_SYNC_ROOT     ((NTSTATUS)0xC000CF1EL)
+
+//
+// MessageId: STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT
+//
+// MessageText:
+//
+// The cloud provider failed to acknowledge a message before the time-out expired.
+//
+#define STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT ((NTSTATUS)0xC000CF21L)
 
 /*++
 
@@ -21863,6 +21965,24 @@ Notes:
 // There is not enough memory in the root partition's pool to complete the operation.
 //
 #define STATUS_HV_INSUFFICIENT_ROOT_MEMORY ((NTSTATUS)0xC0350073L)
+
+//
+// MessageId: STATUS_HV_EVENT_BUFFER_ALREADY_FREED
+//
+// MessageText:
+//
+// The provided event log buffer was already marked as freed.
+//
+#define STATUS_HV_EVENT_BUFFER_ALREADY_FREED ((NTSTATUS)0xC0350074L)
+
+//
+// MessageId: STATUS_HV_INSUFFICIENT_CONTIGUOUS_MEMORY
+//
+// MessageText:
+//
+// There is not enough contiguous memory in the partition's pool to complete the operation.
+//
+#define STATUS_HV_INSUFFICIENT_CONTIGUOUS_MEMORY ((NTSTATUS)0xC0350075L)
 
 //
 // MessageId: STATUS_HV_NOT_PRESENT

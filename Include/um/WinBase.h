@@ -152,6 +152,10 @@ extern "C" {
 
 #define FILE_FLAG_OPEN_REQUIRING_OPLOCK 0x00040000
 
+#if defined(NTDDI_WIN10_RS5) && (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+#define FILE_FLAG_IGNORE_IMPERSONATED_DEVICEMAP 0x00020000
+#endif
+
 #endif
 
 
@@ -210,6 +214,39 @@ extern "C" {
 
 #define COPY_FILE_IGNORE_EDP_BLOCK                   0x00400000
 #define COPY_FILE_IGNORE_SOURCE_ENCRYPTION           0x00800000
+
+#endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+//
+//  Additional flags for CopyFileEx() and CopyFile2().
+//
+
+#define COPY_FILE_OPEN_AND_COPY_REPARSE_POINT    0x00200000
+#define COPY_FILE_DIRECTORY                      0x00000080
+#define COPY_FILE_SKIP_ALTERNATE_STREAMS         0x00008000
+
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+//
+//  TODO - revise this to be "if (NTDDI_VERSION >= NTDDI_WIN10_VIBRANIUM)",
+//  or the equivalent, when the new version name is defined.
+//
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+
+//
+//  Additional flags for CopyFileEx() and CopyFile2().
+//
+
+#define COPY_FILE_DISABLE_PRE_ALLOCATION         0x04000000
+
+//
+//  Additional flags for CopyFile2().
+//
+
+#define COPY_FILE_ENABLE_LOW_FREE_SPACE_MODE     0x08000000
 
 #endif
 

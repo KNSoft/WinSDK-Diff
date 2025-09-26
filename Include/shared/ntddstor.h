@@ -254,6 +254,7 @@ extern "C" {
 
 #define IOCTL_STORAGE_PROTOCOL_COMMAND              CTL_CODE(IOCTL_STORAGE_BASE, 0x04F0, METHOD_BUFFERED, FILE_READ_ACCESS | FILE_WRITE_ACCESS)
 
+
 #define IOCTL_STORAGE_QUERY_PROPERTY                CTL_CODE(IOCTL_STORAGE_BASE, 0x0500, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #define IOCTL_STORAGE_MANAGE_DATA_SET_ATTRIBUTES    CTL_CODE(IOCTL_STORAGE_BASE, 0x0501, METHOD_BUFFERED, FILE_WRITE_ACCESS)
 #define IOCTL_STORAGE_GET_LB_PROVISIONING_MAP_RESOURCES  CTL_CODE(IOCTL_STORAGE_BASE, 0x0502, METHOD_BUFFERED, FILE_READ_ACCESS)
@@ -886,6 +887,32 @@ typedef enum _STORAGE_QUERY_TYPE {
 } STORAGE_QUERY_TYPE, *PSTORAGE_QUERY_TYPE;
 
 //
+// IOCTL_STORAGE_SET_PROPERTY
+//
+// Input Buffer:
+//      a STORAGE_PROPERTY_SET structure which describes what type of property set
+//      is being done, what property is being set, and any additional
+//      parameters which a particular property set requires.
+//
+//  Output Buffer:
+//      Contains a buffer to place the results of the query into.  Since all
+//      property descriptors can be cast into a STORAGE_DESCRIPTOR_HEADER,
+//      the IOCTL can be called once with a small buffer then again using
+//      a buffer as large as the header reports is necessary.
+//
+
+
+//
+// Types of set operation
+//
+
+typedef enum _STORAGE_SET_TYPE {
+    PropertyStandardSet = 0,          // Sets the descriptor
+    PropertyExistsSet,                // Used to test whether the descriptor is supported
+    PropertySetMaxDefined             // use to validate the value
+} STORAGE_SET_TYPE, *PSTORAGE_SET_TYPE;
+
+//
 // define some initial property id's
 //
 
@@ -929,6 +956,7 @@ typedef enum __WRAPPED__ _STORAGE_PROPERTY_ID {
     StorageDeviceUnsafeShutdownCount
 } STORAGE_PROPERTY_ID, *PSTORAGE_PROPERTY_ID;
 
+
 //
 // Query structure - additional parameters for specific queries can follow
 // the header
@@ -955,6 +983,33 @@ typedef struct _STORAGE_PROPERTY_QUERY {
     UCHAR AdditionalParameters[1];
 
 } STORAGE_PROPERTY_QUERY, *PSTORAGE_PROPERTY_QUERY;
+
+//
+// Set structure - additional parameters for specific set property that can follow
+// the header
+//
+
+typedef struct _STORAGE_PROPERTY_SET {
+
+    //
+    // ID of the property being retrieved
+    //
+
+    STORAGE_PROPERTY_ID PropertyId;
+
+    //
+    // Flags indicating the type of set property being performed
+    //
+
+    STORAGE_SET_TYPE SetType;
+
+    //
+    // Space for additional parameters if necessary
+    //
+
+    UCHAR AdditionalParameters[1];
+
+} STORAGE_PROPERTY_SET, *PSTORAGE_PROPERTY_SET;
 
 //
 // Standard property descriptor header.  All property pages should use this
@@ -6166,6 +6221,7 @@ typedef struct _STORAGE_ATTRIBUTE_MGMT {
     ULONG Attribute;
 
 } STORAGE_ATTRIBUTE_MGMT, *PSTORAGE_ATTRIBUTE_MGMT;
+
 
 #if _MSC_VER >= 1200
 #pragma warning(pop)

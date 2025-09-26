@@ -2095,7 +2095,11 @@ typedef enum
 #endif // JET_VERSION >= 0x0A00
 
 
-#define JET_paramMaxValueInvalid                212 //  This is not a valid parameter. It can change from release to release!
+#if ( JET_VERSION >= 0x0A01 )
+#define JET_paramUseFlushForWriteDurability     214 //  This controls whether ESE uses Flush or FUA to make sure a write to disk is durable.
+#endif // JET_VERSION >= 0x0A01
+
+#define JET_paramMaxValueInvalid                215 //  This is not a valid parameter. It can change from release to release!
 
 
 //  Session parameters
@@ -2882,19 +2886,23 @@ typedef struct
 
     /* Info levels for JetGetTableInfo/JetSetTableInfo */
 
-#define JET_TblInfo             0U
-#define JET_TblInfoName         1U
-#define JET_TblInfoDbid         2U
-#define JET_TblInfoMostMany     3U
-#define JET_TblInfoRvt          4U
-#define JET_TblInfoOLC          5U
-#define JET_TblInfoResetOLC     6U
-#define JET_TblInfoSpaceUsage   7U
-#define JET_TblInfoDumpTable    8U
-#define JET_TblInfoSpaceAlloc   9U
-#define JET_TblInfoSpaceOwned   10U                 // OwnExt
-#define JET_TblInfoSpaceAvailable       11U         // AvailExt
-#define JET_TblInfoTemplateTableName    12U
+#define JET_TblInfo                    0U
+#define JET_TblInfoName                1U
+#define JET_TblInfoDbid                2U
+#define JET_TblInfoMostMany            3U
+#define JET_TblInfoRvt                 4U
+#define JET_TblInfoOLC                 5U
+#define JET_TblInfoResetOLC            6U
+#define JET_TblInfoSpaceUsage          7U
+#define JET_TblInfoDumpTable           8U
+#define JET_TblInfoSpaceAlloc          9U
+#define JET_TblInfoSpaceOwned         10U         // OwnExt for primary, 2ndary indices, and LV
+#define JET_TblInfoSpaceAvailable     11U         // AvailExt for primary, 2ndary indices, and LV
+#define JET_TblInfoTemplateTableName  12U
+#if ( JET_VERSION >= 0x0A01 )
+#define JET_TblInfoSpaceOwnedLV       17U         // OwnExt for LV
+#define JET_TblInfoSpaceAvailableLV   18U         // AvailExt for LV
+#endif
 
     /* Info levels for JetGetIndexInfo and JetGetTableIndexInfo */
 
@@ -2922,6 +2930,11 @@ typedef struct
 #define JET_IdxInfoCreateIndex3     13U     //  return a JET_INDEXCREATE3 structure suitable for use by JetCreateIndex4()
 #define JET_IdxInfoLocaleName       14U     //  Returns the locale name, which can be a wide string of up to LOCALE_NAME_MAX_LENGTH (including null).
 #endif // JET_VERSION >= 0x0602
+#if ( JET_VERSION >= 0x0A01 )
+#define JET_IdxInfoSpaceOwned       18U    // Space owned exclusively by this index (unlike tables, ignores space from 2ndary indices, even
+                                           //     when inquiring about primary indices
+#define JET_IdxInfoSpaceAvailable   19U    // Space available exclusively for this index
+#endif
 
 
     /* Info levels for JetGetColumnInfo and JetGetTableColumnInfo */

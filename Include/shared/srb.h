@@ -887,6 +887,7 @@ typedef enum _SRBEXDATATYPE {
     SrbExDataTypePower,
     SrbExDataTypePnP,
     SrbExDataTypeIoInfo = 0x80,
+    SrbExDataTypePassthroughDirect = 0xa0,
     SrbExDataTypeMSReservedStart = 0xf0000000,
     SrbExDataTypeReserved = 0xffffffff
 } SRBEXDATATYPE, *PSRBEXDATATYPE;
@@ -918,6 +919,7 @@ typedef struct SRB_ALIGN _SRBEX_DATA_BIDIRECTIONAL {
     _Field_size_bytes_full_(DataInTransferLength)
     PVOID POINTER_ALIGN DataInBuffer;
 } SRBEX_DATA_BIDIRECTIONAL, *PSRBEX_DATA_BIDIRECTIONAL;
+
 
 // SRB_FUNCTION_EXECUTE_SCSI for up to 16 byte CDBs
 #define SRBEX_DATA_SCSI_CDB16_LENGTH ((20 * sizeof(UCHAR)) + sizeof(ULONG) + sizeof(PVOID))
@@ -1090,7 +1092,9 @@ typedef _Struct_size_bytes_(SrbLength) struct SRB_ALIGN _STORAGE_REQUEST_BLOCK {
     _Field_range_(SRB_FUNCTION_STORAGE_REQUEST_BLOCK, SRB_FUNCTION_STORAGE_REQUEST_BLOCK)
     UCHAR Function;
     UCHAR SrbStatus;
-    UCHAR ReservedUchar[4];
+
+    // Reserved for internal use
+    ULONG ReservedUlong1;
 
     //
     // General SRB fields. The first 6 fields should not changed between
@@ -1112,7 +1116,7 @@ typedef _Struct_size_bytes_(SrbLength) struct SRB_ALIGN _STORAGE_REQUEST_BLOCK {
     ULONG SrbFlags;
 
     // Reserved for future use to expand SrbStatus to 32-bit
-    ULONG ReservedUlong;
+    ULONG ReservedUlong2;
 
     // Equivalent to QueueTag or Task Tag in SCSI
     ULONG RequestTag;

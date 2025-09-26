@@ -85,6 +85,7 @@ extern const CLSID CLSID_DCOMAccessControl;
 
 extern const CLSID CLSID_GlobalOptions;
 extern const CLSID CLSID_StdGlobalInterfaceTable;
+extern const CLSID CLSID_ActivationCapabilities;
 
 #endif  /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM) */
 #pragma endregion

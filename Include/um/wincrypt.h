@@ -667,6 +667,7 @@ typedef ULONG_PTR HCRYPTHASH;
 #endif //(NTDDI_VERSION >= NTDDI_VISTA)
 #if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
 #define PP_DISMISS_PIN_UI_SEC   49
+#define PP_IS_PFX_EPHEMERAL     50
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_RS5)
 
 // certenrolld_begin -- PROV_RSA_*
@@ -3286,7 +3287,13 @@ CryptDecodeObject(
 //  Object Identifiers for use with the MS Directory Service
 //--------------------------------------------------------------------------
 #define szOID_NTDS_REPLICATION      "1.3.6.1.4.1.311.25.1"
+#define szOID_NTDS_CA_SECURITY_EXT  "1.3.6.1.4.1.311.25.2"    // OID arc for Microsoft CA custom security extension
+#define szOID_NTDS_OBJECTSID        "1.3.6.1.4.1.311.25.2.1"  // OID for objectSid info
 
+//+-------------------------------------------------------------------------
+//  URI Prefixes for use with the MS Directory Service
+//--------------------------------------------------------------------------
+#define wszURI_NTDS_OBJECTSID_PREFIX L"tag:microsoft.com,2022-09-14:sid:" // URI for objectSid info in the SAN, to be followed by a string SID
 
 //+-------------------------------------------------------------------------
 //  Extension Object Identifiers

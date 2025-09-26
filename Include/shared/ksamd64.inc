@@ -463,7 +463,7 @@ PrKernelTime equ 0026CH
 PrUserTime equ 00270H
 PrInstrumentationCallback equ 002C8H
 KernelProcessObjectLength equ 002D8H
-ExecutiveProcessObjectLength equ 00850H
+ExecutiveProcessObjectLength equ 00858H
 Win32BatchFlushCallout equ 00007H
 
 ;
@@ -902,8 +902,8 @@ PcCurrentPrcb equ 00020H
 PcLockArray equ 00028H
 PcTeb equ 00030H
 PcIdt equ 00038H
-PcDbgMceNestingLevel equ 0701CH
-PcDbgMceFlags equ 07020H
+PcDbgMceNestingLevel equ 07020H
+PcDbgMceFlags equ 07024H
 PcProcessorDescriptorArea equ 00038H
 PcIrql equ 00050H
 PcStallScaleFactor equ 00064H
@@ -921,6 +921,7 @@ PcNumber equ 001A4H
 PcRspBase equ 001A8H
 PcRspBaseShadow equ 07008H
 PcShadowFlags equ 07018H
+PcVerwSelector equ 0701CH
 PcPrcbLock equ 001B0H
 PcCr0 equ 00280H
 PcCr2 equ 00288H
@@ -1070,8 +1071,8 @@ PbMinorVersion equ 00088H
 PbMajorVersion equ 0008AH
 PbBuildType equ 0008CH
 PbCpuVendor equ 0008DH
-PbCoresPerPhysicalProcessor equ 0008EH
-PbLogicalProcessorsPerCore equ 0008FH
+PbCoresPerPhysicalProcessor equ 000A0H
+PbLogicalProcessorsPerCore equ 000A4H
 PbApicMask equ 000DCH
 PbCFlushSize equ 000E8H
 PbAcpiReserved equ 000E0H
@@ -1138,7 +1139,7 @@ PbExceptionDispatchCount equ 05BB0H
 PbVendorString equ 06290H
 ProcessorBlockLength equ 07EC0H
 PbShadowFlags equ 06E98H
-PbTrappedSecurityDomain equ 000F0H
+PbTrappedSecurityDomain equ 006D8H
 
 ;
 ;  Time Fields (TIME_FIELDS) Structure Offset Definitions
@@ -1848,6 +1849,7 @@ PsbProcessorState equ 00090H
 PsbFlags equ 00008H
 PROCESSOR_START_FLAG_FORCE_ENABLE_NX equ 00001H
 PROCESSOR_START_FLAG_LA57 equ 00002H
+PROCESSOR_START_FLAG_HIDDEN equ 00004H
 ProcessorStartBlockLength equ 00650H
 XHF_NOEXECUTE equ 0100000H
 

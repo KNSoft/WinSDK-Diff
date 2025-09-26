@@ -4201,4 +4201,19 @@
 //
 #define WU_E_SLS_INVALID_REVISION        _HRESULT_TYPEDEF_(0x8024B201L)
 
+//////////////////////////////////////////////////////////////////////////////
+// trust related errors - 0xB301
+////
+///////
+// trust General errors 0xB301 - 0xB3FF
+///////
+//
+// MessageId: WU_E_TRUST_PROVIDER_UNKNOWN
+//
+// MessageText:
+//
+// Unknown trust provider for WU.
+//
+#define WU_E_TRUST_PROVIDER_UNKNOWN      _HRESULT_TYPEDEF_(0x8024B304L)
+
 #endif //_WUERROR_

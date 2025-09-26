@@ -361,6 +361,26 @@ RegisterDeviceWithManagementUsingAADCredentials(HANDLE UserToken);
 
 Routine Description:
 
+This function is used to register a device with the MDM service synchronously.
+It will get the MDM information, including authentication device token from AAD
+
+Arguments:
+
+None
+
+Return Value:
+
+HRESULT indicating success or failure.
+
+--*/
+HRESULT WINAPI
+RegisterDeviceWithManagementUsingAADDeviceCredentials();
+
+
+/*++
+
+Routine Description:
+
     This function is used to register a device with the MDM service synchronously.
 
 Arguments:

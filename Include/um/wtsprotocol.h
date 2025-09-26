@@ -186,6 +186,13 @@ typedef interface IWRdsWddmIddProps IWRdsWddmIddProps;
 #endif 	/* __IWRdsWddmIddProps_FWD_DEFINED__ */
 
 
+#ifndef __IWRdsEnhancedFastReconnectArbitrator_FWD_DEFINED__
+#define __IWRdsEnhancedFastReconnectArbitrator_FWD_DEFINED__
+typedef interface IWRdsEnhancedFastReconnectArbitrator IWRdsEnhancedFastReconnectArbitrator;
+
+#endif 	/* __IWRdsEnhancedFastReconnectArbitrator_FWD_DEFINED__ */
+
+
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
@@ -3049,12 +3056,105 @@ EXTERN_C const IID IID_IWRdsWddmIddProps;
 /* interface __MIDL_itf_wtsprotocol_0000_0021 */
 /* [local] */ 
 
-#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-#pragma endregion
+
 
 
 extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0021_v0_0_c_ifspec;
 extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0021_v0_0_s_ifspec;
+
+#ifndef __IWRdsEnhancedFastReconnectArbitrator_INTERFACE_DEFINED__
+#define __IWRdsEnhancedFastReconnectArbitrator_INTERFACE_DEFINED__
+
+/* interface IWRdsEnhancedFastReconnectArbitrator */
+/* [unique][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IWRdsEnhancedFastReconnectArbitrator;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("5718AE9B-47F2-499F-B634-D8175BD51131")
+    IWRdsEnhancedFastReconnectArbitrator : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetSessionForEnhancedFastReconnect( 
+            /* [in] */ __RPC__in LONG *pSessionIdArray,
+            /* [in] */ DWORD dwSessionCount,
+            /* [out] */ __RPC__out LONG *pResultSessionId) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IWRdsEnhancedFastReconnectArbitratorVtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IWRdsEnhancedFastReconnectArbitrator * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IWRdsEnhancedFastReconnectArbitrator * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IWRdsEnhancedFastReconnectArbitrator * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetSessionForEnhancedFastReconnect )( 
+            __RPC__in IWRdsEnhancedFastReconnectArbitrator * This,
+            /* [in] */ __RPC__in LONG *pSessionIdArray,
+            /* [in] */ DWORD dwSessionCount,
+            /* [out] */ __RPC__out LONG *pResultSessionId);
+        
+        END_INTERFACE
+    } IWRdsEnhancedFastReconnectArbitratorVtbl;
+
+    interface IWRdsEnhancedFastReconnectArbitrator
+    {
+        CONST_VTBL struct IWRdsEnhancedFastReconnectArbitratorVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IWRdsEnhancedFastReconnectArbitrator_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IWRdsEnhancedFastReconnectArbitrator_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IWRdsEnhancedFastReconnectArbitrator_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IWRdsEnhancedFastReconnectArbitrator_GetSessionForEnhancedFastReconnect(This,pSessionIdArray,dwSessionCount,pResultSessionId)	\
+    ( (This)->lpVtbl -> GetSessionForEnhancedFastReconnect(This,pSessionIdArray,dwSessionCount,pResultSessionId) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IWRdsEnhancedFastReconnectArbitrator_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_wtsprotocol_0000_0022 */
+/* [local] */ 
+
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
+
+
+extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0022_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0022_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

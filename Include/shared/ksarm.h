@@ -454,7 +454,7 @@
 #define PrUserTime 0x9c
 #define PrInstrumentationCallback 0xa4
 #define KernelProcessObjectLength 0xb0
-#define ExecutiveProcessObjectLength 0x408
+#define ExecutiveProcessObjectLength 0x410
 #define Win32BatchFlushCallout 0x7
 
 //
@@ -895,8 +895,8 @@
 #define PbMinorVersion 0x40c
 #define PbMajorVersion 0x40e
 #define PbBuildType 0x410
-#define PbCoresPerPhysicalProcessor 0x412
-#define PbLogicalProcessorsPerCore 0x413
+#define PbCoresPerPhysicalProcessor 0x420
+#define PbLogicalProcessorsPerCore 0x424
 #define PbPriorityState 0x1c
 #define PbLockQueue 0x480
 #define PbPPLookasideList 0x580

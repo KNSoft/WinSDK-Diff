@@ -2396,7 +2396,6 @@ typedef _Enum_is_bitflag_ enum _SUITE_TYPE {
 #define PRODUCT_HUBOS                               0x000000B4
 #define PRODUCT_ONECOREUPDATEOS                     0x000000B6
 #define PRODUCT_CLOUDE                              0x000000B7
-#define PRODUCT_ANDROMEDA                           0x000000B8
 #define PRODUCT_IOTOS                               0x000000B9
 #define PRODUCT_CLOUDEN                             0x000000BA
 

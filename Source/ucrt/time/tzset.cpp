@@ -155,7 +155,7 @@ static void __cdecl tzset_from_system_nolock() throw()
         // need to be stored per-thread?
         unsigned const code_page = ___lc_codepage_func();
 
-        int used_default_char;
+        BOOL used_default_char{};
         int const status0 = __acrt_WideCharToMultiByte(
             code_page,
             0,

@@ -980,6 +980,7 @@ enum __MIDL___MIDL_itf_msclus_0000_0000_0001
         ClusGroupTypeVMReplicaCoordinator	= 120,
         ClusGroupTypeCrossClusterOrchestrator	= 121,
         ClusGroupTypeInfrastructureFileServer	= 122,
+        ClusGroupTypeCoreSddc	= 123,
         ClusGroupTypeUnknown	= 9999
     } 	CLUSGROUP_TYPE;
 
@@ -1791,6 +1792,7 @@ enum CLCTL_CODES
         CLCTL_NETNAME_CREDS_NOTIFYCAM	= ( ( ( ( 0x2 << 0 )  | ( 1 << 20 )  )  | ( ( 0 + 26 )  << 2 )  )  | ( 0x1 << 22 )  ) ,
         CLCTL_NOTIFY_QUORUM_STATUS	= ( ( ( ( 0x2 << 0 )  | ( 1 << 20 )  )  | ( ( 0 + 31 )  << 2 )  )  | ( 0x1 << 22 )  ) ,
         CLCTL_NOTIFY_MONITOR_SHUTTING_DOWN	= ( ( ( ( 0x1 << 0 )  | ( 1 << 20 )  )  | ( ( 0 + 32 )  << 2 )  )  | ( 0 << 22 )  ) ,
+        CLCTL_UNDELETE	= ( ( ( ( 0x2 << 0 )  | ( 1 << 20 )  )  | ( ( 0 + 33 )  << 2 )  )  | ( 0x1 << 22 )  ) ,
         CLCTL_GET_OPERATION_CONTEXT	= ( ( ( ( 0x1 << 0 )  | ( 1 << 20 )  )  | ( ( 0 + 2106 )  << 2 )  )  | ( 0 << 22 )  ) ,
         CLCTL_NOTIFY_OWNER_CHANGE	= ( ( ( ( 0x2 << 0 )  | ( 1 << 20 )  )  | ( ( 0 + 2120 )  << 2 )  )  | ( 0x1 << 22 )  ) ,
         CLCTL_VALIDATE_CHANGE_GROUP	= ( ( ( ( 0x1 << 0 )  | ( 1 << 20 )  )  | ( ( 0 + 2121 )  << 2 )  )  | ( 0 << 22 )  ) 
@@ -1867,6 +1869,7 @@ enum CLUSCTL_RESOURCE_CODES
         CLUSCTL_RESOURCE_RLUA_GET_VIRTUAL_SERVER_TOKEN	= ( ( CLUS_OBJECT_RESOURCE << 24 )  | CLCTL_NETNAME_GET_VIRTUAL_SERVER_TOKEN ) ,
         CLUSCTL_RESOURCE_RLUA_SET_PWD_INFO	= ( ( CLUS_OBJECT_RESOURCE << 24 )  | CLCTL_NETNAME_SET_PWD_INFO ) ,
         CLUSCTL_RESOURCE_DELETE	= ( ( CLUS_OBJECT_RESOURCE << 24 )  | CLCTL_DELETE ) ,
+        CLUSCTL_RESOURCE_UNDELETE	= ( ( CLUS_OBJECT_RESOURCE << 24 )  | CLCTL_UNDELETE ) ,
         CLUSCTL_RESOURCE_INSTALL_NODE	= ( ( CLUS_OBJECT_RESOURCE << 24 )  | CLCTL_INSTALL_NODE ) ,
         CLUSCTL_RESOURCE_EVICT_NODE	= ( ( CLUS_OBJECT_RESOURCE << 24 )  | CLCTL_EVICT_NODE ) ,
         CLUSCTL_RESOURCE_ADD_DEPENDENCY	= ( ( CLUS_OBJECT_RESOURCE << 24 )  | CLCTL_ADD_DEPENDENCY ) ,

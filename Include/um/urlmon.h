@@ -603,6 +603,7 @@ STDAPI FindMimeFromData(
 #define     FMFD_RESPECTTEXTPLAIN   0x00000010 
 #define     FMFD_RETURNUPDATEDIMGMIMES   0x00000020
 #define     FMFD_RESERVED_1   0x00000040
+#define     FMFD_RESERVED_2   0x00000080
 #define     UAS_EXACTLEGACY   0x00001000 
 STDAPI ObtainUserAgentString(                           
                                          DWORD dwOption, 
@@ -750,6 +751,7 @@ STDAPI SetAccessForIEAppContainer(
 #define INET_E_RESERVED_2                            _HRESULT_TYPEDEF_(0x800C001FL)      
 #define INET_E_RESERVED_3                            _HRESULT_TYPEDEF_(0x800C0020L)      
 #define INET_E_RESERVED_4                            _HRESULT_TYPEDEF_(0x800C0021L)      
+#define INET_E_RESERVED_5                            _HRESULT_TYPEDEF_(0x800C0022L)      
 #define INET_E_ERROR_FIRST                           _HRESULT_TYPEDEF_(0x800C0002L)      
 #define INET_E_CODE_DOWNLOAD_DECLINED                _HRESULT_TYPEDEF_(0x800C0100L)      
 #define INET_E_RESULT_DISPATCHED                     _HRESULT_TYPEDEF_(0x800C0200L)      
@@ -1535,7 +1537,8 @@ enum tagBINDSTATUS
         BINDSTATUS_RESERVED_11	= ( BINDSTATUS_RESERVED_10 + 1 ) ,
         BINDSTATUS_RESERVED_12	= ( BINDSTATUS_RESERVED_11 + 1 ) ,
         BINDSTATUS_RESERVED_13	= ( BINDSTATUS_RESERVED_12 + 1 ) ,
-        BINDSTATUS_LAST_PRIVATE	= BINDSTATUS_RESERVED_13
+        BINDSTATUS_RESERVED_14	= ( BINDSTATUS_RESERVED_13 + 1 ) ,
+        BINDSTATUS_LAST_PRIVATE	= BINDSTATUS_RESERVED_14
     } 	BINDSTATUS;
 
 
@@ -8237,7 +8240,8 @@ EXTERN_C const IID IID_IInternetHostSecurityManager;
 #define URLACTION_SCRIPT_NAVIGATE                              0x0000140A
 #define URLACTION_PLUGGABLE_PROTOCOL_XHR                       0x0000140B
 #define URLACTION_ALLOW_VBSCRIPT_IE                            0x0000140C
-#define URLACTION_SCRIPT_CURR_MAX                              0x0000140C
+#define URLACTION_ALLOW_JSCRIPT_IE                             0x0000140D
+#define URLACTION_SCRIPT_CURR_MAX                              0x0000140D
 #define URLACTION_SCRIPT_MAX                                   0x000015ff
 
 #define URLACTION_HTML_MIN                                     0x00001600

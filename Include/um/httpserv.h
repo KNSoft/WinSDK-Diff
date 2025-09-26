@@ -726,6 +726,23 @@ public:
     ) = 0;
 };
 
+class __declspec(uuid("3816f517-f631-49f0-8b51-16d6f0c6ffb2"))
+IHttpRequest4 : public IHttpRequest3
+{
+public:
+    virtual
+    HRESULT
+    ReadEntityBody(
+        _Out_writes_bytes_all_(cbBuffer)
+        VOID*                       pvBuffer,
+        _In_      DWORD             cbBuffer,
+        _In_      BOOL              fAsync,
+        _In_      ULONG             ulFlags,
+        _Out_     DWORD *           pcbBytesReceived,
+        _Out_     BOOL *            pfCompletionPending = NULL
+    ) = 0;
+};
+
 class __declspec(uuid("cb1c40ca-70f2-41a0-add2-881f5ef57388"))
 IHttpCachePolicy
 {
