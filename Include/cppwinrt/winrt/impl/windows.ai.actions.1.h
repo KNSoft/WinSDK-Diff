@@ -58,6 +58,20 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         IActionEntityFactory4(std::nullptr_t = nullptr) noexcept {}
         IActionEntityFactory4(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IActionEntityFactory5 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionEntityFactory5>
+    {
+        IActionEntityFactory5(std::nullptr_t = nullptr) noexcept {}
+        IActionEntityFactory5(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IActionEntityFactory6 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionEntityFactory6>
+    {
+        IActionEntityFactory6(std::nullptr_t = nullptr) noexcept {}
+        IActionEntityFactory6(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IActionEntityFactoryFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionEntityFactoryFactory>
@@ -128,12 +142,33 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         IActionRuntimeFactory(std::nullptr_t = nullptr) noexcept {}
         IActionRuntimeFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IAppointmentActionEntity :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IAppointmentActionEntity>
+    {
+        IAppointmentActionEntity(std::nullptr_t = nullptr) noexcept {}
+        IAppointmentActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IArrayActionEntity :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IArrayActionEntity>
+    {
+        IArrayActionEntity(std::nullptr_t = nullptr) noexcept {}
+        IArrayActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IContactActionEntity :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IContactActionEntity>
     {
         IContactActionEntity(std::nullptr_t = nullptr) noexcept {}
         IContactActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IDateTimeActionEntity :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IDateTimeActionEntity>
+    {
+        IDateTimeActionEntity(std::nullptr_t = nullptr) noexcept {}
+        IDateTimeActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES IDocumentActionEntity :
         winrt::Windows::Foundation::IInspectable,
@@ -169,6 +204,13 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
     {
         IRemoteFileActionEntity(std::nullptr_t = nullptr) noexcept {}
         IRemoteFileActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IRemoteFileActionEntity2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IRemoteFileActionEntity2>
+    {
+        IRemoteFileActionEntity2(std::nullptr_t = nullptr) noexcept {}
+        IRemoteFileActionEntity2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES IStreamingTextActionEntity :
         winrt::Windows::Foundation::IInspectable,
@@ -211,6 +253,13 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
     {
         ITextActionEntity2(std::nullptr_t = nullptr) noexcept {}
         ITextActionEntity2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IUriActionEntity :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IUriActionEntity>
+    {
+        IUriActionEntity(std::nullptr_t = nullptr) noexcept {}
+        IUriActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
 }
 #endif

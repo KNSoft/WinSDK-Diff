@@ -26998,6 +26998,33 @@ Notes:
 #define STATUS_VSM_KEY_CI_POLICY_ROLLBACK_DETECTED ((NTSTATUS)0xC0450002L)
 
 //
+// MessageId: STATUS_VSMIDK_KEYGEN_FAILURE
+//
+// MessageText:
+//
+// RSA identity key generation failed.
+//
+#define STATUS_VSMIDK_KEYGEN_FAILURE     ((NTSTATUS)0xC0450003L)
+
+//
+// MessageId: STATUS_VSMIDK_EXPORT_FAILURE
+//
+// MessageText:
+//
+// Exporting RSA key components failed.
+//
+#define STATUS_VSMIDK_EXPORT_FAILURE     ((NTSTATUS)0xC0450004L)
+
+//
+// MessageId: STATUS_VSMIDK_MODULUS_MISMATCH
+//
+// MessageText:
+//
+// Exported modulus size did not match expected key size.
+//
+#define STATUS_VSMIDK_MODULUS_MISMATCH   ((NTSTATUS)0xC0450005L)
+
+//
 // Application Execution (AppExec)
 //
 //
@@ -27546,6 +27573,108 @@ Notes:
 // The accelerator submission queue is full.
 //
 #define STATUS_ACCELERATOR_SUBMISSION_QUEUE_FULL ((NTSTATUS)0xC0EF0001L)
+
+
+///////////////////////////////////////////////////
+//                                               //
+// CloudAP Remote Desktop Error codes            //
+//                                               //
+///////////////////////////////////////////////////
+
+/*++
+
+ Cloud authentication Remote Desktop specific messages.
+
+--*/
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_APNONCE_INVALID
+//
+// MessageText:
+//
+// The server nonce has expired.
+//
+#define STATUS_AAD_CLOUDAP_E_APNONCE_INVALID ((NTSTATUS)0xC0048550L)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_BAD_DEVICE_ACCESS_TOKEN_FORMAT
+//
+// MessageText:
+//
+// The format of the access token is invalid.
+//
+#define STATUS_AAD_CLOUDAP_E_BAD_DEVICE_ACCESS_TOKEN_FORMAT ((NTSTATUS)0xC0048551L)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_ASSERTION_MALFORMED
+//
+// MessageText:
+//
+// The format of the assertion is invalid.
+//
+#define STATUS_AAD_CLOUDAP_E_ASSERTION_MALFORMED ((NTSTATUS)0xC0048552L)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_INVALID_TENANT
+//
+// MessageText:
+//
+// The Entra ID tenant specified in the server nonce or the assertion is invalid.
+//
+#define STATUS_AAD_CLOUDAP_E_INVALID_TENANT ((NTSTATUS)0xC0048553L)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_INVALID_DEVICE
+//
+// MessageText:
+//
+// The target device specified in the server nonce or the assertion is invalid.
+//
+#define STATUS_AAD_CLOUDAP_E_INVALID_DEVICE ((NTSTATUS)0xC0048554L)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_INVALID_ACCESS_TOKEN
+//
+// MessageText:
+//
+// The access token is invalid.
+//
+#define STATUS_AAD_CLOUDAP_E_INVALID_ACCESS_TOKEN ((NTSTATUS)0xC0048556L)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_INVALID_BINDING_KEY_ID
+//
+// MessageText:
+//
+// The binding key specified in the assertion does not match the binding key specified in the access token.
+//
+#define STATUS_AAD_CLOUDAP_E_INVALID_BINDING_KEY_ID ((NTSTATUS)0xC0048557L)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_CANT_FIND_ROOT_CERT
+//
+// MessageText:
+//
+// The root certificate associated with the access token's signature cannot be found.
+//
+#define STATUS_AAD_CLOUDAP_E_CANT_FIND_ROOT_CERT ((NTSTATUS)0xC0048559L)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_ASSERTION_INVALID
+//
+// MessageText:
+//
+// The resource URL in the assertion does not match the audience specified in the access token.
+//
+#define STATUS_AAD_CLOUDAP_E_ASSERTION_INVALID ((NTSTATUS)0xC004855AL)
+
+//
+// MessageId: STATUS_AAD_CLOUDAP_E_CALLER_MISMATCH
+//
+// MessageText:
+//
+// The specified resource ID does not match the audience specified in the access token.
+//
+#define STATUS_AAD_CLOUDAP_E_CALLER_MISMATCH ((NTSTATUS)0xC004855BL)
 
 //
 // Map a WIN32 error value into an NTSTATUS

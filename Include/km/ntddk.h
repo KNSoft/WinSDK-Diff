@@ -7953,6 +7953,7 @@ Return Value:
 #define PCR_BTI_MITIGATION_VBAR_MASK        (0x0E)
 #define PCR_BTI_MITIGATION_CSWAP_HVC        (0x10)
 #define PCR_BTI_MITIGATION_CSWAP_SMC        (0x20)
+#define PCR_BTI_MITIGATION_TRAP_HVC         (0x02)  // BtiVbarTrapHvc << 1 since last bit in BtiMitigation is for KvaVbar
 
 //
 // Following must be in sync with KeArm64VectorBase.

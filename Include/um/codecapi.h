@@ -404,6 +404,7 @@ Abstract:
     #define STATIC_CODECAPI_AVEncVideoEnableFramePsnrYuv    0x2bbcdd1d, 0xbc47, 0x430e, 0xb2, 0xe8, 0x64, 0x80, 0x1b, 0x47, 0xf5, 0xf0
     #define STATIC_CODECAPI_AVEncVideoOutputQPMapBlockSize  0x97038743, 0x4ae3, 0x44c3, 0xa0, 0xf2, 0x5b, 0xd5, 0x8a, 0x46, 0x34, 0xef
     #define STATIC_CODECAPI_AVEncVideoOutputBitsUsedMapBlockSize        0x6c2cd11a, 0xca3b, 0x44bd, 0x9a, 0x9e, 0x93, 0xb0, 0x36, 0x34, 0xc3, 0x6e
+    #define STATIC_CODECAPI_AVEncVideoSatdMapBlockSize      0x596f1106, 0x8ce0, 0x4302, 0xaf, 0x79, 0xc4, 0xec, 0x67, 0xaa, 0xdc, 0x6
 
 // end of static definitions }
 
@@ -2182,6 +2183,12 @@ DEFINE_CODECAPI_GUID( AVEncVideoOutputQPMapBlockSize,"97038743-4AE3-44C3-A0F2-5B
 // Zero value is used to disable the bits used map reporting.
 DEFINE_CODECAPI_GUID( AVEncVideoOutputBitsUsedMapBlockSize,"6C2CD11A-CA3B-44BD-9A9E-93B03634C36E", 0x6c2cd11a, 0xca3b, 0x44bd, 0x9a, 0x9e, 0x93, 0xb0, 0x36, 0x34, 0xc3, 0x6e )
 
+// AVEncVideoSatdMapBlockSize (VT_UI4)  
+// The block size used in reporting the output SATD map for each block in an encoded video frame. 
+// ulVal should be zero or power of 2, such as 16 or 32. 
+// A zero value disables the SATD map reporting. 
+DEFINE_CODECAPI_GUID( AVEncVideoSatdMapBlockSize, "596F1106-8CE0-4302-AF79-C4EC67AADC6D", 0x596f1106, 0x8ce0, 0x4302, 0xaf, 0x79, 0xc4, 0xec, 0x67, 0xaa, 0xdc, 0x6d )
+
 #ifndef UUID_GEN
 // { GUID refs
     #define CODECAPI_AVEncCommonFormatConstraint DEFINE_CODECAPI_GUIDNAMED( AVEncCommonFormatConstraint )
@@ -2527,6 +2534,7 @@ DEFINE_CODECAPI_GUID( AVEncVideoOutputBitsUsedMapBlockSize,"6C2CD11A-CA3B-44BD-9
     #define CODECAPI_AVEncVideoEnableSpatialAdaptiveQuantization       DEFINE_CODECAPI_GUIDNAMED( AVEncVideoEnableSpatialAdaptiveQuantization )
     #define CODECAPI_AVEncVideoOutputQPMapBlockSize          DEFINE_CODECAPI_GUIDNAMED( AVEncVideoOutputQPMapBlockSize )
     #define CODECAPI_AVEncVideoOutputBitsUsedMapBlockSize    DEFINE_CODECAPI_GUIDNAMED( AVEncVideoOutputBitsUsedMapBlockSize )
+    #define CODECAPI_AVEncVideoSatdMapBlockSize    DEFINE_CODECAPI_GUIDNAMED( AVEncVideoSatdMapBlockSize ) 
 #endif
 
 

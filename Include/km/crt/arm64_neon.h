@@ -2269,6 +2269,7 @@ double neon_cmtsts64(double, double);
 #define vceqq_z_u32_ex(src) neon_cmeqzq32(src)
 #define vceqq_z_u8_ex(src) neon_cmeqzq8(src)
 #define vceq_f32(src1, src2) neon_fcmeq32(src1, src2)
+#define vceqz_u8(src) neon_cmeqz8(src)
 #define vceq_p8(src1, src2) neon_cmeq8(src1, src2)
 #define vceq_s16(src1, src2) neon_cmeq16(src1, src2)
 #define vceq_s32(src1, src2) neon_cmeq32(src1, src2)
@@ -2622,6 +2623,9 @@ __n128x2 neon_trn_q64(__n128 _Qd, __n128 _Qm);
 #define vzipq_u16(src1, src2) neon_zip_q16(src1, src2)
 #define vzipq_u32(src1, src2) neon_zip_q32(src1, src2)
 #define vzipq_u8(src1, src2) neon_zip_q8(src1, src2)
+#define vzip1_u32(src1, src2) neon_zip1_32(src1, src2)
+#define vzip1q_u8(src1, src2) neon_zip1_q8(src1, src2)
+#define vzip1q_u16(src1, src2) neon_zip1_q16(src1, src2)
 #define vuzp_p16(src1, src2) neon_uzp_16(src1, src2)
 #define vuzp_p8(src1, src2) neon_uzp_8(src1, src2)
 #define vuzp_s16(src1, src2) neon_uzp_16(src1, src2)
@@ -2633,6 +2637,8 @@ __n128x2 neon_trn_q64(__n128 _Qd, __n128 _Qm);
 #define vuzp_u32(src1, src2) neon_uzp_32(src1, src2)
 #define vuzpq_f32(src1, src2) neon_uzp_q32(src1, src2)
 #define vuzpq_p16(src1, src2) neon_uzp_q16(src1, src2)
+#define vuzp1q_u16(src1, src2) neon_uzp1_q16(src1, src2)
+#define vuzp1q_u8(src1, src2) neon_uzp1_q8(src1, src2)
 #define vuzpq_p8(src1, src2) neon_uzp_q8(src1, src2)
 #define vuzpq_s16(src1, src2) neon_uzp_q16(src1, src2)
 #define vuzpq_s32(src1, src2) neon_uzp_q32(src1, src2)
@@ -2640,6 +2646,8 @@ __n128x2 neon_trn_q64(__n128 _Qd, __n128 _Qm);
 #define vuzpq_u16(src1, src2) neon_uzp_q16(src1, src2)
 #define vuzpq_u32(src1, src2) neon_uzp_q32(src1, src2)
 #define vuzpq_u8(src1, src2) neon_uzp_q8(src1, src2)
+#define vuzp2_u32(src1, src2) neon_uzp2_32(src1, src2)
+#define vuzp2q_u16(src1, src2) neon_uzp2_q16(src1, src2)
 #define vtrn_p16(src1, src2) neon_trn_16(src1, src2)
 #define vtrn_p8(src1, src2) neon_trn_8(src1, src2)
 #define vtrn_s16(src1, src2) neon_trn_16(src1, src2)
@@ -3179,6 +3187,7 @@ __n128 neon_tbl1_qq8(__n128 reglist, __n128 src2);
 #define vtbl1_p8(src1, src2) neon_tbl1_q8({vget_lane_s64(src1, 0), 0}, src2)
 #define vtbl1_s8(src1, src2) neon_tbl1_q8({vget_lane_s64(src1, 0), 0}, src2)
 #define vtbl1_u8(src1, src2) neon_tbl1_q8({vget_lane_u64(src1, 0), 0}, src2)
+#define vqtbl1q_u8(src1, src2) neon_tbl1_qq8(src1, src2)
 
 // LD4R/LD4/LD3R/LD3/LD2R/LD2
 __n64x4 neon_ld4r_8(const __int8 * ptr);
@@ -5299,7 +5308,4 @@ __n64 vcreate(__int64 src);
     ((a) == 128) ? 2 :           \
     ((a) == 256) ? 3 :           \
     -1)
-
-
-
 /* 88bf0570-3001-4e78-a5f2-be5765546192 */ 

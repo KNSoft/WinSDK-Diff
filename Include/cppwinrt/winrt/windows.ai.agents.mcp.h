@@ -9,8 +9,7 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.AI.Agents.h"
-#include "winrt/impl/Windows.AI.Agents.2.h"
+#include "winrt/impl/Windows.ApplicationModel.2.h"
 #include "winrt/impl/Windows.Foundation.2.h"
 #include "winrt/impl/Windows.Foundation.Collections.2.h"
 #include "winrt/impl/Windows.UI.2.h"
@@ -69,25 +68,395 @@ namespace winrt::impl
         }
         return winrt::Windows::Foundation::Collections::ValueSet{ value, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpNamedPipeConnectionServer<D>::Connect(winrt::Windows::AI::Agents::AgentContext const& hostContext, param::hstring const& pipeName, winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult const& connectionResult) const
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilter<D>::Initialize(param::hstring const& clientAppUserModelId, param::hstring const& serverPackageFamilyName, param::hstring const& serverId) const
     {
-        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->Initialize(*(void**)(&clientAppUserModelId), *(void**)(&serverPackageFamilyName), *(void**)(&serverId)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>**)this;
+            check_hresult(_winrt_abi_type->Initialize(*(void**)(&clientAppUserModelId), *(void**)(&serverPackageFamilyName), *(void**)(&serverId)));
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilter<D>::OnMessage(param::hstring const& message, winrt::Windows::AI::Agents::Mcp::McpMessageDirection const& direction, winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const& filterResponse) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->OnMessage(*(void**)(&message), static_cast<int32_t>(direction), *(void**)(&filterResponse)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>**)this;
+            check_hresult(_winrt_abi_type->OnMessage(*(void**)(&message), static_cast<int32_t>(direction), *(void**)(&filterResponse)));
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponse<D>::MessageAction() const
+    {
+        winrt::Windows::AI::Agents::Mcp::McpMessageAction value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_MessageAction(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>**)this;
+            check_hresult(_winrt_abi_type->get_MessageAction(reinterpret_cast<int32_t*>(&value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponse<D>::MessageAction(winrt::Windows::AI::Agents::Mcp::McpMessageAction const& value) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_MessageAction(static_cast<int32_t>(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>**)this;
+            check_hresult(_winrt_abi_type->put_MessageAction(static_cast<int32_t>(value)));
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpNamedPipeConnectionServer<D>::Connect(winrt::Windows::AI::Agents::Mcp::McpServerContext const& hostContext, param::hstring const& pipeName, winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult const& connectionResult) const
+    {
         if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer>)
         {
             winrt::hresult _winrt_cast_result_code;
             auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
             check_hresult(_winrt_cast_result_code);
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->Connect(*(void**)(&hostContext), *(void**)(&pipeName), *(void**)(&connectionResult), &result));
+            check_hresult(_winrt_abi_type->Connect(*(void**)(&hostContext), *(void**)(&pipeName), *(void**)(&connectionResult)));
         }
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer>**)this;
-            check_hresult(_winrt_abi_type->Connect(*(void**)(&hostContext), *(void**)(&pipeName), *(void**)(&connectionResult), &result));
+            check_hresult(_winrt_abi_type->Connect(*(void**)(&hostContext), *(void**)(&pipeName), *(void**)(&connectionResult)));
         }
-        return winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult{ result, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerRegistry<D>::GetAgentInfos() const
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>::FileSystemRead() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_FileSystemRead(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)this;
+            check_hresult(_winrt_abi_type->get_FileSystemRead(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>::FileSystemWrite() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_FileSystemWrite(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)this;
+            check_hresult(_winrt_abi_type->get_FileSystemWrite(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>::FileSystemDelete() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_FileSystemDelete(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)this;
+            check_hresult(_winrt_abi_type->get_FileSystemDelete(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>::FileSystemCreate() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_FileSystemCreate(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)this;
+            check_hresult(_winrt_abi_type->get_FileSystemCreate(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>::HttpGet() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_HttpGet(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)this;
+            check_hresult(_winrt_abi_type->get_HttpGet(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>::HttpPost() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_HttpPost(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)this;
+            check_hresult(_winrt_abi_type->get_HttpPost(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>::HttpPut() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_HttpPut(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)this;
+            check_hresult(_winrt_abi_type->get_HttpPut(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>::HttpDelete() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_HttpDelete(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>**)this;
+            check_hresult(_winrt_abi_type->get_HttpDelete(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerContext<D>::AppId() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerContext>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerContext, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerContext>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_AppId(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerContext>**)this;
+            check_hresult(_winrt_abi_type->get_AppId(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerContext<D>::RequestResourceAccess(winrt::Windows::Foundation::Uri const& resource, param::hstring const& description, param::hstring const& reasonForAsking) const
+    {
+        winrt::Windows::AI::Agents::Mcp::McpAuthorizationResponse result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerContext>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerContext, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerContext>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestResourceAccess(*(void**)(&resource), *(void**)(&description), *(void**)(&reasonForAsking), reinterpret_cast<int32_t*>(&result)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerContext>**)this;
+            check_hresult(_winrt_abi_type->RequestResourceAccess(*(void**)(&resource), *(void**)(&description), *(void**)(&reasonForAsking), reinterpret_cast<int32_t*>(&result)));
+        }
+        return result;
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerContextStatics<D>::GetContextForCaller() const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetContextForCaller(&result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics>**)this;
+            check_hresult(_winrt_abi_type->GetContextForCaller(&result));
+        }
+        return winrt::Windows::AI::Agents::Mcp::McpServerContext{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerInfo<D>::Id() const
+    {
+        winrt::guid value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Id(put_abi(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)this;
+            check_hresult(_winrt_abi_type->get_Id(put_abi(value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerInfo<D>::Name() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Name(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)this;
+            check_hresult(_winrt_abi_type->get_Name(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerInfo<D>::Description() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Description(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)this;
+            check_hresult(_winrt_abi_type->get_Description(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerInfo<D>::Package() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Package(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)this;
+            check_hresult(_winrt_abi_type->get_Package(&value));
+        }
+        return winrt::Windows::ApplicationModel::Package{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerInfo<D>::DisplayName() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_DisplayName(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)this;
+            check_hresult(_winrt_abi_type->get_DisplayName(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerInfo<D>::AppUserModelId() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_AppUserModelId(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>**)this;
+            check_hresult(_winrt_abi_type->get_AppUserModelId(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerRegistry<D>::GetMcpServerInfos() const
     {
         uint32_t result_impl_size{};
         void** result{};
@@ -97,16 +466,16 @@ namespace winrt::impl
             auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
             check_hresult(_winrt_cast_result_code);
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->GetAgentInfos(&result_impl_size, &result));
+            check_hresult(_winrt_abi_type->GetMcpServerInfos(&result_impl_size, &result));
         }
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>**)this;
-            check_hresult(_winrt_abi_type->GetAgentInfos(&result_impl_size, &result));
+            check_hresult(_winrt_abi_type->GetMcpServerInfos(&result_impl_size, &result));
         }
-        return com_array<winrt::Windows::AI::Agents::AgentInfo>{ result, result_impl_size, take_ownership_from_abi };
+        return com_array<winrt::Windows::AI::Agents::Mcp::McpServerInfo>{ result, result_impl_size, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerRegistry<D>::GetMcpConnectionInfo(winrt::guid const& agentId, winrt::Windows::UI::WindowId const& ownerWindowId) const
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpServerRegistry<D>::GetMcpConnectionInfo(winrt::guid const& mcpServerId, winrt::Windows::UI::WindowId const& ownerWindowId) const
     {
         void* result{};
         if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>)
@@ -115,12 +484,12 @@ namespace winrt::impl
             auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
             check_hresult(_winrt_cast_result_code);
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->GetMcpConnectionInfo(impl::bind_in(agentId), impl::bind_in(ownerWindowId), &result));
+            check_hresult(_winrt_abi_type->GetMcpConnectionInfo(impl::bind_in(mcpServerId), impl::bind_in(ownerWindowId), &result));
         }
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>**)this;
-            check_hresult(_winrt_abi_type->GetMcpConnectionInfo(impl::bind_in(agentId), impl::bind_in(ownerWindowId), &result));
+            check_hresult(_winrt_abi_type->GetMcpConnectionInfo(impl::bind_in(mcpServerId), impl::bind_in(ownerWindowId), &result));
         }
         return winrt::Windows::AI::Agents::Mcp::McpStdioConnectionInfo{ result, take_ownership_from_abi };
     }
@@ -142,23 +511,21 @@ namespace winrt::impl
         }
         return winrt::Windows::AI::Agents::Mcp::McpServerRegistry{ result, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpSseConnectionServer<D>::Connect(winrt::Windows::AI::Agents::AgentContext const& hostContext, winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult const& connectionResult) const
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpSseConnectionServer<D>::Connect(winrt::Windows::AI::Agents::Mcp::McpServerContext const& hostContext, winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult const& connectionResult) const
     {
-        void* result{};
         if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer>)
         {
             winrt::hresult _winrt_cast_result_code;
             auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
             check_hresult(_winrt_cast_result_code);
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->Connect(*(void**)(&hostContext), *(void**)(&connectionResult), &result));
+            check_hresult(_winrt_abi_type->Connect(*(void**)(&hostContext), *(void**)(&connectionResult)));
         }
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer>**)this;
-            check_hresult(_winrt_abi_type->Connect(*(void**)(&hostContext), *(void**)(&connectionResult), &result));
+            check_hresult(_winrt_abi_type->Connect(*(void**)(&hostContext), *(void**)(&connectionResult)));
         }
-        return winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult{ result, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpStdioConnectionInfo<D>::Command() const
     {
@@ -213,7 +580,7 @@ namespace winrt::impl
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo>**)this;
             check_hresult(_winrt_abi_type->get_Info(&value));
         }
-        return winrt::Windows::AI::Agents::AgentInfo{ value, take_ownership_from_abi };
+        return winrt::Windows::AI::Agents::Mcp::McpServerInfo{ value, take_ownership_from_abi };
     }
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
@@ -244,6 +611,44 @@ namespace winrt::impl
         catch (...) { return to_hresult(); }
     };
 #endif
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>
+    {
+        int32_t __stdcall Initialize(void* clientAppUserModelId, void* serverPackageFamilyName, void* serverId) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().Initialize(*reinterpret_cast<hstring const*>(&clientAppUserModelId), *reinterpret_cast<hstring const*>(&serverPackageFamilyName), *reinterpret_cast<hstring const*>(&serverId));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall OnMessage(void* message, int32_t direction, void* filterResponse) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().OnMessage(*reinterpret_cast<hstring const*>(&message), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageDirection const*>(&direction), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const*>(&filterResponse));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>
+    {
+        int32_t __stdcall get_MessageAction(int32_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::AI::Agents::Mcp::McpMessageAction>(this->shim().MessageAction());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall put_MessageAction(int32_t value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().MessageAction(*reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageAction const*>(&value));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
     struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult>
@@ -253,32 +658,189 @@ namespace winrt::impl
     template <typename D>
     struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer>
     {
-        int32_t __stdcall Connect(void* hostContext, void* pipeName, void* connectionResult, void** result) noexcept final try
+        int32_t __stdcall Connect(void* hostContext, void* pipeName, void* connectionResult) noexcept final try
         {
-            clear_abi(result);
             typename D::abi_guard guard(this->shim());
-            *result = detach_from<winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult>(this->shim().Connect(*reinterpret_cast<winrt::Windows::AI::Agents::AgentContext const*>(&hostContext), *reinterpret_cast<hstring const*>(&pipeName), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult const*>(&connectionResult)));
+            this->shim().Connect(*reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpServerContext const*>(&hostContext), *reinterpret_cast<hstring const*>(&pipeName), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult const*>(&connectionResult));
             return 0;
         }
         catch (...) { return to_hresult(); }
     };
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
-    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>
     {
-        int32_t __stdcall GetAgentInfos(uint32_t* __resultSize, void*** result) noexcept final try
+        int32_t __stdcall get_FileSystemRead(void** value) noexcept final try
         {
-            clear_abi(result);
+            clear_abi(value);
             typename D::abi_guard guard(this->shim());
-            std::tie(*__resultSize, *result) = detach_abi(this->shim().GetAgentInfos());
+            *value = detach_from<hstring>(this->shim().FileSystemRead());
             return 0;
         }
         catch (...) { return to_hresult(); }
-        int32_t __stdcall GetMcpConnectionInfo(winrt::guid agentId, struct struct_Windows_UI_WindowId ownerWindowId, void** result) noexcept final try
+        int32_t __stdcall get_FileSystemWrite(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().FileSystemWrite());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_FileSystemDelete(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().FileSystemDelete());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_FileSystemCreate(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().FileSystemCreate());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_HttpGet(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().HttpGet());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_HttpPost(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().HttpPost());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_HttpPut(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().HttpPut());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_HttpDelete(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().HttpDelete());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpServerContext> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpServerContext>
+    {
+        int32_t __stdcall get_AppId(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().AppId());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall RequestResourceAccess(void* resource, void* description, void* reasonForAsking, int32_t* result) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::AI::Agents::Mcp::McpAuthorizationResponse>(this->shim().RequestResourceAccess(*reinterpret_cast<winrt::Windows::Foundation::Uri const*>(&resource), *reinterpret_cast<hstring const*>(&description), *reinterpret_cast<hstring const*>(&reasonForAsking)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics>
+    {
+        int32_t __stdcall GetContextForCaller(void** result) noexcept final try
         {
             clear_abi(result);
             typename D::abi_guard guard(this->shim());
-            *result = detach_from<winrt::Windows::AI::Agents::Mcp::McpStdioConnectionInfo>(this->shim().GetMcpConnectionInfo(*reinterpret_cast<winrt::guid const*>(&agentId), *reinterpret_cast<winrt::Windows::UI::WindowId const*>(&ownerWindowId)));
+            *result = detach_from<winrt::Windows::AI::Agents::Mcp::McpServerContext>(this->shim().GetContextForCaller());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpServerInfo> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>
+    {
+        int32_t __stdcall get_Id(winrt::guid* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::guid>(this->shim().Id());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_Name(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().Name());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_Description(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().Description());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_Package(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::ApplicationModel::Package>(this->shim().Package());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_DisplayName(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().DisplayName());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_AppUserModelId(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().AppUserModelId());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>
+    {
+        int32_t __stdcall GetMcpServerInfos(uint32_t* __resultSize, void*** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            std::tie(*__resultSize, *result) = detach_abi(this->shim().GetMcpServerInfos());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall GetMcpConnectionInfo(winrt::guid mcpServerId, struct struct_Windows_UI_WindowId ownerWindowId, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::AI::Agents::Mcp::McpStdioConnectionInfo>(this->shim().GetMcpConnectionInfo(*reinterpret_cast<winrt::guid const*>(&mcpServerId), *reinterpret_cast<winrt::Windows::UI::WindowId const*>(&ownerWindowId)));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -301,11 +863,10 @@ namespace winrt::impl
     template <typename D>
     struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer>
     {
-        int32_t __stdcall Connect(void* hostContext, void* connectionResult, void** result) noexcept final try
+        int32_t __stdcall Connect(void* hostContext, void* connectionResult) noexcept final try
         {
-            clear_abi(result);
             typename D::abi_guard guard(this->shim());
-            *result = detach_from<winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult>(this->shim().Connect(*reinterpret_cast<winrt::Windows::AI::Agents::AgentContext const*>(&hostContext), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult const*>(&connectionResult)));
+            this->shim().Connect(*reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpServerContext const*>(&hostContext), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult const*>(&connectionResult));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -334,7 +895,7 @@ namespace winrt::impl
         {
             clear_abi(value);
             typename D::abi_guard guard(this->shim());
-            *value = detach_from<winrt::Windows::AI::Agents::AgentInfo>(this->shim().Info());
+            *value = detach_from<winrt::Windows::AI::Agents::Mcp::McpServerInfo>(this->shim().Info());
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -343,6 +904,42 @@ namespace winrt::impl
 }
 WINRT_EXPORT namespace winrt::Windows::AI::Agents::Mcp
 {
+    inline auto McpResources::FileSystemRead()
+    {
+        return impl::call_factory_cast<hstring(*)(IMcpResourcesStatics const&), McpResources, IMcpResourcesStatics>([](IMcpResourcesStatics const& f) { return f.FileSystemRead(); });
+    }
+    inline auto McpResources::FileSystemWrite()
+    {
+        return impl::call_factory_cast<hstring(*)(IMcpResourcesStatics const&), McpResources, IMcpResourcesStatics>([](IMcpResourcesStatics const& f) { return f.FileSystemWrite(); });
+    }
+    inline auto McpResources::FileSystemDelete()
+    {
+        return impl::call_factory_cast<hstring(*)(IMcpResourcesStatics const&), McpResources, IMcpResourcesStatics>([](IMcpResourcesStatics const& f) { return f.FileSystemDelete(); });
+    }
+    inline auto McpResources::FileSystemCreate()
+    {
+        return impl::call_factory_cast<hstring(*)(IMcpResourcesStatics const&), McpResources, IMcpResourcesStatics>([](IMcpResourcesStatics const& f) { return f.FileSystemCreate(); });
+    }
+    inline auto McpResources::HttpGet()
+    {
+        return impl::call_factory_cast<hstring(*)(IMcpResourcesStatics const&), McpResources, IMcpResourcesStatics>([](IMcpResourcesStatics const& f) { return f.HttpGet(); });
+    }
+    inline auto McpResources::HttpPost()
+    {
+        return impl::call_factory_cast<hstring(*)(IMcpResourcesStatics const&), McpResources, IMcpResourcesStatics>([](IMcpResourcesStatics const& f) { return f.HttpPost(); });
+    }
+    inline auto McpResources::HttpPut()
+    {
+        return impl::call_factory_cast<hstring(*)(IMcpResourcesStatics const&), McpResources, IMcpResourcesStatics>([](IMcpResourcesStatics const& f) { return f.HttpPut(); });
+    }
+    inline auto McpResources::HttpDelete()
+    {
+        return impl::call_factory_cast<hstring(*)(IMcpResourcesStatics const&), McpResources, IMcpResourcesStatics>([](IMcpResourcesStatics const& f) { return f.HttpDelete(); });
+    }
+    inline auto McpServerContext::GetContextForCaller()
+    {
+        return impl::call_factory_cast<winrt::Windows::AI::Agents::Mcp::McpServerContext(*)(IMcpServerContextStatics const&), McpServerContext, IMcpServerContextStatics>([](IMcpServerContextStatics const& f) { return f.GetContextForCaller(); });
+    }
     inline auto McpServerRegistry::GetDefault()
     {
         return impl::call_factory_cast<winrt::Windows::AI::Agents::Mcp::McpServerRegistry(*)(IMcpServerRegistryStatics const&), McpServerRegistry, IMcpServerRegistryStatics>([](IMcpServerRegistryStatics const& f) { return f.GetDefault(); });
@@ -352,14 +949,24 @@ namespace std
 {
 #ifndef WINRT_LEAN_AND_MEAN
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpServerContext> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistryStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpResources> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpServerContext> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpServerInfo> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpServerRegistry> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpStdioConnectionInfo> : winrt::impl::hash_base {};
 #endif

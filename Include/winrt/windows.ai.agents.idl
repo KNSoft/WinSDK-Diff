@@ -10,23 +10,8 @@ import "AsyncInfo.idl";
 import "EventToken.idl";
 import "windowscontracts.idl";
 import "Windows.Foundation.idl";
-import "Windows.ApplicationModel.idl";
 
 // Forward Declare
-namespace Windows
-{
-    namespace ApplicationModel
-    {
-        runtimeclass Package;
-    }
-}
-namespace Windows
-{
-    namespace Foundation
-    {
-        runtimeclass Uri;
-    }
-}
 namespace Windows
 {
     namespace AI
@@ -34,22 +19,6 @@ namespace Windows
         namespace Agents
         {
             apicontract AgentsContract;
-
-            typedef enum AgentAuthorizationResponse AgentAuthorizationResponse;
-
-            interface IAgentContext;
-
-            interface IAgentContextStatics;
-
-            interface IAgentInfo;
-
-            interface IAgentResourcesStatics;
-
-            runtimeclass AgentContext;
-
-            runtimeclass AgentInfo;
-
-            runtimeclass AgentResources;
         }
     }
 }
@@ -63,90 +32,8 @@ namespace Windows
     {
         namespace Agents
         {
-            [contractversion(1.0)]
+            [contractversion(2.0)]
             apicontract AgentsContract
-            {
-            }
-
-            [contract(Windows.AI.Agents.AgentsContract, 1.0)]
-            [experimental]
-            enum AgentAuthorizationResponse
-            {
-                Denied   = 0,
-                Approved = 1
-            };
-
-            [contract(Windows.AI.Agents.AgentsContract, 1.0)]
-            [exclusiveto(Windows.AI.Agents.AgentContext)]
-            [experimental]
-            [uuid(67812FD9-F5FC-5431-B282-2FC753B0C2CD)]
-            interface IAgentContext : IInspectable
-            {
-                [propget] HRESULT AppUserModelId([out] [retval] HSTRING* value);
-                HRESULT RequestResourceAccess([in] Windows.Foundation.Uri* resource, [in] HSTRING description, [in] HSTRING reasonForAsking, [out] [retval] Windows.AI.Agents.AgentAuthorizationResponse* result);
-            }
-
-            [contract(Windows.AI.Agents.AgentsContract, 1.0)]
-            [exclusiveto(Windows.AI.Agents.AgentContext)]
-            [experimental]
-            [uuid(0625ABF6-79F6-5116-A14A-91B3967FC214)]
-            interface IAgentContextStatics : IInspectable
-            {
-                HRESULT GetContextForCaller([out] [retval] Windows.AI.Agents.AgentContext** result);
-            }
-
-            [contract(Windows.AI.Agents.AgentsContract, 1.0)]
-            [exclusiveto(Windows.AI.Agents.AgentInfo)]
-            [experimental]
-            [uuid(B023D498-59AB-410B-83E7-1ED007EE2F68)]
-            interface IAgentInfo : IInspectable
-            {
-                [propget] HRESULT Id([out] [retval] GUID* value);
-                [propget] HRESULT Name([out] [retval] HSTRING* value);
-                [propget] HRESULT Description([out] [retval] HSTRING* value);
-                HRESULT GetPackage([out] [retval] Windows.ApplicationModel.Package** result);
-            }
-
-            [contract(Windows.AI.Agents.AgentsContract, 1.0)]
-            [exclusiveto(Windows.AI.Agents.AgentResources)]
-            [experimental]
-            [uuid(ADEDAAF8-3487-50B4-AC42-490083642B05)]
-            interface IAgentResourcesStatics : IInspectable
-            {
-                [propget] HRESULT FileSystemRead([out] [retval] HSTRING* value);
-                [propget] HRESULT FileSystemWrite([out] [retval] HSTRING* value);
-                [propget] HRESULT FileSystemDelete([out] [retval] HSTRING* value);
-                [propget] HRESULT FileSystemCreate([out] [retval] HSTRING* value);
-                [propget] HRESULT HttpGet([out] [retval] HSTRING* value);
-                [propget] HRESULT HttpPost([out] [retval] HSTRING* value);
-                [propget] HRESULT HttpPut([out] [retval] HSTRING* value);
-                [propget] HRESULT HttpDelete([out] [retval] HSTRING* value);
-            }
-
-            [contract(Windows.AI.Agents.AgentsContract, 1.0)]
-            [experimental]
-            [marshaling_behavior(agile)]
-            [static(Windows.AI.Agents.IAgentContextStatics, Windows.AI.Agents.AgentsContract, 1.0)]
-            [threading(both)]
-            runtimeclass AgentContext
-            {
-                [default] [experimental] interface Windows.AI.Agents.IAgentContext;
-            }
-
-            [contract(Windows.AI.Agents.AgentsContract, 1.0)]
-            [experimental]
-            [marshaling_behavior(agile)]
-            runtimeclass AgentInfo
-            {
-                [default] [experimental] interface Windows.AI.Agents.IAgentInfo;
-            }
-
-            [contract(Windows.AI.Agents.AgentsContract, 1.0)]
-            [experimental]
-            [marshaling_behavior(agile)]
-            [static(Windows.AI.Agents.IAgentResourcesStatics, Windows.AI.Agents.AgentsContract, 1.0)]
-            [threading(both)]
-            runtimeclass AgentResources
             {
             }
         }

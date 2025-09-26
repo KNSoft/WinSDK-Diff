@@ -15,10 +15,38 @@ WINRT_EXPORT namespace winrt::Windows::AI::Agents::Mcp
         McpHttpConnectionResult(std::nullptr_t) noexcept {}
         McpHttpConnectionResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES McpMessageFilterResponse : winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse
+    {
+        McpMessageFilterResponse(std::nullptr_t) noexcept {}
+        McpMessageFilterResponse(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES McpNamedPipeConnectionResult : winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult
     {
         McpNamedPipeConnectionResult(std::nullptr_t) noexcept {}
         McpNamedPipeConnectionResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult(ptr, take_ownership_from_abi) {}
+    };
+    struct McpResources
+    {
+        McpResources() = delete;
+        [[nodiscard]] static auto FileSystemRead();
+        [[nodiscard]] static auto FileSystemWrite();
+        [[nodiscard]] static auto FileSystemDelete();
+        [[nodiscard]] static auto FileSystemCreate();
+        [[nodiscard]] static auto HttpGet();
+        [[nodiscard]] static auto HttpPost();
+        [[nodiscard]] static auto HttpPut();
+        [[nodiscard]] static auto HttpDelete();
+    };
+    struct WINRT_IMPL_EMPTY_BASES McpServerContext : winrt::Windows::AI::Agents::Mcp::IMcpServerContext
+    {
+        McpServerContext(std::nullptr_t) noexcept {}
+        McpServerContext(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Agents::Mcp::IMcpServerContext(ptr, take_ownership_from_abi) {}
+        static auto GetContextForCaller();
+    };
+    struct WINRT_IMPL_EMPTY_BASES McpServerInfo : winrt::Windows::AI::Agents::Mcp::IMcpServerInfo
+    {
+        McpServerInfo(std::nullptr_t) noexcept {}
+        McpServerInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Agents::Mcp::IMcpServerInfo(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES McpServerRegistry : winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry
     {

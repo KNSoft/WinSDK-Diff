@@ -79,6 +79,20 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         IIppPrintDevice5(std::nullptr_t = nullptr) noexcept {}
         IIppPrintDevice5(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IIppPrintDeviceInstallationResult :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IIppPrintDeviceInstallationResult>
+    {
+        IIppPrintDeviceInstallationResult(std::nullptr_t = nullptr) noexcept {}
+        IIppPrintDeviceInstallationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IIppPrintDeviceManagerStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IIppPrintDeviceManagerStatics>
+    {
+        IIppPrintDeviceManagerStatics(std::nullptr_t = nullptr) noexcept {}
+        IIppPrintDeviceManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IIppPrintDeviceStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IIppPrintDeviceStatics>

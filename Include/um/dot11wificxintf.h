@@ -182,6 +182,13 @@ typedef struct _WDI_MAC_ADDRESS
 } WDI_MAC_ADDRESS, *PWDI_MAC_ADDRESS;
 typedef const struct _WDI_MAC_ADDRESS * PCWDI_MAC_ADDRESS;
 
+typedef struct _MLO_LINK_INFO
+{
+    UINT32 LinkID;
+    WDI_MAC_ADDRESS StaLinkAddress;
+    WDI_MAC_ADDRESS APLinkAddress;
+} MLO_LINK_INFO, *PMLO_LINK_INFO;
+
 typedef UINT16 WDI_PORT_ID;
 
 #define WDI_PORT_ID_ADAPTER ((UINT16)-1) // special port id to represent adapter
@@ -1357,10 +1364,10 @@ Wdi_NdisMIndicateStatusEx(
 // For 2.0.1 compliant drivers
 #define WDI_VERSION_2_0_1                   ((2 << 16) | (0 << 8) | 0x1)
 
-// For 2.0.2 compliant drivers
+// For 2.0.2 compliant drivers - Co release (21H2)
 #define WDI_VERSION_2_0_2                   ((2 << 16) | (0 << 8) | 0x2)
 
-// For 2.0.3 compliant drivers
+// For 2.0.3 compliant drivers - Ni release (22H2)
 #define WDI_VERSION_2_0_3                   ((2 << 16) | (0 << 8) | 0x3)
 
 // For 2.0.4 compliant drivers
@@ -1387,10 +1394,13 @@ Wdi_NdisMIndicateStatusEx(
 // For 2.0.11 compliant drivers
 #define WDI_VERSION_2_0_11                   ((2 << 16) | (0 << 8) | 0xb)
 
-// For 2.0.12 compliant drivers
+// For 2.0.12 compliant drivers - Ge release (24H2)
 #define WDI_VERSION_2_0_12                   ((2 << 16) | (0 << 8) | 0xc)
 
-#define WDI_VERSION_LATEST                  WDI_VERSION_2_0_12
+// For 2.0.13 compliant drivers
+#define WDI_VERSION_2_0_13                   ((2 << 16) | (0 << 8) | 0xd)
+
+#define WDI_VERSION_LATEST                  WDI_VERSION_2_0_13
 
 //
 // OIDS & Indications

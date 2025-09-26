@@ -1567,6 +1567,7 @@ GetThreadDesktop(
  * Windowstation creation flags.
  */
 #define CWF_CREATE_ONLY          0x00000001
+// Remove when Feature_MarkWinstaIOForAgentic is removed.
 
 /*
  * Windowstation-specific attribute flags

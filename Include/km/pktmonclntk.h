@@ -79,6 +79,41 @@ typedef struct _PKTMON_EDGE_CONTEXT
 
 } PKTMON_EDGE_CONTEXT;
 
+//
+// Packet header information
+//
+typedef struct _PKTMON_PACKET_HEADER_INFORMATION
+{
+    SOCKADDR_INET SockAddrLocal;
+    SOCKADDR_INET SockAddrRemote;
+
+    UCHAR IpProtocol;
+
+    union _PKTMON_TRANSPORT_PROTOCOL
+    {
+        struct _PKTMON_TRANSPORT_UDP_PROTOCOL
+        {
+            USHORT PortLocal;
+            USHORT PortRemote;
+        } Udp;
+
+        struct _PKTMON_TRANSPORT_TCP_PROTOCOL
+        {
+            USHORT PortLocal;
+            USHORT PortRemote;
+            UCHAR  Flags;
+        } Tcp;
+
+        struct _PKTMON_TRANSPORT_ICMP_PROTOCOL
+        {
+            UCHAR Type;
+            UCHAR Code;
+        } Icmp;
+
+    } Transport;
+
+} PKTMON_PACKET_HEADER_INFORMATION;
+
 typedef
 _IRQL_requires_max_(PASSIVE_LEVEL)
 VOID

@@ -147,6 +147,12 @@ typedef enum _SDCAXU_NOTIFICATION_TYPE
     // Notification after class driver has handled a Streaming_Stopped_Abnormally bit of Function_Status control. 
     SdcaXuNotificationTypeStreamingStoppedAbnormally,
 
+    // Notification that class driver will start FDL process. Uses SDCAXU_NOTIFICATION_FDL_BEGIN.
+    SdcaXuNotificationTypeFdlBegin,
+
+    // Notification that class driver has completed FDL process. Uses SDCAXU_NOTIFICATION_FDL_END.
+    SdcaXuNotificationTypeFdlEnd,
+
     SdcaXuNotificationTypeCount
 } SDCAXU_NOTIFICATION_TYPE;
 
@@ -194,6 +200,23 @@ typedef struct _SDCAXU_NOTIFICATION_COMMIT_GROUP
     // (or 0 if the commit group has been destroyed)
     ULONG                   CommitGroupHandle;
 } SDCAXU_NOTIFICATION_COMMIT_GROUP, *PSDCAXU_NOTIFICATION_COMMIT_GROUP;
+
+typedef struct _SDCAXU_NOTIFICATION_FDL_BEGIN
+{
+    // ID of the XU entity that is beginning FDL
+    ULONG                   FdlEntityId;
+} SDCAXU_NOTIFICATION_FDL_BEGIN, *PSDCAXU_NOTIFICATION_FDL_BEGIN;
+
+typedef struct _SDCAXU_NOTIFICATION_FDL_END
+{
+    // ID of the XU entity that completed FDL
+    ULONG                   FdlEntityId;
+
+    // Status of the FDL
+    //  STATUS_SUCCESS: The FDL sequence completed
+    //  STATUS_ABORT: The FDL sequence was aborted by the hardware or driver
+    NTSTATUS                FdlStatus;
+} SDCAXU_NOTIFICATION_FDL_END, *PSDCAXU_NOTIFICATION_FDL_END;
 
 typedef enum _SDCAXU_POSTURE
 {

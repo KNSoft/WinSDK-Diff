@@ -88,7 +88,7 @@
 //  API Contract Inclusion Definitions
 #if !defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
 #if !defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
-#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x50000
+#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x70000
 #endif // defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
@@ -109,6 +109,7 @@
 #include "windowscontracts.h"
 #include "Windows.Foundation.h"
 #include "Windows.AI.Actions.Hosting.h"
+#include "Windows.ApplicationModel.Appointments.h"
 #include "Windows.ApplicationModel.Contacts.h"
 #include "Windows.UI.h"
 
@@ -218,6 +219,36 @@ namespace ABI {
 #define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4 ABI::Windows::AI::Actions::IActionEntityFactory4
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IActionEntityFactory5;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5 ABI::Windows::AI::Actions::IActionEntityFactory5
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IActionEntityFactory6;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6 ABI::Windows::AI::Actions::IActionEntityFactory6
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactoryFactory_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactoryFactory_FWD_DEFINED__
@@ -369,6 +400,36 @@ namespace ABI {
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIActionRuntimeFactory_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IAppointmentActionEntity;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity ABI::Windows::AI::Actions::IAppointmentActionEntity
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IArrayActionEntity;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity ABI::Windows::AI::Actions::IArrayActionEntity
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIContactActionEntity_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIContactActionEntity_FWD_DEFINED__
 namespace ABI {
@@ -383,6 +444,21 @@ namespace ABI {
 #define __x_ABI_CWindows_CAI_CActions_CIContactActionEntity ABI::Windows::AI::Actions::IContactActionEntity
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIContactActionEntity_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IDateTimeActionEntity;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity ABI::Windows::AI::Actions::IDateTimeActionEntity
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIDocumentActionEntity_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIDocumentActionEntity_FWD_DEFINED__
@@ -458,6 +534,21 @@ namespace ABI {
 #define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity ABI::Windows::AI::Actions::IRemoteFileActionEntity
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IRemoteFileActionEntity2;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2 ABI::Windows::AI::Actions::IRemoteFileActionEntity2
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIStreamingTextActionEntity_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIStreamingTextActionEntity_FWD_DEFINED__
@@ -549,9 +640,59 @@ namespace ABI {
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CITextActionEntity2_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                interface IUriActionEntity;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CIUriActionEntity ABI::Windows::AI::Actions::IUriActionEntity
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_FWD_DEFINED__
+
 // Parameterized interface forward declarations (C++)
 
 // Collection interface definitions
+namespace ABI {
+    namespace Windows {
+        namespace Foundation {
+            typedef struct DateTime DateTime;
+        } /* Foundation */
+    } /* Windows */
+} /* ABI */
+
+#if WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION >= 0x10000
+
+#ifndef DEF___FIReference_1_Windows__CFoundation__CDateTime_USE
+#define DEF___FIReference_1_Windows__CFoundation__CDateTime_USE
+#if !defined(RO_NO_TEMPLATE_NAME)
+namespace ABI { namespace Windows { namespace Foundation {
+template <>
+struct __declspec(uuid("5541d8a7-497c-5aa4-86fc-7713adbf2a2c"))
+IReference<struct ABI::Windows::Foundation::DateTime> : IReference_impl<struct ABI::Windows::Foundation::DateTime>
+{
+    static const wchar_t* z_get_rc_name_impl()
+    {
+        return L"Windows.Foundation.IReference`1<Windows.Foundation.DateTime>";
+    }
+};
+// Define a typedef for the parameterized interface specialization's mangled name.
+// This allows code which uses the mangled name for the parameterized interface to access the
+// correct parameterized interface specialization.
+typedef IReference<struct ABI::Windows::Foundation::DateTime> __FIReference_1_Windows__CFoundation__CDateTime_t;
+#define __FIReference_1_Windows__CFoundation__CDateTime ABI::Windows::Foundation::__FIReference_1_Windows__CFoundation__CDateTime_t
+/* Foundation */ } /* Windows */ } /* ABI */ }
+
+#endif // !defined(RO_NO_TEMPLATE_NAME)
+#endif /* DEF___FIReference_1_Windows__CFoundation__CDateTime_USE */
+
+#endif // WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION >= 0x10000
+
 namespace ABI {
     namespace Windows {
         namespace AI {
@@ -633,6 +774,31 @@ namespace ABI {
 namespace ABI {
     namespace Windows {
         namespace ApplicationModel {
+            namespace Appointments {
+                class Appointment;
+            } /* Appointments */
+        } /* ApplicationModel */
+    } /* Windows */
+} /* ABI */
+
+#ifndef ____x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment_FWD_DEFINED__
+#define ____x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace ApplicationModel {
+            namespace Appointments {
+                interface IAppointment;
+            } /* Appointments */
+        } /* ApplicationModel */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment ABI::Windows::ApplicationModel::Appointments::IAppointment
+
+#endif // ____x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment_FWD_DEFINED__
+
+namespace ABI {
+    namespace Windows {
+        namespace ApplicationModel {
             namespace Contacts {
                 class Contact;
             } /* Contacts */
@@ -667,6 +833,19 @@ namespace ABI {
 #define __x_ABI_CWindows_CFoundation_CIClosable ABI::Windows::Foundation::IClosable
 
 #endif // ____x_ABI_CWindows_CFoundation_CIClosable_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CFoundation_CIPropertyValue_FWD_DEFINED__
+#define ____x_ABI_CWindows_CFoundation_CIPropertyValue_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace Foundation {
+            interface IPropertyValue;
+        } /* Foundation */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CFoundation_CIPropertyValue ABI::Windows::Foundation::IPropertyValue
+
+#endif // ____x_ABI_CWindows_CFoundation_CIPropertyValue_FWD_DEFINED__
 
 namespace ABI {
     namespace Windows {
@@ -821,7 +1000,37 @@ namespace ABI {
     namespace Windows {
         namespace AI {
             namespace Actions {
+                class AppointmentActionEntity;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                class ArrayActionEntity;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
                 class ContactActionEntity;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                class DateTimeActionEntity;
             } /* Actions */
         } /* AI */
     } /* Windows */
@@ -907,6 +1116,16 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                class UriActionEntity;
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
 /*
  *
  * Struct Windows.AI.Actions.ActionEntityKind
@@ -938,6 +1157,26 @@ namespace ABI {
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
                     ActionEntityKind_Contact = 8,
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+                    ActionEntityKind_Uri = 9,
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+                    ActionEntityKind_Array = 10,
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+                    ActionEntityKind_Appointment = 11,
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+                    ActionEntityKind_Date = 12,
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
                 };
             } /* Actions */
         } /* AI */
@@ -1355,6 +1594,101 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4;
 
 /*
  *
+ * Interface Windows.AI.Actions.IActionEntityFactory5
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.ActionEntityFactory
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IActionEntityFactory5[] = L"Windows.AI.Actions.IActionEntityFactory5";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                MIDL_INTERFACE("b59faab1-cfe4-564a-a5ba-53ad7ff6f924")
+                IActionEntityFactory5 : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE CreateUriEntity(
+                        ABI::Windows::Foundation::IUriRuntimeClass* Uri,
+                        ABI::Windows::AI::Actions::IUriActionEntity** result
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE CreateArrayEntity(
+                        ABI::Windows::AI::Actions::ActionEntityKind kind,
+                        UINT32 entitiesLength,
+                        ABI::Windows::AI::Actions::IActionEntity** entities,
+                        ABI::Windows::AI::Actions::IArrayActionEntity** result
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IActionEntityFactory5 = __uuidof(IActionEntityFactory5);
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
+ * Interface Windows.AI.Actions.IActionEntityFactory6
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.ActionEntityFactory
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IActionEntityFactory6[] = L"Windows.AI.Actions.IActionEntityFactory6";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                MIDL_INTERFACE("da7123da-5639-590f-a2db-c3b5e221f3b6")
+                IActionEntityFactory6 : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE CreateDateTimeEntity(
+                        ABI::Windows::Foundation::DateTime dateTime,
+                        ABI::Windows::AI::Actions::IDateTimeActionEntity** result
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE CreateAppointmentEntity(
+                        HSTRING sourceId,
+                        ABI::Windows::ApplicationModel::Appointments::IAppointment* appointment,
+                        UINT32 attendeesLength,
+                        ABI::Windows::AI::Actions::IContactActionEntity** attendees,
+                        ABI::Windows::AI::Actions::IAppointmentActionEntity** result
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IActionEntityFactory6 = __uuidof(IActionEntityFactory6);
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Interface Windows.AI.Actions.IActionEntityFactoryFactory
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
@@ -1733,12 +2067,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionRuntime3;
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 5.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.AI.Actions.ActionRuntime
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CIActionRuntime4_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CIActionRuntime4_INTERFACE_DEFINED__
@@ -1766,7 +2097,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionRuntime4;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIActionRuntime4_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1803,6 +2133,113 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionRuntimeFactory;
 
 /*
  *
+ * Interface Windows.AI.Actions.IAppointmentActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.AppointmentActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IAppointmentActionEntity[] = L"Windows.AI.Actions.IAppointmentActionEntity";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                MIDL_INTERFACE("29daa00e-b474-581c-b555-6187d1aa8231")
+                IAppointmentActionEntity : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE get_SourceId(
+                        HSTRING* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE get_Appointment(
+                        ABI::Windows::ApplicationModel::Appointments::IAppointment** value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE GetAttendees(
+                        UINT32* resultLength,
+                        ABI::Windows::AI::Actions::IContactActionEntity*** result
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE GetPresentedFiles(
+                        UINT32* resultLength,
+                        ABI::Windows::AI::Actions::IRemoteFileActionEntity*** result
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE SetPresentedFiles(
+                        UINT32 filesLength,
+                        ABI::Windows::AI::Actions::IRemoteFileActionEntity** files
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE GetSharedFiles(
+                        UINT32* resultLength,
+                        ABI::Windows::AI::Actions::IRemoteFileActionEntity*** result
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE SetSharedFiles(
+                        UINT32 filesLength,
+                        ABI::Windows::AI::Actions::IRemoteFileActionEntity** files
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IAppointmentActionEntity = __uuidof(IAppointmentActionEntity);
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
+ * Interface Windows.AI.Actions.IArrayActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.ArrayActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IArrayActionEntity[] = L"Windows.AI.Actions.IArrayActionEntity";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                MIDL_INTERFACE("45798e78-1059-5311-8a1b-de0081a4ca3b")
+                IArrayActionEntity : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE get_ElementKind(
+                        ABI::Windows::AI::Actions::ActionEntityKind* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE GetAll(
+                        UINT32* resultLength,
+                        ABI::Windows::AI::Actions::IActionEntity*** result
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IArrayActionEntity = __uuidof(IArrayActionEntity);
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIArrayActionEntity;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Interface Windows.AI.Actions.IContactActionEntity
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 3.0
@@ -1836,6 +2273,46 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIContactActionEntity;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIContactActionEntity_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
+
+/*
+ *
+ * Interface Windows.AI.Actions.IDateTimeActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.DateTimeActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IDateTimeActionEntity[] = L"Windows.AI.Actions.IDateTimeActionEntity";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                MIDL_INTERFACE("fd5a0880-eeae-553a-bfed-a9229d57447d")
+                IDateTimeActionEntity : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE get_DateTime(
+                        ABI::Windows::Foundation::DateTime* value
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IDateTimeActionEntity = __uuidof(IDateTimeActionEntity);
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2046,6 +2523,69 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+
+/*
+ *
+ * Interface Windows.AI.Actions.IRemoteFileActionEntity2
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.RemoteFileActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IRemoteFileActionEntity2[] = L"Windows.AI.Actions.IRemoteFileActionEntity2";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                MIDL_INTERFACE("9cc8cc54-77d8-5537-83c4-6f18c1bc9f67")
+                IRemoteFileActionEntity2 : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE get_Filename(
+                        HSTRING* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE put_Filename(
+                        HSTRING value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE get_Creator(
+                        ABI::Windows::AI::Actions::IContactActionEntity** value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE put_Creator(
+                        ABI::Windows::AI::Actions::IContactActionEntity* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE get_LastUpdatedTime(
+                        __FIReference_1_Windows__CFoundation__CDateTime** value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE put_LastUpdatedTime(
+                        __FIReference_1_Windows__CFoundation__CDateTime* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE SetContributors(
+                        UINT32 contributorsLength,
+                        ABI::Windows::AI::Actions::IContactActionEntity** contributors
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE GetContributors(
+                        UINT32* resultLength,
+                        ABI::Windows::AI::Actions::IContactActionEntity*** result
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IRemoteFileActionEntity2 = __uuidof(IRemoteFileActionEntity2);
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2294,6 +2834,46 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CITextActionEntity2;
 
 /*
  *
+ * Interface Windows.AI.Actions.IUriActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.UriActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IUriActionEntity[] = L"Windows.AI.Actions.IUriActionEntity";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                MIDL_INTERFACE("a81cde77-bc25-532d-905e-b0725c5bcd4e")
+                IUriActionEntity : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE get_Uri(
+                        ABI::Windows::Foundation::IUriRuntimeClass** value
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IUriActionEntity = __uuidof(IUriActionEntity);
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIUriActionEntity;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Class Windows.AI.Actions.ActionEntity
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
@@ -2345,6 +2925,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *    Windows.AI.Actions.IActionEntityFactory2 ** Default Interface **
  *    Windows.AI.Actions.IActionEntityFactory3
  *    Windows.AI.Actions.IActionEntityFactory4
+ *    Windows.AI.Actions.IActionEntityFactory5
+ *    Windows.AI.Actions.IActionEntityFactory6
  *    Windows.Foundation.IClosable
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
@@ -2447,6 +3029,56 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
 
 /*
  *
+ * Class Windows.AI.Actions.AppointmentActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Class implements the following interfaces:
+ *    Windows.AI.Actions.IAppointmentActionEntity ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#ifndef RUNTIMECLASS_Windows_AI_Actions_AppointmentActionEntity_DEFINED
+#define RUNTIMECLASS_Windows_AI_Actions_AppointmentActionEntity_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_AppointmentActionEntity[] = L"Windows.AI.Actions.AppointmentActionEntity";
+#endif
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
+ * Class Windows.AI.Actions.ArrayActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Class implements the following interfaces:
+ *    Windows.AI.Actions.IArrayActionEntity ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#ifndef RUNTIMECLASS_Windows_AI_Actions_ArrayActionEntity_DEFINED
+#define RUNTIMECLASS_Windows_AI_Actions_ArrayActionEntity_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_ArrayActionEntity[] = L"Windows.AI.Actions.ArrayActionEntity";
+#endif
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Class Windows.AI.Actions.ContactActionEntity
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 3.0
@@ -2465,6 +3097,31 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_ContactActionEntity[] = L"Windows.AI.Actions.ContactActionEntity";
 #endif
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
+
+/*
+ *
+ * Class Windows.AI.Actions.DateTimeActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Class implements the following interfaces:
+ *    Windows.AI.Actions.IDateTimeActionEntity ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#ifndef RUNTIMECLASS_Windows_AI_Actions_DateTimeActionEntity_DEFINED
+#define RUNTIMECLASS_Windows_AI_Actions_DateTimeActionEntity_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_DateTimeActionEntity[] = L"Windows.AI.Actions.DateTimeActionEntity";
+#endif
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2557,6 +3214,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class implements the following interfaces:
  *    Windows.AI.Actions.IRemoteFileActionEntity ** Default Interface **
+ *    Windows.AI.Actions.IRemoteFileActionEntity2
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -2673,6 +3331,31 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
 #endif
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x10000
 
+/*
+ *
+ * Class Windows.AI.Actions.UriActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Class implements the following interfaces:
+ *    Windows.AI.Actions.IUriActionEntity ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#ifndef RUNTIMECLASS_Windows_AI_Actions_UriActionEntity_DEFINED
+#define RUNTIMECLASS_Windows_AI_Actions_UriActionEntity_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_UriActionEntity[] = L"Windows.AI.Actions.UriActionEntity";
+#endif
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
 #else // !defined(__cplusplus)
 /* Forward Declarations */
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIActionEntity_FWD_DEFINED__
@@ -2716,6 +3399,18 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory3 __x_ABI_C
 typedef interface __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4 __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4;
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5 __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6 __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactoryFactory_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactoryFactory_FWD_DEFINED__
@@ -2777,11 +3472,29 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CIActionRuntimeFactory __x_ABI_C
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIActionRuntimeFactory_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIContactActionEntity_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIContactActionEntity_FWD_DEFINED__
 typedef interface __x_ABI_CWindows_CAI_CActions_CIContactActionEntity __x_ABI_CWindows_CAI_CActions_CIContactActionEntity;
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIContactActionEntity_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIDocumentActionEntity_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIDocumentActionEntity_FWD_DEFINED__
@@ -2812,6 +3525,12 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CIPhotoActionEntity __x_ABI_CWin
 typedef interface __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity;
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2 __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CAI_CActions_CIStreamingTextActionEntity_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CIStreamingTextActionEntity_FWD_DEFINED__
@@ -2849,9 +3568,81 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CITextActionEntity2 __x_ABI_CWin
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CITextActionEntity2_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CIUriActionEntity __x_ABI_CWindows_CAI_CActions_CIUriActionEntity;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_FWD_DEFINED__
+
 // Parameterized interface forward declarations (C)
 
 // Collection interface definitions
+
+typedef struct __x_ABI_CWindows_CFoundation_CDateTime __x_ABI_CWindows_CFoundation_CDateTime;
+
+#if WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION >= 0x10000
+#if !defined(____FIReference_1_Windows__CFoundation__CDateTime_INTERFACE_DEFINED__)
+#define ____FIReference_1_Windows__CFoundation__CDateTime_INTERFACE_DEFINED__
+
+typedef interface __FIReference_1_Windows__CFoundation__CDateTime __FIReference_1_Windows__CFoundation__CDateTime;
+
+//  Declare the parameterized interface IID.
+EXTERN_C const IID IID___FIReference_1_Windows__CFoundation__CDateTime;
+
+typedef struct __FIReference_1_Windows__CFoundation__CDateTimeVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__FIReference_1_Windows__CFoundation__CDateTime* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__FIReference_1_Windows__CFoundation__CDateTime* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__FIReference_1_Windows__CFoundation__CDateTime* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__FIReference_1_Windows__CFoundation__CDateTime* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__FIReference_1_Windows__CFoundation__CDateTime* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__FIReference_1_Windows__CFoundation__CDateTime* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* get_Value)(__FIReference_1_Windows__CFoundation__CDateTime* This,
+        struct __x_ABI_CWindows_CFoundation_CDateTime* result);
+
+    END_INTERFACE
+} __FIReference_1_Windows__CFoundation__CDateTimeVtbl;
+
+interface __FIReference_1_Windows__CFoundation__CDateTime
+{
+    CONST_VTBL struct __FIReference_1_Windows__CFoundation__CDateTimeVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __FIReference_1_Windows__CFoundation__CDateTime_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __FIReference_1_Windows__CFoundation__CDateTime_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __FIReference_1_Windows__CFoundation__CDateTime_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __FIReference_1_Windows__CFoundation__CDateTime_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __FIReference_1_Windows__CFoundation__CDateTime_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __FIReference_1_Windows__CFoundation__CDateTime_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __FIReference_1_Windows__CFoundation__CDateTime_get_Value(This, result) \
+    ((This)->lpVtbl->get_Value(This, result))
+
+#endif /* COBJMACROS */
+
+#endif // ____FIReference_1_Windows__CFoundation__CDateTime_INTERFACE_DEFINED__
+#endif // WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION >= 0x10000
 
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
@@ -2910,6 +3701,12 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog __x_ABI
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment_FWD_DEFINED__
+#define ____x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment __x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment;
+
+#endif // ____x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CApplicationModel_CContacts_CIContact_FWD_DEFINED__
 #define ____x_ABI_CWindows_CApplicationModel_CContacts_CIContact_FWD_DEFINED__
 typedef interface __x_ABI_CWindows_CApplicationModel_CContacts_CIContact __x_ABI_CWindows_CApplicationModel_CContacts_CIContact;
@@ -2921,6 +3718,12 @@ typedef interface __x_ABI_CWindows_CApplicationModel_CContacts_CIContact __x_ABI
 typedef interface __x_ABI_CWindows_CFoundation_CIClosable __x_ABI_CWindows_CFoundation_CIClosable;
 
 #endif // ____x_ABI_CWindows_CFoundation_CIClosable_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CFoundation_CIPropertyValue_FWD_DEFINED__
+#define ____x_ABI_CWindows_CFoundation_CIPropertyValue_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CFoundation_CIPropertyValue __x_ABI_CWindows_CFoundation_CIPropertyValue;
+
+#endif // ____x_ABI_CWindows_CFoundation_CIPropertyValue_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CFoundation_CIUriRuntimeClass_FWD_DEFINED__
 #define ____x_ABI_CWindows_CFoundation_CIUriRuntimeClass_FWD_DEFINED__
@@ -2969,6 +3772,26 @@ enum __x_ABI_CWindows_CAI_CActions_CActionEntityKind
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
     ActionEntityKind_Contact = 8,
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+    ActionEntityKind_Uri = 9,
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+    ActionEntityKind_Array = 10,
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+    ActionEntityKind_Appointment = 11,
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+    ActionEntityKind_Date = 12,
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 };
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x10000
 
@@ -3582,6 +4405,171 @@ interface __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory4_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
+
+/*
+ *
+ * Interface Windows.AI.Actions.IActionEntityFactory5
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.ActionEntityFactory
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IActionEntityFactory5[] = L"Windows.AI.Actions.IActionEntityFactory5";
+typedef struct __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5Vtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* CreateUriEntity)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5* This,
+        __x_ABI_CWindows_CFoundation_CIUriRuntimeClass* Uri,
+        __x_ABI_CWindows_CAI_CActions_CIUriActionEntity** result);
+    HRESULT (STDMETHODCALLTYPE* CreateArrayEntity)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5* This,
+        enum __x_ABI_CWindows_CAI_CActions_CActionEntityKind kind,
+        UINT32 entitiesLength,
+        __x_ABI_CWindows_CAI_CActions_CIActionEntity** entities,
+        __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity** result);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5Vtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5Vtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_CreateUriEntity(This, Uri, result) \
+    ((This)->lpVtbl->CreateUriEntity(This, Uri, result))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_CreateArrayEntity(This, kind, entitiesLength, entities, result) \
+    ((This)->lpVtbl->CreateArrayEntity(This, kind, entitiesLength, entities, result))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory5_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
+ * Interface Windows.AI.Actions.IActionEntityFactory6
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.ActionEntityFactory
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IActionEntityFactory6[] = L"Windows.AI.Actions.IActionEntityFactory6";
+typedef struct __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6Vtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* CreateDateTimeEntity)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6* This,
+        struct __x_ABI_CWindows_CFoundation_CDateTime dateTime,
+        __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity** result);
+    HRESULT (STDMETHODCALLTYPE* CreateAppointmentEntity)(__x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6* This,
+        HSTRING sourceId,
+        __x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment* appointment,
+        UINT32 attendeesLength,
+        __x_ABI_CWindows_CAI_CActions_CIContactActionEntity** attendees,
+        __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity** result);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6Vtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6Vtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_CreateDateTimeEntity(This, dateTime, result) \
+    ((This)->lpVtbl->CreateDateTimeEntity(This, dateTime, result))
+
+#define __x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_CreateAppointmentEntity(This, sourceId, appointment, attendeesLength, attendees, result) \
+    ((This)->lpVtbl->CreateAppointmentEntity(This, sourceId, appointment, attendeesLength, attendees, result))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIActionEntityFactory6_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4277,12 +5265,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionRuntime3;
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 5.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.AI.Actions.ActionRuntime
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CIActionRuntime4_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CIActionRuntime4_INTERFACE_DEFINED__
@@ -4343,7 +5328,6 @@ interface __x_ABI_CWindows_CAI_CActions_CIActionRuntime4
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionRuntime4;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIActionRuntime4_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4408,6 +5392,193 @@ interface __x_ABI_CWindows_CAI_CActions_CIActionRuntimeFactory
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIActionRuntimeFactory;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIActionRuntimeFactory_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x10000
+
+/*
+ *
+ * Interface Windows.AI.Actions.IAppointmentActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.AppointmentActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IAppointmentActionEntity[] = L"Windows.AI.Actions.IAppointmentActionEntity";
+typedef struct __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntityVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* get_SourceId)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        HSTRING* value);
+    HRESULT (STDMETHODCALLTYPE* get_Appointment)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        __x_ABI_CWindows_CApplicationModel_CAppointments_CIAppointment** value);
+    HRESULT (STDMETHODCALLTYPE* GetAttendees)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        UINT32* resultLength,
+        __x_ABI_CWindows_CAI_CActions_CIContactActionEntity*** result);
+    HRESULT (STDMETHODCALLTYPE* GetPresentedFiles)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        UINT32* resultLength,
+        __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity*** result);
+    HRESULT (STDMETHODCALLTYPE* SetPresentedFiles)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        UINT32 filesLength,
+        __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity** files);
+    HRESULT (STDMETHODCALLTYPE* GetSharedFiles)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        UINT32* resultLength,
+        __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity*** result);
+    HRESULT (STDMETHODCALLTYPE* SetSharedFiles)(__x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity* This,
+        UINT32 filesLength,
+        __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity** files);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntityVtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntityVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_get_SourceId(This, value) \
+    ((This)->lpVtbl->get_SourceId(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_get_Appointment(This, value) \
+    ((This)->lpVtbl->get_Appointment(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_GetAttendees(This, resultLength, result) \
+    ((This)->lpVtbl->GetAttendees(This, resultLength, result))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_GetPresentedFiles(This, resultLength, result) \
+    ((This)->lpVtbl->GetPresentedFiles(This, resultLength, result))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_SetPresentedFiles(This, filesLength, files) \
+    ((This)->lpVtbl->SetPresentedFiles(This, filesLength, files))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_GetSharedFiles(This, resultLength, result) \
+    ((This)->lpVtbl->GetSharedFiles(This, resultLength, result))
+
+#define __x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_SetSharedFiles(This, filesLength, files) \
+    ((This)->lpVtbl->SetSharedFiles(This, filesLength, files))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIAppointmentActionEntity_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
+ * Interface Windows.AI.Actions.IArrayActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.ArrayActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IArrayActionEntity[] = L"Windows.AI.Actions.IArrayActionEntity";
+typedef struct __x_ABI_CWindows_CAI_CActions_CIArrayActionEntityVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CIArrayActionEntity* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CIArrayActionEntity* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CIArrayActionEntity* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CIArrayActionEntity* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CIArrayActionEntity* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CIArrayActionEntity* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* get_ElementKind)(__x_ABI_CWindows_CAI_CActions_CIArrayActionEntity* This,
+        enum __x_ABI_CWindows_CAI_CActions_CActionEntityKind* value);
+    HRESULT (STDMETHODCALLTYPE* GetAll)(__x_ABI_CWindows_CAI_CActions_CIArrayActionEntity* This,
+        UINT32* resultLength,
+        __x_ABI_CWindows_CAI_CActions_CIActionEntity*** result);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CIArrayActionEntityVtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CIArrayActionEntityVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_get_ElementKind(This, value) \
+    ((This)->lpVtbl->get_ElementKind(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_GetAll(This, resultLength, result) \
+    ((This)->lpVtbl->GetAll(This, resultLength, result))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIArrayActionEntity;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIArrayActionEntity_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4477,6 +5648,79 @@ interface __x_ABI_CWindows_CAI_CActions_CIContactActionEntity
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIContactActionEntity;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIContactActionEntity_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
+
+/*
+ *
+ * Interface Windows.AI.Actions.IDateTimeActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.DateTimeActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IDateTimeActionEntity[] = L"Windows.AI.Actions.IDateTimeActionEntity";
+typedef struct __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntityVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* get_DateTime)(__x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity* This,
+        struct __x_ABI_CWindows_CFoundation_CDateTime* value);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntityVtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntityVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_get_DateTime(This, value) \
+    ((This)->lpVtbl->get_DateTime(This, value))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIDateTimeActionEntity_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4872,6 +6116,116 @@ interface __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x20000
+
+/*
+ *
+ * Interface Windows.AI.Actions.IRemoteFileActionEntity2
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.RemoteFileActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IRemoteFileActionEntity2[] = L"Windows.AI.Actions.IRemoteFileActionEntity2";
+typedef struct __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2Vtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* get_Filename)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        HSTRING* value);
+    HRESULT (STDMETHODCALLTYPE* put_Filename)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        HSTRING value);
+    HRESULT (STDMETHODCALLTYPE* get_Creator)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        __x_ABI_CWindows_CAI_CActions_CIContactActionEntity** value);
+    HRESULT (STDMETHODCALLTYPE* put_Creator)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        __x_ABI_CWindows_CAI_CActions_CIContactActionEntity* value);
+    HRESULT (STDMETHODCALLTYPE* get_LastUpdatedTime)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        __FIReference_1_Windows__CFoundation__CDateTime** value);
+    HRESULT (STDMETHODCALLTYPE* put_LastUpdatedTime)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        __FIReference_1_Windows__CFoundation__CDateTime* value);
+    HRESULT (STDMETHODCALLTYPE* SetContributors)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        UINT32 contributorsLength,
+        __x_ABI_CWindows_CAI_CActions_CIContactActionEntity** contributors);
+    HRESULT (STDMETHODCALLTYPE* GetContributors)(__x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2* This,
+        UINT32* resultLength,
+        __x_ABI_CWindows_CAI_CActions_CIContactActionEntity*** result);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2Vtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2Vtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_get_Filename(This, value) \
+    ((This)->lpVtbl->get_Filename(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_put_Filename(This, value) \
+    ((This)->lpVtbl->put_Filename(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_get_Creator(This, value) \
+    ((This)->lpVtbl->get_Creator(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_put_Creator(This, value) \
+    ((This)->lpVtbl->put_Creator(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_get_LastUpdatedTime(This, value) \
+    ((This)->lpVtbl->get_LastUpdatedTime(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_put_LastUpdatedTime(This, value) \
+    ((This)->lpVtbl->put_LastUpdatedTime(This, value))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_SetContributors(This, contributorsLength, contributors) \
+    ((This)->lpVtbl->SetContributors(This, contributorsLength, contributors))
+
+#define __x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_GetContributors(This, resultLength, result) \
+    ((This)->lpVtbl->GetContributors(This, resultLength, result))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIRemoteFileActionEntity2_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5336,6 +6690,79 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CITextActionEntity2;
 
 /*
  *
+ * Interface Windows.AI.Actions.IUriActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.UriActionEntity
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_IUriActionEntity[] = L"Windows.AI.Actions.IUriActionEntity";
+typedef struct __x_ABI_CWindows_CAI_CActions_CIUriActionEntityVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CIUriActionEntity* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CIUriActionEntity* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CIUriActionEntity* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CIUriActionEntity* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CIUriActionEntity* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CIUriActionEntity* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* get_Uri)(__x_ABI_CWindows_CAI_CActions_CIUriActionEntity* This,
+        __x_ABI_CWindows_CFoundation_CIUriRuntimeClass** value);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CIUriActionEntityVtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CIUriActionEntity
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CIUriActionEntityVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CIUriActionEntity_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CIUriActionEntity_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIUriActionEntity_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CIUriActionEntity_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CIUriActionEntity_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CIUriActionEntity_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CIUriActionEntity_get_Uri(This, value) \
+    ((This)->lpVtbl->get_Uri(This, value))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CIUriActionEntity;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CIUriActionEntity_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Class Windows.AI.Actions.ActionEntity
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 1.0
@@ -5387,6 +6814,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *    Windows.AI.Actions.IActionEntityFactory2 ** Default Interface **
  *    Windows.AI.Actions.IActionEntityFactory3
  *    Windows.AI.Actions.IActionEntityFactory4
+ *    Windows.AI.Actions.IActionEntityFactory5
+ *    Windows.AI.Actions.IActionEntityFactory6
  *    Windows.Foundation.IClosable
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
@@ -5489,6 +6918,56 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
 
 /*
  *
+ * Class Windows.AI.Actions.AppointmentActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Class implements the following interfaces:
+ *    Windows.AI.Actions.IAppointmentActionEntity ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#ifndef RUNTIMECLASS_Windows_AI_Actions_AppointmentActionEntity_DEFINED
+#define RUNTIMECLASS_Windows_AI_Actions_AppointmentActionEntity_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_AppointmentActionEntity[] = L"Windows.AI.Actions.AppointmentActionEntity";
+#endif
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
+ * Class Windows.AI.Actions.ArrayActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Class implements the following interfaces:
+ *    Windows.AI.Actions.IArrayActionEntity ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#ifndef RUNTIMECLASS_Windows_AI_Actions_ArrayActionEntity_DEFINED
+#define RUNTIMECLASS_Windows_AI_Actions_ArrayActionEntity_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_ArrayActionEntity[] = L"Windows.AI.Actions.ArrayActionEntity";
+#endif
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+
+/*
+ *
  * Class Windows.AI.Actions.ContactActionEntity
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 3.0
@@ -5507,6 +6986,31 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_ContactActionEntity[] = L"Windows.AI.Actions.ContactActionEntity";
 #endif
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x30000
+
+/*
+ *
+ * Class Windows.AI.Actions.DateTimeActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 7.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Class implements the following interfaces:
+ *    Windows.AI.Actions.IDateTimeActionEntity ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#ifndef RUNTIMECLASS_Windows_AI_Actions_DateTimeActionEntity_DEFINED
+#define RUNTIMECLASS_Windows_AI_Actions_DateTimeActionEntity_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_DateTimeActionEntity[] = L"Windows.AI.Actions.DateTimeActionEntity";
+#endif
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x70000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5599,6 +7103,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class implements the following interfaces:
  *    Windows.AI.Actions.IRemoteFileActionEntity ** Default Interface **
+ *    Windows.AI.Actions.IRemoteFileActionEntity2
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -5714,6 +7219,31 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_TextActionEntity[] = L"Windows.AI.Actions.TextActionEntity";
 #endif
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x10000
+
+/*
+ *
+ * Class Windows.AI.Actions.UriActionEntity
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Class implements the following interfaces:
+ *    Windows.AI.Actions.IUriActionEntity ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#ifndef RUNTIMECLASS_Windows_AI_Actions_UriActionEntity_DEFINED
+#define RUNTIMECLASS_Windows_AI_Actions_UriActionEntity_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_AI_Actions_UriActionEntity[] = L"Windows.AI.Actions.UriActionEntity";
+#endif
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #endif // defined(__cplusplus)
 #pragma pop_macro("MIDL_CONST_ID")

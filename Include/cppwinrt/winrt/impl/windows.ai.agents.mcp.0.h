@@ -6,10 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_AI_Agents_Mcp_0_H
 #define WINRT_Windows_AI_Agents_Mcp_0_H
-WINRT_EXPORT namespace winrt::Windows::AI::Agents
+WINRT_EXPORT namespace winrt::Windows::ApplicationModel
 {
-    struct AgentContext;
-    struct AgentInfo;
+    struct Package;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
@@ -25,51 +24,111 @@ WINRT_EXPORT namespace winrt::Windows::UI
 }
 WINRT_EXPORT namespace winrt::Windows::AI::Agents::Mcp
 {
+    enum class McpAuthorizationResponse : int32_t
+    {
+        Denied = 0,
+        Approved = 1,
+    };
+    enum class McpMessageAction : int32_t
+    {
+        Allow = 0,
+        Block = 1,
+    };
+    enum class McpMessageDirection : int32_t
+    {
+        Request = 0,
+        Response = 1,
+    };
     struct IMcpHttpConnectionResult;
+    struct IMcpMessageFilter;
+    struct IMcpMessageFilterResponse;
     struct IMcpNamedPipeConnectionResult;
     struct IMcpNamedPipeConnectionServer;
+    struct IMcpResourcesStatics;
+    struct IMcpServerContext;
+    struct IMcpServerContextStatics;
+    struct IMcpServerInfo;
     struct IMcpServerRegistry;
     struct IMcpServerRegistryStatics;
     struct IMcpSseConnectionServer;
     struct IMcpStdioConnectionInfo;
     struct McpHttpConnectionResult;
+    struct McpMessageFilterResponse;
     struct McpNamedPipeConnectionResult;
+    struct McpResources;
+    struct McpServerContext;
+    struct McpServerInfo;
     struct McpServerRegistry;
     struct McpStdioConnectionInfo;
 }
 namespace winrt::impl
 {
     template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpServerContext>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistryStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult>{ using type = class_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse>{ using type = class_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult>{ using type = class_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpResources>{ using type = class_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpServerContext>{ using type = class_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpServerInfo>{ using type = class_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::McpServerRegistry>{ using type = class_category; };
     template <> struct category<winrt::Windows::AI::Agents::Mcp::McpStdioConnectionInfo>{ using type = class_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpAuthorizationResponse>{ using type = enum_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpMessageAction>{ using type = enum_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpMessageDirection>{ using type = enum_category; };
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult> = L"Windows.AI.Agents.Mcp.McpHttpConnectionResult";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse> = L"Windows.AI.Agents.Mcp.McpMessageFilterResponse";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult> = L"Windows.AI.Agents.Mcp.McpNamedPipeConnectionResult";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpResources> = L"Windows.AI.Agents.Mcp.McpResources";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpServerContext> = L"Windows.AI.Agents.Mcp.McpServerContext";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpServerInfo> = L"Windows.AI.Agents.Mcp.McpServerInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpServerRegistry> = L"Windows.AI.Agents.Mcp.McpServerRegistry";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpStdioConnectionInfo> = L"Windows.AI.Agents.Mcp.McpStdioConnectionInfo";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpAuthorizationResponse> = L"Windows.AI.Agents.Mcp.McpAuthorizationResponse";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpMessageAction> = L"Windows.AI.Agents.Mcp.McpMessageAction";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpMessageDirection> = L"Windows.AI.Agents.Mcp.McpMessageDirection";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult> = L"Windows.AI.Agents.Mcp.IMcpHttpConnectionResult";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter> = L"Windows.AI.Agents.Mcp.IMcpMessageFilter";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> = L"Windows.AI.Agents.Mcp.IMcpMessageFilterResponse";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult> = L"Windows.AI.Agents.Mcp.IMcpNamedPipeConnectionResult";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer> = L"Windows.AI.Agents.Mcp.IMcpNamedPipeConnectionServer";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics> = L"Windows.AI.Agents.Mcp.IMcpResourcesStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpServerContext> = L"Windows.AI.Agents.Mcp.IMcpServerContext";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics> = L"Windows.AI.Agents.Mcp.IMcpServerContextStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo> = L"Windows.AI.Agents.Mcp.IMcpServerInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry> = L"Windows.AI.Agents.Mcp.IMcpServerRegistry";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistryStatics> = L"Windows.AI.Agents.Mcp.IMcpServerRegistryStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer> = L"Windows.AI.Agents.Mcp.IMcpSseConnectionServer";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo> = L"Windows.AI.Agents.Mcp.IMcpStdioConnectionInfo";
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult>{ 0xD2C3755F,0x6D3C,0x5E90,{ 0x84,0xDD,0x3E,0x09,0x73,0x04,0x96,0x06 } }; // D2C3755F-6D3C-5E90-84DD-3E0973049606
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>{ 0x8EE681F8,0xF858,0x56F7,{ 0xA0,0xC7,0x45,0xF9,0x28,0x84,0x5F,0x9B } }; // 8EE681F8-F858-56F7-A0C7-45F928845F9B
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>{ 0xBCFC9710,0xE1D8,0x5ED4,{ 0x9D,0xAB,0x03,0x26,0x96,0x35,0xD8,0x3B } }; // BCFC9710-E1D8-5ED4-9DAB-03269635D83B
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult>{ 0x8A2AEF6F,0xB4DC,0x5180,{ 0xA3,0xE1,0x47,0xB6,0x3D,0xBB,0xB7,0x0A } }; // 8A2AEF6F-B4DC-5180-A3E1-47B63DBBB70A
-    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer>{ 0x52F204A5,0x2AD1,0x5430,{ 0x96,0xC9,0xEA,0x7E,0x09,0x0B,0xE8,0x39 } }; // 52F204A5-2AD1-5430-96C9-EA7E090BE839
-    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>{ 0x150F795B,0x3F93,0x4493,{ 0xAB,0xC7,0x48,0xA0,0x4F,0xD2,0xD7,0xB6 } }; // 150F795B-3F93-4493-ABC7-48A04FD2D7B6
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer>{ 0x52BBBDEA,0x3858,0x5E4C,{ 0x91,0xD2,0x86,0xDE,0xEB,0xF8,0xEC,0xD0 } }; // 52BBBDEA-3858-5E4C-91D2-86DEEBF8ECD0
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>{ 0x9B9F451C,0x73F8,0x59C0,{ 0xBB,0xEA,0x5C,0xEB,0x60,0xB5,0xF2,0x6C } }; // 9B9F451C-73F8-59C0-BBEA-5CEB60B5F26C
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpServerContext>{ 0xD92A55B5,0x5C54,0x5505,{ 0x96,0x0A,0x8A,0x1A,0x15,0x18,0x0E,0x8B } }; // D92A55B5-5C54-5505-960A-8A1A15180E8B
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics>{ 0x1F84B814,0x9FE8,0x521D,{ 0xBF,0x3C,0xB2,0xF1,0x28,0x61,0xB2,0x9B } }; // 1F84B814-9FE8-521D-BF3C-B2F12861B29B
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>{ 0x96622943,0x0771,0x4960,{ 0x88,0x51,0x7E,0x3E,0xE6,0x90,0xEA,0x7E } }; // 96622943-0771-4960-8851-7E3EE690EA7E
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>{ 0xFECE06C6,0x0AA5,0x4BD1,{ 0x8E,0x64,0xFB,0xC5,0xF3,0x28,0xF5,0xDC } }; // FECE06C6-0AA5-4BD1-8E64-FBC5F328F5DC
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistryStatics>{ 0x4ACF7FED,0xD300,0x55BC,{ 0x9D,0xDE,0x9F,0x43,0x3C,0xDC,0x90,0x3D } }; // 4ACF7FED-D300-55BC-9DDE-9F433CDC903D
-    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer>{ 0x6C558671,0x1B20,0x5B6B,{ 0x92,0x0D,0xB8,0xAF,0xC2,0x50,0x97,0x71 } }; // 6C558671-1B20-5B6B-920D-B8AFC2509771
-    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo>{ 0x93D9827B,0x32A2,0x5B89,{ 0xBA,0x8A,0x05,0xBD,0x20,0x93,0x59,0x8E } }; // 93D9827B-32A2-5B89-BA8A-05BD2093598E
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer>{ 0xC460EDDA,0x9200,0x5ECB,{ 0x91,0xB3,0x15,0x7E,0xE1,0xD2,0xFD,0xF5 } }; // C460EDDA-9200-5ECB-91B3-157EE1D2FDF5
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo>{ 0xFBC54AAC,0x590B,0x526C,{ 0xA5,0x45,0xB7,0xC7,0x31,0xB1,0x8C,0x39 } }; // FBC54AAC-590B-526C-A545-B7C731B18C39
     template <> struct default_interface<winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult>{ using type = winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult; };
+    template <> struct default_interface<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse>{ using type = winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse; };
     template <> struct default_interface<winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult>{ using type = winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult; };
+    template <> struct default_interface<winrt::Windows::AI::Agents::Mcp::McpServerContext>{ using type = winrt::Windows::AI::Agents::Mcp::IMcpServerContext; };
+    template <> struct default_interface<winrt::Windows::AI::Agents::Mcp::McpServerInfo>{ using type = winrt::Windows::AI::Agents::Mcp::IMcpServerInfo; };
     template <> struct default_interface<winrt::Windows::AI::Agents::Mcp::McpServerRegistry>{ using type = winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry; };
     template <> struct default_interface<winrt::Windows::AI::Agents::Mcp::McpStdioConnectionInfo>{ using type = winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo; };
     template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult>
@@ -79,6 +138,22 @@ namespace winrt::impl
             virtual int32_t __stdcall get_Uri(void**) noexcept = 0;
             virtual int32_t __stdcall put_Uri(void*) noexcept = 0;
             virtual int32_t __stdcall get_Headers(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall Initialize(void*, void*, void*) noexcept = 0;
+            virtual int32_t __stdcall OnMessage(void*, int32_t, void*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_MessageAction(int32_t*) noexcept = 0;
+            virtual int32_t __stdcall put_MessageAction(int32_t) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult>
@@ -91,14 +166,55 @@ namespace winrt::impl
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
-            virtual int32_t __stdcall Connect(void*, void*, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall Connect(void*, void*, void*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_FileSystemRead(void**) noexcept = 0;
+            virtual int32_t __stdcall get_FileSystemWrite(void**) noexcept = 0;
+            virtual int32_t __stdcall get_FileSystemDelete(void**) noexcept = 0;
+            virtual int32_t __stdcall get_FileSystemCreate(void**) noexcept = 0;
+            virtual int32_t __stdcall get_HttpGet(void**) noexcept = 0;
+            virtual int32_t __stdcall get_HttpPost(void**) noexcept = 0;
+            virtual int32_t __stdcall get_HttpPut(void**) noexcept = 0;
+            virtual int32_t __stdcall get_HttpDelete(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpServerContext>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_AppId(void**) noexcept = 0;
+            virtual int32_t __stdcall RequestResourceAccess(void*, void*, void*, int32_t*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall GetContextForCaller(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_Id(winrt::guid*) noexcept = 0;
+            virtual int32_t __stdcall get_Name(void**) noexcept = 0;
+            virtual int32_t __stdcall get_Description(void**) noexcept = 0;
+            virtual int32_t __stdcall get_Package(void**) noexcept = 0;
+            virtual int32_t __stdcall get_DisplayName(void**) noexcept = 0;
+            virtual int32_t __stdcall get_AppUserModelId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
-            virtual int32_t __stdcall GetAgentInfos(uint32_t* __resultSize, void***) noexcept = 0;
+            virtual int32_t __stdcall GetMcpServerInfos(uint32_t* __resultSize, void***) noexcept = 0;
             virtual int32_t __stdcall GetMcpConnectionInfo(winrt::guid, struct struct_Windows_UI_WindowId, void**) noexcept = 0;
         };
     };
@@ -113,7 +229,7 @@ namespace winrt::impl
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
-            virtual int32_t __stdcall Connect(void*, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall Connect(void*, void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo>
@@ -137,6 +253,26 @@ namespace winrt::impl
         template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpHttpConnectionResult<D>;
     };
     template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpMessageFilter
+    {
+        auto Initialize(param::hstring const& clientAppUserModelId, param::hstring const& serverPackageFamilyName, param::hstring const& serverId) const;
+        auto OnMessage(param::hstring const& message, winrt::Windows::AI::Agents::Mcp::McpMessageDirection const& direction, winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const& filterResponse) const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpMessageFilter<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponse
+    {
+        [[nodiscard]] auto MessageAction() const;
+        auto MessageAction(winrt::Windows::AI::Agents::Mcp::McpMessageAction const& value) const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponse<D>;
+    };
+    template <typename D>
     struct consume_Windows_AI_Agents_Mcp_IMcpNamedPipeConnectionResult
     {
     };
@@ -147,17 +283,66 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_AI_Agents_Mcp_IMcpNamedPipeConnectionServer
     {
-        auto Connect(winrt::Windows::AI::Agents::AgentContext const& hostContext, param::hstring const& pipeName, winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult const& connectionResult) const;
+        auto Connect(winrt::Windows::AI::Agents::Mcp::McpServerContext const& hostContext, param::hstring const& pipeName, winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult const& connectionResult) const;
     };
     template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer>
     {
         template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpNamedPipeConnectionServer<D>;
     };
     template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics
+    {
+        [[nodiscard]] auto FileSystemRead() const;
+        [[nodiscard]] auto FileSystemWrite() const;
+        [[nodiscard]] auto FileSystemDelete() const;
+        [[nodiscard]] auto FileSystemCreate() const;
+        [[nodiscard]] auto HttpGet() const;
+        [[nodiscard]] auto HttpPost() const;
+        [[nodiscard]] auto HttpPut() const;
+        [[nodiscard]] auto HttpDelete() const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpResourcesStatics<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpServerContext
+    {
+        [[nodiscard]] auto AppId() const;
+        auto RequestResourceAccess(winrt::Windows::Foundation::Uri const& resource, param::hstring const& description, param::hstring const& reasonForAsking) const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpServerContext>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpServerContext<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpServerContextStatics
+    {
+        auto GetContextForCaller() const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpServerContextStatics>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpServerContextStatics<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpServerInfo
+    {
+        [[nodiscard]] auto Id() const;
+        [[nodiscard]] auto Name() const;
+        [[nodiscard]] auto Description() const;
+        [[nodiscard]] auto Package() const;
+        [[nodiscard]] auto DisplayName() const;
+        [[nodiscard]] auto AppUserModelId() const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpServerInfo>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpServerInfo<D>;
+    };
+    template <typename D>
     struct consume_Windows_AI_Agents_Mcp_IMcpServerRegistry
     {
-        auto GetAgentInfos() const;
-        auto GetMcpConnectionInfo(winrt::guid const& agentId, winrt::Windows::UI::WindowId const& ownerWindowId) const;
+        auto GetMcpServerInfos() const;
+        auto GetMcpConnectionInfo(winrt::guid const& mcpServerId, winrt::Windows::UI::WindowId const& ownerWindowId) const;
     };
     template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpServerRegistry>
     {
@@ -175,7 +360,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_AI_Agents_Mcp_IMcpSseConnectionServer
     {
-        auto Connect(winrt::Windows::AI::Agents::AgentContext const& hostContext, winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult const& connectionResult) const;
+        auto Connect(winrt::Windows::AI::Agents::Mcp::McpServerContext const& hostContext, winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult const& connectionResult) const;
     };
     template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer>
     {

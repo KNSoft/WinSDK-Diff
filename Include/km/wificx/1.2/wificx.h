@@ -203,6 +203,7 @@ typedef struct _WIFI_STATION_CAPABILITIES
     BOOLEAN DSCPToUPMappingSupported;                 // Whether or not DSCP to UP QoS Mapping is supported.
     UINT32 MaxNumConfigurableActionFrameWakePatterns; // The number of action frame wake patterns that are supported by the device.
     BOOLEAN CrossAkmCipherRoamSupported; // Whether handling multiple authentication algorithms, akms and ciphers through connect and roam tasks is supported.
+    BOOLEAN IsWiFi7EnterpriseSupported; // Whether Wpa3-Enterprise for Wi-Fi 7 is supported
 } WIFI_STATION_CAPABILITIES;
 
 inline

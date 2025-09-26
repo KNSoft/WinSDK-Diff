@@ -70,6 +70,7 @@ _Function_class_(EVT_UCX_CONTROLLER_QUERY_USB_CAPABILITY)
 _IRQL_requires_same_
 _Must_inspect_result_
 NTSTATUS
+NTAPI
 EVT_UCX_CONTROLLER_QUERY_USB_CAPABILITY(
     __in
     UCXCONTROLLER   UcxController,
@@ -90,6 +91,7 @@ _Function_class_(EVT_UCX_CONTROLLER_GET_CURRENT_FRAMENUMBER)
 _IRQL_requires_same_
 _Must_inspect_result_
 NTSTATUS
+NTAPI
 EVT_UCX_CONTROLLER_GET_CURRENT_FRAMENUMBER(
     __in
     UCXCONTROLLER   UcxController,
@@ -107,6 +109,7 @@ _IRQL_requires_same_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 _Must_inspect_result_
 NTSTATUS
+NTAPI
 EVT_UCX_CONTROLLER_USBDEVICE_ADD(
     __in
     UCXCONTROLLER       UcxController,
@@ -123,6 +126,7 @@ _Function_class_(EVT_UCX_CONTROLLER_RESET)
 _IRQL_requires_same_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 VOID
+NTAPI
 EVT_UCX_CONTROLLER_RESET(
     __in
     UCXCONTROLLER   UcxController
@@ -174,6 +178,7 @@ _Function_class_(EVT_UCX_CONTROLLER_GET_TRANSPORT_CHARACTERISTICS)
 _IRQL_requires_same_
 _Must_inspect_result_
 NTSTATUS
+NTAPI
 EVT_UCX_CONTROLLER_GET_TRANSPORT_CHARACTERISTICS(
     __in
     UCXCONTROLLER               UcxController,
@@ -189,6 +194,7 @@ _Function_class_(EVT_UCX_CONTROLLER_SET_TRANSPORT_CHARACTERISTICS_CHANGE_NOTIFIC
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_CONTROLLER_SET_TRANSPORT_CHARACTERISTICS_CHANGE_NOTIFICATION(
     __in
     UCXCONTROLLER               UcxController,
@@ -204,6 +210,7 @@ _Function_class_(EVT_UCX_CONTROLLER_START_TRACKING_FOR_TIME_SYNC)
 _IRQL_requires_same_
 __drv_maxIRQL(PASSIVE_LEVEL)
 VOID
+NTAPI
 EVT_UCX_CONTROLLER_START_TRACKING_FOR_TIME_SYNC(
     __in
     UCXCONTROLLER               UcxController,
@@ -222,6 +229,7 @@ _Function_class_(EVT_UCX_CONTROLLER_STOP_TRACKING_FOR_TIME_SYNC)
 _IRQL_requires_same_
 __drv_maxIRQL(PASSIVE_LEVEL)
 VOID
+NTAPI
 EVT_UCX_CONTROLLER_STOP_TRACKING_FOR_TIME_SYNC(
     __in
     UCXCONTROLLER               UcxController,
@@ -240,6 +248,7 @@ _Function_class_(EVT_UCX_CONTROLLER_GET_FRAME_NUMBER_AND_QPC_FOR_TIME_SYNC)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_CONTROLLER_GET_FRAME_NUMBER_AND_QPC_FOR_TIME_SYNC(
     __in
     UCXCONTROLLER               UcxController,
@@ -437,7 +446,7 @@ _Must_inspect_result_
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 BOOLEAN
-(*PFN_UCXIODEVICECONTROL)(
+(NTAPI *PFN_UCXIODEVICECONTROL)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -454,8 +463,8 @@ BOOLEAN
 
 _Must_inspect_result_
 __drv_maxIRQL(DISPATCH_LEVEL)
-BOOLEAN
 FORCEINLINE
+BOOLEAN
 UcxIoDeviceControl(
     __in
     WDFDEVICE Device,
@@ -482,7 +491,7 @@ __drv_at(Config->Size, __range(!=,0))
 __drv_at(Config->EvtControllerUsbDeviceAdd, __notnull)
 WDFAPI
 NTSTATUS
-(*PFN_UCXCONTROLLERCREATE)(
+(NTAPI *PFN_UCXCONTROLLERCREATE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -499,8 +508,8 @@ _Must_inspect_result_
 __drv_maxIRQL(DISPATCH_LEVEL)
 __drv_at(Config->Size, __range(!=,0))
 __drv_at(Config->EvtControllerUsbDeviceAdd, __notnull)
-NTSTATUS
 FORCEINLINE
+NTSTATUS
 UcxControllerCreate(
     __in
     WDFDEVICE Device,
@@ -522,7 +531,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXCONTROLLERNEEDSRESET)(
+(NTAPI *PFN_UCXCONTROLLERNEEDSRESET)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -530,8 +539,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxControllerNeedsReset(
     __in
     UCXCONTROLLER Controller
@@ -547,7 +556,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXCONTROLLERRESETCOMPLETE)(
+(NTAPI *PFN_UCXCONTROLLERRESETCOMPLETE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -557,8 +566,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxControllerResetComplete(
     __in
     UCXCONTROLLER Controller,
@@ -576,7 +585,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXCONTROLLERSETFAILED)(
+(NTAPI *PFN_UCXCONTROLLERSETFAILED)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -584,8 +593,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxControllerSetFailed(
     __in
     UCXCONTROLLER Controller
@@ -601,7 +610,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 NTSTATUS
-(*PFN_UCXCONTROLLERSETIDSTRINGS)(
+(NTAPI *PFN_UCXCONTROLLERSETIDSTRINGS)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -615,8 +624,8 @@ NTSTATUS
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-NTSTATUS
 FORCEINLINE
+NTSTATUS
 UcxControllerSetIdStrings(
     __in
     UCXCONTROLLER Controller,
@@ -638,7 +647,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXCONTROLLERNOTIFYTRANSPORTCHARACTERISTICSCHANGE)(
+(NTAPI *PFN_UCXCONTROLLERNOTIFYTRANSPORTCHARACTERISTICSCHANGE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -648,8 +657,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxControllerNotifyTransportCharacteristicsChange(
     __in
     UCXCONTROLLER Controller,

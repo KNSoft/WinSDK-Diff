@@ -77,6 +77,17 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         static auto FromPrinterName(param::hstring const& printerName);
         static auto IsIppPrinter(param::hstring const& printerName);
     };
+    struct WINRT_IMPL_EMPTY_BASES IppPrintDeviceInstallationResult : winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult
+    {
+        IppPrintDeviceInstallationResult(std::nullptr_t) noexcept {}
+        IppPrintDeviceInstallationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult(ptr, take_ownership_from_abi) {}
+    };
+    struct IppPrintDeviceManager
+    {
+        IppPrintDeviceManager() = delete;
+        static auto CanInstallIppPrintDevice();
+        static auto InstallIppPrintDeviceAsync(winrt::Windows::Foundation::Uri const& printerUri, param::hstring const& printerName);
+    };
     struct WINRT_IMPL_EMPTY_BASES IppResolution : winrt::Windows::Devices::Printers::IIppResolution
     {
         IppResolution(std::nullptr_t) noexcept {}

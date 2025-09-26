@@ -165,6 +165,7 @@ _Function_class_(EVT_UCX_ROOTHUB_INTERRUPT_TX)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ROOTHUB_INTERRUPT_TX(
     __in
     UCXROOTHUB  UcxRootHub,
@@ -179,6 +180,7 @@ _Function_class_(EVT_UCX_ROOTHUB_CONTROL_URB)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ROOTHUB_CONTROL_URB(
     __in
     UCXROOTHUB  UcxRootHub,
@@ -193,6 +195,7 @@ _Function_class_(EVT_UCX_ROOTHUB_GET_INFO)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ROOTHUB_GET_INFO(
     __in
     UCXROOTHUB  UcxRootHub,
@@ -207,6 +210,7 @@ _Function_class_(EVT_UCX_ROOTHUB_GET_20PORT_INFO)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ROOTHUB_GET_20PORT_INFO(
     __in
     UCXROOTHUB  UcxRootHub,
@@ -221,6 +225,7 @@ _Function_class_(EVT_UCX_ROOTHUB_GET_30PORT_INFO)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ROOTHUB_GET_30PORT_INFO(
     __in
     UCXROOTHUB  UcxRootHub,
@@ -398,7 +403,7 @@ __drv_at(Config->EvtRootHubGet20PortInfo, __notnull)
 __drv_at(Config->EvtRootHubGet30PortInfo, __notnull)
 WDFAPI
 NTSTATUS
-(*PFN_UCXROOTHUBCREATE)(
+(NTAPI *PFN_UCXROOTHUBCREATE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -427,8 +432,8 @@ __drv_at(Config->EvtRootHubInterruptTx, __notnull)
 __drv_at(Config->EvtRootHubGetInfo, __notnull)
 __drv_at(Config->EvtRootHubGet20PortInfo, __notnull)
 __drv_at(Config->EvtRootHubGet30PortInfo, __notnull)
-NTSTATUS
 FORCEINLINE
+NTSTATUS
 UcxRootHubCreate(
     __in
     UCXCONTROLLER Controller,
@@ -450,7 +455,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXROOTHUBPORTCHANGED)(
+(NTAPI *PFN_UCXROOTHUBPORTCHANGED)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -458,8 +463,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxRootHubPortChanged(
     __in
     UCXROOTHUB UcxRootHub

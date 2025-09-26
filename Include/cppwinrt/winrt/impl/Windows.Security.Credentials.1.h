@@ -23,12 +23,40 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
         IKeyCredential(std::nullptr_t = nullptr) noexcept {}
         IKeyCredential(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IKeyCredential2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IKeyCredential2>
+    {
+        IKeyCredential2(std::nullptr_t = nullptr) noexcept {}
+        IKeyCredential2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IKeyCredentialAttestationResult :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IKeyCredentialAttestationResult>
     {
         IKeyCredentialAttestationResult(std::nullptr_t = nullptr) noexcept {}
         IKeyCredentialAttestationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IKeyCredentialCacheConfiguration :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IKeyCredentialCacheConfiguration>
+    {
+        IKeyCredentialCacheConfiguration(std::nullptr_t = nullptr) noexcept {}
+        IKeyCredentialCacheConfiguration(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IKeyCredentialCacheConfigurationFactory :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IKeyCredentialCacheConfigurationFactory>
+    {
+        IKeyCredentialCacheConfigurationFactory(std::nullptr_t = nullptr) noexcept {}
+        IKeyCredentialCacheConfigurationFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IKeyCredentialManagerExtendedStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IKeyCredentialManagerExtendedStatics>
+    {
+        IKeyCredentialManagerExtendedStatics(std::nullptr_t = nullptr) noexcept {}
+        IKeyCredentialManagerExtendedStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES IKeyCredentialManagerStatics :
         winrt::Windows::Foundation::IInspectable,

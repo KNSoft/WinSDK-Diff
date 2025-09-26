@@ -26,6 +26,21 @@ extern "C" {
 #define PKTMON_MAC_ADDRESS_SIZE                 6
 typedef UCHAR PKTMON_MAC_ADDRESS[PKTMON_MAC_ADDRESS_SIZE];
 
+#define PKTMON_IPV4_ADDRESS_SIZE                4
+#define PKTMON_IPV6_ADDRESS_SIZE                16
+
+//
+// IP Address (in network-byte order)
+//
+typedef union _PKTMON_IP_ADDRESS
+{
+    ULONG IPv4;
+    UCHAR IPv4_bytes[PKTMON_IPV4_ADDRESS_SIZE];
+
+    ULONGLONG IPv6[2];
+    UCHAR IPv6_bytes[PKTMON_IPV6_ADDRESS_SIZE];
+} PKTMON_IP_ADDRESS;
+
 //
 // Component types
 //

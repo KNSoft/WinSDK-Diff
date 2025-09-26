@@ -1508,6 +1508,96 @@ namespace winrt::impl
         }
         return winrt::Windows::Devices::Printers::ReplaceDevicePropertiesResult{ result, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDeviceInstallationResult<D>::Status() const
+    {
+        winrt::Windows::Devices::Printers::IppPrintDeviceInstallationStatus value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Status(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>**)this;
+            check_hresult(_winrt_abi_type->get_Status(reinterpret_cast<int32_t*>(&value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDeviceInstallationResult<D>::InstalledPrinterName() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_InstalledPrinterName(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>**)this;
+            check_hresult(_winrt_abi_type->get_InstalledPrinterName(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDeviceInstallationResult<D>::ExtendedError() const
+    {
+        winrt::hresult value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_ExtendedError(put_abi(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>**)this;
+            check_hresult(_winrt_abi_type->get_ExtendedError(put_abi(value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDeviceManagerStatics<D>::CanInstallIppPrintDevice() const
+    {
+        bool result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->CanInstallIppPrintDevice(&result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics>**)this;
+            check_hresult(_winrt_abi_type->CanInstallIppPrintDevice(&result));
+        }
+        return result;
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDeviceManagerStatics<D>::InstallIppPrintDeviceAsync(winrt::Windows::Foundation::Uri const& printerUri, param::hstring const& printerName) const
+    {
+        void* operation{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->InstallIppPrintDeviceAsync(*(void**)(&printerUri), *(void**)(&printerName), &operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics>**)this;
+            check_hresult(_winrt_abi_type->InstallIppPrintDeviceAsync(*(void**)(&printerUri), *(void**)(&printerName), &operation));
+        }
+        return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Devices::Printers::IppPrintDeviceInstallationResult>{ operation, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_Devices_Printers_IIppPrintDeviceStatics<D>::GetDeviceSelector() const
     {
         void* result{};
@@ -3281,6 +3371,56 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult> : produce_base<D, winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult>
+    {
+        int32_t __stdcall get_Status(int32_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::Devices::Printers::IppPrintDeviceInstallationStatus>(this->shim().Status());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_InstalledPrinterName(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().InstalledPrinterName());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_ExtendedError(winrt::hresult* value) noexcept final try
+        {
+            zero_abi<winrt::hresult>(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::hresult>(this->shim().ExtendedError());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics> : produce_base<D, winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics>
+    {
+        int32_t __stdcall CanInstallIppPrintDevice(bool* result) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<bool>(this->shim().CanInstallIppPrintDevice());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall InstallIppPrintDeviceAsync(void* printerUri, void* printerName, void** operation) noexcept final try
+        {
+            clear_abi(operation);
+            typename D::abi_guard guard(this->shim());
+            *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Devices::Printers::IppPrintDeviceInstallationResult>>(this->shim().InstallIppPrintDeviceAsync(*reinterpret_cast<winrt::Windows::Foundation::Uri const*>(&printerUri), *reinterpret_cast<hstring const*>(&printerName)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Devices::Printers::IIppPrintDeviceStatics> : produce_base<D, winrt::Windows::Devices::Printers::IIppPrintDeviceStatics>
     {
         int32_t __stdcall GetDeviceSelector(void** result) noexcept final try
@@ -4024,6 +4164,14 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     {
         return impl::call_factory<IppPrintDevice, IIppPrintDeviceStatics>([&](IIppPrintDeviceStatics const& f) { return f.IsIppPrinter(printerName); });
     }
+    inline auto IppPrintDeviceManager::CanInstallIppPrintDevice()
+    {
+        return impl::call_factory_cast<bool(*)(IIppPrintDeviceManagerStatics const&), IppPrintDeviceManager, IIppPrintDeviceManagerStatics>([](IIppPrintDeviceManagerStatics const& f) { return f.CanInstallIppPrintDevice(); });
+    }
+    inline auto IppPrintDeviceManager::InstallIppPrintDeviceAsync(winrt::Windows::Foundation::Uri const& printerUri, param::hstring const& printerName)
+    {
+        return impl::call_factory<IppPrintDeviceManager, IIppPrintDeviceManagerStatics>([&](IIppPrintDeviceManagerStatics const& f) { return f.InstallIppPrintDeviceAsync(printerUri, printerName); });
+    }
     inline IppResolution::IppResolution(int32_t width, int32_t height, winrt::Windows::Devices::Printers::IppResolutionUnit const& unit) :
         IppResolution(impl::call_factory<IppResolution, IIppResolutionFactory>([&](IIppResolutionFactory const& f) { return f.CreateInstance(width, height, unit); }))
     {
@@ -4098,6 +4246,8 @@ namespace std
     template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDevice3> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDevice4> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDevice5> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDeviceManagerStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppPrintDeviceStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppResolution> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppResolutionFactory> : winrt::impl::hash_base {};
@@ -4120,6 +4270,8 @@ namespace std
     template<> struct hash<winrt::Windows::Devices::Printers::IppAttributeValue> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IppIntegerRange> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IppPrintDevice> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::IppPrintDeviceInstallationResult> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::IppPrintDeviceManager> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IppResolution> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IppSetAttributesResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IppTextWithLanguage> : winrt::impl::hash_base {};

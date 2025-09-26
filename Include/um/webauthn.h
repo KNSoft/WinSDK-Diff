@@ -157,7 +157,13 @@ extern "C" {
 //          - WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS      :   8
 //
 
-#define WEBAUTHN_API_CURRENT_VERSION    WEBAUTHN_API_VERSION_8
+#define WEBAUTHN_API_VERSION_9          9
+// WEBAUTHN_API_VERSION_9 : Delta From WEBAUTHN_API_VERSION_8
+//      Data Structures and their sub versions:
+//          - WEBAUTHN_CREDENTIAL_DETAILS                       :   4
+//          - WEBAUTHN_CREDENTIAL_ATTESTATION                   :   8
+
+#define WEBAUTHN_API_CURRENT_VERSION    WEBAUTHN_API_VERSION_9
 
 //+------------------------------------------------------------------------------------------
 // Information about an RP Entity
@@ -406,7 +412,8 @@ typedef const CTAPCBOR_HYBRID_STORAGE_LINKED_DATA *PCCTAPCBOR_HYBRID_STORAGE_LIN
 #define WEBAUTHN_CREDENTIAL_DETAILS_VERSION_1           1
 #define WEBAUTHN_CREDENTIAL_DETAILS_VERSION_2           2
 #define WEBAUTHN_CREDENTIAL_DETAILS_VERSION_3           3
-#define WEBAUTHN_CREDENTIAL_DETAILS_CURRENT_VERSION     WEBAUTHN_CREDENTIAL_DETAILS_VERSION_3
+#define WEBAUTHN_CREDENTIAL_DETAILS_VERSION_4           4
+#define WEBAUTHN_CREDENTIAL_DETAILS_CURRENT_VERSION     WEBAUTHN_CREDENTIAL_DETAILS_VERSION_4
 
 typedef struct _WEBAUTHN_CREDENTIAL_DETAILS {
     // Version of this structure, to allow for modifications in the future.
@@ -447,6 +454,13 @@ typedef struct _WEBAUTHN_CREDENTIAL_DETAILS {
 
     // ThirdPartyPayment Credential or not.
     BOOL bThirdPartyPayment;
+
+    //
+    // The following fields have been added in WEBAUTHN_CREDENTIAL_DETAILS_VERSION_4
+    //
+
+    // Applicable Transports
+    DWORD dwTransports;
 
 } WEBAUTHN_CREDENTIAL_DETAILS, *PWEBAUTHN_CREDENTIAL_DETAILS;
 typedef const WEBAUTHN_CREDENTIAL_DETAILS *PCWEBAUTHN_CREDENTIAL_DETAILS;
@@ -971,7 +985,8 @@ typedef const WEBAUTHN_COMMON_ATTESTATION *PCWEBAUTHN_COMMON_ATTESTATION;
 #define WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_5               5
 #define WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_6               6
 #define WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_7               7
-#define WEBAUTHN_CREDENTIAL_ATTESTATION_CURRENT_VERSION         WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_7
+#define WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_8               8
+#define WEBAUTHN_CREDENTIAL_ATTESTATION_CURRENT_VERSION         WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_8
 
 typedef struct _WEBAUTHN_CREDENTIAL_ATTESTATION {
     // Version of this structure, to allow for modifications in the future.
@@ -1056,6 +1071,14 @@ typedef struct _WEBAUTHN_CREDENTIAL_ATTESTATION {
 
     // ThirdPartyPayment Credential or not.
     BOOL bThirdPartyPayment;
+
+    //
+    // Following fields have been added in WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_8
+    //
+
+    // Multiple WEBAUTHN_CTAP_TRANSPORT_* bits will be set corresponding to
+    // the transports that are supported.
+    DWORD dwTransports;
 
 } WEBAUTHN_CREDENTIAL_ATTESTATION, *PWEBAUTHN_CREDENTIAL_ATTESTATION;
 typedef const WEBAUTHN_CREDENTIAL_ATTESTATION *PCWEBAUTHN_CREDENTIAL_ATTESTATION;
@@ -1251,6 +1274,12 @@ typedef enum _EXPERIMENTAL_PLUGIN_AUTHENTICATOR_STATE
     PluginAuthenticatorState_Enabled
 } EXPERIMENTAL_PLUGIN_AUTHENTICATOR_STATE;
 
+typedef enum _EXPERIMENTAL2_PLUGIN_AUTHENTICATOR_STATE
+{
+    PluginAuthenticatorState_Disabled_2 = 0,
+    PluginAuthenticatorState_Enabled_2
+} EXPERIMENTAL2_PLUGIN_AUTHENTICATOR_STATE;
+
 //
 // Plugin Authenticator API: WebAuthNPluginGetAuthenticatorState: Get Plugin Authenticator State
 //
@@ -1259,6 +1288,13 @@ WINAPI
 EXPERIMENTAL_WebAuthNPluginGetAuthenticatorState(
     _In_ LPCWSTR pwszPluginClsId,
     _Out_ EXPERIMENTAL_PLUGIN_AUTHENTICATOR_STATE* pluginAuthenticatorState 
+);
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginGetAuthenticatorState(
+    _In_ REFCLSID rclsid,
+    _Out_ EXPERIMENTAL2_PLUGIN_AUTHENTICATOR_STATE* pluginAuthenticatorState
 );
 
 //
@@ -1294,25 +1330,25 @@ typedef struct _EXPERIMENTAL2_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS {
     LPCWSTR pwszAuthenticatorName;
 
     // Plugin COM ClsId
-    LPCWSTR pwszPluginClsId;
+    REFCLSID rclsid;
 
     // Plugin RPID (Optional. Required for a nested WebAuthN call originating from a plugin)
     LPCWSTR pwszPluginRpId;
 
     // Plugin Authenticator Logo for the Light themes. base64 svg (Optional)
-    LPCWSTR pwszLightThemeLogo;
+    LPCWSTR pwszLightThemeLogoSvg;
 
     // Plugin Authenticator Logo for the Dark themes. base64 svg (Optional)
-    LPCWSTR pwszDarkThemeLogo;
+    LPCWSTR pwszDarkThemeLogoSvg;
 
     // CTAP CBOR encoded authenticatorGetInfo
     DWORD cbAuthenticatorInfo;
     _Field_size_bytes_(cbAuthenticatorInfo)
-    PBYTE pbAuthenticatorInfo;
+    const BYTE* pbAuthenticatorInfo;
 
     // List of supported RPs. Should be 0/nullptr if all RPs are supported.
     DWORD cSupportedRpIds;
-    LPCWSTR *ppwszSupportedRpIds;
+    const LPCWSTR* ppwszSupportedRpIds;
 
 } EXPERIMENTAL2_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS, *EXPERIMENTAL2_PWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS;
 typedef const EXPERIMENTAL2_WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS *EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS;
@@ -1352,6 +1388,11 @@ WINAPI
 EXPERIMENTAL_WebAuthNPluginRemoveAuthenticator(
     _In_ LPCWSTR pwszPluginClsId);
 
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginRemoveAuthenticator(
+    _In_ REFCLSID rclsid);
+
 //
 // Plugin Authenticator API: WebAuthNPluginAuthenticatorUpdateDetails: Update Credential Metadata for Browser AutoFill Scenarios
 //
@@ -1385,25 +1426,25 @@ typedef struct _EXPERIMENTAL2_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS {
     LPCWSTR pwszAuthenticatorName;
 
     // Plugin COM ClsId
-    LPCWSTR pwszPluginClsId;
+    REFCLSID rclsid;
 
     // Plugin COM New ClsId (Optional)
-    LPCWSTR pwszNewPluginClsId;
+    REFCLSID rclsidNew;
 
     // Plugin Authenticator Logo for the Light themes. base64 svg (Optional)
-    LPCWSTR pwszLightThemeLogo;
+    LPCWSTR pwszLightThemeLogoSvg;
 
     // Plugin Authenticator Logo for the Dark themes. base64 svg (Optional)
-    LPCWSTR pwszDarkThemeLogo;
+    LPCWSTR pwszDarkThemeLogoSvg;
 
     // CTAP CBOR encoded authenticatorGetInfo (Optional)
     DWORD cbAuthenticatorInfo;
     _Field_size_bytes_(cbAuthenticatorInfo)
-    PBYTE pbAuthenticatorInfo;
+    const BYTE* pbAuthenticatorInfo;
 
     // List of supported RPs. Should be 0/nullptr if all RPs are supported.
     DWORD cSupportedRpIds;
-    LPCWSTR *ppwszSupportedRpIds;
+    const LPCWSTR* ppwszSupportedRpIds;
 
 } EXPERIMENTAL2_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS, *EXPERIMENTAL2_PWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS;
 typedef const EXPERIMENTAL2_WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS *EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS;
@@ -1467,10 +1508,48 @@ typedef struct _EXPERIMENTAL_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST {
 } EXPERIMENTAL_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST, *EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST;
 typedef const EXPERIMENTAL_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST *EXPERIMENTAL_PCWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST;
 
+typedef struct _EXPERIMENTAL2_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS {
+    // Size of pbCredentialId.
+    DWORD cbCredentialId;
+
+    // Credential Identifier bytes. This field is required.
+    _Field_size_bytes_(cbCredentialId)
+    const BYTE* pbCredentialId;
+
+    // Identifier for the RP. This field is required.
+    LPCWSTR pwszRpId;
+
+    // Contains the friendly name of the Relying Party, such as "Acme Corporation", "Widgets Inc" or "Awesome Site".
+    // This field is required.
+    LPCWSTR pwszRpName;
+
+    // Identifier for the User. This field is required.
+    DWORD cbUserId;
+
+    // User Identifier bytes. This field is required.
+    _Field_size_bytes_(cbUserId)
+    const BYTE* pbUserId;
+
+    // Contains a detailed name for this account, such as "john.p.smith@example.com".
+    LPCWSTR pwszUserName;
+
+    // For User: Contains the friendly name associated with the user account such as "John P. Smith".
+    LPCWSTR pwszUserDisplayName;
+
+} EXPERIMENTAL2_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS, *EXPERIMENTAL2_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS;
+typedef const EXPERIMENTAL2_WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS *EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS;
+
 HRESULT
 WINAPI
 EXPERIMENTAL_WebAuthNPluginAuthenticatorAddCredentials(
     _In_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST pCredentialDetailsList);
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginAuthenticatorAddCredentials(
+    _In_ REFCLSID rclsid,
+    _In_ DWORD cCredentialDetails,
+    _In_reads_(cCredentialDetails) EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS pCredentialDetails);
 
 //
 // Plugin Authenticator API: WebAuthNPluginAuthenticatorRemoveCredentials: Remove Credential Metadata for Browser AutoFill Scenarios
@@ -1481,6 +1560,13 @@ WINAPI
 EXPERIMENTAL_WebAuthNPluginAuthenticatorRemoveCredentials(
     _In_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST pCredentialDetailsList);
 
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginAuthenticatorRemoveCredentials(
+    _In_ REFCLSID rclsid,
+    _In_ DWORD cCredentialDetails,
+    _In_reads_(cCredentialDetails) EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS pCredentialDetails);
+
 //
 // Plugin Authenticator API: WebAuthNPluginAuthenticatorRemoveCredentials: Remove All Credential Metadata for Browser AutoFill Scenarios
 //
@@ -1489,6 +1575,11 @@ HRESULT
 WINAPI
 EXPERIMENTAL_WebAuthNPluginAuthenticatorRemoveAllCredentials(
     _In_ LPCWSTR pwszPluginClsId);
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginAuthenticatorRemoveAllCredentials(
+    _In_ REFCLSID rclsid);
 
 //
 // Plugin Authenticator API: WebAuthNPluginAuthenticatorGetAllCredentials: Get All Credential Metadata cached for Browser AutoFill Scenarios
@@ -1499,11 +1590,24 @@ EXPERIMENTAL_WebAuthNPluginAuthenticatorGetAllCredentials(
     _In_ LPCWSTR pwszPluginClsId,
     _Outptr_result_maybenull_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST *ppCredentialDetailsList);
 
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginAuthenticatorGetAllCredentials(
+    _In_ REFCLSID rclsid,
+    _Out_ DWORD* pcCredentialDetails,
+    _Outptr_result_buffer_maybenull_(*pcCredentialDetails) EXPERIMENTAL2_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS *ppCredentialDetailsArray);
+
 // Plugin Authenticator API: WebAuthNPluginAuthenticatorFreeCredentialDetailsList: Free Credential Metadata cached for Browser AutoFill Scenarios
 void
 WINAPI
 EXPERIMENTAL_WebAuthNPluginAuthenticatorFreeCredentialDetailsList(
     _In_opt_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS_LIST pCredentialDetailsList);
+
+void
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginAuthenticatorFreeCredentialDetailsArray(
+    _In_ DWORD cCredentialDetails,
+    _In_reads_(cCredentialDetails) EXPERIMENTAL2_PWEBAUTHN_PLUGIN_CREDENTIAL_DETAILS pCredentialDetailsArray);
 
 //
 // Hello UV API for Plugin: WebAuthNPluginPerformUv: Perform Hello UV related operations
@@ -1542,12 +1646,61 @@ WINAPI
 EXPERIMENTAL_WebAuthNPluginFreePerformUvResponse(
     _In_opt_ EXPERIMENTAL_PWEBAUTHN_PLUGIN_PERFORM_UV_RESPONSE ppPluginPerformUvResponse);
 
+typedef struct _EXPERIMENTAL2_WEBAUTHN_PLUGIN_USER_VERIFICATION_REQUEST {
+
+    //Windows handle of the top-level window displayed by the plugin and currently is in foreground as part of the ongoing webauthn operation.
+    HWND hwnd;
+
+    //The webauthn transaction id from the WEBAUTHN_PLUGIN_OPERATION_REQUEST
+    REFGUID rguidTransactionId;
+
+    //the username attached to the credential that is in use for this webauthn operation
+    LPCWSTR pwszUsername;
+
+    //a text hint displayed on the windows hello prompt
+    LPCWSTR pwszDisplayHint;
+} EXPERIMENTAL2_WEBAUTHN_PLUGIN_USER_VERIFICATION_REQUEST, *EXPERIMENTAL2_PWEBAUTHN_PLUGIN_USER_VERIFICATION_REQUEST;
+typedef const EXPERIMENTAL2_WEBAUTHN_PLUGIN_USER_VERIFICATION_REQUEST *EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_USER_VERIFICATION_REQUEST;
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginPerformUserVerification(
+    _In_ EXPERIMENTAL2_PCWEBAUTHN_PLUGIN_USER_VERIFICATION_REQUEST pPluginUserVerification,
+    _Out_ DWORD* pcbResponse,
+    _Outptr_result_bytebuffer_maybenull_(*pcbResponse) PBYTE* ppbResponse);
+
+void
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginFreeUserVerificationResponse(
+    _In_opt_ PBYTE ppbResponse);
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginGetUserVerificationCount(
+    _In_ REFCLSID pluginClsid,
+    _Out_ DWORD* pdwVerificationCount);
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginGetUserVerificationPublicKey(
+    _In_ REFCLSID pluginClsid,
+    _Out_ DWORD* pcbPublicKey,
+    _Outptr_result_bytebuffer_(*pcbPublicKey) PBYTE* ppbPublicKey);
+
+
 HRESULT
 WINAPI
 EXPERIMENTAL_WebAuthNPluginGetOperationSigningPublicKey(
     _In_ PWSTR pwszPluginClsId,
     _Out_ DWORD* cbOpSignPubKey,
     _Outptr_result_buffer_maybenull_(*cbOpSignPubKey) BYTE** pbOpSignPubKey);
+
+HRESULT
+WINAPI
+EXPERIMENTAL2_WebAuthNPluginGetOperationSigningPublicKey(
+    _In_ REFCLSID rclsid,
+    _Out_ DWORD* cbOpSignPubKey,
+    _Outptr_result_buffer_maybenull_(*cbOpSignPubKey) PBYTE* pbOpSignPubKey);
 
 void WINAPI EXPERIMENTAL_WebAuthNPluginFreeGetOperationSigningPublicKeyResponse(
     _In_opt_ PBYTE pbOpSignPubKey);
@@ -1826,6 +1979,15 @@ EXPERIMENTAL_WebAuthNEncodeGetAssertionResponse(
     _In_ EXPERIMENTAL_PCWEBAUTHN_CTAPCBOR_GET_ASSERTION_RESPONSE pGetAssertionResponse,
     _Out_ DWORD *pcbResp,
     _Outptr_result_buffer_maybenull_(*pcbResp) BYTE **ppbResp
+    );
+
+typedef void (CALLBACK *EXPERIMENTAL_WebAuthNPluginStatusChangeCallback)(void);
+
+HRESULT
+WINAPI
+EXPERIMENTAL_WebAuthNPluginRegisterStatusChangeCallback(
+    _In_ EXPERIMENTAL_WebAuthNPluginStatusChangeCallback callback,
+    _In_ REFCLSID pluginClsId
     );
 
 

@@ -36,6 +36,16 @@ namespace Windows
 {
     namespace Foundation
     {
+        namespace Collections
+        {
+            runtimeclass PropertySet;
+        }
+    }
+}
+namespace Windows
+{
+    namespace Foundation
+    {
         interface IAsyncAction;
 
         interface IClosable;
@@ -69,6 +79,8 @@ namespace Windows
                 interface IActionDefinition3;
 
                 interface IActionDefinition4;
+
+                interface IActionDefinition5;
 
                 interface IActionEntityRegistrationInfo;
 
@@ -144,7 +156,6 @@ namespace Windows
 
                 [contract(Windows.AI.Actions.ActionsContract, 5.0)]
                 [exclusiveto(Windows.AI.Actions.Hosting.ActionCatalog)]
-                [experimental]
                 [uuid(2E05D518-8680-55D3-820D-2605ADB7D62D)]
                 interface IActionCatalog3 : IInspectable
                 {
@@ -185,11 +196,19 @@ namespace Windows
 
                 [contract(Windows.AI.Actions.ActionsContract, 5.0)]
                 [exclusiveto(Windows.AI.Actions.Hosting.ActionDefinition)]
-                [experimental]
                 [uuid(6DD91071-8847-55B6-9518-9FF8DE421EB7)]
                 interface IActionDefinition4 : IInspectable
                 {
                     [propget] HRESULT IsCurrentlyAvailable([out] [retval] boolean* value);
+                }
+
+                [contract(Windows.AI.Actions.ActionsContract, 6.0)]
+                [exclusiveto(Windows.AI.Actions.Hosting.ActionDefinition)]
+                [experimental]
+                [uuid(5BEA33EF-D325-53A8-8DB3-0D771F4D1E54)]
+                interface IActionDefinition5 : IInspectable
+                {
+                    HRESULT GetIconFullPath([in] Windows.Foundation.Collections.PropertySet* qualifierValues, [out] [retval] HSTRING* result);
                 }
 
                 [contract(Windows.AI.Actions.ActionsContract, 1.0)]
@@ -247,7 +266,7 @@ namespace Windows
                 {
                     [default] interface Windows.AI.Actions.Hosting.IActionCatalog;
                     [contract(Windows.AI.Actions.ActionsContract, 4.0)] interface Windows.AI.Actions.Hosting.IActionCatalog2;
-                    [contract(Windows.AI.Actions.ActionsContract, 5.0)] [experimental] interface Windows.AI.Actions.Hosting.IActionCatalog3;
+                    [contract(Windows.AI.Actions.ActionsContract, 5.0)] interface Windows.AI.Actions.Hosting.IActionCatalog3;
                     interface Windows.Foundation.IClosable;
                 }
 
@@ -258,7 +277,8 @@ namespace Windows
                     [default] interface Windows.AI.Actions.Hosting.IActionDefinition;
                     [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.Hosting.IActionDefinition2;
                     [contract(Windows.AI.Actions.ActionsContract, 3.0)] interface Windows.AI.Actions.Hosting.IActionDefinition3;
-                    [contract(Windows.AI.Actions.ActionsContract, 5.0)] [experimental] interface Windows.AI.Actions.Hosting.IActionDefinition4;
+                    [contract(Windows.AI.Actions.ActionsContract, 5.0)] interface Windows.AI.Actions.Hosting.IActionDefinition4;
+                    [contract(Windows.AI.Actions.ActionsContract, 6.0)] [experimental] interface Windows.AI.Actions.Hosting.IActionDefinition5;
                     interface Windows.Foundation.IClosable;
                 }
 

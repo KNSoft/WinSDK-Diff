@@ -26,7 +26,7 @@ _Maybe_raises_SEH_exception_
 _IRQL_requires_max_(APC_LEVEL)
 VOID
 RtlCopyFromUser (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_reads_bytes_(Length) const volatile VOID* Source,
     _In_ SIZE_T Length
     );
@@ -35,7 +35,7 @@ _Maybe_raises_SEH_exception_
 _IRQL_requires_max_(APC_LEVEL)
 VOID
 RtlCopyFromUserNonTemporal (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_reads_bytes_(Length) const volatile VOID* Source,
     _In_ SIZE_T Length
     );
@@ -45,7 +45,7 @@ _IRQL_requires_max_(APC_LEVEL)
 VOID
 RtlCopyToUser (
     _Out_writes_bytes_all_(Length) volatile VOID* Destination,
-    _In_reads_bytes_(Length) const VOID* Source,
+    _In_reads_bytes_(Length) const volatile VOID* Source,
     _In_ SIZE_T Length
     );
 
@@ -54,7 +54,7 @@ _IRQL_requires_max_(APC_LEVEL)
 VOID
 RtlCopyToUserNonTemporal (
     _Out_writes_bytes_all_(Length) volatile VOID* Destination,
-    _In_reads_bytes_(Length) const VOID* Source,
+    _In_reads_bytes_(Length) const volatile VOID* Source,
     _In_ SIZE_T Length
     );
 
@@ -339,7 +339,10 @@ RtlFastFailIfUserPointer (
     }
 
     __try {
+#pragma warning(push)
+#pragma warning(disable: 4127)
         ProbeForRead((volatile void*)Pointer, 1, 1);
+#pragma warning(pop)
     } __except(EXCEPTION_EXECUTE_HANDLER) {
         FastFail = 0;
     }
@@ -418,7 +421,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteBooleanToMode (
-    _Out_ _Deref_out_range_(==, Value) BOOLEAN* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile BOOLEAN* Destination,
     _In_ BOOLEAN Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -426,8 +429,8 @@ WriteBooleanToMode (
     if (Mode != KernelMode) {
         WriteBooleanToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUCharNoFence((volatile UCHAR*)Destination, (UCHAR)Value);
     }
 }
 
@@ -437,15 +440,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 BOOLEAN
 ReadBooleanFromMode (
-    _In_ const BOOLEAN* Source,
+    _In_ const volatile BOOLEAN* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadBooleanFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (BOOLEAN)ReadUCharNoFence((volatile UCHAR*)Source);
     }
 }
 
@@ -502,7 +505,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteUCharToMode (
-    _Out_ _Deref_out_range_(==, Value) UCHAR* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile UCHAR* Destination,
     _In_ UCHAR Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -510,8 +513,8 @@ WriteUCharToMode (
     if (Mode != KernelMode) {
         WriteUCharToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUCharNoFence(Destination, Value);
     }
 }
 
@@ -521,15 +524,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 UCHAR
 ReadUCharFromMode (
-    _In_ const UCHAR* Source,
+    _In_ const volatile UCHAR* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadUCharFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return ReadUCharNoFence(Source);
     }
 }
 
@@ -586,7 +589,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteCharToMode (
-    _Out_ _Deref_out_range_(==, Value) CHAR* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile CHAR* Destination,
     _In_ CHAR Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -594,8 +597,8 @@ WriteCharToMode (
     if (Mode != KernelMode) {
         WriteCharToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUCharNoFence((volatile UCHAR*)Destination, (UCHAR)Value);
     }
 }
 
@@ -605,15 +608,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 CHAR
 ReadCharFromMode (
-    _In_ const CHAR* Source,
+    _In_ const volatile CHAR* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadCharFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (CHAR)ReadUCharNoFence((volatile UCHAR*)Source);
     }
 }
 
@@ -670,7 +673,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteWCharToMode (
-    _Out_ _Deref_out_range_(==, Value) WCHAR* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile WCHAR* Destination,
     _In_ WCHAR Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -678,8 +681,8 @@ WriteWCharToMode (
     if (Mode != KernelMode) {
         WriteWCharToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUShortNoFence((volatile USHORT*)Destination, (USHORT)Value);
     }
 }
 
@@ -689,15 +692,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 WCHAR
 ReadWCharFromMode (
-    _In_ const WCHAR* Source,
+    _In_ const volatile WCHAR* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadWCharFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (WCHAR)ReadUShortNoFence((volatile USHORT*)Source);
     }
 }
 
@@ -754,7 +757,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteUShortToMode (
-    _Out_ _Deref_out_range_(==, Value) USHORT* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile USHORT* Destination,
     _In_ USHORT Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -762,8 +765,8 @@ WriteUShortToMode (
     if (Mode != KernelMode) {
         WriteUShortToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUShortNoFence(Destination, Value);
     }
 }
 
@@ -773,15 +776,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 USHORT
 ReadUShortFromMode (
-    _In_ const USHORT* Source,
+    _In_ const volatile USHORT* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadUShortFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return ReadUShortNoFence(Source);
     }
 }
 
@@ -838,7 +841,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteShortToMode (
-    _Out_ _Deref_out_range_(==, Value) SHORT* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile SHORT* Destination,
     _In_ SHORT Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -846,8 +849,8 @@ WriteShortToMode (
     if (Mode != KernelMode) {
         WriteShortToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUShortNoFence((volatile USHORT*)Destination, (USHORT)Value);
     }
 }
 
@@ -857,15 +860,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 SHORT
 ReadShortFromMode (
-    _In_ const SHORT* Source,
+    _In_ const volatile SHORT* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadShortFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (SHORT)ReadUShortNoFence((volatile USHORT*)Source);
     }
 }
 
@@ -922,7 +925,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteULongToMode (
-    _Out_ _Deref_out_range_(==, Value) ULONG* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile ULONG* Destination,
     _In_ ULONG Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -930,8 +933,8 @@ WriteULongToMode (
     if (Mode != KernelMode) {
         WriteULongToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongNoFence(Destination, Value);
     }
 }
 
@@ -941,15 +944,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 ULONG
 ReadULongFromMode (
-    _In_ const ULONG* Source,
+    _In_ const volatile ULONG* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadULongFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return ReadULongNoFence(Source);
     }
 }
 
@@ -1006,7 +1009,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteLongToMode (
-    _Out_ _Deref_out_range_(==, Value) LONG* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile LONG* Destination,
     _In_ LONG Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1014,8 +1017,8 @@ WriteLongToMode (
     if (Mode != KernelMode) {
         WriteLongToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongNoFence((volatile ULONG*)Destination, (ULONG)Value);
     }
 }
 
@@ -1025,15 +1028,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 LONG
 ReadLongFromMode (
-    _In_ const LONG* Source,
+    _In_ const volatile LONG* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadLongFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (LONG)ReadULongNoFence((volatile ULONG*)Source);
     }
 }
 
@@ -1090,7 +1093,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteULonglongToMode (
-    _Out_ _Deref_out_range_(==, Value) ULONGLONG* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile ULONGLONG* Destination,
     _In_ ULONGLONG Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1098,8 +1101,8 @@ WriteULonglongToMode (
     if (Mode != KernelMode) {
         WriteULonglongToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULong64NoFence((volatile ULONG64*)Destination, (ULONG64)Value);
     }
 }
 
@@ -1109,15 +1112,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 ULONGLONG
 ReadULonglongFromMode (
-    _In_ const ULONGLONG* Source,
+    _In_ const volatile ULONGLONG* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadULonglongFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (ULONGLONG)ReadULong64NoFence((volatile ULONG64*)Source);
     }
 }
 
@@ -1174,7 +1177,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteLonglongToMode (
-    _Out_ _Deref_out_range_(==, Value) LONGLONG* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile LONGLONG* Destination,
     _In_ LONGLONG Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1182,8 +1185,8 @@ WriteLonglongToMode (
     if (Mode != KernelMode) {
         WriteLonglongToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULong64NoFence((volatile ULONG64*)Destination, (ULONG64)Value);
     }
 }
 
@@ -1193,15 +1196,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 LONGLONG
 ReadLonglongFromMode (
-    _In_ const LONGLONG* Source,
+    _In_ const volatile LONGLONG* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadLonglongFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (LONGLONG)ReadULong64NoFence((volatile ULONG64*)Source);
     }
 }
 
@@ -1258,7 +1261,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteULong64ToMode (
-    _Out_ _Deref_out_range_(==, Value) ULONG64* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile ULONG64* Destination,
     _In_ ULONG64 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1266,8 +1269,8 @@ WriteULong64ToMode (
     if (Mode != KernelMode) {
         WriteULong64ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULong64NoFence(Destination, Value);
     }
 }
 
@@ -1277,15 +1280,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 ULONG64
 ReadULong64FromMode (
-    _In_ const ULONG64* Source,
+    _In_ const volatile ULONG64* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadULong64FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return ReadULong64NoFence(Source);
     }
 }
 
@@ -1342,7 +1345,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteLong64ToMode (
-    _Out_ _Deref_out_range_(==, Value) LONG64* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile LONG64* Destination,
     _In_ LONG64 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1350,8 +1353,8 @@ WriteLong64ToMode (
     if (Mode != KernelMode) {
         WriteLong64ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULong64NoFence((volatile ULONG64*)Destination, (ULONG64)Value);
     }
 }
 
@@ -1361,15 +1364,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 LONG64
 ReadLong64FromMode (
-    _In_ const LONG64* Source,
+    _In_ const volatile LONG64* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadLong64FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (LONG64)ReadULong64NoFence((volatile ULONG64*)Source);
     }
 }
 
@@ -1426,7 +1429,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteULongPtrToMode (
-    _Out_ _Deref_out_range_(==, Value) ULONG_PTR* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile ULONG_PTR* Destination,
     _In_ ULONG_PTR Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1434,8 +1437,8 @@ WriteULongPtrToMode (
     if (Mode != KernelMode) {
         WriteULongPtrToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongPtrNoFence(Destination, Value);
     }
 }
 
@@ -1445,15 +1448,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 ULONG_PTR
 ReadULongPtrFromMode (
-    _In_ const ULONG_PTR* Source,
+    _In_ const volatile ULONG_PTR* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadULongPtrFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return ReadULongPtrNoFence(Source);
     }
 }
 
@@ -1510,7 +1513,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteLongPtrToMode (
-    _Out_ _Deref_out_range_(==, Value) LONG_PTR* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile LONG_PTR* Destination,
     _In_ LONG_PTR Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1518,8 +1521,8 @@ WriteLongPtrToMode (
     if (Mode != KernelMode) {
         WriteLongPtrToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongPtrNoFence((volatile ULONG_PTR*)Destination, (ULONG_PTR)Value);
     }
 }
 
@@ -1529,15 +1532,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 LONG_PTR
 ReadLongPtrFromMode (
-    _In_ const LONG_PTR* Source,
+    _In_ const volatile LONG_PTR* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadLongPtrFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (LONG_PTR)ReadULongPtrNoFence((volatile ULONG_PTR*)Source);
     }
 }
 
@@ -1594,7 +1597,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteUInt8ToMode (
-    _Out_ _Deref_out_range_(==, Value) UINT8* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile UINT8* Destination,
     _In_ UINT8 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1602,8 +1605,8 @@ WriteUInt8ToMode (
     if (Mode != KernelMode) {
         WriteUInt8ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUCharNoFence((volatile UCHAR*)Destination, (UCHAR)Value);
     }
 }
 
@@ -1613,15 +1616,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 UINT8
 ReadUInt8FromMode (
-    _In_ const UINT8* Source,
+    _In_ const volatile UINT8* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadUInt8FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (UINT8)ReadUCharNoFence((volatile UCHAR*)Source);
     }
 }
 
@@ -1678,7 +1681,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteInt8ToMode (
-    _Out_ _Deref_out_range_(==, Value) INT8* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile INT8* Destination,
     _In_ INT8 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1686,8 +1689,8 @@ WriteInt8ToMode (
     if (Mode != KernelMode) {
         WriteInt8ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUCharNoFence((volatile UCHAR*)Destination, (UCHAR)Value);
     }
 }
 
@@ -1697,15 +1700,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 INT8
 ReadInt8FromMode (
-    _In_ const INT8* Source,
+    _In_ const volatile INT8* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadInt8FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (INT8)ReadUCharNoFence((volatile UCHAR*)Source);
     }
 }
 
@@ -1762,7 +1765,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteUInt16ToMode (
-    _Out_ _Deref_out_range_(==, Value) UINT16* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile UINT16* Destination,
     _In_ UINT16 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1770,8 +1773,8 @@ WriteUInt16ToMode (
     if (Mode != KernelMode) {
         WriteUInt16ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUShortNoFence((volatile USHORT*)Destination, (USHORT)Value);
     }
 }
 
@@ -1781,15 +1784,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 UINT16
 ReadUInt16FromMode (
-    _In_ const UINT16* Source,
+    _In_ const volatile UINT16* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadUInt16FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (UINT16)ReadUShortNoFence((volatile USHORT*)Source);
     }
 }
 
@@ -1846,7 +1849,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteInt16ToMode (
-    _Out_ _Deref_out_range_(==, Value) INT16* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile INT16* Destination,
     _In_ INT16 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1854,8 +1857,8 @@ WriteInt16ToMode (
     if (Mode != KernelMode) {
         WriteInt16ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteUShortNoFence((volatile USHORT*)Destination, (USHORT)Value);
     }
 }
 
@@ -1865,15 +1868,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 INT16
 ReadInt16FromMode (
-    _In_ const INT16* Source,
+    _In_ const volatile INT16* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadInt16FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (INT16)ReadUShortNoFence((volatile USHORT*)Source);
     }
 }
 
@@ -1930,7 +1933,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteUInt32ToMode (
-    _Out_ _Deref_out_range_(==, Value) UINT32* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile UINT32* Destination,
     _In_ UINT32 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -1938,8 +1941,8 @@ WriteUInt32ToMode (
     if (Mode != KernelMode) {
         WriteUInt32ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongNoFence((volatile ULONG*)Destination, (ULONG)Value);
     }
 }
 
@@ -1949,15 +1952,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 UINT32
 ReadUInt32FromMode (
-    _In_ const UINT32* Source,
+    _In_ const volatile UINT32* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadUInt32FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (UINT32)ReadULongNoFence((volatile ULONG*)Source);
     }
 }
 
@@ -2014,7 +2017,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteInt32ToMode (
-    _Out_ _Deref_out_range_(==, Value) INT32* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile INT32* Destination,
     _In_ INT32 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2022,8 +2025,8 @@ WriteInt32ToMode (
     if (Mode != KernelMode) {
         WriteInt32ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongNoFence((volatile ULONG*)Destination, (ULONG)Value);
     }
 }
 
@@ -2033,15 +2036,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 INT32
 ReadInt32FromMode (
-    _In_ const INT32* Source,
+    _In_ const volatile INT32* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadInt32FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (INT32)ReadULongNoFence((volatile ULONG*)Source);
     }
 }
 
@@ -2098,7 +2101,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteUInt64ToMode (
-    _Out_ _Deref_out_range_(==, Value) UINT64* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile UINT64* Destination,
     _In_ UINT64 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2106,8 +2109,8 @@ WriteUInt64ToMode (
     if (Mode != KernelMode) {
         WriteUInt64ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULong64NoFence((volatile ULONG64*)Destination, (ULONG64)Value);
     }
 }
 
@@ -2117,15 +2120,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 UINT64
 ReadUInt64FromMode (
-    _In_ const UINT64* Source,
+    _In_ const volatile UINT64* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadUInt64FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (UINT64)ReadULong64NoFence((volatile ULONG64*)Source);
     }
 }
 
@@ -2182,7 +2185,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteInt64ToMode (
-    _Out_ _Deref_out_range_(==, Value) INT64* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile INT64* Destination,
     _In_ INT64 Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2190,8 +2193,8 @@ WriteInt64ToMode (
     if (Mode != KernelMode) {
         WriteInt64ToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULong64NoFence((volatile ULONG64*)Destination, (ULONG64)Value);
     }
 }
 
@@ -2201,15 +2204,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 INT64
 ReadInt64FromMode (
-    _In_ const INT64* Source,
+    _In_ const volatile INT64* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadInt64FromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (INT64)ReadULong64NoFence((volatile ULONG64*)Source);
     }
 }
 
@@ -2266,7 +2269,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteUIntPtrToMode (
-    _Out_ _Deref_out_range_(==, Value) UINT_PTR* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile UINT_PTR* Destination,
     _In_ UINT_PTR Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2274,8 +2277,8 @@ WriteUIntPtrToMode (
     if (Mode != KernelMode) {
         WriteUIntPtrToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongPtrNoFence((volatile ULONG_PTR*)Destination, (ULONG_PTR)Value);
     }
 }
 
@@ -2285,15 +2288,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 UINT_PTR
 ReadUIntPtrFromMode (
-    _In_ const UINT_PTR* Source,
+    _In_ const volatile UINT_PTR* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadUIntPtrFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (UINT_PTR)ReadULongPtrNoFence((volatile ULONG_PTR*)Source);
     }
 }
 
@@ -2350,7 +2353,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteIntPtrToMode (
-    _Out_ _Deref_out_range_(==, Value) INT_PTR* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile INT_PTR* Destination,
     _In_ INT_PTR Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2358,8 +2361,8 @@ WriteIntPtrToMode (
     if (Mode != KernelMode) {
         WriteIntPtrToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongPtrNoFence((volatile ULONG_PTR*)Destination, (ULONG_PTR)Value);
     }
 }
 
@@ -2369,15 +2372,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 INT_PTR
 ReadIntPtrFromMode (
-    _In_ const INT_PTR* Source,
+    _In_ const volatile INT_PTR* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadIntPtrFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (INT_PTR)ReadULongPtrNoFence((volatile ULONG_PTR*)Source);
     }
 }
 
@@ -2434,7 +2437,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WritePointerToMode (
-    _Outptr_result_maybenull_ _Deref_out_range_(==, Value) PVOID* Destination,
+    _Outptr_result_maybenull_ _Deref_out_range_(==, Value) volatile PVOID* Destination,
     _In_ PVOID Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2442,8 +2445,8 @@ WritePointerToMode (
     if (Mode != KernelMode) {
         WritePointerToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongPtrNoFence((volatile ULONG_PTR*)Destination, (ULONG_PTR)Value);
     }
 }
 
@@ -2453,15 +2456,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 PVOID
 ReadPointerFromMode (
-    _In_ const PVOID* Source,
+    _In_ const volatile PVOID* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadPointerFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (PVOID)ReadULongPtrNoFence((volatile ULONG_PTR*)Source);
     }
 }
 
@@ -2518,7 +2521,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteSizeTToMode (
-    _Out_ _Deref_out_range_(==, Value) SIZE_T* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile SIZE_T* Destination,
     _In_ SIZE_T Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2526,8 +2529,8 @@ WriteSizeTToMode (
     if (Mode != KernelMode) {
         WriteSizeTToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongPtrNoFence((volatile ULONG_PTR*)Destination, (ULONG_PTR)Value);
     }
 }
 
@@ -2537,15 +2540,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 SIZE_T
 ReadSizeTFromMode (
-    _In_ const SIZE_T* Source,
+    _In_ const volatile SIZE_T* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadSizeTFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (SIZE_T)ReadULongPtrNoFence((volatile ULONG_PTR*)Source);
     }
 }
 
@@ -2602,7 +2605,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteSSizeTToMode (
-    _Out_ _Deref_out_range_(==, Value) SSIZE_T* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile SSIZE_T* Destination,
     _In_ SSIZE_T Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2610,8 +2613,8 @@ WriteSSizeTToMode (
     if (Mode != KernelMode) {
         WriteSSizeTToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongPtrNoFence((volatile ULONG_PTR*)Destination, (ULONG_PTR)Value);
     }
 }
 
@@ -2621,15 +2624,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 SSIZE_T
 ReadSSizeTFromMode (
-    _In_ const SSIZE_T* Source,
+    _In_ const volatile SSIZE_T* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadSSizeTFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (SSIZE_T)ReadULongPtrNoFence((volatile ULONG_PTR*)Source);
     }
 }
 
@@ -2686,7 +2689,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteHandleToMode (
-    _Outptr_result_maybenull_ _Deref_out_range_(==, Value) HANDLE* Destination,
+    _Outptr_result_maybenull_ _Deref_out_range_(==, Value) volatile HANDLE* Destination,
     _In_ HANDLE Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2694,8 +2697,8 @@ WriteHandleToMode (
     if (Mode != KernelMode) {
         WriteHandleToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongPtrNoFence((volatile ULONG_PTR*)Destination, (ULONG_PTR)Value);
     }
 }
 
@@ -2705,15 +2708,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 HANDLE
 ReadHandleFromMode (
-    _In_ const HANDLE* Source,
+    _In_ const volatile HANDLE* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadHandleFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (HANDLE)ReadULongPtrNoFence((volatile ULONG_PTR*)Source);
     }
 }
 
@@ -2770,7 +2773,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteNtStatusToMode (
-    _Out_ _Deref_out_range_(==, Value) NTSTATUS* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile NTSTATUS* Destination,
     _In_ NTSTATUS Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2778,8 +2781,8 @@ WriteNtStatusToMode (
     if (Mode != KernelMode) {
         WriteNtStatusToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULongNoFence((volatile ULONG*)Destination, (ULONG)Value);
     }
 }
 
@@ -2789,15 +2792,15 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 NTSTATUS
 ReadNtStatusFromMode (
-    _In_ const NTSTATUS* Source,
+    _In_ const volatile NTSTATUS* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadNtStatusFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+        return (NTSTATUS)ReadULongNoFence((volatile ULONG*)Source);
     }
 }
 
@@ -2840,7 +2843,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteLargeIntegerToMode (
-    _Out_ _Deref_out_range_(==, Value) LARGE_INTEGER* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile LARGE_INTEGER* Destination,
     _In_ LARGE_INTEGER Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2848,8 +2851,8 @@ WriteLargeIntegerToMode (
     if (Mode != KernelMode) {
         WriteLargeIntegerToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULong64NoFence((volatile ULONG64*)&Destination->QuadPart, (ULONG64)Value.QuadPart);
     }
 }
 
@@ -2859,15 +2862,18 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 LARGE_INTEGER
 ReadLargeIntegerFromMode (
-    _In_ const LARGE_INTEGER* Source,
+    _In_ const volatile LARGE_INTEGER* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadLargeIntegerFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+
+        LARGE_INTEGER LocalLargeInteger;
+        LocalLargeInteger.QuadPart = (LONGLONG)ReadULong64NoFence((volatile ULONG64*)&Source->QuadPart);
+        return LocalLargeInteger;
     }
 }
 
@@ -2902,7 +2908,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteULargeIntegerToMode (
-    _Out_ _Deref_out_range_(==, Value) ULARGE_INTEGER* Destination,
+    _Out_ _Deref_out_range_(==, Value) volatile ULARGE_INTEGER* Destination,
     _In_ ULARGE_INTEGER Value,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -2910,8 +2916,8 @@ WriteULargeIntegerToMode (
     if (Mode != KernelMode) {
         WriteULargeIntegerToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+        WriteULong64NoFence((volatile ULONG64*)&Destination->QuadPart, (ULONG64)Value.QuadPart);
     }
 }
 
@@ -2921,15 +2927,18 @@ FORCEINLINE
 _Ret_range_(==, *Source)
 ULARGE_INTEGER
 ReadULargeIntegerFromMode (
-    _In_ const ULARGE_INTEGER* Source,
+    _In_ const volatile ULARGE_INTEGER* Source,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return ReadULargeIntegerFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+
+        ULARGE_INTEGER LocalLargeInteger;
+        LocalLargeInteger.QuadPart = (ULONGLONG)ReadULong64NoFence((volatile ULONG64*)&Source->QuadPart);
+        return LocalLargeInteger;
     }
 }
 
@@ -2987,8 +2996,14 @@ WriteUnicodeStringToMode (
     if (Mode != KernelMode) {
         WriteUnicodeStringToUser(Destination, Value);
     } else {
-        RtlFastFailIfUserPointer(Destination);
-        *Destination = Value;
+        RtlFastFailIfUserPointer((PVOID)Destination);
+
+        //
+        // Copy Length (USHORT) and MaximumLength (USHORT) in a single operation.
+        //
+
+        WriteULongNoFence((volatile ULONG*)&Destination->Length, *(ULONG*)&Value.Length);
+        WritePointerNoFence((volatile PVOID*)&Destination->Buffer, (PVOID)Value.Buffer);
     }
 }
 
@@ -3005,8 +3020,18 @@ ReadUnicodeStringFromMode (
     if (Mode != KernelMode) {
         return ReadUnicodeStringFromUser(Source);
     } else {
-        RtlFastFailIfUserPointer(Source);
-        return *Source;
+        RtlFastFailIfUserPointer((PVOID)Source);
+
+        UNICODE_STRING LocalString;
+
+        //
+        // Copy Length (USHORT) and MaximumLength (USHORT) in a single operation.
+        //
+
+        *(ULONG*)&LocalString.Length = ReadULongNoFence((volatile ULONG*)&Source->Length);
+        LocalString.Buffer = (PWCH)ReadPointerNoFence((volatile PVOID*)&Source->Buffer);
+
+        return LocalString;
     }
 }
 
@@ -3037,14 +3062,22 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 SIZE_T
 StringLengthFromMode (
-    _In_z_ const CHAR* String,
+    _In_z_ volatile const CHAR* String,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return RtlStringLengthFromUser((const volatile char*)String);
     } else {
-        return strlen(String);
+        //
+        // Cast away volatile and use strlen. While this is not "volatile",
+        // this API in general is not really volatile-correct because by
+        // definition the length of the string can change after being
+        // tested. If the string is under data race, the returned string
+        // length cannot be trusted and care must be taken to ensure
+        // the code is correct if the length changes after being queried.
+        //
+        return strlen((CHAR*)String);
     }
 }
 
@@ -3053,14 +3086,22 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 SIZE_T
 WideStringLengthFromMode (
-    _In_z_ const WCHAR* String,
+    _In_z_ volatile const WCHAR* String,
     _In_ KPROCESSOR_MODE Mode
     )
 {
     if (Mode != KernelMode) {
         return RtlWideStringLengthFromUser((const volatile wchar_t*)String);
     } else {
-        return wcslen(String);
+        //
+        // Cast away volatile and use strlen. While this is not "volatile",
+        // this API in general is not really volatile-correct because by
+        // definition the length of the string can change after being
+        // tested. If the string is under data race, the returned string
+        // length cannot be trusted and care must be taken to ensure
+        // the code is correct if the length changes after being queried.
+        //
+        return wcslen((WCHAR*)String);
     }
 }
 
@@ -3319,7 +3360,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 CopyToMode (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_reads_bytes_(Length) const VOID* Source,
     _In_ SIZE_T Length,
     _In_ KPROCESSOR_MODE Mode
@@ -3329,10 +3370,10 @@ CopyToMode (
         CopyToUser(Destination, Source, Length);
     } else {
         if (Length != 0) {
-            RtlFastFailIfUserPointer(Destination);
+            RtlFastFailIfUserPointer((PVOID)Destination);
             RtlFastFailIfUserPointer(Source);
         }
-        RtlCopyMemory(Destination, Source, Length);
+        RtlCopyVolatileMemory(Destination, Source, Length);
     }
 }
 
@@ -3341,7 +3382,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 CopyToModeNonTemporal (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_reads_bytes_(Length) const VOID* Source,
     _In_ SIZE_T Length,
     _In_ KPROCESSOR_MODE Mode
@@ -3351,10 +3392,10 @@ CopyToModeNonTemporal (
         CopyToUserNonTemporal(Destination, Source, Length);
     } else {
         if (Length != 0) {
-            RtlFastFailIfUserPointer(Destination);
+            RtlFastFailIfUserPointer((PVOID)Destination);
             RtlFastFailIfUserPointer(Source);
         }
-        RtlCopyMemoryNonTemporal(Destination, Source, Length);
+        RtlCopyMemoryNonTemporal((PVOID)Destination, Source, Length);
     }
 }
 
@@ -3363,12 +3404,12 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 CopyFromUser (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_reads_bytes_(Length) volatile const VOID* Source,
     _In_ SIZE_T Length
     )
 {
-    RtlFastFailIfUserPointer(Destination);
+    RtlFastFailIfUserPointer((PVOID)Destination);
     RtlCopyFromUser(Destination, Source, Length);
 }
 
@@ -3391,7 +3432,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 CopyFromUserToMode (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_reads_bytes_(Length) volatile const VOID* Source,
     _In_ SIZE_T Length,
     _In_ KPROCESSOR_MODE Mode
@@ -3410,7 +3451,7 @@ FORCEINLINE
 VOID
 CopyFromMode (
     _Out_writes_bytes_all_(Length) VOID* Destination,
-    _In_reads_bytes_(Length) const VOID* Source,
+    _In_reads_bytes_(Length) const volatile VOID* Source,
     _In_ SIZE_T Length,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -3420,9 +3461,9 @@ CopyFromMode (
     } else {
         if (Length != 0) {
             RtlFastFailIfUserPointer(Destination);
-            RtlFastFailIfUserPointer(Source);
+            RtlFastFailIfUserPointer((PVOID)Source);
         }
-        RtlCopyMemory(Destination, Source, Length);
+        RtlCopyVolatileMemory(Destination, Source, Length);
     }
 }
 
@@ -3432,7 +3473,7 @@ FORCEINLINE
 VOID
 CopyFromModeNonTemporal (
     _Out_writes_bytes_all_(Length) VOID* Destination,
-    _In_reads_bytes_(Length) const VOID* Source,
+    _In_reads_bytes_(Length) const volatile VOID* Source,
     _In_ SIZE_T Length,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -3442,9 +3483,9 @@ CopyFromModeNonTemporal (
     } else {
         if (Length != 0) {
             RtlFastFailIfUserPointer(Destination);
-            RtlFastFailIfUserPointer(Source);
+            RtlFastFailIfUserPointer((PVOID)Source);
         }
-        RtlCopyMemoryNonTemporal(Destination, Source, Length);
+        RtlCopyMemoryNonTemporal(Destination, (PVOID)Source, Length);
     }
 }
 
@@ -3491,7 +3532,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 FillModeMemory (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_ SIZE_T Length,
     _In_ UCHAR Fill,
     _In_ KPROCESSOR_MODE Mode
@@ -3501,9 +3542,9 @@ FillModeMemory (
         RtlSetUserMemory(Destination, Fill, Length);
     } else {
         if (Length != 0) {
-            RtlFastFailIfUserPointer(Destination);
+            RtlFastFailIfUserPointer((PVOID)Destination);
         }
-        RtlFillMemory(Destination, Length, Fill);
+        RtlFillVolatileMemory(Destination, Length, Fill);
     }
 }
 
@@ -3512,7 +3553,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 ZeroModeMemory (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_ SIZE_T Length,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -3521,9 +3562,9 @@ ZeroModeMemory (
         RtlSetUserMemory(Destination, 0, Length);
     } else {
         if (Length != 0) {
-            RtlFastFailIfUserPointer(Destination);
+            RtlFastFailIfUserPointer((PVOID)Destination);
         }
-        RtlFillMemory(Destination, Length, 0);
+        RtlFillVolatileMemory(Destination, Length, 0);
     }
 }
 
@@ -3532,7 +3573,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 SetModeMemory (
-    _Out_writes_bytes_all_(Length) VOID* Destination,
+    _Out_writes_bytes_all_(Length) volatile VOID* Destination,
     _In_ UCHAR Fill,
     _In_ SIZE_T Length,
     _In_ KPROCESSOR_MODE Mode
@@ -3542,9 +3583,9 @@ SetModeMemory (
         RtlSetUserMemory(Destination, Fill, Length);
     } else {
         if (Length != 0) {
-            RtlFastFailIfUserPointer(Destination);
+            RtlFastFailIfUserPointer((PVOID)Destination);
         }
-        RtlFillMemory(Destination, Length, Fill);
+        RtlFillVolatileMemory(Destination, Length, Fill);
     }
 }
 
@@ -3615,7 +3656,7 @@ _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE
 VOID
 WriteStructToModeHelper (
-    _Out_writes_bytes_all_(Size) VOID* Destination,
+    _Out_writes_bytes_all_(Size) volatile VOID* Destination,
     _In_reads_bytes_(Size) const VOID* Source,
     _In_ SIZE_T Size,
     _In_ KPROCESSOR_MODE Mode
@@ -3625,9 +3666,9 @@ WriteStructToModeHelper (
         WriteStructToUserHelper(Destination, Source, Size);
     } else {
         NT_ASSERT(Size != 0);
-        RtlFastFailIfUserPointer(Destination);
+        RtlFastFailIfUserPointer((PVOID)Destination);
         RtlFastFailIfUserPointer(Source);
-        RtlCopyMemory(Destination, Source, Size);
+        RtlCopyVolatileMemory(Destination, Source, Size);
     }
 }
 
@@ -3637,7 +3678,7 @@ FORCEINLINE
 VOID
 ReadStructFromModeHelper (
     _Out_writes_bytes_all_(Size) VOID* Destination,
-    _In_reads_bytes_(Size) const VOID* Source,
+    _In_reads_bytes_(Size) const volatile VOID* Source,
     _In_ SIZE_T Size,
     _In_ KPROCESSOR_MODE Mode
     )
@@ -3647,8 +3688,8 @@ ReadStructFromModeHelper (
     } else {
         NT_ASSERT(Size != 0);
         RtlFastFailIfUserPointer(Destination);
-        RtlFastFailIfUserPointer(Source);
-        RtlCopyMemory(Destination, Source, Size);
+        RtlFastFailIfUserPointer((PVOID)Source);
+        RtlCopyVolatileMemory(Destination, Source, Size);
     }
 }
 

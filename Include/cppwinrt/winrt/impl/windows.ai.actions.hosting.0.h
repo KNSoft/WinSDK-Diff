@@ -19,6 +19,10 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct IAsyncAction;
     template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
+WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
+{
+    struct PropertySet;
+}
 WINRT_EXPORT namespace winrt::Windows::UI
 {
     struct WindowId;
@@ -32,6 +36,7 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions::Hosting
     struct IActionDefinition2;
     struct IActionDefinition3;
     struct IActionDefinition4;
+    struct IActionDefinition5;
     struct IActionEntityRegistrationInfo;
     struct IActionInstance;
     struct IActionInstanceDisplayInfo;
@@ -53,6 +58,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::AI::Actions::Hosting::IActionDefinition2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::Hosting::IActionDefinition3>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::Hosting::IActionDefinition4>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Actions::Hosting::IActionDefinition5>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::Hosting::IActionEntityRegistrationInfo>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::Hosting::IActionInstance>{ using type = interface_category; };
     template <> struct category<winrt::Windows::AI::Actions::Hosting::IActionInstanceDisplayInfo>{ using type = interface_category; };
@@ -77,6 +83,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::Hosting::IActionDefinition2> = L"Windows.AI.Actions.Hosting.IActionDefinition2";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::Hosting::IActionDefinition3> = L"Windows.AI.Actions.Hosting.IActionDefinition3";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::Hosting::IActionDefinition4> = L"Windows.AI.Actions.Hosting.IActionDefinition4";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::Hosting::IActionDefinition5> = L"Windows.AI.Actions.Hosting.IActionDefinition5";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::Hosting::IActionEntityRegistrationInfo> = L"Windows.AI.Actions.Hosting.IActionEntityRegistrationInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::Hosting::IActionInstance> = L"Windows.AI.Actions.Hosting.IActionInstance";
     template <> inline constexpr auto& name_v<winrt::Windows::AI::Actions::Hosting::IActionInstanceDisplayInfo> = L"Windows.AI.Actions.Hosting.IActionInstanceDisplayInfo";
@@ -89,6 +96,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::Hosting::IActionDefinition2>{ 0xC1F44733,0xF563,0x54E2,{ 0xBD,0x2B,0xDC,0x4C,0x73,0x20,0x54,0xCF } }; // C1F44733-F563-54E2-BD2B-DC4C732054CF
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::Hosting::IActionDefinition3>{ 0x89C9A7E0,0x4BFD,0x55F4,{ 0x9E,0xED,0xDC,0xE2,0x25,0x01,0x14,0xFA } }; // 89C9A7E0-4BFD-55F4-9EED-DCE2250114FA
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::Hosting::IActionDefinition4>{ 0x6DD91071,0x8847,0x55B6,{ 0x95,0x18,0x9F,0xF8,0xDE,0x42,0x1E,0xB7 } }; // 6DD91071-8847-55B6-9518-9FF8DE421EB7
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::Hosting::IActionDefinition5>{ 0x5BEA33EF,0xD325,0x53A8,{ 0x8D,0xB3,0x0D,0x77,0x1F,0x4D,0x1E,0x54 } }; // 5BEA33EF-D325-53A8-8DB3-0D771F4D1E54
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::Hosting::IActionEntityRegistrationInfo>{ 0xC3B92BDB,0x03C3,0x5A9E,{ 0xB0,0x49,0x00,0x2F,0xA0,0x40,0x56,0x99 } }; // C3B92BDB-03C3-5A9E-B049-002FA0405699
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::Hosting::IActionInstance>{ 0x809BCB6E,0xE6EF,0x5F16,{ 0xB8,0x9A,0x06,0xB8,0x89,0x3D,0xF2,0x0E } }; // 809BCB6E-E6EF-5F16-B89A-06B8893DF20E
     template <> inline constexpr guid guid_v<winrt::Windows::AI::Actions::Hosting::IActionInstanceDisplayInfo>{ 0xFCFDCE21,0x678B,0x5602,{ 0xB9,0xDC,0x2F,0x45,0x33,0xA6,0xF4,0xB2 } }; // FCFDCE21-678B-5602-B9DC-2F4533A6F4B2
@@ -158,6 +166,13 @@ namespace winrt::impl
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsCurrentlyAvailable(bool*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Actions::Hosting::IActionDefinition5>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall GetIconFullPath(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::AI::Actions::Hosting::IActionEntityRegistrationInfo>
@@ -279,6 +294,15 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::AI::Actions::Hosting::IActionDefinition4>
     {
         template <typename D> using type = consume_Windows_AI_Actions_Hosting_IActionDefinition4<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Actions_Hosting_IActionDefinition5
+    {
+        auto GetIconFullPath(winrt::Windows::Foundation::Collections::PropertySet const& qualifierValues) const;
+    };
+    template <> struct consume<winrt::Windows::AI::Actions::Hosting::IActionDefinition5>
+    {
+        template <typename D> using type = consume_Windows_AI_Actions_Hosting_IActionDefinition5<D>;
     };
     template <typename D>
     struct consume_Windows_AI_Actions_Hosting_IActionEntityRegistrationInfo

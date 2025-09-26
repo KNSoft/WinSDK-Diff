@@ -20,6 +20,11 @@ Environment:
 #ifndef _SOUNDWIRECONTROLLER_H_
 #define _SOUNDWIRECONTROLLER_H_
 
+#include <windef.h>
+#include <ks.h>
+#include <mmsystem.h>
+#include <ksmedia.h>
+
 #pragma warning(disable:4201) // nameless struct/union
 
 #define SDCA_AUDIO_ADDRESS_VER_1        (1)
@@ -32,6 +37,7 @@ Environment:
 #define SOUNDWIRE_CONTROLLER_VER_2      (2)                 // Support for Commit Groups Added
 #define SOUNDWIRE_CONTROLLER_VER_3      (3)                 // Support for Peripheral and DataPort Capabilities
 #define SOUNDWIRE_CONTROLLER_VER_4      (4)                 // Support for Clock Reference DDI
+#define SOUNDWIRE_CONTROLLER_VER_5      (5)                 // Support for DataFormat in PrepareDataPort call
 
 #define MAX_NUM_DATAPORTS               (15)
 #define MAX_NUM_LANES                   (8)                 // Lane 0 through 7
@@ -275,6 +281,16 @@ typedef struct _SOUNDWIRE_DATAPORT_CONFIGURATION
     ULONG                       Modes;                      // Bit mask of DataPort modes
     ULONG                       ChannelMask;                // DataPort channel mask
 } SOUNDWIRE_DATAPORT_CONFIGURATION, *PSOUNDWIRE_DATAPORT_CONFIGURATION;
+
+typedef struct _SOUNDWIRE_DATAPORT_CONFIGURATION_2
+{
+    ULONG                                   Size;            // Size of this struct
+    ULONG                                   DataPortNumber;  // DataPort number
+    ULONG                                   EndpointId;      // Endpoint Id
+    ULONG                                   Modes;           // Bit mask of DataPort modes
+    ULONG                                   ChannelMask;     // DataPort channel mask
+    KSDATAFORMAT_WAVEFORMATEXTENSIBLE       Format;          // Stream format. Full structure may not be used.
+} SOUNDWIRE_DATAPORT_CONFIGURATION_2, *PSOUNDWIRE_DATAPORT_CONFIGURATION_2;
 
 typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 {
@@ -794,7 +810,7 @@ typedef struct _SOUNDWIRE_DATAPORTN_CAPABILITIES_2
 // InputBuffer - SOUNDWIRE_PERIPHERAL_CAPABILITIES
 // OutputBuffer - NULL
 //
-#define IOCTL_SOUNDWIRE_SET_PERIPHERAL_CAPABILITIES                         SOUNDWIRE_IOCTL (27)
+#define IOCTL_SOUNDWIRE_SET_PERIPHERAL_CAPABILITIES                          SOUNDWIRE_IOCTL (27)
 
 //
 // Provides data port capabilities details. Use the DataPort member to determine if the struct
@@ -805,7 +821,7 @@ typedef struct _SOUNDWIRE_DATAPORTN_CAPABILITIES_2
 // InputBuffer - SOUNDWIRE_DATAPORT0_CAPABILITIES_2 OR SOUNDWIRE_DATAPORTN_CAPABILITIES_2
 // OutputBuffer - NULL
 //
-#define IOCTL_SOUNDWIRE_SET_DATAPORT_CAPABILITIES_2                         SOUNDWIRE_IOCTL (28)
+#define IOCTL_SOUNDWIRE_SET_DATAPORT_CAPABILITIES_2                          SOUNDWIRE_IOCTL (28)
 
 //
 // Increases Clock Reference count by One.
@@ -815,7 +831,7 @@ typedef struct _SOUNDWIRE_DATAPORTN_CAPABILITIES_2
 // InputBuffer - NULL
 // OutputBuffer - ULONG
 //
-#define IOCTL_SOUNDWIRE_ACQUIRE_CLOCK_REFERENCE                             SOUNDWIRE_IOCTL (29)
+#define IOCTL_SOUNDWIRE_ACQUIRE_CLOCK_REFERENCE                              SOUNDWIRE_IOCTL (29)
 
 //
 // Decreases Clock Reference count by One.
@@ -825,6 +841,19 @@ typedef struct _SOUNDWIRE_DATAPORTN_CAPABILITIES_2
 // InputBuffer - NULL
 // OutputBuffer - ULONG
 //
-#define IOCTL_SOUNDWIRE_RELEASE_CLOCK_REFERENCE                             SOUNDWIRE_IOCTL (30)
+#define IOCTL_SOUNDWIRE_RELEASE_CLOCK_REFERENCE                              SOUNDWIRE_IOCTL (30)
+
+//
+// Configures data port for streaming.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_5 and newer versions
+//
+// InputBuffer - SOUNDWIRE_DATAPORT_CONFIGURATION_2
+// OutputBuffer - NULL
+//
+// Note: IOCTL_SOUNDWIRE_DEPREPARE_DATAPORT will be called to
+// deconfigure a data port that was configured using this IOCTL.
+//
+#define IOCTL_SOUNDWIRE_PREPARE_DATAPORT_2                                   SOUNDWIRE_IOCTL (31)
 
 #endif // _SOUNDWIRECONTROLLER_H_

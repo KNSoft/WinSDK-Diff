@@ -11,6 +11,7 @@ import "EventToken.idl";
 import "windowscontracts.idl";
 import "Windows.Foundation.idl";
 import "Windows.AI.Actions.Hosting.idl";
+import "Windows.ApplicationModel.Appointments.idl";
 import "Windows.ApplicationModel.Contacts.idl";
 import "Windows.UI.idl";
 
@@ -32,6 +33,16 @@ namespace Windows
 {
     namespace ApplicationModel
     {
+        namespace Appointments
+        {
+            runtimeclass Appointment;
+        }
+    }
+}
+namespace Windows
+{
+    namespace ApplicationModel
+    {
         namespace Contacts
         {
             runtimeclass Contact;
@@ -42,6 +53,8 @@ namespace Windows
 {
     namespace Foundation
     {
+        typedef struct DateTime DateTime;
+
         interface IClosable;
 
         runtimeclass Uri;
@@ -88,6 +101,10 @@ namespace Windows
 
             interface IActionEntityFactory4;
 
+            interface IActionEntityFactory5;
+
+            interface IActionEntityFactory6;
+
             interface IActionEntityFactoryFactory;
 
             interface IActionFeedback;
@@ -108,7 +125,13 @@ namespace Windows
 
             interface IActionRuntimeFactory;
 
+            interface IAppointmentActionEntity;
+
+            interface IArrayActionEntity;
+
             interface IContactActionEntity;
+
+            interface IDateTimeActionEntity;
 
             interface IDocumentActionEntity;
 
@@ -119,6 +142,8 @@ namespace Windows
             interface IPhotoActionEntity;
 
             interface IRemoteFileActionEntity;
+
+            interface IRemoteFileActionEntity2;
 
             interface IStreamingTextActionEntity;
 
@@ -131,6 +156,8 @@ namespace Windows
             interface ITextActionEntity;
 
             interface ITextActionEntity2;
+
+            interface IUriActionEntity;
 
             runtimeclass ActionEntity;
 
@@ -146,7 +173,13 @@ namespace Windows
 
             runtimeclass ActionRuntime;
 
+            runtimeclass AppointmentActionEntity;
+
+            runtimeclass ArrayActionEntity;
+
             runtimeclass ContactActionEntity;
+
+            runtimeclass DateTimeActionEntity;
 
             runtimeclass DocumentActionEntity;
 
@@ -167,6 +200,8 @@ namespace Windows
             runtimeclass TableActionEntity;
 
             runtimeclass TextActionEntity;
+
+            runtimeclass UriActionEntity;
         }
     }
 }
@@ -193,7 +228,7 @@ namespace Windows
     {
         namespace Actions
         {
-            [contractversion(5.0)]
+            [contractversion(7.0)]
             apicontract ActionsContract
             {
             }
@@ -213,7 +248,19 @@ namespace Windows
                 [contract(Windows.AI.Actions.ActionsContract, 3.0)]
                 Table         = 7,
                 [contract(Windows.AI.Actions.ActionsContract, 3.0)]
-                Contact       = 8
+                Contact       = 8,
+                [contract(Windows.AI.Actions.ActionsContract, 6.0)]
+                [experimental]
+                Uri           = 9,
+                [contract(Windows.AI.Actions.ActionsContract, 6.0)]
+                [experimental]
+                Array         = 10,
+                [contract(Windows.AI.Actions.ActionsContract, 7.0)]
+                [experimental]
+                Appointment   = 11,
+                [contract(Windows.AI.Actions.ActionsContract, 7.0)]
+                [experimental]
+                Date          = 12
             };
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
@@ -317,6 +364,26 @@ namespace Windows
                 HRESULT CreateContactEntity([in] Windows.ApplicationModel.Contacts.Contact* contact, [out] [retval] Windows.AI.Actions.ContactActionEntity** result);
             }
 
+            [contract(Windows.AI.Actions.ActionsContract, 6.0)]
+            [exclusiveto(Windows.AI.Actions.ActionEntityFactory)]
+            [experimental]
+            [uuid(B59FAAB1-CFE4-564A-A5BA-53AD7FF6F924)]
+            interface IActionEntityFactory5 : IInspectable
+            {
+                HRESULT CreateUriEntity([in] Windows.Foundation.Uri* Uri, [out] [retval] Windows.AI.Actions.UriActionEntity** result);
+                HRESULT CreateArrayEntity([in] Windows.AI.Actions.ActionEntityKind kind, [in] UINT32 __entitiesSize, [in] [size_is(__entitiesSize)] Windows.AI.Actions.ActionEntity** entities, [out] [retval] Windows.AI.Actions.ArrayActionEntity** result);
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 7.0)]
+            [exclusiveto(Windows.AI.Actions.ActionEntityFactory)]
+            [experimental]
+            [uuid(DA7123DA-5639-590F-A2DB-C3B5E221F3B6)]
+            interface IActionEntityFactory6 : IInspectable
+            {
+                HRESULT CreateDateTimeEntity([in] Windows.Foundation.DateTime dateTime, [out] [retval] Windows.AI.Actions.DateTimeActionEntity** result);
+                HRESULT CreateAppointmentEntity([in] HSTRING sourceId, [in] Windows.ApplicationModel.Appointments.Appointment* appointment, [in] UINT32 __attendeesSize, [in] [size_is(__attendeesSize)] Windows.AI.Actions.ContactActionEntity** attendees, [out] [retval] Windows.AI.Actions.AppointmentActionEntity** result);
+            }
+
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [exclusiveto(Windows.AI.Actions.ActionEntityFactory)]
             [uuid(C9147D8F-88A0-5EC0-A564-47E2A1081412)]
@@ -408,7 +475,6 @@ namespace Windows
 
             [contract(Windows.AI.Actions.ActionsContract, 5.0)]
             [exclusiveto(Windows.AI.Actions.ActionRuntime)]
-            [experimental]
             [uuid(06851DCD-C743-5C7F-88A1-BBAEB02F5E28)]
             interface IActionRuntime4 : IInspectable
             {
@@ -422,12 +488,46 @@ namespace Windows
             {
             }
 
+            [contract(Windows.AI.Actions.ActionsContract, 7.0)]
+            [exclusiveto(Windows.AI.Actions.AppointmentActionEntity)]
+            [experimental]
+            [uuid(29DAA00E-B474-581C-B555-6187D1AA8231)]
+            interface IAppointmentActionEntity : IInspectable
+            {
+                [propget] HRESULT SourceId([out] [retval] HSTRING* value);
+                [propget] HRESULT Appointment([out] [retval] Windows.ApplicationModel.Appointments.Appointment** value);
+                HRESULT GetAttendees([out] UINT32* __resultSize, [out] [retval] [size_is(, *__resultSize)] Windows.AI.Actions.ContactActionEntity*** result);
+                HRESULT GetPresentedFiles([out] UINT32* __resultSize, [out] [retval] [size_is(, *__resultSize)] Windows.AI.Actions.RemoteFileActionEntity*** result);
+                HRESULT SetPresentedFiles([in] UINT32 __filesSize, [in] [size_is(__filesSize)] Windows.AI.Actions.RemoteFileActionEntity** files);
+                HRESULT GetSharedFiles([out] UINT32* __resultSize, [out] [retval] [size_is(, *__resultSize)] Windows.AI.Actions.RemoteFileActionEntity*** result);
+                HRESULT SetSharedFiles([in] UINT32 __filesSize, [in] [size_is(__filesSize)] Windows.AI.Actions.RemoteFileActionEntity** files);
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 6.0)]
+            [exclusiveto(Windows.AI.Actions.ArrayActionEntity)]
+            [experimental]
+            [uuid(45798E78-1059-5311-8A1B-DE0081A4CA3B)]
+            interface IArrayActionEntity : IInspectable
+            {
+                [propget] HRESULT ElementKind([out] [retval] Windows.AI.Actions.ActionEntityKind* value);
+                HRESULT GetAll([out] UINT32* __resultSize, [out] [retval] [size_is(, *__resultSize)] Windows.AI.Actions.ActionEntity*** result);
+            }
+
             [contract(Windows.AI.Actions.ActionsContract, 3.0)]
             [exclusiveto(Windows.AI.Actions.ContactActionEntity)]
             [uuid(458C3E07-5892-5485-BD9B-8F7A540C9501)]
             interface IContactActionEntity : IInspectable
             {
                 [propget] HRESULT Contact([out] [retval] Windows.ApplicationModel.Contacts.Contact** value);
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 7.0)]
+            [exclusiveto(Windows.AI.Actions.DateTimeActionEntity)]
+            [experimental]
+            [uuid(FD5A0880-EEAE-553A-BFED-A9229D57447D)]
+            interface IDateTimeActionEntity : IInspectable
+            {
+                [propget] HRESULT DateTime([out] [retval] Windows.Foundation.DateTime* value);
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
@@ -478,6 +578,22 @@ namespace Windows
                 [propget] HRESULT DriveId([out] [retval] HSTRING* value);
                 [propget] HRESULT AccountId([out] [retval] HSTRING* value);
                 [propget] HRESULT Extension([out] [retval] HSTRING* value);
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 7.0)]
+            [exclusiveto(Windows.AI.Actions.RemoteFileActionEntity)]
+            [experimental]
+            [uuid(9CC8CC54-77D8-5537-83C4-6F18C1BC9F67)]
+            interface IRemoteFileActionEntity2 : IInspectable
+            {
+                [propget] HRESULT Filename([out] [retval] HSTRING* value);
+                [propput] HRESULT Filename([in] HSTRING value);
+                [propget] HRESULT Creator([out] [retval] Windows.AI.Actions.ContactActionEntity** value);
+                [propput] HRESULT Creator([in] Windows.AI.Actions.ContactActionEntity* value);
+                [propget] HRESULT LastUpdatedTime([out] [retval] Windows.Foundation.IReference<Windows.Foundation.DateTime>** value);
+                [propput] HRESULT LastUpdatedTime([in] Windows.Foundation.IReference<Windows.Foundation.DateTime>* value);
+                HRESULT SetContributors([in] UINT32 __contributorsSize, [in] [size_is(__contributorsSize)] Windows.AI.Actions.ContactActionEntity** contributors);
+                HRESULT GetContributors([out] UINT32* __resultSize, [out] [retval] [size_is(, *__resultSize)] Windows.AI.Actions.ContactActionEntity*** result);
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
@@ -537,6 +653,15 @@ namespace Windows
                 [propget] HRESULT TextFormat([out] [retval] Windows.AI.Actions.ActionEntityTextFormat* value);
             }
 
+            [contract(Windows.AI.Actions.ActionsContract, 6.0)]
+            [exclusiveto(Windows.AI.Actions.UriActionEntity)]
+            [experimental]
+            [uuid(A81CDE77-BC25-532D-905E-B0725C5BCD4E)]
+            interface IUriActionEntity : IInspectable
+            {
+                [propget] HRESULT Uri([out] [retval] Windows.Foundation.Uri** value);
+            }
+
             [composable(Windows.AI.Actions.IActionEntityFactory, public, Windows.AI.Actions.ActionsContract, 1.0)]
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
             [marshaling_behavior(agile)]
@@ -565,6 +690,8 @@ namespace Windows
                 [default] interface Windows.AI.Actions.IActionEntityFactory2;
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.IActionEntityFactory3;
                 [contract(Windows.AI.Actions.ActionsContract, 3.0)] interface Windows.AI.Actions.IActionEntityFactory4;
+                [contract(Windows.AI.Actions.ActionsContract, 6.0)] [experimental] interface Windows.AI.Actions.IActionEntityFactory5;
+                [contract(Windows.AI.Actions.ActionsContract, 7.0)] [experimental] interface Windows.AI.Actions.IActionEntityFactory6;
                 interface Windows.Foundation.IClosable;
             }
 
@@ -602,8 +729,26 @@ namespace Windows
                 [default] interface Windows.AI.Actions.IActionRuntime;
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.IActionRuntime2;
                 [contract(Windows.AI.Actions.ActionsContract, 3.0)] interface Windows.AI.Actions.IActionRuntime3;
-                [contract(Windows.AI.Actions.ActionsContract, 5.0)] [experimental] interface Windows.AI.Actions.IActionRuntime4;
+                [contract(Windows.AI.Actions.ActionsContract, 5.0)] interface Windows.AI.Actions.IActionRuntime4;
                 interface Windows.Foundation.IClosable;
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 7.0)]
+            [experimental]
+            [marshaling_behavior(agile)]
+            [threading(both)]
+            runtimeclass AppointmentActionEntity : Windows.AI.Actions.ActionEntity
+            {
+                [default] [experimental] interface Windows.AI.Actions.IAppointmentActionEntity;
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 6.0)]
+            [experimental]
+            [marshaling_behavior(agile)]
+            [threading(both)]
+            runtimeclass ArrayActionEntity : Windows.AI.Actions.ActionEntity
+            {
+                [default] [experimental] interface Windows.AI.Actions.IArrayActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 3.0)]
@@ -612,6 +757,15 @@ namespace Windows
             runtimeclass ContactActionEntity : Windows.AI.Actions.ActionEntity
             {
                 [default] interface Windows.AI.Actions.IContactActionEntity;
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 7.0)]
+            [experimental]
+            [marshaling_behavior(agile)]
+            [threading(both)]
+            runtimeclass DateTimeActionEntity : Windows.AI.Actions.ActionEntity
+            {
+                [default] [experimental] interface Windows.AI.Actions.IDateTimeActionEntity;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 1.0)]
@@ -652,6 +806,7 @@ namespace Windows
             runtimeclass RemoteFileActionEntity : Windows.AI.Actions.ActionEntity
             {
                 [default] interface Windows.AI.Actions.IRemoteFileActionEntity;
+                [contract(Windows.AI.Actions.ActionsContract, 7.0)] [experimental] interface Windows.AI.Actions.IRemoteFileActionEntity2;
             }
 
             [contract(Windows.AI.Actions.ActionsContract, 2.0)]
@@ -692,6 +847,15 @@ namespace Windows
             {
                 [default] interface Windows.AI.Actions.ITextActionEntity;
                 [contract(Windows.AI.Actions.ActionsContract, 2.0)] interface Windows.AI.Actions.ITextActionEntity2;
+            }
+
+            [contract(Windows.AI.Actions.ActionsContract, 6.0)]
+            [experimental]
+            [marshaling_behavior(agile)]
+            [threading(both)]
+            runtimeclass UriActionEntity : Windows.AI.Actions.ActionEntity
+            {
+                [default] [experimental] interface Windows.AI.Actions.IUriActionEntity;
             }
         }
     }

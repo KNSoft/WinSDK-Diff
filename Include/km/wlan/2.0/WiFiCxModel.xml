@@ -558,6 +558,8 @@
       <containerRef id ="WDI_TLV_BSSID" name="BssId" type="MacAddressContainer" />
       <containerRef id ="WDI_TLV_FT_AUTH_REQUEST" name="AuthRequest" type="ByteBlob" />
       <containerRef id ="WDI_TLV_FT_AUTH_RESPONSE" name="AuthResponse" type="ByteBlob" />
+      <containerRef id ="WDI_TLV_RSNXE_IE" name="RsnXeIE" type="ByteBlob" optional="true" versionAdded="WDI_VERSION_2_0_13"/>
+      <containerRef id ="WDI_TLV_FT_MLO_LINKS" name="FtMloLinks" type="FtMloLinksContainer" optional="true" versionAdded="WDI_VERSION_2_0_13"/>
     </message>
 
     <message commandId ="WDI_SET_FAST_BSS_TRANSITION_PARAMETERS" type ="WDI_SET_FAST_BSS_TRANSITION_PARAMETERS_COMMAND" description="Parameters for sending out association request" direction="ToIhv">
@@ -2076,6 +2078,10 @@
       <containerRef id="WDI_TLV_LCI_REPORT_STATUS" name="LCIStatus" optional="true" type="LCIReportStatusContainer" />
       <containerRef id="WDI_TLV_LCI_REPORT_BODY" name="LCIReport" optional="true" type="ByteBlob" />
     </aggregateContainer>
+
+    <container name="FtMloLinksContainer" type="WDI_FT_MLO_LINKS_CONTAINER" isCollection="true" description="Container for FT Mlo links.">
+      <namedType name="MloLinkInfo" type="MLO_LINK_INFO" description="Mlo Link ID and address" />
+    </container>
 
   </containers>
 

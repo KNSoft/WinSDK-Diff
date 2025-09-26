@@ -31,7 +31,7 @@ typedef enum {
     KSPROPERTY_SDCA_START_PATH              = 7,
     KSPROPERTY_SDCA_STOP_PATH               = 8,
     KSPROPERTY_SDCA_ACCESS_EVENTS           = 9,   // set
-    KSPROPERTY_SDCA_PATH_DESCRIPTORS2       = 10,
+    KSPROPERTY_SDCA_RESERVED                = 10,
     KSPROPERTY_SDCA_CREATE_PATH2            = 11,  // set, takes SDCA_PATH_DESCRIPTORS2
 } KSPROPERTY_SDCA;
 
@@ -111,7 +111,7 @@ typedef struct _SDCA_PATH_DESCRIPTOR2
     ULONG                         Size;                         // Size of this struct
     UINT8                         Version;                      // Version of this struct
     ULONG                         FunctionInformationId;        // Function Information Id
-    ULONG                         TerminalEntityId;             // Entity Id of the IT/OT
+    ULONG                         TerminalEntityId;             // Entity Id of the Streaming IT/OT
     ULONG                         DataPortMap;                  // Bit map of Dataports to be used.Bit 0->Index_A,Bit 1->Index_B, Bit 2->Index_C, Bit 3->Index_D
 
     // EndpointId in DataPortConfig structures is ignored

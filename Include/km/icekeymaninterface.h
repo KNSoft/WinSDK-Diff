@@ -47,8 +47,12 @@ typedef struct STORAGE_ICE_KEY_MANAGEMENT_CAPABILITIES {
             // If ChallengeMaxSize is 0, this bit is ignored.
             ULONG ChallengeRequired : 1;
 
+            // Indicates if implementation has acquired FIPS module certification
+            // for key wrapping operations.
+            ULONG IsKeyWrappingFipsCompliant : 1;
+
             // Must be set to 0.
-            ULONG Reserved : 31;
+            ULONG Reserved : 30;
         };
         _Field_range_(>, 0) ULONG AsULong;
     } Flags;
@@ -205,6 +209,43 @@ NTSTATUS
     _Inout_ STORAGE_ICE_KEY_DATA* WrappedKeyDataWithChallenge
     );
 
+/*++
+
+PVALIDATE_UNWRAP_KEY
+
+Routine Description:
+
+    Verifes that the wrapped key is valid on the current system and can be unwrapped.
+    If a challenge was used to wrap the key, the challenge data must have already
+    been inserted. The wrapped key passed into this function is not intended to be
+    used for any IO or encryption and is only used to verify the wrapped key
+    belongs to the current system.
+
+Arguments:
+
+    InterfaceContext - The Context member of the STORAGE_ICE_KEY_MANAGEMENT_INTERFACE structure.
+    WrappedKeyDataSize - Provides the size of the WrappedKeyData buffer.
+    WrappedKeyData - A pointer to a buffer containing the wrapped key data. If a challenge
+                     was used to wrap the key, the challenge data must have already been
+                     inserted by the caller.
+
+Return Value:
+
+    STATUS_SUCCESS on success.
+    STATUS_FVE_FAILED_TO_UNWRAP_HW_WRAPPED_KEY if the key cannot be unwrapped.
+    STATUS_INVALID_PARAMETER if WrappedKeyData is NULL.
+    A STATUS error code otherwise.
+
+--*/
+_IRQL_requires_(PASSIVE_LEVEL)
+typedef
+NTSTATUS
+(__stdcall *PVALIDATE_UNWRAP_KEY)(
+    _In_ const PVOID InterfaceContext,
+    _In_ ULONG WrappedKeyDataSize,
+    _In_reads_bytes_(WrappedKeyDataSize) const STORAGE_ICE_KEY_DATA* WrappedKeyData
+    );
+
 #define STORAGE_ICE_KEY_MANAGEMENT_INTERFACE_VERSION_1  1
 
 typedef struct STORAGE_ICE_KEY_MANAGEMENT_INTERFACE {
@@ -230,5 +271,6 @@ typedef struct STORAGE_ICE_KEY_MANAGEMENT_INTERFACE {
 
     PWRAP_KEY WrapKey;
     PINSERT_CHALLENGE_DATA InsertChallengeData;
+    PVALIDATE_UNWRAP_KEY ValidateUnwrapKey;
 
 } STORAGE_ICE_KEY_MANAGEMENT_INTERFACE;

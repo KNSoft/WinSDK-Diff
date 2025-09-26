@@ -10312,11 +10312,17 @@ typedef struct _SID_IDENTIFIER_AUTHORITY {
 } SID_IDENTIFIER_AUTHORITY, *PSID_IDENTIFIER_AUTHORITY;
 #endif
 
+#define SID_REVISION                     (1)    // Current revision level
+#define SID_MAX_SUB_AUTHORITIES          (15)
+#define SID_RECOMMENDED_SUB_AUTHORITIES  (1)    // Will change to around 6 in a future release.
 
 #ifndef SID_DEFINED
 #define SID_DEFINED
 typedef struct _SID {
    BYTE  Revision;
+#ifdef MIDL_PASS
+   [range(0,SID_MAX_SUB_AUTHORITIES)]
+#endif
    BYTE  SubAuthorityCount;
    SID_IDENTIFIER_AUTHORITY IdentifierAuthority;
 #ifdef MIDL_PASS
@@ -10327,11 +10333,6 @@ typedef struct _SID {
 } SID, *PISID;
 #endif
 
-#define SID_REVISION                     (1)    // Current revision level
-#define SID_MAX_SUB_AUTHORITIES          (15)
-#define SID_RECOMMENDED_SUB_AUTHORITIES  (1)    // Will change to around 6
-
-                                                // in a future release.
 #ifndef MIDL_PASS
 #define SECURITY_MAX_SID_SIZE  \
       (sizeof(SID) - sizeof(DWORD) + (SID_MAX_SUB_AUTHORITIES * sizeof(DWORD)))
@@ -10606,7 +10607,7 @@ typedef struct _ATTRIBUTES_AND_SID {
 
 // Note: This is because the App Capability Rid is S-1-15-3-1024-...
 //       whereas the service group rid is          S-1-5-32-...
-//	The number of RIDs from hash (8) are the same for both
+//  The number of RIDs from hash (8) are the same for both
 #define SECURITY_INSTALLER_CAPABILITY_RID_COUNT (10)
 
 //
@@ -10722,7 +10723,7 @@ typedef struct _ATTRIBUTES_AND_SID {
 // Built-in Packages.
 //
 
-#define SECURITY_BUILTIN_PACKAGE_ANY_PACKAGE        	(0x00000001L)
+#define SECURITY_BUILTIN_PACKAGE_ANY_PACKAGE            (0x00000001L)
 #define SECURITY_BUILTIN_PACKAGE_ANY_RESTRICTED_PACKAGE (0x00000002L)
 
 //
@@ -13750,9 +13751,13 @@ typedef struct _JOBOBJECT_IO_ATTRIBUTION_INFORMATION {
 #define JOB_OBJECT_UILIMIT_EXITWINDOWS      0x00000080
 #define JOB_OBJECT_UILIMIT_IME              0x00000100
 
-#define JOB_OBJECT_UILIMIT_ALL              0x000001FF
+// TODO: New Additions
+#define JOB_OBJECT_UILIMIT_INJECTION        0x00000200
 
-#define JOB_OBJECT_UI_VALID_FLAGS           0x000001FF
+
+#define JOB_OBJECT_UILIMIT_ALL              0x000003FF
+
+#define JOB_OBJECT_UI_VALID_FLAGS           0x000003FF
 
 #define JOB_OBJECT_SECURITY_NO_ADMIN            0x00000001
 #define JOB_OBJECT_SECURITY_RESTRICTED_TOKEN    0x00000002
@@ -14544,7 +14549,7 @@ typedef struct DECLSPEC_ALIGN(16) _MEMORY_BASIC_INFORMATION64 {
 // invalid.  Input flag.
 //
 
-#define CFG_CALL_TARGET_VALID                               (0x00000001) 
+#define CFG_CALL_TARGET_VALID                               (0x00000001)
 
 //
 // Call target has been successfully processed.  Used to report to the caller

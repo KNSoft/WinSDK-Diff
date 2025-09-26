@@ -10,6 +10,8 @@
 #pragma warning(disable:4201) // nameless struct/union
 #pragma warning(disable:4214) // bit field types other than int
 
+#define MAX_DATAPORTS_PER_CONNECTION    4
+
 typedef enum _SOUNDWIRE_FUNCTION_FLAGS
 {
     SoundWireFunctionFlagSubSystemIdPresent    = 0x00000001,            // SubSystem Id is present
@@ -76,6 +78,27 @@ typedef struct _AGGREGATION_END_COMMIT_GROUP
     AGGREGATION_COMMIT_OPERATION        CommitOperation;
 } AGGREGATION_END_COMMIT_GROUP, *PAGGREGATION_END_COMMIT_GROUP;
 
+typedef ULONG AGGREGATION_CONNECTION_MAP_HANDLE, *PAGGREGATION_CONNECTION_MAP_HANDLE;
+
+typedef struct _AGGREGATION_DATAPORT_CONNECTION
+{
+    ULONG                                 Size;
+    SOUNDWIRE_FUNCTION_INFORMATION        SrcFunctionInfo;
+    UINT8                                 SrcDataPortCount;
+    ULONG                                 SrcDataPortNumbers[MAX_DATAPORTS_PER_CONNECTION];
+    SOUNDWIRE_FUNCTION_INFORMATION        DstFunctionInfo;
+    UINT8                                 DstDataPortCount;
+    ULONG                                 DstDataPortNumbers[MAX_DATAPORTS_PER_CONNECTION];
+} AGGREGATION_DATAPORT_CONNECTION, *PAGGREGATION_DATAPORT_CONNECTION;
+
+typedef struct _AGGREGATION_CONNECTION_MAP
+{
+    ULONG                               Size;
+    UINT8                               ConnectionCount;
+    _Field_size_(ConnectionCount)
+    AGGREGATION_DATAPORT_CONNECTION     Connection[ANYSIZE_ARRAY];
+} AGGREGATION_CONNECTION_MAP, *PAGGREGATION_CONNECTION_MAP;
+
 //
 // The control codes used by the Audio Aggregation driver
 //
@@ -113,6 +136,20 @@ typedef struct _AGGREGATION_END_COMMIT_GROUP
 // OutputBuffer - NULL
 //
 #define IOCTL_AUDIO_AGGREGATOR_END_COMMIT_GROUP                                     AUDIO_AGGREGATOR_IOCTL (4)
+
+//
+// Sends device to device dataport connection information.
+// InputBuffer - AGGREGATION_CONNECTION_MAP
+// OutputBuffer - AGGREGATION_CONNECTION_MAP_HANDLE
+//
+#define IOCTL_AUDIO_AGGREGATOR_ADD_DEVICE_TO_DEVICE_CONNECTION_MAP                  AUDIO_AGGREGATOR_IOCTL (5)
+
+//
+// Removes previously added device to device dataport connection information.
+// InputBuffer - AGGREGATION_CONNECTION_MAP_HANDLE
+// OutputBuffer - NULL
+//
+#define IOCTL_AUDIO_AGGREGATOR_REMOVE_DEVICE_TO_DEVICE_CONNECTION_MAP               AUDIO_AGGREGATOR_IOCTL (6)
 
 // Include the KS Properties for aggregation below only if ks is configured
 #ifdef DEFINE_GUIDSTRUCT

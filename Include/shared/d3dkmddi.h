@@ -1183,9 +1183,9 @@ typedef struct _DXGKARGCB_NOTIFY_INTERRUPT_DATA
             HANDLE* pSignaledNativeFenceArray;  // in: OS kernel mode handles of objects in the signaled native fence array.
                                                 // Dxgkrnl reads this value only if DXGK_VIDSCHCAPS::OptimizedNativeFenceInterrupt is FALSE
 
-            HANDLE  hHWQueue;                   // in: Dxgkrnl reads this value only if DXGK_VIDSCHCAPS::OptimizedNativeFenceInterrupt is TRUE. 
-                                                // KMD Handle of the HWQueue which was running on the engine which raised the 
-                                                // interrupt. If this handle is NULL then dxgkrnl will re-scan log buffer of 
+            HANDLE  hHWQueue;                   // in: Dxgkrnl reads this value only if DXGK_VIDSCHCAPS::OptimizedNativeFenceInterrupt is TRUE.
+                                                // KMD Handle of the HWQueue which was running on the engine which raised the
+                                                // interrupt. If this handle is NULL then dxgkrnl will re-scan log buffer of
                                                 // all HWQueues on this engine
         } NativeFenceSignaled;
 
@@ -3132,11 +3132,11 @@ typedef struct _DXGK_NATIVE_FENCE_CAPS
     BYTE Reserved[28];
 } DXGK_NATIVE_FENCE_CAPS;
 
-typedef struct _DXGKARG_CREATENATIVEFENCE_FLAGS 
+typedef struct _DXGKARG_CREATENATIVEFENCE_FLAGS
 {
     union
     {
-        struct 
+        struct
         {
             UINT Reserved : 32;
         };
@@ -3169,11 +3169,11 @@ DXGKDDI_CREATENATIVEFENCE(
     INOUT_PDXGKARG_CREATENATIVEFENCE    pCreateNativeFence
     );
 
-typedef struct _DXGK_OPENNATIVEFENCE_FLAGS 
+typedef struct _DXGK_OPENNATIVEFENCE_FLAGS
 {
     union
     {
-        struct 
+        struct
         {
             UINT Reserved : 32;
         };
@@ -3206,11 +3206,11 @@ DXGKDDI_OPENNATIVEFENCE(
     INOUT_PDXGKARG_OPENNATIVEFENCE    pOpenNativeFence
 );
 
-typedef struct _DXGK_CLOSENATIVEFENCE_FLAGS 
+typedef struct _DXGK_CLOSENATIVEFENCE_FLAGS
 {
     union
     {
-        struct 
+        struct
         {
             UINT Reserved : 32;
         };
@@ -3242,7 +3242,7 @@ typedef struct _DXGK_DESTROYNATIVEFENCE_FLAGS
 {
     union
     {
-        struct 
+        struct
         {
             UINT Reserved : 32;
         };
@@ -3269,11 +3269,11 @@ DXGKDDI_DESTROYNATIVEFENCE(
     INOUT_PDXGKARG_DESTROYNATIVEFENCE pDestroyNativeFence
     );
 
-typedef struct _DXGKARG_UPDATEMONITOREDVALUES_FLAGS 
+typedef struct _DXGKARG_UPDATEMONITOREDVALUES_FLAGS
 {
     union
     {
-        struct 
+        struct
         {
             UINT Reserved : 32;
         };
@@ -3321,7 +3321,7 @@ typedef struct _DXGK_UPDATECURRENTVALUESFROMCPU_FLAGS
 } DXGK_UPDATECURRENTVALUESFROMCPU_FLAGS;
 
 typedef struct _DXGKARG_UPDATECURRENTVALUESFROMCPU
-{        
+{
     _Field_size_(NumFences)
     HANDLE*                               NativeFenceArray;        // in: Native fence handles.
     _Field_size_(NumFences)
@@ -7925,6 +7925,7 @@ typedef enum _DXGK_MONITOR_INTERFACE_VERSION
     DXGK_MONITOR_INTERFACE_VERSION_UNINITIALIZED = 0,
     DXGK_MONITOR_INTERFACE_VERSION_V1            = 1,
     DXGK_MONITOR_INTERFACE_VERSION_V2            = 2,
+    DXGK_MONITOR_INTERFACE_VERSION_V3            = 3,
 } DXGK_MONITOR_INTERFACE_VERSION;
 
 typedef struct _DXGK_MONITOR_INTERFACE
@@ -7990,6 +7991,55 @@ typedef struct _DXGK_MONITOR_INTERFACE_V2
     DXGKDDI_MONITOR_RELEASEADDITIONALMONITORMODESET  pfnReleaseAdditionalMonitorModeSet;
 }
 DXGK_MONITOR_INTERFACE_V2;
+
+//
+// Monitor descriptions structures
+//
+
+typedef enum _DXGK_MONITOR_DESCRIPTOR_TYPE {
+    MONITOR_DESCRIPTOR_UNSPECIFIED  = 0,
+    MONITOR_DESCRIPTOR_EDID         = 1,           // This includes EDID with DisplayId embedded in an EDID extension block
+    MONITOR_DESCRIPTOR_DISPLAYID    = 2,
+} DXGK_MONITOR_DESCRIPTOR_TYPE;
+
+typedef struct _DXGK_MONITOR_DESCRIPTOR {
+    DXGK_MONITOR_DESCRIPTOR_TYPE DescriptorType;
+    ULONG DescriptorLength;
+   _Field_size_bytes_(DescriptorLength) PVOID DescriptorBuffer;
+} DXGK_MONITOR_DESCRIPTOR, *PDXGK_MONITOR_DESCRIPTOR;
+
+typedef _Inout_ DXGK_MONITOR_DESCRIPTOR*  INOUT_DXGK_MONITOR_DESCRIPTOR;
+
+typedef
+    _Check_return_
+    _Function_class_DXGK_(DXGKDDI_MONITOR_GETMONITORDESCRIPTOR)
+    _IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY *DXGKDDI_MONITOR_GETMONITORDESCRIPTOR)(
+    IN_CONST_D3DKMDT_ADAPTER                     hAdapter,
+    IN_CONST_D3DDDI_VIDEO_PRESENT_TARGET_ID      VideoPresentTargetId,
+    INOUT_DXGK_MONITOR_DESCRIPTOR                MonitorDescriptor
+    );
+
+typedef struct _DXGK_MONITOR_INTERFACE_V3
+{
+    // Unlike in the past for new version of DXGK_MONITOR_INTERFACE we are not just extending the function table
+    // we are removing the legacy call to query for the monitor description override (pfnGetMonitorDescriptorSet)
+    // as this has been superseded by pfnGetMonitorDescriptor
+    DXGK_MONITOR_INTERFACE_VERSION                   Version;
+
+    DXGKDDI_MONITOR_ACQUIREMONITORSOURCEMODESET      pfnAcquireMonitorSourceModeSet;
+    DXGKDDI_MONITOR_RELEASEMONITORSOURCEMODESET      pfnReleaseMonitorSourceModeSet;
+    DXGKDDI_MONITOR_GETMONITORFREQUENCYRANGESET      pfnGetMonitorFrequencyRangeSet;
+
+    // New added functions for DXGK_MONITOR_INTERFACE_V2
+    DXGKDDI_MONITOR_GETADDITIONALMONITORMODESET      pfnGetAdditionalMonitorModeSet;
+    DXGKDDI_MONITOR_RELEASEADDITIONALMONITORMODESET  pfnReleaseAdditionalMonitorModeSet;
+
+    // New added functions for DXGK_MONITOR_INTERFACE_V3
+    DXGKDDI_MONITOR_GETMONITORDESCRIPTOR             pfnGetMonitorDescriptor;
+}
+DXGK_MONITOR_INTERFACE_V3;
 
 // Callback miniport uses to query DXGK_MONITOR_INTERFACE.
 
@@ -10471,7 +10521,7 @@ typedef struct _DXGKARG_QUERYDIRTYBITDATA
     HANDLE MemoryBasis;             // [in] Ranges of physical memory pages to query the status of
     UINT64 SubrangeIndex;           // [in] If a subrange is indicated, this represents which range in the memory basis to query from
     UINT64 SubrangeOffset;          // [in] If a subrange is indicated, this represents the offset into the subrange. In bytes and multiple of the bitplane size
-    UINT64 SubrangeSize;            // [in] When 0, the entire memory basis should be queried. When non-zero, a subrange should be 
+    UINT64 SubrangeSize;            // [in] When 0, the entire memory basis should be queried. When non-zero, a subrange should be
                                     //      queried using SubrangeIndex and SubrangeOffset. In bytes and multiple of the bitplane size
 
     _Field_size_bytes_(BufferSize)
@@ -10677,7 +10727,7 @@ DXGKDDI_SETVIRTUALGPURESOURCES2(
 typedef struct _DXGKARG_SETVIRTUALFUNCTIONPAUSESTATE
 {
     ULONG   vfIndex;    // [in] Index of Virtual Function
-    BOOLEAN bPause;     // [in] When bPause is not false, the VF should be removed from scheduling. 
+    BOOLEAN bPause;     // [in] When bPause is not false, the VF should be removed from scheduling.
 } DXGKARG_SETVIRTUALFUNCTIONPAUSESTATE;
 
 typedef _In_ CONST DXGKARG_SETVIRTUALFUNCTIONPAUSESTATE* IN_CONST_PDXGKARG_SETVIRTUALFUNCTIONPAUSESTATE;
@@ -10967,7 +11017,7 @@ DXGKDDI_COLLECTDBGINFO2(
     INOUT_PDXGKARG_COLLECTDBGINFO2  pCollectDbgInfo2
     );
 
-typedef struct _DXGKARG_BUILDTESTCOMMANDBUFFER 
+typedef struct _DXGKARG_BUILDTESTCOMMANDBUFFER
 {
     HANDLE                              hContext;                   // [in] Context or Hardware queue
     D3DDDI_TESTCOMMANDBUFFER            Command;                    // [in]

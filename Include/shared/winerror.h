@@ -14623,6 +14623,33 @@
 //
 #define ERROR_VSM_KEY_CI_POLICY_ROLLBACK_DETECTED 4562L
 
+//
+// MessageId: ERROR_VSMIDK_KEYGEN_FAILURE
+//
+// MessageText:
+//
+// RSA identity key generation failed.
+//
+#define ERROR_VSMIDK_KEYGEN_FAILURE      4563L
+
+//
+// MessageId: ERROR_VSMIDK_EXPORT_FAILURE
+//
+// MessageText:
+//
+// Exporting RSA key components failed.
+//
+#define ERROR_VSMIDK_EXPORT_FAILURE      4564L
+
+//
+// MessageId: ERROR_VSMIDK_MODULUS_MISMATCH
+//
+// MessageText:
+//
+// Exported modulus size did not match expected key size.
+//
+#define ERROR_VSMIDK_MODULUS_MISMATCH    4565L
+
 ///////////////////////////////////////////////////
 //                                               //
 //         Platform Manifest Error Codes         //
@@ -36168,6 +36195,24 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // Call Cancellation is disabled
 //
 #define CO_E_CANCEL_DISABLED             _HRESULT_TYPEDEF_(0x80010140L)
+
+//
+// MessageId: CO_E_SERVER_CANNOT_BE_EQUAL_OR_GREATER_PRIVILEGE
+//
+// MessageText:
+//
+// The server was not activated because it cannot support running with privilege equal to the client or greater
+//
+#define CO_E_SERVER_CANNOT_BE_EQUAL_OR_GREATER_PRIVILEGE _HRESULT_TYPEDEF_(0x80010141L)
+
+//
+// MessageId: CO_E_CANNOT_ACTIVATE_CROSS_PACKAGE_IN_SESSION_0
+//
+// MessageText:
+//
+// An Activate As Activator Packaged server class cannot be activated from outside its package in session 0
+//
+#define CO_E_CANNOT_ACTIVATE_CROSS_PACKAGE_IN_SESSION_0 _HRESULT_TYPEDEF_(0x80010142L)
 
 //
 // MessageId: RPC_E_UNEXPECTED

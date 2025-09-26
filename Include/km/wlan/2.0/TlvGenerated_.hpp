@@ -4918,6 +4918,21 @@ namespace WDI_TLV
     }
 }
 #endif // __cplusplus
+struct ArrayOfElementsOfMLO_LINK_INFO
+{
+    UINT32 ElementCount;
+    MLO_LINK_INFO* pElements;
+    BOOLEAN MemoryInternallyAllocated;
+};
+#ifdef __cplusplus
+C_ASSERT( sizeof( ArrayOfElements<MLO_LINK_INFO> ) == sizeof( struct ArrayOfElementsOfMLO_LINK_INFO ) );
+#endif // __cplusplus
+#ifdef __cplusplus
+typedef ArrayOfElements<MLO_LINK_INFO> WDI_FT_MLO_LINKS_CONTAINER;
+#else // __cplusplus
+typedef struct ArrayOfElementsOfMLO_LINK_INFO WDI_FT_MLO_LINKS_CONTAINER;
+#endif // __cplusplus
+
 
 //
 // No TLV data needed, header is sufficient
@@ -7075,9 +7090,22 @@ typedef EmptyMessageStructureType WDI_SET_ENCAPSULATION_OFFLOAD_RESULTS, *PWDI_S
 //
 typedef struct _WDI_INDICATION_FT_ASSOC_PARAMS_NEEDED_PARAMETERS
 {
+    struct _WDI_INDICATION_FT_ASSOC_PARAMS_NEEDED_PARAMETERS_Optional
+    {
+        UINT32 RsnXeIE_IsPresent : 1;
+        UINT32 FtMloLinks_IsPresent : 1;
+#ifdef __cplusplus
+        _WDI_INDICATION_FT_ASSOC_PARAMS_NEEDED_PARAMETERS_Optional() : RsnXeIE_IsPresent( FALSE ), FtMloLinks_IsPresent( FALSE )
+        {
+        };
+#endif // __cplusplus
+    } Optional;
+
     WDI_MAC_ADDRESS_CONTAINER BssId;
     WDI_BYTE_BLOB AuthRequest;
     WDI_BYTE_BLOB AuthResponse;
+    WDI_BYTE_BLOB RsnXeIE;
+    WDI_FT_MLO_LINKS_CONTAINER FtMloLinks;
 #ifdef __cplusplus
     _WDI_INDICATION_FT_ASSOC_PARAMS_NEEDED_PARAMETERS()
     {

@@ -265,6 +265,13 @@ typedef interface IWICDisplayAdaptationControl2 IWICDisplayAdaptationControl2;
 #endif 	/* __IWICDisplayAdaptationControl2_FWD_DEFINED__ */
 
 
+#ifndef __IWICD3DTextureSource_FWD_DEFINED__
+#define __IWICD3DTextureSource_FWD_DEFINED__
+typedef interface IWICD3DTextureSource IWICD3DTextureSource;
+
+#endif 	/* __IWICD3DTextureSource_FWD_DEFINED__ */
+
+
 #ifndef __IWICProgressCallback_FWD_DEFINED__
 #define __IWICProgressCallback_FWD_DEFINED__
 typedef interface IWICProgressCallback IWICProgressCallback;
@@ -5639,6 +5646,167 @@ EXTERN_C const IID IID_IWICDisplayAdaptationControl2;
 #endif 	/* __IWICDisplayAdaptationControl2_INTERFACE_DEFINED__ */
 
 
+#ifndef __IWICD3DTextureSource_INTERFACE_DEFINED__
+#define __IWICD3DTextureSource_INTERFACE_DEFINED__
+
+/* interface IWICD3DTextureSource */
+/* [local][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IWICD3DTextureSource;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("caf65cc4-8ebe-4718-a21f-8dbf40bb7e25")
+    IWICD3DTextureSource : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetTexture( 
+            /* [annotation] */ 
+            _In_  IUnknown *pD3DDevice,
+            /* [annotation] */ 
+            _In_opt_  IPropertyBag2 *pID3DTextureOptions,
+            REFIID riid,
+            /* [annotation] */ 
+            _Outptr_  void **ppTexture) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetTransformedTexture( 
+            /* [annotation] */ 
+            _In_opt_  const WICRect *prc,
+            UINT uiWidth,
+            UINT uiHeight,
+            /* [annotation] */ 
+            _In_opt_  const WICPixelFormatGUID *pguidDstFormat,
+            WICBitmapTransformOptions dstTransform,
+            /* [annotation] */ 
+            _In_  IUnknown *pD3DDevice,
+            /* [annotation] */ 
+            _In_opt_  IPropertyBag2 *pID3DTextureOptions,
+            REFIID riid,
+            /* [annotation] */ 
+            _Outptr_  void **ppTexture) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportD3DDeviceType( 
+            REFIID riid,
+            /* [annotation] */ 
+            _Out_  BOOL *pfIsSupported) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetD3DTextureOptions( 
+            /* [annotation] */ 
+            _COM_Outptr_  IPropertyBag2 **ppID3DTextureOptions) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IWICD3DTextureSourceVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IWICD3DTextureSource * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IWICD3DTextureSource * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IWICD3DTextureSource * This);
+        
+        DECLSPEC_XFGVIRT(IWICD3DTextureSource, GetTexture)
+        HRESULT ( STDMETHODCALLTYPE *GetTexture )( 
+            IWICD3DTextureSource * This,
+            /* [annotation] */ 
+            _In_  IUnknown *pD3DDevice,
+            /* [annotation] */ 
+            _In_opt_  IPropertyBag2 *pID3DTextureOptions,
+            REFIID riid,
+            /* [annotation] */ 
+            _Outptr_  void **ppTexture);
+        
+        DECLSPEC_XFGVIRT(IWICD3DTextureSource, GetTransformedTexture)
+        HRESULT ( STDMETHODCALLTYPE *GetTransformedTexture )( 
+            IWICD3DTextureSource * This,
+            /* [annotation] */ 
+            _In_opt_  const WICRect *prc,
+            UINT uiWidth,
+            UINT uiHeight,
+            /* [annotation] */ 
+            _In_opt_  const WICPixelFormatGUID *pguidDstFormat,
+            WICBitmapTransformOptions dstTransform,
+            /* [annotation] */ 
+            _In_  IUnknown *pD3DDevice,
+            /* [annotation] */ 
+            _In_opt_  IPropertyBag2 *pID3DTextureOptions,
+            REFIID riid,
+            /* [annotation] */ 
+            _Outptr_  void **ppTexture);
+        
+        DECLSPEC_XFGVIRT(IWICD3DTextureSource, DoesSupportD3DDeviceType)
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportD3DDeviceType )( 
+            IWICD3DTextureSource * This,
+            REFIID riid,
+            /* [annotation] */ 
+            _Out_  BOOL *pfIsSupported);
+        
+        DECLSPEC_XFGVIRT(IWICD3DTextureSource, GetD3DTextureOptions)
+        HRESULT ( STDMETHODCALLTYPE *GetD3DTextureOptions )( 
+            IWICD3DTextureSource * This,
+            /* [annotation] */ 
+            _COM_Outptr_  IPropertyBag2 **ppID3DTextureOptions);
+        
+        END_INTERFACE
+    } IWICD3DTextureSourceVtbl;
+
+    interface IWICD3DTextureSource
+    {
+        CONST_VTBL struct IWICD3DTextureSourceVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IWICD3DTextureSource_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IWICD3DTextureSource_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IWICD3DTextureSource_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IWICD3DTextureSource_GetTexture(This,pD3DDevice,pID3DTextureOptions,riid,ppTexture)	\
+    ( (This)->lpVtbl -> GetTexture(This,pD3DDevice,pID3DTextureOptions,riid,ppTexture) ) 
+
+#define IWICD3DTextureSource_GetTransformedTexture(This,prc,uiWidth,uiHeight,pguidDstFormat,dstTransform,pD3DDevice,pID3DTextureOptions,riid,ppTexture)	\
+    ( (This)->lpVtbl -> GetTransformedTexture(This,prc,uiWidth,uiHeight,pguidDstFormat,dstTransform,pD3DDevice,pID3DTextureOptions,riid,ppTexture) ) 
+
+#define IWICD3DTextureSource_DoesSupportD3DDeviceType(This,riid,pfIsSupported)	\
+    ( (This)->lpVtbl -> DoesSupportD3DDeviceType(This,riid,pfIsSupported) ) 
+
+#define IWICD3DTextureSource_GetD3DTextureOptions(This,ppID3DTextureOptions)	\
+    ( (This)->lpVtbl -> GetD3DTextureOptions(This,ppID3DTextureOptions) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IWICD3DTextureSource_INTERFACE_DEFINED__ */
+
+
 #ifndef __IWICProgressCallback_INTERFACE_DEFINED__
 #define __IWICProgressCallback_INTERFACE_DEFINED__
 
@@ -7929,14 +8097,14 @@ EXTERN_C const IID IID_IWICImagingFactory;
 #endif 	/* __IWICImagingFactory_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wincodec_0000_0041 */
+/* interface __MIDL_itf_wincodec_0000_0042 */
 /* [local] */ 
 
 #if (_WIN32_WINNT >= _WIN32_WINNT_WIN8) || defined(_WIN7_PLATFORM_UPDATE)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0041_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0041_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0042_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0042_v0_0_s_ifspec;
 
 #ifndef __IWICImagingFactory2_INTERFACE_DEFINED__
 #define __IWICImagingFactory2_INTERFACE_DEFINED__
@@ -8608,7 +8776,7 @@ EXTERN_C const IID IID_IWICImagingFactory3;
 #endif 	/* __IWICImagingFactory3_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wincodec_0000_0043 */
+/* interface __MIDL_itf_wincodec_0000_0044 */
 /* [local] */ 
 
 #endif
@@ -8819,8 +8987,8 @@ typedef /* [public] */ struct WICRawToneCurve
 #define WICRawChangeNotification_RenderMode                 0x00002000
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0043_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0043_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0044_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0044_v0_0_s_ifspec;
 
 #ifndef __IWICDevelopRawNotificationCallback_INTERFACE_DEFINED__
 #define __IWICDevelopRawNotificationCallback_INTERFACE_DEFINED__
@@ -9466,7 +9634,7 @@ void __RPC_STUB IWICDevelopRaw_Remote_GetToneCurve_Stub(
 #endif 	/* __IWICDevelopRaw_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wincodec_0000_0045 */
+/* interface __MIDL_itf_wincodec_0000_0046 */
 /* [local] */ 
 
 typedef /* [public] */ 
@@ -9504,8 +9672,8 @@ typedef /* [public] */ struct WICDdsParameters
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0045_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0045_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0046_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0046_v0_0_s_ifspec;
 
 #ifndef __IWICDdsDecoder_INTERFACE_DEFINED__
 #define __IWICDdsDecoder_INTERFACE_DEFINED__
@@ -9720,7 +9888,7 @@ EXTERN_C const IID IID_IWICDdsEncoder;
 #endif 	/* __IWICDdsEncoder_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wincodec_0000_0047 */
+/* interface __MIDL_itf_wincodec_0000_0048 */
 /* [local] */ 
 
 typedef /* [public] */ struct WICDdsFormatInfo
@@ -9733,8 +9901,8 @@ typedef /* [public] */ struct WICDdsFormatInfo
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0047_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0047_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0048_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0048_v0_0_s_ifspec;
 
 #ifndef __IWICDdsFrameDecode_INTERFACE_DEFINED__
 #define __IWICDdsFrameDecode_INTERFACE_DEFINED__

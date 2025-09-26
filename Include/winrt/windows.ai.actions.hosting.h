@@ -88,7 +88,7 @@
 //  API Contract Inclusion Definitions
 #if !defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
 #if !defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
-#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x50000
+#define WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION 0x70000
 #endif // defined(WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
@@ -110,6 +110,8 @@
 #include "Windows.Foundation.h"
 #include "Windows.AI.Actions.h"
 #include "Windows.UI.h"
+// Importing Collections header
+#include <windows.foundation.collections.h>
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -231,6 +233,23 @@ namespace ABI {
 #define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4 ABI::Windows::AI::Actions::Hosting::IActionDefinition4
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Hosting {
+                    interface IActionDefinition5;
+                } /* Hosting */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5 ABI::Windows::AI::Actions::Hosting::IActionDefinition5
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo_FWD_DEFINED__
@@ -444,6 +463,31 @@ namespace ABI {
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIActionInvocationContext_FWD_DEFINED__
 
+namespace ABI {
+    namespace Windows {
+        namespace Foundation {
+            namespace Collections {
+                class PropertySet;
+            } /* Collections */
+        } /* Foundation */
+    } /* Windows */
+} /* ABI */
+
+#ifndef ____x_ABI_CWindows_CFoundation_CCollections_CIPropertySet_FWD_DEFINED__
+#define ____x_ABI_CWindows_CFoundation_CCollections_CIPropertySet_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace Foundation {
+            namespace Collections {
+                interface IPropertySet;
+            } /* Collections */
+        } /* Foundation */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CFoundation_CCollections_CIPropertySet ABI::Windows::Foundation::Collections::IPropertySet
+
+#endif // ____x_ABI_CWindows_CFoundation_CCollections_CIPropertySet_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
 #define ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
 namespace ABI {
@@ -638,12 +682,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog2;
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 5.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionCatalog
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3_INTERFACE_DEFINED__
@@ -673,7 +714,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -822,12 +862,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 5.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionDefinition
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4_INTERFACE_DEFINED__
@@ -856,6 +893,48 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
+
+/*
+ *
+ * Interface Windows.AI.Actions.Hosting.IActionDefinition5
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionDefinition
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_Hosting_IActionDefinition5[] = L"Windows.AI.Actions.Hosting.IActionDefinition5";
+namespace ABI {
+    namespace Windows {
+        namespace AI {
+            namespace Actions {
+                namespace Hosting {
+                    MIDL_INTERFACE("5bea33ef-d325-53a8-8db3-0d771f4d1e54")
+                    IActionDefinition5 : public IInspectable
+                    {
+                    public:
+                        virtual HRESULT STDMETHODCALLTYPE GetIconFullPath(
+                            ABI::Windows::Foundation::Collections::IPropertySet* qualifierValues,
+                            HSTRING* result
+                            ) = 0;
+                    };
+
+                    MIDL_CONST_ID IID& IID_IActionDefinition5 = __uuidof(IActionDefinition5);
+                } /* Hosting */
+            } /* Actions */
+        } /* AI */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
@@ -1112,6 +1191,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *    Windows.AI.Actions.Hosting.IActionDefinition2
  *    Windows.AI.Actions.Hosting.IActionDefinition3
  *    Windows.AI.Actions.Hosting.IActionDefinition4
+ *    Windows.AI.Actions.Hosting.IActionDefinition5
  *    Windows.Foundation.IClosable
  *
  * Class Marshaling Behavior:  Agile - Class is agile
@@ -1247,6 +1327,12 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4 __x
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4_FWD_DEFINED__
 
+#ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_FWD_DEFINED__
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5 __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5;
+
+#endif // ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_FWD_DEFINED__
+
 #ifndef ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo_FWD_DEFINED__
 #define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo_FWD_DEFINED__
 typedef interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo __x_ABI_CWindows_CAI_CActions_CHosting_CIActionEntityRegistrationInfo;
@@ -1349,6 +1435,12 @@ typedef interface __x_ABI_CWindows_CAI_CActions_CIActionFeedback __x_ABI_CWindow
 typedef interface __x_ABI_CWindows_CAI_CActions_CIActionInvocationContext __x_ABI_CWindows_CAI_CActions_CIActionInvocationContext;
 
 #endif // ____x_ABI_CWindows_CAI_CActions_CIActionInvocationContext_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CFoundation_CCollections_CIPropertySet_FWD_DEFINED__
+#define ____x_ABI_CWindows_CFoundation_CCollections_CIPropertySet_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CFoundation_CCollections_CIPropertySet __x_ABI_CWindows_CFoundation_CCollections_CIPropertySet;
+
+#endif // ____x_ABI_CWindows_CFoundation_CCollections_CIPropertySet_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
 #define ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
@@ -1532,12 +1624,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog2;
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 5.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionCatalog
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3_INTERFACE_DEFINED__
@@ -1598,7 +1687,6 @@ interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionCatalog3_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1856,12 +1944,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition
  *
  * Introduced to Windows.AI.Actions.ActionsContract in version 5.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionDefinition
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
 #if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4_INTERFACE_DEFINED__
@@ -1921,6 +2006,79 @@ interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4
 EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4;
 #endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition4_INTERFACE_DEFINED__) */
 #endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x50000
+
+/*
+ *
+ * Interface Windows.AI.Actions.Hosting.IActionDefinition5
+ *
+ * Introduced to Windows.AI.Actions.ActionsContract in version 6.0
+ *
+ * Type is for evaluation purposes and is subject to change or removal in future updates.
+ *
+ * Interface is a part of the implementation of type Windows.AI.Actions.Hosting.ActionDefinition
+ *
+ */
+#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#if WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
+#if !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_AI_Actions_Hosting_IActionDefinition5[] = L"Windows.AI.Actions.Hosting.IActionDefinition5";
+typedef struct __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5Vtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* GetIconFullPath)(__x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5* This,
+        __x_ABI_CWindows_CFoundation_CCollections_CIPropertySet* qualifierValues,
+        HSTRING* result);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5Vtbl;
+
+interface __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5
+{
+    CONST_VTBL struct __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5Vtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_GetIconFullPath(This, qualifierValues, result) \
+    ((This)->lpVtbl->GetIconFullPath(This, qualifierValues, result))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5;
+#endif /* !defined(____x_ABI_CWindows_CAI_CActions_CHosting_CIActionDefinition5_INTERFACE_DEFINED__) */
+#endif // WINDOWS_AI_ACTIONS_ACTIONSCONTRACT_VERSION >= 0x60000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
@@ -2350,6 +2508,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *    Windows.AI.Actions.Hosting.IActionDefinition2
  *    Windows.AI.Actions.Hosting.IActionDefinition3
  *    Windows.AI.Actions.Hosting.IActionDefinition4
+ *    Windows.AI.Actions.Hosting.IActionDefinition5
  *    Windows.Foundation.IClosable
  *
  * Class Marshaling Behavior:  Agile - Class is agile

@@ -365,8 +365,12 @@ typedef struct _SCSI_PNP_REQUEST_BLOCK {
 //
 #define SRB_FUNCTION_STORAGE_REQUEST_BLOCK  0x28
 
+#define SRB_FUNCTION_GET_DUMP_INFO          0x2a
+#define SRB_FUNCTION_FREE_DUMP_INFO         0x2b
 
 #define SRB_FUNCTION_NVMEOF_OPERATION       0x2c
+
+#define SRB_FUNCTION_MINIPORT_PASSTHROUGH_REQUEST     0x2d
 
 //
 // SRB Status
@@ -551,6 +555,7 @@ typedef enum _SRBEXDATATYPE {
     SrbExDataTypeScsiCdbVar,
     SrbExDataTypeNvmeCommand,
     SrbExDataTypeNvmeofOperation,
+    SrbExDataTypeMiniportPassthrough,
     SrbExDataTypeWmi = 0x60,
     SrbExDataTypePower,
     SrbExDataTypePnP,
@@ -694,6 +699,20 @@ typedef struct SRB_ALIGN _SRBEX_DATA_PNP {
     ULONG Reserved1;
 } SRBEX_DATA_PNP, *PSRBEX_DATA_PNP;
 
+// Used by SRB_FUNCTION_MINIPORT_PASSTHROUGH_REQUEST
+#define SRBEX_DATA_MINIPORT_PASSTHROUGH_LENGTH ((4 * sizeof(ULONG)))
+
+typedef struct SRB_ALIGN _SRBEX_DATA_MINIPORT_PASSTHROUGH {
+    _Field_range_(SrbExDataTypeMiniportPassthrough, SrbExDataTypeMiniportPassthrough)
+    SRBEXDATATYPE Type;
+    _Field_range_(SRBEX_DATA_MINIPORT_PASSTHROUGH_LENGTH, SRBEX_DATA_MINIPORT_PASSTHROUGH_LENGTH)
+    ULONG Length;
+    ULONG InputBufferLength;
+    ULONG OutputBufferLength;
+    ULONG OutputBufferWritten;
+    ULONG Reserved;
+} SRBEX_DATA_MINIPORT_PASSTHROUGH, *PSRBEX_DATA_MINIPORT_PASSTHROUGH;
+
 // Use in read/write requests to provide additional info about the IO.
 #define SRBEX_DATA_IO_INFO_LENGTH ((5 * sizeof(ULONG)) + (4 * sizeof(UCHAR)))
 
@@ -713,6 +732,7 @@ typedef struct SRB_ALIGN _SRBEX_DATA_PNP {
 
 #endif //(NTDDI_VERSION >= NTDDI_WINTHRESHOLD)
 
+#define REQUEST_INFO_CRYPTO_FLAG                    0x00000200
 #define REQUEST_INFO_VALID_CACHEPRIORITY_FLAG       0x80000000
 
 typedef struct SRB_ALIGN _SRBEX_DATA_IO_INFO {
@@ -725,7 +745,12 @@ typedef struct SRB_ALIGN _SRBEX_DATA_IO_INFO {
     ULONG RWLength;
     BOOLEAN IsWriteRequest;
     UCHAR CachePriority;
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+    UCHAR IoPriorityLevel;
+    UCHAR Reserved;
+#else
     UCHAR Reserved[2];
+#endif //(NTDDI_VERSION >= NTDDI_WIN11_GE)
     ULONG Reserved1[2];
 } SRBEX_DATA_IO_INFO, *PSRBEX_DATA_IO_INFO;
 
@@ -8986,6 +9011,52 @@ typedef enum _GETSGSTATUS{
 #define SCSI_DMA64_MINIPORT_64BIT_ONE_4GB_SUPPORTED 0x04
 #endif
 
+typedef enum _NVME_ADAPTER_CONTROL_TYPE {
+    NvmeQuerySupportedControlTypes = 0,
+    NvmeStopAdapter,
+    NvmeRestartAdapter,
+    NvmeSetBootConfig,
+    NvmeSetRunningConfig,
+    NvmePowerSettingNotification,
+    NvmeAdapterPower,
+    NvmeAdapterPoFxPowerRequired,
+    NvmeAdapterPoFxPowerActive,
+    NvmeAdapterPoFxPowerSetFState,
+    NvmeAdapterPoFxPowerControl,
+    NvmeAdapterPrepareForBusReScan,
+    NvmeAdapterSystemPowerHints,
+    NvmeAdapterFilterResourceRequirements,
+    NvmeAdapterPoFxMaxOperationalPower,
+    NvmeAdapterPoFxSetPerfState,
+    NvmeAdapterSurpriseRemoval,
+    NvmeAdapterSerialNumber,
+    NvmeAdapterCryptoOperation,
+    NvmeAdapterQueryFruId,
+    NvmeAdapterSetEventLogging,
+    NvmeAdapterReportInternalData,
+    NvmeAdapterResetBusSynchronous,
+    NvmeAdapterPostHwInitialize,
+    NvmeAdapterPrepareEarlyDumpData,
+    NvmeAdapterRestoreEarlyDumpData,
+    NvmeAdapterKsrPowerDown,
+    NvmeAdapterPreparePLDR,
+    NvmeNvmeofAdapterOperation,
+    NvmeAdapterQueryStorMQInterface,
+    NvmeAdapterControlMax,
+    MakeNvmeAdapterControlTypeSizeOfUlong = 0xffffffff
+} NVME_ADAPTER_CONTROL_TYPE, *PNVME_ADAPTER_CONTROL_TYPE;
+
+//
+// NVMe Adapter control status values
+//
+
+typedef enum _NVME_ADAPTER_CONTROL_STATUS {
+    NvmeAdapterControlSuccess = 0,
+    NvmeAdapterControlUnsuccessful,
+    NvmeAdapterControlRetryNeeded,
+    NvmeAdapterControlBufferTooSmall
+} NVME_ADAPTER_CONTROL_STATUS, *PNVME_ADAPTER_CONTROL_STATUS;
+
 //
 // Control type (and parameter) definition(s) for AdapterControl requests.
 //
@@ -9022,8 +9093,8 @@ typedef enum _SCSI_ADAPTER_CONTROL_TYPE {
     ScsiAdapterRestoreEarlyDumpData,
     ScsiAdapterKsrPowerDown,
     ScsiAdapterPreparePLDR,
-    ScsiNvmeofAdapterOperation,
-    ScsiAdapterQueryStorMQInterface,
+    ScsiAdapterReserved0,
+    ScsiAdapterReserved1,
     ScsiAdapterControlMax,
     MakeAdapterControlTypeSizeOfUlong = 0xffffffff
 } SCSI_ADAPTER_CONTROL_TYPE, *PSCSI_ADAPTER_CONTROL_TYPE;
@@ -9485,6 +9556,30 @@ typedef struct _SCSI_SUPPORTED_CONTROL_TYPE_LIST {
     BOOLEAN SupportedTypeList[0];
 
 } SCSI_SUPPORTED_CONTROL_TYPE_LIST, *PSCSI_SUPPORTED_CONTROL_TYPE_LIST;
+
+//
+// NvmeQuerySupportedControlTypes:
+//
+
+typedef struct _NVME_SUPPORTED_CONTROL_TYPE_LIST {
+
+    //
+    // Specifies the number of entries in the adapter/namespace control type list.
+    //
+
+    ULONG MaxControlType;
+
+    //
+    // The miniport will set TRUE for each control type it supports.
+    // The number of entries in this array is defined by NvmeAdapterControlMax
+    // or NvmeNamespaceControlMax.
+    // - the miniport must not attempt to set any AC/NC types beyond the maximum
+    // value specified.
+    //
+
+    BOOLEAN SupportedTypeList[0];
+
+} NVME_SUPPORTED_CONTROL_TYPE_LIST, *PNVME_SUPPORTED_CONTROL_TYPE_LIST;
 
 //
 // Parameter to miniport driver for ScsiUnitQueryBusType.
@@ -10154,6 +10249,15 @@ HW_ADAPTER_CONTROL (
 typedef HW_ADAPTER_CONTROL *PHW_ADAPTER_CONTROL;
 
 typedef
+NVME_ADAPTER_CONTROL_STATUS
+HW_NVME_ADAPTER_CONTROL (
+    _In_ PVOID DeviceExtension,
+    _In_ NVME_ADAPTER_CONTROL_TYPE ControlType,
+    _In_ PVOID Parameters
+    );
+typedef HW_NVME_ADAPTER_CONTROL *PHW_NVME_ADAPTER_CONTROL;
+
+typedef
 BOOLEAN
 HW_PASSIVE_INITIALIZE_ROUTINE (
     _In_ PVOID DeviceExtension
@@ -10512,6 +10616,7 @@ typedef enum _STORPORT_FUNCTION_CODE {
 #define STOR_STATUS_THROTTLED_REQUEST           (0xC100000DL)
 #define STOR_STATUS_TIMEOUT                     (0xC100000EL)
 #define STOR_STATUS_INVALID_DATA                (0xC100000FL)
+#define STOR_STATUS_RESET_REQUIRED              (0xC1000010L)
 
 //
 // Port driver error codes
@@ -11004,7 +11109,17 @@ typedef struct _HW_INITIALIZATION_DATA {
   } ;
   USHORT                      DeviceIdLength;
   PVOID                       DeviceId;
-  PHW_ADAPTER_CONTROL         HwAdapterControl;
+  union {
+    //
+    // SCSI adapter control callback
+    //
+    PHW_ADAPTER_CONTROL HwAdapterControl;
+
+    //
+    // NVMe adapter control callback
+    //
+    PHW_NVME_ADAPTER_CONTROL HwNvmeAdapterControl;
+  };
   PHW_BUILDIO                 HwBuildIo;
 
   //
@@ -11216,7 +11331,7 @@ typedef struct _MINIPORT_DUMP_POINTERS {
 // To get the miniport info for an adapter,
 // storport sends SRB_FUNCTION_GET_DUMP_INFO
 // to the miniport targeted to that adapter.
-// The input is GET_MINIPORT_DUMP_INFO which
+// The input is GET_MINIPORT_DUMP_INFO* which
 // has the storage device address for all
 // the dump disks managed by the adapter.
 // The miniport populates the output as
@@ -11257,6 +11372,12 @@ typedef struct _MINIPORT_DUMP_INFO {
     ULONG Signature;
 
     //
+    // Reserved for future use
+    //
+
+    UCHAR Reserved0[4];
+
+    //
     // Miniport private context
     //
 
@@ -11265,16 +11386,19 @@ typedef struct _MINIPORT_DUMP_INFO {
 } MINIPORT_DUMP_INFO, *PMINIPORT_DUMP_INFO;
 
 
-// Get miniport dump info signature - "GMDI" in ASCII
-#define GET_DUMP_INFO_SIGNATURE 0x474D4449
+// Get miniport dump info signature - "GMDE" in ASCII
+#define GET_DUMP_INFO_SIGNATURE_EXT     0x474D4445
 
-typedef struct _GET_MINIPORT_DUMP_INFO {
+#define GET_DUMP_INFO_VERSION_1         sizeof(GET_MINIPORT_DUMP_INFO_V1)
+
+typedef struct _GET_MINIPORT_DUMP_INFO_V1 {
 
     //
     // Size of this structure serves
     // as the version
     //
 
+    _Field_range_(GET_DUMP_INFO_VERSION_1, GET_DUMP_INFO_VERSION_1)
     ULONG Version;
 
     //
@@ -11288,18 +11412,49 @@ typedef struct _GET_MINIPORT_DUMP_INFO {
     // Signature of this request
     //
 
-    _Field_range_(GET_DUMP_INFO_SIGNATURE, GET_DUMP_INFO_SIGNATURE)
+    _Field_range_(GET_DUMP_INFO_SIGNATURE_EXT, GET_DUMP_INFO_SIGNATURE_EXT)
     ULONG Signature;
 
     //
-    // Storage device address of
-    // dump disks on this adapter
+    // Count of dump disks on
+    // this adapter
     //
 
-    ULONG DiskCount;
-    STOR_ADDRESS Address[ANYSIZE_ARRAY];
+    USHORT DiskCount;
 
-} GET_MINIPORT_DUMP_INFO, *PGET_MINIPORT_DUMP_INFO;
+    //
+    // Address type used to identify
+    // dump disks on this adapter.
+    // The possible values are defined
+    // by STOR_ADDRESS_TYPE* at
+    // https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/storport/ns-storport-_stor_address
+    // STOR_ADDRESS_TYPE_UNKNOWN is
+    // not a supported value.
+    //
+    USHORT AddressType;
+
+    //
+    // Size of each address structure.
+    // Depends on the address type.
+    //
+
+    ULONG AddressSize;
+
+    //
+    // Reserved for future use
+    //
+
+    UCHAR Reserved0[4];
+
+    //
+    // Addresses of dump disks
+    // on this adapter
+    //
+
+    _Field_size_bytes_(DiskCount * AddressSize)
+    UCHAR Addresses[ANYSIZE_ARRAY];
+
+} GET_MINIPORT_DUMP_INFO_V1, *PGET_MINIPORT_DUMP_INFO_V1;
 
 
 // FRee miniport dump info signature - "FMDI" in ASCII
@@ -11327,6 +11482,12 @@ typedef struct _FREE_MINIPORT_DUMP_INFO {
 
     _Field_range_(FREE_DUMP_INFO_SIGNATURE, FREE_DUMP_INFO_SIGNATURE)
     ULONG Signature;
+
+    //
+    // Reserved for future use
+    //
+
+    UCHAR Reserved0[4];
 
     //
     // Miniport private context
@@ -17310,7 +17471,7 @@ typedef enum _STORPORT_FEATURE_TYPE
     StorportFeaturePreparePLDR,
 
     //
-    // Whether ScsiNvmeofAdapterOperation is supported
+    // Whether NvmeNvmeofAdapterOperation is supported
     //
     StorportFeatureNvmeofAdapterOperation,
 
@@ -17323,7 +17484,7 @@ typedef enum _STORPORT_FEATURE_TYPE
     StorportFeatureReserved1,
 
     //
-    // Whether ScsiAdapterQueryStorMQInterface is supported
+    // Whether NvmeAdapterQueryStorMQInterface is supported
     //
     StorportFeatureQueryStorMQInterface,
 
@@ -18668,6 +18829,47 @@ typedef struct _STORMQ_PROPERTY_AFFINITY_DESCRIPTOR {
 
 } STORMQ_PROPERTY_AFFINITY_DESCRIPTOR, *PSTORMQ_PROPERTY_AFFINITY_DESCRIPTOR;
 
+//
+// The following values are used to communicate controller status to the miniport in out-of-band
+// workflows.  For example, if the asynchronous initialization process fails.  Or, if StorMQ needs
+// to remove a control in response to a PnP action such as the adapter being removed.
+//
+typedef enum _STORMQ_CONTROLLER_STATUS {
+
+    //
+    // Invalid/unexpected state
+    //
+    ControllerStatusUnknown = 0,
+
+    //
+    // The asynchronous controller initialization workflow has failed.  The miniport may respond by
+    // either removing the controller via StorPortStorMQRemoveController, or, it may restart the
+    // initialization process by calling StorPortNotification(StorMQControllerStartInitialization) again.
+    //
+    ControllerStatusInitializationFailed,
+
+    //
+    // StorMQ is preparing to remove the controller and notifies the miniport with this status.  This removal sequence
+    // could be initiated by the miniport via StorPortStorMQRemoveController, or by StorMQ if an adapter is being
+    // disabled.  In either case, the miniport is expected to free related resources synchronously, prior to returning
+    // from the SetProperty callback.  All outstanding requests for this controller will be canceled by StorMQ prior to
+    // setting this status.  After the SetProperty callback returns from the miniport it may no longer access any of the
+    // resources associated with the controller (including the shared queues).
+    //
+    ControllerStatusRemovalInProgress,
+
+    //
+    // The asynchronous controller removal workflow has failed.  This status is unexpected and would imply either PnP manager
+    // is unable to remove the namespace devices or the miniport failed the shutdown of the controller via the setting of CC.SHN.
+    // This status is provided to the miniport on an informational basis only as currently there are no direct actions it can take
+    // to resolve this state.
+    //
+    ControllerStatusRemovalFailed,
+
+    MakeControllerStatusTypeSizeOfUlong = 0xffffffff
+
+} STORMQ_CONTROLLER_STATUS, *PSTORMQ_CONTROLLER_STATUS;
+
 typedef enum _STORMQ_PROPERTY_OFFSET {
 
     StorMQPropQueueBase                    = 0x80000000, // StorMQ sets this property to inform the miniport of a queue's base.
@@ -18700,10 +18902,10 @@ typedef enum _STORMQ_PROPERTY_OFFSET {
                                                          // miniports StorMQ will always populate the PRP fields and this property will not be queried.
                                                          // Type: BOOLEAN
 
-    StorMQPropSQLPAffinity                 = 0x80000006, // StorMQ queries this property for the I/O SQs to determine if the miniport has an LP affinity preference for each.
+    StorMQPropLPSQAffinity                 = 0x80000006, // StorMQ queries this property for the LPs to determine if the miniport has an I/O SQ affinity preference for each.
                                                          // StorMQ sets this property for the I/O SQs to indicate the LP affinity (determined by StorMQ if the miniport has no preference).
                                                          // A single descriptor will cover all of the I/O SQs and will be sized according to the established I/O SQ count.
-                                                         // The first element in the descriptor's array (index zero) will represent the first I/O SQ, i.e. SQ id 1.
+                                                         // The first element in the descriptor's array (index zero) will represent the first LP, i.e. LP0.
                                                          // The affinity values are the system wide indexes as returned by KeGetCurrentProcessorIndex or StorPortGetCurrentProcessorIndex.
                                                          // Type: STORMQ_PROPERTY_AFFINITY_DESCRIPTOR
 
@@ -18711,14 +18913,19 @@ typedef enum _STORMQ_PROPERTY_OFFSET {
                                                          // StorMQ sets this property for the I/O SQs to indicate the CQ affinity (determined by StorMQ if the miniport has no preference).
                                                          // A single descriptor will cover all of the I/O SQs and will be sized according to the established I/O SQ count.
                                                          // The first element in the descriptor's array (index zero) will represent the first I/O SQ, i.e. SQ id 1.
+                                                         // The affinity values are CQ id numbers which should range from 1 through N where N is the total number of CQs.
                                                          // Type: STORMQ_PROPERTY_AFFINITY_DESCRIPTOR
 
     StorMQPropCQIVAffinity                 = 0x80000008, // StorMQ queries this property for the I/O CQs to determine if the miniport has an interrupt vector affinity preference for each.
                                                          // StorMQ sets this property for the I/O CQs to indicate the IV affinity (determined by StorMQ if the miniport has no preference).
                                                          // A single descriptor will cover all of the I/O CQs and will be sized according to the established I/O CQ count.
                                                          // The first element in the descriptor's array (index zero) will represent the first I/O CQ, i.e. CQ id 1.
+                                                         // The affinity values are MSI message id numbers which should range from 1 through N where N is the maximum MSI message id.
+                                                         // 0 is not a valid message id for an I/O CQ.
                                                          // Type: STORMQ_PROPERTY_AFFINITY_DESCRIPTOR
 
+    StorMQPropControllerStatus             = 0x80000009, // StorMQ sets the property to relay a status about one of the miniport's controllers.
+                                                         // Type: STORMQ_CONTROLLER_STATUS
 } STORMQ_PROPERTY_OFFSET;
 
 typedef

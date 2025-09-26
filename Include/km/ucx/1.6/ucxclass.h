@@ -77,7 +77,7 @@ __drv_requiresIRQL(PASSIVE_LEVEL)
 _Must_inspect_result_
 WDFAPI
 NTSTATUS
-(*PFN_UCXINITIALIZEDEVICEINIT)(
+(NTAPI *PFN_UCXINITIALIZEDEVICEINIT)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __inout
@@ -86,8 +86,8 @@ NTSTATUS
 
 __drv_requiresIRQL(PASSIVE_LEVEL)
 _Must_inspect_result_
-NTSTATUS
 FORCEINLINE
+NTSTATUS
 UcxInitializeDeviceInit(
     __inout
     PWDFDEVICE_INIT DeviceInit

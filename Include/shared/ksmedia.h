@@ -5148,6 +5148,20 @@ typedef enum {
     KSEVENT_DYNAMIC_FORMAT_CHANGE = 0
 } KSEVENT_DYNAMICFORMATCHANGE;
 
+// {FC9D87B5-0B02-438E-89B0-E241FCE889AD}
+#define STATIC_KSATTRIBUTEID_VIDEOFORMAT_DX12 \
+    0xfc9d87b5, 0x0b02, 0x438e, 0x89, 0xb0, 0xe2, 0x41, 0xfc, 0xe8, 0x89, 0xad
+DEFINE_GUIDSTRUCT("FC9D87B5-0B02-438E-89B0-E241FCE889AD", KSATTRIBUTEID_VIDEOFORMAT_DX12);
+#define KSATTRIBUTEID_VIDEOFORMAT_DX12 DEFINE_GUIDNAMED(KSATTRIBUTEID_VIDEOFORMAT_DX12)
+
+typedef struct _VideoDXFormat
+{
+    KSATTRIBUTE Header;
+    ULONG resourceLayout;     // D3D12_TEXTURE_LAYOUT
+    ULONG resourceFlags;      // D3D12_RESOURCE_FLAGS
+    GUID customLayout;
+} VIDEOFORMAT_DX12, *PVIDEOFORMAT_DX12;
+
 //===========================================================================
 // KSSTREAM_HEADER extensions for digital video
 //===========================================================================

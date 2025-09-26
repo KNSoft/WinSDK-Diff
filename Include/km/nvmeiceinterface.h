@@ -67,7 +67,8 @@ typedef union NVME_ICE_DATA_ALIGNMENT_BITMASK {
         UCHAR Alignment4B : 1;
         UCHAR Alignment8B : 1;
         UCHAR Alignment16B : 1;
-        UCHAR Reserved : 5;
+        UCHAR Alignment32B : 1;
+        UCHAR Reserved : 4;
     };
     _Field_range_(>, 0) UCHAR AsUchar;
 } NVME_ICE_DATA_ALIGNMENT_BITMASK;
@@ -313,6 +314,7 @@ Return Value:
 
     STOR_STATUS_SUCCESS on success.
     STOR_STATUS_BUSY on transient error. This suggests a retry.
+    STOR_STATUS_RESET_REQUIRED if hardware needs to be reset. (new STOR_STATUS value)
     A STOR_STATUS error code otherwise.
 
 --*/
@@ -341,6 +343,7 @@ Arguments:
 Return Value:
 
     STOR_STATUS_SUCCESS on success.
+    STOR_STATUS_RESET_REQUIRED if hardware needs to be reset. (new STOR_STATUS value)
     A STOR_STATUS error code otherwise.
 
 --*/
@@ -421,6 +424,9 @@ typedef struct NVME_ICE_CAPABILITIES_V2 {
 
     // Maximum supported transfer size in KB
     USHORT MaxTransferSizeKBytes;
+
+    // Maximum supported outstanding command count. Set to zero if no limit.
+    USHORT MaxCommandCount;
 
     // Contains supported crypto configurations
     STOR_CRYPTO_CAPABILITIES_DATA CryptoCapabilitiesData;
@@ -825,6 +831,256 @@ ULONG
     _Inout_ PULONG CapabilitiesSize
     );
 
+typedef struct NVME_ICE_NVME_CAPABILITIES {
+
+    // Maximum number of Submission Queues supported. Set to zero if no limit.
+    USHORT MaxSQCount;
+
+    // Maximum number of Completion Queues supported. Set to zero if no limit.
+    USHORT MaxCQCount;
+
+    // Max Namespace ID supported. Set to 0xFFFFFFFF if no limit.
+    ULONG MaxNSID;
+
+    // Max number of Exclusion Ranges supported. Set to zero if not supported.
+    ULONG MaxERCount;
+
+    // NVMe Command DWord location for CryptoEnabled bit. Set value to 0xFF if not supported.
+    UCHAR CECDWNumber;
+    UCHAR CECDWBitPosition;
+
+    // NVME Command DWord location for Key Slot information. Set value to 0xFF if not supported.
+    UCHAR KSICDWNumber;
+    UCHAR KSICDWStartBit;
+    UCHAR KSINumberOfBits;
+ 
+    // NVME Command DWord locations for IV. Set value to 0xFF if not supported. IV0 is the least significant bytes.
+    UCHAR IV0CDWNumber;
+    UCHAR IV1CDWNumber;
+    UCHAR IV2CDWNumber;
+    UCHAR IV3CDWNumber;
+
+#pragma warning(push)
+#pragma warning(disable:4201) // nameless struct/unions
+    union {
+        struct {
+            ULONG MarkLastPRPList : 1;
+            ULONG Reserved        : 31;
+        };
+        ULONG AsUlong;
+    } Flags;
+#pragma warning(pop)
+
+    UCHAR Reserved[3];
+
+} NVME_ICE_NVME_CAPABILITIES;
+
+/*++
+
+PQUERY_NVME_CAPABILITIES
+
+Routine Description:
+
+    Returns information about the NVMe capabilities of a SoC that supports NVMe ICE.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    PciAddress       - The PCI SBDF of the NVMe device.
+    NvmeCapabilities - The capabilities of the SoC.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    STOR_STATUS_INVALID_DEVICE_REQUEST if NVMe device is not supported.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_(PASSIVE_LEVEL)
+typedef
+ULONG
+(__stdcall *PQUERY_NVME_CAPABILITIES)(
+    _In_ PVOID InterfaceContext,
+    _In_ const NVME_PCI_ADDRESS* PciAddress,
+    _Inout_ NVME_ICE_NVME_CAPABILITIES* NvmeCapabilities
+    );
+
+typedef struct NVME_ICE_NAMESPACE_CONFIG {
+
+    // Namespace ID
+    USHORT NamespaceId;
+
+    // LBA size of this namespace
+    USHORT LBASize;
+
+} NVME_ICE_NAMESPACE_CONFIG;
+
+typedef enum _NVME_ICE_QUEUE_TYPE {
+    NVME_ICE_QUEUE_TYPE_UNKNOWN = 0,
+    NVME_ICE_QUEUE_TYPE_ADMIN_SQ = 1,
+    NVME_ICE_QUEUE_TYPE_ADMIN_CQ = 2,
+    NVME_ICE_QUEUE_TYPE_IO_SQ = 3,
+    NVME_ICE_QUEUE_TYPE_IO_CQ = 4,
+    NVME_ICE_QUEUE_TYPE_MAX    
+} NVME_ICE_QUEUE_TYPE;
+
+typedef struct NVME_ICE_QUEUE_CONFIG {
+
+    // Queue ID
+    USHORT QueueId;
+
+    UCHAR Reserved[2];
+
+    // Queue size in bytes
+    ULONG QueueSize;
+
+    // Queue type
+    NVME_ICE_QUEUE_TYPE QueueType;
+
+    // Start address of the queue
+    STOR_PHYSICAL_ADDRESS QueueAddress;
+
+} NVME_ICE_QUEUE_CONFIG;
+
+#define NVME_ICE_ENABLE_NVME_DEVICE_VERSION_1              1
+
+typedef struct NVME_ICE_ENABLE_NVME_DEVICE {
+
+    // Version
+    USHORT Version;
+
+    // Size of the whole structure
+    ULONG Size;
+
+    // Number of namespaces
+    USHORT NamespaceCount;
+
+    // Offset to an array of NVME_ICE_NAMESPACE_CONFIG. Zero value indicates no namespaces.
+    USHORT NamespacesArrayOffset;
+
+    // Number of queues
+    USHORT QueueCount;
+
+    // Offset to an array of NVME_ICE_QUEUE_CONFIG. Zero value indicates no queues.
+    USHORT QueuesArrayOffset;
+
+} NVME_ICE_ENABLE_NVME_DEVICE;
+
+/*++
+
+PNVME_ICE_ENABLE_NVME_SUPPORT
+
+Routine Description:
+
+    Enable the NVMe ICE hardware to support the specified NVMe device.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    PciAddress       - The PCI SBDF of the NVMe device.
+    NvmeDevice       - A NVME_ICE_ENABLE_NVME_DEVICE struct.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    STOR_STATUS_INVALID_DEVICE_REQUEST if NVMe device is not supported.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_(PASSIVE_LEVEL)
+typedef
+ULONG
+(__stdcall *PNVME_ICE_ENABLE_NVME_SUPPORT)(
+    _In_ PVOID InterfaceContext,
+    _In_ const NVME_PCI_ADDRESS* PciAddress,
+    _In_ NVME_ICE_ENABLE_NVME_DEVICE* NvmeDevice
+    );
+
+/*++
+
+PNVME_ICE_NOTIFY_HARDWARE_RESET
+
+Routine Description:
+
+    Notify that the specified NVMe device has experience a hardware reset.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    PciAddress       - The PCI SBDF of the NVMe device.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_max_(DISPATCH_LEVEL)
+typedef
+ULONG
+(__stdcall *PNVME_ICE_NOTIFY_HARDWARE_RESET)(
+    _In_ PVOID InterfaceContext,
+    _In_ const NVME_PCI_ADDRESS* PciAddress
+    );
+
+typedef enum NVME_ICE_EXCLUSION_ACTION {
+    NVME_ICE_EXCLUSION_ACTION_UNKNOWN = 0,
+    NVME_ICE_EXCLUSION_ACTION_ADD = 1,
+    NVME_ICE_EXCLUSION_ACTION_REMOVE = 2,
+} NVME_ICE_EXCLUSION_ACTION;
+
+#define NVME_ICE_ADDRESS_RANGE_VERSION_1              1
+
+typedef struct NVME_ICE_ADDRESS_RANGE {
+
+     // Version
+    USHORT Version;
+
+    // Size of the whole structure
+    USHORT Size;
+
+    STOR_PHYSICAL_ADDRESS RangeStart;
+    ULONGLONG RangeLength;
+
+    ULONG Readable: 1;
+    ULONG Writable: 1;
+    ULONG Reserved: 30;
+} NVME_ICE_ADDRESS_RANGE;
+
+/*++
+
+PNVME_ICE_CONFIGURE_EXCLUSION_RANGES
+
+Routine Description:
+
+    Configure the exclusion ranges for the NVMe ICE hardware. One or more exclusion
+    ranges can be added or removed. If adding an exclusion address range that has
+    been already added before, STOR_STATUS_SUCCESS will be returned.
+
+Arguments:
+
+    InterfaceContext - The Context member of the NVME_ICE_INTERFACE structure.
+    ExclusionRanges  - Array of NVME_ICE_EXCLUSION_RANGE structs.
+    ExclusionRangeCount - Number of exclusion ranges in the array.
+    ExclusionAction - Action to take on the exclusion ranges.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS on success.
+    STOR_STATUS_INSUFFICIENT_RESOURCES if the hardware cannot support the requested exclusion ranges.
+    A STOR_STATUS error code otherwise.
+
+--*/
+_IRQL_requires_max_(DISPATCH_LEVEL)
+typedef
+ULONG
+(__stdcall *PNVME_ICE_CONFIGURE_EXCLUSION_RANGES)(
+    _In_ PVOID InterfaceContext,
+    _In_count_(ExclusionRangeCount) NVME_ICE_ADDRESS_RANGE* ExclusionRanges,
+    _In_ USHORT ExclusionRangeCount,
+    _In_ NVME_ICE_EXCLUSION_ACTION ExclusionAction
+    );
+
 #define NVME_ICE_INTERFACE_VERSION_2                  2
 
 typedef struct NVME_ICE_INTERFACE_V2 {
@@ -868,5 +1124,13 @@ typedef struct NVME_ICE_INTERFACE_V2 {
 
     PNVME_ICE_QUERY_STORAGE_DEVICE_SUPPORT QueryStorageDeviceSupport;
     PNVME_ICE_QUERY_PLATFORM_CAPABILITIES QueryPlatformCapabilities;
+
+    //
+    // Optional interface functions
+    //
+    PQUERY_NVME_CAPABILITIES QueryNVMeCapabilities;
+    PNVME_ICE_ENABLE_NVME_SUPPORT EnableNvmeSupport;
+    PNVME_ICE_CONFIGURE_EXCLUSION_RANGES ConfigureExclusionRanges;
+    PNVME_ICE_NOTIFY_HARDWARE_RESET NotifyHardwareReset;
 
 } NVME_ICE_INTERFACE_V2;

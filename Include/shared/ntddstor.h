@@ -5079,7 +5079,8 @@ DeviceDsmGetInputLength (
 {
     ULONG Bytes = sizeof(DEVICE_DSM_INPUT);
 
-    if (ParameterBlockLength != 0) {
+    if (Definition->ParameterBlockLength != 0 &&
+        ParameterBlockLength != 0) {
 
         Bytes  = DEVICE_DSM_ROUND_UP(Bytes, Definition->ParameterBlockAlignment);
         Bytes += ParameterBlockLength;
@@ -5105,7 +5106,8 @@ DeviceDsmGetNumberOfDataSetRanges (
 {
     ULONG Bytes = sizeof(DEVICE_DSM_INPUT);
 
-    if (ParameterBlockLength != 0) {
+    if (Definition->ParameterBlockLength != 0 &&
+        ParameterBlockLength != 0) {
 
         Bytes  = DEVICE_DSM_ROUND_UP(Bytes, Definition->ParameterBlockAlignment);
         Bytes += ParameterBlockLength;
@@ -5137,7 +5139,9 @@ DeviceDsmInitializeInput (
     Input->Action = Definition->Action;
     Input->Flags  = Flags;
 
-    if (ParameterBlockLength == 0) {
+    if (Definition->ParameterBlockLength == 0 ||
+        ParameterBlockLength == 0) {
+
         goto Cleanup;
     }
 
@@ -5254,6 +5258,13 @@ DeviceDsmValidateInput (
 
         if (Input->ParameterBlockLength < Min ||
             Input->ParameterBlockLength > Max) {
+            goto Cleanup;
+        }
+
+    } else {
+
+        if (Input->ParameterBlockLength != 0 ||
+            Input->ParameterBlockOffset != 0) {
             goto Cleanup;
         }
     }

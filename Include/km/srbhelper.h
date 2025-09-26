@@ -210,7 +210,8 @@ SrbGetAddress(
             // We currently only support BTL8, so assert if the type is something
             // different.
             //
-            SRBHELPER_ASSERT(storAddr->Type == STOR_ADDRESS_TYPE_BTL8);
+            SRBHELPER_ASSERT((storAddr->Type == STOR_ADDRESS_TYPE_BTL8) ||
+                             (storAddr->Type == STOR_ADDRESS_TYPE_NVME));
         }
     }
 

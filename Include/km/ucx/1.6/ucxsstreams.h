@@ -72,7 +72,7 @@ STREAM_INFO_INIT(
 typedef
 WDFAPI
 VOID
-(*PFN_UCXSTATICSTREAMSSETSTREAMINFO)(
+(NTAPI *PFN_UCXSTATICSTREAMSSETSTREAMINFO)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -81,8 +81,8 @@ VOID
     PSTREAM_INFO StreamInfo
     );
 
-VOID
 FORCEINLINE
+VOID
 UcxStaticStreamsSetStreamInfo(
     __in
     UCXSSTREAMS StaticStreams,
@@ -101,7 +101,7 @@ _Must_inspect_result_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 WDFAPI
 NTSTATUS
-(*PFN_UCXSTATICSTREAMSCREATE)(
+(NTAPI *PFN_UCXSTATICSTREAMSCREATE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -116,8 +116,8 @@ NTSTATUS
 
 _Must_inspect_result_
 __drv_requiresIRQL(PASSIVE_LEVEL)
-NTSTATUS
 FORCEINLINE
+NTSTATUS
 UcxStaticStreamsCreate(
     __in
     UCXENDPOINT Endpoint,

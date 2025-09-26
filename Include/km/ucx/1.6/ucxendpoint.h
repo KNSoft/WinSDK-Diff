@@ -129,6 +129,7 @@ _Function_class_(EVT_UCX_ENDPOINT_RESET)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ENDPOINT_RESET(
     __in
     UCXCONTROLLER   UcxController,
@@ -145,6 +146,7 @@ _Function_class_(EVT_UCX_ENDPOINT_PURGE)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ENDPOINT_PURGE(
     __in
     UCXCONTROLLER   UcxController,
@@ -159,6 +161,7 @@ _Function_class_(EVT_UCX_ENDPOINT_START)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ENDPOINT_START(
     __in
     UCXCONTROLLER   UcxController,
@@ -173,6 +176,7 @@ _Function_class_(EVT_UCX_ENDPOINT_ABORT)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ENDPOINT_ABORT(
     __in
     UCXCONTROLLER   UcxController,
@@ -187,6 +191,7 @@ _Function_class_(EVT_UCX_ENDPOINT_OK_TO_CANCEL_TRANSFERS)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ENDPOINT_OK_TO_CANCEL_TRANSFERS(
     __in
     UCXENDPOINT     UcxEndpoint
@@ -200,6 +205,7 @@ _IRQL_requires_same_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 _Must_inspect_result_
 NTSTATUS
+NTAPI
 EVT_UCX_ENDPOINT_STATIC_STREAMS_ADD(
     __in
     UCXENDPOINT         UcxEndpoint,
@@ -216,6 +222,7 @@ _Function_class_(EVT_UCX_ENDPOINT_STATIC_STREAMS_ENABLE)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ENDPOINT_STATIC_STREAMS_ENABLE(
     __in
     UCXENDPOINT     UcxEndpoint,
@@ -232,6 +239,7 @@ _Function_class_(EVT_UCX_ENDPOINT_STATIC_STREAMS_DISABLE)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ENDPOINT_STATIC_STREAMS_DISABLE(
     __in
     UCXENDPOINT     UcxEndpoint,
@@ -249,6 +257,7 @@ _Function_class_(EVT_UCX_DEFAULT_ENDPOINT_UPDATE)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_DEFAULT_ENDPOINT_UPDATE(
     __in
     UCXCONTROLLER   UcxController,
@@ -264,6 +273,7 @@ _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 _Must_inspect_result_
 NTSTATUS
+NTAPI
 EVT_UCX_ENDPOINT_GET_ISOCH_TRANSFER_PATH_DELAYS(
     __in
     UCXENDPOINT                                 UcxEndpoint,
@@ -278,6 +288,7 @@ _Function_class_(EVT_UCX_ENDPOINT_SET_CHARACTERISTIC)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_ENDPOINT_SET_CHARACTERISTIC(
     __in
     UCXENDPOINT                                 UcxEndpoint,
@@ -400,7 +411,7 @@ _Must_inspect_result_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 WDFAPI
 NTSTATUS
-(*PFN_UCXENDPOINTCREATE)(
+(NTAPI *PFN_UCXENDPOINTCREATE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -415,8 +426,8 @@ NTSTATUS
 
 _Must_inspect_result_
 __drv_requiresIRQL(PASSIVE_LEVEL)
-NTSTATUS
 FORCEINLINE
+NTSTATUS
 UcxEndpointCreate(
     __in
     UCXUSBDEVICE UsbDevice,
@@ -439,7 +450,7 @@ _Must_inspect_result_
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 UCXSSTREAMS
-(*PFN_UCXENDPOINTGETSTATICSTREAMSREFERENCED)(
+(NTAPI *PFN_UCXENDPOINTGETSTATICSTREAMSREFERENCED)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -450,8 +461,8 @@ UCXSSTREAMS
 
 _Must_inspect_result_
 __drv_maxIRQL(DISPATCH_LEVEL)
-UCXSSTREAMS
 FORCEINLINE
+UCXSSTREAMS
 UcxEndpointGetStaticStreamsReferenced(
     __in
     UCXENDPOINT Endpoint,
@@ -469,7 +480,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXENDPOINTNEEDTOCANCELTRANSFERS)(
+(NTAPI *PFN_UCXENDPOINTNEEDTOCANCELTRANSFERS)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -477,8 +488,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxEndpointNeedToCancelTransfers(
     __in
     UCXENDPOINT Endpoint
@@ -493,7 +504,7 @@ UcxEndpointNeedToCancelTransfers(
 typedef
 WDFAPI
 VOID
-(*PFN_UCXENDPOINTINITSETEVENTCALLBACKS)(
+(NTAPI *PFN_UCXENDPOINTINITSETEVENTCALLBACKS)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __inout
@@ -502,8 +513,8 @@ VOID
     PUCX_ENDPOINT_EVENT_CALLBACKS EventCallbacks
     );
 
-VOID
 FORCEINLINE
+VOID
 UcxEndpointInitSetEventCallbacks(
     __inout
     PUCXENDPOINT_INIT EndpointInit,
@@ -520,7 +531,7 @@ UcxEndpointInitSetEventCallbacks(
 typedef
 WDFAPI
 VOID
-(*PFN_UCXDEFAULTENDPOINTINITSETEVENTCALLBACKS)(
+(NTAPI *PFN_UCXDEFAULTENDPOINTINITSETEVENTCALLBACKS)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __inout
@@ -529,8 +540,8 @@ VOID
     PUCX_DEFAULT_ENDPOINT_EVENT_CALLBACKS EventCallbacks
     );
 
-VOID
 FORCEINLINE
+VOID
 UcxDefaultEndpointInitSetEventCallbacks(
     __inout
     PUCXENDPOINT_INIT EndpointInit,
@@ -547,7 +558,7 @@ UcxDefaultEndpointInitSetEventCallbacks(
 typedef
 WDFAPI
 VOID
-(*PFN_UCXENDPOINTSETWDFIOQUEUE)(
+(NTAPI *PFN_UCXENDPOINTSETWDFIOQUEUE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -556,8 +567,8 @@ VOID
     WDFQUEUE WdfQueue
     );
 
-VOID
 FORCEINLINE
+VOID
 UcxEndpointSetWdfIoQueue(
     __in
     UCXENDPOINT Endpoint,
@@ -575,7 +586,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXENDPOINTPURGECOMPLETE)(
+(NTAPI *PFN_UCXENDPOINTPURGECOMPLETE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -583,8 +594,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxEndpointPurgeComplete(
     __in
     UCXENDPOINT Endpoint
@@ -600,7 +611,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXENDPOINTABORTCOMPLETE)(
+(NTAPI *PFN_UCXENDPOINTABORTCOMPLETE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -608,8 +619,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxEndpointAbortComplete(
     __in
     UCXENDPOINT Endpoint
@@ -625,7 +636,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXENDPOINTNOPINGRESPONSEERROR)(
+(NTAPI *PFN_UCXENDPOINTNOPINGRESPONSEERROR)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -633,8 +644,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxEndpointNoPingResponseError(
     __in
     UCXENDPOINT Endpoint

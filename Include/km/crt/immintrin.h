@@ -1557,6 +1557,14 @@ unsigned __int32 _xbegin(void);
 void _xend(void);
 void _xabort(const unsigned int imm);
 
+// unaligned load and store functions
+#define _mm_loadu_si16(p) _mm_cvtsi32_si128(*(unsigned short const*)(p))
+#define _mm_storeu_si16(p, a) (void)(*(short*)(p) = (short)_mm_cvtsi128_si32((a)))
+#define _mm_loadu_si32(p) _mm_cvtsi32_si128(*(unsigned int const*)(p))
+#define _mm_storeu_si32(p, a) (void)(*(int*)(p) = _mm_cvtsi128_si32((a)))
+#define _mm_loadu_si64(p) _mm_loadl_epi64((__m128i const*)(p))
+#define _mm_storeu_si64(p, a) (_mm_storel_epi64((__m128i*)(p), (a)))
+
 #if defined __cplusplus
 }; /* End "C" */
 #endif /* __cplusplus */

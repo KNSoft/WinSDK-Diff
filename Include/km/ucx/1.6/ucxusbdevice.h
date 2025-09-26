@@ -239,6 +239,7 @@ _Function_class_(EVT_UCX_USBDEVICE_ENDPOINTS_CONFIGURE)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_ENDPOINTS_CONFIGURE(
     __in
     UCXCONTROLLER   UcxController,
@@ -253,6 +254,7 @@ _Function_class_(EVT_UCX_USBDEVICE_ENABLE)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_ENABLE(
     __in
     UCXCONTROLLER   UcxController,
@@ -267,6 +269,7 @@ _Function_class_(EVT_UCX_USBDEVICE_DISABLE)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_DISABLE(
     __in
     UCXCONTROLLER   UcxController,
@@ -281,6 +284,7 @@ _Function_class_(EVT_UCX_USBDEVICE_RESET)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_RESET(
     __in
     UCXCONTROLLER   UcxController,
@@ -295,6 +299,7 @@ _Function_class_(EVT_UCX_USBDEVICE_ADDRESS)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_ADDRESS(
     __in
     UCXCONTROLLER   UcxController,
@@ -309,6 +314,7 @@ _Function_class_(EVT_UCX_USBDEVICE_UPDATE)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_UPDATE(
     __in
     UCXCONTROLLER   UcxController,
@@ -323,6 +329,7 @@ _Function_class_(EVT_UCX_USBDEVICE_HUB_INFO)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_HUB_INFO(
     __in
     UCXCONTROLLER   UcxController,
@@ -337,6 +344,7 @@ _Function_class_(EVT_UCX_USBDEVICE_DEFAULT_ENDPOINT_ADD)
 _IRQL_requires_same_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 NTSTATUS
+NTAPI
 EVT_UCX_USBDEVICE_DEFAULT_ENDPOINT_ADD(
     __in
     UCXCONTROLLER       UcxController,
@@ -355,6 +363,7 @@ _Function_class_(EVT_UCX_USBDEVICE_ENDPOINT_ADD)
 _IRQL_requires_same_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 NTSTATUS
+NTAPI
 EVT_UCX_USBDEVICE_ENDPOINT_ADD(
     __in
     UCXCONTROLLER   UcxController,
@@ -377,6 +386,7 @@ _Function_class_(EVT_UCX_USBDEVICE_SUSPEND)
 _IRQL_requires_same_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_SUSPEND(
     __in
     UCXCONTROLLER   UcxController,
@@ -391,6 +401,7 @@ _Function_class_(EVT_UCX_USBDEVICE_RESUME)
 _IRQL_requires_same_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 VOID
+NTAPI
 EVT_UCX_USBDEVICE_RESUME(
     __in
     UCXCONTROLLER   UcxController,
@@ -405,6 +416,7 @@ _Function_class_(EVT_UCX_USBDEVICE_GET_CHARACTERISTIC)
 _IRQL_requires_same_
 __drv_maxIRQL(DISPATCH_LEVEL)
 NTSTATUS
+NTAPI
 EVT_UCX_USBDEVICE_GET_CHARACTERISTIC(
     __in
     UCXCONTROLLER                   UcxController,
@@ -494,7 +506,7 @@ _Must_inspect_result_
 __drv_requiresIRQL(PASSIVE_LEVEL)
 WDFAPI
 NTSTATUS
-(*PFN_UCXUSBDEVICECREATE)(
+(NTAPI *PFN_UCXUSBDEVICECREATE)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -509,8 +521,8 @@ NTSTATUS
 
 _Must_inspect_result_
 __drv_requiresIRQL(PASSIVE_LEVEL)
-NTSTATUS
 FORCEINLINE
+NTSTATUS
 UcxUsbDeviceCreate(
     __in
     UCXCONTROLLER Controller,
@@ -531,7 +543,7 @@ UcxUsbDeviceCreate(
 typedef
 WDFAPI
 VOID
-(*PFN_UCXUSBDEVICEINITSETEVENTCALLBACKS)(
+(NTAPI *PFN_UCXUSBDEVICEINITSETEVENTCALLBACKS)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __inout
@@ -540,8 +552,8 @@ VOID
     PUCX_USBDEVICE_EVENT_CALLBACKS EventCallbacks
     );
 
-VOID
 FORCEINLINE
+VOID
 UcxUsbDeviceInitSetEventCallbacks(
     __inout
     PUCXUSBDEVICE_INIT UsbDeviceInit,
@@ -559,7 +571,7 @@ typedef
 __drv_maxIRQL(DISPATCH_LEVEL)
 WDFAPI
 VOID
-(*PFN_UCXUSBDEVICEREMOTEWAKENOTIFICATION)(
+(NTAPI *PFN_UCXUSBDEVICEREMOTEWAKENOTIFICATION)(
     _In_
     PUCX_DRIVER_GLOBALS DriverGlobals,
     __in
@@ -569,8 +581,8 @@ VOID
     );
 
 __drv_maxIRQL(DISPATCH_LEVEL)
-VOID
 FORCEINLINE
+VOID
 UcxUsbDeviceRemoteWakeNotification(
     __in
     UCXUSBDEVICE UsbDevice,
