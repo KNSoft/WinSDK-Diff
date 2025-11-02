@@ -16,20 +16,6 @@ WINRT_EXPORT namespace winrt::Windows::AI::Agents::Mcp
         IMcpHttpConnectionResult(std::nullptr_t = nullptr) noexcept {}
         IMcpHttpConnectionResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct WINRT_IMPL_EMPTY_BASES IMcpMessageFilter :
-        winrt::Windows::Foundation::IInspectable,
-        impl::consume_t<IMcpMessageFilter>
-    {
-        IMcpMessageFilter(std::nullptr_t = nullptr) noexcept {}
-        IMcpMessageFilter(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
-    };
-    struct WINRT_IMPL_EMPTY_BASES IMcpMessageFilterResponse :
-        winrt::Windows::Foundation::IInspectable,
-        impl::consume_t<IMcpMessageFilterResponse>
-    {
-        IMcpMessageFilterResponse(std::nullptr_t = nullptr) noexcept {}
-        IMcpMessageFilterResponse(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
-    };
     struct WINRT_IMPL_EMPTY_BASES IMcpNamedPipeConnectionResult :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IMcpNamedPipeConnectionResult>

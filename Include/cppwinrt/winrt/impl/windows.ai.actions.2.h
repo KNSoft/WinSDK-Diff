@@ -23,7 +23,7 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         ActionEntityDisplayInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IActionEntityDisplayInfo(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES ActionEntityFactory : winrt::Windows::AI::Actions::IActionEntityFactory2,
-        impl::require<ActionEntityFactory, winrt::Windows::AI::Actions::IActionEntityFactory3, winrt::Windows::AI::Actions::IActionEntityFactory4, winrt::Windows::AI::Actions::IActionEntityFactory5, winrt::Windows::AI::Actions::IActionEntityFactory6, winrt::Windows::Foundation::IClosable>
+        impl::require<ActionEntityFactory, winrt::Windows::AI::Actions::IActionEntityFactory3, winrt::Windows::AI::Actions::IActionEntityFactory4, winrt::Windows::AI::Actions::IActionEntityFactory5, winrt::Windows::AI::Actions::IActionEntityFactory6, winrt::Windows::AI::Actions::IActionEntityFactory7, winrt::Windows::Foundation::IClosable>
     {
         ActionEntityFactory(std::nullptr_t) noexcept {}
         ActionEntityFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IActionEntityFactory2(ptr, take_ownership_from_abi) {}
@@ -43,16 +43,17 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         ActionInvocationContext(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IActionInvocationContext(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES ActionInvocationHelpDetails : winrt::Windows::AI::Actions::IActionInvocationHelpDetails,
-        impl::require<ActionInvocationHelpDetails, winrt::Windows::Foundation::IClosable>
+        impl::require<ActionInvocationHelpDetails, winrt::Windows::AI::Actions::IActionInvocationHelpDetails2, winrt::Windows::Foundation::IClosable>
     {
         ActionInvocationHelpDetails(std::nullptr_t) noexcept {}
         ActionInvocationHelpDetails(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IActionInvocationHelpDetails(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES ActionRuntime : winrt::Windows::AI::Actions::IActionRuntime,
-        impl::require<ActionRuntime, winrt::Windows::AI::Actions::IActionRuntime2, winrt::Windows::AI::Actions::IActionRuntime3, winrt::Windows::AI::Actions::IActionRuntime4, winrt::Windows::Foundation::IClosable>
+        impl::require<ActionRuntime, winrt::Windows::AI::Actions::IActionRuntime2, winrt::Windows::AI::Actions::IActionRuntime3, winrt::Windows::AI::Actions::IActionRuntime4, winrt::Windows::AI::Actions::IActionRuntime5, winrt::Windows::Foundation::IClosable>
     {
         ActionRuntime(std::nullptr_t) noexcept {}
         ActionRuntime(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IActionRuntime(ptr, take_ownership_from_abi) {}
+        static auto GetDefault();
     };
     struct WINRT_IMPL_EMPTY_BASES AppointmentActionEntity : winrt::Windows::AI::Actions::IAppointmentActionEntity,
         impl::base<AppointmentActionEntity, winrt::Windows::AI::Actions::ActionEntity>,
@@ -63,7 +64,7 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
     };
     struct WINRT_IMPL_EMPTY_BASES ArrayActionEntity : winrt::Windows::AI::Actions::IArrayActionEntity,
         impl::base<ArrayActionEntity, winrt::Windows::AI::Actions::ActionEntity>,
-        impl::require<ArrayActionEntity, winrt::Windows::AI::Actions::IActionEntity, winrt::Windows::AI::Actions::IActionEntity2, winrt::Windows::Foundation::IClosable>
+        impl::require<ArrayActionEntity, winrt::Windows::AI::Actions::IArrayActionEntity2, winrt::Windows::AI::Actions::IActionEntity, winrt::Windows::AI::Actions::IActionEntity2, winrt::Windows::Foundation::IClosable>
     {
         ArrayActionEntity(std::nullptr_t) noexcept {}
         ArrayActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IArrayActionEntity(ptr, take_ownership_from_abi) {}
@@ -74,6 +75,19 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
     {
         ContactActionEntity(std::nullptr_t) noexcept {}
         ContactActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::IContactActionEntity(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES CustomActionEntityStore : winrt::Windows::AI::Actions::ICustomActionEntityStore,
+        impl::require<CustomActionEntityStore, winrt::Windows::Foundation::IClosable>
+    {
+        CustomActionEntityStore(std::nullptr_t) noexcept {}
+        CustomActionEntityStore(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::ICustomActionEntityStore(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES CustomTextActionEntity : winrt::Windows::AI::Actions::ICustomTextActionEntity,
+        impl::base<CustomTextActionEntity, winrt::Windows::AI::Actions::ActionEntity>,
+        impl::require<CustomTextActionEntity, winrt::Windows::AI::Actions::IActionEntity, winrt::Windows::AI::Actions::IActionEntity2, winrt::Windows::Foundation::IClosable>
+    {
+        CustomTextActionEntity(std::nullptr_t) noexcept {}
+        CustomTextActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::ICustomTextActionEntity(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES DateTimeActionEntity : winrt::Windows::AI::Actions::IDateTimeActionEntity,
         impl::base<DateTimeActionEntity, winrt::Windows::AI::Actions::ActionEntity>,
