@@ -46,13 +46,13 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
     struct KeyCredentialManager
     {
         KeyCredentialManager() = delete;
-        static auto RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback);
-        static auto OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback);
         static auto IsSupportedAsync();
         static auto RenewAttestationAsync();
         static auto RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option);
         static auto OpenAsync(param::hstring const& name);
         static auto DeleteAsync(param::hstring const& name);
+        static auto RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback);
+        static auto OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback);
     };
     struct WINRT_IMPL_EMPTY_BASES KeyCredentialOperationResult : winrt::Windows::Security::Credentials::IKeyCredentialOperationResult
     {

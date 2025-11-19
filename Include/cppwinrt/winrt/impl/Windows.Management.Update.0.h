@@ -131,6 +131,7 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
         DeferredForSustainableTime = 32,
         BlockedByAppClose = 33,
         BlockedByAppRestart = 34,
+        OtherUpdateReverting = 35,
     };
     struct IPreviewBuildsManager;
     struct IPreviewBuildsManagerStatics;

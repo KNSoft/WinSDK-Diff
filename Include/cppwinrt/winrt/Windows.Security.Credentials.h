@@ -126,7 +126,7 @@ namespace winrt::impl
         }
         return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialAttestationResult>{ value, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredential2<D>::RequestDeriveSharedSecretAsync(winrt::Windows::UI::WindowId const& windowId, param::hstring const& message, winrt::Windows::Storage::Streams::IBuffer const& publicKey) const
+    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredential2<D>::RequestDeriveSharedSecretAsync(winrt::Windows::UI::WindowId const& windowId, param::hstring const& message, winrt::Windows::Storage::Streams::IBuffer const& encryptedRequest) const
     {
         void* operation{};
         if constexpr (!std::is_same_v<D, winrt::Windows::Security::Credentials::IKeyCredential2>)
@@ -135,16 +135,16 @@ namespace winrt::impl
             auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Security::Credentials::IKeyCredential2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
             check_hresult(_winrt_cast_result_code);
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredential2>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->RequestDeriveSharedSecretAsync(impl::bind_in(windowId), *(void**)(&message), *(void**)(&publicKey), &operation));
+            check_hresult(_winrt_abi_type->RequestDeriveSharedSecretAsync(impl::bind_in(windowId), *(void**)(&message), *(void**)(&encryptedRequest), &operation));
         }
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredential2>**)this;
-            check_hresult(_winrt_abi_type->RequestDeriveSharedSecretAsync(impl::bind_in(windowId), *(void**)(&message), *(void**)(&publicKey), &operation));
+            check_hresult(_winrt_abi_type->RequestDeriveSharedSecretAsync(impl::bind_in(windowId), *(void**)(&message), *(void**)(&encryptedRequest), &operation));
         }
         return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialOperationResult>{ operation, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredential2<D>::RetrieveAuthorizationContext() const
+    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredential2<D>::RetrieveAuthorizationContext(winrt::Windows::Storage::Streams::IBuffer const& encryptedRequest) const
     {
         void* result{};
         if constexpr (!std::is_same_v<D, winrt::Windows::Security::Credentials::IKeyCredential2>)
@@ -153,12 +153,12 @@ namespace winrt::impl
             auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Security::Credentials::IKeyCredential2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
             check_hresult(_winrt_cast_result_code);
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredential2>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->RetrieveAuthorizationContext(&result));
+            check_hresult(_winrt_abi_type->RetrieveAuthorizationContext(*(void**)(&encryptedRequest), &result));
         }
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredential2>**)this;
-            check_hresult(_winrt_abi_type->RetrieveAuthorizationContext(&result));
+            check_hresult(_winrt_abi_type->RetrieveAuthorizationContext(*(void**)(&encryptedRequest), &result));
         }
         return winrt::Windows::Storage::Streams::IBuffer{ result, take_ownership_from_abi };
     }
@@ -288,42 +288,6 @@ namespace winrt::impl
         }
         return winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration{ result, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredentialManagerExtendedStatics<D>::RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const
-    {
-        void* operation{};
-        if constexpr (!std::is_same_v<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>)
-        {
-            winrt::hresult _winrt_cast_result_code;
-            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
-            check_hresult(_winrt_cast_result_code);
-            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->RequestCreateAsync(*(void**)(&name), static_cast<int32_t>(option), *(void**)(&algorithm), *(void**)(&message), *(void**)(&cacheConfiguration), impl::bind_in(windowId), static_cast<int32_t>(callbackType), *(void**)(&attestationCallback), &operation));
-        }
-        else
-        {
-            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>**)this;
-            check_hresult(_winrt_abi_type->RequestCreateAsync(*(void**)(&name), static_cast<int32_t>(option), *(void**)(&algorithm), *(void**)(&message), *(void**)(&cacheConfiguration), impl::bind_in(windowId), static_cast<int32_t>(callbackType), *(void**)(&attestationCallback), &operation));
-        }
-        return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>{ operation, take_ownership_from_abi };
-    }
-    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredentialManagerExtendedStatics<D>::OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const
-    {
-        void* operation{};
-        if constexpr (!std::is_same_v<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>)
-        {
-            winrt::hresult _winrt_cast_result_code;
-            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
-            check_hresult(_winrt_cast_result_code);
-            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->OpenAsync(*(void**)(&name), static_cast<int32_t>(callbackType), *(void**)(&attestationCallback), &operation));
-        }
-        else
-        {
-            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>**)this;
-            check_hresult(_winrt_abi_type->OpenAsync(*(void**)(&name), static_cast<int32_t>(callbackType), *(void**)(&attestationCallback), &operation));
-        }
-        return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>{ operation, take_ownership_from_abi };
-    }
     template <typename D> auto consume_Windows_Security_Credentials_IKeyCredentialManagerStatics<D>::IsSupportedAsync() const
     {
         void* value{};
@@ -413,6 +377,42 @@ namespace winrt::impl
             check_hresult(_winrt_abi_type->DeleteAsync(*(void**)(&name), &operation));
         }
         return winrt::Windows::Foundation::IAsyncAction{ operation, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredentialManagerStatics2<D>::RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const
+    {
+        void* operation{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestCreateAsync(*(void**)(&name), static_cast<int32_t>(option), *(void**)(&algorithm), *(void**)(&message), *(void**)(&cacheConfiguration), impl::bind_in(windowId), static_cast<int32_t>(callbackType), *(void**)(&attestationCallback), &operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>**)this;
+            check_hresult(_winrt_abi_type->RequestCreateAsync(*(void**)(&name), static_cast<int32_t>(option), *(void**)(&algorithm), *(void**)(&message), *(void**)(&cacheConfiguration), impl::bind_in(windowId), static_cast<int32_t>(callbackType), *(void**)(&attestationCallback), &operation));
+        }
+        return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>{ operation, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredentialManagerStatics2<D>::OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const
+    {
+        void* operation{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->OpenAsync(*(void**)(&name), static_cast<int32_t>(callbackType), *(void**)(&attestationCallback), &operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>**)this;
+            check_hresult(_winrt_abi_type->OpenAsync(*(void**)(&name), static_cast<int32_t>(callbackType), *(void**)(&attestationCallback), &operation));
+        }
+        return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>{ operation, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_Security_Credentials_IKeyCredentialOperationResult<D>::Result() const
     {
@@ -1108,19 +1108,19 @@ namespace winrt::impl
     template <typename D>
     struct produce<D, winrt::Windows::Security::Credentials::IKeyCredential2> : produce_base<D, winrt::Windows::Security::Credentials::IKeyCredential2>
     {
-        int32_t __stdcall RequestDeriveSharedSecretAsync(struct struct_Windows_UI_WindowId windowId, void* message, void* publicKey, void** operation) noexcept final try
+        int32_t __stdcall RequestDeriveSharedSecretAsync(struct struct_Windows_UI_WindowId windowId, void* message, void* encryptedRequest, void** operation) noexcept final try
         {
             clear_abi(operation);
             typename D::abi_guard guard(this->shim());
-            *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialOperationResult>>(this->shim().RequestDeriveSharedSecretAsync(*reinterpret_cast<winrt::Windows::UI::WindowId const*>(&windowId), *reinterpret_cast<hstring const*>(&message), *reinterpret_cast<winrt::Windows::Storage::Streams::IBuffer const*>(&publicKey)));
+            *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialOperationResult>>(this->shim().RequestDeriveSharedSecretAsync(*reinterpret_cast<winrt::Windows::UI::WindowId const*>(&windowId), *reinterpret_cast<hstring const*>(&message), *reinterpret_cast<winrt::Windows::Storage::Streams::IBuffer const*>(&encryptedRequest)));
             return 0;
         }
         catch (...) { return to_hresult(); }
-        int32_t __stdcall RetrieveAuthorizationContext(void** result) noexcept final try
+        int32_t __stdcall RetrieveAuthorizationContext(void* encryptedRequest, void** result) noexcept final try
         {
             clear_abi(result);
             typename D::abi_guard guard(this->shim());
-            *result = detach_from<winrt::Windows::Storage::Streams::IBuffer>(this->shim().RetrieveAuthorizationContext());
+            *result = detach_from<winrt::Windows::Storage::Streams::IBuffer>(this->shim().RetrieveAuthorizationContext(*reinterpret_cast<winrt::Windows::Storage::Streams::IBuffer const*>(&encryptedRequest)));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -1197,28 +1197,6 @@ namespace winrt::impl
     };
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
-    struct produce<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics> : produce_base<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>
-    {
-        int32_t __stdcall RequestCreateAsync(void* name, int32_t option, void* algorithm, void* message, void* cacheConfiguration, struct struct_Windows_UI_WindowId windowId, int32_t callbackType, void* attestationCallback, void** operation) noexcept final try
-        {
-            clear_abi(operation);
-            typename D::abi_guard guard(this->shim());
-            *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>>(this->shim().RequestCreateAsync(*reinterpret_cast<hstring const*>(&name), *reinterpret_cast<winrt::Windows::Security::Credentials::KeyCredentialCreationOption const*>(&option), *reinterpret_cast<hstring const*>(&algorithm), *reinterpret_cast<hstring const*>(&message), *reinterpret_cast<winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const*>(&cacheConfiguration), *reinterpret_cast<winrt::Windows::UI::WindowId const*>(&windowId), *reinterpret_cast<winrt::Windows::Security::Credentials::ChallengeResponseKind const*>(&callbackType), *reinterpret_cast<winrt::Windows::Security::Credentials::AttestationChallengeHandler const*>(&attestationCallback)));
-            return 0;
-        }
-        catch (...) { return to_hresult(); }
-        int32_t __stdcall OpenAsync(void* name, int32_t callbackType, void* attestationCallback, void** operation) noexcept final try
-        {
-            clear_abi(operation);
-            typename D::abi_guard guard(this->shim());
-            *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>>(this->shim().OpenAsync(*reinterpret_cast<hstring const*>(&name), *reinterpret_cast<winrt::Windows::Security::Credentials::ChallengeResponseKind const*>(&callbackType), *reinterpret_cast<winrt::Windows::Security::Credentials::AttestationChallengeHandler const*>(&attestationCallback)));
-            return 0;
-        }
-        catch (...) { return to_hresult(); }
-    };
-#endif
-#ifndef WINRT_LEAN_AND_MEAN
-    template <typename D>
     struct produce<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics> : produce_base<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics>
     {
         int32_t __stdcall IsSupportedAsync(void** value) noexcept final try
@@ -1258,6 +1236,28 @@ namespace winrt::impl
             clear_abi(operation);
             typename D::abi_guard guard(this->shim());
             *operation = detach_from<winrt::Windows::Foundation::IAsyncAction>(this->shim().DeleteAsync(*reinterpret_cast<hstring const*>(&name)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2> : produce_base<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>
+    {
+        int32_t __stdcall RequestCreateAsync(void* name, int32_t option, void* algorithm, void* message, void* cacheConfiguration, struct struct_Windows_UI_WindowId windowId, int32_t callbackType, void* attestationCallback, void** operation) noexcept final try
+        {
+            clear_abi(operation);
+            typename D::abi_guard guard(this->shim());
+            *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>>(this->shim().RequestCreateAsync(*reinterpret_cast<hstring const*>(&name), *reinterpret_cast<winrt::Windows::Security::Credentials::KeyCredentialCreationOption const*>(&option), *reinterpret_cast<hstring const*>(&algorithm), *reinterpret_cast<hstring const*>(&message), *reinterpret_cast<winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const*>(&cacheConfiguration), *reinterpret_cast<winrt::Windows::UI::WindowId const*>(&windowId), *reinterpret_cast<winrt::Windows::Security::Credentials::ChallengeResponseKind const*>(&callbackType), *reinterpret_cast<winrt::Windows::Security::Credentials::AttestationChallengeHandler const*>(&attestationCallback)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall OpenAsync(void* name, int32_t callbackType, void* attestationCallback, void** operation) noexcept final try
+        {
+            clear_abi(operation);
+            typename D::abi_guard guard(this->shim());
+            *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>>(this->shim().OpenAsync(*reinterpret_cast<hstring const*>(&name), *reinterpret_cast<winrt::Windows::Security::Credentials::ChallengeResponseKind const*>(&callbackType), *reinterpret_cast<winrt::Windows::Security::Credentials::AttestationChallengeHandler const*>(&attestationCallback)));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -1610,14 +1610,6 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
         KeyCredentialCacheConfiguration(impl::call_factory<KeyCredentialCacheConfiguration, IKeyCredentialCacheConfigurationFactory>([&](IKeyCredentialCacheConfigurationFactory const& f) { return f.CreateInstance(cacheOption, timeout, usageCount); }))
     {
     }
-    inline auto KeyCredentialManager::RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback)
-    {
-        return impl::call_factory<KeyCredentialManager, IKeyCredentialManagerExtendedStatics>([&](IKeyCredentialManagerExtendedStatics const& f) { return f.RequestCreateAsync(name, option, algorithm, message, cacheConfiguration, windowId, callbackType, attestationCallback); });
-    }
-    inline auto KeyCredentialManager::OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback)
-    {
-        return impl::call_factory<KeyCredentialManager, IKeyCredentialManagerExtendedStatics>([&](IKeyCredentialManagerExtendedStatics const& f) { return f.OpenAsync(name, callbackType, attestationCallback); });
-    }
     inline auto KeyCredentialManager::IsSupportedAsync()
     {
         return impl::call_factory_cast<winrt::Windows::Foundation::IAsyncOperation<bool>(*)(IKeyCredentialManagerStatics const&), KeyCredentialManager, IKeyCredentialManagerStatics>([](IKeyCredentialManagerStatics const& f) { return f.IsSupportedAsync(); });
@@ -1637,6 +1629,14 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
     inline auto KeyCredentialManager::DeleteAsync(param::hstring const& name)
     {
         return impl::call_factory<KeyCredentialManager, IKeyCredentialManagerStatics>([&](IKeyCredentialManagerStatics const& f) { return f.DeleteAsync(name); });
+    }
+    inline auto KeyCredentialManager::RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback)
+    {
+        return impl::call_factory<KeyCredentialManager, IKeyCredentialManagerStatics2>([&](IKeyCredentialManagerStatics2 const& f) { return f.RequestCreateAsync(name, option, algorithm, message, cacheConfiguration, windowId, callbackType, attestationCallback); });
+    }
+    inline auto KeyCredentialManager::OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback)
+    {
+        return impl::call_factory<KeyCredentialManager, IKeyCredentialManagerStatics2>([&](IKeyCredentialManagerStatics2 const& f) { return f.OpenAsync(name, callbackType, attestationCallback); });
     }
     inline PasswordCredential::PasswordCredential() :
         PasswordCredential(impl::call_factory_cast<PasswordCredential(*)(winrt::Windows::Foundation::IActivationFactory const&), PasswordCredential>([](winrt::Windows::Foundation::IActivationFactory const& f) { return f.template ActivateInstance<PasswordCredential>(); }))
@@ -1712,8 +1712,8 @@ namespace std
     template<> struct hash<winrt::Windows::Security::Credentials::IKeyCredentialAttestationResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfiguration> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfigurationFactory> : winrt::impl::hash_base {};
-    template<> struct hash<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Security::Credentials::IKeyCredentialOperationResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Security::Credentials::IKeyCredentialRetrievalResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Security::Credentials::IPasswordCredential> : winrt::impl::hash_base {};

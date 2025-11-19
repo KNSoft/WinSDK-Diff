@@ -29056,6 +29056,15 @@
 //
 #define ERROR_CANNOT_COMPOSE_APISET_EXTENSION 15380L
 
+//
+// MessageId: ERROR_APISET_SCHEMA_VERSION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The API Set schema version is not supported.
+//
+#define ERROR_APISET_SCHEMA_VERSION_NOT_SUPPORTED 15381L
+
 //////////////////////////////////////////////////
 //                                              //
 //         Start of Run Level error codes       //

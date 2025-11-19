@@ -12349,6 +12349,15 @@ Notes:
 //
 #define STATUS_APISET_COMPOSE_FAILURE    ((NTSTATUS)0xC000A161L)
 
+//
+// MessageId: STATUS_APISET_SCHEMA_VERSION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The API Set schema version is not supported.
+//
+#define STATUS_APISET_SCHEMA_VERSION_NOT_SUPPORTED ((NTSTATUS)0xC000A162L)
+
 /*++
 
  MessageId's 0xa200 - 0xa280 (inclusive) are reserved for app container specific messages.

@@ -514,7 +514,6 @@
 
   <xs:simpleType name="ST_Capability_SystemAI_2">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="mcpClient"/>
       <xs:enumeration value="backgroundAITasks"/>
     </xs:restriction>
   </xs:simpleType>

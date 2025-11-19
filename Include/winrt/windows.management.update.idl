@@ -318,7 +318,7 @@ namespace Windows
     {
         namespace Update
         {
-            [contractversion(2.0)]
+            [contractversion(2.1)]
             apicontract WindowsUpdateContract
             {
             }
@@ -454,8 +454,9 @@ namespace Windows
                 DeferredForSustainableTime         = 32,
                 [contract(Windows.Management.Update.WindowsUpdateContract, 2.0)]
                 BlockedByAppClose                  = 33,
-                [contract(Windows.Management.Update.WindowsUpdateContract, 2.0)]
-                BlockedByAppRestart                = 34
+                BlockedByAppRestart                = 34,
+                [contract(Windows.Management.Update.WindowsUpdateContract, 2.1)]
+                OtherUpdateReverting               = 35
             };
 
             [contract(Windows.Foundation.UniversalApiContract, 6.0)]

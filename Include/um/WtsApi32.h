@@ -350,7 +350,8 @@ typedef enum _WTS_INFO_CLASS {
     WTSValidationInfo,   // Info Class value used to fetch Validation Information through the WTSQuerySessionInformation
     WTSSessionAddressV4,
     WTSIsRemoteSession,
-    WTSSessionActivityId
+    WTSSessionActivityId,
+    WTSCapabilityCheck
 } WTS_INFO_CLASS;
 
 /*=====================================================================
@@ -1664,12 +1665,6 @@ BOOL
 WINAPI
 WTSActiveSessionExists(
     _Out_ PBOOL pbActiveSessionExists
-    );
-
-BOOL
-WINAPI
-WTSIsIsolationSession(
-    _Out_ PBOOL pbIsolationSession
     );
 
 #ifdef __cplusplus

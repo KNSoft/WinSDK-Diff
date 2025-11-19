@@ -821,38 +821,38 @@ WinBioReleaseFocus(
 ///////////////////////////////////////////////////////////////////////////////
 
 HRESULT WINAPI
-EXPERIMENTAL_WinBioGetEssState(
-    _Out_ EXPERIMENTAL_PWINBIO_ESS_STATE EssState
+WinBioGetEssState(
+    _Out_ PWINBIO_ESS_STATE EssState
     );
 
 HRESULT WINAPI
-EXPERIMENTAL_WinBioIsDeviceEnhancedSignInSecurityCapable(
+WinBioIsDeviceEnhancedSignInSecurityCapable(
     _Out_ BOOL* IsCapable
     );
 
 HRESULT WINAPI
-EXPERIMENTAL_WinBioGetEnhancedSignInSecurityStateSource(
+WinBioGetEnhancedSignInSecurityStateSource(
     _Out_ WINBIO_POLICY_SOURCE* Source
     );
 
 HRESULT WINAPI
-EXPERIMENTAL_WinBioIsDeviceEnhancedSignInSecurityEnabled(
+WinBioIsDeviceEnhancedSignInSecurityEnabled(
     _Out_ BOOL* IsEnabled
     );
 
 HRESULT WINAPI
-EXPERIMENTAL_WinBioAreEnhancedSignInSecurityRequirementsMet(
+WinBioAreEnhancedSignInSecurityRequirementsMet(
     _Out_ BOOL* AreRequirementsMet
     );
 
 HRESULT WINAPI
-EXPERIMENTAL_WinBioGetConnectedSensors(
+WinBioGetConnectedSensors(
     _Out_ SIZE_T* SensorCount,
-    _Out_ EXPERIMENTAL_WINBIO_CONNECTED_SENSOR** ConnectedSensors
+    _Out_ WINBIO_CONNECTED_SENSOR** ConnectedSensors
     );
 
 HRESULT WINAPI
-EXPERIMENTAL_WinBioGetEnhancedSignInSecurityEnrolledFactors(
+WinBioGetEnhancedSignInSecurityEnrolledFactors(
     _In_ WINBIO_IDENTITY* Identity,
     _Out_ WINBIO_BIOMETRIC_TYPE* EnhancedSignInSecurityEnrolledFactors
     );

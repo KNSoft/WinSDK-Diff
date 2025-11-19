@@ -46,9 +46,8 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
     };
     enum class KeyCredentialCacheOption : int32_t
     {
-        NoCache = 1,
-        CacheWhenUnlocked = 2,
-        CacheUnderLock = 4,
+        NoCache = 0,
+        CacheWhenUnlocked = 1,
     };
     enum class KeyCredentialCreationOption : int32_t
     {
@@ -64,6 +63,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
         UserPrefersPassword = 4,
         CredentialAlreadyExists = 5,
         SecurityDeviceLocked = 6,
+        AlgorithmNotSupported = 7,
     };
     enum class WebAccountPictureSize : int32_t
     {
@@ -84,8 +84,8 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
     struct IKeyCredentialAttestationResult;
     struct IKeyCredentialCacheConfiguration;
     struct IKeyCredentialCacheConfigurationFactory;
-    struct IKeyCredentialManagerExtendedStatics;
     struct IKeyCredentialManagerStatics;
+    struct IKeyCredentialManagerStatics2;
     struct IKeyCredentialOperationResult;
     struct IKeyCredentialRetrievalResult;
     struct IPasswordCredential;
@@ -119,8 +119,8 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Security::Credentials::IKeyCredentialAttestationResult>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfiguration>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfigurationFactory>{ using type = interface_category; };
-    template <> struct category<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Security::Credentials::IKeyCredentialOperationResult>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Security::Credentials::IKeyCredentialRetrievalResult>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Security::Credentials::IPasswordCredential>{ using type = interface_category; };
@@ -176,8 +176,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IKeyCredentialAttestationResult> = L"Windows.Security.Credentials.IKeyCredentialAttestationResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfiguration> = L"Windows.Security.Credentials.IKeyCredentialCacheConfiguration";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfigurationFactory> = L"Windows.Security.Credentials.IKeyCredentialCacheConfigurationFactory";
-    template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics> = L"Windows.Security.Credentials.IKeyCredentialManagerExtendedStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics> = L"Windows.Security.Credentials.IKeyCredentialManagerStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2> = L"Windows.Security.Credentials.IKeyCredentialManagerStatics2";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IKeyCredentialOperationResult> = L"Windows.Security.Credentials.IKeyCredentialOperationResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IKeyCredentialRetrievalResult> = L"Windows.Security.Credentials.IKeyCredentialRetrievalResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::IPasswordCredential> = L"Windows.Security.Credentials.IPasswordCredential";
@@ -193,12 +193,12 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Security::Credentials::AttestationChallengeHandler> = L"Windows.Security.Credentials.AttestationChallengeHandler";
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::ICredentialFactory>{ 0x54EF13A1,0xBF26,0x47B5,{ 0x97,0xDD,0xDE,0x77,0x9B,0x7C,0xAD,0x58 } }; // 54EF13A1-BF26-47B5-97DD-DE779B7CAD58
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredential>{ 0x9585EF8D,0x457B,0x4847,{ 0xB1,0x1A,0xFA,0x96,0x0B,0xBD,0xB1,0x38 } }; // 9585EF8D-457B-4847-B11A-FA960BBDB138
-    template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredential2>{ 0xCA343273,0xF558,0x53EF,{ 0xB9,0x43,0x4A,0x3E,0xC8,0x1A,0x21,0x7E } }; // CA343273-F558-53EF-B943-4A3EC81A217E
+    template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredential2>{ 0x3B7C5E09,0x7B72,0x5A05,{ 0xB2,0xF0,0x71,0x19,0xCA,0x3F,0xD5,0xDF } }; // 3B7C5E09-7B72-5A05-B2F0-7119CA3FD5DF
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialAttestationResult>{ 0x78AAB3A1,0xA3C1,0x4103,{ 0xB6,0xCC,0x47,0x2C,0x44,0x17,0x1C,0xBB } }; // 78AAB3A1-A3C1-4103-B6CC-472C44171CBB
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfiguration>{ 0x438BD21A,0x61FF,0x5468,{ 0x95,0xA6,0xB1,0xD5,0x21,0x6E,0x45,0x8D } }; // 438BD21A-61FF-5468-95A6-B1D5216E458D
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfigurationFactory>{ 0x9948C31B,0xC827,0x5B58,{ 0x94,0x42,0x40,0xAC,0xD8,0xAB,0x1E,0x7D } }; // 9948C31B-C827-5B58-9442-40ACD8AB1E7D
-    template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>{ 0xA5312D27,0xB408,0x5011,{ 0x9B,0x36,0xB0,0x7A,0xB0,0xA6,0x7A,0x7E } }; // A5312D27-B408-5011-9B36-B07AB0A67A7E
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics>{ 0x6AAC468B,0x0EF1,0x4CE0,{ 0x82,0x90,0x41,0x06,0xDA,0x6A,0x63,0xB5 } }; // 6AAC468B-0EF1-4CE0-8290-4106DA6A63B5
+    template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>{ 0x79912CAC,0x2B19,0x5658,{ 0x9F,0xA6,0x60,0xBC,0xE0,0x1E,0xF2,0x05 } }; // 79912CAC-2B19-5658-9FA6-60BCE01EF205
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialOperationResult>{ 0xF53786C1,0x5261,0x4CDD,{ 0x97,0x6D,0xCC,0x90,0x9A,0xC7,0x16,0x20 } }; // F53786C1-5261-4CDD-976D-CC909AC71620
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialRetrievalResult>{ 0x58CD7703,0x8D87,0x4249,{ 0x9B,0x58,0xF6,0x59,0x8C,0xC9,0x64,0x4E } }; // 58CD7703-8D87-4249-9B58-F6598CC9644E
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IPasswordCredential>{ 0x6AB18989,0xC720,0x41A7,{ 0xA6,0xC1,0xFE,0xAD,0xB3,0x63,0x29,0xA0 } }; // 6AB18989-C720-41A7-A6C1-FEADB36329A0
@@ -245,7 +245,7 @@ namespace winrt::impl
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall RequestDeriveSharedSecretAsync(struct struct_Windows_UI_WindowId, void*, void*, void**) noexcept = 0;
-            virtual int32_t __stdcall RetrieveAuthorizationContext(void**) noexcept = 0;
+            virtual int32_t __stdcall RetrieveAuthorizationContext(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialAttestationResult>
@@ -273,14 +273,6 @@ namespace winrt::impl
             virtual int32_t __stdcall CreateInstance(int32_t, int64_t, uint32_t, void**) noexcept = 0;
         };
     };
-    template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>
-    {
-        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
-        {
-            virtual int32_t __stdcall RequestCreateAsync(void*, int32_t, void*, void*, void*, struct struct_Windows_UI_WindowId, int32_t, void*, void**) noexcept = 0;
-            virtual int32_t __stdcall OpenAsync(void*, int32_t, void*, void**) noexcept = 0;
-        };
-    };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics>
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
@@ -290,6 +282,14 @@ namespace winrt::impl
             virtual int32_t __stdcall RequestCreateAsync(void*, int32_t, void**) noexcept = 0;
             virtual int32_t __stdcall OpenAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall DeleteAsync(void*, void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall RequestCreateAsync(void*, int32_t, void*, void*, void*, struct struct_Windows_UI_WindowId, int32_t, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall OpenAsync(void*, int32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialOperationResult>
@@ -431,8 +431,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Security_Credentials_IKeyCredential2
     {
-        auto RequestDeriveSharedSecretAsync(winrt::Windows::UI::WindowId const& windowId, param::hstring const& message, winrt::Windows::Storage::Streams::IBuffer const& publicKey) const;
-        auto RetrieveAuthorizationContext() const;
+        auto RequestDeriveSharedSecretAsync(winrt::Windows::UI::WindowId const& windowId, param::hstring const& message, winrt::Windows::Storage::Streams::IBuffer const& encryptedRequest) const;
+        auto RetrieveAuthorizationContext(winrt::Windows::Storage::Streams::IBuffer const& encryptedRequest) const;
     };
     template <> struct consume<winrt::Windows::Security::Credentials::IKeyCredential2>
     {
@@ -470,16 +470,6 @@ namespace winrt::impl
         template <typename D> using type = consume_Windows_Security_Credentials_IKeyCredentialCacheConfigurationFactory<D>;
     };
     template <typename D>
-    struct consume_Windows_Security_Credentials_IKeyCredentialManagerExtendedStatics
-    {
-        auto RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const;
-        auto OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const;
-    };
-    template <> struct consume<winrt::Windows::Security::Credentials::IKeyCredentialManagerExtendedStatics>
-    {
-        template <typename D> using type = consume_Windows_Security_Credentials_IKeyCredentialManagerExtendedStatics<D>;
-    };
-    template <typename D>
     struct consume_Windows_Security_Credentials_IKeyCredentialManagerStatics
     {
         auto IsSupportedAsync() const;
@@ -491,6 +481,16 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics>
     {
         template <typename D> using type = consume_Windows_Security_Credentials_IKeyCredentialManagerStatics<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Security_Credentials_IKeyCredentialManagerStatics2
+    {
+        auto RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const;
+        auto OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const;
+    };
+    template <> struct consume<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>
+    {
+        template <typename D> using type = consume_Windows_Security_Credentials_IKeyCredentialManagerStatics2<D>;
     };
     template <typename D>
     struct consume_Windows_Security_Credentials_IKeyCredentialOperationResult

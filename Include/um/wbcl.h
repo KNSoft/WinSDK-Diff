@@ -607,6 +607,16 @@ typedef struct _SIPAEVENT_REFS_ROLLBACK_PROTECTION_USER_PAYLOAD_HASH_DATA {
 
 #endif //NTDDI_VERSION >= NTDDI_WIN10_NI
 
+#if NTDDI_VERSION >= NTDDI_WIN10_GE
+
+#define SIPAEVENT_MODULE_ORIGINAL_FILENAME (SIPAEVENTTYPE_LOADEDMODULE + \
+                                            0x000d)
+
+#define SIPAEVENT_MODULE_VERSION           (SIPAEVENTTYPE_LOADEDMODULE + \
+                                            0x000e)
+
+#endif
+
 //SIPAEVENTTYPE_TRUSTPOINT
 #define SIPAEVENT_QUOTE                    (SIPAEVENTTYPE_NONMEASURED + \
                                             SIPAEVENTTYPE_TRUSTPOINT + \
