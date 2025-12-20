@@ -1900,7 +1900,7 @@ namespace ABI {
     namespace Windows {
         namespace Security {
             namespace Credentials {
-                MIDL_INTERFACE("79912cac-2b19-5658-9fa6-60bce01ef205")
+                MIDL_INTERFACE("6439895d-68c5-521b-9dc4-7c199794f0d8")
                 IKeyCredentialManagerStatics2 : public IInspectable
                 {
                 public:
@@ -1920,6 +1920,9 @@ namespace ABI {
                         ABI::Windows::Security::Credentials::ChallengeResponseKind callbackType,
                         ABI::Windows::Security::Credentials::IAttestationChallengeHandler* attestationCallback,
                         __FIAsyncOperation_1_Windows__CSecurity__CCredentials__CKeyCredentialRetrievalResult** operation
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE GetSecureId(
+                        ABI::Windows::Storage::Streams::IBuffer** result
                         ) = 0;
                 };
 
@@ -2523,8 +2526,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Security.Credentials.IKeyCredentialManagerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Security.Credentials.IKeyCredentialManagerStatics2 interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Security.Credentials.IKeyCredentialManagerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -2583,8 +2586,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via the Windows.Security.Credentials.ICredentialFactory interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Type can be activated via RoActivateInstance starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Type can be activated via the Windows.Security.Credentials.ICredentialFactory interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Security.Credentials.IPasswordCredential ** Default Interface **
@@ -5379,6 +5382,8 @@ typedef struct __x_ABI_CWindows_CSecurity_CCredentials_CIKeyCredentialManagerSta
         enum __x_ABI_CWindows_CSecurity_CCredentials_CChallengeResponseKind callbackType,
         __x_ABI_CWindows_CSecurity_CCredentials_CIAttestationChallengeHandler* attestationCallback,
         __FIAsyncOperation_1_Windows__CSecurity__CCredentials__CKeyCredentialRetrievalResult** operation);
+    HRESULT (STDMETHODCALLTYPE* GetSecureId)(__x_ABI_CWindows_CSecurity_CCredentials_CIKeyCredentialManagerStatics2* This,
+        __x_ABI_CWindows_CStorage_CStreams_CIBuffer** result);
 
     END_INTERFACE
 } __x_ABI_CWindows_CSecurity_CCredentials_CIKeyCredentialManagerStatics2Vtbl;
@@ -5413,6 +5418,9 @@ interface __x_ABI_CWindows_CSecurity_CCredentials_CIKeyCredentialManagerStatics2
 
 #define __x_ABI_CWindows_CSecurity_CCredentials_CIKeyCredentialManagerStatics2_OpenAsync(This, name, callbackType, attestationCallback, operation) \
     ((This)->lpVtbl->OpenAsync(This, name, callbackType, attestationCallback, operation))
+
+#define __x_ABI_CWindows_CSecurity_CCredentials_CIKeyCredentialManagerStatics2_GetSecureId(This, result) \
+    ((This)->lpVtbl->GetSecureId(This, result))
 
 #endif /* COBJMACROS */
 
@@ -6456,8 +6464,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Security.Credentials.IKeyCredentialManagerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Security.Credentials.IKeyCredentialManagerStatics2 interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Security.Credentials.IKeyCredentialManagerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -6516,8 +6524,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via the Windows.Security.Credentials.ICredentialFactory interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Type can be activated via RoActivateInstance starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Type can be activated via the Windows.Security.Credentials.ICredentialFactory interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Security.Credentials.IPasswordCredential ** Default Interface **

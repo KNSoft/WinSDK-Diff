@@ -836,6 +836,7 @@ typedef struct _WINHTTP_HTTP2_RECEIVE_WINDOW
 
 #define WINHTTP_OPTION_SESSION_ERROR_LOG_GUID           212
 
+
 #define WINHTTP_LAST_OPTION                             WINHTTP_OPTION_SESSION_ERROR_LOG_GUID
 
 #define WINHTTP_OPTION_USERNAME                         0x1000

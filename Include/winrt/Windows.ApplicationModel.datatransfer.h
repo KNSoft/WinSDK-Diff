@@ -1767,7 +1767,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIAsyncOperationWithProgressCompletedHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_USE
@@ -1794,9 +1793,7 @@ typedef IAsyncOperationWithProgressCompletedHandler<ABI::Windows::ApplicationMod
 #endif /* DEF___FIAsyncOperationWithProgressCompletedHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIAsyncOperationWithProgress_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_USE
@@ -1823,9 +1820,7 @@ typedef IAsyncOperationWithProgress<ABI::Windows::ApplicationModel::DataTransfer
 #endif /* DEF___FIAsyncOperationWithProgress_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIAsyncOperationProgressHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_USE
@@ -1852,7 +1847,6 @@ typedef IAsyncOperationProgressHandler<ABI::Windows::ApplicationModel::DataTrans
 #endif /* DEF___FIAsyncOperationProgressHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 
 #ifndef DEF___FIIterator_1_HSTRING_USE
@@ -2664,7 +2658,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetWatcher_IInspectable_USE
@@ -2691,7 +2684,6 @@ typedef ITypedEventHandler<ABI::Windows::ApplicationModel::DataTransfer::Transfe
 #endif /* DEF___FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetWatcher_IInspectable_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -2703,7 +2695,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
@@ -2732,7 +2723,6 @@ typedef ITypedEventHandler<ABI::Windows::ApplicationModel::DataTransfer::Transfe
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -5261,12 +5251,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITarget
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTarget
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget_INTERFACE_DEFINED__
@@ -5302,7 +5289,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5310,12 +5296,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChangedEventArgs_INTERFACE_DEFINED__
@@ -5342,7 +5325,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5350,12 +5332,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetDiscoveryOptions
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptions_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptions_INTERFACE_DEFINED__
@@ -5396,7 +5375,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptions;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptions_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5404,12 +5382,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetDiscoveryOptions
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptionsFactory_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptionsFactory_INTERFACE_DEFINED__
@@ -5437,7 +5412,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptionsFactory;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptionsFactory_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5445,12 +5419,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetInvokeResult
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvokeResult_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvokeResult_INTERFACE_DEFINED__
@@ -5480,7 +5451,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvokeResult;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvokeResult_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5488,12 +5458,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTarget
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStatics_INTERFACE_DEFINED__
@@ -5521,7 +5488,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStatics;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStatics_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5529,12 +5495,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetWatcher
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcher_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcher_INTERFACE_DEFINED__
@@ -5600,7 +5563,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcher;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcher_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5608,12 +5570,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetWatcher
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcherStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcherStatics_INTERFACE_DEFINED__
@@ -5641,7 +5600,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcherStatics;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcherStatics_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5650,8 +5608,8 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IClipboardStatics2 interface starting with version 7.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IClipboardStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IClipboardStatics2 interface starting with version 7.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -6151,9 +6109,9 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IStandardDataFormatsStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IStandardDataFormatsStatics3 interface starting with version 6.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IStandardDataFormatsStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IStandardDataFormatsStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
@@ -6190,8 +6148,6 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.ITransferTargetStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
@@ -6203,14 +6159,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTarget_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTarget_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTarget[] = L"Windows.ApplicationModel.DataTransfer.TransferTarget";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6218,30 +6172,24 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.ApplicationModel.DataTransfer.ITransferTargetChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTargetChangedEventArgs[] = L"Windows.ApplicationModel.DataTransfer.TransferTargetChangedEventArgs";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Class Windows.ApplicationModel.DataTransfer.TransferTargetDiscoveryOptions
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  * RuntimeClass can be activated.
  *   Type can be activated via the Windows.ApplicationModel.DataTransfer.ITransferTargetDiscoveryOptionsFactory interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
@@ -6254,14 +6202,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetDiscoveryOptions_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetDiscoveryOptions_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTargetDiscoveryOptions[] = L"Windows.ApplicationModel.DataTransfer.TransferTargetDiscoveryOptions";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6269,30 +6215,24 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.ApplicationModel.DataTransfer.ITransferTargetInvokeResult ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetInvokeResult_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetInvokeResult_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTargetInvokeResult[] = L"Windows.ApplicationModel.DataTransfer.TransferTargetInvokeResult";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Class Windows.ApplicationModel.DataTransfer.TransferTargetWatcher
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.ITransferTargetWatcherStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
@@ -6305,14 +6245,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetWatcher_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetWatcher_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTargetWatcher[] = L"Windows.ApplicationModel.DataTransfer.TransferTargetWatcher";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #else // !defined(__cplusplus)
 /* Forward Declarations */
@@ -8343,7 +8281,6 @@ typedef interface __FIAsyncOperationProgressHandler_2_Windows__CApplicationModel
 
 typedef interface __FIAsyncOperationWithProgress_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double __FIAsyncOperationWithProgress_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double;
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIAsyncOperationWithProgressCompletedHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__)
 #define ____FIAsyncOperationWithProgressCompletedHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__
@@ -8392,9 +8329,7 @@ interface __FIAsyncOperationWithProgressCompletedHandler_2_Windows__CApplication
 
 #endif // ____FIAsyncOperationWithProgressCompletedHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIAsyncOperationWithProgress_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__)
 #define ____FIAsyncOperationWithProgress_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__
@@ -8478,9 +8413,7 @@ interface __FIAsyncOperationWithProgress_2_Windows__CApplicationModel__CDataTran
 
 #endif // ____FIAsyncOperationWithProgress_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIAsyncOperationProgressHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__)
 #define ____FIAsyncOperationProgressHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__
@@ -8529,7 +8462,6 @@ interface __FIAsyncOperationProgressHandler_2_Windows__CApplicationModel__CDataT
 
 #endif // ____FIAsyncOperationProgressHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetInvokeResult_double_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #if !defined(____FIIterator_1_HSTRING_INTERFACE_DEFINED__)
 #define ____FIIterator_1_HSTRING_INTERFACE_DEFINED__
@@ -10413,7 +10345,6 @@ interface __FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CDa
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x10000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetWatcher_IInspectable_INTERFACE_DEFINED__)
 #define ____FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetWatcher_IInspectable_INTERFACE_DEFINED__
@@ -10462,9 +10393,7 @@ interface __FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTr
 
 #endif // ____FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetWatcher_IInspectable_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetWatcher_Windows__CApplicationModel__CDataTransfer__CTransferTargetChangedEventArgs_INTERFACE_DEFINED__)
@@ -10515,7 +10444,6 @@ interface __FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTr
 #endif // ____FITypedEventHandler_2_Windows__CApplicationModel__CDataTransfer__CTransferTargetWatcher_Windows__CApplicationModel__CDataTransfer__CTransferTargetChangedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 typedef struct __x_ABI_CWindows_CFoundation_CDateTime __x_ABI_CWindows_CFoundation_CDateTime;
 
@@ -14687,12 +14615,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITarget
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTarget
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget_INTERFACE_DEFINED__
@@ -14767,7 +14692,6 @@ interface __x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTarget_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -14775,12 +14699,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChangedEventArgs_INTERFACE_DEFINED__
@@ -14840,7 +14761,6 @@ interface __x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChang
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -14848,12 +14768,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetDiscoveryOptions
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptions_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptions_INTERFACE_DEFINED__
@@ -14935,7 +14852,6 @@ interface __x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDisco
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptions;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptions_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -14943,12 +14859,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetDiscoveryOptions
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptionsFactory_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptionsFactory_INTERFACE_DEFINED__
@@ -15009,7 +14922,6 @@ interface __x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDisco
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptionsFactory;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetDiscoveryOptionsFactory_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -15017,12 +14929,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetInvokeResult
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvokeResult_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvokeResult_INTERFACE_DEFINED__
@@ -15087,7 +14996,6 @@ interface __x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvok
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvokeResult;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetInvokeResult_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -15095,12 +15003,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTarget
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStatics_INTERFACE_DEFINED__
@@ -15161,7 +15066,6 @@ interface __x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStati
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStatics;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetStatics_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -15169,12 +15073,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetWatcher
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcher_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcher_INTERFACE_DEFINED__
@@ -15299,7 +15200,6 @@ interface __x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatch
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcher;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcher_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -15307,12 +15207,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.ApplicationModel.DataTransfer.TransferTargetWatcher
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcherStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcherStatics_INTERFACE_DEFINED__
@@ -15373,7 +15270,6 @@ interface __x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatch
 EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcherStatics;
 #endif /* !defined(____x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransferTargetWatcherStatics_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -15382,8 +15278,8 @@ EXTERN_C const IID IID___x_ABI_CWindows_CApplicationModel_CDataTransfer_CITransf
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IClipboardStatics2 interface starting with version 7.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IClipboardStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IClipboardStatics2 interface starting with version 7.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -15883,9 +15779,9 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IStandardDataFormatsStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IStandardDataFormatsStatics3 interface starting with version 6.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IStandardDataFormatsStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.IStandardDataFormatsStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
@@ -15922,8 +15818,6 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.ITransferTargetStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
@@ -15935,14 +15829,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTarget_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTarget_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTarget[] = L"Windows.ApplicationModel.DataTransfer.TransferTarget";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -15950,30 +15842,24 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.ApplicationModel.DataTransfer.ITransferTargetChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTargetChangedEventArgs[] = L"Windows.ApplicationModel.DataTransfer.TransferTargetChangedEventArgs";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Class Windows.ApplicationModel.DataTransfer.TransferTargetDiscoveryOptions
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  * RuntimeClass can be activated.
  *   Type can be activated via the Windows.ApplicationModel.DataTransfer.ITransferTargetDiscoveryOptionsFactory interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
@@ -15986,14 +15872,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetDiscoveryOptions_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetDiscoveryOptions_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTargetDiscoveryOptions[] = L"Windows.ApplicationModel.DataTransfer.TransferTargetDiscoveryOptions";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -16001,30 +15885,24 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.ApplicationModel.DataTransfer.ITransferTargetInvokeResult ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetInvokeResult_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetInvokeResult_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTargetInvokeResult[] = L"Windows.ApplicationModel.DataTransfer.TransferTargetInvokeResult";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Class Windows.ApplicationModel.DataTransfer.TransferTargetWatcher
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.ApplicationModel.DataTransfer.ITransferTargetWatcherStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
@@ -16037,14 +15915,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetWatcher_DEFINED
 #define RUNTIMECLASS_Windows_ApplicationModel_DataTransfer_TransferTargetWatcher_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_ApplicationModel_DataTransfer_TransferTargetWatcher[] = L"Windows.ApplicationModel.DataTransfer.TransferTargetWatcher";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #endif // defined(__cplusplus)
 #pragma pop_macro("MIDL_CONST_ID")

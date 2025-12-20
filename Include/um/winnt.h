@@ -14516,6 +14516,313 @@ typedef struct _XSTATE_CONFIGURATION {
 } XSTATE_CONFIGURATION, *PXSTATE_CONFIGURATION;
 
 //
+//
+
+//
+//  Runtime Report Definitions
+//
+
+//
+// ===============================================
+// Runtime Report Package Format:
+//
+// ------------------------------------- Signed part Begin
+//
+//     RUNTIME_REPORT_PACKAGE_HEADER
+//
+//     BYTE Nonce[RUNTIME_REPORT_NONCE_SIZE]
+//
+//     RUNTIME_REPORT_DIGEST_HEADER_A
+//
+//     RUNTIME_REPORT_DIGEST_HEADER_B
+//     ...
+//     ...
+//
+// ------------------------------------- Signed part End
+//
+//     Signature Blob
+//
+// ------------------------------------- Authenticated part Begin
+//
+//     RUNTIME_REPORT_HEADER
+//     REPORT_A
+//
+//     RUNTIME_REPORT_HEADER
+//     REPORT_B
+//
+// ------------------------------------- Authenticated part End
+//
+// ===============================================
+//
+
+#define RUNTIME_REPORT_PACKAGE_MAGIC    0x52545250  // = "RTRP"
+
+#define RUNTIME_REPORT_PACKAGE_VERSION_CURRENT  (1)
+
+#define RUNTIME_REPORT_NONCE_SIZE   32
+
+#define RUNTIME_REPORT_DIGEST_MAX_SIZE  64
+
+#define RUNTIME_REPORT_SIGNATURE_SCHEME_SHA512_RSA_PSS_SHA512   (1)
+
+//
+// Runtime Report Type Enumeration
+//
+
+typedef enum _RUNTIME_REPORT_TYPE {
+    RuntimeReportTypeDriver = 0,
+    RuntimeReportTypeMax
+} RUNTIME_REPORT_TYPE;
+
+//
+// Macro to convert a report type enum value to a bitmap mask
+//
+
+#define RUNTIME_REPORT_TYPE_TO_MASK(type) (1ULL << (type))
+
+//
+// Bitmap mask containing all valid report types
+//
+
+#define RUNTIME_REPORT_TYPE_MASK_ALL ((1ULL << RuntimeReportTypeMax) - 1)
+
+typedef struct _RUNTIME_REPORT_PACKAGE_HEADER {
+
+    //
+    // Set to RUNTIME_REPORT_PACKAGE_MAGIC = 0x52545250 ("RTRP")
+    //
+
+    UINT32 Magic;
+
+    //
+    // The version of the package format
+    //
+
+    UINT16 PackageVersion;
+
+    //
+    // Number of different report types contained in the package.
+    //
+
+    UINT16 NumberOfReports;
+
+    //
+    // A bitmap of all the report types in the package.
+    //
+    // Use RUNTIME_REPORT_TYPE_TO_MASK macro to convert enum values to bitmap masks.
+    // Current valid report types:
+    //      RuntimeReportTypeDriver = 0
+    //
+
+    UINT64 ReportTypesBitmap;
+
+    //
+    // The size of the total package including the package header,
+    // various runtime reports, their digests, and the signature blob.
+    //
+
+    UINT32 PackageSize;
+
+    //
+    // The type of digest contained in the report digest headers.
+    //
+    // Current valid values:
+    //      CALG_SHA_512 (see wincrypt.h)
+    //
+
+    UINT16 ReportDigestType;
+
+    //
+    // Total size of the signed runtime report digest headers
+    // following the package header.
+    //
+
+    UINT16 TotalReportDigestsSize;
+
+    //
+    // Reserved field. Must be set to zero.
+    //
+
+    UINT16 Reserved;
+
+    //
+    // The signature scheme used to sign the runtime reports.
+    //
+    // Current valid values:
+    //      RUNTIME_REPORT_SIGNATURE_SCHEME_SHA512_RSA_PSS_SHA512 = 1
+    //
+
+    UINT16 SignatureScheme;
+
+    //
+    // Size of the signature blob following the runtime report digests.
+    //
+
+    UINT32 SignatureSize;
+
+    //
+    // Total size of the authenticated (but unsigned) runtime reports
+    // following the signature blob.
+    //
+
+    UINT32 TotalAuthenticatedReportsSize;
+
+} RUNTIME_REPORT_PACKAGE_HEADER;
+
+typedef struct _RUNTIME_REPORT_DIGEST_HEADER {
+
+    //
+    // Indicates the type of report that was hashed.
+    //
+    // Current valid values:
+    //      RuntimeReportTypeDriver = 0
+    //
+
+    UINT16 ReportType;
+
+    //
+    // Reserved field.
+    //
+
+    UINT16 Reserved;
+
+    //
+    // Digest of the report including the report header.
+    // This is a SHA-512 digest.
+    //
+
+    UINT8 ReportDigest[RUNTIME_REPORT_DIGEST_MAX_SIZE];
+
+} RUNTIME_REPORT_DIGEST_HEADER;
+
+typedef struct _RUNTIME_REPORT_HEADER {
+
+    //
+    // Indicates the type of report.
+    //
+    // Current valid values:
+    //      RuntimeReportTypeDriver = 0
+    //
+
+    UINT16 ReportType;
+
+    //
+    // Reserved field.
+    //
+
+    UINT16 Reserved;
+
+    //
+    // The number of bytes consumed by this report, including the header.
+    //
+
+    UINT32 ReportSize;
+
+} RUNTIME_REPORT_HEADER;
+
+//
+//  Driver Report Definitions
+//
+
+#define DRIVER_REPORT_DIGEST_MAX_SIZE   RUNTIME_REPORT_DIGEST_MAX_SIZE
+
+#define DRIVER_REPORT_NAME_MAX_LENGTH   20
+
+#define DRIVER_REPORT_OVERFLOWED_FLAG   0x0001
+
+typedef struct _DRIVER_INFO_ENTRY {
+
+    //
+    // Hash algorithm used to calculate the image digest.
+    //
+
+    UINT16 ImageDigestType;
+
+    //
+    // Hash algorithm used to calculate the certificate thumbprint of the driver signing certificate.
+    //
+
+    UINT16 CertificateThumbprintType;
+
+    //
+    // Length of the internal name of the driver in the resource section.
+    //
+
+    UINT32 InternalNameLength;
+
+    //
+    // Digest of the driver image on disk.
+    //
+
+    UINT8 ImageDigest[DRIVER_REPORT_DIGEST_MAX_SIZE];
+
+    //
+    // Thumbprint of the driver signing certificate.
+    //
+
+    UINT8 CertificateThumbprint[DRIVER_REPORT_DIGEST_MAX_SIZE];
+
+    //
+    // Internal name of the driver from the resource section.
+    //
+
+    WCHAR InternalName[DRIVER_REPORT_NAME_MAX_LENGTH];
+
+} DRIVER_INFO_ENTRY;
+
+typedef struct _DRIVER_RUNTIME_REPORT {
+
+    //
+    // The driver runtime report header.
+    //
+
+    RUNTIME_REPORT_HEADER Header;
+
+    //
+    // The current number of unique drivers in the report.
+    //
+
+    UINT16 NumberOfDrivers;
+
+    //
+    // Reserved Field
+    //
+
+    UINT16 Reserved1;
+
+    //
+    // Flags indicating various properties of the report:
+    //      - ReportOverflowed - Secure Kernel places a limit on the number of
+    //          drivers it can list in the report. If this is set, it indicates
+    //          that some loaded drivers might be missing from the report.
+    //      - Reserved2 - Reserved bits
+    //
+
+    union {
+        UINT16 Flags;
+
+        struct {
+            UINT16 ReportOverflowed : 1;
+            UINT16 Reserved2 : 15;
+        };
+    };
+
+    //
+    // Reserved Field
+    //
+
+    UINT16 Reserved3;
+
+    //
+    // A list, of size zero up to MaximumDriversRecorded, containing driver entries.
+    // Unloaded drivers are not removed from the list.
+    //
+
+    DRIVER_INFO_ENTRY DriverEntries[ANYSIZE_ARRAY];
+
+} DRIVER_RUNTIME_REPORT;
+
+//
 // begin_ntifs
 
 typedef struct _MEMORY_BASIC_INFORMATION {

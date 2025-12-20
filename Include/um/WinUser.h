@@ -1566,7 +1566,8 @@ GetThreadDesktop(
 /*
  * Windowstation creation flags.
  */
-#define CWF_CREATE_ONLY          0x00000001
+#define CWF_CREATE_ONLY           0x00000001
+
 // Remove when Feature_MarkWinstaIOForAgentic is removed.
 
 /*
@@ -12654,6 +12655,9 @@ typedef struct tagTouchPredictionParameters
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_CU)
 #endif // NTDDI_VERSION >= NTDDI_WIN10_CU
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+#endif // NTDDI_VERSION >= NTDDI_WIN11_GE
 
 
 #if(WINVER >= 0x0500)

@@ -198,7 +198,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfiguration>{ 0x438BD21A,0x61FF,0x5468,{ 0x95,0xA6,0xB1,0xD5,0x21,0x6E,0x45,0x8D } }; // 438BD21A-61FF-5468-95A6-B1D5216E458D
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialCacheConfigurationFactory>{ 0x9948C31B,0xC827,0x5B58,{ 0x94,0x42,0x40,0xAC,0xD8,0xAB,0x1E,0x7D } }; // 9948C31B-C827-5B58-9442-40ACD8AB1E7D
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics>{ 0x6AAC468B,0x0EF1,0x4CE0,{ 0x82,0x90,0x41,0x06,0xDA,0x6A,0x63,0xB5 } }; // 6AAC468B-0EF1-4CE0-8290-4106DA6A63B5
-    template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>{ 0x79912CAC,0x2B19,0x5658,{ 0x9F,0xA6,0x60,0xBC,0xE0,0x1E,0xF2,0x05 } }; // 79912CAC-2B19-5658-9FA6-60BCE01EF205
+    template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>{ 0x6439895D,0x68C5,0x521B,{ 0x9D,0xC4,0x7C,0x19,0x97,0x94,0xF0,0xD8 } }; // 6439895D-68C5-521B-9DC4-7C199794F0D8
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialOperationResult>{ 0xF53786C1,0x5261,0x4CDD,{ 0x97,0x6D,0xCC,0x90,0x9A,0xC7,0x16,0x20 } }; // F53786C1-5261-4CDD-976D-CC909AC71620
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IKeyCredentialRetrievalResult>{ 0x58CD7703,0x8D87,0x4249,{ 0x9B,0x58,0xF6,0x59,0x8C,0xC9,0x64,0x4E } }; // 58CD7703-8D87-4249-9B58-F6598CC9644E
     template <> inline constexpr guid guid_v<winrt::Windows::Security::Credentials::IPasswordCredential>{ 0x6AB18989,0xC720,0x41A7,{ 0xA6,0xC1,0xFE,0xAD,0xB3,0x63,0x29,0xA0 } }; // 6AB18989-C720-41A7-A6C1-FEADB36329A0
@@ -290,6 +290,7 @@ namespace winrt::impl
         {
             virtual int32_t __stdcall RequestCreateAsync(void*, int32_t, void*, void*, void*, struct struct_Windows_UI_WindowId, int32_t, void*, void**) noexcept = 0;
             virtual int32_t __stdcall OpenAsync(void*, int32_t, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall GetSecureId(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Security::Credentials::IKeyCredentialOperationResult>
@@ -487,6 +488,7 @@ namespace winrt::impl
     {
         auto RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const;
         auto OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback) const;
+        auto GetSecureId() const;
     };
     template <> struct consume<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>
     {

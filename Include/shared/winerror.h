@@ -3923,6 +3923,15 @@
 #define ERROR_CLOUD_FILE_HYDRATION_NOT_AVAILABLE 523L
 
 //
+// MessageId: ERROR_SYSTEM_FILE_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The specified operation is not supported on a system file.
+//
+#define ERROR_SYSTEM_FILE_NOT_SUPPORTED  525L
+
+//
 // **** Available SYSTEM error codes ****
 //
 //

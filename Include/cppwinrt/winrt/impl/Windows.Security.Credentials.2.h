@@ -53,6 +53,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
         static auto DeleteAsync(param::hstring const& name);
         static auto RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option, param::hstring const& algorithm, param::hstring const& message, winrt::Windows::Security::Credentials::KeyCredentialCacheConfiguration const& cacheConfiguration, winrt::Windows::UI::WindowId const& windowId, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback);
         static auto OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback);
+        static auto GetSecureId();
     };
     struct WINRT_IMPL_EMPTY_BASES KeyCredentialOperationResult : winrt::Windows::Security::Credentials::IKeyCredentialOperationResult
     {

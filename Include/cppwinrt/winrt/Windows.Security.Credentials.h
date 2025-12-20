@@ -414,6 +414,24 @@ namespace winrt::impl
         }
         return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Security::Credentials::KeyCredentialRetrievalResult>{ operation, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_Security_Credentials_IKeyCredentialManagerStatics2<D>::GetSecureId() const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetSecureId(&result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Security::Credentials::IKeyCredentialManagerStatics2>**)this;
+            check_hresult(_winrt_abi_type->GetSecureId(&result));
+        }
+        return winrt::Windows::Storage::Streams::IBuffer{ result, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_Security_Credentials_IKeyCredentialOperationResult<D>::Result() const
     {
         void* value{};
@@ -1261,6 +1279,14 @@ namespace winrt::impl
             return 0;
         }
         catch (...) { return to_hresult(); }
+        int32_t __stdcall GetSecureId(void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Storage::Streams::IBuffer>(this->shim().GetSecureId());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
     };
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
@@ -1637,6 +1663,10 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
     inline auto KeyCredentialManager::OpenAsync(param::hstring const& name, winrt::Windows::Security::Credentials::ChallengeResponseKind const& callbackType, winrt::Windows::Security::Credentials::AttestationChallengeHandler const& attestationCallback)
     {
         return impl::call_factory<KeyCredentialManager, IKeyCredentialManagerStatics2>([&](IKeyCredentialManagerStatics2 const& f) { return f.OpenAsync(name, callbackType, attestationCallback); });
+    }
+    inline auto KeyCredentialManager::GetSecureId()
+    {
+        return impl::call_factory_cast<winrt::Windows::Storage::Streams::IBuffer(*)(IKeyCredentialManagerStatics2 const&), KeyCredentialManager, IKeyCredentialManagerStatics2>([](IKeyCredentialManagerStatics2 const& f) { return f.GetSecureId(); });
     }
     inline PasswordCredential::PasswordCredential() :
         PasswordCredential(impl::call_factory_cast<PasswordCredential(*)(winrt::Windows::Foundation::IActivationFactory const&), PasswordCredential>([](winrt::Windows::Foundation::IActivationFactory const& f) { return f.template ActivateInstance<PasswordCredential>(); }))

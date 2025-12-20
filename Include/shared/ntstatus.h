@@ -11665,6 +11665,15 @@ Notes:
 //
 #define STATUS_BLOCK_SHARED              ((NTSTATUS)0xC0000915L)
 
+//
+// MessageId: STATUS_SYSTEM_FILE_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The specified operation is not supported on a system file.
+//
+#define STATUS_SYSTEM_FILE_NOT_SUPPORTED ((NTSTATUS)0xC0000916L)
+
 /*++
 
  MessageId's 0xc08 - 0xc7f (inclusive) are reserved for Verifier errors.
