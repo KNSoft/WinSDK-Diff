@@ -27,7 +27,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
         auto operator()(winrt::Windows::Storage::Streams::IBuffer const& challenge) const;
     };
     struct WINRT_IMPL_EMPTY_BASES KeyCredential : winrt::Windows::Security::Credentials::IKeyCredential,
-        impl::require<KeyCredential, winrt::Windows::Security::Credentials::IKeyCredential2>
+        impl::require<KeyCredential, winrt::Windows::Security::Credentials::IKeyCredential2, winrt::Windows::Security::Credentials::IKeyCredentialWithWindow>
     {
         KeyCredential(std::nullptr_t) noexcept {}
         KeyCredential(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Security::Credentials::IKeyCredential(ptr, take_ownership_from_abi) {}
@@ -46,6 +46,7 @@ WINRT_EXPORT namespace winrt::Windows::Security::Credentials
     struct KeyCredentialManager
     {
         KeyCredentialManager() = delete;
+        static auto RequestCreateForWindowAsync(winrt::Windows::UI::WindowId const& window, param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option);
         static auto IsSupportedAsync();
         static auto RenewAttestationAsync();
         static auto RequestCreateAsync(param::hstring const& name, winrt::Windows::Security::Credentials::KeyCredentialCreationOption const& option);
