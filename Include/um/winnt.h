@@ -14668,7 +14668,7 @@ typedef struct _RUNTIME_REPORT_PACKAGE_HEADER {
 
     UINT32 TotalAuthenticatedReportsSize;
 
-} RUNTIME_REPORT_PACKAGE_HEADER;
+} RUNTIME_REPORT_PACKAGE_HEADER, *PRUNTIME_REPORT_PACKAGE_HEADER;
 
 typedef struct _RUNTIME_REPORT_DIGEST_HEADER {
 
@@ -14694,7 +14694,7 @@ typedef struct _RUNTIME_REPORT_DIGEST_HEADER {
 
     UINT8 ReportDigest[RUNTIME_REPORT_DIGEST_MAX_SIZE];
 
-} RUNTIME_REPORT_DIGEST_HEADER;
+} RUNTIME_REPORT_DIGEST_HEADER, *PRUNTIME_REPORT_DIGEST_HEADER;
 
 typedef struct _RUNTIME_REPORT_HEADER {
 
@@ -14719,7 +14719,7 @@ typedef struct _RUNTIME_REPORT_HEADER {
 
     UINT32 ReportSize;
 
-} RUNTIME_REPORT_HEADER;
+} RUNTIME_REPORT_HEADER, *PRUNTIME_REPORT_HEADER;
 
 //
 //  Driver Report Definitions
@@ -14727,49 +14727,83 @@ typedef struct _RUNTIME_REPORT_HEADER {
 
 #define DRIVER_REPORT_DIGEST_MAX_SIZE   RUNTIME_REPORT_DIGEST_MAX_SIZE
 
-#define DRIVER_REPORT_NAME_MAX_LENGTH   20
-
-#define DRIVER_REPORT_OVERFLOWED_FLAG   0x0001
+#define DRIVER_REPORT_NAME_MAX_LENGTH   32
 
 typedef struct _DRIVER_INFO_ENTRY {
-
-    //
-    // Hash algorithm used to calculate the image digest.
-    //
-
-    UINT16 ImageDigestType;
-
-    //
-    // Hash algorithm used to calculate the certificate thumbprint of the driver signing certificate.
-    //
-
-    UINT16 CertificateThumbprintType;
-
-    //
-    // Length of the internal name of the driver in the resource section.
-    //
-
-    UINT32 InternalNameLength;
-
-    //
-    // Digest of the driver image on disk.
-    //
-
-    UINT8 ImageDigest[DRIVER_REPORT_DIGEST_MAX_SIZE];
-
-    //
-    // Thumbprint of the driver signing certificate.
-    //
-
-    UINT8 CertificateThumbprint[DRIVER_REPORT_DIGEST_MAX_SIZE];
 
     //
     // Internal name of the driver from the resource section.
     //
 
-    WCHAR InternalName[DRIVER_REPORT_NAME_MAX_LENGTH];
+    CHAR InternalName[DRIVER_REPORT_NAME_MAX_LENGTH];
 
-} DRIVER_INFO_ENTRY;
+    //
+    // Hash algorithm used to calculate the image digest.
+    //
+
+    UINT16 ImageHashAlgorithm;
+
+    //
+    // Hash algorithm used to calculate the thumbprint of the leaf certificate
+    // that validates the entire image.
+    //
+
+    UINT16 PublisherThumbprintHashAlgorithm;
+
+    //
+    // Offset from the start of the driver report to a buffer containing the
+    // digest of the driver image on disk.
+    //
+
+    UINT32 ImageHashOffset;
+
+    //
+    // Offset from the start of the driver report to a buffer containing the
+    // thumbprint of the leaf certificate validating the entire image
+    //
+
+    UINT32 PublisherThumbprintOffset;
+
+    //
+    // Number of times that this driver image has been loaded into the system.
+    //
+
+    UINT16 LoadCount;
+
+    //
+    // Size and Offset of a string indicating the OEM name stored in the
+    // authenticated OPUS block of the image digital signature.
+    // There is no OEM name for inbox Windows signed drivers. The size does *NOT*
+    // include the NULL terminator (even though the string is NULL-terminated).
+    //
+
+    UINT16 OemNameSize;
+    UINT32 OemNameOffset;
+
+    //
+    // Flags indicating various properties of the current driver image:
+    //      - Unloaded - Set to 1 in case the driver is current unloaded.
+    //
+    //      - BootDriver - Set to 1 in case the image is a Boot Driver;
+    //           0 otherwise (the image is a Runtime driver).
+    //
+    //      - HotPatch - Set to 1 in case the image can be also loaded as Hotpatch;
+    //
+    //      - Reserved - Reserved flags bits.
+    //
+
+    union {
+        struct {
+            UINT16 Unloaded : 1;
+            UINT16 BootDriver : 1;
+            UINT16 HotPatch : 1;
+            UINT16 Reserved : 13;
+        };
+        UINT16 AsUInt16;
+    } Flags;
+
+    UINT16 Padding;
+} DRIVER_INFO_ENTRY, *PDRIVER_INFO_ENTRY;
 
 typedef struct _DRIVER_RUNTIME_REPORT {
 
@@ -14786,33 +14820,30 @@ typedef struct _DRIVER_RUNTIME_REPORT {
     UINT16 NumberOfDrivers;
 
     //
-    // Reserved Field
-    //
-
-    UINT16 Reserved1;
-
-    //
     // Flags indicating various properties of the report:
     //      - ReportOverflowed - Secure Kernel places a limit on the number of
     //          drivers it can list in the report. If this is set, it indicates
     //          that some loaded drivers might be missing from the report.
-    //      - Reserved2 - Reserved bits
+    //
+    //      - PartialReport - Indicates whether the report contains only a
+    //          subset of NT loaded drivers.
+    //
+    //      - IncludeBootDrivers - Set to 1 in case the report includes
+    //          boot-loaded drivers; 0 otherwise (in that case the information
+    //          is stored in the TCG Log).
+    //
+    //      - Reserved - Reserved flags bits.
     //
 
     union {
-        UINT16 Flags;
-
         struct {
             UINT16 ReportOverflowed : 1;
-            UINT16 Reserved2 : 15;
+            UINT16 PartialReport : 1;
+            UINT16 IncludeBootDrivers : 1;
+            UINT16 Reserved : 13;
         };
-    };
-
-    //
-    // Reserved Field
-    //
-
-    UINT16 Reserved3;
+        UINT16 AsUInt16;
+    } Flags;
 
     //
     // A list, of size zero up to MaximumDriversRecorded, containing driver entries.
@@ -14821,7 +14852,17 @@ typedef struct _DRIVER_RUNTIME_REPORT {
 
     DRIVER_INFO_ENTRY DriverEntries[ANYSIZE_ARRAY];
 
-} DRIVER_RUNTIME_REPORT;
+    //
+    // After the driver info array the driver runtime report store hashes,
+    // strings and information that are dynamic in size.
+    //
+    // BYTE DynamicBuffer[ANYSIZE_ARRAY];
+    //
+    // The dynamic buffer, for each driver is composed off:
+    // ImageHash - PublisherHash - OemName.
+    //
+
+} DRIVER_RUNTIME_REPORT, *PDRIVER_RUNTIME_REPORT;
 
 //
 // begin_ntifs

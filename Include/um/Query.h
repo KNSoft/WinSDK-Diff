@@ -222,6 +222,8 @@ typedef struct tagCONTENTRESTRICTION
 
 #define	GENERATE_METHOD_WITH_BM25	( 5 )
 
+#define	GENERATE_METHOD_WITH_TFDOCLEN	( 6 )
+
 typedef struct tagNATLANGUAGERESTRICTION
     {
     FULLPROPSPEC prop;

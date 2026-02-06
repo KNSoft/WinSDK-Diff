@@ -9,6 +9,20 @@
 #include "winrt/impl/Windows.Devices.Haptics.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Haptics
 {
+    struct WINRT_IMPL_EMPTY_BASES IInputHapticsManager :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IInputHapticsManager>
+    {
+        IInputHapticsManager(std::nullptr_t = nullptr) noexcept {}
+        IInputHapticsManager(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IInputHapticsManagerStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IInputHapticsManagerStatics>
+    {
+        IInputHapticsManagerStatics(std::nullptr_t = nullptr) noexcept {}
+        IInputHapticsManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IKnownSimpleHapticsControllerWaveformsStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IKnownSimpleHapticsControllerWaveformsStatics>

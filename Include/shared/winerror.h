@@ -29879,6 +29879,24 @@
 //
 #define ERROR_DEPLOYMENT_BLOCKED_BY_REMOVEDEFAULTPACKAGES_POLICY 15679L
 
+//
+// MessageId: ERROR_URI_BLOCKED_BY_POLICY_MSIXALLOWEDZONES
+//
+// MessageText:
+//
+// The source uri is blocked by MsixAllowedZones policy. Please contact your system administrator.
+//
+#define ERROR_URI_BLOCKED_BY_POLICY_MSIXALLOWEDZONES 15680L
+
+//
+// MessageId: ERROR_URI_RECOMMENDED_BLOCK_BY_SMARTSCREEN
+//
+// MessageText:
+//
+// The source uri is recommended to be blocked by SmartScreen. Please contact your system administrator.
+//
+#define ERROR_URI_RECOMMENDED_BLOCK_BY_SMARTSCREEN 15681L
+
 //////////////////////////
 //                      //
 // AppModel Error Codes //

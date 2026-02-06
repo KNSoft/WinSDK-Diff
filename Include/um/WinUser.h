@@ -2403,7 +2403,7 @@ typedef struct {
 #define WM_POINTERDEVICEOUTOFRANGE      0x23A
 #endif /* WINVER >= 0x0602 */
 
-// TODO(47499024): Make public when Feature_TouchpadPublicApis2 is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis3 is enabled
 
 #if(WINVER >= 0x0601)
 #define WM_TOUCH                        0x0240
@@ -6633,7 +6633,7 @@ GetPointerFramePenInfoHistory(
     _Inout_ UINT32 *pointerCount,
     _Out_writes_opt_(*entriesCount * *pointerCount) POINTER_PEN_INFO *penInfo);
 
-// TODO(47499024): Make public when Feature_TouchpadPublicApis2 is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis3 is enabled
 
 WINUSERAPI
 BOOL
@@ -6695,7 +6695,7 @@ DestroySyntheticPointerDevice(
     _In_ HSYNTHETICPOINTERDEVICE device);
 #endif // NTDDI_VERSION >= NTDDI_WIN10_RS5
 
-// TODO(47499024): Make public when Feature_TouchpadPublicApis2 is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis3 is enabled
 
 WINUSERAPI
 BOOL
@@ -6865,7 +6865,7 @@ GetPointerInputTransform(
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
-// TODO(47499024): Make public when Feature_TouchpadPublicApis2 is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis3 is enabled
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
@@ -15581,17 +15581,22 @@ typedef struct TOUCHPAD_PARAMETERS_V1 {
 
 #define TOUCHPAD_PARAMETERS_VERSION_2 0x2
 
-#if defined(__cplusplus) && !defined(SORTPP_PASS)
+#if defined(__cplusplus)
 typedef struct tagTOUCHPAD_PARAMETERS_V2 : public TOUCHPAD_PARAMETERS_V1 {
-#else
-typedef struct tagTOUCHPAD_PARAMETERS_V2 {
-    TOUCHPAD_PARAMETERS_V1;
-#endif
     BOOL button1Supported            : 1;
     BOOL button2Supported            : 1;
     BOOL button3Supported            : 1;
     BOOL Reserved3                   : 29;
 } TOUCHPAD_PARAMETERS_V2, *PTOUCHPAD_PARAMETERS_V2;
+#else
+typedef struct tagTOUCHPAD_PARAMETERS_V2 {
+    TOUCHPAD_PARAMETERS_V1 DUMMYSTRUCTNAME;
+    BOOL button1Supported            : 1;
+    BOOL button2Supported            : 1;
+    BOOL button3Supported            : 1;
+    BOOL Reserved3                   : 29;
+} TOUCHPAD_PARAMETERS_V2, *PTOUCHPAD_PARAMETERS_V2;
+#endif
 
 #if _MSC_VER >= 1200
 #pragma warning(pop)
@@ -15600,7 +15605,7 @@ typedef struct tagTOUCHPAD_PARAMETERS_V2 {
 #endif // WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
-// TODO(47499024): Make public when Feature_TouchpadPublicApis2 is enabled
+// TODO(47499024): Make public when Feature_TouchpadPublicApis3 is enabled
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
@@ -16399,6 +16404,13 @@ RegisterForTooltipDismissNotification(HWND hWnd,
 
 #endif /* WINVER >= 0x0607 */
 
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+WINUSERAPI
+BOOL
+WINAPI
+ConvertPrimaryPointerToMouseDrag(VOID);
+#endif // NTDDI_VERSION >= NTDDI_WIN11_GE
 
 #if(WINVER >= 0x0604)
 WINUSERAPI

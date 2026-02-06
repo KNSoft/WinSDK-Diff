@@ -20835,7 +20835,9 @@ WINCRYPT32STRINGAPI
 BOOL
 WINAPI
 CryptStringToBinaryA(
-    _In_reads_(cchString) LPCSTR pszString,
+    _When_(dwFlags != CRYPT_STRING_BINARY, _In_reads_(cchString))
+    _When_(dwFlags == CRYPT_STRING_BINARY, _In_reads_bytes_(cchString))
+        LPCSTR pszString,
     _In_ DWORD cchString,
     _In_ DWORD dwFlags,
     _Out_writes_bytes_to_opt_(*pcbBinary, *pcbBinary) BYTE *pbBinary,
@@ -20859,7 +20861,9 @@ WINCRYPT32STRINGAPI
 BOOL
 WINAPI
 CryptStringToBinaryW(
-    _In_reads_(cchString) LPCWSTR pszString,
+    _When_(dwFlags != CRYPT_STRING_BINARY, _In_reads_(cchString))
+    _When_(dwFlags == CRYPT_STRING_BINARY, _In_reads_bytes_(cchString))
+        LPCWSTR pszString,
     _In_ DWORD cchString,
     _In_ DWORD dwFlags,
     _Out_writes_bytes_to_opt_(*pcbBinary, *pcbBinary) BYTE *pbBinary,

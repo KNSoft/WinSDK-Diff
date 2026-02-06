@@ -1655,20 +1655,22 @@ cpp_quote("DEFINE_ENUM_FLAG_OPERATORS(UIAutomationType)")
         //
         // Example Usage:
         //   SAFEARRAY* clients = nullptr;
+        //   auto cleanup = wil::scope_exit([&clients]() {
+        //      if (clients)
+        //      {
+        //          SafeArrayDestroy(clients);
+        //      }
+        //   });
         //   if (SUCCEEDED(pApi->GetConnectedClients(&clients))) {
         //       LONG lBound, uBound;
         //       SafeArrayGetLBound(clients, 1, &lBound);
         //       SafeArrayGetUBound(clients, 1, &uBound);
         //       for (LONG i = lBound; i <= uBound; i++) {
-        //           IUIAutomationClientInfo* rawClientInfo = nullptr;
-        //           HRESULT hr = SafeArrayGetElement(clients, &i, &rawClientInfo);
-        //           if (SUCCEEDED(hr) && rawClientInfo) {
-        //              wil::com_ptr<IUIAutomationClientInfo> clientInfo;
-        //              clientInfo.attach(rawClientInfo); // take ownership of AddRef from SafeArrayGetElement
+        //           wil::com_ptr_nothrow<IUIAutomationClientInfo> clientInfo;
+        //           if (SUCCEEDED(SafeArrayGetElement(clients, &i, clientInfo.put()) && clientInfo)
         //              // Use clientInfo
         //           }
         //       }
-        //       SafeArrayDestroy(clients);
         //   }
         //
         HRESULT GetConnectedClients([out, retval] SAFEARRAY(IUIAutomationClientInfo*) * clients);
