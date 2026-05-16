@@ -13,68 +13,9 @@ Abstract:
 
     Cloned from parts of nti386.h.
 
-Author:
-
-
 --*/
 
-//
-// Note: IA64 is for 64 bits Merced. Under Merced compiler option, we don't have
-// _X86_, instead, we use _IA64_. Same thing, _AXP64_ is for 64 bits compiler
-// option for ALPHA
-//
-#if defined(_MIPS_) || defined(_X86_) || defined(_AMD64_)
-
-//
-// Memory barriers on X86 and MIPS are not required since the Io
-// Operations are always garanteed to be executed in order
-//
-
-#define MEMORY_BARRIER()    0
-
-
-#elif defined(_IA64_)
-
-//
-// Itanium requires memory barriers
-//
-
-void __mf();
-
-#define MEMORY_BARRIER()    __mf()
-
-#elif defined(_PPC_)
-
-//
-// A memory barrier function is provided by the PowerPC Enforce
-// In-order Execution of I/O instruction (eieio).
-//
-
-#if defined(_M_PPC) && defined(_MSC_VER) && (_MSC_VER>=1000)
-void __emit( unsigned const __int32 );
-#define __builtin_eieio() __emit( 0x7C0006AC )
-#else
-void __builtin_eieio(void);
-#endif
-
-#define MEMORY_BARRIER()        __builtin_eieio()
-
-
-#elif defined(_ALPHA_) || (_AXP64_)
-
-//
-// ALPHA requires memory barriers
-//
-
-#define MEMORY_BARRIER()  __MB()
-
-
-
-#endif
-
 #ifndef NO_PORT_MACROS
-
-
 
 //
 // I/O space read and write macros.
@@ -87,66 +28,8 @@ void __builtin_eieio(void);
 //  (Use x86 in/out instructions.)
 //
 
+#if defined(_X86_)
 
-//
-// inp(),inpw(), inpd(), outp(), outpw(), outpd() are X86 specific intrinsic
-// inline functions. So for IA64, we have to put READ_PORT_USHORT() etc. back
-// to it's supposed to be, defined in sdk\inc\wdm.h
-//
-#if defined(_IA64_)
-#define READ_REGISTER_UCHAR(Register)          (*(volatile UCHAR *)(Register))
-#define READ_REGISTER_USHORT(Register)         (*(volatile USHORT *)(Register))
-#define READ_REGISTER_ULONG(Register)          (*(volatile ULONG *)(Register))
-#define WRITE_REGISTER_UCHAR(Register, Value)  (*(volatile UCHAR *)(Register) = (Value))
-#define WRITE_REGISTER_USHORT(Register, Value) (*(volatile USHORT *)(Register) = (Value))
-#define WRITE_REGISTER_ULONG(Register, Value)  (*(volatile ULONG *)(Register) = (Value))
-
-__declspec(dllimport)
-UCHAR
-READ_PORT_UCHAR(
-    _In_ PVOID Port
-    );
-
-__declspec(dllimport)
-USHORT
-READ_PORT_USHORT(
-    _In_ PVOID Port
-    );
-
-__declspec(dllimport)
-ULONG
-READ_PORT_ULONG(
-    _In_ PVOID Port
-    );
-
-//
-// All these function prototypes take a ULONG as a parameter so that
-// we don't force an extra typecast in the code (which will cause
-// the X86 to generate bad code).
-//
-
-__declspec(dllimport)
-VOID
-WRITE_PORT_UCHAR(
-    _In_ PVOID Port,
-    _In_ ULONG Value
-    );
-
-__declspec(dllimport)
-VOID
-WRITE_PORT_USHORT(
-    _In_ PVOID  Port,
-    _In_ ULONG Value
-    );
-
-__declspec(dllimport)
-VOID
-WRITE_PORT_ULONG(
-    _In_ PVOID Port,
-    _In_ ULONG Value
-    );
-
-#elif defined(_X86_)
 #define READ_REGISTER_UCHAR(Register)          (*(volatile UCHAR *)(Register))
 #define READ_REGISTER_USHORT(Register)         (*(volatile USHORT *)(Register))
 #define READ_REGISTER_ULONG(Register)          (*(volatile ULONG *)(Register))
@@ -159,122 +42,6 @@ WRITE_PORT_ULONG(
 #define WRITE_PORT_UCHAR(Port, Value)          outp ((Port), (Value))
 #define WRITE_PORT_USHORT(Port, Value)         outpw ((Port), (Value))
 #define WRITE_PORT_ULONG(Port, Value)          outpd ((Port), (Value))
-
-#elif defined(_PPC_) || defined(_MIPS_)
-
-#define READ_REGISTER_UCHAR(x)      (*(volatile UCHAR * const)(x))
-#define READ_REGISTER_USHORT(x)     (*(volatile USHORT * const)(x))
-#define READ_REGISTER_ULONG(x)      (*(volatile ULONG * const)(x))
-#define WRITE_REGISTER_UCHAR(x, y)  (*(volatile UCHAR * const)(x) = (y))
-#define WRITE_REGISTER_USHORT(x, y) (*(volatile USHORT * const)(x) = (y))
-#define WRITE_REGISTER_ULONG(x, y)  (*(volatile ULONG * const)(x) = (y))
-#define READ_PORT_UCHAR(x)          READ_REGISTER_UCHAR(x)
-#define READ_PORT_USHORT(x)         READ_REGISTER_USHORT(x)
-#define READ_PORT_ULONG(x)          READ_REGISTER_ULONG(x)
-
-//
-// All these macros take a ULONG as a parameter so that we don't
-// force an extra typecast in the code (which will cause the X86 to
-// generate bad code).
-//
-
-#define WRITE_PORT_UCHAR(x, y)      WRITE_REGISTER_UCHAR(x, (UCHAR) (y))
-#define WRITE_PORT_USHORT(x, y)     WRITE_REGISTER_USHORT(x, (USHORT) (y))
-#define WRITE_PORT_ULONG(x, y)      WRITE_REGISTER_ULONG(x, (ULONG) (y))
-
-
-#elif defined(_ALPHA_) || (_AXP64_)
-
-//
-// READ/WRITE_PORT/REGISTER_UCHAR_USHORT_ULONG are all functions that
-// go to the HAL on ALPHA
-//
-// So we only put the prototypes here
-//
-
-__declspec(dllimport)
-UCHAR
-READ_REGISTER_UCHAR(
-    _In_ PVOID Register
-    );
-
-__declspec(dllimport)
-USHORT
-READ_REGISTER_USHORT(
-    _In_ PVOID Register
-    );
-
-__declspec(dllimport)
-ULONG
-READ_REGISTER_ULONG(
-    _In_ PVOID Register
-    );
-
-__declspec(dllimport)
-VOID
-WRITE_REGISTER_UCHAR(
-    _In_ PVOID Register,
-    UCHAR Value
-    );
-
-__declspec(dllimport)
-VOID
-WRITE_REGISTER_USHORT(
-    _In_ PVOID  Register,
-    _In_ USHORT Value
-    );
-
-__declspec(dllimport)
-VOID
-WRITE_REGISTER_ULONG(
-    _In_ PVOID Register,
-    _In_ ULONG Value
-    );
-
-__declspec(dllimport)
-UCHAR
-READ_PORT_UCHAR(
-    _In_ PVOID Port
-    );
-
-__declspec(dllimport)
-USHORT
-READ_PORT_USHORT(
-    _In_ PVOID Port
-    );
-
-__declspec(dllimport)
-ULONG
-READ_PORT_ULONG(
-    _In_ PVOID Port
-    );
-
-//
-// All these function prototypes take a ULONG as a parameter so that
-// we don't force an extra typecast in the code (which will cause
-// the X86 to generate bad code).
-//
-
-__declspec(dllimport)
-VOID
-WRITE_PORT_UCHAR(
-    _In_ PVOID Port,
-    _In_ ULONG Value
-    );
-
-__declspec(dllimport)
-VOID
-WRITE_PORT_USHORT(
-    _In_ PVOID  Port,
-    _In_ ULONG Value
-    );
-
-__declspec(dllimport)
-VOID
-WRITE_PORT_ULONG(
-    _In_ PVOID Port,
-    _In_ ULONG Value
-    );
 
 #elif defined(_AMD64_)
 
@@ -325,7 +92,6 @@ _InterlockedOr (
     );
 
 #pragma intrinsic(_InterlockedOr)
-
 
 __inline
 UCHAR
@@ -462,6 +228,6 @@ WRITE_PORT_ULONG (
     return;
 }
 
-#endif      // NO_PORT_MACROS
-
 #endif
+
+#endif // NO_PORT_MACROS

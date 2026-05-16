@@ -1,17 +1,8 @@
-/***
-*** Copyright (C) 1985-2007 Intel Corporation.  All rights reserved.
-***
-*** The information and source code contained herein is the exclusive
-*** property of Intel Corporation and may not be disclosed, examined
-*** or reproduced in whole or in part without explicit written authorization
-*** from the company.
-***
-****/
-
 /*
-The file \sdpublic\sdk\inc\crt\nmmintrin.h was reviewed by LCA in June 2011
-and is acceptable for use by Microsoft.
-*/
+ *  Copyright (C) 1985-2015 Intel Corporation.
+ *
+ *  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ */
 
 /*
  * nmmintrin.h
@@ -21,20 +12,25 @@ and is acceptable for use by Microsoft.
  */
 
 #pragma once
-#ifndef __midl
+
+#if !defined(_M_IX86) && !defined(_M_X64) && !(defined(_M_ARM64) && defined(USE_SOFT_INTRINSICS))
+#error This header is specific to X86, X64, ARM64, and ARM64EC targets
+#endif
+
 #ifndef _INCLUDED_NMM
 #define _INCLUDED_NMM
+#ifndef __midl
 
-#if defined(_M_CEE_PURE)
+#if defined (_M_CEE_PURE)
         #error ERROR: EMM intrinsics not supported in the pure mode!
-#else
+#else  /* defined (_M_CEE_PURE) */
 
 #include <smmintrin.h>
 
 
-#if __cplusplus
+#if defined (__cplusplus)
 extern "C" {
-#endif
+#endif  /* defined (__cplusplus) */
 
 /*
  * These defines are used to determine the kind of units to be compared
@@ -79,64 +75,63 @@ extern "C" {
 /*
  * Intrinsics for text/string processing.
  */
- 
-    extern __m128i _mm_cmpistrm (__m128i a, __m128i b, const int mode);
-    extern int     _mm_cmpistri (__m128i a, __m128i b, const int mode);
 
-    extern __m128i _mm_cmpestrm (__m128i a, int la, __m128i b, int lb, const int mode);
-    extern int     _mm_cmpestri (__m128i a, int la, __m128i b, int lb, const int mode);
+    extern __m128i _mm_cmpistrm (__m128i /* a */, __m128i /* b */, const int /* mode */);
+    extern int     _mm_cmpistri (__m128i /* a */, __m128i /* b */, const int /* mode */);
+
+    extern __m128i _mm_cmpestrm (__m128i /* a */, int /* la */, __m128i /* b */, int /* lb */, const int /* mode */);
+    extern int     _mm_cmpestri (__m128i /* a */, int /* la */, __m128i /* b */, int /* lb */, const int /* mode */);
 
 /*
  * Intrinsics for text/string processing and reading values of EFlags.
  */
 
-    extern int     _mm_cmpistrz (__m128i a, __m128i b, const int mode);
-    extern int     _mm_cmpistrc (__m128i a, __m128i b, const int mode);
-    extern int     _mm_cmpistrs (__m128i a, __m128i b, const int mode);
-    extern int     _mm_cmpistro (__m128i a, __m128i b, const int mode);
-    extern int     _mm_cmpistra (__m128i a, __m128i b, const int mode);
+    extern int     _mm_cmpistrz (__m128i /* a */, __m128i /* b */, const int /* mode */);
+    extern int     _mm_cmpistrc (__m128i /* a */, __m128i /* b */, const int /* mode */);
+    extern int     _mm_cmpistrs (__m128i /* a */, __m128i /* b */, const int /* mode */);
+    extern int     _mm_cmpistro (__m128i /* a */, __m128i /* b */, const int /* mode */);
+    extern int     _mm_cmpistra (__m128i /* a */, __m128i /* b */, const int /* mode */);
 
-    extern int     _mm_cmpestrz (__m128i a, int la, __m128i b, int lb, const int mode);
-    extern int     _mm_cmpestrc (__m128i a, int la, __m128i b, int lb, const int mode);
-    extern int     _mm_cmpestrs (__m128i a, int la, __m128i b, int lb, const int mode);
-    extern int     _mm_cmpestro (__m128i a, int la, __m128i b, int lb, const int mode);
-    extern int     _mm_cmpestra (__m128i a, int la, __m128i b, int lb, const int mode);
+    extern int     _mm_cmpestrz (__m128i /* a */, int /* la */, __m128i /* b */, int /* lb */, const int /* mode */);
+    extern int     _mm_cmpestrc (__m128i /* a */, int /* la */, __m128i /* b */, int /* lb */, const int /* mode */);
+    extern int     _mm_cmpestrs (__m128i /* a */, int /* la */, __m128i /* b */, int /* lb */, const int /* mode */);
+    extern int     _mm_cmpestro (__m128i /* a */, int /* la */, __m128i /* b */, int /* lb */, const int /* mode */);
+    extern int     _mm_cmpestra (__m128i /* a */, int /* la */, __m128i /* b */, int /* lb */, const int /* mode */);
 
 /*
  * Packed integer 64-bit comparison, zeroing or filling with ones
  * corresponding parts of result
  */
 
-    extern __m128i _mm_cmpgt_epi64(__m128i val1, __m128i val2);
+    extern __m128i _mm_cmpgt_epi64(__m128i /* val1 */, __m128i /* val2 */);
 
 /*
  * Calculate a number of bits set to 1
  */
 
-    extern int _mm_popcnt_u32(unsigned int v);
+    extern int _mm_popcnt_u32(unsigned int /* v */);
 
-#if defined(_M_X64)
-    extern __int64 _mm_popcnt_u64(unsigned __int64 v);
-#endif
+#if defined (_M_X64)
+    extern __int64 _mm_popcnt_u64(unsigned __int64 /* v */);
+#endif  /* defined (_M_X64) */
 
 /*
  * Accumulate CRC32 (polynomial 0x11EDC6F41) value
  */
 
-    extern unsigned int _mm_crc32_u8 (unsigned int crc, unsigned char v);
-    extern unsigned int _mm_crc32_u16(unsigned int crc, unsigned short v);
-    extern unsigned int _mm_crc32_u32(unsigned int crc, unsigned int v);
+    extern unsigned int _mm_crc32_u8 (unsigned int /* crc */, unsigned char /* v */);
+    extern unsigned int _mm_crc32_u16(unsigned int /* crc */, unsigned short /* v */);
+    extern unsigned int _mm_crc32_u32(unsigned int /* crc */, unsigned int /* v */);
 
-#if defined(_M_X64)
-    extern unsigned __int64 _mm_crc32_u64(unsigned __int64 crc, unsigned __int64 v);
-#endif
+#if defined (_M_X64)
+    extern unsigned __int64 _mm_crc32_u64(unsigned __int64 /* crc */, unsigned __int64 /* v */);
+#endif  /* defined (_M_X64) */
 
 #if defined __cplusplus
 }; /* End "C" */
-#endif /* __cplusplus */
+#endif  /* defined __cplusplus */
 
-#endif /* defined(_M_CEE_PURE) */
-
-#endif
-#endif /* _INCLUDED_NMM */
+#endif  /* defined (_M_CEE_PURE) */
+#endif  /* __midl */
+#endif  /* _INCLUDED_NMM */
 /* 88bf0570-3001-4e78-a5f2-be5765546192 */ 

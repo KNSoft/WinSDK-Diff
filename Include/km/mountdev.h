@@ -31,7 +31,6 @@ Revision History:
 
 //
 // Output structure for IOCTL_MOUNTDEV_QUERY_UNIQUE_ID.
-// Input structure for IOCTL_MOUNTDEV_UNIQUE_ID_CHANGE_NOTIFY.
 //
 
 typedef struct _MOUNTDEV_UNIQUE_ID {

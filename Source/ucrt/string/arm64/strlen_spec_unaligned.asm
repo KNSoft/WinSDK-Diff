@@ -139,9 +139,10 @@ bytes16_31
         nop
 loop_entry
         bic        src, srcin, 31
-        b          loop
 
-        ALIGN 32
+        ; Due to MSVC bug 132551, automatic padding with NOPs when in code areas is
+        ; broken. The workaround is to use -721215457.
+        ALIGN 32,0,-721215457,4
 loop
         ldp        dataq1, dataq2, [src, 32]!
         uminp      maskv.16b, datav1.16b, datav2.16b

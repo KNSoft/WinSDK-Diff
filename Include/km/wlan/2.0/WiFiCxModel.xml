@@ -228,11 +228,6 @@
     </message>
     <message commandId="WDI_SET_NETWORK_LIST_OFFLOAD" type="WDI_NETWORK_LIST_OFFLOAD_RESULTS" description="No TLV data needed, header is sufficient" direction="FromIhv" />
 
-    <message commandId="WDI_SET_RECEIVE_COALESCING" type="WDI_SET_RECEIVE_COALESCING_PARAMETERS" description="Parameters for WDI_SET_RECEIVE_COALESCING" direction="ToIhv" >
-      <containerRef id="WDI_TLV_SET_RECEIVE_COALESCING" name="AddReceiveCoalescing" type="AddReceiveCoalescingContainer" />
-    </message>
-    <message commandId="WDI_SET_RECEIVE_COALESCING" type="WDI_SET_RECEIVE_COALESCING_RESULTS" description="No TLV data needed, header is sufficient" direction="FromIhv" />
-
     <message commandId="WDI_GET_BSS_ENTRY_LIST" type="WDI_GET_BSS_ENTRY_LIST_UPDATE_PARAMETERS" description="Get cached BSS entry list from adapter" direction="ToIhv" >
       <containerRef id="WDI_TLV_SSID" name="SSID" type="WiFiSSID" />
     </message>
@@ -1617,6 +1612,13 @@
     </container>
 
     <container
+      name="ConnectionSettingsContainerV2_0_10"
+      description="Container for connection settings"
+      type="WDI_CONNECTION_SETTINGS_CONTAINER_V2_0_10">
+      <groupRef name="ConnectionSettings" ref="ConnectionSettingsStructV2_0_10" description="Connection settings"/>
+    </container>
+
+    <container
       name="ConnectionSettingsContainerV2_0_8"
       description="Container for connection settings"
       type="WDI_CONNECTION_SETTINGS_CONTAINER_V2_0_8">
@@ -1734,7 +1736,8 @@
      </aggregateContainer>
 
     <aggregateContainer name="ConnectParametersContainer" type="WDI_CONNECT_PARAMETERS_CONTAINER" description="Container for connect parameters.">
-      <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainer" versionAdded="WDI_VERSION_2_0_10"/>
+      <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainer" versionAdded="WDI_VERSION_2_0_14"/>
+      <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainerV2_0_10" versionAdded="WDI_VERSION_2_0_10" versionRemoved="WDI_VERSION_2_0_14"/>
       <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainerV2_0_8" versionAdded="WDI_VERSION_2_0_8" versionRemoved="WDI_VERSION_2_0_10"/>
       <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainerV2_0_7" versionAdded="WDI_VERSION_2_0_7" versionRemoved="WDI_VERSION_2_0_8"/>
       <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainerV1_0_1" versionAdded="WDI_VERSION_1_0_1" versionRemoved="WDI_VERSION_2_0_7"/>
@@ -1975,21 +1978,6 @@
     <container name="WakeEventMaskContainer" description="container wake event mask" type="WDI_WAKE_EVENT_MASK_CONTAINER">
       <groupRef name="WakeEventMask" ref="WakeEventMaskStruct" description="Struct for wake event mask" />
     </container>
-
-    <!--++Coalesce-->
-    <container name="ReceiveCoalescingConfigContainer" description="container for add receive coalescing config" type="WDI_RECEIVE_COALESCING_CONFIG_CONTAINER">
-      <groupRef name="ReceiveCoalescingConfig" ref="ReceiveCoalescingConfigStruct" description="Struct for receive coalescing config" />
-    </container>
-
-    <container name="ReceiveCoalescingFieldContainer" description="container for add receive coalescing field" type="WDI_RECEIVE_COALESCING_FIELD_CONTAINER">
-      <groupRef name="ReceiveCoalescingField" ref="ReceiveCoalescingFieldStruct" description="Struct for receive coalescing Field" />
-    </container>
-
-    <aggregateContainer name="AddReceiveCoalescingContainer" type="ADD_RECEIVE_COALESCING_INFO" description="Container for add receive coalescing Information">
-      <containerRef id="WDI_TLV_RECEIVE_COALESCING_CONFIG" name="ReceivingCoalesingConfig" type="ReceiveCoalescingConfigContainer" />
-      <containerRef id="WDI_TLV_RECEIVE_FILTER_FIELD" name="ReceiveCoalescingField" type="ReceiveCoalescingFieldContainer" multiContainer="true" optional="true"/>
-    </aggregateContainer>
-     <!--Coalesce-->
 
     <!--++WOL-->
     <aggregateContainer name="WakePacketPatternContainer" description="container for packet pattern" type="WDI_PACKET_PATTERN_CONTAINER">
@@ -2950,6 +2938,22 @@
       <bool name="IsFIPSConnection" description="Whether this is a FIPS mode connection.  The station must use only certified cipher algorithms if HostFIPSModeEnabled is false (i.e. when hardware FIPS support is used)."/>
       <bool name="MSCSSupported" description="Whether MSCS is supported by the OS for this connection. If set to true, IHV driver must set the Mirrored SCS field of the Extended Capabilities element to 1."/>
       <bool name="DSCPToUPMappingSupported" description="Whether DSCP to UP Mapping is supported by the OS for this connection. If set to true, IHV driver must set the QoS Map field of the Extended Capabilities element to 1."/>
+      <bool name="IsRsnOverrideSupported" description="Whether Rsn Override is supported by the OS for this connection. If set to true, driver can use Rsn Override settings on the AP."/>
+    </propertyGroup>
+
+    <propertyGroup name="ConnectionSettingsStructV2_0_10" type="WDI_CONNECTION_SETTINGSV2_0_10" description="Structure definition for connection settings.">
+      <bool name="RoamRequest" description="Specifies if this is a first time connection or a roam request"/>
+      <bool name="HiddenNetwork" description="Specifies if this is a hidden network or not"/>
+      <bool name="ExcludeUnencrypted" description="Sets the dot11ExcludeUnencrypted MIB"/>
+      <bool name="MFPEnabled" description="802.11w capabilities must be advertised only if this is TRUE"/>
+      <bool name="HostFIPSModeEnabled" description="Host-FIPS mode is enabled or not"/>
+      <uint32 name="RoamNeededReason" description="Roaming needed reason"/>
+      <namedType name="RoamTrigger" type="WDI_ROAM_TRIGGER" description="Whether this roam is a critical roam because the AP has set the DisassociationImminent bit set in its BSS Transition Request action frame"/>
+      <bool name="BSSTransitionSupported" description="Whether or not 11v BSS transition is supported. The Station must set the BSS Transition field of the Extended capabilities element (Bit 19) to 1 in the association request if this field is non-zero."/>
+      <bool name="MloConnectionSupported" description="Whether or not MLO Connection is supported."/>
+      <bool name="IsFIPSConnection" description="Whether this is a FIPS mode connection.  The station must use only certified cipher algorithms if HostFIPSModeEnabled is false (i.e. when hardware FIPS support is used)."/>
+      <bool name="MSCSSupported" description="Whether MSCS is supported by the OS for this connection. If set to true, IHV driver must set the Mirrored SCS field of the Extended Capabilities element to 1."/>
+      <bool name="DSCPToUPMappingSupported" description="Whether DSCP to UP Mapping is supported by the OS for this connection. If set to true, IHV driver must set the QoS Map field of the Extended Capabilities element to 1."/>
     </propertyGroup>
 
     <propertyGroup name="ConnectionSettingsStructV2_0_8" type="WDI_CONNECTION_SETTINGSV2_0_8" description="Structure definition for connection settings.">
@@ -3059,23 +3063,6 @@
       <uint32 name="WakeUpFlags" description="NDIS_PM_WAKE_ON_XXX_ENABLED flags" />
       <uint32 name="MediaSpecificWakeUpEvents" description="NDIS_{WLAN|WWAN}_WAKE_ON_XXX_ENABLED flags" />
     </propertyGroup>
-
-    <!--++ Coalesce-->
-    <propertyGroup name="ReceiveCoalescingConfigStruct" type="WDI_RECEIVE_COALESCING_CONFIG" description="Struct for receive coalescing config" >
-      <uint32 name="QueueId" description="queue id"/>
-      <uint32 name="FilterId" description="filter id" />
-      <uint32 name="MaxCoalescingDelay" description="max coalesce delay" />
-    </propertyGroup>
-
-    <propertyGroup name="ReceiveCoalescingFieldStruct" type="WDI_RECEIVE_COALESCING_FIELD" description="Struct for receive coalescing field" >
-      <uint32 name="Flags" description="A bitwise OR of flags"/>
-      <enum name="FrameHeader" type="NDIS_FRAME_HEADER" description="frame header"/>
-      <enum name="ReceiveFilterTest" type="NDIS_RECEIVE_FILTER_TEST" description="flter test" />
-      <uint32 name="HeaderField" description="Protocol specific header field, one of NDIS_MAC_HEADER_FIELD, NDIS_ARP_HEADER_FIELD, NDIS_IPV4_HEADER_FIELD, NDIS_IPV6_HEADER_FIELD, or NDIS_UDP_HEADER_FIELD"/>
-      <namedType name="FieldValue" type="WDI_BYTE16" description="filter value" />
-      <namedType name="ResultValue" type="WDI_BYTE16" description="result value" />
-    </propertyGroup>
-    <!-- Coalesce-->
 
     <!--++ WOL -->
     <propertyGroup name="IPv4TcpSyncStruct" type="WDI_IPv4_TCP_SYNC" description="struct for IPv4 TCP SYNC" >

@@ -2321,7 +2321,7 @@ typedef struct _FUNCTIONAL_DEVICE_EXTENSION {
     // Log2 of sector size
     //
 
-    UCHAR SectorShift;
+    volatile UCHAR SectorShift;
 
     //
     // Flags to optimize CDB handling.
@@ -3186,7 +3186,7 @@ SCSIPORT_API
 VOID
 ClassReleaseRemoveLock(
     _In_ PDEVICE_OBJECT DeviceObject,
-    _In_opt_ PVOID Tag
+    _In_opt_ PIRP Tag
     );
 
 

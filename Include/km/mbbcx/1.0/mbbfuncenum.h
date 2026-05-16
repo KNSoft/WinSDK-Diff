@@ -1,6 +1,6 @@
 /*++
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (C) Microsoft Corporation. All rights reserved.
 
 _WdfVersionBuild_
 
@@ -20,7 +20,8 @@ Environment:
 
 extern PMBB_DRIVER_GLOBALS MbbDriverGlobals;
 
-typedef enum _MBBFUNCENUM {
+typedef enum _MBBFUNCENUM
+{
 
     MbbDeviceInitConfigTableIndex = 0,
     MbbDeviceInitializeTableIndex = 1,
@@ -41,4 +42,3 @@ typedef enum _MBBFUNCENUM {
 } MBBFUNCENUM;
 
 #endif // _MBBFUNCENUM_H_
-

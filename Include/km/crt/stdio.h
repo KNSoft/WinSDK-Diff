@@ -483,10 +483,10 @@ _Check_return_opt_ _CRT_STDIO_IMP int __cdecl vwprintf_s(_In_z_ _Printf_format_s
 #if __STDC_WANT_SECURE_LIB__
 _CRT_STDIO_IMP_ALT int __cdecl swprintf_s(_Out_writes_z_(_SizeInWords) wchar_t * _Dst, _In_ size_t _SizeInWords, _In_z_ _Printf_format_string_ const wchar_t * _Format, ...);
 #endif
-__DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(int, swprintf_s, vswprintf_s, wchar_t, _Dest, _In_z_ _Printf_format_string_ const wchar_t *, _Format)
 #if __STDC_WANT_SECURE_LIB__
 _CRT_STDIO_IMP_ALT int __ALTDECL vswprintf_s(_Out_writes_z_(_SizeInWords) wchar_t * _Dst, _In_ size_t _SizeInWords, _In_z_ _Printf_format_string_ const wchar_t * _Format, va_list _ArgList);
 #endif
+__DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1_ARGLIST(int, swprintf_s, vswprintf_s, wchar_t, _Dest, _In_z_ _Printf_format_string_ const wchar_t *, _Format)
 __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(int, vswprintf_s, wchar_t, _Dest, _In_z_ _Printf_format_string_ const wchar_t *, _Format, va_list, _Args)
 
  _CRT_INSECURE_DEPRECATE_CORE(swprintf) _Check_return_opt_ _CRT_STDIO_IMP int __cdecl swprintf(_Out_ wchar_t *, _Printf_format_string_ const wchar_t *, ...);

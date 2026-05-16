@@ -1746,6 +1746,60 @@ namespace winrt::impl
         }
         return winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>{ result, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_Graphics_Printing_Workflow_IPrintWorkflowPrinterJob3<D>::IsPassthroughJob() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsPassthroughJob(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>**)this;
+            check_hresult(_winrt_abi_type->get_IsPassthroughJob(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Graphics_Printing_Workflow_IPrintWorkflowPrinterJob3<D>::GetPassthroughJobAttributes() const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetPassthroughJobAttributes(&result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>**)this;
+            check_hresult(_winrt_abi_type->GetPassthroughJobAttributes(&result));
+        }
+        return winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Graphics_Printing_Workflow_IPrintWorkflowPrinterJob3<D>::GetPassthroughJobOperationAttributes() const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetPassthroughJobOperationAttributes(&result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>**)this;
+            check_hresult(_winrt_abi_type->GetPassthroughJobOperationAttributes(&result));
+        }
+        return winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>{ result, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_Graphics_Printing_Workflow_IPrintWorkflowPrinterJobStatusChangedEventArgs<D>::PrinterJob() const
     {
         void* value{};
@@ -3378,6 +3432,35 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3> : produce_base<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>
+    {
+        int32_t __stdcall get_IsPassthroughJob(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IsPassthroughJob());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall GetPassthroughJobAttributes(void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>>(this->shim().GetPassthroughJobAttributes());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall GetPassthroughJobOperationAttributes(void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>>(this->shim().GetPassthroughJobOperationAttributes());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJobStatusChangedEventArgs> : produce_base<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJobStatusChangedEventArgs>
     {
         int32_t __stdcall get_PrinterJob(void** value) noexcept final try
@@ -3863,6 +3946,7 @@ namespace std
     template<> struct hash<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlTargetStream> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob2> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJobStatusChangedEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSourceContent> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSpoolStreamContent> : winrt::impl::hash_base {};

@@ -49,13 +49,13 @@ typedef enum _SRIOV_PF_EVENT
 // SRIOV_PF_EVENT, at which time the PF driver completes this IOCTL. The return output
 // buffer for this IOCTL is simply a single SRIOV_PF_EVENT (effectively a single DWORD).
 //
-// If the device is currently processing a plug and play event for which it has not 
-// yet completed a notification the device should complete the IOCTL immediately with the 
+// If the device is currently processing a plug and play event for which it has not
+// yet completed a notification the device should complete the IOCTL immediately with the
 // event details.  Otherwise the device should queue the IRP until either it is cancelled
 //  or until a plug and play event that requires notification occurs.
 //
-// Note that the virtualization stack may send this IOCTL immediately after it completes, 
-// before sending IOCTL_SRIOV_EVENT_COMPLETE.   The driver must keep track of the fact 
+// Note that the virtualization stack may send this IOCTL immediately after it completes,
+// before sending IOCTL_SRIOV_EVENT_COMPLETE.   The driver must keep track of the fact
 // that an event notification has been delivered and must not complete two IOCTLs for the same event twice.
 //
 
@@ -85,8 +85,8 @@ typedef struct _SRIOV_PNP_EVENT_COMPLETE
 //
 // If the device is currently stopped or stopping for resource rebalance the
 //  driver must delay completing the IOCTL until it is restarted.    A device is
-//  considered to be stopping once it received  IRP_MN_QUERY_STOP_DEVICE and is 
-// restarted when it receives  IRP_MN_CANCEL_STOP_DEVICE or when  IRP_MN_START_DEVICE 
+//  considered to be stopping once it received  IRP_MN_QUERY_STOP_DEVICE and is
+// restarted when it receives  IRP_MN_CANCEL_STOP_DEVICE or when  IRP_MN_START_DEVICE
 // is completed by the lower devices of the stack.
 
 #define IOCTL_SRIOV_ATTACH SRIOV_IOCTL(3, METHOD_IN_DIRECT)
@@ -97,8 +97,8 @@ typedef struct _SRIOV_PNP_EVENT_COMPLETE
 // IOCTL_SRIOV_EVENT_COMPLETE and IOCTL_SRIOV_NOTIFICATION requests.
 //
 // A driver that receives this IOCTL should stop waiting for IOCTL_SRIOV_EVENT_COMPLETE.
-// If the driver is currently waiting it should stop waiting and continue 
-// processing plug and play IRPs in a normal way. 
+// If the driver is currently waiting it should stop waiting and continue
+// processing plug and play IRPs in a normal way.
 
 #define IOCTL_SRIOV_DETACH SRIOV_IOCTL(4, METHOD_IN_DIRECT)
 
@@ -170,10 +170,10 @@ typedef struct _SRIOV_MITIGATED_RANGES_OUTPUT
 
 //
 // IOCTL_SRIOV_MITIGATED_RANGE_UPDATE is sent to the PF by the
-// virtualization stack. It is held in a queue by the PF driver 
+// virtualization stack. It is held in a queue by the PF driver
 // until it is either cancelled by the VPCI VSP or the PF driver
-// would like to request an update to the mitigation ranges for 
-// a particular VF.  The VF to update is returned when the IOCTL 
+// would like to request an update to the mitigation ranges for
+// a particular VF.  The VF to update is returned when the IOCTL
 // is completed.  The VPCI VPS will then reinitialize the mitigation
 // maps by calling IOCTL_SRIOV_QUERY_MITIGATED_RANGE_COUNT and
 // IOCTL_SRIOV_QUERY_MITIGATED_RANGES.  It may additionally  call any
@@ -206,6 +206,92 @@ typedef struct _SRIOV_PROXY_QUERY_LUID_OUTPUT
     LUID DeviceLuid;
 } SRIOV_PROXY_QUERY_LUID_OUTPUT, *PSRIOV_PROXY_QUERY_LUID_OUTPUT;
 
+//
+// This IOCTL is used to enable MMIO mitigation ranges on the device's MSI-X table for emulation.
+// The IOCTL queries the device for its MSI-X table location and creates a mitigation range on the
+// table in its entirety. If the device does not support MSI-X, the IOCTL will return
+// MsixIntercepted = FALSE. If the device has already had its MSI-X table mitigated, the IOCTL will
+// do nothing and return MsixIntercepted = TRUE.
+//
+#define IOCTL_SRIOV_PROXY_ENABLE_MSIX_INTERCEPT SRIOV_IOCTL(10, METHOD_BUFFERED)
+
+typedef struct _SRIOV_PROXY_ENABLE_MSIX_INTERCEPT_OUTPUT
+{
+    BOOLEAN MsixIntercepted;
+} SRIOV_PROXY_ENABLE_MSIX_INTERCEPT_OUTPUT, *PSRIOV_PROXY_ENABLE_MSIX_INTERCEPT_OUTPUT;
+
+//
+// This IOCTL enables dynamic PASID management for the device. This IOCTL shall be sent before
+// the device is exposed to the guest. If the device does not support PASID, the IOCTL will return
+// PasidManagementEnabled = FALSE. If the device has already enabled PASID management, the IOCTL will
+// do nothing and return PasidManagementEnabled = TRUE.
+//
+#define IOCTL_SRIOV_PROXY_ENABLE_PASID_MANAGEMENT SRIOV_IOCTL(11, METHOD_BUFFERED)
+
+typedef struct _SRIOV_PROXY_ENABLE_PASID_MANAGEMENT_OUTPUT
+{
+    BOOLEAN PasidManagementEnabled;
+} SRIOV_PROXY_ENABLE_PASID_MANAGEMENT_OUTPUT, *PSRIOV_PROXY_ENABLE_PASID_MANAGEMENT_OUTPUT;
+
+//
+// This IOCTL is used to enable advanced mitigation options for a particular BAR. This IOCTL is
+// evaluated for each BAR before standard mitigations.If the IOCTL evaluates to
+// STATUS_NOT_IMPLEMENTED, no advanced mitigations are performed and the mitigation query process
+// continues.
+//
+#define IOCTL_SRIOV_QUERY_ADVANCED_MITIGATIONS SRIOV_IOCTL(12, METHOD_BUFFERED)
+
+typedef struct _SRIOV_PROXY_QUERY_ADVANCED_MITIGATIONS_INPUT
+{
+    //
+    // Index of the VF being queried for mitigations.
+    //
+    ULONG VfIndex;
+
+    //
+    // Specifies the BAR number to query advanced mitigations for. This is a zero-based index from 0-5.
+    //
+    _Field_range_(0, 5)
+    UCHAR BarNumber;
+} SRIOV_PROXY_QUERY_ADVANCED_MITIGATIONS_INPUT, *PSRIOV_PROXY_QUERY_ADVANCED_MITIGATIONS_INPUT;
+
+typedef struct _SRIOV_PROXY_QUERY_ADVANCED_MITIGATIONS_OUTPUT_V1
+{
+    //
+    // Specifies the version of the advanced mitigations output structure. This should match the
+    // Version field supplied by the input IOCTL.
+    //
+    ULONG Version;
+
+    //
+    // Enables BAR truncation. See the BarTruncationBasePageNumber field for more information.
+    //
+    BOOLEAN EnableBarTruncation;
+
+    //
+    // Only evaluated if EnableBarTruncation is true.
+    //
+    // Specifies a specific size in bytes that a BAR should be truncated to when mapping. By PCI specification, 
+    // the guest will always be presented a BAR that is a natural power of 2. This configuration allows the proxy 
+    // driver to specify that only a portion of the physical BAR should be mapped and the rest should be unmapped 
+    // after the size specified here.
+    //
+    // The original size of the BAR is reported to the guest through the device emulator. In addition, further
+    // mitigations applied to the BAR must be aware of the new truncated size and not apply mitigations past
+    // the newly sized mapping.
+    //
+    ULONG64 BarTruncateToSize;
+
+    //
+    // Indicates that the BAR contains special purpose coherent memory.
+    //
+    BOOLEAN CoherentMemory;
+} SRIOV_PROXY_QUERY_ADVANCED_MITIGATIONS_OUTPUT_V1, *PSRIOV_PROXY_QUERY_ADVANCED_MITIGATIONS_OUTPUT_V1;
+
+//
+// The highest supported version of the QUERY_ADVANCED_MITIGATIONS IOCTL.
+//
+#define QUERY_ADVANCED_MITIGATIONS_HIGHEST_VERSION 1
 
 // {937EE9B6-0ED3-411c-982B-1F564AFBABD3}
 DEFINE_GUID(GUID_SRIOV_DEVICE_INTERFACE_STANDARD,

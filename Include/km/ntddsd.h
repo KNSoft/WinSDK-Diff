@@ -395,6 +395,7 @@ typedef enum {
     SDRF_ERASE_COMMAND,
     SDRF_MMC_SOFT_RESET,    
     SDRF_MMC_HPI,
+    SDRF_DEVICE_COMMAND_EX,
 } SD_REQUEST_FUNCTION;
 
 
@@ -525,6 +526,150 @@ typedef struct _SDBUS_REQUEST_PACKET {
 
 
 } SDBUS_REQUEST_PACKET, *PSDBUS_REQUEST_PACKET;
+
+//
+// SDBUS_REQUEST_PACKET_EX (internal)
+//
+// Internal extended packet used when a 64-bit SDUC LBA / command argument
+// is needed. Public SDBUS_REQUEST_PACKET layout remains unchanged.
+// ArgumentHigh carries the upper 32 bits; 0 when unused.
+//
+typedef struct _SDBUS_REQUEST_PACKET_EX {
+    //
+    // specifies the parameters for the operation, and how they
+    // are interpreted
+    //
+    SD_REQUEST_FUNCTION RequestFunction;
+
+    //
+    // These context fields are provided for the optional use of the caller.
+    // They are not referenced by the bus driver
+    //
+    PVOID UserContext[3];
+
+    //
+    // Information from the operation. Its usage is equivalent to
+    // the Irp->IoStatus.Information field. For example, the length
+    // of data transmitted for read/write operations will be filled
+    // in here by the bus driver.
+    //
+    ULONG_PTR Information;
+
+    //
+    // Response data and length is returned by the device. Maximum
+    // returned is 16 bytes. The content of this field is defined
+    // in the SD spec.
+    //
+    union {
+        UCHAR AsUCHAR[16];
+        ULONG AsULONG[4];
+        SDRESP_TYPE3 Type3;
+    } ResponseData;
+    UCHAR ResponseLength;
+
+    //
+    // Reserved, set to 0
+    //
+    UCHAR Reserved;
+
+    //
+    // Flags field for the SDRP
+    //
+    USHORT Flags;
+
+    //
+    // Parameters to the individual functions
+    //
+    union {
+
+        //
+        // The property functions allow the caller to control aspects of
+        // bus driver operation.
+        //
+
+        struct {
+            SDBUS_PROPERTY Property;
+            PVOID Buffer;
+            ULONG Length;
+        } GetSetProperty;
+
+        //
+        // DeviceCommand is the 'pipe' that allows SD device codes and arguments
+        // to be executed. These codes are either defined in the SD spec,
+        // can be based per device class, or can also be proprietary.
+        //
+
+        struct {
+            SDCMD_DESCRIPTOR CmdDesc;
+            ULONG Argument;
+            PMDL Mdl;
+            ULONG Length;
+        } DeviceCommand;
+
+        //
+        // EraseCommand allows MMC devices to send Erase commands to
+        // the given device in an atomic sequence, as three device
+        // commands need to be sent to Erase a given LBA range or group.
+        //
+
+        struct {
+            SDBUS_ERASE_TYPE EraseType;
+            ULONG StartBlock;
+            ULONG EndBlock;
+        } EraseCommand;
+
+        //
+        // MmcSoftReset allows eMMC devices to be soft reset for
+        // a SanDisk proprietary firmware update that resets the 
+        // device to its manufactured state.
+        //
+
+        struct {
+            ULONG Frequency;
+        } MmcSoftReset;
+
+        //
+        // MmcHpi allows an HPI to be sent to the eMMC device
+        // which will cause sdbus to stop the currently executing
+        // SDRP with STATUS_SDBUS_IO_INTERRUPTED. 
+        //
+        // The information field of the stopped SDRP will be filled 
+        // out with the progress of the halted operation, so it may 
+        // be resumed later at the correct offset.
+        //
+
+        struct {
+
+            //
+            // This is the IRP to HPI. This is checked by SDBUS
+            // to ensure it is going to HPI the right IRP.
+            //
+            
+            PIRP IrpToHpi;
+            
+        } MmcHpi;
+
+        //
+        // DeviceCommandEX is used to provide the upper 6 bits of the address
+        // for SDUC (SD Ultra Capacity) operations that require 64-bit LBA addressing.
+        // This structure extends DeviceCommand with UpperArgument while maintaining
+        // backwards compatibility - all DeviceCommand fields remain at identical
+        // offsets, allowing existing code to continue using DeviceCommand view.
+        // New workflows should use DeviceCommandEX to access the complete 64-bit
+        // address range for SDUC devices supporting capacities > 2TB.
+        //
+
+        struct {
+            SDCMD_DESCRIPTOR CmdDesc;
+            ULONG Argument;
+            PMDL Mdl;
+            ULONG Length;
+            ULONG UpperArgument;
+        } DeviceCommandEX;
+
+    } Parameters;
+} SDBUS_REQUEST_PACKET_EX, *PSDBUS_REQUEST_PACKET_EX;
+
 
 //
 // SdBusSubmitRequest()

@@ -2581,6 +2581,12 @@ __kernel_entry W32KAPI BOOL
 NtGdiDisableUMPDSandboxing(
     );
 
+__kernel_entry W32KAPI NTSTATUS APIENTRY
+NtGdiIsDcInXfer(
+    _In_ HDC hdc,
+    _Out_ BOOL* DcInXfer
+    );
+
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
 

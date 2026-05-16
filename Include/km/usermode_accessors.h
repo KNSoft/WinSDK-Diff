@@ -338,14 +338,19 @@ RtlFastFailIfUserPointer (
         return;
     }
 
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
+    FastFail = MmIsUserAddress(Pointer);
+
+#else
+
     __try {
-#pragma warning(push)
-#pragma warning(disable: 4127)
-        ProbeForRead((volatile void*)Pointer, 1, 1);
-#pragma warning(pop)
+        ProbeForRead(Pointer, 1, 1);
     } __except(EXCEPTION_EXECUTE_HANDLER) {
         FastFail = 0;
     }
+
+#endif // (NTDDI_VERSION >= NTDDI_WIN11_DT)
 
     if (FastFail) {
         __fastfail(FAST_FAIL_KERNEL_POINTER_EXPECTED);
@@ -3789,6 +3794,153 @@ ReadStructFromModeHelper (
                 ExProbeAlignment((Source), (Length), (Alignment));                                  \
                 CopyFromUser((Destination), (Source), (Length));                                    \
             } while (0)
+
+#define CopyToModeAligned(Destination, Source, Length, Mode, Alignment)                             \
+            do {                                                                                    \
+                if ((Mode) != KernelMode) {                                                         \
+                    ExProbeAlignment((Destination), (Length), (Alignment));                         \
+                }                                                                                   \
+                CopyToMode((Destination), (Source), (Length), (Mode));                              \
+            } while (0)
+
+#define CopyToUserAligned(Destination, Source, Length, Alignment)                                   \
+            do {                                                                                    \
+                ExProbeAlignment((Destination), (Length), (Alignment));                             \
+                CopyToUser((Destination), (Source), (Length));                                      \
+            } while (0)
+
+#if __STDC_VERSION__ >= 201112L
+
+//
+// Code that requires C11
+//
+
+#define ReadFromUser(Source) _Generic((Source), \
+    UINT8*: ReadUInt8FromUser, \
+    volatile UINT8*: ReadUInt8FromUser, \
+    INT8*: ReadInt8FromUser, \
+    volatile INT8*: ReadInt8FromUser, \
+    UINT16*: ReadUInt16FromUser, \
+    volatile UINT16*: ReadUInt16FromUser, \
+    INT16*: ReadInt16FromUser, \
+    volatile INT16*: ReadInt16FromUser, \
+    UINT32*: ReadUInt32FromUser, \
+    volatile UINT32*: ReadUInt32FromUser, \
+    INT32*: ReadInt32FromUser, \
+    volatile INT32*: ReadInt32FromUser, \
+    UINT64*: ReadUInt64FromUser, \
+    volatile UINT64*: ReadUInt64FromUser, \
+    INT64*: ReadInt64FromUser, \
+    volatile INT64*: ReadInt64FromUser, \
+    PVOID*: ReadPointerFromUser, \
+    volatile PVOID*: ReadPointerFromUser, \
+    ULONG*: ReadULongFromUser, \
+    volatile ULONG*: ReadULongFromUser, \
+    LONG*: ReadLongFromUser, \
+    volatile LONG*: ReadLongFromUser, \
+    LARGE_INTEGER*: ReadLargeIntegerFromUser, \
+    volatile LARGE_INTEGER*: ReadLargeIntegerFromUser, \
+    ULARGE_INTEGER*: ReadULargeIntegerFromUser, \
+    volatile ULARGE_INTEGER*: ReadULargeIntegerFromUser, \
+    UNICODE_STRING*: ReadUnicodeStringFromUser, \
+    volatile UNICODE_STRING*: ReadUnicodeStringFromUser \
+)(Source)
+
+#define WriteToUser(Destination, Value) _Generic((Destination), \
+    UINT8*: WriteUInt8ToUser, \
+    volatile UINT8*: WriteUInt8ToUser, \
+    INT8*: WriteInt8ToUser, \
+    volatile INT8*: WriteInt8ToUser, \
+    UINT16*: WriteUInt16ToUser, \
+    volatile UINT16*: WriteUInt16ToUser, \
+    INT16*: WriteInt16ToUser, \
+    volatile INT16*: WriteInt16ToUser, \
+    UINT32*: WriteUInt32ToUser, \
+    volatile UINT32*: WriteUInt32ToUser, \
+    INT32*: WriteInt32ToUser, \
+    volatile INT32*: WriteInt32ToUser, \
+    UINT64*: WriteUInt64ToUser, \
+    volatile UINT64*: WriteUInt64ToUser, \
+    INT64*: WriteInt64ToUser, \
+    volatile INT64*: WriteInt64ToUser, \
+    PVOID*: WritePointerToUser, \
+    volatile PVOID*: WritePointerToUser, \
+    ULONG*: WriteULongToUser, \
+    volatile ULONG*: WriteULongToUser, \
+    LONG*: WriteLongToUser, \
+    volatile LONG*: WriteLongToUser, \
+    LARGE_INTEGER*: WriteLargeIntegerToUser, \
+    volatile LARGE_INTEGER*: WriteLargeIntegerToUser, \
+    ULARGE_INTEGER*: WriteULargeIntegerToUser, \
+    volatile ULARGE_INTEGER*: WriteULargeIntegerToUser, \
+    UNICODE_STRING*: WriteUnicodeStringToUser, \
+    volatile UNICODE_STRING*: WriteUnicodeStringToUser \
+)(Destination, Value)
+
+#define ReadFromMode(Source, Mode) _Generic((Source), \
+    UINT8*: ReadUInt8FromMode, \
+    volatile UINT8*: ReadUInt8FromMode, \
+    INT8*: ReadInt8FromMode, \
+    volatile INT8*: ReadInt8FromMode, \
+    UINT16*: ReadUInt16FromMode, \
+    volatile UINT16*: ReadUInt16FromMode, \
+    INT16*: ReadInt16FromMode, \
+    volatile INT16*: ReadInt16FromMode, \
+    UINT32*: ReadUInt32FromMode, \
+    volatile UINT32*: ReadUInt32FromMode, \
+    INT32*: ReadInt32FromMode, \
+    volatile INT32*: ReadInt32FromMode, \
+    UINT64*: ReadUInt64FromMode, \
+    volatile UINT64*: ReadUInt64FromMode, \
+    INT64*: ReadInt64FromMode, \
+    volatile INT64*: ReadInt64FromMode, \
+    PVOID*: ReadPointerFromMode, \
+    volatile PVOID*: ReadPointerFromMode, \
+    ULONG*: ReadULongFromMode, \
+    volatile ULONG*: ReadULongFromMode, \
+    LONG*: ReadLongFromMode, \
+    volatile LONG*: ReadLongFromMode, \
+    LARGE_INTEGER*: ReadLargeIntegerFromMode, \
+    volatile LARGE_INTEGER*: ReadLargeIntegerFromMode, \
+    ULARGE_INTEGER*: ReadULargeIntegerFromMode, \
+    volatile ULARGE_INTEGER*: ReadULargeIntegerFromMode, \
+    UNICODE_STRING*: ReadUnicodeStringFromMode, \
+    volatile UNICODE_STRING*: ReadUnicodeStringFromMode \
+)(Source, Mode)
+
+#define WriteToMode(Destination, Value, Mode) _Generic((Destination), \
+    UINT8*: WriteUInt8ToMode, \
+    volatile UINT8*: WriteUInt8ToMode, \
+    INT8*: WriteInt8ToMode, \
+    volatile INT8*: WriteInt8ToMode, \
+    UINT16*: WriteUInt16ToMode, \
+    volatile UINT16*: WriteUInt16ToMode, \
+    INT16*: WriteInt16ToMode, \
+    volatile INT16*: WriteInt16ToMode, \
+    UINT32*: WriteUInt32ToMode, \
+    volatile UINT32*: WriteUInt32ToMode, \
+    INT32*: WriteInt32ToMode, \
+    volatile INT32*: WriteInt32ToMode, \
+    UINT64*: WriteUInt64ToMode, \
+    volatile UINT64*: WriteUInt64ToMode, \
+    INT64*: WriteInt64ToMode, \
+    volatile INT64*: WriteInt64ToMode, \
+    PVOID*: WritePointerToMode, \
+    volatile PVOID*: WritePointerToMode, \
+    ULONG*: WriteULongToMode, \
+    volatile ULONG*: WriteULongToMode, \
+    LONG*: WriteLongToMode, \
+    volatile LONG*: WriteLongToMode, \
+    LARGE_INTEGER*: WriteLargeIntegerToMode, \
+    volatile LARGE_INTEGER*: WriteLargeIntegerToMode, \
+    ULARGE_INTEGER*: WriteULargeIntegerToMode, \
+    volatile ULARGE_INTEGER*: WriteULargeIntegerToMode, \
+    UNICODE_STRING*: WriteUnicodeStringToMode, \
+    volatile UNICODE_STRING*: WriteUnicodeStringToMode \
+)(Destination, Value, Mode)
+
+
+#endif // __STDC_VERSION__ >= 201112L
 
 _IRQL_requires_max_(APC_LEVEL)
 FORCEINLINE

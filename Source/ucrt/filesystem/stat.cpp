@@ -517,6 +517,7 @@ static bool __cdecl common_stat_by_path(
     unsigned long device_type;
     unsigned long number_of_links;
     unsigned long file_attributes;
+    unsigned long reparse_tag;
     bool status = false;
 
     if ((path != nullptr) &&
@@ -524,6 +525,7 @@ static bool __cdecl common_stat_by_path(
                           device_type,
                           number_of_links,
                           file_attributes,
+                          reparse_tag,
                           creation_time.QuadPart,
                           last_access_time.QuadPart,
                           last_write_time.QuadPart,
@@ -531,6 +533,13 @@ static bool __cdecl common_stat_by_path(
     {
         do
         {
+            // Fall back to original implementation for reparse points (e.g. symlinks).
+            if ((file_attributes & FILE_ATTRIBUTE_REPARSE_POINT) != 0 &&
+                (reparse_tag == IO_REPARSE_TAG_SYMLINK || reparse_tag == IO_REPARSE_TAG_MOUNT_POINT))
+            {
+                break;
+            }
+            
             // Verify that the device type is one of the supported set.
             bool use_file_info;
             switch (device_type)

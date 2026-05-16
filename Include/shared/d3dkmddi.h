@@ -1653,9 +1653,11 @@ typedef struct _DXGKARG_CREATEHWQUEUE
     _Inout_
     _Field_size_bytes_         (PrivateDriverDataSize)
     VOID*                       pPrivateDriverData;    // in/out:  Private driver data
-    D3DKMT_HANDLE               hHwQueueProgressFence; // in: Handle to the hardware queue progress fence object.
+    D3DKMT_HANDLE               hHwQueueProgressFence; // in: Handle to the hardware queue progress fence object. NULL if Flags.NativeProgressFence == TRUE.
     VOID*                       HwQueueProgressFenceCPUVirtualAddress;  // in: Read-only mapping of the fence value for the CPU
     D3DGPU_VIRTUAL_ADDRESS      HwQueueProgressFenceGPUVirtualAddress;  // in: Read/write mapping of the fence value for the GPU
+    HANDLE                      hHwQueueNativeProgressFence; // in: Driver Handle to global native fence object created in DdiCreateNativeFence.
+                                                             //     NULL if Flags.NativeProgressFence == FALSE
 } DXGKARG_CREATEHWQUEUE;
 
 typedef _Inout_ DXGKARG_CREATEHWQUEUE*   INOUT_PDXGKARG_CREATEHWQUEUE;
@@ -1672,6 +1674,34 @@ DXGKDDI_CREATEHWQUEUE(
     );
 
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_2)
+
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
+typedef struct _DXGKARG_CREATEHWQUEUEFORUSERMODESUBMISSION
+{
+    HANDLE                                          hContext;                               // in: KMD Handle to the HWContext this queue belongs to
+    HANDLE                                          hHwQueue;                               // in: Dxgkrnl handle/out: KMD handle
+    D3DDDI_CREATEHWQUEUEFORUSERMODESUBMISSION_FLAGS Flags;                                  // in: Hardware queue creation flags.
+    UINT                                            DoNotUse;                               // Reserved for alignment
+    HANDLE                                          hRingBuffer;                            // in: KMD Handle to Ring buffer allocation from DdiOpenAllocation
+    HANDLE                                          hRingBufferControl;                     // in opt: KMD Handle to ring buffer control area allocation from DdiOpenAllocation    
+    BYTE                                            PrivateDriverData[D3DDDI_UMS_PDD_SIZE]; // in out: private driver data to pass to KMD and copy back for UMD
+    HANDLE                                          hProgressFence;                         // in: KMD handle to the native fence object created in DdiCreateNativeFence. Used to monitor the queue progress.
+    VOID*                                           ProgressFenceCurrentValueKernelCpuVa;   // in: CPUVA mapping of the progress fence current value
+    BYTE                                            Reserved[64];
+} DXGKARG_CREATEHWQUEUEFORUSERMODESUBMISSION;
+
+typedef _Inout_ DXGKARG_CREATEHWQUEUEFORUSERMODESUBMISSION*   INOUT_PDXGKARG_CREATEHWQUEUEFORUSERMODESUBMISSION;
+
+typedef
+    _Check_return_
+    _Function_class_DXGK_(DXGKDDI_CREATEHWQUEUEFORUSERMODESUBMISSION)
+    _IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_CREATEHWQUEUEFORUSERMODESUBMISSION(
+    INOUT_PDXGKARG_CREATEHWQUEUEFORUSERMODESUBMISSION pArgs
+    );
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
 
 typedef _In_ CONST DXGKARG_SETPALETTE*      IN_CONST_PDXGKARG_SETPALETTE;
 
@@ -2021,7 +2051,6 @@ typedef struct _DXGK_VIDSCHCAPS
             UINT    OptimizedNativeFenceSignaledInterrupt : 1; // TRUE if GPU can specify HWQueue handle in
                                                                // DXGKARGCB_NOTIFY_INTERRUPT_DATA::NativeFenceSignaled
             UINT    Reserved               :19;
-
 #else
 
             UINT    Reserved               :21;
@@ -2133,7 +2162,13 @@ typedef struct _DXGK_GPUMMUCAPS
             UINT SysMemLargePageSupported               : 1;
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
             UINT CachedPageTables                       : 1;
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
+            UINT PerPtePageSize                         : 1;
+            UINT OpportunisticSysMem64KBPageSupported   : 1;
+            UINT Reserved                               : 17;
+#else
             UINT Reserved                               : 19;
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
 #else
             UINT Reserved                               : 20;
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
@@ -2479,7 +2514,8 @@ typedef struct _DXGK_DRIVERCAPS
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
             UINT NoHybridDiscreteDListDllMuxSupport : 1;
             UINT CursorDoesNotSupportXorBlendWithMultiPlaneOverlay : 1;
-            UINT Reserved : 23;
+            UINT TestOnly : 1;
+            UINT Reserved : 22;
 #else // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
             UINT Reserved : 25;
 #endif //  (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
@@ -2587,7 +2623,14 @@ typedef struct _DXGK_SEGMENTFLAGS
             UINT    NonLocalBudgetGroup               : 1;    // 0x00100000         // This segment counts against non-local memory segment budget group.
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_9)
             UINT    PopulatedByReservedDDRByFirmware  : 1;    // 0x00200000         // This segment is populated from reserved system memory by the firmware.
+
+#if (DXGK_FEATURE_EXTENDED_SEGMENT_FLAGS_VERSION >= DXGK_FEATURE_EXTENDED_SEGMENT_FLAGS_VERSION_APERTUREPRESERVEDDURINGSTANDBY)
+            UINT    AperturePreservedDuringStandby    : 1;    // 0x00400000         // Aperture mappings are preserved during standby
+            UINT    Reserved                          : 9;    // 0xFF800000
+#else
             UINT    Reserved                          :10;    // 0xFFC00000
+#endif
+
 #else
             UINT    Reserved                          :11;    // 0xFFE00000
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_9)
@@ -3121,14 +3164,19 @@ typedef struct _DXGK_ADL
 
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
 
+#define DXGK_NATIVE_FENCE_MAX_MONITORED_VALUE_PADDING 56
+
 typedef struct _DXGK_NATIVE_FENCE_CAPS
 {
-    UINT    MonitoredValueStride;              // Stride for monitored values of native fences that are packed in the same page.
-    BOOLEAN MapToGpuSystemProcess;             // Specifies whether native fence current and monitored values should be mapped to
-                                               // a GPU system process address space for use by the context management processor.
+    _Field_range_(0,  DXGK_NATIVE_FENCE_MAX_MONITORED_VALUE_PADDING)
+    UINT MonitoredValuePadding;             // Additional reserved bytes to be allocated below the standard 8 Bytes of Monitored value storage
+                                            // Max size in bytes which is supported is DXGK_NATIVE_FENCE_MAX_MONITORED_VALUE_PADDING
 
-    D3DGPU_VIRTUAL_ADDRESS  MinimumAddress;    // Minimum virtual address for GPUVA mappings (optional)
-    D3DGPU_VIRTUAL_ADDRESS  MaximumAddress;    // Maximum virtual address for GPUVA mappings (optional)
+    BOOLEAN MapToGpuSystemProcess;          // Specifies whether native fence current and monitored values should be mapped to
+                                            // a GPU system process address space for use by the context management processor.
+
+    D3DGPU_VIRTUAL_ADDRESS  MinimumAddress; // Minimum virtual address for GPUVA mappings (optional)
+    D3DGPU_VIRTUAL_ADDRESS  MaximumAddress; // Maximum virtual address for GPUVA mappings (optional)
     BYTE Reserved[28];
 } DXGK_NATIVE_FENCE_CAPS;
 
@@ -3299,7 +3347,7 @@ typedef _In_ CONST DXGKARG_UPDATEMONITOREDVALUES*   IN_CONST_PDXGKARG_UPDATEMONI
 typedef
     _Check_return_
     _Function_class_DXGK_(DXGKDDI_UPDATEMONITOREDVALUES)
-    _IRQL_requires_(PROFILE_LEVEL - 1)
+    _IRQL_requires_max_(PROFILE_LEVEL - 1)
 NTSTATUS
 APIENTRY
 DXGKDDI_UPDATEMONITOREDVALUES(
@@ -3338,7 +3386,7 @@ typedef _In_ CONST DXGKARG_UPDATECURRENTVALUESFROMCPU*   IN_CONST_PDXGKARG_UPDAT
 typedef
 _Check_return_
 _Function_class_DXGK_(DXGKDDI_UPDATECURRENTVALUESFROMCPU)
-_IRQL_requires_(DISPATCH_LEVEL)
+_IRQL_requires_max_(DISPATCH_LEVEL)
 NTSTATUS
 APIENTRY
 DXGKDDI_UPDATECURRENTVALUESFROMCPU(
@@ -3376,7 +3424,7 @@ typedef _In_ CONST DXGKARG_SETNATIVEFENCELOGBUFFER*   IN_CONST_PDXGKARG_SETNATIV
 typedef
 _Check_return_
 _Function_class_DXGK_(DXGKDDI_SETNATIVEFENCELOGBUFFER)
-_IRQL_requires_(DISPATCH_LEVEL)
+_IRQL_requires_max_(DISPATCH_LEVEL)
 NTSTATUS
 APIENTRY
 DXGKDDI_SETNATIVEFENCELOGBUFFER(
@@ -3409,7 +3457,7 @@ typedef _In_ CONST DXGKARG_UPDATENATIVEFENCELOGS*   IN_CONST_PDXGKARG_UPDATENATI
 typedef
 _Check_return_
 _Function_class_DXGK_(DXGKDDI_UPDATENATIVEFENCELOGS)
-_IRQL_requires_(DISPATCH_LEVEL)
+_IRQL_requires_max_(DISPATCH_LEVEL)
 NTSTATUS
 APIENTRY
 DXGKDDI_UPDATENATIVEFENCELOGS(
@@ -3858,9 +3906,10 @@ typedef struct _DXGK_ALLOCATIONINFOFLAGS2
             UINT    NoImplicitSynchronization       :  1;   // 0x00000002  Opt out of Dxgkrnl implicit primary synchronization
             UINT    DisablePartialResidency         :  1;   // 0x00000004  This allocation does not support partial residency. The allocation must either be entirely evicted, or entirely resident
             UINT    RestrictedToSingleSegment       :  1;   // 0x00000008  This allocation does not support cross-segment residency. The allocation must be entirely resident within a single segment.
-            UINT    NotifyEviction                  :  1;   // 0x00000010  KMD needs to be notified before the allocation is evicted (DXGK_OPERATION_NOTIFY_ALLOC).
-            UINT    NotifyIoMmuUnmap                :  1;   // 0x00000020  KMD needs to be notified before the allocation is unmapped from Iommu (DXGK_OPERATION_NOTIFY_ALLOC).
-            UINT    Reserved                        : 26;
+            UINT    NeedPagingVaAtResidencyNotification : 1; // 0x00000010  KMD needs GPUVA at Residency notification. KMD also needs to set appropriate segment flags at DXGK_NOTIFYRESIDENCY2_CAPS.  
+            UINT    Reserved01                      :  1;   // 0x00000020  Reserved for future use
+            UINT    FaultAndStall                   :  1;   // 0x00000040  Hardware can do page fault and stall on the allocation
+            UINT    Reserved                        : 25;
 #else
             UINT    Reserved                        : 31;
 #endif // DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2
@@ -3958,12 +4007,24 @@ typedef struct _DXGK_ALLOCATIONINFO
 
 typedef struct _DXGK_ALLOCATIONINFO_TEST
 {
-    UINT                              Alignment;
+    union
+    {
+        UINT                          Alignment;
+        struct
+        {
+            UINT16                    MinimumPageSize;                  // in: DXGK_PAGE_SIZE - The minimum required page size for this allocation
+            UINT16                    RecommendedPageSize;              // in: DXGK_PAGE_SIZE - The recommended page size for this allocation
+        };
+    };
     UINT64                            Size;                             // out: Allocation size
     UINT64                            PitchAlignedSize;                 // out: Allocation pitch aligned size (for aperture segment requiring Pitch alignment only).
     DXGK_SEGMENTBANKPREFERENCE        HintedBank;
     DXGK_SEGMENTPREFERENCE            PreferredSegment;
-    UINT                              SupportedReadSegmentSet;
+    union
+    {
+        UINT                          SupportedReadSegmentSet;
+        UINT                          MmuSet;
+    };
     UINT                              SupportedWriteSegmentSet;
     UINT                              EvictionSegmentSet;
     UINT                              PhysicalAdapterIndex;             // out: WDDMv2 and higher only
@@ -4052,13 +4113,28 @@ typedef struct _DXGKARGCB_CREATECONTEXTALLOCATION
                                                                 // and DXGKARG_BUILDPAGINGBUFFER::InitContextResource::hAllocation
                                                                 // to DxgkDdiBuildPagingBuffer driver callback.
     SIZE_T                              Size;                   // in: Allocation size.
-    UINT                                Alignment;              // in: The required alignment for the allocation.
+    union
+    {
+        UINT                            Alignment;              // in: The required alignment for the allocation.
+        struct
+        {
+                                                                // The following fields are valid if page based memory management is enabled, and
+                                                                // the allocation is not physically contiguous (i.e. Flags.AccessedPhysically==FALSE)
+            UINT16 MinimumPageSize;                             // in: The minimum required page size for the allocation
+            UINT16 RecommendedPageSize;                         // in: The recommend page size for the allocation
+        };
+    };
     UINT                                SupportedSegmentSet;    // in: Segment identifiers that the display miniport driver can set
                                                                 // in the PreferredSegment member for read or write operations.
     UINT                                EvictionSegmentSet;     // in: Identifiers of segments that can be used for eviction.
     DXGK_SEGMENTPREFERENCE              PreferredSegment;       // in: Preferred segments identifiers that the display miniport driver requests that
                                                                 // the video memory manager use to page-in the allocation.
-    DXGK_SEGMENTBANKPREFERENCE          HintedBank;             // in: Bank ordering preferences that the display miniport driver requests that
+    union
+    {
+        DXGK_SEGMENTBANKPREFERENCE      HintedBank;             // in: Bank ordering preferences that the display miniport driver requests that
+        UINT                            MmuSet;                 // in: When page based memory management is used, this is the set of MMUs that the allocation
+                                                                //     must be mapped to when made resident.
+    };
                                                                 // the video memory manager use to page-in the allocation.
     DXGK_ALLOCATIONINFOFLAGS            Flags;                  // in: Properties that indicate the type of allocation to create.
     HANDLE                              hAllocation;            // out: DXG assigned handle for this allocation. This value is subsequently passed as
@@ -4150,8 +4226,6 @@ typedef struct _D3DKMDT_FENCESTORAGESURFACEDATA
     UINT                            PhysicalAdapterIndex;   // In.  Index of the physical adapter in LDA.
     DXGKARG_FENCESTORAGEVALUETYPE   FenceStorageValueType;  // In.  Type of the queried value
     D3DDDI_NATIVEFENCE_TYPE         FenceStorageType;       // In.  Storage type.
-    UINT                            PrivateDriverDataSize;  // In.  Size of the data pPrivateDriverData points to
-    BYTE*                           pPrivateDriverData;     // In.  Pointer to the private driver data. Reserved for future use
     DXGKARG_FENCESTORAGEFLAGS       Flags;                  // In.  Reserved for future use
     UINT                            Reserved;               // In.  Reserved for future use
     DXGK_ALLOCATIONINFO             AllocationInfo;         // Out. Allocation properties
@@ -4625,7 +4699,10 @@ typedef enum _DXGK_BUILDPAGINGBUFFER_OPERATION
     DXGK_OPERATION_MAP_MMU                  = 19,
     DXGK_OPERATION_UNMAP_MMU                = 20,
     DXGK_OPERATION_NOTIFY_RESIDENCY2        = 21,
-    DXGK_OPERATION_NOTIFY_ALLOC             = 22,
+    DXGK_OPERATION_RESERVED22               = 22, // Reserved for future usage
+    DXGK_OPERATION_TRANSFER2                = 23,
+    DXGK_OPERATION_FILL2                    = 24,
+    DXGK_OPERATION_DISCARD_CONTENT2         = 25,
 #endif //  DXGKDDI_INTERFACE_VERSION
 } DXGK_BUILDPAGINGBUFFER_OPERATION;
 
@@ -4835,45 +4912,57 @@ typedef struct _DXGK_BUILDPAGINGBUFFER_UNMAPMMU
 typedef struct _DXGK_BUILDPAGINGBUFFER_NOTIFYRESIDENCY2
 {
     HANDLE hAllocation;
+    DXGK_ADL Adl;
     UINT32 AllocationOffsetInPages;
-    UINT32 SizeInPages;
     UINT16 SegmentId;
     UINT16 Padding0;
-    union
-    {
-        D3DGPU_PHYSICAL_ADDRESS PhysicalAddress;
-        MDL*                    Mdl;
-    };
     struct
     {
-        UINT32 Resident :  1;
-        UINT32 Reserved : 31;
+        UINT32 Resident    :  1;
+        UINT32 HasContents :  1;
+        UINT32 Reserved    : 30;
     };
+    UINT64 GpuVirtualAddressAtOffset;
 } DXGK_BUILDPAGINGBUFFER_NOTIFYRESIDENCY2;
 
-typedef struct _DXGK_NOTIFYALLOCFLAGS
+typedef struct _DXGK_BUILDPAGINGBUFFER_TRANSFER2
 {
-    union
+    HANDLE hAllocation;
+    UINT32 TransferOffsetInPages;
+    UINT32 SizeInPages;
+    UINT32 AllocationOffsetInPages;
+    struct
     {
-        struct
-        {
-            UINT    Eviction    : 1;    // 0x00000001
-            UINT    IoMmuUnmap  : 1;    // 0x00000001
-            UINT    Reserved    :30;    // 0xFFFFFFFC
-        };
-        UINT        Value;
-    };
-} DXGK_NOTIFYALLOCFLAGS;
+        UINT SegmentId;
+        DXGK_ADL Adl;
+    } Source;
+    struct
+    {
+        UINT SegmentId;
+        DXGK_ADL Adl;
+    } Destination;
+    DXGK_TRANSFERFLAGS Flags;
+} DXGK_BUILDPAGINGBUFFER_TRANSFER2;
 
-typedef struct _DXGK_BUILDPAGINGBUFFER_NOTIFYALLOC
+typedef struct _DXGK_BUILDPAGINGBUFFER_FILL2
 {
-    HANDLE                  hAllocation;
-    HANDLE                  hKmdProcessHandle;
-    DXGK_NOTIFYALLOCFLAGS   Flags;
-    UINT64                  OffsetInBytes;
-    UINT64                  SizeInBytes;
-    UINT64                  GpuVirtualAddressAtOffset;
-} DXGK_BUILDPAGINGBUFFER_NOTIFYALLOC;
+    HANDLE hAllocation;
+    UINT32 AllocationOffsetInPages;
+    UINT32 SizeInPages;
+    UINT32 FillPattern;
+    UINT32 SegmentId;
+    UINT64 SegmentAddress;
+} DXGK_BUILDPAGINGBUFFER_FILL2;
+
+typedef struct _DXGK_BUILDPAGINGBUFFER_DISCARDCONTENT2
+{
+    HANDLE hAllocation;
+    DXGK_DISCARDCONTENTFLAGS Flags;
+    UINT32 AllocationOffsetInPages;
+    UINT32 SizeInPages;
+    UINT32 SegmentId;
+    UINT64 SegmentAddress;
+} DXGK_BUILDPAGINGBUFFER_DISCARDCONTENT2;
 
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
 
@@ -5058,7 +5147,9 @@ typedef struct _DXGKARG_BUILDPAGINGBUFFER
         DXGK_BUILDPAGINGBUFFER_MAPMMU           MmapMmu;
         DXGK_BUILDPAGINGBUFFER_UNMAPMMU         UnmapMmu;
         DXGK_BUILDPAGINGBUFFER_NOTIFYRESIDENCY2 NotifyResidency2;
-        DXGK_BUILDPAGINGBUFFER_NOTIFYALLOC      NotifyAllocation;
+        DXGK_BUILDPAGINGBUFFER_TRANSFER2        Transfer2;
+        DXGK_BUILDPAGINGBUFFER_FILL2            Fill2;
+        DXGK_BUILDPAGINGBUFFER_DISCARDCONTENT2  DiscardContent2;
 #endif // DXGKDDI_INTERFACE_VERSION
 
         struct
@@ -10235,7 +10326,7 @@ NTSTATUS
 
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
 
-#define DXGK_MAX_DOORBELL_SIZE_BYTES 16384 // 4 * PAGE_SIZE
+#define DXGK_MAX_DOORBELL_SIZE_BYTES 4096 // PAGE_SIZE
 
 typedef struct _DXGK_USERMODESUBMISSION_CAPS
 {
@@ -10270,7 +10361,6 @@ typedef struct _DXGKARG_CREATEDOORBELL_FLAGS
 typedef struct _DXGKARG_CREATEDOORBELL
 {
     HANDLE hHwQueue;                     // in: KMD handle of the HWQueue for which doorbell needs to be created
-    HANDLE hDoorbell;                    // in: Runtime handle/out: KMD handle
     _Field_range_(0, D3DDDI_DOORBELL_PRIVATEDATA_MAX_BYTES_WDDM3_1)
     UINT PrivateDriverDataSize;          // in: Size of private driver data
     _Field_size_(PrivateDriverDataSize)
@@ -10307,11 +10397,11 @@ typedef struct _DXGKARG_CONNECTDOORBELL_FLAGS
 
 typedef struct _DXGKARG_CONNECTDOORBELL
 {
-    HANDLE hDoorbell;                       // in: KMD handle of the doorbell which needs to be connected
-    DXGKARG_CONNECTDOORBELL_FLAGS Flags;    // in: flags
-    void* KernelCpuVirtualAddress;          // out: kernel CPU VA of the doorbell
-    void* SecondaryKernelCpuVirtualAddress; // out opt: secondary kernel CPU VA of the doorbell
-    D3DDDI_DOORBELLSTATUS Status;           // out:
+    HANDLE hHwQueue;                           // in: KMD handle of the HWQueue whose doorbell must be connected
+    DXGKARG_CONNECTDOORBELL_FLAGS Flags;       // in: flags
+    PHYSICAL_ADDRESS PhysicalAddress;          // out: physical address of the doorbell memory
+    PHYSICAL_ADDRESS SecondaryPhysicalAddress; // out opt: physical address of the secondary doorbell memory
+    D3DDDI_DOORBELLSTATUS Status;              // out:
 }DXGKARG_CONNECTDOORBELL;
 
 typedef _Inout_ DXGKARG_CONNECTDOORBELL* INOUT_PDXGKARG_CONNECTDOORBELL;
@@ -10340,7 +10430,7 @@ typedef struct _DXGKARG_DISCONNECTDOORBELL_FLAGS
 
 typedef struct _DXGKARG_DISCONNECTDOORBELL
 {
-    HANDLE hDoorbell;                       // in: KMD handle of the doorbell to be disconnected
+    HANDLE hHwQueue;                        // in: KMD handle of the HWQueue whose doorbell must be disconnected
     DXGKARG_DISCONNECTDOORBELL_FLAGS Flags; // in: flags
 }DXGKARG_DISCONNECTDOORBELL;
 
@@ -10358,7 +10448,7 @@ DXGKDDI_DISCONNECTDOORBELL(
 
 typedef struct _DXGKARG_DESTROYDOORBELL
 {
-    HANDLE hDoorbell; // in: KMD handle of the doorbell to be destroyed
+    HANDLE hHwQueue; // in: KMD handle of the HWQueue whose doorbell is to be destroyed
 }DXGKARG_DESTROYDOORBELL;
 
 typedef _Inout_ DXGKARG_DESTROYDOORBELL* INOUT_PDXGKARG_DESTROYDOORBELL;
@@ -10389,6 +10479,7 @@ typedef struct _DXGKARG_NOTIFYWORKSUBMISSION
 {
     HANDLE hHwQueue;                          // in: KMD handle of the HWQueue
     DXGKARG_NOTIFYWORKSUBMISSION_FLAGS Flags;
+    BYTE pPrivateDriverData[D3DDDI_UMS_PDD_SIZE]; // in out: Private driver data from the user mode NotifyWorkSubmission call, copied back to UMD
 }DXGKARG_NOTIFYWORKSUBMISSION;
 
 typedef _Inout_ DXGKARG_NOTIFYWORKSUBMISSION* INOUT_PDXGKARG_NOTIFYWORKSUBMISSION;
@@ -10417,8 +10508,7 @@ typedef struct _DXGKARGCB_DISCONNECTDOORBELL_FLAGS
 
 typedef struct _DXGKARGCB_DISCONNECTDOORBELL
 {
-    HANDLE hHwQueue;                          // in: DXG assigned handle of the parent HWQueue
-    HANDLE hDoorbell;                         // in: DXG assigned handle of the doorbell
+    HANDLE hHwQueue;                          // in: Dxgkrnl handle of the HWQueue whose doorbell must be disconnected
     DXGKARGCB_DISCONNECTDOORBELL_FLAGS Flags; // in:
     D3DDDI_DOORBELLSTATUS DisconnectReason;   // in:
 } DXGKARGCB_DISCONNECTDOORBELL;
@@ -10437,6 +10527,40 @@ NTSTATUS
 #endif // DXGKDDI_INTERFACE_VERSION_WDDM3_1
 
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
+
+typedef struct _DXGKARG_RESIZERINGBUFFER_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+}DXGKARG_RESIZERINGBUFFER_FLAGS;
+
+typedef struct _DXGKARG_RESIZERINGBUFFER
+{
+    HANDLE hHwQueue;                             // in: KMD handle of the HWQueue for which ring buffer is resized
+    HANDLE hRingBuffer;                          // in: KMD Handle to new ring buffer alloc which is associated to this HWQueue
+    HANDLE hRingBufferControl;                   // in: KMD Handle to new ring buffer control alloc which is associated to this HWQueue
+    DXGKARG_RESIZERINGBUFFER_FLAGS Flags;        // in opt: Flags
+    BYTE PrivateDriverData[D3DDDI_UMS_PDD_SIZE]; // in/out: Private driver data                                                 
+    BYTE Reserved[64];
+}DXGKARG_RESIZERINGBUFFER;
+
+typedef _Inout_ DXGKARG_RESIZERINGBUFFER* INOUT_PDXGKARG_RESIZERINGBUFFER;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_RESIZERINGBUFFER)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_RESIZERINGBUFFER(
+    INOUT_PDXGKARG_RESIZERINGBUFFER pArgs
+    );
 
 typedef struct _DXGK_DIRTY_BIT_TRACKING_CAPS
 {
@@ -10753,7 +10877,34 @@ typedef struct _DXGKARG_QUERYFEATURESUPPORT
     BOOLEAN SupportedOnCurrentConfig;         // out: TRUE if the current configuration supports this feature
 } DXGKARG_QUERYFEATURESUPPORT;
 
+typedef union _DXGKARG_QUERYFEATURESUPPORT2_FLAGS
+{
+    struct
+    {
+        UINT32 AllowExperimental :  1;
+        UINT32 Reserved          : 31;
+    };
+    UINT32 Value;
+} DXGKARG_QUERYFEATURESUPPORT2_FLAGS;
+
+typedef struct _DXGKARG_QUERYFEATURESUPPORT2
+{
+    DXGK_FEATURE_ID FeatureId;                // in:  The ID of the feature being queried
+    DXGKARG_QUERYFEATURESUPPORT2_FLAGS Flags; // in:  Input flags
+
+    DXGK_FEATURE_VERSION MinSupportedVersion; // out: Minimum version supported by the driver
+    DXGK_FEATURE_VERSION MaxSupportedVersion; // out: Maximum version supported by the driver
+    struct
+    {
+        UINT32 SupportedByDriver        :  1; // out: TRUE if the driver implements and supports this feature
+        UINT32 SupportedOnCurrentConfig :  1; // out: TRUE if the current configuration supports this feature
+        UINT32 Experimental             :  1; // out: TRUE if the feature is considered experimental
+        UINT32 Reserved                 : 29;
+    };
+} DXGKARG_QUERYFEATURESUPPORT2;
+
 typedef _Inout_ DXGKARG_QUERYFEATURESUPPORT* INOUT_PDXGKARG_QUERYFEATURESUPPORT;
+typedef _Inout_ DXGKARG_QUERYFEATURESUPPORT2* INOUT_PDXGKARG_QUERYFEATURESUPPORT2;
 
 typedef
 _Check_return_
@@ -10764,6 +10915,17 @@ APIENTRY
 DXGKDDI_QUERYFEATURESUPPORT(
     IN_CONST_HANDLE                    hAdapter,
     INOUT_PDXGKARG_QUERYFEATURESUPPORT pArgs
+    );
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_QUERYFEATURESUPPORT2)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_QUERYFEATURESUPPORT2(
+    IN_CONST_HANDLE                     hAdapter,
+    INOUT_PDXGKARG_QUERYFEATURESUPPORT2 pArgs
     );
 
 typedef struct _DXGKARGCB_ISFEATUREENABLED2_FLAGS
@@ -10929,8 +11091,16 @@ typedef struct _DXGKDDIINT_FEATURE_SAMPLE_5
 
 typedef struct _DXGKARGCB_FEATURE_NATIVEFENCE_CAPS_1
 {
-    UINT SupportOptimizedDefaultFenceType : 1;
-    UINT SupportIntraGpuFenceType : 1;
+    union
+    {
+        struct
+        {
+            UINT SupportOptimizedDefaultFenceType : 1;
+            UINT SupportIntraGpuFenceType : 1;
+            UINT Reserved : 30;
+        };
+        UINT Value;
+    };
 } DXGKARGCB_FEATURE_NATIVEFENCE_CAPS_1;
 
 typedef _Inout_ DXGKARGCB_FEATURE_NATIVEFENCE_CAPS_1* INOUT_PDXGKARGCB_FEATURE_NATIVEFENCE_CAPS_1;
@@ -10948,6 +11118,181 @@ typedef struct _DXGKCBINT_FEATURE_NATIVEFENCE_1
 {
     DXGKCB_FEATURE_NATIVEFENCE_CAPS_1 GetOSCaps;
 } DXGKCBINT_FEATURE_NATIVEFENCE_1;
+
+typedef struct _DXGKARGCB_FEATURE_USER_MODE_SUBMISSION_CAPS_2
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+} DXGKARGCB_FEATURE_USER_MODE_SUBMISSION_CAPS_2;
+
+typedef _Inout_ DXGKARGCB_FEATURE_USER_MODE_SUBMISSION_CAPS_2* INOUT_PDXGKARGCB_FEATURE_USER_MODE_SUBMISSION_CAPS_2;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKCB_FEATURE_USER_MODE_SUBMISSION_CAPS_2)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY CALLBACK *DXGKCB_FEATURE_USER_MODE_SUBMISSION_CAPS_2)(
+    INOUT_PDXGKARGCB_FEATURE_USER_MODE_SUBMISSION_CAPS_2 pArgs
+    );
+
+typedef struct _DXGKCBINT_FEATURE_USER_MODE_SUBMISSION_2
+{
+    DXGKCB_FEATURE_USER_MODE_SUBMISSION_CAPS_2 GetOSCaps;
+} DXGKCBINT_FEATURE_USER_MODE_SUBMISSION_2;
+
+typedef struct _DXGK_RESUME_FROM_PAGE_FAULT_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+} DXGK_RESUME_FROM_PAGE_FAULT_FLAGS;
+
+
+typedef struct _DXGKARG_RESUME_FROM_PAGE_FAULT
+{
+    DXGK_RESUME_FROM_PAGE_FAULT_FLAGS Flags;
+    UINT NodeOrdinal;        // in: node ordinal
+    UINT EngineOrdinal;      // in: engine ordinal
+} DXGKARG_RESUME_FROM_PAGE_FAULT;
+
+typedef
+_Function_class_DXGK_(DXGKDDI_FEATURE_FAULT_AND_STALL_RESUMEFROMPAGEFAULT)
+_IRQL_requires_(DISPATCH_LEVEL)
+VOID
+(APIENTRY* DXGKDDI_FEATURE_FAULT_AND_STALL_RESUMEFROMPAGEFAULT)(
+    IN_CONST_HANDLE                         hAdapter,
+    IN CONST DXGKARG_RESUME_FROM_PAGE_FAULT*  pArgs
+    );
+
+typedef DXGKDDI_FEATURE_FAULT_AND_STALL_RESUMEFROMPAGEFAULT PDXGKDDI_FEATURE_FAULT_AND_STALL_RESUMEFROMPAGEFAULT;
+
+typedef struct _DXGK_FAULT_AND_STALL_CAPS
+{
+    UINT PhysicalAdapterIndex;                      // In
+    union
+    {
+        struct
+        {
+            UINT    BlockOnMemoryAccess :  1;
+            UINT    Reserved            : 31;
+        };
+        UINT Value;                                 // Out
+    };
+    UINT64 Reserved1;
+} DXGK_FAULT_AND_STALL_CAPS;
+
+
+typedef
+_Function_class_DXGK_(DXGKDDI_FEATURE_FAULT_AND_STALL_GETCAPS)
+_IRQL_requires_(PASSIVE_LEVEL)
+VOID
+(APIENTRY* DXGKDDI_FEATURE_FAULT_AND_STALL_GETCAPS)(
+    IN_CONST_HANDLE                 hAdapter,
+    IN DXGK_FAULT_AND_STALL_CAPS*   pCaps
+    );
+
+typedef DXGKDDI_FEATURE_FAULT_AND_STALL_GETCAPS PDXGKDDI_FEATURE_FAULT_AND_STALL_GETCAPS;
+
+typedef struct _DXGKDDIINT_FEATURE_FAULT_AND_STALL_1
+{
+    DXGKDDI_FEATURE_FAULT_AND_STALL_RESUMEFROMPAGEFAULT pfnResumeFromPageFault;
+    DXGKDDI_FEATURE_FAULT_AND_STALL_GETCAPS             pfnGetFaultAndStallCaps;
+} DXGKDDIINT_FEATURE_FAULT_AND_STALL_1;
+
+typedef struct _DXGK_NOTIFY_RESIDENCY2_CAPS
+{
+    UINT32 NeedPagingVaForResidencySegmentMask;
+    UINT32 NeedPagingVaForEvictionSegmentMask;
+} DXGK_NOTIFY_RESIDENCY2_CAPS;
+
+typedef
+_Function_class_DXGK_(DXGKDDI_FEATURE_NOTIFY_RESIDENCY2_GETCAPS)
+_IRQL_requires_(PASSIVE_LEVEL)
+VOID
+(APIENTRY* DXGKDDI_FEATURE_NOTIFY_RESIDENCY2_GETCAPS)(
+    IN_CONST_HANDLE                  hAdapter,
+    IN UINT                          PhysicalAdapterIndex,
+    OUT DXGK_NOTIFY_RESIDENCY2_CAPS* pCaps
+    );
+
+typedef DXGKDDI_FEATURE_NOTIFY_RESIDENCY2_GETCAPS PDXGKDDI_FEATURE_NOTIFY_RESIDENCY2_GETCAPS;
+
+typedef struct _DXGKDDIINT_FEATURE_NOTIFY_RESIDENCY2
+{
+    DXGKDDI_FEATURE_NOTIFY_RESIDENCY2_GETCAPS pfnGetNotifyResidency2Caps;
+} DXGKDDIINT_FEATURE_NOTIFY_RESIDENCY2;
+
+#define DXGK_TRIAGE_BLOB_MAX_SIZE (256 * 1024 * 1024)
+
+typedef enum _DXGK_PROCESS_DEBUG_BLOB_TYPE
+{
+    DXGK_PROCESS_DEBUG_BLOB_TRIAGE            = 1,
+    DXGK_PROCESS_DEBUG_BLOB_FULL              = 2,
+} DXGK_PROCESS_DEBUG_BLOB_TYPE;
+
+typedef struct _DXGK_PROCESS_DEBUG_BLOB_DETAILS
+{
+    DXGK_PROCESS_DEBUG_BLOB_TYPE ProcessDebugBlobType;
+    SIZE_T ProcessDebugBlobSize;
+} DXGK_PROCESS_DEBUG_BLOB_DETAILS;
+
+typedef struct _DXGKARG_COLLECT_PROCESS_DEBUG_BLOB_INFO
+{
+    HANDLE hProcess;                                            // in: process handle to indicate which process debug blob to retrieve
+    ULONG NumProcessDebugBlobDetails;                           // in: Number of entries in ProcessDebugBlobDetails
+    _Field_size_(NumProcessDebugBlobDetails)
+    DXGK_PROCESS_DEBUG_BLOB_DETAILS* ProcessDebugBlobDetails;   // in/out: An array that describe debug blob details for different types of debug blobs
+} DXGKARG_COLLECT_PROCESS_DEBUG_BLOB_INFO;
+
+typedef _Inout_ DXGKARG_COLLECT_PROCESS_DEBUG_BLOB_INFO* INOUT_PDXGKARG_COLLECT_PROCESS_DEBUG_BLOB_INFO;
+
+typedef
+_Function_class_DXGK_(DXGKDDI_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_COLLECTPROCESSDEBUGBLOBINFO)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY* DXGKDDI_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_COLLECTPROCESSDEBUGBLOBINFO)(
+    IN_CONST_HANDLE                          hAdapter,
+    INOUT_PDXGKARG_COLLECT_PROCESS_DEBUG_BLOB_INFO pArgs
+    );
+
+typedef struct _DXGKARG_COLLECT_PROCESS_DEBUG_BLOB
+{
+    HANDLE hProcess;                                            // in: process handle to indicate which process debug blob to retrieve
+    DXGK_PROCESS_DEBUG_BLOB_TYPE ProcessDebugBlobType;          // in: The type of debug blob to collect
+    SIZE_T BufferSize;                                          // in/out: On input, the size in bytes of pBuffer. On output, the size in
+                                                                //         bytes of the blob written to pBuffer.
+    _Field_size_bytes_(BufferSize)
+    PVOID pBuffer;                                              // out: Pointer to the buffer that contains the debug blob
+} DXGKARG_COLLECT_PROCESS_DEBUG_BLOB;
+
+typedef _Inout_ DXGKARG_COLLECT_PROCESS_DEBUG_BLOB* INOUT_PDXGKARG_COLLECT_PROCESS_DEBUG_BLOB;
+
+typedef
+_Function_class_DXGK_(DXGKDDI_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_COLLECTPROCESSDEBUGBLOB)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY* DXGKDDI_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_COLLECTPROCESSDEBUGBLOB)(
+    IN_CONST_HANDLE                          hAdapter,
+    INOUT_PDXGKARG_COLLECT_PROCESS_DEBUG_BLOB pArgs
+    );
+
+typedef struct _DXGKDDIINT_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_1
+{
+    DXGKDDI_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_COLLECTPROCESSDEBUGBLOBINFO pfnCollectProcessDebugBlobInfo;
+    DXGKDDI_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_COLLECTPROCESSDEBUGBLOB pfnCollectProcessDebugBlob;
+} DXGKDDIINT_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_1;
 
 typedef enum _DXGK_TDR_TYPE
 {
@@ -11026,6 +11371,8 @@ typedef struct _DXGKARG_BUILDTESTCOMMANDBUFFER
     UINT                                DmaBufferSize;              // [in/out]
     UINT                                DmaBufferPrivateDataSize;   // [in/out]
     D3DDDI_BUILDTESTCOMMANDBUFFERFLAGS  Flags;                      // [in]
+    UINT64                              HardwareProgressFenceId;    // [in]
+    UINT64                              HardwareProgressFenceGpuVa; // [in]
 } DXGKARG_BUILDTESTCOMMANDBUFFER;
 
 typedef _Inout_ DXGKARG_BUILDTESTCOMMANDBUFFER* INOUT_PDXGKARG_BUILDTESTCOMMANDBUFFER;
@@ -11047,6 +11394,15 @@ typedef struct _DXGKDDI_KERNELMODETESTINGINTERFACE
     PDXGKDDI_BUILDTESTCOMMANDBUFFER pfnBuildTestCommandBuffer;
 } DXGKDDI_KERNELMODETESTINGINTERFACE;
 
+typedef DXGKDDI_CREATEHWQUEUEFORUSERMODESUBMISSION *PDXGKDDI_CREATEHWQUEUEFORUSERMODESUBMISSION;
+typedef DXGKDDI_RESIZERINGBUFFER *PDXGKDDI_RESIZERINGBUFFER;
+
+typedef struct _DXGKDDI_USERMODESUBMISSIONINTERFACE_2
+{
+    PDXGKDDI_CREATEHWQUEUEFORUSERMODESUBMISSION DxgkDdiCreateHwQueueForUserModeSubmission;
+    PDXGKDDI_RESIZERINGBUFFER DxgkDdiResizeRingBuffer;
+} DXGKDDI_USERMODESUBMISSIONINTERFACE_2;
+
 typedef struct _DXGK_QUERYPAGINGBUFFERINFOIN
 {
     UINT16 PhysicalAdapterIndex;
@@ -11057,6 +11413,8 @@ typedef struct _DXGK_QUERYPAGINGBUFFERINFOOUT
 {
     UINT32 PagingBufferSize;
     UINT32 PagingBufferPrivateDataSize;
+    UINT32 DriverSegmentId;
+    UINT32 Reserved;
 } DXGK_QUERYPAGINGBUFFERINFOOUT;
 
 typedef struct _DXGK_QUERYSEGMENTCOUNTIN
@@ -11075,8 +11433,9 @@ typedef struct _DXGK_QUERYSEGMENTCOUNTOUT
 
 typedef enum _DXGK_SEGMENTTYPE
 {
-    DXGK_SEGMENTTYPE_SYSMEM,
-    DXGK_SEGMENTTYPE_LOCAL,
+    DXGK_SEGMENTTYPE_SYSMEM     = 0,
+    DXGK_SEGMENTTYPE_LOCAL      = 1,
+    DXGK_SEGMENTTYPE_APERTURE   = 2,
 } DXGK_SEGMENTTYPE;
 
 typedef enum _DXGK_PAGESIZE
@@ -11096,29 +11455,40 @@ typedef enum _DXGK_PAGESIZE
     DXGK_PAGESIZE_16MB  = 12,
     DXGK_PAGESIZE_32MB  = 13,
     DXGK_PAGESIZE_64MB  = 14,
-    DXGK_PAGESIZE_128MB = 15
+    DXGK_PAGESIZE_128MB = 15,
+
+    DXGK_PAGESIZE_UNKNOWN = 0xFFFFFFFF
 } DXGK_PAGESIZE;
 
 typedef struct _DXGK_SEGMENTDESCRIPTOR5
 {
-    DXGK_SEGMENTTYPE         SegmentType;
-    DXGK_SEGMENTFLAGS        Flags;
-    PHYSICAL_ADDRESS         BaseAddress;
-    UINT64                   Size;
-    SIZE_T                   SystemMemoryEndAddress;
+    DXGK_SEGMENTFLAGS        Flags;                   // Segment bit field flags
+    PHYSICAL_ADDRESS         BaseAddress;             // GPU logical base address for the segment.
+    SIZE_T                   Size;                    // Size of the segment.
+    SIZE_T                   CommitLimit;             // Maximum number of bytes that can be
+                                                      // commited to this segment, apply to
+                                                      // aperture segment only.
+    SIZE_T                   SystemMemoryEndAddress;  // For segments that are partially composed
+                                                      // of system memory, all allocations ending after
+                                                      // this address are purged during hibernate.
     union
     {
-        PHYSICAL_ADDRESS     CpuTranslatedAddress;
-        DXGK_CPUHOSTAPERTURE CpuHostAperture;
+        PHYSICAL_ADDRESS     CpuTranslatedAddress;    // If Flags.SupportsCpuHostAperture==FALSE and the
+                                                      // segment is CPUVisible, this will be the
+                                                      // CPU physical base address of the segment
+        DXGK_CPUHOSTAPERTURE CpuHostAperture;         // If Flags.SupportsCpuHostAperture==TRUE this will
+                                                      // have the CPU address and size of the
+                                                      // CPUHostAperture
     };
-    SIZE_T                   VprRangeStartOffset;
-    SIZE_T                   VprRangeSize;
-    UINT32                   VprAlignment;
-    UINT32                   NumInvalidMemoryRanges;
-    UINT32                   NumVprSupported;
-    UINT32                   VprReserveSize;
-    UINT32                   NumUEFIFrameBufferRanges;
-    DXGK_PAGESIZE            SlabSize;
+    UINT                     NumInvalidMemoryRanges;  // Number of invalid memory ranges in the segment
+    SIZE_T                   VprRangeStartOffset;     // Start offset of video protected region range in bytes
+    SIZE_T                   VprRangeSize;            // Size of the video protected region range
+    UINT                     VprAlignment;            // Alignment of video protected regions in bytes. Applies to size and start offset.
+    UINT                     NumVprSupported;         // Number of supported video protected regions in the VPR range. Zero for infinite number.
+    UINT                     VprReserveSize;          // Size of area in VPR to reserve for driver/hardware use.  Zero for no reserve.
+    UINT                     NumUEFIFrameBufferRanges;// Number of UEFI frame buffer memory ranges in the segment.
+    DXGK_SEGMENTTYPE         SegmentType;             // Type of the segment
+    DXGK_PAGESIZE            SlabSize;                // Segment slab size
 } DXGK_SEGMENTDESCRIPTOR5;
 
 typedef struct _DXGK_QUERYSEGMENTIN5
@@ -11490,6 +11860,7 @@ typedef DXGKDDI_SETVIRTUALFUNCTIONPAUSESTATE    *PDXGKDDI_SETVIRTUALFUNCTIONPAUS
 
 typedef DXGKDDI_QUERYFEATURESUPPORT   *PDXGKDDI_QUERYFEATURESUPPORT;
 typedef DXGKDDI_QUERYFEATUREINTERFACE *PDXGKDDI_QUERYFEATUREINTERFACE;
+typedef DXGKDDI_QUERYFEATURESUPPORT2  *PDXGKDDI_QUERYFEATURESUPPORT2;
 
 typedef DXGKDDI_COLLECTDBGINFO2       *PDXGKDDI_COLLECTDBGINFO2;
 typedef DXGKDDI_NOTIFYCONTEXTPRIORITYCHANGE     *PDXGKDDI_NOTIFYCONTEXTPRIORITYCHANGE;

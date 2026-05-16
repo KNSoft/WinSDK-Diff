@@ -133,6 +133,12 @@ extern "C" {
 
 #define FLT_MGR_WIN11_GA (NTDDI_VERSION >= NTDDI_WIN11_GA)
 
+//
+//  This defines items that only exist in Windows Dilithium or later.
+//
+
+#define FLT_MGR_WIN11_DT (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 //  Standard includes
@@ -3437,6 +3443,24 @@ FltQueryInformationByName (
     );
 #endif
 
+#if FLT_MGR_WIN11_DT
+_Must_inspect_result_
+_IRQL_requires_max_(PASSIVE_LEVEL)
+NTSTATUS
+FLTAPI
+FltQueryInformationByName2 (
+    _In_ PFLT_FILTER Filter,
+    _In_opt_ PFLT_INSTANCE Instance,
+    _In_ POBJECT_ATTRIBUTES ObjectAttributes,
+    _Out_ PIO_STATUS_BLOCK IoStatusBlock,
+    _Out_writes_bytes_(Length) PVOID FileInformation,
+    _In_ ULONG Length,
+    _In_ FILE_INFORMATION_CLASS FileInformationClass,
+    _In_ ULONG Options,
+    _In_opt_ PIO_DRIVER_CREATE_CONTEXT DriverContext
+    );
+#endif
+
 _Must_inspect_result_
 _IRQL_requires_max_(PASSIVE_LEVEL)
 NTSTATUS
@@ -3675,6 +3699,20 @@ FLTAPI
 FltClose(
    _In_ HANDLE FileHandle
    );
+
+#if FLT_MGR_WIN11_DT
+
+_Must_inspect_result_
+_IRQL_requires_max_(PASSIVE_LEVEL)
+NTSTATUS
+FLTAPI
+FltClose2(
+    _In_ HANDLE FileHandle,
+    _In_ ULONG ResultBufferSize,
+    _Inout_ POBJECT_CLOSE_RESULT Result
+    );
+
+#endif
 
 _IRQL_requires_max_(PASSIVE_LEVEL)
 VOID

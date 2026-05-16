@@ -1,6 +1,6 @@
 /*++
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (C) Microsoft Corporation. All rights reserved.
 
 _WdfVersionBuild_
 
@@ -20,7 +20,8 @@ Environment:
 
 extern PNFCCX_DRIVER_GLOBALS NfccxDriverGlobals;
 
-typedef enum _NFCCXFUNCENUM {
+typedef enum _NFCCXFUNCENUM
+{
 
     NfcCxDeviceInitConfigTableIndex = 0,
     NfcCxDeviceInitializeTableIndex = 1,
@@ -37,4 +38,3 @@ typedef enum _NFCCXFUNCENUM {
 } NFCCXFUNCENUM;
 
 #endif // _NFCCXFUNCENUM_H_
-

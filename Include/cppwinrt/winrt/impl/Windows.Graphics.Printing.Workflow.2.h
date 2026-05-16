@@ -121,7 +121,7 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::Workflow
         PrintWorkflowPdlTargetStream(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlTargetStream(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES PrintWorkflowPrinterJob : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob,
-        impl::require<PrintWorkflowPrinterJob, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob2>
+        impl::require<PrintWorkflowPrinterJob, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob2, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>
     {
         PrintWorkflowPrinterJob(std::nullptr_t) noexcept {}
         PrintWorkflowPrinterJob(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob(ptr, take_ownership_from_abi) {}

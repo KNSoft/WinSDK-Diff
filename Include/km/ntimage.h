@@ -2168,6 +2168,83 @@ typedef struct _IMAGE_HOT_PATCH_HASHES {
 #define IMAGE_HOT_PATCH_NO_CALL_TARGET      0x00064000
 #define IMAGE_HOT_PATCH_DYNAMIC_VALUE       0x00078000
 
+//
+// Hot-Swap Image Info
+//
+
+#define IMAGE_HOTSWAP_ENDPOINT_TABLE_SECTION ".shsept"
+
+typedef enum _IMAGE_HOTSWAP_ARM64_ENDPOINT_INFO_CC_RETURN
+{
+    EndpointReturnTypeNone = 0,
+    EndpointReturnTypeX0,
+    EndpointReturnTypeX0_X1,
+    EndpointReturnTypeX0_X2,
+    EndpointReturnTypeX0_X3,
+    EndpointReturnTypeQ0,
+    EndpointReturnTypeQ0_Q1,
+    EndpointReturnTypeQ0_Q2,
+    EndpointReturnTypeQ0_Q3,
+    EndpointReturnTypeX8
+} IMAGE_HOTSWAP_ARM64_ENDPOINT_INFO_CC_RETURN,
+* PIMAGE_HOTSWAP_ARM64_ENDPOINT_INFO_CC_RETURN;
+
+typedef enum _IMAGE_HOTSWAP_X64_ENDPOINT_INFO_CC_REG
+{
+    EndpointParamRegNone = 0x00,
+    EndpointParamRegRAX = 0x01,
+    EndpointParamRegRCX = 0x02,
+    EndpointParamRegRDX = 0x03,
+    EndpointParamRegR8 = 0x09,
+    EndpointParamRegR9 = 0x0A,
+    EndpointParamRegXMM0 = 0xC8,
+    EndpointParamRegXMM1 = 0xC9,
+    EndpointParamRegXMM2 = 0xCA,
+    EndpointParamRegXMM3 = 0xCB
+} IMAGE_HOTSWAP_X64_ENDPOINT_INFO_CC_REG,
+* PIMAGE_HOTSWAP_X64_ENDPOINT_INFO_CC_REG;
+
+typedef struct _IMAGE_HOTSWAP_ENDPOINT_INFO_HEADER_COMMON
+{
+    ULONG Version;
+    ULONG Size;
+} IMAGE_HOTSWAP_ENDPOINT_INFO_HEADER_COMMON, * PIMAGE_HOTSWAP_ENDPOINT_INFO_HEADER_COMMON;
+
+typedef struct _IMAGE_HOTSWAP_ENDPOINT_INFO_ENTRY_COMMON
+{
+    ULONG Size; // Size of this current entry structure.
+    ULONG Rva;  // RVA of the endpoint within the image.
+    ULONG NameSize;
+    ULONG NameOffset;
+} IMAGE_HOTSWAP_ENDPOINT_INFO_ENTRY_COMMON, * PIMAGE_HOTSWAP_ENDPOINT_INFO_ENTRY_COMMON;
+
+#define IMAGE_HOTSWAP_ENDPOINT_INFO_V2 2
+
+typedef struct _IMAGE_HOTSWAP_X64_ENDPOINT_INFO_ENTRY_V2
+{
+    IMAGE_HOTSWAP_ENDPOINT_INFO_ENTRY_COMMON Common;
+    IMAGE_HOTSWAP_X64_ENDPOINT_INFO_CC_REG ArgRegs[4];
+    ULONG ArgStackSize;
+    IMAGE_HOTSWAP_X64_ENDPOINT_INFO_CC_REG RetReg;
+    UCHAR Name[ANYSIZE_ARRAY];
+} IMAGE_HOTSWAP_X64_ENDPOINT_INFO_ENTRY_V2, * PIMAGE_HOTSWAP_X64_ENDPOINT_INFO_ENTRY_V2;
+
+typedef struct _IMAGE_HOTSWAP_ARM64_ENDPOINT_INFO_ENTRY_V2
+{
+    IMAGE_HOTSWAP_ENDPOINT_INFO_ENTRY_COMMON Common;
+    ULONG IntArgs;
+    ULONG FloatArgs;
+    ULONG ArgStackSize;
+    IMAGE_HOTSWAP_ARM64_ENDPOINT_INFO_CC_RETURN ReturnType;
+    UCHAR Name[ANYSIZE_ARRAY];
+} IMAGE_HOTSWAP_ARM64_ENDPOINT_INFO_ENTRY_V2, * PIMAGE_HOTSWAP_ARM64_ENDPOINT_INFO_ENTRY_V2;
+
+typedef struct _IMAGE_HOTSWAP_ENDPOINT_INFO_HEADER_V2
+{
+    IMAGE_HOTSWAP_ENDPOINT_INFO_HEADER_COMMON Common;
+    ULONG Count;
+} IMAGE_HOTSWAP_ENDPOINT_INFO_HEADER_V2, * PIMAGE_HOTSWAP_ENDPOINT_INFO_HEADER_V2;
+
 #define IMAGE_GUARD_CF_INSTRUMENTED                    0x00000100 // Module performs control flow integrity checks using system-supplied support
 #define IMAGE_GUARD_CFW_INSTRUMENTED                   0x00000200 // Module performs control flow and write integrity checks
 #define IMAGE_GUARD_CF_FUNCTION_TABLE_PRESENT          0x00000400 // Module contains valid control flow target metadata

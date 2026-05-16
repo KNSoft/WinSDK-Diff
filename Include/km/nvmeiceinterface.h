@@ -490,6 +490,9 @@ typedef struct NVME_ICE_PROGRAM_KEY_DATA_V2 {
     // IN: The key's size
     USHORT KeyContentSize;
 
+    // IN_OUT: Driver returns the key index associated with the programed key 
+    USHORT KeyIndex;
+
     // IN: Namespace ID for the key
     GUID KeyNamespaceId;
 

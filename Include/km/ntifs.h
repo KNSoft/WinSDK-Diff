@@ -389,6 +389,8 @@ typedef struct _ATTRIBUTES_AND_SID {
 #define SECURITY_RESTRICTED_SERVICES_BASE_RID  (0x00000063L)
 #define SECURITY_RESTRICTED_SERVICES_RID_COUNT (6L)
 
+#define SECURITY_SHADOWADMINACCOUNT_RID (0x00000064L)
+
 //
 // Virtual account logon is not limited to inbox callers.  Reserve base RID 0x6F for application usage.
 //
@@ -506,6 +508,7 @@ typedef struct _ATTRIBUTES_AND_SID {
 #define DOMAIN_ALIAS_RID_DEVICE_OWNERS                  (0x00000247L)
 #define DOMAIN_ALIAS_RID_USER_MODE_HARDWARE_OPERATORS   (0x00000248L)
 #define DOMAIN_ALIAS_RID_OPENSSH_USERS                  (0x00000249L)
+#define DOMAIN_ALIAS_RID_CUA_USERS                      (0x0000024AL)
 
 //
 // Application Package Authority.
@@ -562,6 +565,7 @@ typedef struct _ATTRIBUTES_AND_SID {
 #define SECURITY_MANDATORY_HIGH_RID                 (0x00003000L)
 #define SECURITY_MANDATORY_SYSTEM_RID               (0x00004000L)
 #define SECURITY_MANDATORY_PROTECTED_PROCESS_RID    (0x00005000L)
+#define SECURITY_MANDATORY_MEDIUM_PLUS_CREDUI_RID   (SECURITY_MANDATORY_MEDIUM_RID + 0xA)
 
 //
 // SECURITY_MANDATORY_MAXIMUM_USER_RID is the highest RID that
@@ -4597,16 +4601,12 @@ RtlCaptureContext(
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_VB)
 
-#if defined(_AMD64_)
-
 NTSYSAPI
 VOID
 NTAPI
 RtlCaptureContext2(
     _Inout_ PCONTEXT ContextRecord
     );
-
-#endif // defined(_AMD64_)
 
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_VB)
 
@@ -4714,6 +4714,8 @@ RtlCaptureContext2(
 #define FILE_DEVICE_SVM                 0x00000063
 #define FILE_DEVICE_HARDWARE_ACCELERATOR 0x00000064
 #define FILE_DEVICE_I3C                 0x00000065
+#define FILE_DEVICE_MULTITIER_MEMORY    0x00000066
+#define FILE_DEVICE_CXL_TYPE3           0x00000067
 
 //
 // Macro definition for defining IOCTL and FSCTL function control codes.  Note
@@ -8459,6 +8461,14 @@ NtFlushBuffersFileEx (
 #if (NTDDI_VERSION >= NTDDI_WIN11_GE)
 #define FSCTL_CASCADES_REFS_SET_FILE_REMOTE         CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 295, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #endif
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI)
+#define FSCTL_CIMFS_QUERY_BACKING_REGION_NAMES      CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 296, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#endif
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+#define FSCTL_REFS_VOLUME_ATTESTATION_PREPARE_TO_SIGN           CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 297, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define FSCTL_REFS_VOLUME_ATTESTATION_INJECT_CERTIFICATE        CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 298, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS              CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 299, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#endif
 
 //
 // The following long list of structs are associated with the preceding
@@ -11401,9 +11411,26 @@ typedef struct _FILE_SYSTEM_RECOGNITION_INFORMATION {
 #define OPLOCK_LEVEL_CACHE_HANDLE       (0x00000002)
 #define OPLOCK_LEVEL_CACHE_WRITE        (0x00000004)
 
-#define REQUEST_OPLOCK_INPUT_FLAG_REQUEST               (0x00000001)
-#define REQUEST_OPLOCK_INPUT_FLAG_ACK                   (0x00000002)
-#define REQUEST_OPLOCK_INPUT_FLAG_COMPLETE_ACK_ON_CLOSE (0x00000004)
+#define REQUEST_OPLOCK_INPUT_FLAG_REQUEST                   (0x00000001)
+#define REQUEST_OPLOCK_INPUT_FLAG_ACK                       (0x00000002)
+#define REQUEST_OPLOCK_INPUT_FLAG_COMPLETE_ACK_ON_CLOSE     (0x00000004)
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+// The requested oplock should block all operations when the oplock breaks, even if the breaking
+// operation normally would not block (for example, a write on a file with a Read-Handle oplock).
+// This flag is valid only for Read-Handle oplocks.
+#define REQUEST_OPLOCK_INPUT_FLAG_RH_ALWAYS_BLOCK_UNTIL_ACK (0x00000008)
+
+// The requested oplock should NOT break on writes or write-like operations. This flag is valid only
+// for Read-Handle oplocks.
+#define REQUEST_OPLOCK_INPUT_FLAG_RH_IGNORE_WRITES          (0x00000010)
+
+// The requested oplock should be denied if there are already handles open for non-cached I/O, and
+// the requested oplock should break if a handle is opened later for non-cached I/O. This flag is
+// valid only for Read-Handle oplocks. Not all file systems may support this semantic.
+#define REQUEST_OPLOCK_INPUT_FLAG_RH_NO_NON_CACHED_IO       (0x00000020)
+
+#endif
 
 #define REQUEST_OPLOCK_CURRENT_VERSION          1
 
@@ -11438,6 +11465,15 @@ typedef struct _REQUEST_OPLOCK_INPUT_BUFFER {
 // If the oplock request fails with STATUS_OPLOCK_NOT_GRANTED, this flag indicates that the oplock
 // could not be granted due to the presence of a writable user-mapped section.
 #define REQUEST_OPLOCK_OUTPUT_FLAG_WRITABLE_SECTION_PRESENT     (0x00000004)
+#endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+// This flag is set only if the request included the REQUEST_OPLOCK_INPUT_FLAG_NO_NON_CACHED_IO flag.
+// - If returned as part of the oplock request failing with STATUS_OPLOCK_NOT_GRANTED, indicates that
+//   the file has one or more handles opened for non-cached I/O.
+// - If returned as part of the oplock breaking, indicates that some caller opened a handle to the file
+//   for non-cached I/O.
+#define REQUEST_OPLOCK_OUTPUT_FLAG_NON_CACHED_IO_PRESENT        (0x00000008)
 #endif
 
 typedef struct _REQUEST_OPLOCK_OUTPUT_BUFFER {
@@ -17356,6 +17392,151 @@ typedef struct _REFS_QUERY_ROLLBACK_PROTECTION_INFO_OUTPUT_BUFFER {
 
 #endif // #if (NTDDI_VERSION >= NTDDI_WIN11_GE)
 
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
+//
+//========== FSCTL_REFS_VOLUME_ATTESTATION_PREPARE_TO_SIGN ==========
+//
+
+typedef struct _FSCTL_REFS_VOLUME_ATTESTATION_PREPARE_TO_SIGN_INPUT_BUFFER {
+
+    ULONG Size;
+    ULONG Flags;
+    ULONG Reserved[8];
+
+    ULONG UserPayloadOffset;
+    ULONG UserPayloadSize;
+
+} FSCTL_REFS_VOLUME_ATTESTATION_PREPARE_TO_SIGN_INPUT_BUFFER, *PFSCTL_REFS_VOLUME_ATTESTATION_PREPARE_TO_SIGN_INPUT_BUFFER;
+
+#define FSCTL_REFS_VOLUME_ATTESTATION_MAX_SIGNING_HASH_SIZE (64)
+
+typedef struct _FSCTL_REFS_VOLUME_ATTESTATION_PREPARE_TO_SIGN_OUTPUT_BUFFER {
+
+    ULONG Size;
+    ULONG Flags;
+    ULONG Reserved[8];
+
+    ULONG SigningHashSize;
+
+    UCHAR SigningHash[FSCTL_REFS_VOLUME_ATTESTATION_MAX_SIGNING_HASH_SIZE];
+
+} FSCTL_REFS_VOLUME_ATTESTATION_PREPARE_TO_SIGN_OUTPUT_BUFFER, *PFSCTL_REFS_VOLUME_ATTESTATION_PREPARE_TO_SIGN_OUTPUT_BUFFER;
+
+//
+//========== FSCTL_REFS_VOLUME_ATTESTATION_INJECT_CERTIFICATE ==========
+//
+
+typedef enum _FSCTL_REFS_VOLUME_ATTESTATION_CERTIFICATE_TYPE {
+
+    FSCTL_REFS_VOLUME_ATTESTATION_CERTIFICATE_TYPE_ASN1_PKCS7_X509_SIGNEDDATA     = 0x00000001,
+
+} FSCTL_REFS_VOLUME_ATTESTATION_CERTIFICATE_TYPE;
+
+typedef struct _FSCTL_REFS_VOLUME_ATTESTATION_INJECT_CERTIFICATE_INPUT_BUFFER {
+
+    ULONG Size;
+    ULONG Flags;
+    FSCTL_REFS_VOLUME_ATTESTATION_CERTIFICATE_TYPE CertificateType;
+    ULONG Reserved[8];
+
+    ULONG CertificateOffset;
+    ULONG CertificateSize;
+
+    ULONG SupplementalInfoOffset;
+    ULONG SupplementalInfoSize;
+
+} FSCTL_REFS_VOLUME_ATTESTATION_INJECT_CERTIFICATE_INPUT_BUFFER, *PFSCTL_REFS_VOLUME_ATTESTATION_INJECT_CERTIFICATE_INPUT_BUFFER;
+
+//
+//========== FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS ==========
+//
+
+typedef enum _FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_TYPE {
+
+    FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_QUERY_SUMMARY            = 0,
+    FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_QUERY_CERTIFICATE        = 1,
+    FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_QUERY_USER_PAYLOAD       = 2,
+    FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_QUERY_SUP_INFO           = 3,
+
+} FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_TYPE;
+
+typedef enum _FSCTL_REFS_VOLUME_ATTESTATION_ATTESTED_STATE {
+
+    FSCTL_REFS_VOLUME_ATTESTATION_ATTESTED_IS_ATTESTED                  = 0x00000001,
+    FSCTL_REFS_VOLUME_ATTESTATION_ATTESTED_WITH_CERTIFICATE             = 0x00000002,
+    FSCTL_REFS_VOLUME_ATTESTATION_ATTESTED_WITH_TPM                     = 0x00000004,
+
+} FSCTL_REFS_VOLUME_ATTESTATION_ATTESTED_STATE;
+
+DEFINE_ENUM_FLAG_OPERATORS( FSCTL_REFS_VOLUME_ATTESTATION_ATTESTED_STATE )
+
+typedef struct _FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_INPUT_BUFFER {
+
+    ULONG Size;
+    ULONG Flags;
+
+    FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_TYPE QueryType;
+    ULONG QueryIndex;
+
+    ULONG Reserved[8];
+
+} FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_INPUT_BUFFER, *PFSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_INPUT_BUFFER;
+
+typedef struct _FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_OUTPUT_BUFFER {
+
+    ULONG Size;
+    ULONG Flags;
+
+    //
+    //  Indicates if the volume is currently attested, and if so by what means.
+    //
+
+    FSCTL_REFS_VOLUME_ATTESTATION_ATTESTED_STATE AttestedState;
+
+    //
+    //  In all query cases the below summary fields are populated.
+    //
+
+    LONG TotalCertificateCount;
+    LONG TotalCertificateSizeBytes;
+    LONG TotalUserPayloadSizeBytes;
+    LONG TotalSupplementalInfoSizeBytes;
+    LONG Reserved1[4];
+
+    //
+    //  The type of query performed, as well as the index of the returned payload.
+    //
+
+    FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_TYPE QueryType;
+    ULONG QueryIndex;
+
+    //
+    //  When QueryType is FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_QUERY_CERTIFICATE
+    //  the below field provides the certificate type.
+    //
+
+    FSCTL_REFS_VOLUME_ATTESTATION_CERTIFICATE_TYPE CertificateType;
+
+    //
+    //  The system time (UTC) at which this payload was inserted into the filesystem.
+    //
+
+    ULONGLONG PayloadInsertionTime;
+
+    //
+    //  Offset and size of the attached payload, whose type is determined by QueryType.
+    //
+
+    ULONG PayloadOffset;
+    ULONG PayloadSize;
+
+    ULONG Reserved2[6];
+
+} FSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_OUTPUT_BUFFER, *PFSCTL_REFS_VOLUME_ATTESTATION_QUERY_STATUS_OUTPUT_BUFFER;
+
+#endif // #if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
     
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_RS5) || (NTDDI_VERSION >= NTDDI_WIN8) //Win8 check is for backward compatibility.
@@ -18189,6 +18370,7 @@ KeSetKernelStackSwapEnable (
 _Requires_lock_not_held_(Number)
 _Acquires_lock_(Number)
 _IRQL_raises_(DISPATCH_LEVEL)
+_IRQL_saves_
 NTKERNELAPI
 KIRQL
 FASTCALL
@@ -18213,6 +18395,7 @@ KeReleaseQueuedSpinLock (
 #if (NTDDI_VERSION >= NTDDI_WINXP)
 _Must_inspect_result_
 _Post_satisfies_(return == 1 || return == 0)
+_Success_(return != 0)
 NTKERNELAPI
 LOGICAL
 FASTCALL
@@ -18256,6 +18439,8 @@ KeAcquireSpinLockRaiseToSynch (
 #endif 
 
 #define INVALID_PROCESSOR_INDEX     0xffffffff
+
+// end_ntoshvp
 
 NTSTATUS
 KeGetProcessorNumberFromIndex (
@@ -18414,6 +18599,7 @@ ExDisableResourceBoostLite (
 // end_ntosp
 
 #define TOKEN_SYSTEM_MANAGED_ADMIN_FULL_TOKEN       0x08000000
+#define TOKEN_REF_SYSTEM_MANAGED_ADMIN_FULL_TOKEN   0x10000000
 
 
 typedef struct _SE_EXPORTS {
@@ -21389,6 +21575,59 @@ ObInsertObject(
     );
 #endif
 
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+
+//
+// ObCloseHandleWithResult uses this structure to report any side-effects of closing
+// a handle, such as deleting a file or link. The caller sets the version number to
+// indicate what information they can understand in the close result. Upon return, the
+// OS sets the ObjectType field to indicate what type of object was closed and the
+// appropriate union member to report the effect of the close.
+//
+
+// Supports File objects.
+#define OBJECT_CLOSE_RESULT_VERSION_V1          1
+
+#define OBJECT_CLOSE_RESULT_CURRENT_VERSION     OBJECT_CLOSE_RESULT_VERSION_V1
+
+typedef enum _OBJECT_CLOSE_TYPE
+{
+    ObjectCloseResultNotSupported = 0,
+    ObjectCloseFile,
+} OBJECT_CLOSE_TYPE;
+typedef OBJECT_CLOSE_TYPE* POBJECT_CLOSE_TYPE;
+
+typedef struct _OBJECT_CLOSE_RESULT
+{
+    ULONG Version;
+    OBJECT_CLOSE_TYPE ObjectType;
+    union
+    {
+        // Requires Version >= OBJECT_CLOSE_RESULT_VERSION_V1. Values are FILE_CLEANUP_*
+        // from ntifs.h.
+        ULONG File;
+    } DUMMYUNIONNAME;
+} OBJECT_CLOSE_RESULT;
+typedef OBJECT_CLOSE_RESULT* POBJECT_CLOSE_RESULT;
+
+// begin_ntosifs begin_nthal
+
+typedef struct _OBJECT_CLOSE_RESULT OBJECT_CLOSE_RESULT, *POBJECT_CLOSE_RESULT;
+
+// end_ntosifs end_nthal
+
+NTKERNELAPI
+NTSTATUS
+ObCloseHandleWithResult (
+    _In_ _Post_ptr_invalid_ HANDLE Handle,
+    _In_ KPROCESSOR_MODE PreviousMode,
+    _In_ ULONG ResultBufferSize,
+    _Inout_ POBJECT_CLOSE_RESULT Result
+    );
+
+#endif // NTDDI_VERSION >= NTDDI_WIN11_DT
+
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
 NTKERNELAPI
 NTSTATUS
@@ -23446,11 +23685,17 @@ FsRtlCheckOplock (
 
 #if (NTDDI_VERSION >= NTDDI_WIN7)
 //
-//  Flags for FsRtlOplockFsctrlEx
+//  Flags for FsRtlOplockFsctrlEx.
 //
 
-#define OPLOCK_FSCTRL_FLAG_ALL_KEYS_MATCH   0x00000001
+#define OPLOCK_FSCTRL_FLAG_ALL_KEYS_MATCH                   0x00000001
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_DT)
+#define OPLOCK_FSCTRL_FLAG_NON_CACHED_OPEN_PRESENT          0x00000004
 #endif
+
+
+#endif // (NTDDI_VERSION >= NTDDI_WIN7)
 
 #if (NTDDI_VERSION >= NTDDI_VISTASP1)
 _When_(Flags | OPLOCK_FLAG_BACK_OUT_ATOMIC_OPLOCK, _Must_inspect_result_)
@@ -23467,7 +23712,6 @@ FsRtlCheckOplockEx (
     );
 
 #endif
-
 
 #if (NTDDI_VERSION >= NTDDI_WINBLUE)
 _When_(CompletionRoutine != NULL, _Must_inspect_result_)
@@ -24529,7 +24773,7 @@ typedef struct _FSRTL_PER_STREAM_CONTEXT {
 
 #define FsRtlSupportsPerStreamContexts(_fo)                     \
     ((NULL != FsRtlGetPerStreamContextPointer(_fo)) &&          \
-     (FsRtlGetPerStreamContextPointer(_fo)->Flags2 & FSRTL_FLAG2_SUPPORTS_FILTER_CONTEXTS))
+     (ReadUCharNoFence(&(FsRtlGetPerStreamContextPointer(_fo)->Flags2)) & FSRTL_FLAG2_SUPPORTS_FILTER_CONTEXTS))
 
 //
 //  Associate the context at Ptr with the given stream.  The Ptr structure
@@ -25809,6 +26053,18 @@ typedef enum _SRV_INSTANCE_TYPE {
     //
 
     SrvInstanceTypeVSMB    = 5,
+
+    //
+    // Internal instance of SRV used by cascades.
+    //
+
+    SrvInstanceTypeSOV     = 6,
+
+    //
+    // Internal instance of SRV used by VM live migration
+    //
+
+    SrvInstanceTypeVMLM    = 7,
 
 } SRV_INSTANCE_TYPE, *PSRV_INSTANCE_TYPE;
 
@@ -29400,8 +29656,8 @@ typedef struct _SEC_TRAFFIC_SECRETS {
 
 #define SECPKG_CRED_ATTR_NAMES        1
 #define SECPKG_CRED_ATTR_SSI_PROVIDER 2
-#define SECPKG_CRED_ATTR_KDC_PROXY_SETTINGS     3 // aliases SECPKG_CRED_ATTR_KDC_NETWORK_SETTINGS
-#define SECPKG_CRED_ATTR_KDC_NETWORK_SETTINGS   3 // aliases SECPKG_CRED_ATTR_KDC_PROXY_SETTINGS
+#define SECPKG_CRED_ATTR_KDC_PROXY_SETTINGS 3
+#define SECPKG_CRED_ATTR_KDC_NETWORK_SETTINGS 3
 #define SECPKG_CRED_ATTR_CERT         4
 #define SECPKG_CRED_ATTR_PAC_BYPASS   5
 

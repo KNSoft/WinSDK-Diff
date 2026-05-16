@@ -1,60 +1,48 @@
-//$TAG BIZDEV
-//  $IPCategory:     
-//  $DealPointID:    118992
-//  $AgreementName:  tuning license dx9
-//  $AgreementType:  inbound license
-//  $ExternalOrigin: intel
-//$ENDTAG
-
-//$TAG ENGR 
-//  $Owner:    bryant
-//  $Module:   crts_crtw32
-//
-//$ENDTAG
-
-/***
-*** Copyright (C) 1985-1999 Intel Corporation.  All rights reserved.
-***
-*** The information and source code contained herein is the exclusive
-*** property of Intel Corporation and may not be disclosed, examined
-*** or reproduced in whole or in part without explicit written authorization
-*** from the company.
-***
-****/
+/*
+ *  Copyright (C) 1985-2015 Intel Corporation.
+ *
+ *  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ */
 
 /*
  * Definitions and declarations for use with compiler intrinsics.
  */
 
+#pragma once
 #ifndef _MMINTRIN_H_INCLUDED
 #define _MMINTRIN_H_INCLUDED
 #ifndef __midl
 
+#if !defined(_M_IX86) && !defined(_M_X64) && !(defined(_M_ARM64) && defined(USE_SOFT_INTRINSICS))
+#error This header is specific to X86, X64, ARM64, and ARM64EC targets
+#endif
+
 #include <crtdefs.h>
 
-#if defined(_M_CEE_PURE)
+#if defined (_M_CEE_PURE)
         #error ERROR: MM intrinsics not supported in the pure mode!
-#else
+#else  /* defined (_M_CEE_PURE) */
 
 #if defined __cplusplus
 extern "C" { /* Begin "C" */
 /* Intrinsics use C name-mangling.
  */
-#endif /* __cplusplus */
+#endif  /* defined __cplusplus */
 
-typedef union __declspec(intrin_type) _CRT_ALIGN(8) __m64
+typedef union __declspec(intrin_type) __declspec(align(8)) __m64
 {
     unsigned __int64    m64_u64;
     float               m64_f32[2];
     __int8              m64_i8[8];
     __int16             m64_i16[4];
-    __int32             m64_i32[2];    
+    __int32             m64_i32[2];
     __int64             m64_i64;
     unsigned __int8     m64_u8[8];
     unsigned __int16    m64_u16[4];
     unsigned __int32    m64_u32[2];
 } __m64;
 
+#if defined(_M_IX86)
 /* General support intrinsics */
 void  _m_empty(void);
 __m64 _m_from_int(int _I);
@@ -190,14 +178,13 @@ __m64 _mm_setr_pi8(char _B7, char _B6, char _B5, char _B4,
 #define _mm_cmpgt_pi8     _m_pcmpgtb
 #define _mm_cmpgt_pi16    _m_pcmpgtw
 #define _mm_cmpgt_pi32    _m_pcmpgtd
-
+#endif // defined(_M_IX86)
 
 #if defined __cplusplus
 }; /* End "C" */
-#endif /* __cplusplus */
+#endif  /* defined __cplusplus */
 
-#endif /* defined(_M_CEE_PURE) */
-#endif
-#endif /* _MMINTRIN_H_INCLUDED */
-
+#endif  /* defined (_M_CEE_PURE) */
+#endif  /* __midl */
+#endif  /* _MMINTRIN_H_INCLUDED */
 /* 88bf0570-3001-4e78-a5f2-be5765546192 */ 

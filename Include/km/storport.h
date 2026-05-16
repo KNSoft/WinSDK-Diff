@@ -368,8 +368,7 @@ typedef struct _SCSI_PNP_REQUEST_BLOCK {
 #define SRB_FUNCTION_GET_DUMP_INFO          0x2a
 #define SRB_FUNCTION_FREE_DUMP_INFO         0x2b
 
-#define SRB_FUNCTION_NVMEOF_OPERATION       0x2c
-
+#define SRB_FUNCTION_NVMEOF_OPERATION                 0x2c
 #define SRB_FUNCTION_MINIPORT_PASSTHROUGH_REQUEST     0x2d
 
 //
@@ -6762,11 +6761,16 @@ typedef union _TWO_BYTE {
 // This macro has the effect of Bit = log2(Data)
 //
 
-#define WHICH_BIT(Data, Bit) {          \
-    ULONG idx;                          \
-    BitScanReverse(&idx, (Data));       \
-    (Bit) = (UCHAR)idx;                 \
-    }
+#define WHICH_BIT(Data, Bit) {                      \
+    UCHAR tmp;                                      \
+    for (tmp = 0; tmp < 32; tmp++) {                \
+        if (((Data) >> tmp) == 1) {                 \
+            break;                                  \
+        }                                           \
+    }                                               \
+    NT_ASSERT(tmp != 32);                           \
+    (Bit) = tmp;                                    \
+}
 
 //
 // Define alignment requirements for variable length components in extended SRB.
@@ -10590,7 +10594,14 @@ typedef enum _STORPORT_FUNCTION_CODE {
     ExtFunctionStorMQRemoveController,
     ExtFunctionNvmeIceIoStartEx,
     ExtFunctionQueryNvmeIceSupport,
-    ExtFunctionQueueWorkItemToNode
+    ExtFunctionQueueWorkItemToNode,
+    ExtFunctionAddChildAdapter,
+    ExtFunctionRemoveChildAdapter,
+    ExtFunctionGetParentAdapterExtension,
+    ExtFunctionNvmeIceQueryNvmeCapabilities,
+    ExtFunctionNvmeIceConfigureExclusionRanges,
+    ExtFunctionNvmeIceEnableNvmeDevice,
+    ExtFunctionGetRequestCryptoInfoEx
 
 } STORPORT_FUNCTION_CODE, *PSTORPORT_FUNCTION_CODE;
 
@@ -11307,7 +11318,6 @@ typedef struct _MINIPORT_DUMP_POINTERS {
 } MINIPORT_DUMP_POINTERS, *PMINIPORT_DUMP_POINTERS;
 
 
-    
     
     
     
@@ -13923,141 +13933,6 @@ StorPortFreeHostMemoryBuffer(
                                     PhysicalAddressRangeCount);
 }
 
-_Success_(return == STOR_STATUS_SUCCESS)
-ULONG
-FORCEINLINE
-StorPortIsDriverHotSwapEnabled (
-    _In_opt_ _Null_ PVOID HwDeviceExtension,
-    _In_ PVOID DriverObject
-    )
-{
-    ULONG Status = STOR_STATUS_NOT_IMPLEMENTED;
-
-#if (NTDDI_VERSION >= NTDDI_WIN10_CU)
-
-    Status = StorPortExtendedFunction(ExtFunctionIsDriverHotSwapEnabled,
-                                      HwDeviceExtension,
-                                      DriverObject);
-
-#else
-
-    UNREFERENCED_PARAMETER(HwDeviceExtension);
-    UNREFERENCED_PARAMETER(DriverObject);
-
-#endif
-
-    return Status;
-}
-
-//
-// Opaque pointer for DRIVER_PROXY_EXTENSION.
-//
-
-typedef PVOID PSTOR_DRIVER_PROXY_EXTENSION;
-
-_Success_(return == STOR_STATUS_SUCCESS)
-ULONG
-FORCEINLINE
-StorPortRegisterDriverProxy (
-    _In_opt_ _Null_ PVOID HwDeviceExtension,
-    _In_ PVOID DriverObject,
-    _Out_ PSTOR_DRIVER_PROXY_EXTENSION *ProxyExtension
-    )
-{
-    ULONG Status = STOR_STATUS_NOT_IMPLEMENTED;
-
-#if (NTDDI_VERSION >= NTDDI_WIN10_CU)
-
-    Status = StorPortExtendedFunction(ExtFunctionRegisterDriverProxy,
-                                      HwDeviceExtension,
-                                      DriverObject,
-                                      ProxyExtension);
-#else
-
-    UNREFERENCED_PARAMETER(HwDeviceExtension);
-    UNREFERENCED_PARAMETER(DriverObject);
-    UNREFERENCED_PARAMETER(ProxyExtension);
-
-#endif
-
-    return Status;
-
-}
-
-//
-// Mirrors DRIVER_PROXY_ENDPOINT_INFORMATION defined in io_x.h.
-//
-
-typedef ULONG STOR_DRIVER_PROXY_ENDPOINT_FUNCTION_ID,*PSTOR_DRIVER_PROXY_ENDPOINT_FUNCTION_ID;
-
-typedef struct _STOR_DRIVER_PROXY_ENDPOINT_INFORMATION {
-    STOR_DRIVER_PROXY_ENDPOINT_FUNCTION_ID Id;
-    PVOID EndpointFunction;
-    ULONG ParameterCount;
-} STOR_DRIVER_PROXY_ENDPOINT_INFORMATION, *PSTOR_DRIVER_PROXY_ENDPOINT_INFORMATION;
-
-_Success_(return == STOR_STATUS_SUCCESS)
-ULONG
-FORCEINLINE
-StorPortRegisterDriverProxyEndpoints (
-    _In_opt_ _Null_ PVOID HwDeviceExtension,
-    _In_ PSTOR_DRIVER_PROXY_EXTENSION ProxyExtension,
-    _Inout_count_(Count) PSTOR_DRIVER_PROXY_ENDPOINT_INFORMATION EndpointInfo,
-    _In_ ULONG Count
-    )
-{
-    ULONG Status = STOR_STATUS_NOT_IMPLEMENTED;
-
-#if (NTDDI_VERSION >= NTDDI_WIN10_CU)
-
-    Status = StorPortExtendedFunction(ExtFunctionRegisterDriverProxyEndpoints,
-                                    HwDeviceExtension,
-                                    ProxyExtension,
-                                    EndpointInfo,
-                                    Count);
-#else
-
-    UNREFERENCED_PARAMETER(HwDeviceExtension);
-    UNREFERENCED_PARAMETER(ProxyExtension);
-    UNREFERENCED_PARAMETER(EndpointInfo);
-    UNREFERENCED_PARAMETER(Count);
-
-#endif
-
-    return Status;
-}
-
-_Success_(return == STOR_STATUS_SUCCESS)
-ULONG
-FORCEINLINE
-StorPortGetDriverProxyEndpointWrapper (
-    _In_opt_ _Null_ PVOID HwDeviceExtension,
-    _In_ PSTOR_DRIVER_PROXY_EXTENSION ProxyExtension,
-    _In_ STOR_DRIVER_PROXY_ENDPOINT_FUNCTION_ID Id,
-    _Out_ PVOID *Wrapper
-    )
-{
-    ULONG Status = STOR_STATUS_NOT_IMPLEMENTED;
-
-#if (NTDDI_VERSION >= NTDDI_WIN10_CU)
-
-    Status = StorPortExtendedFunction(ExtFunctionGetDriverProxyEndpointWrapper,
-                                    HwDeviceExtension,
-                                    ProxyExtension,
-                                    Id,
-                                    Wrapper);
-
-#else
-
-    UNREFERENCED_PARAMETER(HwDeviceExtension);
-    UNREFERENCED_PARAMETER(ProxyExtension);
-    UNREFERENCED_PARAMETER(Id);
-    UNREFERENCED_PARAMETER(Wrapper);
-
-#endif
-
-    return Status;
-}
 
 //
 // Runtime Power Management Data Structures and Functions
@@ -15379,6 +15254,7 @@ Return Value:
 
     return status;
 }
+
 
 //
 // Storport interfaces to allow miniports to log ETW events.
@@ -19131,6 +19007,193 @@ Returns:
 
     UNREFERENCED_PARAMETER(HwAdapterExtension);
     UNREFERENCED_PARAMETER(ControllerExtension);
+
+#endif
+
+    return status;
+}
+
+typedef
+void
+STOR_ADD_CHILD_ADAPTER_COMPLETION_CALLBACK(
+   _In_ PVOID ParentDeviceExtension,
+   _In_ PVOID ChildDeviceExtension,
+   _In_ ULONG StorStatus
+    );
+typedef STOR_ADD_CHILD_ADAPTER_COMPLETION_CALLBACK *PSTOR_ADD_CHILD_ADAPTER_COMPLETION_CALLBACK;
+
+// StorPortExtendedFunction is a polymorphic function that handles many different types of requests,
+// making it difficult to annotate in a manner that would cover all possible uses.
+// The scanning engine does not recognize the StorPortExtendedFunction wrapper as memmory allocater.
+// The scanning engine should assume the memory was acquired as asked
+// This assumption requires the suppressing the PFD warning generated (28194, 28195 - memory is not acquired and aliased before function exits)
+_Success_(return == STOR_STATUS_SUCCESS)
+ULONG
+FORCEINLINE
+#pragma warning(suppress: 6001 6101 6388 28194 28195) // because PREFast cannot see inside polymorphic function StorPortExtendedFunction()
+StorPortAddChildAdapter(
+    _In_ PVOID HwParentAdapterExtension,
+    _In_ PHW_INITIALIZATION_DATA HwChildInitializationData,
+    _In_ ULONG Flags,
+    _In_ PSTOR_ADD_CHILD_ADAPTER_COMPLETION_CALLBACK CompletionCallback
+)
+/*
+Description:
+
+    A StorMQ miniport can call this function to add a child adapter to the specified parent adapter.
+    The add occurs asynchronously and final status will be delivered to a caller-supplied callback routine.
+
+Parameters:
+
+    HwParentAdapterExtension - The miniport's adapter extension for the instance parenting the new child adapter.
+
+    HwChildInitializationData - The initialization data pertaining to the child adapter.
+
+    Flags - Any flags impacting this operation. Currently reserved and must be set to 0.
+
+    CompletionCallback - Provides the status of the add operation and, if successful, provides both parent and child extensions.
+
+Returns:
+
+    STOR_STATUS_SUCCESS if the child adapter's add has been successfully initiated (this does not guarantee it will complete successfully)
+
+    STOR_STATUS_NOT_IMPLEMENTED if the API is called on the OS that not support it.
+
+    STOR_STATUS_INVALID_PARAMETER if there is an invalid parameter.
+
+*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
+    status = StorPortExtendedFunction(ExtFunctionAddChildAdapter,
+                                      HwParentAdapterExtension,
+                                      HwChildInitializationData,
+                                      Flags,
+                                      CompletionCallback);
+
+#else
+
+    UNREFERENCED_PARAMETER(HwParentAdapterExtension);
+    UNREFERENCED_PARAMETER(HwChildInitializationData);
+    UNREFERENCED_PARAMETER(Flags);
+    UNREFERENCED_PARAMETER(CompletionCallback);
+
+#endif
+
+    return status;
+}
+
+typedef
+void
+STOR_REMOVE_CHILD_ADAPTER_COMPLETION_CALLBACK(
+   _In_ PVOID ParentDeviceExtension,
+   _In_ PVOID ChildDeviceExtension,
+   _In_ ULONG StorStatus
+    );
+typedef STOR_REMOVE_CHILD_ADAPTER_COMPLETION_CALLBACK *PSTOR_REMOVE_CHILD_ADAPTER_COMPLETION_CALLBACK;
+
+// StorPortExtendedFunction is a polymorphic function that handles many different types of requests,
+// making it difficult to annotate in a manner that would cover all possible uses.
+// The scanning engine does not recognize the StorPortExtendedFunction wrapper as memmory allocater.
+// The scanning engine should assume the memory was acquired as asked
+// This assumption requires the suppressing the PFD warning generated (28194, 28195 - memory is not acquired and aliased before function exits)
+_Success_(return == STOR_STATUS_SUCCESS)
+ULONG
+FORCEINLINE
+#pragma warning(suppress: 6001 6101 6388 28194 28195) // because PREFast cannot see inside polymorphic function StorPortExtendedFunction()
+StorPortRemoveChildAdapter(
+    _In_ PVOID HwParentAdapterExtension,
+    _In_ PSTOR_REMOVE_CHILD_ADAPTER_COMPLETION_CALLBACK CompletionCallback
+)
+/*
+Description:
+
+    A StorMQ miniport can call this function to remove a child adapter from the specified parent adapter.
+    The removal occurs asynchronously and final status will be delivered to a caller-supplied callback routine.
+
+Parameters:
+
+    HwParentAdapterExtension - The miniport's adapter extension for the instance parenting the child adapter.
+
+    CompletionCallback - Provides the status of the add operation and, if successful, provides both parent and child extensions.
+
+Returns:
+
+    STOR_STATUS_SUCCESS if the child adapter's remove has been successfully initiated (this does not guarantee it will complete successfully)
+
+    STOR_STATUS_NOT_IMPLEMENTED if the API is called on the OS that not support it.
+
+    STOR_STATUS_INVALID_PARAMETER if there is an invalid parameter.
+
+*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
+    status = StorPortExtendedFunction(ExtFunctionRemoveChildAdapter,
+                                      HwParentAdapterExtension,
+                                      CompletionCallback);
+
+#else
+
+    UNREFERENCED_PARAMETER(HwParentAdapterExtension);
+    UNREFERENCED_PARAMETER(CompletionCallback);
+
+#endif
+
+    return status;
+}
+
+// StorPortExtendedFunction is a polymorphic function that handles many different types of requests,
+// making it difficult to annotate in a manner that would cover all possible uses.
+// The scanning engine does not recognize the StorPortExtendedFunction wrapper as memmory allocater.
+// The scanning engine should assume the memory was acquired as asked
+// This assumption requires the suppressing the PFD warning generated (28194, 28195 - memory is not acquired and aliased before function exits)
+_Success_(return == STOR_STATUS_SUCCESS)
+ULONG
+FORCEINLINE
+#pragma warning(suppress: 6001 6101 6388 28194 28195) // because PREFast cannot see inside polymorphic function StorPortExtendedFunction()
+StorPortGetParentAdapterExtension(
+    _In_ PVOID HwChildAdapterExtension,
+    _Outptr_ PVOID *HwParentAdapterExtension
+)
+/*
+Description:
+
+    A StorMQ miniport uses this function to allow a child adapter to query its associated parent adapter extension.
+    If the passed-in extension does not represent a child adapter then the function fails.
+
+Parameters:
+
+    HwChildAdapterExtension - The adapter extension of the child.
+
+    HwParentAdapterExtension - The adapter extension of the associated parent.
+
+Returns:
+
+    STOR_STATUS_SUCCESS if the child adapter's parent was found.
+
+    STOR_STATUS_NOT_IMPLEMENTED if the API is called on the OS that not support it.
+
+    STOR_STATUS_INVALID_PARAMETER if there is an invalid parameter.
+
+*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
+    status = StorPortExtendedFunction(ExtFunctionGetParentAdapterExtension,
+                                      HwChildAdapterExtension,
+                                      HwParentAdapterExtension);
+
+#else
+
+    UNREFERENCED_PARAMETER(HwChildAdapterExtension);
+    UNREFERENCED_PARAMETER(HwParentAdapterExtension);
 
 #endif
 

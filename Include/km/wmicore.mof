@@ -347,6 +347,33 @@ class WHEAErrorInjectionMethods : WHEA
         [in] uint64 Parameter4,
         [out] uint32 Status
         );
+
+    [WmiMethodId(3),
+     Implemented,
+     DisplayName("Inject Write Vendor Defined") : amended,
+     HeaderName("INJECT_WRITE_VENDOR_DEFINED"),
+     Description("Writes to the vendor defined area")  : amended
+    ]
+    void InjectWriteVendorDefinedRtn(
+        [in] uint32 Offset,
+        [in] uint32 BytesToWrite,
+        [in, WmiSizeIs("BytesToWrite")] uint8 Data[],
+        [out] uint32 Status
+        );
+
+    [WmiMethodId(4),
+     Implemented,
+     DisplayName("Inject Read Vendor Defined") : amended,
+     HeaderName("INJECT_READ_VENDOR_DEFINED"),
+     Description("Reads from the vendor defined area")  : amended
+    ]
+    void InjectReadVendorDefinedRtn(
+        [in] uint32 Offset,
+        [in] uint32 BytesToRead,
+        [out] uint32 Status,
+        [out] uint32 BytesRead,
+        [out, WmiSizeIs("BytesRead")] uint8 OutputBuffer[]
+        );
 };
 
 [WMI,
@@ -20078,6 +20105,17 @@ class ObTrace:MSNT_SystemTrace
 };
 
 [Dynamic,
+ Description("Object Manager Events") : amended,
+ Guid("{89497f50-effe-4440-8cf2-ce6b1cdcaca7}"),
+ EventVersion(3),
+ DisplayName("Object") : amended
+]
+class ObTrace_V3:MSNT_SystemTrace
+{
+
+};
+
+[Dynamic,
  Description("Handle Create/Close Events") : amended,
  EventType{32, 33},
  EventTypeName{"CreateHandle", "CloseHandle"} : amended
@@ -20112,7 +20150,7 @@ class ObHandleEvent:ObTrace
  EventType(34),
  EventTypeName("DuplicateHandle") : amended
 ]
-class ObHandleDuplicateEvent:ObTrace
+class ObHandleDuplicateEvent:ObTrace_V3
 {
     [WmiDataId(1),
      Description("Object"): amended,
@@ -20896,43 +20934,43 @@ class ContextRegistersAMD64:PerfInfo_V2
      Description("Rbp") : amended,
      read]
      uint64 Rbp;
-    [WmiDataId(7),
+    [WmiDataId(8),
      Description("Rsi") : amended,
      read]
      uint64 Rsi;
-    [WmiDataId(8),
+    [WmiDataId(9),
      Description("Rdi") : amended,
      read]
      uint64 Rdi;
-    [WmiDataId(9),
+    [WmiDataId(10),
      Description("R8") : amended,
      read]
      uint64 R8;
-    [WmiDataId(10),
+    [WmiDataId(11),
      Description("R9") : amended,
      read]
      uint64 R9;
-    [WmiDataId(11),
+    [WmiDataId(12),
      Description("R10") : amended,
      read]
      uint64 R10;
-    [WmiDataId(12),
+    [WmiDataId(13),
      Description("R11") : amended,
      read]
      uint64 R11;
-    [WmiDataId(13),
+    [WmiDataId(14),
      Description("R12") : amended,
      read]
      uint64 R12;
-    [WmiDataId(14),
+    [WmiDataId(15),
      Description("R13") : amended,
      read]
      uint64 R13;
-    [WmiDataId(15),
+    [WmiDataId(16),
      Description("R14") : amended,
      read]
      uint64 R14;
-    [WmiDataId(16),
+    [WmiDataId(17),
      Description("R15") : amended,
      read]
      uint64 R15;

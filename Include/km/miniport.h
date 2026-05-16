@@ -407,8 +407,20 @@ Revision History:
 #endif
 #endif
 
+#if !defined(DECLSPEC_PAGED_CODE)
+
+#if defined(_KERNEL_MODE)
+#define DECLSPEC_PAGED_CODE __declspec(code_seg("PAGE"))
+#else
+#define DECLSPEC_PAGED_CODE
+#endif // defined(_KERNEL_MODE)
+
+#endif // !defined(DECLSPEC_PAGED_CODE)
+
 #ifndef FORCEINLINE
-#if (_MSC_VER >= 1200)
+#if __clang__
+#define FORCEINLINE __attribute__((always_inline)) inline
+#elif (_MSC_VER >= 1200)
 #define FORCEINLINE __forceinline
 #else
 #define FORCEINLINE __inline
@@ -1305,7 +1317,7 @@ char _RTL_CONSTANT_STRING_type_check(const void *s);
 #define RTL_CONSTANT_STRING(s) \
 { \
     sizeof( s ) - sizeof( (s)[0] ), \
-    sizeof( s ) / sizeof(_RTL_CONSTANT_STRING_type_check(s)), \
+    ((void)sizeof(_RTL_CONSTANT_STRING_type_check(s)), sizeof( s )), \
     _RTL_CONSTANT_STRING_remove_const_macro(s) \
 }
 // begin_winnt
@@ -1368,12 +1380,14 @@ typedef KIRQL *PKIRQL;
 
 void _Prefast_unreferenced_parameter_impl_(const char*, ...);
 #define UNREFERENCED_PARAMETER(P)          _Prefast_unreferenced_parameter_impl_("PREfast", ((void) (P), 0))
+#define UNREFERENCED_VARIABLE(V)           _Prefast_unreferenced_parameter_impl_("PREfast", ((void) (V), 0))
 #define DBG_UNREFERENCED_PARAMETER(P)      _Prefast_unreferenced_parameter_impl_("PREfast", ((void) (P), 0))
 #define DBG_UNREFERENCED_LOCAL_VARIABLE(V) _Prefast_unreferenced_parameter_impl_("PREfast", ((void) (V), 0))
 
 #else // _PREFAST_
 
 #define UNREFERENCED_PARAMETER(P)          (P)
+#define UNREFERENCED_VARIABLE(V)           (&V)
 #define DBG_UNREFERENCED_PARAMETER(P)      (P)
 #define DBG_UNREFERENCED_LOCAL_VARIABLE(V) (V)
 
@@ -1391,6 +1405,23 @@ void _Prefast_unreferenced_parameter_impl_(const char*, ...);
         (P) = (P); \
     } \
     /*lint -restore */
+
+#ifdef __clang__
+#define UNREFERENCED_VARIABLE(V) \
+    /*lint -save -e527 -e530 */ \
+    { \
+        (void)&V; \
+    } \
+    /*lint -restore */
+#else
+#define UNREFERENCED_VARIABLE(V) \
+    /*lint -save -e527 -e530 */ \
+    { \
+        (V) = (V); \
+    } \
+    /*lint -restore */
+#endif
+
 #define DBG_UNREFERENCED_PARAMETER(P)      \
     /*lint -save -e527 -e530 */ \
     { \
@@ -1702,28 +1733,28 @@ _interlockedbittestandreset64 (
 _Success_(return!=0)
 BOOLEAN
 _BitScanForward (
-    _Out_ ULONG *Index,
+    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
     _In_ ULONG Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanReverse (
-    _Out_ ULONG *Index,
+    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
     _In_ ULONG Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanForward64 (
-    _Out_ ULONG *Index,
+    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
     _In_ ULONG64 Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanReverse64 (
-    _Out_ ULONG *Index,
+    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
     _In_ ULONG64 Mask
     );
 
@@ -1736,6 +1767,7 @@ _BitScanReverse64 (
 // Interlocked intrinsic functions.
 //
 
+#define InterlockedCompareExchange8 _InterlockedCompareExchange8
 #define InterlockedIncrement16 _InterlockedIncrement16
 #define InterlockedDecrement16 _InterlockedDecrement16
 #define InterlockedCompareExchange16 _InterlockedCompareExchange16
@@ -1761,6 +1793,10 @@ _BitScanReverse64 (
 #define InterlockedCompareExchangePointer _InterlockedCompareExchangePointer
 
 #if !defined(_M_ARM64EC)
+#define InterlockedCompareExchange8        _InterlockedCompareExchange8
+#define InterlockedCompareExchangeAcquire8 _InterlockedCompareExchange8
+#define InterlockedCompareExchangeRelease8 _InterlockedCompareExchange8
+#define InterlockedCompareExchangeNoFence8 _InterlockedCompareExchange8
 #define InterlockedIncrementAcquire16 _InterlockedIncrement16
 #define InterlockedIncrementRelease16 _InterlockedIncrement16
 #define InterlockedIncrementNoFence16 _InterlockedIncrement16
@@ -1867,6 +1903,13 @@ _BitScanReverse64 (
 #define InterlockedDecrementSizeT(a) InterlockedDecrement64((LONG64 *)a)
 #define InterlockedDecrementSizeTNoFence(a) InterlockedDecrement64((LONG64 *)a)
 #endif // !defined(_M_ARM64EC)
+
+CHAR
+InterlockedCompareExchange8 (
+    _Inout_ _Interlocked_operand_ CHAR volatile *Destination,
+    _In_ CHAR ExChange,
+    _In_ CHAR Comperand
+    );
 
 SHORT
 InterlockedIncrement16 (
@@ -2037,6 +2080,7 @@ InterlockedExchangePointer(
     );
 
 #if !defined(_M_ARM64EC)
+#pragma intrinsic(_InterlockedCompareExchange8)
 #pragma intrinsic(_InterlockedIncrement16)
 #pragma intrinsic(_InterlockedDecrement16)
 #pragma intrinsic(_InterlockedCompareExchange16)
@@ -3080,6 +3124,10 @@ _InlineBitScanReverse64 (
 #define InterlockedXorNoFence8 _InterlockedXor8_nf
 #define InterlockedExchangeNoFence8 _InterlockedExchange8_nf
 #define InterlockedExchangeAcquire8 _InterlockedExchange8_acq
+#define InterlockedCompareExchange8        _InterlockedCompareExchange8
+#define InterlockedCompareExchangeAcquire8 _InterlockedCompareExchange8_acq
+#define InterlockedCompareExchangeRelease8 _InterlockedCompareExchange8_rel
+#define InterlockedCompareExchangeNoFence8 _InterlockedCompareExchange8_nf
 
 #define InterlockedAndAcquire16 _InterlockedAnd16_acq
 #define InterlockedAndRelease16 _InterlockedAnd16_rel
@@ -3694,6 +3742,10 @@ _BitTestAndSet64(__int64 *Base, __int64 Index)
 #define InterlockedXorNoFence8 _InterlockedXor8_nf
 #define InterlockedExchangeNoFence8 _InterlockedExchange8_nf
 #define InterlockedExchangeAcquire8 _InterlockedExchange8_acq
+#define InterlockedCompareExchange8        _InterlockedCompareExchange8
+#define InterlockedCompareExchangeAcquire8 _InterlockedCompareExchange8_acq
+#define InterlockedCompareExchangeRelease8 _InterlockedCompareExchange8_rel
+#define InterlockedCompareExchangeNoFence8 _InterlockedCompareExchange8_nf
 
 #define InterlockedAndAcquire16 _InterlockedAnd16_acq
 #define InterlockedAndRelease16 _InterlockedAnd16_rel
@@ -3852,9 +3904,15 @@ MemoryBarrier (
     __dmb(_ARM64_BARRIER_SY);
 }
 
+#ifdef __clang__
+#define PreFetchCacheLine(l,a)      __builtin_prefetch((const void *) (a), 0, PF_TEMPORAL_LEVEL_3)
+#define PrefetchForWrite(p)         __builtin_prefetch((const void *) (p), 1, PF_TEMPORAL_LEVEL_3)
+#define ReadForWriteAccess(p)       (__builtin_prefetch((const void *) (p), 1, PF_TEMPORAL_LEVEL_3), (*(p)))
+#else
 #define PreFetchCacheLine(l,a)      __prefetch2((const void *) (a), ARM64_PREFETCH(PLD, L1, KEEP))
 #define PrefetchForWrite(p)         __prefetch2((const void *) (p), ARM64_PREFETCH(PST, L1, KEEP))
 #define ReadForWriteAccess(p)       (__prefetch2((const void *) (p), ARM64_PREFETCH(PST, L1, KEEP)), *(p))
+#endif
 
 #define _DataSynchronizationBarrier()        __dsb(_ARM64_BARRIER_SY)
 #define _InstructionSynchronizationBarrier() __isb(_ARM64_BARRIER_SY)
@@ -3900,7 +3958,13 @@ YieldProcessor (
 //
 //
 
-FORCEINLINE
+//
+// Mark the functions as static to prevent ODR violations.
+//
+
+#define VOLACCESS_STATIC_FORCEINLINE static __forceinline
+
+VOLACCESS_STATIC_FORCEINLINE
 CHAR
 ReadAcquire8 (
     _In_ _Interlocked_operand_ CHAR const volatile *Source
@@ -3923,7 +3987,7 @@ ReadAcquire8 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 CHAR
 ReadNoFence8 (
     _In_ _Interlocked_operand_ CHAR const volatile *Source
@@ -3937,7 +4001,7 @@ ReadNoFence8 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteRelease8 (
     _Out_ _Interlocked_operand_ CHAR volatile *Destination,
@@ -3955,7 +4019,7 @@ WriteRelease8 (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteNoFence8 (
     _Out_ _Interlocked_operand_ CHAR volatile *Destination,
@@ -3968,7 +4032,7 @@ WriteNoFence8 (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 SHORT
 ReadAcquire16 (
     _In_ _Interlocked_operand_ SHORT const volatile *Source
@@ -3991,7 +4055,7 @@ ReadAcquire16 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 SHORT
 ReadNoFence16 (
     _In_ _Interlocked_operand_ SHORT const volatile *Source
@@ -4005,7 +4069,7 @@ ReadNoFence16 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteRelease16 (
     _Out_ _Interlocked_operand_ SHORT volatile *Destination,
@@ -4023,7 +4087,7 @@ WriteRelease16 (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteNoFence16 (
     _Out_ _Interlocked_operand_ SHORT volatile *Destination,
@@ -4036,7 +4100,7 @@ WriteNoFence16 (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 LONG
 ReadAcquire (
     _In_ _Interlocked_operand_ LONG const volatile *Source
@@ -4059,7 +4123,7 @@ ReadAcquire (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 LONG
 ReadNoFence (
     _In_ _Interlocked_operand_ LONG const volatile *Source
@@ -4073,7 +4137,7 @@ ReadNoFence (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteRelease (
     _Out_ _Interlocked_operand_ LONG volatile *Destination,
@@ -4091,7 +4155,7 @@ WriteRelease (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteNoFence (
     _Out_ _Interlocked_operand_ LONG volatile *Destination,
@@ -4104,7 +4168,7 @@ WriteNoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 LONG64
 ReadAcquire64 (
     _In_ _Interlocked_operand_ LONG64 const volatile *Source
@@ -4127,7 +4191,7 @@ ReadAcquire64 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 LONG64
 ReadNoFence64 (
     _In_ _Interlocked_operand_ LONG64 const volatile *Source
@@ -4141,7 +4205,7 @@ ReadNoFence64 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteRelease64 (
     _Out_ _Interlocked_operand_ LONG64 volatile *Destination,
@@ -4159,7 +4223,7 @@ WriteRelease64 (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteNoFence64 (
     _Out_ _Interlocked_operand_ LONG64 volatile *Destination,
@@ -4171,6 +4235,8 @@ WriteNoFence64 (
     __iso_volatile_store64(Destination, Value);
     return;
 }
+
+#undef VOLACCESS_STATIC_FORCEINLINE
 
 FORCEINLINE
 VOID
@@ -4222,6 +4288,15 @@ BarrierAfterRead (
 #define ARM64_TPIDR_EL0         ARM64_SYSREG(3,3,13, 0,2)  // Thread ID Register, User Read/Write [CP15_TPIDRURW]
 #define ARM64_TPIDRRO_EL0       ARM64_SYSREG(3,3,13, 0,3)  // Thread ID Register, User Read Only [CP15_TPIDRURO]
 #define ARM64_TPIDR_EL1         ARM64_SYSREG(3,0,13, 0,4)  // Thread ID Register, Privileged Only [CP15_TPIDRPRW]
+#define ARM64_TPIDR2_EL0        ARM64_SYSREG(3,3,13, 0,5)  // EL0 Read/Write Software Thread ID Register 2
+#define ARM64_SVCR              ARM64_SYSREG(3,3, 4, 2,2)  // Streaming Vector Control Register
+
+//
+// Constants for flags for ARM64_SVCR.
+//
+
+#define ARM64_SVCR_SM                             0x0000000000000001
+#define ARM64_SVCR_ZA                             0x0000000000000002
 
 #pragma intrinsic(_WriteStatusReg)
 #pragma intrinsic(_ReadStatusReg)
@@ -4385,7 +4460,7 @@ PopulationCount64 (
 
     return bitSum;
 
-#endif // (defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64))
+#endif
 }
 
 #endif // !defined(PopulationCount64)
@@ -4843,6 +4918,11 @@ _InlineBitScanReverse64 (
 
 #if !defined(_MANAGED)
 
+#define InterlockedCompareExchange8 _InterlockedCompareExchange8
+#define InterlockedCompareExchangeAcquire8 _InterlockedCompareExchange8
+#define InterlockedCompareExchangeRelease8 _InterlockedCompareExchange8
+#define InterlockedCompareExchangeNoFence8 _InterlockedCompareExchange8
+
 #define InterlockedIncrement16 _InterlockedIncrement16
 #define InterlockedIncrementAcquire16 _InterlockedIncrement16
 #define InterlockedIncrementRelease16 _InterlockedIncrement16
@@ -4862,6 +4942,13 @@ _InlineBitScanReverse64 (
 #define InterlockedCompareExchangeAcquire64 _InterlockedCompareExchange64
 #define InterlockedCompareExchangeRelease64 _InterlockedCompareExchange64
 #define InterlockedCompareExchangeNoFence64 _InterlockedCompareExchange64
+
+CHAR
+InterlockedCompareExchange8 (
+    _Inout_ _Interlocked_operand_ CHAR volatile *Destination,
+    _In_ CHAR ExChange,
+    _In_ CHAR Comperand
+    );
 
 SHORT
 InterlockedIncrement16 (
@@ -4887,6 +4974,7 @@ InterlockedCompareExchange64 (
     _In_ LONG64 Comperand
     );
 
+#pragma intrinsic(_InterlockedCompareExchange8)
 #pragma intrinsic(_InterlockedIncrement16)
 #pragma intrinsic(_InterlockedDecrement16)
 #pragma intrinsic(_InterlockedCompareExchange16)
@@ -5560,6 +5648,18 @@ _mm_pause (
 #endif //_X86_
 
 
+//
+// Mark the functions as static to prevent ODR violations.
+//
+// N.B.: CFORCEINLINE is to be used when __forceinline is required for
+//       correctness.
+//
+
+#define VOLACCESS_STATIC_FORCEINLINE static __forceinline
+#define VOLACCESS_STATIC_CFORCEINLINE VOLACCESS_STATIC_FORCEINLINE
+
+// -----------------------------------------------------------------------------
+
 #if !defined(RC_INVOKED) && !defined(MIDL_PASS)
 #if ((defined(_M_AMD64) || defined(_M_IX86)) && !defined(_M_HYBRID_X86_ARM64) && !defined(_M_ARM64EC)) || defined(_M_CEE_PURE)
 
@@ -5567,21 +5667,56 @@ _mm_pause (
 extern "C" {
 #endif
 
-FORCEINLINE
-CHAR
-ReadAcquire8 (
-    _In_ _Interlocked_operand_ CHAR const volatile *Source
-    )
+/*++
 
-{
+Read/Write*NoFence
 
-    CHAR Value;
+Routine Description:
 
-    Value = *Source;
-    return Value;
-}
+    The Read/Write*NoFence operations are like the C++ memory_order_relaxed.
+    These are implemented using "volatile" access. They are defined to perform
+    exactly as many accesses as are written in the source code and with exactly
+    the size specified in the source code.
 
-FORCEINLINE
+    Accesses are atomic when naturally aligned, which means that a Read access
+    will retrieve exactly the value written by some other atomic Write access
+    and not a mixture of values from multiple write accesses.
+
+    Other memory accesses (including to differing address-taken memory
+    locations) are ordered according to the Compiler's volatile ordering model:
+
+      * MSVC/Clang - volatile memory accesses are ordered in machine code with
+        respect to each other.
+
+      * MSVC - ordinary memory accesses to address-taken memory are ordered in
+        machine code around volatile accesses.
+
+      * Clang - ordinary memory accesses to address-taken memory are NOT
+        ordered if the compiler can prove it's different from the target of
+        the NoFence access.
+
+      * At a hardware level, NoFence memory accesses and all other NoFence or
+        ordinary memory accesses can be reordered. This occurs in the hardware
+        regardless of the apparent order of instructions in the generated
+        machine code.
+
+    If additional ordering is required beyond the above:
+
+      * Use _ReadWriteBarrier()/MemoryBarrierWithoutFence to force the generated
+        code to be in program order.
+
+      * Use MemoryBarrier to force both hardware and the compiler to respect
+        memory barriers.
+
+      * Use Read*Acquire and Write*Release for efficient implementation of a
+        memory access that ordered according to the C11/C++ memory model.
+
+      * For hardware register accesses and Device Memory accesses, use the
+        READ/WRITE_REGISTER functions.
+
+--*/
+
+VOLACCESS_STATIC_FORCEINLINE
 CHAR
 ReadNoFence8 (
     _In_ _Interlocked_operand_ CHAR const volatile *Source
@@ -5595,20 +5730,7 @@ ReadNoFence8 (
     return Value;
 }
 
-FORCEINLINE
-VOID
-WriteRelease8 (
-    _Out_ _Interlocked_operand_ CHAR volatile *Destination,
-    _In_ CHAR Value
-    )
-
-{
-
-    *Destination = Value;
-    return;
-}
-
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteNoFence8 (
     _Out_ _Interlocked_operand_ CHAR volatile *Destination,
@@ -5621,21 +5743,7 @@ WriteNoFence8 (
     return;
 }
 
-FORCEINLINE
-SHORT
-ReadAcquire16 (
-    _In_ _Interlocked_operand_ SHORT const volatile *Source
-    )
-
-{
-
-    SHORT Value;
-
-    Value = *Source;
-    return Value;
-}
-
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 SHORT
 ReadNoFence16 (
     _In_ _Interlocked_operand_ SHORT const volatile *Source
@@ -5649,20 +5757,7 @@ ReadNoFence16 (
     return Value;
 }
 
-FORCEINLINE
-VOID
-WriteRelease16 (
-    _Out_ _Interlocked_operand_ SHORT volatile *Destination,
-    _In_ SHORT Value
-    )
-
-{
-
-    *Destination = Value;
-    return;
-}
-
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteNoFence16 (
     _Out_ _Interlocked_operand_ SHORT volatile *Destination,
@@ -5675,21 +5770,7 @@ WriteNoFence16 (
     return;
 }
 
-FORCEINLINE
-LONG
-ReadAcquire (
-    _In_ _Interlocked_operand_ LONG const volatile *Source
-    )
-
-{
-
-    LONG Value;
-
-    Value = *Source;
-    return Value;
-}
-
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 LONG
 ReadNoFence (
     _In_ _Interlocked_operand_ LONG const volatile *Source
@@ -5703,20 +5784,7 @@ ReadNoFence (
     return Value;
 }
 
-CFORCEINLINE
-VOID
-WriteRelease (
-    _Out_ _Interlocked_operand_ LONG volatile *Destination,
-    _In_ LONG Value
-    )
-
-{
-
-    *Destination = Value;
-    return;
-}
-
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteNoFence (
     _Out_ _Interlocked_operand_ LONG volatile *Destination,
@@ -5729,21 +5797,7 @@ WriteNoFence (
     return;
 }
 
-FORCEINLINE
-LONG64
-ReadAcquire64 (
-    _In_ _Interlocked_operand_ LONG64 const volatile *Source
-    )
-
-{
-
-    LONG64 Value;
-
-    Value = *Source;
-    return Value;
-}
-
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 LONG64
 ReadNoFence64 (
     _In_ _Interlocked_operand_ LONG64 const volatile *Source
@@ -5757,20 +5811,7 @@ ReadNoFence64 (
     return Value;
 }
 
-CFORCEINLINE
-VOID
-WriteRelease64 (
-    _Out_ _Interlocked_operand_ LONG64 volatile *Destination,
-    _In_ LONG64 Value
-    )
-
-{
-
-    *Destination = Value;
-    return;
-}
-
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteNoFence64 (
     _Out_ _Interlocked_operand_ LONG64 volatile *Destination,
@@ -5783,9 +5824,158 @@ WriteNoFence64 (
     return;
 }
 
+/*++
+
+ReadAcquire*
+
+Routine Description:
+
+    Performs an atomic read operation with Acquire ordering. See
+    Read/WriteNoFence for the definition of "atomic".
+
+    Later memory accesses, including both atomic and ordinary accesses to other
+    address-taken locations, that appear after the ReadAcquire in source code,
+    will execute after the Read. See the C/C++ memory model for a formal
+    definition of acquire ordering.
+
+    Informally, acquire ordering is suitable for ensuring that memory accesses
+    do not "float up" above a synchronization-critical operation, like acquiring
+    a lock or checking that a structure is initialized in cases of lazy-init.
+
+--*/
+
+VOLACCESS_STATIC_FORCEINLINE
+CHAR
+ReadAcquire8 (
+    _In_ _Interlocked_operand_ CHAR const volatile *Source
+    )
+
+{
+
+    CHAR Value;
+
+    Value = *Source;
+    return Value;
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+SHORT
+ReadAcquire16 (
+    _In_ _Interlocked_operand_ SHORT const volatile *Source
+    )
+
+{
+
+    SHORT Value;
+
+    Value = *Source;
+    return Value;
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+LONG
+ReadAcquire (
+    _In_ _Interlocked_operand_ LONG const volatile *Source
+    )
+
+{
+
+    LONG Value;
+
+    Value = *Source;
+    return Value;
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+LONG64
+ReadAcquire64 (
+    _In_ _Interlocked_operand_ LONG64 const volatile *Source
+    )
+
+{
+
+    LONG64 Value;
+
+    Value = *Source;
+    return Value;
+}
+
+/*++
+
+WriteRelease*
+
+Routine Description:
+
+    Performs an atomic write operation with Release ordering. See
+    Read/WriteNoFence for the definition of "atomic".
+
+    Earlier memory accesses, including both atomic and ordinary accesses to
+    other address-taken locations, that appear before the WriteRelease in source
+    code, will execute before the write. See the C/C++ memory model for a formal
+    definition of release ordering.
+
+    Informally, release ordering is suitable for ensuring that memory accesses
+    do not "float down" below a synchronization-critical operation, like
+    releasing a lock or marking a structure as initialized after setting up its
+    fields in a lazy-init scenario.
+
+--*/
+
+VOLACCESS_STATIC_FORCEINLINE
+VOID
+WriteRelease8 (
+    _Out_ _Interlocked_operand_ CHAR volatile *Destination,
+    _In_ CHAR Value
+    )
+
+{
+
+    *Destination = Value;
+    return;
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+VOID
+WriteRelease16 (
+    _Out_ _Interlocked_operand_ SHORT volatile *Destination,
+    _In_ SHORT Value
+    )
+
+{
+
+    *Destination = Value;
+    return;
+}
+
+VOLACCESS_STATIC_CFORCEINLINE
+VOID
+WriteRelease (
+    _Out_ _Interlocked_operand_ LONG volatile *Destination,
+    _In_ LONG Value
+    )
+
+{
+
+    *Destination = Value;
+    return;
+}
+
+VOLACCESS_STATIC_CFORCEINLINE
+VOID
+WriteRelease64 (
+    _Out_ _Interlocked_operand_ LONG64 volatile *Destination,
+    _In_ LONG64 Value
+    )
+
+{
+
+    *Destination = Value;
+    return;
+}
+
 #if !defined(_M_CEE_PURE)
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 BarrierAfterRead (
     VOID
@@ -5804,72 +5994,58 @@ BarrierAfterRead (
 
 #endif // ((defined(_M_AMD64) || defined(_M_IX86)) && !defined(_M_HYBRID_X86_ARM64) && !defined(_M_ARM64EC)) || defined(_M_CEE_PURE)
 
+// -----------------------------------------------------------------------------
+
 //
-// Define "raw" operations which have no ordering or atomicity semantics.
+// Prototypes for the *CSAN NoCheck accessors.
 //
+
+#if defined(_KERNEL_MODE) && defined(__SANITIZE_ADDRESS__) && defined(CSAN_ON_ASAN)
+
+PVOID
+CsanReadPointerNoCheck (
+    _In_ _Interlocked_operand_ PVOID const volatile *Source
+    );
+
+#endif
+
+// -----------------------------------------------------------------------------
+
+/*++
+
+Read/Write*Raw
+
+Routine Description:
+
+    The Read/Write*Raw accessors represent a non-atomic access to the specified
+    memory location. Raw accesses have the same performance as an ordinary
+    access to the target location as if that location's variable or pointer were
+    not marked volatile.
+
+    Raw accesses are not atomic, so the compiler may refetch the value or split
+    up a single raw operation into multiple subset operations. To state it
+    another way: a read may observe a value that is a mixture of values written
+    to the memory location rather than any single value (aka torn state).
+    Similarly, a write may be split up into multiple smaller and/or overlapping
+    writes and may occur multiple times.
+
+    Raw accesses are suitable for cases where it is known at a higher level that
+    atomicity is not required. For example, initializing a structure field
+    before the structure is shared with another thread could use a WriteRaw
+    access.
+
+    According to the rules of the *CSAN race detector, Raw accesses should only
+    be used when a data race is not possible. If a race is possible, even when
+    reading a value for an assert, use the Read/WriteNoFence accessors to
+    indicate that an atomic read is necessary.
+
+--*/
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#if defined(_KERNEL_MODE) && defined(__SANITIZE_ADDRESS__) && defined(CSAN_ON_ASAN)
-
-#define ReadRaw8        CsanRead8NoCheck
-#define WriteRaw8       CsanWrite8NoCheck
-#define ReadRaw16       CsanRead16NoCheck
-#define WriteRaw16      CsanWrite16NoCheck
-#define ReadRaw         CsanReadNoCheck
-#define WriteRaw        CsanWriteNoCheck
-#define ReadRaw64       CsanRead64NoCheck
-#define WriteRaw64      CsanWrite64NoCheck
-
-CHAR
-ReadRaw8 (
-    _In_ _Interlocked_operand_ CHAR const volatile *Source
-    );
-
-VOID
-WriteRaw8 (
-    _Out_ _Interlocked_operand_ CHAR volatile *Destination,
-    _In_ CHAR Value
-    );
-
-SHORT
-ReadRaw16 (
-    _In_ _Interlocked_operand_ SHORT const volatile *Source
-    );
-
-VOID
-WriteRaw16 (
-    _Out_ _Interlocked_operand_ SHORT volatile *Destination,
-    _In_ SHORT Value
-    );
-
-LONG
-ReadRaw (
-    _In_ _Interlocked_operand_ LONG const volatile *Source
-    );
-
-VOID
-WriteRaw (
-    _Out_ _Interlocked_operand_ LONG volatile *Destination,
-    _In_ LONG Value
-    );
-
-LONG64
-ReadRaw64 (
-    _In_ _Interlocked_operand_ LONG64 const volatile *Source
-    );
-
-VOID
-WriteRaw64 (
-    _Out_ _Interlocked_operand_ LONG64 volatile *Destination,
-    _In_ LONG64 Value
-    );
-
-#else
-
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 CHAR
 ReadRaw8 (
     _In_ _Interlocked_operand_ CHAR const volatile *Source
@@ -5883,7 +6059,7 @@ ReadRaw8 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteRaw8 (
     _Out_ _Interlocked_operand_ CHAR volatile *Destination,
@@ -5896,7 +6072,7 @@ WriteRaw8 (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 SHORT
 ReadRaw16 (
     _In_ _Interlocked_operand_ SHORT const volatile *Source
@@ -5910,7 +6086,7 @@ ReadRaw16 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteRaw16 (
     _Out_ _Interlocked_operand_ SHORT volatile *Destination,
@@ -5923,7 +6099,7 @@ WriteRaw16 (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 LONG
 ReadRaw (
     _In_ _Interlocked_operand_ LONG const volatile *Source
@@ -5937,7 +6113,7 @@ ReadRaw (
     return Value;
 }
 
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 VOID
 WriteRaw (
     _Out_ _Interlocked_operand_ LONG volatile *Destination,
@@ -5950,7 +6126,7 @@ WriteRaw (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 LONG64
 ReadRaw64 (
     _In_ _Interlocked_operand_ LONG64 const volatile *Source
@@ -5964,7 +6140,7 @@ ReadRaw64 (
     return Value;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteRaw64 (
     _Out_ _Interlocked_operand_ LONG64 volatile *Destination,
@@ -5977,13 +6153,13 @@ WriteRaw64 (
     return;
 }
 
-#endif // _KERNEL_MODE && __SANITIZE_ADDRESS__ && CSAN_ON_ASAN
-
 #ifdef __cplusplus
 }
 #endif
 
-FORCEINLINE
+// -----------------------------------------------------------------------------
+
+VOLACCESS_STATIC_FORCEINLINE
 LONG
 AddRaw (
     _Inout_ _Interlocked_operand_ LONG volatile *Destination,
@@ -6000,7 +6176,29 @@ AddRaw (
     return NewValue;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
+LONG
+AddNoFence (
+    _Inout_ _Interlocked_operand_ LONG volatile *Destination,
+    _In_ LONG Value
+    )
+
+{
+    LONG NewValue;
+
+    //
+    // AddNoFence uses *NoFence reads and writes, but, unlike other *NoFence
+    // helpers, it isn't a single instruction.
+    //
+
+    NewValue = ReadNoFence(Destination);
+    NewValue += Value;
+    WriteNoFence(Destination, NewValue);
+
+    return NewValue;
+}
+
+VOLACCESS_STATIC_FORCEINLINE
 ULONG
 AddULongRaw (
     _Inout_ _Interlocked_operand_ ULONG volatile *Destination,
@@ -6011,7 +6209,71 @@ AddULongRaw (
     return (ULONG)AddRaw((PLONG)Destination, (LONG)Value);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
+ULONG
+AddULongNoFence (
+    _Inout_ _Interlocked_operand_ ULONG volatile *Destination,
+    _In_ ULONG Value
+    )
+
+{
+    //
+    // Same as AddNoFence - NoFence read and write are used, but AddULongNoFence
+    // helper is not a single instruction.
+    //
+
+    return (ULONG)AddNoFence((PLONG)Destination, (LONG)Value);
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+SHORT
+AddNoFence16 (
+    _Inout_ _Interlocked_operand_ SHORT volatile *Destination,
+    _In_ SHORT Value
+    )
+
+{
+    SHORT NewValue;
+
+    //
+    // AddNoFence16 uses *NoFence reads and writes, but, unlike other *NoFence
+    // helpers, it isn't a single instruction.
+    //
+
+    NewValue = ReadNoFence16(Destination);
+    NewValue += Value;
+    WriteNoFence16(Destination, NewValue);
+
+    return NewValue;
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+USHORT
+AddUShortNoFence (
+    _Inout_ _Interlocked_operand_ USHORT volatile *Destination,
+    _In_ USHORT Value
+    )
+
+{
+    //
+    // Same as AddNoFence16 - NoFence read and write are used, but AddUShortNoFence
+    // helper is not a single instruction.
+    //
+
+    return (USHORT)AddNoFence16((PSHORT)Destination, (SHORT)Value);
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+ULONG
+IncrementULongNoFence (
+    _Inout_ _Interlocked_operand_ ULONG volatile *Destination
+    )
+
+{
+    return AddULongNoFence(Destination, (ULONG)1);
+}
+
+VOLACCESS_STATIC_FORCEINLINE
 LONG
 IncrementRaw (
     _Inout_ _Interlocked_operand_ LONG volatile *Destination
@@ -6021,7 +6283,7 @@ IncrementRaw (
     return AddRaw(Destination, 1);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG
 IncrementULongRaw (
     _Inout_ _Interlocked_operand_ ULONG volatile *Destination
@@ -6035,7 +6297,7 @@ IncrementULongRaw (
 // Define explicit read and write operations for derived types.
 //
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UCHAR
 ReadUCharAcquire (
     _In_ _Interlocked_operand_ UCHAR const volatile *Source
@@ -6046,7 +6308,7 @@ ReadUCharAcquire (
     return (UCHAR)ReadAcquire8((PCHAR)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UCHAR
 ReadUCharNoFence (
     _In_ _Interlocked_operand_ UCHAR const volatile *Source
@@ -6057,7 +6319,7 @@ ReadUCharNoFence (
     return (UCHAR)ReadNoFence8((PCHAR)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UCHAR
 ReadBooleanAcquire (
     _In_ _Interlocked_operand_ BOOLEAN const volatile *Source
@@ -6068,7 +6330,7 @@ ReadBooleanAcquire (
     return (BOOLEAN)ReadAcquire8((PCHAR)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UCHAR
 ReadBooleanNoFence (
     _In_ _Interlocked_operand_ BOOLEAN const volatile *Source
@@ -6079,7 +6341,7 @@ ReadBooleanNoFence (
     return (BOOLEAN)ReadNoFence8((PCHAR)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UCHAR
 ReadBooleanRaw (
     _In_ _Interlocked_operand_ BOOLEAN const volatile *Source
@@ -6089,7 +6351,7 @@ ReadBooleanRaw (
     return (BOOLEAN)ReadRaw8((PCHAR)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UCHAR
 ReadUCharRaw (
     _In_ _Interlocked_operand_ UCHAR const volatile *Source
@@ -6100,7 +6362,7 @@ ReadUCharRaw (
     return (UCHAR)ReadRaw8((PCHAR)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteUCharRelease (
     _Out_ _Interlocked_operand_ UCHAR volatile *Destination,
@@ -6113,7 +6375,7 @@ WriteUCharRelease (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteUCharNoFence (
     _Out_ _Interlocked_operand_ UCHAR volatile *Destination,
@@ -6126,7 +6388,7 @@ WriteUCharNoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteBooleanRelease (
     _Out_ _Interlocked_operand_ BOOLEAN volatile *Destination,
@@ -6139,7 +6401,7 @@ WriteBooleanRelease (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteBooleanNoFence (
     _Out_ _Interlocked_operand_ BOOLEAN volatile *Destination,
@@ -6152,7 +6414,7 @@ WriteBooleanNoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteUCharRaw (
     _Out_ _Interlocked_operand_ UCHAR volatile *Destination,
@@ -6165,7 +6427,7 @@ WriteUCharRaw (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 USHORT
 ReadUShortAcquire (
     _In_ _Interlocked_operand_ USHORT const volatile *Source
@@ -6176,7 +6438,7 @@ ReadUShortAcquire (
     return (USHORT)ReadAcquire16((PSHORT)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 USHORT
 ReadUShortNoFence (
     _In_ _Interlocked_operand_ USHORT const volatile *Source
@@ -6187,7 +6449,7 @@ ReadUShortNoFence (
     return (USHORT)ReadNoFence16((PSHORT)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 USHORT
 ReadUShortRaw (
     _In_ _Interlocked_operand_ USHORT const volatile *Source
@@ -6198,7 +6460,7 @@ ReadUShortRaw (
     return (USHORT)ReadRaw16((PSHORT)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteUShortRelease (
     _Out_ _Interlocked_operand_ USHORT volatile *Destination,
@@ -6211,7 +6473,7 @@ WriteUShortRelease (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteUShortNoFence (
     _Out_ _Interlocked_operand_ USHORT volatile *Destination,
@@ -6224,7 +6486,7 @@ WriteUShortNoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteUShortRaw (
     _Out_ _Interlocked_operand_ USHORT volatile *Destination,
@@ -6237,7 +6499,7 @@ WriteUShortRaw (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG
 ReadULongAcquire (
     _In_ _Interlocked_operand_ ULONG const volatile *Source
@@ -6248,7 +6510,7 @@ ReadULongAcquire (
     return (ULONG)ReadAcquire((PLONG)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG
 ReadULongNoFence (
     _In_ _Interlocked_operand_ ULONG const volatile *Source
@@ -6259,7 +6521,7 @@ ReadULongNoFence (
     return (ULONG)ReadNoFence((PLONG)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG
 ReadULongRaw (
     _In_ _Interlocked_operand_ ULONG const volatile *Source
@@ -6270,7 +6532,7 @@ ReadULongRaw (
     return (ULONG)ReadRaw((PLONG)Source);
 }
 
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 VOID
 WriteULongRelease (
     _Out_ _Interlocked_operand_ ULONG volatile *Destination,
@@ -6283,7 +6545,7 @@ WriteULongRelease (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteULongNoFence (
     _Out_ _Interlocked_operand_ ULONG volatile *Destination,
@@ -6296,7 +6558,7 @@ WriteULongNoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteULongRaw (
     _Out_ _Interlocked_operand_ ULONG volatile *Destination,
@@ -6309,7 +6571,7 @@ WriteULongRaw (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 INT32
 ReadInt32Acquire (
     _In_ _Interlocked_operand_ INT32 const volatile *Source
@@ -6320,7 +6582,7 @@ ReadInt32Acquire (
     return (INT32)ReadAcquire((PLONG)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 INT32
 ReadInt32NoFence (
     _In_ _Interlocked_operand_ INT32 const volatile *Source
@@ -6331,7 +6593,7 @@ ReadInt32NoFence (
     return (INT32)ReadNoFence((PLONG)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 INT32
 ReadInt32Raw (
     _In_ _Interlocked_operand_ INT32 const volatile *Source
@@ -6342,7 +6604,7 @@ ReadInt32Raw (
     return (INT32)ReadRaw((PLONG)Source);
 }
 
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 VOID
 WriteInt32Release (
     _Out_ _Interlocked_operand_ INT32 volatile *Destination,
@@ -6355,7 +6617,7 @@ WriteInt32Release (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteInt32NoFence (
     _Out_ _Interlocked_operand_ INT32 volatile *Destination,
@@ -6368,7 +6630,7 @@ WriteInt32NoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteInt32Raw (
     _Out_ _Interlocked_operand_ INT32 volatile *Destination,
@@ -6381,7 +6643,7 @@ WriteInt32Raw (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UINT32
 ReadUInt32Acquire (
     _In_ _Interlocked_operand_ UINT32 const volatile *Source
@@ -6392,7 +6654,7 @@ ReadUInt32Acquire (
     return (UINT32)ReadAcquire((PLONG)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UINT32
 ReadUInt32NoFence (
     _In_ _Interlocked_operand_ UINT32 const volatile *Source
@@ -6403,7 +6665,7 @@ ReadUInt32NoFence (
     return (UINT32)ReadNoFence((PLONG)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 UINT32
 ReadUInt32Raw (
     _In_ _Interlocked_operand_ UINT32 const volatile *Source
@@ -6414,7 +6676,7 @@ ReadUInt32Raw (
     return (UINT32)ReadRaw((PLONG)Source);
 }
 
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 VOID
 WriteUInt32Release (
     _Out_ _Interlocked_operand_ UINT32 volatile *Destination,
@@ -6427,7 +6689,7 @@ WriteUInt32Release (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteUInt32NoFence (
     _Out_ _Interlocked_operand_ UINT32 volatile *Destination,
@@ -6440,7 +6702,7 @@ WriteUInt32NoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteUInt32Raw (
     _Out_ _Interlocked_operand_ UINT32 volatile *Destination,
@@ -6453,7 +6715,7 @@ WriteUInt32Raw (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG64
 ReadULong64Acquire (
     _In_ _Interlocked_operand_ ULONG64 const volatile *Source
@@ -6464,7 +6726,7 @@ ReadULong64Acquire (
     return (ULONG64)ReadAcquire64((PLONG64)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG64
 ReadULong64NoFence (
     _In_ _Interlocked_operand_ ULONG64 const volatile *Source
@@ -6475,7 +6737,7 @@ ReadULong64NoFence (
     return (ULONG64)ReadNoFence64((PLONG64)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG64
 ReadULong64Raw (
     _In_ _Interlocked_operand_ ULONG64 const volatile *Source
@@ -6486,7 +6748,7 @@ ReadULong64Raw (
     return (ULONG64)ReadRaw64((PLONG64)Source);
 }
 
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 VOID
 WriteULong64Release (
     _Out_ _Interlocked_operand_ ULONG64 volatile *Destination,
@@ -6499,7 +6761,7 @@ WriteULong64Release (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteULong64NoFence (
     _Out_ _Interlocked_operand_ ULONG64 volatile *Destination,
@@ -6512,7 +6774,7 @@ WriteULong64NoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WriteULong64Raw (
     _Out_ _Interlocked_operand_ ULONG64 volatile *Destination,
@@ -6525,7 +6787,7 @@ WriteULong64Raw (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 LONG64
 AddRaw64 (
     _Inout_ _Interlocked_operand_ LONG64 volatile *Destination,
@@ -6542,7 +6804,7 @@ AddRaw64 (
     return NewValue;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG64
 AddULong64Raw (
     _Inout_ _Interlocked_operand_ ULONG64 volatile *Destination,
@@ -6553,7 +6815,7 @@ AddULong64Raw (
     return (ULONG64)AddRaw64((PLONG64)Destination, (LONG64)Value);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 LONG64
 IncrementRaw64 (
     _Inout_ _Interlocked_operand_ LONG64 volatile *Destination
@@ -6563,7 +6825,7 @@ IncrementRaw64 (
     return AddRaw64(Destination, 1);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 ULONG64
 IncrementULong64Raw (
     _Inout_ _Interlocked_operand_ ULONG64 volatile *Destination
@@ -6571,6 +6833,42 @@ IncrementULong64Raw (
 
 {
     return (ULONG64)IncrementRaw64((PLONG64)Destination);
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+LONG64
+AddNoFence64 (
+    _Inout_ _Interlocked_operand_ LONG64 volatile *Destination,
+    _In_ LONG64 Value
+    )
+{
+    LONG64 NewValue;
+
+    NewValue = ReadNoFence64(Destination);
+    NewValue += Value;
+    WriteNoFence64(Destination, NewValue);
+
+    return NewValue;
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+ULONG64
+AddULong64NoFence (
+    _Inout_ _Interlocked_operand_ ULONG64 volatile *Destination,
+    _In_ ULONG64 Value
+    )
+{
+    return (ULONG64)AddNoFence64((PLONG64)Destination, (LONG64)Value);
+}
+
+VOLACCESS_STATIC_FORCEINLINE
+ULONG64
+IncrementULong64NoFence (
+    _Inout_ _Interlocked_operand_ ULONG64 volatile *Destination
+    )
+
+{
+    return AddULong64NoFence(Destination, (ULONG64)1);
 }
 
 #define ReadSizeTAcquire ReadULongPtrAcquire
@@ -6587,7 +6885,7 @@ IncrementULong64Raw (
 
 #if !defined(_WIN64)
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 PVOID
 ReadPointerAcquire (
     _In_ _Interlocked_operand_ PVOID const volatile *Source
@@ -6598,7 +6896,7 @@ ReadPointerAcquire (
     return (PVOID)ReadAcquire((PLONG)Source);
 }
 
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 PVOID
 ReadPointerNoFence (
     _In_ _Interlocked_operand_ PVOID const volatile *Source
@@ -6609,7 +6907,7 @@ ReadPointerNoFence (
     return (PVOID)ReadNoFence((PLONG)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 PVOID
 ReadPointerRaw (
     _In_ _Interlocked_operand_ PVOID const volatile *Source
@@ -6620,7 +6918,7 @@ ReadPointerRaw (
     return (PVOID)ReadRaw((PLONG)Source);
 }
 
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 VOID
 WritePointerRelease (
     _Out_ _Interlocked_operand_ PVOID volatile *Destination,
@@ -6633,7 +6931,7 @@ WritePointerRelease (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WritePointerNoFence (
     _Out_ _Interlocked_operand_ PVOID volatile *Destination,
@@ -6646,7 +6944,7 @@ WritePointerNoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WritePointerRaw (
     _Out_ _Interlocked_operand_ PVOID volatile *Destination,
@@ -6685,7 +6983,7 @@ WritePointerRaw (
 
 #else // !defined(_WIN64)
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 PVOID
 ReadPointerAcquire (
     _In_ _Interlocked_operand_ PVOID const volatile *Source
@@ -6696,7 +6994,7 @@ ReadPointerAcquire (
     return (PVOID)ReadAcquire64((PLONG64)Source);
 }
 
-CFORCEINLINE
+VOLACCESS_STATIC_CFORCEINLINE
 PVOID
 ReadPointerNoFence (
     _In_ _Interlocked_operand_ PVOID const volatile *Source
@@ -6707,7 +7005,7 @@ ReadPointerNoFence (
     return (PVOID)ReadNoFence64((PLONG64)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 PVOID
 ReadPointerRaw (
     _In_ _Interlocked_operand_ PVOID const volatile *Source
@@ -6718,7 +7016,7 @@ ReadPointerRaw (
     return (PVOID)ReadRaw64((PLONG64)Source);
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WritePointerRelease (
     _Out_ _Interlocked_operand_ PVOID volatile *Destination,
@@ -6731,7 +7029,7 @@ WritePointerRelease (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WritePointerNoFence (
     _Out_ _Interlocked_operand_ PVOID volatile *Destination,
@@ -6744,7 +7042,7 @@ WritePointerNoFence (
     return;
 }
 
-FORCEINLINE
+VOLACCESS_STATIC_FORCEINLINE
 VOID
 WritePointerRaw (
     _Out_ _Interlocked_operand_ PVOID volatile *Destination,
@@ -6785,6 +7083,9 @@ WritePointerRaw (
 
 #endif // !defined(RC_INVOKED) && !defined(MIDL_PASS)
 
+#undef VOLACCESS_STATIC_FORCEINLINE
+#undef VOLACCESS_STATIC_CFORCEINLINE
+
 //
 
 typedef enum _LOGICAL_PROCESSOR_RELATIONSHIP {
@@ -6796,6 +7097,7 @@ typedef enum _LOGICAL_PROCESSOR_RELATIONSHIP {
     RelationProcessorDie,
     RelationNumaNodeEx,
     RelationProcessorModule,
+    RelationProcessorSharedComputeUnit,
     RelationAll = 0xffff
 } LOGICAL_PROCESSOR_RELATIONSHIP;
 
@@ -6874,6 +7176,18 @@ typedef struct _CACHE_RELATIONSHIP {
     } DUMMYUNIONNAME;
 } CACHE_RELATIONSHIP, *PCACHE_RELATIONSHIP;
 
+typedef enum _PROCESSOR_SHARED_COMPUTE_UNIT_TYPE {
+    SharedComputeUnitArm64SMCU
+} PROCESSOR_SHARED_COMPUTE_UNIT_TYPE, *PPROCESSOR_SHARED_COMPUTE_UNIT_TYPE;
+
+typedef struct _SHARED_COMPUTE_UNIT_RELATIONSHIP {
+    ULONG Type;
+    ULONG ComputeUnitCount;
+    UCHAR Reserved[14];
+    USHORT GroupCount;
+    _Field_size_(GroupCount) GROUP_AFFINITY GroupMasks[ANYSIZE_ARRAY];
+} SHARED_COMPUTE_UNIT_RELATIONSHIP, *PSHARED_COMPUTE_UNIT_RELATIONSHIP;
+
 typedef struct _PROCESSOR_GROUP_INFO {
     UCHAR MaximumProcessorCount;
     UCHAR ActiveProcessorCount;
@@ -6896,6 +7210,7 @@ _Struct_size_bytes_(Size) struct _SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
         NUMA_NODE_RELATIONSHIP NumaNode;
         CACHE_RELATIONSHIP Cache;
         GROUP_RELATIONSHIP Group;
+        SHARED_COMPUTE_UNIT_RELATIONSHIP SharedComputeUnit;
     } DUMMYUNIONNAME;
 };
 
@@ -7875,7 +8190,7 @@ extern "C" {
 //
 
 #define ARM64_PREVENT_REGISTER_WRITEBACK(_type, _variable) \
-    _variable = (volatile _type *)ReadPointerNoFence((PVOID const volatile *)&##_variable);
+    _variable = (volatile _type *)ReadPointerNoFence((PVOID const volatile *)&_variable);
 
 __forceinline
 UCHAR
@@ -9096,6 +9411,7 @@ typedef struct _PCI_ADVANCED_FEATURES_CAPABILITY {
 #define OSC_CAPABILITIES_MASKED                         0x10
 
 #define PCI_ROOT_BUS_OSC_METHOD_CAPABILITY_REVISION     0x01
+#define CXL_BUS_OSC_METHOD_CAPABILITY_REVISION          0x01
 
 //
 // The following declarations pertain to the second and third DWORD in
@@ -9151,6 +9467,40 @@ typedef enum _PCI_OSC_CONTROL_BITS {
     PciOscControlBitCompletionTimeout = 1<<8,
     PciOscControlBitFirmwareIntermediaryConfig = 1<<9
 }PCI_OSC_CONTROL_BITS, *PPCI_OSC_CONTROL_BITS ;
+
+typedef enum _CXL_OSC_CONTROL_BITS {
+    CxlOscControlBitMemoryErrorReportingControl = 1
+} CXL_OSC_CONTROL_BITS, *PCXL_OSC_CONTROL_BITS;
+
+typedef enum _CXL_PROTOCOL_VERSION {
+    NoCxlSupport = 0,
+    Cxl11Support = 1,
+    Cxl20Support = 2,
+    Cxl30Support = 3
+} CXL_PROTOCOL_VERSION, *PCXL_PROTOCOL_VERSION;
+
+typedef struct _CXL_BUS_OSC_SUPPORT_FIELD {
+    union {
+        struct {
+            ULONG RdcRchPortRegisterAccessSupported:1;
+            ULONG VhRegisterAccessSupported:1;
+            ULONG ProtocolErrorReportingSupported:1;
+            ULONG NativeHotPlugSupported:1;
+            ULONG Reserved:28;
+        } DUMMYSTRUCTNAME;
+        ULONG AsULONG;
+    } u;
+} CXL_BUS_OSC_SUPPORT_FIELD, *PCXL_BUS_OSC_SUPPORT_FIELD;
+
+typedef struct _CXL_BUS_OSC_CONTROL_FIELD {
+    union {
+        struct {
+            ULONG MemoryErrorReportingControl:1;
+            ULONG Reserved:31;
+        } DUMMYSTRUCTNAME;
+        ULONG AsULONG;
+    } u;
+} CXL_BUS_OSC_CONTROL_FIELD, *PCXL_BUS_OSC_CONTROL_FIELD;
 
 //
 // The following comes from the PCI Firmware Specification, version 3.1.  It
@@ -9261,6 +9611,12 @@ typedef struct _PCI_ROOT_BUS_HARDWARE_CAPABILITY {
     PCI_ROOT_BUS_OSC_SUPPORT_FIELD OscFeatureSupport;
     PCI_ROOT_BUS_OSC_CONTROL_FIELD OscControlRequest;
     PCI_ROOT_BUS_OSC_CONTROL_FIELD OscControlGranted;
+
+    BOOLEAN CxlCapable;
+    CXL_PROTOCOL_VERSION CxlVersionSupport;
+    CXL_BUS_OSC_SUPPORT_FIELD CxlOscFeatureSupport;
+    CXL_BUS_OSC_CONTROL_FIELD CxlOscControlRequest;
+    CXL_BUS_OSC_CONTROL_FIELD CxlOscControlGranted;
 
 } PCI_ROOT_BUS_HARDWARE_CAPABILITY, *PPCI_ROOT_BUS_HARDWARE_CAPABILITY;
 
@@ -9443,7 +9799,8 @@ typedef union _PCI_EXPRESS_CAPABILITIES_REGISTER {
         USHORT DeviceType:4;               // PCI_EXPRESS_DEVICE_TYPE
         USHORT SlotImplemented:1;
         USHORT InterruptMessageNumber:5;
-        USHORT Rsvd:2;
+        USHORT Rsvd:1;
+        USHORT FlitModeSupported:1;
     } DUMMYSTRUCTNAME;
 
     USHORT AsUSHORT;
@@ -9465,7 +9822,9 @@ typedef union _PCI_EXPRESS_DEVICE_CAPABILITIES_REGISTER {
         ULONG CapturedSlotPowerLimit:8;
         ULONG CapturedSlotPowerLimitScale:2;
         ULONG FunctionLevelResetCapability:1;
-        ULONG Rsvd2:3;
+        ULONG MixedMpsSupported:1;
+        ULONG TeeIOSupported:1;
+        ULONG Rsvd2:1;
     } DUMMYSTRUCTNAME;
 
     ULONG AsULONG;
@@ -9571,7 +9930,10 @@ typedef union _PCI_EXPRESS_LINK_CONTROL_REGISTER {
         USHORT CommonClockConfig:1;
         USHORT ExtendedSynch:1;
         USHORT EnableClockPowerManagement:1;
-        USHORT Rsvd2:7;
+        USHORT Rsvd2:1;
+        USHORT BandwidthManagementInterrupt:1;
+        USHORT AutonomousBandwidthInterrupt:1;
+        USHORT Rsvd3:4;
     } DUMMYSTRUCTNAME;
 
     USHORT AsUSHORT;
@@ -9588,7 +9950,8 @@ typedef union _PCI_EXPRESS_LINK_STATUS_REGISTER {
         USHORT LinkTraining:1;
         USHORT SlotClockConfig:1;
         USHORT DataLinkLayerActive:1;
-        USHORT Rsvd:2;
+        USHORT BandwidthManagementStatus:1;
+        USHORT AutonomousManagementStatus:1;
     } DUMMYSTRUCTNAME;
 
     USHORT AsUSHORT;
@@ -10025,7 +10388,9 @@ typedef union _PCI_EXPRESS_PME_REQUESTOR_ID {
 #define PCI_EXPRESS_READINESS_TIME_REPORTING_CAP_ID                     0x0022
 #define PCI_EXPRESS_DESIGNATED_VENDOR_SPECIFIC_CAP_ID                   0x0023
 #define PCI_EXPRESS_NPEM_CAP_ID                                         0x0029
+#define PCI_EXPRESS_DOE_CAP_ID                                          0x002E
 #define PCI_EXPRESS_DEVICE_3_CAP_ID                                     0x002F
+#define PCI_EXPRESS_IDE_CAP_ID                                          0x0030
 
 //
 // All Enhanced capabilities have the following header.
@@ -10516,7 +10881,11 @@ typedef union _PCI_EXPRESS_AER_CAPABILITIES {
         ULONG MultipleHeaderRecordingCapable:1;
         ULONG MultipleHeaderRecordingEnable:1;
         ULONG TlpPrefixLogPresent:1;
-        ULONG Reserved:20;
+        ULONG CompletionTimeoutPrefixHeaderLogCapable : 1;
+        ULONG HeaderLogSize : 5;
+        ULONG LoggedTlpWasFlitMode : 1;
+        ULONG LoggedTlpSize : 5;
+        ULONG Reserved:8;
     } DUMMYSTRUCTNAME;
 
     ULONG AsULONG;

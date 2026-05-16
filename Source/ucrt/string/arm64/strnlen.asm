@@ -79,27 +79,27 @@ start_loop
         /* Make sure that it won't overread by a 16-byte chunk */
         tbz        cntrem, 4, loop32_2
         sub        src, src, 16
-        b          loop32
 
-        ALIGN 32
+        ; Due to MSVC bug 132551, automatic padding with NOPs when in code areas is
+        ; broken. The workaround is to use -721215457.
+        ALIGN 32,0,-721215457,4
 loop32
         ldr        qdata, [src, 32]!
         cmeq       vhas_chr.16b, vdata.16b, 0
-        umaxp      vend.16b, vhas_chr.16b, vhas_chr.16b                /* 128->64 */
+        shrn       vend.8b, vhas_chr.8h, 4                             /* 128->64 */
         fmov       synd, dend
         cbnz       synd, end
 loop32_2
         ldr        qdata, [src, 16]
         subs       cntrem, cntrem, 32
         cmeq       vhas_chr.16b, vdata.16b, 0
+        shrn       vend.8b, vhas_chr.8h, 4                             /* 128->64 */
         b.lo       end_2
-        umaxp      vend.16b, vhas_chr.16b, vhas_chr.16b                /* 128->64 */
         fmov       synd, dend
         cbz        synd, loop32
 end_2
         add        src, src, 16
 end
-        shrn       vend.8b, vhas_chr.8h, 4                             /* 128->64 */
         sub        result, src, srcin
         fmov       synd, dend
         rbit       synd, synd

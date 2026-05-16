@@ -158,6 +158,16 @@ extern void __cdecl __va_start(_Out_ va_list *, ...);
   ? **(t **)( ( ap += sizeof(__int64) ) - sizeof(__int64) ) \
   : *(t *)((ap += _SLOTSIZEOF(t) + _APALIGN(t,ap)) \
 	   - _SLOTSIZEOF(t) ) )
+
+#if defined(_KERNEL_MODE)
+// Same as _crt_va_arg but returns the address without dereferencing it
+#define _crt_va_arg_addr(ap, t)   \
+  ( ( sizeof(t) > ( 2*sizeof(__int64) ) ) \
+  ? (t *)( ( ap += sizeof(__int64) ) - sizeof(__int64) ) \
+  : (t *)((ap += _SLOTSIZEOF(t) + _APALIGN(t,ap)) \
+	   - _SLOTSIZEOF(t) ) )
+#endif
+
 #define _crt_va_end(ap)      ( ap = (va_list)0 )
 
 /* TODO-ARM64X: Delete this branch once the compiler supports the X64 version of __va_start. */
@@ -175,7 +185,6 @@ extern void __cdecl __va_start(_Out_ va_list *, ...);
 
 #elif defined(_M_AMD64)
 
-
 extern void __cdecl __va_start(_Out_ va_list *, ...);
 
 #define _crt_va_start(ap, x) ( __va_start(&ap, x) )
@@ -183,6 +192,13 @@ extern void __cdecl __va_start(_Out_ va_list *, ...);
     ( ( sizeof(t) > sizeof(__int64) || ( sizeof(t) & (sizeof(t) - 1) ) != 0 ) \
         ? **(t **)( ( ap += sizeof(__int64) ) - sizeof(__int64) ) \
         :  *(t  *)( ( ap += sizeof(__int64) ) - sizeof(__int64) ) )
+
+#if defined(_KERNEL_MODE)
+// Same as _crt_va_arg but returns the address without dereferencing it
+#define _crt_va_arg_addr(ap, t)   \
+    ( (t *)( ( ap += sizeof(__int64) ) - sizeof(__int64) ) )
+#endif
+
 #define _crt_va_end(ap)      ( ap = (va_list)0 )
 
 #else

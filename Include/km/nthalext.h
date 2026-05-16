@@ -173,14 +173,14 @@ Author:
 // interrupt.
 //
 
-#if defined(_AMD64_) || defined(_X86_)
+#if defined(_AMD64_)
 
 #define TIMER_INTERRUPT_MASK (TIMER_GENERATES_8259_INTERRUPTS |       \
                               TIMER_GENERATES_LINE_BASED_INTERRUPTS | \
                               TIMER_GENERATES_MSI_INTERRUPTS |        \
                               TIMER_GENERATES_INTERNAL_INTERRUPTS)
 
-#elif defined(_ARM_) || defined(_ARM64_)
+#elif defined(_ARM64_)
 
 #define TIMER_INTERRUPT_MASK (TIMER_GENERATES_LINE_BASED_INTERRUPTS | \
                               TIMER_GENERATES_INTERNAL_INTERRUPTS)

@@ -64,6 +64,10 @@ _get_errno(
 #endif
 
 /* Define offsetof macro */
+/* __builtin_offsetof is "more const" and works, for example, as a template parameter. */
+#ifdef __clang__
+#define offsetof(s,m) __builtin_offsetof(s,m)
+#else
 
 #ifdef  _WIN64
 #define offsetof(s,m)   (size_t)( (ptrdiff_t)&(((s *)0)->m) )
@@ -71,6 +75,7 @@ _get_errno(
 #define offsetof(s,m)   (size_t)&(((s *)0)->m)
 #endif
 
+#endif /* clang */
 
 #if (!defined (_STATIC_MGDLIB) && !defined (_BUILDING_STATIC_MGDLIB_11))
 

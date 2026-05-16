@@ -1109,7 +1109,7 @@ NdisFreeGenericObject(
 #define NdisRetrieveUlong(Destination, Source)      RtlRetrieveUlong(Destination, Source)
 #define NdisStoreUlong(Destination, Value)          RtlStoreUlong(Destination, Value)
 
-#define NDIS_STRING_CONST(x)    {sizeof(L##x)-2, sizeof(L##x), L##x}
+#define NDIS_STRING_CONST(x)    {sizeof(L"" x)-2, sizeof(L"" x), L"" x}
 
 //
 // On a RISC machine, I/O mapped memory can't be accessed with
@@ -12494,7 +12494,7 @@ NdisMNetPnPEvent(
 
 #if NDIS_SUPPORT_NDIS6
 _IRQL_requires_max_(DISPATCH_LEVEL)
-#endif NDIS_SUPPORT_NDIS6
+#endif
 EXPORT
 VOID
 NdisMResetComplete(
@@ -14542,7 +14542,7 @@ VOID
     );
 
 typedef FILTER_CANCEL_DIRECT_OID_REQUEST (*FILTER_CANCEL_DIRECT_OID_REQUEST_HANDLER);
-#endif (NDIS_SUPPORT_NDIS61)
+#endif // (NDIS_SUPPORT_NDIS61)
 
 #if (NDIS_SUPPORT_NDIS680)
 

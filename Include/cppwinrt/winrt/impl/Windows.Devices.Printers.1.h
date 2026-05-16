@@ -9,6 +9,13 @@
 #include "winrt/impl/Windows.Devices.Printers.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
+    struct WINRT_IMPL_EMPTY_BASES IIppAttributeConverterStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IIppAttributeConverterStatics>
+    {
+        IIppAttributeConverterStatics(std::nullptr_t = nullptr) noexcept {}
+        IIppAttributeConverterStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IIppAttributeError :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IIppAttributeError>
@@ -148,6 +155,13 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     {
         IPdlPassthroughProvider(std::nullptr_t = nullptr) noexcept {}
         IPdlPassthroughProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IPdlPassthroughProvider2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IPdlPassthroughProvider2>
+    {
+        IPdlPassthroughProvider2(std::nullptr_t = nullptr) noexcept {}
+        IPdlPassthroughProvider2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES IPdlPassthroughTarget :
         winrt::Windows::Foundation::IInspectable,

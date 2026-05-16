@@ -368,6 +368,7 @@ typedef struct {
     ULONG dRefreshProgress;                 // Offset 0x29
 } UFS_DEVICE_HEALTH_DESCRIPTOR, *PUFS_DEVICE_HEALTH_DESCRIPTOR;
 
+
 #define UFS_MAX_DESCRIPTOR_SIZE             sizeof(UFS_STRING_DESCRIPTOR)
 
 //

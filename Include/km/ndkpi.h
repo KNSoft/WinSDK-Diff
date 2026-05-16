@@ -100,6 +100,9 @@ struct _NDK_LOGICAL_ADDRESS_MAPPING {
     _Field_size_(AdapterPageCount) NDK_LOGICAL_ADDRESS AdapterPageArray[1]; // actual size is AdapterPageCount
 } NDK_LOGICAL_ADDRESS_MAPPING;
 
+#pragma warning(push)
+#pragma warning(disable: 4201) // nonstandard extension used: nameless struct/union
+
 typedef struct _NDK_SGE {
     union {
         PVOID VirtualAddress;
@@ -108,6 +111,8 @@ typedef struct _NDK_SGE {
     ULONG Length;
     UINT32 MemoryRegionToken;
 } NDK_SGE;
+
+#pragma warning(pop) // 4201 nonstandard extension used: nameless struct/union
 
 typedef
 _IRQL_requires_max_(DISPATCH_LEVEL)

@@ -4,14 +4,15 @@
 //      Copyright (c) Microsoft Corporation.  All rights reserved.
 //
 // This internal header defines template implementations of several secure
-// string functions that have identical implementations for both narrow and
-// wide character strings.
+// string functions that have largely identical implementations for both narrow
+// and wide character strings.
 //
 #pragma once
 
 #include <corecrt_internal_securecrt.h>
 
-
+const size_t _scalar_loop_upper_bound_for_char = 64;
+const size_t _scalar_loop_upper_bound_for_wchar  = _scalar_loop_upper_bound_for_char / 2;
 
 // _strcat_s() and _wcscat_s()
 template <typename Character>
@@ -25,8 +26,57 @@ static errno_t __cdecl common_tcscat_s(
     _VALIDATE_STRING(destination, size_in_elements);
     _VALIDATE_POINTER_RESET_STRING(source, destination, size_in_elements);
 
+    if (size_in_elements <= _scalar_loop_upper_bound_for_char)
+    {
+        goto scalar;
+    }
+
+    size_t available = 0;
+    if constexpr(sizeof(Character) == sizeof(wchar_t) || sizeof(Character) == sizeof(char))
+    {
+        size_t dest_length_in_elements;
+        if constexpr(sizeof(Character) == sizeof(wchar_t))
+        {
+            dest_length_in_elements = wcsnlen(destination, size_in_elements);
+        }
+        else
+        {
+            dest_length_in_elements = strnlen(destination, size_in_elements);
+        }
+
+        available = size_in_elements - dest_length_in_elements;
+        if (available == 0)
+        {
+            _RESET_STRING(destination, size_in_elements);
+            _RETURN_DEST_NOT_NULL_TERMINATED(destination, size_in_elements);
+        }
+
+        size_t source_length_in_elements;
+        if constexpr(sizeof(Character) == sizeof(wchar_t))
+        {
+            source_length_in_elements = wcsnlen(source, available);
+        }
+        else
+        {
+            source_length_in_elements = strnlen(source, available);
+        }
+
+        available -= source_length_in_elements;
+        if (available != 0)
+        {
+            // Copy the string + null terminator
+            memcpy(destination + dest_length_in_elements, source, (source_length_in_elements + 1) * sizeof(Character));
+        }
+    }
+    else
+    {
+        static_assert(false, "Character is neither wchar_t nor char");
+    }
+    goto end;
+
+scalar:
     Character* destination_it = destination;
-    size_t available = size_in_elements;
+    available = size_in_elements;
     while (available > 0 && *destination_it != 0)
     {
         ++destination_it;
@@ -44,6 +94,7 @@ static errno_t __cdecl common_tcscat_s(
     {
     }
 
+end:
     if (available == 0)
     {
         _RESET_STRING(destination, size_in_elements);
@@ -67,14 +118,48 @@ static errno_t __cdecl common_tcscpy_s(
     _VALIDATE_STRING(destination, size_in_elements);
     _VALIDATE_POINTER_RESET_STRING(source, destination, size_in_elements);
 
+    if (size_in_elements <= _scalar_loop_upper_bound_for_wchar)
+    {
+        goto scalar;
+    }
+
+    size_t available = 0;
+    if constexpr(sizeof(Character) == sizeof(wchar_t) || sizeof(Character) == sizeof(char))
+    {
+        size_t source_length_in_elements;
+        if constexpr(sizeof(Character) == sizeof(wchar_t))
+        {
+            source_length_in_elements = wcsnlen(source, size_in_elements);
+        }
+        else
+        {
+            source_length_in_elements = strnlen(source, size_in_elements);
+        }
+
+        available = size_in_elements - source_length_in_elements;
+        if (available != 0)
+        {
+            // Copy the string + null terminator
+            memcpy(destination, source, (source_length_in_elements + 1) * sizeof(Character));
+        }
+    }
+    else
+    {
+        static_assert(false, "Character is neither wchar_t nor char");
+    }
+
+    goto end;
+
+scalar:
     Character*       destination_it = destination;
     Character const* source_it      = source;
 
-    size_t available = size_in_elements;
+    available = size_in_elements;
     while ((*destination_it++ = *source_it++) != 0 && --available > 0)
     {
     }
 
+end:
     if (available == 0)
     {
         _RESET_STRING(destination, size_in_elements);
@@ -108,9 +193,63 @@ static errno_t __cdecl common_tcsncat_s(
         _VALIDATE_POINTER_RESET_STRING(source, destination, size_in_elements);
     }
 
+    if (max(count, size_in_elements) <= _scalar_loop_upper_bound_for_char)
+    {
+        goto scalar;
+    }
+
+    size_t available = 0;
+    if constexpr(sizeof(Character) == sizeof(wchar_t) || sizeof(Character) == sizeof(char))
+    {
+        size_t dest_length_in_elements;
+        if constexpr(sizeof(Character) == sizeof(wchar_t))
+        {
+            dest_length_in_elements = wcsnlen(destination, size_in_elements);
+        }
+        else
+        {
+            dest_length_in_elements = strnlen(destination, size_in_elements);
+        }
+
+        available = size_in_elements - dest_length_in_elements;
+        if (available == 0)
+        {
+            _RESET_STRING(destination, size_in_elements);
+            _RETURN_DEST_NOT_NULL_TERMINATED(destination, size_in_elements);
+        }
+
+        size_t source_length_in_elements;
+        if constexpr(sizeof(Character) == sizeof(wchar_t))
+        {
+            source_length_in_elements = wcsnlen(source, min(available, count));
+        }
+        else
+        {
+            source_length_in_elements = strnlen(source, min(available, count));
+        }
+
+        available -= source_length_in_elements;
+        if (available != 0)
+        {
+            memcpy(destination + dest_length_in_elements, source, source_length_in_elements * sizeof(Character));
+            destination[dest_length_in_elements + source_length_in_elements] = 0;
+        }
+        else if (count == _TRUNCATE)
+        {
+            memcpy(destination + dest_length_in_elements, source, source_length_in_elements * sizeof(Character));
+        }
+    }
+    else
+    {
+        static_assert(false, "Character is neither wchar_t nor char");
+    }
+
+    goto end;
+
+scalar:
     Character* destination_it = destination;
 
-    size_t available = size_in_elements;
+    available = size_in_elements;
     size_t remaining = count;
     while (available > 0 && *destination_it != 0)
     {
@@ -144,6 +283,7 @@ static errno_t __cdecl common_tcsncat_s(
         }
     }
 
+end:
     if (available == 0)
     {
         if (count == _TRUNCATE)
@@ -185,10 +325,46 @@ static errno_t __cdecl common_tcsncpy_s(
     }
     _VALIDATE_POINTER_RESET_STRING(source, destination, size_in_elements);
 
+    if (min(count, size_in_elements) <= _scalar_loop_upper_bound_for_wchar)
+    {
+        goto scalar;
+    }
+
+    size_t available = size_in_elements;
+    if constexpr(sizeof(Character) == sizeof(wchar_t) || sizeof(Character) == sizeof(char))
+    {
+        size_t source_length_in_elements;
+        if constexpr(sizeof(Character) == sizeof(wchar_t))
+        {
+            source_length_in_elements = wcsnlen(source, min(count, size_in_elements));
+        }
+        else
+        {
+            source_length_in_elements = strnlen(source, min(count, size_in_elements));
+        }
+        available = size_in_elements - source_length_in_elements;
+        if (available != 0)
+        {
+            memcpy(destination, source, source_length_in_elements * sizeof(Character));
+            destination[source_length_in_elements] = 0;
+        }
+        else if (count == _TRUNCATE)
+        {
+            memcpy(destination, source, source_length_in_elements * sizeof(Character));
+        }
+    }
+    else
+    {
+        static_assert(false, "Character is neither wchar_t nor char");
+    }
+
+    goto end;
+
+scalar:
     Character*       destination_it = destination;
     Character const* source_it      = source;
 
-    size_t available = size_in_elements;
+    available = size_in_elements;
     size_t remaining = count;
     if (count == _TRUNCATE)
     {
@@ -207,6 +383,7 @@ static errno_t __cdecl common_tcsncpy_s(
         }
     }
 
+end:
     if (available == 0)
     {
         if (count == _TRUNCATE)

@@ -821,6 +821,29 @@ DEFINE_GUID(GUID_PROCESSOR_FREQUENCY_LIMIT_2,
 0x75b0ae3f, 0xbce0, 0x45a7, 0x8c, 0x89, 0xc9, 0x61, 0x1c, 0x25, 0xe1, 0x02);
 
 //
+// Specifies the minimum processor frequency (expressed in MHz).
+//
+// {2ac92cea-5efa-4a1b-bed5-1a2bd9aa0b94}
+//
+DEFINE_GUID(GUID_PROCESSOR_FREQUENCY_MINIMUM, 0x2ac92cea, 0x5efa, 0x4a1b, 0xbe, 0xd5, 0x1a, 0x2b, 0xd9, 0xaa, 0xb, 0x94);
+
+//
+// Specifies the minimum processor frequency (expressed in MHz) for Processor
+// Power Efficiency Class 1.
+//
+// {2ac92cea-5efa-4a1b-bed5-1a2bd9aa0b95}
+//
+DEFINE_GUID(GUID_PROCESSOR_FREQUENCY_MINIMUM_1, 0x2ac92cea, 0x5efa, 0x4a1b, 0xbe, 0xd5, 0x1a, 0x2b, 0xd9, 0xaa, 0xb, 0x95);
+
+//
+// Specifies the minimum processor frequency (expressed in MHz) for Processor
+// Power Efficiency Class 2.
+//
+// {2ac92cea-5efa-4a1b-bed5-1a2bd9aa0b96}
+//
+DEFINE_GUID(GUID_PROCESSOR_FREQUENCY_MINIMUM_2, 0x2ac92cea, 0x5efa, 0x4a1b, 0xbe, 0xd5, 0x1a, 0x2b, 0xd9, 0xaa, 0xb, 0x96);
+
+//
 // Specifies whether throttle states are allowed to be used even when
 // performance states are available.
 //
@@ -1228,6 +1251,14 @@ DEFINE_GUID( GUID_PROCESSOR_CORE_PARKING_OVER_UTILIZATION_WEIGHTING, 0x8809c2d8,
 DEFINE_GUID( GUID_PROCESSOR_CORE_PARKING_OVER_UTILIZATION_THRESHOLD, 0x943c8cb6, 0x6f93, 0x4227, 0xad, 0x87, 0xe9, 0xa3, 0xfe, 0xec, 0x08, 0xd1);
 
 //
+// Specifies what policy to use for processor package C6 idle states (Azure).
+//
+// {fc1b015c-eb75-496a-ab47-028b0459c8f8}
+//
+
+DEFINE_GUID( GUID_PROCESSOR_PACKAGE_C6_POLICY, 0xfc1b015c, 0xeb75, 0x496a, 0xab, 0x47, 0x02, 0x8b, 0x04, 0x59, 0xc8, 0xf8);
+
+//
 // Specifies if at least one processor per core should always remain unparked.
 //
 // {a55612aa-f624-42c6-a443-7397d064c04f}
@@ -1363,6 +1394,30 @@ DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_PERF_1, 0x619b7505, 0x3b, 0x4e82, 
 DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_PERF_2, 0x619b7505, 0x3b, 0x4e82, 0xb7, 0xa6, 0x4d, 0xd2, 0x9c, 0x30, 0x9, 0x73);
 
 //
+// Specifies the processor frequency to use in response to latency sensitivity
+// hints.
+//
+// {81202931-acbb-405c-a7ee-3e2ba4866f6f}
+//
+DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_FREQ, 0x81202931, 0xacbb, 0x405c, 0xa7, 0xee, 0x3e, 0x2b, 0xa4, 0x86, 0x6f, 0x6f);
+
+//
+// Specifies the processor frequency to use in response to latency sensitivity
+// hints for Processor Power Efficiency Class 1.
+//
+// {81202931-acbb-405c-a7ee-3e2ba4866f70}
+//
+DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_FREQ_1, 0x81202931, 0xacbb, 0x405c, 0xa7, 0xee, 0x3e, 0x2b, 0xa4, 0x86, 0x6f, 0x70);
+
+//
+// Specifies the processor frequency to use in response to latency sensitivity
+// hints for Processor Power Efficiency Class 2.
+//
+// {81202931-acbb-405c-a7ee-3e2ba4866f71}
+//
+DEFINE_GUID( GUID_PROCESSOR_PERF_LATENCY_HINT_FREQ_2, 0x81202931, 0xacbb, 0x405c, 0xa7, 0xee, 0x3e, 0x2b, 0xa4, 0x86, 0x6f, 0x71);
+
+//
 // Specifies the energy/performance preference to use in response to latency
 // sensitivity hints.
 //
@@ -1420,9 +1475,13 @@ DEFINE_GUID(GUID_PROCESSOR_COMPLEX_PARKING_POLICY, 0xb669a5e9, 0x7b1d, 0x4132, 0
 // PO topology(module or complex) parking Policies
 //
 
-#define PARKING_TOPOLOGY_POLICY_DISABLED    0
-#define PARKING_TOPOLOGY_POLICY_ROUNDROBIN  1
-#define PARKING_TOPOLOGY_POLICY_SEQUENTIAL  2
+#define PARKING_TOPOLOGY_POLICY_DISABLED                      0
+#define PARKING_TOPOLOGY_POLICY_ROUNDROBIN                    1
+#define PARKING_TOPOLOGY_POLICY_SEQUENTIAL                    2
+#define PARKING_TOPOLOGY_POLICY_ROUNDROBIN_P_ROUNDROBIN_E     3
+#define PARKING_TOPOLOGY_POLICY_SEQUENTIAL_P_SEQUENTIAL_E     4
+#define PARKING_TOPOLOGY_POLICY_ROUNDROBIN_P_SEQUENTIAL_E     5
+#define PARKING_TOPOLOGY_POLICY_SEQUENTIAL_P_ROUNDROBIN_E     6
 
 //
 // Specifies the Smt unparking policy.
@@ -2492,7 +2551,7 @@ typedef enum {
     MonitorRequestReasonPdcSignalSensorsHumanPresence,          // PDC_SIGNAL_PROVIDER_SENSORS_HUMAN_PRESENCE_MONITOR
     MonitorRequestReasonBatteryPreCritical,
     MonitorRequestReasonUserInputTouch,
-    MonitorRequestReasonAusterityBatteryDrain,
+    MonitorRequestReasonRestrictedStandbyBatteryDrain,
     MonitorRequestReasonDozeRestrictedStandby,
     MonitorRequestReasonSmartRestrictedStandby,
     MonitorRequestReasonMax

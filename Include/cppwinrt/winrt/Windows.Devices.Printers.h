@@ -18,6 +18,60 @@ static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatche
 #include "winrt/impl/Windows.Devices.Printers.2.h"
 namespace winrt::impl
 {
+    template <typename D> auto consume_Windows_Devices_Printers_IIppAttributeConverterStatics<D>::ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket) const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ConvertPrintTicketToIppAttributesForPrinter(*(void**)(&printerName), *(void**)(&printTicket), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>**)this;
+            check_hresult(_winrt_abi_type->ConvertPrintTicketToIppAttributesForPrinter(*(void**)(&printerName), *(void**)(&printTicket), &result));
+        }
+        return winrt::Windows::Foundation::Collections::IMap<winrt::Windows::Devices::Printers::IppAttributeGroupKind, winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>>{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppAttributeConverterStatics<D>::ConvertBufferToIppAttributes(winrt::Windows::Storage::Streams::IBuffer const& attributesBuffer) const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ConvertBufferToIppAttributes(*(void**)(&attributesBuffer), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>**)this;
+            check_hresult(_winrt_abi_type->ConvertBufferToIppAttributes(*(void**)(&attributesBuffer), &result));
+        }
+        return winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IIppAttributeConverterStatics<D>::ConvertIppAttributesToBuffer(param::iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>> const& attributes, winrt::Windows::Devices::Printers::IppAttributeGroupKind const& attributeGroupKind) const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ConvertIppAttributesToBuffer(*(void**)(&attributes), static_cast<int32_t>(attributeGroupKind), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>**)this;
+            check_hresult(_winrt_abi_type->ConvertIppAttributesToBuffer(*(void**)(&attributes), static_cast<int32_t>(attributeGroupKind), &result));
+        }
+        return winrt::Windows::Storage::Streams::IBuffer{ result, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_Devices_Printers_IIppAttributeError<D>::Reason() const
     {
         winrt::Windows::Devices::Printers::IppAttributeErrorReason value{};
@@ -1954,6 +2008,42 @@ namespace winrt::impl
         }
         return winrt::Windows::Devices::Printers::PdlPassthroughTarget{ result, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_Devices_Printers_IPdlPassthroughProvider2<D>::IsPassthroughWithJobAttributesSupported() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsPassthroughWithJobAttributesSupported(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>**)this;
+            check_hresult(_winrt_abi_type->get_IsPassthroughWithJobAttributesSupported(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Devices_Printers_IPdlPassthroughProvider2<D>::StartPrintJobWithIppJobAttributes(param::hstring const& jobName, param::hstring const& pdlContentType, winrt::Windows::Storage::Streams::IBuffer const& jobAttributes, winrt::Windows::Storage::Streams::IBuffer const& operationAttributes) const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->StartPrintJobWithIppJobAttributes(*(void**)(&jobName), *(void**)(&pdlContentType), *(void**)(&jobAttributes), *(void**)(&operationAttributes), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>**)this;
+            check_hresult(_winrt_abi_type->StartPrintJobWithIppJobAttributes(*(void**)(&jobName), *(void**)(&pdlContentType), *(void**)(&jobAttributes), *(void**)(&operationAttributes), &result));
+        }
+        return winrt::Windows::Devices::Printers::PdlPassthroughTarget{ result, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_Devices_Printers_IPdlPassthroughTarget<D>::PrintJobId() const
     {
         int32_t value{};
@@ -2656,6 +2746,36 @@ namespace winrt::impl
         }
         return winrt::Windows::Devices::Printers::VirtualPrinterSupportedFormat{ value, take_ownership_from_abi };
     }
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Devices::Printers::IIppAttributeConverterStatics> : produce_base<D, winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>
+    {
+        int32_t __stdcall ConvertPrintTicketToIppAttributesForPrinter(void* printerName, void* printTicket, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Foundation::Collections::IMap<winrt::Windows::Devices::Printers::IppAttributeGroupKind, winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>>>(this->shim().ConvertPrintTicketToIppAttributesForPrinter(*reinterpret_cast<hstring const*>(&printerName), *reinterpret_cast<winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const*>(&printTicket)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall ConvertBufferToIppAttributes(void* attributesBuffer, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>>(this->shim().ConvertBufferToIppAttributes(*reinterpret_cast<winrt::Windows::Storage::Streams::IBuffer const*>(&attributesBuffer)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall ConvertIppAttributesToBuffer(void* attributes, int32_t attributeGroupKind, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Storage::Streams::IBuffer>(this->shim().ConvertIppAttributesToBuffer(*reinterpret_cast<winrt::Windows::Foundation::Collections::IIterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>> const*>(&attributes), *reinterpret_cast<winrt::Windows::Devices::Printers::IppAttributeGroupKind const*>(&attributeGroupKind)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
     struct produce<D, winrt::Windows::Devices::Printers::IIppAttributeError> : produce_base<D, winrt::Windows::Devices::Printers::IIppAttributeError>
@@ -3620,6 +3740,27 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Devices::Printers::IPdlPassthroughProvider2> : produce_base<D, winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>
+    {
+        int32_t __stdcall get_IsPassthroughWithJobAttributesSupported(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IsPassthroughWithJobAttributesSupported());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall StartPrintJobWithIppJobAttributes(void* jobName, void* pdlContentType, void* jobAttributes, void* operationAttributes, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Devices::Printers::PdlPassthroughTarget>(this->shim().StartPrintJobWithIppJobAttributes(*reinterpret_cast<hstring const*>(&jobName), *reinterpret_cast<hstring const*>(&pdlContentType), *reinterpret_cast<winrt::Windows::Storage::Streams::IBuffer const*>(&jobAttributes), *reinterpret_cast<winrt::Windows::Storage::Streams::IBuffer const*>(&operationAttributes)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Devices::Printers::IPdlPassthroughTarget> : produce_base<D, winrt::Windows::Devices::Printers::IPdlPassthroughTarget>
     {
         int32_t __stdcall get_PrintJobId(int32_t* value) noexcept final try
@@ -3988,6 +4129,18 @@ namespace winrt::impl
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
+    inline auto IppAttributeConverter::ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket)
+    {
+        return impl::call_factory<IppAttributeConverter, IIppAttributeConverterStatics>([&](IIppAttributeConverterStatics const& f) { return f.ConvertPrintTicketToIppAttributesForPrinter(printerName, printTicket); });
+    }
+    inline auto IppAttributeConverter::ConvertBufferToIppAttributes(winrt::Windows::Storage::Streams::IBuffer const& attributesBuffer)
+    {
+        return impl::call_factory<IppAttributeConverter, IIppAttributeConverterStatics>([&](IIppAttributeConverterStatics const& f) { return f.ConvertBufferToIppAttributes(attributesBuffer); });
+    }
+    inline auto IppAttributeConverter::ConvertIppAttributesToBuffer(param::iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>> const& attributes, winrt::Windows::Devices::Printers::IppAttributeGroupKind const& attributeGroupKind)
+    {
+        return impl::call_factory<IppAttributeConverter, IIppAttributeConverterStatics>([&](IIppAttributeConverterStatics const& f) { return f.ConvertIppAttributesToBuffer(attributes, attributeGroupKind); });
+    }
     inline auto IppAttributeValue::CreateUnsupported()
     {
         return impl::call_factory_cast<winrt::Windows::Devices::Printers::IppAttributeValue(*)(IIppAttributeValueStatics const&), IppAttributeValue, IIppAttributeValueStatics>([](IIppAttributeValueStatics const& f) { return f.CreateUnsupported(); });
@@ -4236,6 +4389,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 namespace std
 {
 #ifndef WINRT_LEAN_AND_MEAN
+    template<> struct hash<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppAttributeError> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppAttributeValue> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IIppAttributeValueStatics> : winrt::impl::hash_base {};
@@ -4256,6 +4410,7 @@ namespace std
     template<> struct hash<winrt::Windows::Devices::Printers::IIppTextWithLanguageFactory> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IPageConfigurationSettings> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IPdlPassthroughProvider> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IPdlPassthroughTarget> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IPrint3DDevice> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IPrint3DDeviceStatics> : winrt::impl::hash_base {};
@@ -4266,6 +4421,7 @@ namespace std
     template<> struct hash<winrt::Windows::Devices::Printers::IVirtualPrinterManagerStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormatFactory> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Printers::IppAttributeConverter> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IppAttributeError> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IppAttributeValue> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Printers::IppIntegerRange> : winrt::impl::hash_base {};

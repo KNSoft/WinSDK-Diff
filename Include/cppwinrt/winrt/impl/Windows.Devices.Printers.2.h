@@ -8,10 +8,18 @@
 #define WINRT_Windows_Devices_Printers_2_H
 #include "winrt/impl/Windows.Foundation.1.h"
 #include "winrt/impl/Windows.Foundation.Collections.1.h"
+#include "winrt/impl/Windows.Graphics.Printing.PrintTicket.1.h"
 #include "winrt/impl/Windows.Storage.Streams.1.h"
 #include "winrt/impl/Windows.Devices.Printers.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
+    struct IppAttributeConverter
+    {
+        IppAttributeConverter() = delete;
+        static auto ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket);
+        static auto ConvertBufferToIppAttributes(winrt::Windows::Storage::Streams::IBuffer const& attributesBuffer);
+        static auto ConvertIppAttributesToBuffer(param::iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>> const& attributes, winrt::Windows::Devices::Printers::IppAttributeGroupKind const& attributeGroupKind);
+    };
     struct WINRT_IMPL_EMPTY_BASES IppAttributeError : winrt::Windows::Devices::Printers::IIppAttributeError
     {
         IppAttributeError(std::nullptr_t) noexcept {}
@@ -111,7 +119,8 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         PageConfigurationSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPageConfigurationSettings(ptr, take_ownership_from_abi) {}
         PageConfigurationSettings();
     };
-    struct WINRT_IMPL_EMPTY_BASES PdlPassthroughProvider : winrt::Windows::Devices::Printers::IPdlPassthroughProvider
+    struct WINRT_IMPL_EMPTY_BASES PdlPassthroughProvider : winrt::Windows::Devices::Printers::IPdlPassthroughProvider,
+        impl::require<PdlPassthroughProvider, winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>
     {
         PdlPassthroughProvider(std::nullptr_t) noexcept {}
         PdlPassthroughProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPdlPassthroughProvider(ptr, take_ownership_from_abi) {}

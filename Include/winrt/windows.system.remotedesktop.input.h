@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x140000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -516,8 +516,8 @@ EXTERN_C const IID IID___x_ABI_CWindows_CSystem_CRemoteDesktop_CInput_CIRemoteTe
  * Introduced to Windows.Foundation.UniversalApiContract in version 13.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via the Windows.System.RemoteDesktop.Input.IRemoteTextConnectionFactory2 interface starting with version 16.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Type can be activated via the Windows.System.RemoteDesktop.Input.IRemoteTextConnectionFactory interface starting with version 13.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Type can be activated via the Windows.System.RemoteDesktop.Input.IRemoteTextConnectionFactory2 interface starting with version 16.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.System.RemoteDesktop.Input.IRemoteTextConnection ** Default Interface **
@@ -977,8 +977,8 @@ EXTERN_C const IID IID___x_ABI_CWindows_CSystem_CRemoteDesktop_CInput_CIRemoteTe
  * Introduced to Windows.Foundation.UniversalApiContract in version 13.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via the Windows.System.RemoteDesktop.Input.IRemoteTextConnectionFactory2 interface starting with version 16.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Type can be activated via the Windows.System.RemoteDesktop.Input.IRemoteTextConnectionFactory interface starting with version 13.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Type can be activated via the Windows.System.RemoteDesktop.Input.IRemoteTextConnectionFactory2 interface starting with version 16.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.System.RemoteDesktop.Input.IRemoteTextConnection ** Default Interface **

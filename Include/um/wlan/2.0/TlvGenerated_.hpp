@@ -1807,6 +1807,7 @@ typedef struct _WDI_CONNECTION_SETTINGS
     BOOLEAN IsFIPSConnection; // Whether this is a FIPS mode connection.  The station must use only certified cipher algorithms if HostFIPSModeEnabled is false (i.e. when hardware FIPS support is used).
     BOOLEAN MSCSSupported; // Whether MSCS is supported by the OS for this connection. If set to true, IHV driver must set the Mirrored SCS field of the Extended Capabilities element to 1.
     BOOLEAN DSCPToUPMappingSupported; // Whether DSCP to UP Mapping is supported by the OS for this connection. If set to true, IHV driver must set the QoS Map field of the Extended Capabilities element to 1.
+    BOOLEAN IsRsnOverrideSupported; // Whether Rsn Override is supported by the OS for this connection. If set to true, driver can use Rsn Override settings on the AP.
 #ifdef __cplusplus
     _WDI_CONNECTION_SETTINGS()
     {
@@ -1814,6 +1815,32 @@ typedef struct _WDI_CONNECTION_SETTINGS
     };
 #endif // __cplusplus
 } WDI_CONNECTION_SETTINGS, *PWDI_CONNECTION_SETTINGS;
+
+
+//
+// Structure definition for connection settings.
+//
+typedef struct _WDI_CONNECTION_SETTINGSV2_0_10
+{
+    BOOLEAN RoamRequest; // Specifies if this is a first time connection or a roam request
+    BOOLEAN HiddenNetwork; // Specifies if this is a hidden network or not
+    BOOLEAN ExcludeUnencrypted; // Sets the dot11ExcludeUnencrypted MIB
+    BOOLEAN MFPEnabled; // 802.11w capabilities must be advertised only if this is TRUE
+    BOOLEAN HostFIPSModeEnabled; // Host-FIPS mode is enabled or not
+    UINT32 RoamNeededReason; // Roaming needed reason
+    WDI_ROAM_TRIGGER RoamTrigger; // Whether this roam is a critical roam because the AP has set the DisassociationImminent bit set in its BSS Transition Request action frame
+    BOOLEAN BSSTransitionSupported; // Whether or not 11v BSS transition is supported. The Station must set the BSS Transition field of the Extended capabilities element (Bit 19) to 1 in the association request if this field is non-zero.
+    BOOLEAN MloConnectionSupported; // Whether or not MLO Connection is supported.
+    BOOLEAN IsFIPSConnection; // Whether this is a FIPS mode connection.  The station must use only certified cipher algorithms if HostFIPSModeEnabled is false (i.e. when hardware FIPS support is used).
+    BOOLEAN MSCSSupported; // Whether MSCS is supported by the OS for this connection. If set to true, IHV driver must set the Mirrored SCS field of the Extended Capabilities element to 1.
+    BOOLEAN DSCPToUPMappingSupported; // Whether DSCP to UP Mapping is supported by the OS for this connection. If set to true, IHV driver must set the QoS Map field of the Extended Capabilities element to 1.
+#ifdef __cplusplus
+    _WDI_CONNECTION_SETTINGSV2_0_10()
+    {
+        memset( this, 0, sizeof( _WDI_CONNECTION_SETTINGSV2_0_10 ) );
+    };
+#endif // __cplusplus
+} WDI_CONNECTION_SETTINGSV2_0_10, *PWDI_CONNECTION_SETTINGSV2_0_10;
 
 
 //
@@ -2027,42 +2054,6 @@ typedef struct _WDI_WAKE_EVENT_MASK
     };
 #endif // __cplusplus
 } WDI_WAKE_EVENT_MASK, *PWDI_WAKE_EVENT_MASK;
-
-
-//
-// Struct for receive coalescing config
-//
-typedef struct _WDI_RECEIVE_COALESCING_CONFIG
-{
-    UINT32 QueueId; // queue id
-    UINT32 FilterId; // filter id
-    UINT32 MaxCoalescingDelay; // max coalesce delay
-#ifdef __cplusplus
-    _WDI_RECEIVE_COALESCING_CONFIG() : QueueId( 0 ), FilterId( 0 ), MaxCoalescingDelay( 0 )
-    {
-    };
-#endif // __cplusplus
-} WDI_RECEIVE_COALESCING_CONFIG, *PWDI_RECEIVE_COALESCING_CONFIG;
-
-
-//
-// Struct for receive coalescing field
-//
-typedef struct _WDI_RECEIVE_COALESCING_FIELD
-{
-    UINT32 Flags; // A bitwise OR of flags
-    NDIS_FRAME_HEADER FrameHeader; // frame header
-    NDIS_RECEIVE_FILTER_TEST ReceiveFilterTest; // flter test
-    UINT32 HeaderField; // Protocol specific header field, one of NDIS_MAC_HEADER_FIELD, NDIS_ARP_HEADER_FIELD, NDIS_IPV4_HEADER_FIELD, NDIS_IPV6_HEADER_FIELD, or NDIS_UDP_HEADER_FIELD
-    WDI_BYTE16 FieldValue; // filter value
-    WDI_BYTE16 ResultValue; // result value
-#ifdef __cplusplus
-    _WDI_RECEIVE_COALESCING_FIELD()
-    {
-        memset( this, 0, sizeof( _WDI_RECEIVE_COALESCING_FIELD ) );
-    };
-#endif // __cplusplus
-} WDI_RECEIVE_COALESCING_FIELD, *PWDI_RECEIVE_COALESCING_FIELD;
 
 
 //
@@ -3732,6 +3723,8 @@ typedef WDI_GET_AUTO_POWER_SAVE_STRUCT WDI_GET_AUTO_POWER_SAVE_CONTAINER;
 
 typedef WDI_CONNECTION_SETTINGS WDI_CONNECTION_SETTINGS_CONTAINER;
 
+typedef WDI_CONNECTION_SETTINGSV2_0_10 WDI_CONNECTION_SETTINGS_CONTAINER_V2_0_10;
+
 typedef WDI_CONNECTION_SETTINGSV2_0_8 WDI_CONNECTION_SETTINGS_CONTAINER_V2_0_8;
 
 typedef WDI_CONNECTION_SETTINGSV2_0_7 WDI_CONNECTION_SETTINGS_CONTAINER_V2_0_7;
@@ -4642,51 +4635,6 @@ namespace WDI_TLV
 #endif // __cplusplus
 typedef WDI_WAKE_EVENT_MASK WDI_WAKE_EVENT_MASK_CONTAINER;
 
-typedef WDI_RECEIVE_COALESCING_CONFIG WDI_RECEIVE_COALESCING_CONFIG_CONTAINER;
-
-typedef WDI_RECEIVE_COALESCING_FIELD WDI_RECEIVE_COALESCING_FIELD_CONTAINER;
-
-struct ArrayOfElementsOfWDI_RECEIVE_COALESCING_FIELD_CONTAINER
-{
-    UINT32 ElementCount;
-    WDI_RECEIVE_COALESCING_FIELD_CONTAINER* pElements;
-    BOOLEAN MemoryInternallyAllocated;
-};
-#ifdef __cplusplus
-C_ASSERT( sizeof( ArrayOfElements<WDI_RECEIVE_COALESCING_FIELD_CONTAINER> ) == sizeof( struct ArrayOfElementsOfWDI_RECEIVE_COALESCING_FIELD_CONTAINER ) );
-#endif // __cplusplus
-
-//
-// Container for add receive coalescing Information
-//
-typedef struct _ADD_RECEIVE_COALESCING_INFO
-{
-    struct _ADD_RECEIVE_COALESCING_INFO_Optional
-    {
-        UINT32 ReceiveCoalescingField_IsPresent : 1;
-#ifdef __cplusplus
-        _ADD_RECEIVE_COALESCING_INFO_Optional() : ReceiveCoalescingField_IsPresent( FALSE )
-        {
-        };
-#endif // __cplusplus
-    } Optional;
-
-    WDI_RECEIVE_COALESCING_CONFIG_CONTAINER ReceivingCoalesingConfig;
-#ifdef __cplusplus
-    ArrayOfElements<WDI_RECEIVE_COALESCING_FIELD_CONTAINER> ReceiveCoalescingField;
-#else // __cplusplus
-    struct ArrayOfElementsOfWDI_RECEIVE_COALESCING_FIELD_CONTAINER ReceiveCoalescingField;
-#endif // __cplusplus
-} ADD_RECEIVE_COALESCING_INFO, *PADD_RECEIVE_COALESCING_INFO;
-#ifdef __cplusplus
-namespace WDI_TLV
-{
-    namespace PARSER
-    {
-        void MarkArrayOfElementFieldsAsCopied( _Inout_ ADD_RECEIVE_COALESCING_INFO * pField );
-    }
-}
-#endif // __cplusplus
 
 //
 // container for packet pattern
@@ -5892,21 +5840,6 @@ typedef struct _WDI_NETWORK_LIST_OFFLOAD_PARAMETERS
 // No TLV data needed, header is sufficient
 //
 typedef EmptyMessageStructureType WDI_NETWORK_LIST_OFFLOAD_RESULTS, *PWDI_NETWORK_LIST_OFFLOAD_RESULTS;
-
-
-//
-// Parameters for WDI_SET_RECEIVE_COALESCING
-//
-typedef struct _WDI_SET_RECEIVE_COALESCING_PARAMETERS
-{
-    ADD_RECEIVE_COALESCING_INFO AddReceiveCoalescing;
-} WDI_SET_RECEIVE_COALESCING_PARAMETERS, *PWDI_SET_RECEIVE_COALESCING_PARAMETERS;
-
-
-//
-// No TLV data needed, header is sufficient
-//
-typedef EmptyMessageStructureType WDI_SET_RECEIVE_COALESCING_RESULTS, *PWDI_SET_RECEIVE_COALESCING_RESULTS;
 
 
 //
@@ -8488,40 +8421,6 @@ extern "C" {
         _Out_opt_ WDI_NETWORK_LIST_OFFLOAD_RESULTS* pParsedMessage );
     void __stdcall CleanupParsedWdiSetNetworkListOffloadFromIhv( _In_ WDI_NETWORK_LIST_OFFLOAD_RESULTS* pParsedMessage );
 
-    NDIS_STATUS __stdcall GenerateWdiSetReceiveCoalescingToIhv(
-        _In_ WDI_SET_RECEIVE_COALESCING_PARAMETERS const * pInput,
-        _In_ ULONG ReservedHeaderLength,
-        _In_ PCTLV_CONTEXT Context,
-        _Out_ ULONG* pBufferLength,
-        _Outptr_result_buffer_( *pBufferLength ) UINT8** ppBuffer );
-#ifdef __cplusplus
-    extern "C++" inline NDIS_STATUS __stdcall Generate( _In_ WDI_SET_RECEIVE_COALESCING_PARAMETERS const * pInput, _In_ ULONG ReservedHeaderLength, _In_ PCTLV_CONTEXT Context, _Out_ ULONG* pBufferLength, _Outptr_result_buffer_( *pBufferLength ) UINT8** ppBuffer )
-    {
-        return GenerateWdiSetReceiveCoalescingToIhv( pInput, ReservedHeaderLength, Context, pBufferLength, ppBuffer );
-    }
-#endif // __cplusplus
-
-    NDIS_STATUS __stdcall ParseWdiSetReceiveCoalescingToIhv(
-        _In_ ULONG BufferLength,
-        _In_reads_bytes_( BufferLength ) UINT8 const * pBuffer,
-        _In_ PCTLV_CONTEXT Context,
-        _Out_ WDI_SET_RECEIVE_COALESCING_PARAMETERS* pParsedMessage );
-    void __stdcall CleanupParsedWdiSetReceiveCoalescingToIhv( _In_ WDI_SET_RECEIVE_COALESCING_PARAMETERS* pParsedMessage );
-
-    NDIS_STATUS __stdcall GenerateWdiSetReceiveCoalescingFromIhv(
-        _In_opt_ WDI_SET_RECEIVE_COALESCING_RESULTS const * pInput,
-        _In_ ULONG ReservedHeaderLength,
-        _In_ PCTLV_CONTEXT Context,
-        _Out_ ULONG* pBufferLength,
-        _Outptr_result_buffer_( *pBufferLength ) UINT8** ppBuffer );
-
-    NDIS_STATUS __stdcall ParseWdiSetReceiveCoalescingFromIhv(
-        _In_ ULONG BufferLength,
-        _In_reads_bytes_( BufferLength ) UINT8 const * pBuffer,
-        _In_ PCTLV_CONTEXT Context,
-        _Out_opt_ WDI_SET_RECEIVE_COALESCING_RESULTS* pParsedMessage );
-    void __stdcall CleanupParsedWdiSetReceiveCoalescingFromIhv( _In_ WDI_SET_RECEIVE_COALESCING_RESULTS* pParsedMessage );
-
     NDIS_STATUS __stdcall GenerateWdiGetBssEntryListToIhv(
         _In_ WDI_GET_BSS_ENTRY_LIST_UPDATE_PARAMETERS const * pInput,
         _In_ ULONG ReservedHeaderLength,
@@ -10579,9 +10478,6 @@ extern "C" {
 #define GenerateWdiSetNetworkListOffload GenerateWdiSetNetworkListOffloadToIhv
 #define ParseWdiSetNetworkListOffload ParseWdiSetNetworkListOffloadFromIhv
 #define CleanupParsedWdiSetNetworkListOffload CleanupParsedWdiSetNetworkListOffloadFromIhv
-#define GenerateWdiSetReceiveCoalescing GenerateWdiSetReceiveCoalescingToIhv
-#define ParseWdiSetReceiveCoalescing ParseWdiSetReceiveCoalescingFromIhv
-#define CleanupParsedWdiSetReceiveCoalescing CleanupParsedWdiSetReceiveCoalescingFromIhv
 #define GenerateWdiGetBssEntryList GenerateWdiGetBssEntryListToIhv
 #define ParseWdiGetBssEntryList ParseWdiGetBssEntryListFromIhv
 #define CleanupParsedWdiGetBssEntryList CleanupParsedWdiGetBssEntryListFromIhv
@@ -10846,9 +10742,6 @@ extern "C" {
 #define ParseWdiSetNetworkListOffload ParseWdiSetNetworkListOffloadToIhv
 #define CleanupParsedWdiSetNetworkListOffload CleanupParsedWdiSetNetworkListOffloadToIhv
 #define GenerateWdiSetNetworkListOffload GenerateWdiSetNetworkListOffloadFromIhv
-#define ParseWdiSetReceiveCoalescing ParseWdiSetReceiveCoalescingToIhv
-#define CleanupParsedWdiSetReceiveCoalescing CleanupParsedWdiSetReceiveCoalescingToIhv
-#define GenerateWdiSetReceiveCoalescing GenerateWdiSetReceiveCoalescingFromIhv
 #define ParseWdiGetBssEntryList ParseWdiGetBssEntryListToIhv
 #define CleanupParsedWdiGetBssEntryList CleanupParsedWdiGetBssEntryListToIhv
 #define GenerateWdiGetBssEntryList GenerateWdiGetBssEntryListFromIhv

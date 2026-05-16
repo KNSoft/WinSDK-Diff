@@ -409,8 +409,20 @@ Revision History:
 #endif
 #endif
 
+#if !defined(DECLSPEC_PAGED_CODE)
+
+#if defined(_KERNEL_MODE)
+#define DECLSPEC_PAGED_CODE __declspec(code_seg("PAGE"))
+#else
+#define DECLSPEC_PAGED_CODE
+#endif // defined(_KERNEL_MODE)
+
+#endif // !defined(DECLSPEC_PAGED_CODE)
+
 #ifndef FORCEINLINE
-#if (_MSC_VER >= 1200)
+#if __clang__
+#define FORCEINLINE __attribute__((always_inline)) inline
+#elif (_MSC_VER >= 1200)
 #define FORCEINLINE __forceinline
 #else
 #define FORCEINLINE __inline
@@ -1111,12 +1123,14 @@ typedef BOOLEAN *PBOOLEAN;       // winnt
 
 void _Prefast_unreferenced_parameter_impl_(const char*, ...);
 #define UNREFERENCED_PARAMETER(P)          _Prefast_unreferenced_parameter_impl_("PREfast", ((void) (P), 0))
+#define UNREFERENCED_VARIABLE(V)           _Prefast_unreferenced_parameter_impl_("PREfast", ((void) (V), 0))
 #define DBG_UNREFERENCED_PARAMETER(P)      _Prefast_unreferenced_parameter_impl_("PREfast", ((void) (P), 0))
 #define DBG_UNREFERENCED_LOCAL_VARIABLE(V) _Prefast_unreferenced_parameter_impl_("PREfast", ((void) (V), 0))
 
 #else // _PREFAST_
 
 #define UNREFERENCED_PARAMETER(P)          (P)
+#define UNREFERENCED_VARIABLE(V)           (&V)
 #define DBG_UNREFERENCED_PARAMETER(P)      (P)
 #define DBG_UNREFERENCED_LOCAL_VARIABLE(V) (V)
 
@@ -1134,6 +1148,23 @@ void _Prefast_unreferenced_parameter_impl_(const char*, ...);
         (P) = (P); \
     } \
     /*lint -restore */
+
+#ifdef __clang__
+#define UNREFERENCED_VARIABLE(V) \
+    /*lint -save -e527 -e530 */ \
+    { \
+        (void)&V; \
+    } \
+    /*lint -restore */
+#else
+#define UNREFERENCED_VARIABLE(V) \
+    /*lint -save -e527 -e530 */ \
+    { \
+        (V) = (V); \
+    } \
+    /*lint -restore */
+#endif
+
 #define DBG_UNREFERENCED_PARAMETER(P)      \
     /*lint -save -e527 -e530 */ \
     { \
@@ -2080,8 +2111,7 @@ typedef struct _SCSI_PNP_REQUEST_BLOCK {
 #define SRB_FUNCTION_GET_DUMP_INFO          0x2a
 #define SRB_FUNCTION_FREE_DUMP_INFO         0x2b
 
-#define SRB_FUNCTION_NVMEOF_OPERATION       0x2c
-
+#define SRB_FUNCTION_NVMEOF_OPERATION                 0x2c
 #define SRB_FUNCTION_MINIPORT_PASSTHROUGH_REQUEST     0x2d
 
 //
@@ -8210,11 +8240,16 @@ typedef union _TWO_BYTE {
 // This macro has the effect of Bit = log2(Data)
 //
 
-#define WHICH_BIT(Data, Bit) {          \
-    ULONG idx;                          \
-    BitScanReverse(&idx, (Data));       \
-    (Bit) = (UCHAR)idx;                 \
-    }
+#define WHICH_BIT(Data, Bit) {                      \
+    UCHAR tmp;                                      \
+    for (tmp = 0; tmp < 32; tmp++) {                \
+        if (((Data) >> tmp) == 1) {                 \
+            break;                                  \
+        }                                           \
+    }                                               \
+    NT_ASSERT(tmp != 32);                           \
+    (Bit) = tmp;                                    \
+}
 
 //
 // Define alignment requirements for variable length components in extended SRB.

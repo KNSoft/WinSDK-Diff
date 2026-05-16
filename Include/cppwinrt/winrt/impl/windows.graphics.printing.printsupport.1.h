@@ -114,6 +114,13 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
         IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4(std::nullptr_t = nullptr) noexcept {}
         IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>
+    {
+        IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5(std::nullptr_t = nullptr) noexcept {}
+        IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IPrintSupportPrintDeviceCapabilitiesUpdatePolicy :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>

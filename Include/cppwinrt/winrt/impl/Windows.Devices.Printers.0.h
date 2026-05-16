@@ -42,6 +42,12 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         AttributeNotSettable = 3,
         ConflictingAttributes = 4,
     };
+    enum class IppAttributeGroupKind : int32_t
+    {
+        Printer = 0,
+        Job = 1,
+        Operation = 2,
+    };
     enum class IppAttributeValueKind : int32_t
     {
         Unsupported = 0,
@@ -107,6 +113,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         OpenXps = 0,
         PostScript = 1,
     };
+    struct IIppAttributeConverterStatics;
     struct IIppAttributeError;
     struct IIppAttributeValue;
     struct IIppAttributeValueStatics;
@@ -127,6 +134,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     struct IIppTextWithLanguageFactory;
     struct IPageConfigurationSettings;
     struct IPdlPassthroughProvider;
+    struct IPdlPassthroughProvider2;
     struct IPdlPassthroughTarget;
     struct IPrint3DDevice;
     struct IPrint3DDeviceStatics;
@@ -137,6 +145,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     struct IVirtualPrinterManagerStatics;
     struct IVirtualPrinterSupportedFormat;
     struct IVirtualPrinterSupportedFormatFactory;
+    struct IppAttributeConverter;
     struct IppAttributeError;
     struct IppAttributeValue;
     struct IppIntegerRange;
@@ -160,6 +169,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 }
 namespace winrt::impl
 {
+    template <> struct category<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IIppAttributeError>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IIppAttributeValue>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IIppAttributeValueStatics>{ using type = interface_category; };
@@ -180,6 +190,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Devices::Printers::IIppTextWithLanguageFactory>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IPageConfigurationSettings>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IPdlPassthroughProvider>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IPdlPassthroughTarget>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IPrint3DDevice>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IPrint3DDeviceStatics>{ using type = interface_category; };
@@ -190,6 +201,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Devices::Printers::IVirtualPrinterManagerStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormatFactory>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Devices::Printers::IppAttributeConverter>{ using type = class_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IppAttributeError>{ using type = class_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IppAttributeValue>{ using type = class_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IppIntegerRange>{ using type = class_category; };
@@ -210,6 +222,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Devices::Printers::VirtualPrinterManager>{ using type = class_category; };
     template <> struct category<winrt::Windows::Devices::Printers::VirtualPrinterSupportedFormat>{ using type = class_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IppAttributeErrorReason>{ using type = enum_category; };
+    template <> struct category<winrt::Windows::Devices::Printers::IppAttributeGroupKind>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IppAttributeValueKind>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IppPrintDeviceInstallationStatus>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Devices::Printers::IppPrintDeviceKind>{ using type = enum_category; };
@@ -218,6 +231,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Devices::Printers::ReplaceDevicePropertiesStatus>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Devices::Printers::VirtualPrinterInstallationStatus>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Devices::Printers::VirtualPrinterPreferredInputFormat>{ using type = enum_category; };
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppAttributeConverter> = L"Windows.Devices.Printers.IppAttributeConverter";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppAttributeError> = L"Windows.Devices.Printers.IppAttributeError";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppAttributeValue> = L"Windows.Devices.Printers.IppAttributeValue";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppIntegerRange> = L"Windows.Devices.Printers.IppIntegerRange";
@@ -238,6 +252,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::VirtualPrinterManager> = L"Windows.Devices.Printers.VirtualPrinterManager";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::VirtualPrinterSupportedFormat> = L"Windows.Devices.Printers.VirtualPrinterSupportedFormat";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppAttributeErrorReason> = L"Windows.Devices.Printers.IppAttributeErrorReason";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppAttributeGroupKind> = L"Windows.Devices.Printers.IppAttributeGroupKind";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppAttributeValueKind> = L"Windows.Devices.Printers.IppAttributeValueKind";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppPrintDeviceInstallationStatus> = L"Windows.Devices.Printers.IppPrintDeviceInstallationStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IppPrintDeviceKind> = L"Windows.Devices.Printers.IppPrintDeviceKind";
@@ -246,6 +261,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::ReplaceDevicePropertiesStatus> = L"Windows.Devices.Printers.ReplaceDevicePropertiesStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::VirtualPrinterInstallationStatus> = L"Windows.Devices.Printers.VirtualPrinterInstallationStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::VirtualPrinterPreferredInputFormat> = L"Windows.Devices.Printers.VirtualPrinterPreferredInputFormat";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics> = L"Windows.Devices.Printers.IIppAttributeConverterStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IIppAttributeError> = L"Windows.Devices.Printers.IIppAttributeError";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IIppAttributeValue> = L"Windows.Devices.Printers.IIppAttributeValue";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IIppAttributeValueStatics> = L"Windows.Devices.Printers.IIppAttributeValueStatics";
@@ -266,6 +282,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IIppTextWithLanguageFactory> = L"Windows.Devices.Printers.IIppTextWithLanguageFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IPageConfigurationSettings> = L"Windows.Devices.Printers.IPageConfigurationSettings";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IPdlPassthroughProvider> = L"Windows.Devices.Printers.IPdlPassthroughProvider";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2> = L"Windows.Devices.Printers.IPdlPassthroughProvider2";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IPdlPassthroughTarget> = L"Windows.Devices.Printers.IPdlPassthroughTarget";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IPrint3DDevice> = L"Windows.Devices.Printers.IPrint3DDevice";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IPrint3DDeviceStatics> = L"Windows.Devices.Printers.IPrint3DDeviceStatics";
@@ -277,6 +294,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat> = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormat";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormatFactory> = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::PrintersContract> = L"Windows.Devices.Printers.PrintersContract";
+    template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>{ 0xF558776E,0x852A,0x5B89,{ 0xBB,0xA8,0xA5,0xAB,0xC6,0x30,0x3D,0x01 } }; // F558776E-852A-5B89-BBA8-A5ABC6303D01
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeError>{ 0x750FEDA1,0x9EEF,0x5C39,{ 0x93,0xE4,0x46,0x14,0x9B,0xBC,0xEF,0x27 } }; // 750FEDA1-9EEF-5C39-93E4-46149BBCEF27
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeValue>{ 0x99407FED,0xE2BB,0x59A3,{ 0x98,0x8B,0x28,0xA9,0x74,0x05,0x2A,0x26 } }; // 99407FED-E2BB-59A3-988B-28A974052A26
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeValueStatics>{ 0x10D43942,0xDD94,0x5998,{ 0xB2,0x35,0xAF,0xAF,0xB6,0xFA,0x79,0x35 } }; // 10D43942-DD94-5998-B235-AFAFB6FA7935
@@ -297,6 +315,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppTextWithLanguageFactory>{ 0xCA4A1E8D,0x2968,0x5775,{ 0x99,0x7C,0x8A,0x46,0xF1,0xA5,0x74,0xED } }; // CA4A1E8D-2968-5775-997C-8A46F1A574ED
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IPageConfigurationSettings>{ 0xB6FC1E02,0x5331,0x54FF,{ 0x95,0xA0,0x1F,0xCB,0x76,0xBB,0x97,0xA9 } }; // B6FC1E02-5331-54FF-95A0-1FCB76BB97A9
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IPdlPassthroughProvider>{ 0x23C71DD2,0x6117,0x553F,{ 0x93,0x78,0x18,0x0A,0xF5,0x84,0x9A,0x49 } }; // 23C71DD2-6117-553F-9378-180AF5849A49
+    template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>{ 0x7330305C,0xA17D,0x52EC,{ 0xA1,0x29,0x9A,0x4F,0xF9,0xC8,0xF6,0x55 } }; // 7330305C-A17D-52EC-A129-9A4FF9C8F655
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IPdlPassthroughTarget>{ 0x9840BE79,0x67F8,0x5385,{ 0xA5,0xB9,0xE8,0xC9,0x6E,0x0F,0xCA,0x76 } }; // 9840BE79-67F8-5385-A5B9-E8C96E0FCA76
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IPrint3DDevice>{ 0x041C3D19,0x9713,0x42A2,{ 0x98,0x13,0x7D,0xC3,0x33,0x74,0x28,0xD3 } }; // 041C3D19-9713-42A2-9813-7DC3337428D3
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IPrint3DDeviceStatics>{ 0xFDE3620A,0x67CD,0x41B7,{ 0xA3,0x44,0x51,0x50,0xA1,0xFD,0x75,0xB5 } }; // FDE3620A-67CD-41B7-A344-5150A1FD75B5
@@ -324,6 +343,15 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Printers::VirtualPrinterInstallationParameters>{ using type = winrt::Windows::Devices::Printers::IVirtualPrinterInstallationParameters; };
     template <> struct default_interface<winrt::Windows::Devices::Printers::VirtualPrinterInstallationResult>{ using type = winrt::Windows::Devices::Printers::IVirtualPrinterInstallationResult; };
     template <> struct default_interface<winrt::Windows::Devices::Printers::VirtualPrinterSupportedFormat>{ using type = winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat; };
+    template <> struct abi<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall ConvertPrintTicketToIppAttributesForPrinter(void*, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall ConvertBufferToIppAttributes(void*, void**) noexcept = 0;
+            virtual int32_t __stdcall ConvertIppAttributesToBuffer(void*, int32_t, void**) noexcept = 0;
+        };
+    };
     template <> struct abi<winrt::Windows::Devices::Printers::IIppAttributeError>
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
@@ -552,6 +580,14 @@ namespace winrt::impl
             virtual int32_t __stdcall StartPrintJobWithPrintTicket(void*, void*, void*, void*, void**) noexcept = 0;
         };
     };
+    template <> struct abi<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_IsPassthroughWithJobAttributesSupported(bool*) noexcept = 0;
+            virtual int32_t __stdcall StartPrintJobWithIppJobAttributes(void*, void*, void*, void*, void**) noexcept = 0;
+        };
+    };
     template <> struct abi<winrt::Windows::Devices::Printers::IPdlPassthroughTarget>
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
@@ -651,6 +687,17 @@ namespace winrt::impl
         {
             virtual int32_t __stdcall CreateInstance(void*, void*, void**) noexcept = 0;
         };
+    };
+    template <typename D>
+    struct consume_Windows_Devices_Printers_IIppAttributeConverterStatics
+    {
+        auto ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket) const;
+        auto ConvertBufferToIppAttributes(winrt::Windows::Storage::Streams::IBuffer const& attributesBuffer) const;
+        auto ConvertIppAttributesToBuffer(param::iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>> const& attributes, winrt::Windows::Devices::Printers::IppAttributeGroupKind const& attributeGroupKind) const;
+    };
+    template <> struct consume<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>
+    {
+        template <typename D> using type = consume_Windows_Devices_Printers_IIppAttributeConverterStatics<D>;
     };
     template <typename D>
     struct consume_Windows_Devices_Printers_IIppAttributeError
@@ -919,6 +966,16 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::Devices::Printers::IPdlPassthroughProvider>
     {
         template <typename D> using type = consume_Windows_Devices_Printers_IPdlPassthroughProvider<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Devices_Printers_IPdlPassthroughProvider2
+    {
+        [[nodiscard]] auto IsPassthroughWithJobAttributesSupported() const;
+        auto StartPrintJobWithIppJobAttributes(param::hstring const& jobName, param::hstring const& pdlContentType, winrt::Windows::Storage::Streams::IBuffer const& jobAttributes, winrt::Windows::Storage::Streams::IBuffer const& operationAttributes) const;
+    };
+    template <> struct consume<winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>
+    {
+        template <typename D> using type = consume_Windows_Devices_Printers_IPdlPassthroughProvider2<D>;
     };
     template <typename D>
     struct consume_Windows_Devices_Printers_IPdlPassthroughTarget

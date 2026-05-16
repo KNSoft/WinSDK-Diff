@@ -101,6 +101,7 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
     struct IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2;
     struct IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3;
     struct IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4;
+    struct IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5;
     struct IPrintSupportPrintDeviceCapabilitiesUpdatePolicy;
     struct IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics;
     struct IPrintSupportPrintTicketElement;
@@ -145,6 +146,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketElement>{ using type = interface_category; };
@@ -214,6 +216,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesUpdatePolicy";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketElement> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintTicketElement";
@@ -239,6 +242,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2>{ 0x469DF9E7,0xFD07,0x5EEB,{ 0xA0,0x7D,0x9F,0xCC,0x67,0xF0,0x89,0xBA } }; // 469DF9E7-FD07-5EEB-A07D-9FCC67F089BA
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3>{ 0xD4E9B3FC,0x8094,0x5CB6,{ 0xA3,0x43,0xCE,0x7A,0x97,0x18,0x7B,0x45 } }; // D4E9B3FC-8094-5CB6-A343-CE7A97187B45
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4>{ 0x31734AD5,0x9BFB,0x5BFB,{ 0xBD,0xEF,0x84,0x76,0x25,0x8E,0x33,0x90 } }; // 31734AD5-9BFB-5BFB-BDEF-8476258E3390
+    template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>{ 0xBC72F631,0x8177,0x5EF0,{ 0x94,0xC1,0x92,0x90,0x80,0x52,0x5B,0x5A } }; // BC72F631-8177-5EF0-94C1-929080525B5A
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>{ 0x5F5FC025,0x8C35,0x5529,{ 0x80,0x38,0x8C,0xDC,0x36,0x34,0xBB,0xCD } }; // 5F5FC025-8C35-5529-8038-8CDC3634BBCD
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics>{ 0x3D9E1A70,0x7C39,0x551F,{ 0xAA,0x1F,0xF8,0xCA,0x35,0xB3,0x11,0x9E } }; // 3D9E1A70-7C39-551F-AA1F-F8CA35B3119E
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketElement>{ 0x4B2A4489,0x730D,0x5BE7,{ 0x80,0xE6,0x83,0x32,0x94,0x1A,0xBF,0x13 } }; // 4B2A4489-730D-5BE7-80E6-8332941ABF13
@@ -407,6 +411,13 @@ namespace winrt::impl
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MxdcImageQualityConfiguration(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall SetPdlPassthroughWithJobAttributesSupported(bool) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>
@@ -678,6 +689,15 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4>
     {
         template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5
+    {
+        auto SetPdlPassthroughWithJobAttributesSupported(bool supported) const;
+    };
+    template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>
+    {
+        template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5<D>;
     };
     template <typename D>
     struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesUpdatePolicy

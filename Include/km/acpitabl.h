@@ -364,13 +364,24 @@ typedef struct _ACPI_SRAT_ENTRY {
     (FIELD_OFFSET(ACPI_SRAT_ENTRY, GiccAffinity) + \
      RTL_FIELD_SIZE(ACPI_SRAT_ENTRY, GiccAffinity))
 
-#define SRAT_GENERIC_PORT_ENTRY_LENGTH              \
+#define SRAT_GICITS_ENTRY_LENGTH                     \
+    (FIELD_OFFSET(ACPI_SRAT_ENTRY, GicItsAffinity) + \
+     RTL_FIELD_SIZE(ACPI_SRAT_ENTRY, GicItsAffinity))
+
+#define SRAT_GENERIC_INITIATOR_ENTRY_LENGTH                    \
+    (FIELD_OFFSET(ACPI_SRAT_ENTRY, GenericInitiatorAffinity) + \
+     RTL_FIELD_SIZE(ACPI_SRAT_ENTRY, GenericInitiatorAffinity))
+
+#define SRAT_GENERIC_PORT_ENTRY_LENGTH                    \
     (FIELD_OFFSET(ACPI_SRAT_ENTRY, GenericPortAffinity) + \
-    RTL_FIELD_SIZE(ACPI_SRAT_ENTRY, GenericPortAffinity))
+     RTL_FIELD_SIZE(ACPI_SRAT_ENTRY, GenericPortAffinity))
 
 #define PROXIMITY_DOMAIN(SratTable, SratEntry) \
     (((SratTable)->Header.Revision == 1) ? \
-     PROXIMITY_DOMAIN_1(SratEntry) : PROXIMITY_DOMAIN_2(SratEntry))
+     PROXIMITY_DOMAIN_1(SratEntry) : \
+     (((SratTable)->Header.Revision == 2) ? \
+      PROXIMITY_DOMAIN_2(SratEntry) : \
+      PROXIMITY_DOMAIN_3(SratEntry)))
 
 #define PROXIMITY_DOMAIN_1(SratEntry) \
     (SratEntry)->ApicAffinity.ProximityDomainLow
@@ -386,6 +397,18 @@ typedef struct _ACPI_SRAT_ENTRY {
       (((SratEntry)->Type == SratMemory) ? \
        (SratEntry)->MemoryAffinity.ProximityDomain : \
        (SratEntry)->GiccAffinity.ProximityDomain)))
+
+#define PROXIMITY_DOMAIN_3(SratEntry) \
+    (((SratEntry)->Type == SratProcessorLocalAPIC) || \
+     ((SratEntry)->Type == SratProcessorLocalX2APIC) || \
+     ((SratEntry)->Type == SratMemory) || \
+     ((SratEntry)->Type == SratGicc)) ? \
+    PROXIMITY_DOMAIN_2(SratEntry) : \
+    (((SratEntry)->Type == SratGicIts) ? \
+     (SratEntry)->GicItsAffinity.ProximityDomain : \
+      (((SratEntry)->Type == SratGenericInitiator) ? \
+       (SratEntry)->GenericInitiatorAffinity.ProximityDomain : \
+       (SratEntry)->GenericPortAffinity.ProximityDomain))
 
 #if _MSC_VER >= 1200
 #pragma warning(pop)
@@ -2154,7 +2177,7 @@ typedef struct _IORT_ITS_GROUP_NODE {
     ULONG ItsArray[ANYSIZE_ARRAY];
 } IORT_ITS_GROUP_NODE, *PIORT_ITS_GROUP_NODE;
 
-typedef struct _IORT_NAMED_COMPONENT_NODE {
+typedef struct _IORT_NAMED_COMPONENT_NODE_V2 {
     IORT_NODE_HEADER Header;
     UCHAR Reserved[4]; // Defined as node flags in the spec but reserved.
     IORT_NODE_MEMORY_ATTRIBUTES MemoryProperties;
@@ -2169,7 +2192,39 @@ typedef struct _IORT_NAMED_COMPONENT_NODE {
     // Array of ID mappings
     //
 
-} IORT_NAMED_COMPONENT_NODE, *PIORT_NAMED_COMPONENT_NODE;
+} IORT_NAMED_COMPONENT_NODE_V2, *PIORT_NAMED_COMPONENT_NODE_V2;
+
+typedef struct _IORT_NAMED_COMPONENT_NODE_V4 {
+    IORT_NODE_HEADER Header;
+
+    union {
+
+        ULONG AsULONG;
+
+        struct {
+            ULONG StallSupported : 1;
+            ULONG MaxPasidWidth : 5;
+            ULONG Reserved : 26;
+        } DUMMYSTRUCTNAME;
+
+    } Flags;
+
+    IORT_NODE_MEMORY_ATTRIBUTES MemoryProperties;
+    UCHAR MemoryAccessWidth;
+    UCHAR DeviceName[ANYSIZE_ARRAY];
+
+    //
+    // Padding
+    //
+
+    //
+    // Array of ID mappings
+    //
+
+} IORT_NAMED_COMPONENT_NODE_V4, *PIORT_NAMED_COMPONENT_NODE_V4;
+
+typedef IORT_NAMED_COMPONENT_NODE_V4 \
+    IORT_NAMED_COMPONENT_NODE, *PIORT_NAMED_COMPONENT_NODE;
 
 typedef struct _IORT_ROOT_COMPLEX_NODE_V2 {
 
@@ -2187,10 +2242,34 @@ typedef struct _IORT_ROOT_COMPLEX_NODE_V2 {
 typedef struct _IORT_ROOT_COMPLEX_NODE_V4 {
     IORT_NODE_HEADER Header;
     IORT_NODE_MEMORY_ATTRIBUTES MemoryProperties;
-    ULONG AtsAttribute;
+
+    union {
+
+        ULONG AsULONG;
+
+        struct {
+            ULONG AtsSupported : 1;
+            ULONG PriSupported : 1;
+            ULONG ForwardPasidSupported : 1;
+            ULONG Reserved : 29;
+        } DUMMYSTRUCTNAME;
+
+    } AtsAttribute;
+
     ULONG PciSegmentNumber;
     UCHAR MemoryAddressWidthLimit;
-    USHORT PasidCapabilities;
+
+    union {
+
+        USHORT AsUSHORT;
+
+        struct {
+            USHORT MaxPasidWidth : 5;
+            USHORT Reserved : 11;
+        } DUMMYSTRUCTNAME;
+
+    } PasidCapabilities;
+
     UCHAR Reserved;
 
     union {
@@ -2215,10 +2294,14 @@ typedef IORT_ROOT_COMPLEX_NODE_V4 \
     IORT_ROOT_COMPLEX_NODE, *PIORT_ROOT_COMPLEX_NODE;
 
 typedef struct _IORT_MEMORY_RANGE_DESCRIPTOR {
-    ULONG PhysicalRangeOffset;
-    ULONG PhysicalRangeLength;
-    UCHAR Reserved[4];
+    ULONGLONG PhysicalRangeOffset;
+    ULONGLONG PhysicalRangeLength;
+    ULONG Reserved;
 } IORT_MEMORY_RANGE_DESCRIPTOR, *PIORT_MEMORY_RANGE_DESCRIPTOR;
+
+C_ASSERT(FIELD_OFFSET(IORT_MEMORY_RANGE_DESCRIPTOR, PhysicalRangeOffset) == 0);
+C_ASSERT(FIELD_OFFSET(IORT_MEMORY_RANGE_DESCRIPTOR, PhysicalRangeLength) == 8);
+C_ASSERT(sizeof(IORT_MEMORY_RANGE_DESCRIPTOR) == 20);
 
 typedef struct _IORT_RMR_NODE {
     IORT_NODE_HEADER Header;
@@ -2230,23 +2313,7 @@ typedef struct _IORT_RMR_NODE {
         struct {
             ULONG RemappingPermited : 1;
             ULONG AccessPrivileged : 1;
-
-            union {
-
-                UCHAR AsUCHAR;
-
-                struct {
-                    UCHAR DevicenGnRnE : 1;
-                    UCHAR DevicenGnRE : 1;
-                    UCHAR DevicenGRE : 1;
-                    UCHAR DeviceGRE : 1;
-                    UCHAR InnerCacheOuterNoncache : 1;
-                    UCHAR InnerWriteBackOuterWriteBack : 1;
-                    UCHAR Reserved : 2;
-                } DUMMYSTRUCTNAME;
-
-            } AccessAttributes;
-
+            ULONG AccessAttributes : 8;
             ULONG Reserved : 22;
         } DUMMYSTRUCTNAME;
 
@@ -2260,6 +2327,13 @@ typedef struct _IORT_RMR_NODE {
     //
 
 } IORT_RMR_NODE, *PIORT_RMR_NODE;
+
+
+C_ASSERT(sizeof(IORT_NODE_HEADER) == 16);
+C_ASSERT(FIELD_OFFSET(IORT_RMR_NODE, Flags) == 16);
+C_ASSERT(FIELD_OFFSET(IORT_RMR_NODE, MemoryRangeDescriptorsCount) == 20);
+C_ASSERT(FIELD_OFFSET(IORT_RMR_NODE, MemoryRangeArrayOffset) == 24);
+C_ASSERT(sizeof(IORT_RMR_NODE) == 28);
 
 #if _MSC_VER >= 1200
 #pragma warning(pop)
@@ -2504,7 +2578,7 @@ typedef struct _IVHD_BLOCK {
 
         struct {
             UINT64 EfrRegisterImage;
-            UINT64 ReservedZ1;
+            UINT64 EfrRegisterImage2;
             UINT8 Type11DeviceEntries[1];
         } DUMMYSTRUCTNAME;
 
@@ -3419,6 +3493,7 @@ typedef enum _TPM20_START_METHOD {
     Tpm20TableStartMethodFifoI2C = 12,
     Tpm20TableStartMethodCRHsp   = 13,
     Tpm20TableStartMethodCRSpu   = 14,
+    Tpm20TableStartMethodCRFfa   = 15,
 } TPM20_START_METHOD, *PTPM20_START_METHOD;
 
 //
@@ -4197,11 +4272,20 @@ typedef union _PROC_TOPOLOGY_CACHE_FLAGS {
 
 typedef union _PROC_TOPOLOGY_CACHE_ATTRIBUTES {
     struct {
-        UCHAR ReadAllocate:1;
-        UCHAR WriteAllocate:1;
+        UCHAR AllocationType:2;
         UCHAR CacheType:2;
         UCHAR WritePolicy:1;
         UCHAR Reserved:3;
+    };
+
+    //
+    // Deprecated - please use the new struct definition above.
+    //
+
+    struct {
+        UCHAR ReadAllocate:1;
+        UCHAR WriteAllocate:1;
+        UCHAR Deprecated:6;
     };
 
     UCHAR AsUCHAR;
@@ -4343,6 +4427,9 @@ typedef struct _ACPI_PDTT {
 #define HMAT_MSCI_CACHEATTRIBUTES_WRITE_POLICY_WRITE_BACK       1
 #define HMAT_MSCI_CACHEATTRIBUTES_WRITE_POLICY_WRITE_THROUGH    2
 
+#define HMAT_MSCI_ADDRESSMODE_RESERVED          0
+#define HMAT_MSCI_ADDRESSMODE_EXTENDED_LINEAR   1
+
 typedef struct _HMAT_ENTRY {
     USHORT Type;
     USHORT Reserved;
@@ -4424,7 +4511,7 @@ typedef struct _HMAT_ENTRY {
                 ULONG AsULong;
             } CacheAttributes;
 
-            USHORT Reserved2;
+            USHORT AddressMode;     // Introduced in ACPI 6.6
             USHORT NumberOfSmBiosHandles;
             // USHORT SmBiosHandles[NumberOfSmBiosHandles];
         } Msci;
@@ -4777,6 +4864,348 @@ typedef struct _DTPR_TABLE
 	UINT32	        TprInstanceCount;
 	TPR_INSTANCE	TprInstanceArray[ANYSIZE_ARRAY];
 } DTPR, *PDTPR;
+
+// ---------------------------------------------------------------- AEST Define
+// Implemented per ACPI for the Armv8 RAS Extenstions 1.1 (DEN0085)
+
+#define AEST_SIGNATURE 'TSEA'
+
+typedef enum _ARM_AEST_NODE_TYPE {
+    AestTypeProcessor = 0,
+    AestTypeMemory = 1,
+    AestTypeSmmu = 2,
+    AestTypeVendor = 3,
+    AestTypeGic = 4
+} ARM_AEST_NODE_TYPE, *PARM_AEST_NODE_TYPE;
+
+typedef struct _ARM_AEST_NODE {
+    UINT8 Type;
+    UINT16 Length;
+    UINT8 Reserved;
+    UINT32 NodeSpecificOffset;
+    UINT32 NodeInterfaceOffset;
+    UINT32 NodeInterruptArrayOffset;
+    UINT32 NodeInterruptArrayLength;
+    UINT32 TimestampRate;
+    UINT8 Reserved1;
+    UINT8 ErrorInjectionCountdownRate;
+} ARM_AEST_NODE, *PARM_AEST_NODE;
+
+typedef enum _ARM_AEST_PROCESS_RESOURCE_TYPE {
+    AestProcResourceTypeCache = 0,
+    AestProcResourceTypeTlb = 1,
+    AestProcResourceTypeGeneric = 2,
+} ARM_AEST_PROCESS_RESOURCE_TYPE, *PARM_AEST_PROCESS_RESOURCE_TYPE;
+
+#define ARM_AEST_NODE_INFO_PROCESSOR_FLAG_GLOBAL 0b1;
+#define ARM_AEST_NODE_INFO_PROCESSOR_FLAG_SHARED 0b10;
+
+#if _MSC_VER >= 1200
+#pragma warning(push)
+#endif
+
+#pragma warning(disable:4201) // Warning C4201: nonstandard extension used : nameless struct/union
+
+typedef union _ARM_AEST_NODE_INFO_PROCESSOR_FLAGS {
+    UINT8 AsUINT8;
+    struct {
+        UINT8 Global:1;
+        UINT8 Shared:1;
+        UINT8 Reserved:6;
+    };
+} ARM_AEST_NODE_INFO_PROCESSOR_FLAGS, *PARM_AEST_NODE_INFO_PROCESSOR_FLAGS;
+
+typedef struct _ARM_AEST_NODE_INFO_PROCESSOR {
+    UINT32 ProcessorId; //The _UID of the processor in the MADT
+    UINT8 ResourceType;
+    UINT8 Reserved;
+    ARM_AEST_NODE_INFO_PROCESSOR_FLAGS Flags;
+    UINT8 Revision;
+    UINT64 ProcessorAffinityLevel;
+} ARM_AEST_NODE_INFO_PROCESSOR, *PARM_AEST_NODE_INFO_PROCESSOR;
+
+typedef struct _ARM_AEST_NODE_INFO_MEMORY {
+    UINT32 ProximityDomain;
+}ARM_AEST_NODE_INFO_MEMORY, *PARM_AEST_NODE_INFO_MEMORY;
+
+typedef struct _ARM_AEST_NODE_INFO_SMMU {
+    UINT32 IortNodeRef;
+    UINT32 SubcomponentRef;
+}ARM_AEST_NODE_INFO_SMMU, *PARM_AEST_NODE_INFO_SMMU;
+
+#define ARM_AEST_NODE_INFO_VENDOR_DATA_LEN 16
+
+typedef struct _ARM_AEST_NODE_INFO_VENDOR {
+    UINT32 HardwareId;
+    UINT32 UniqueId;
+    UINT8 VendorData[ARM_AEST_NODE_INFO_VENDOR_DATA_LEN];
+}ARM_AEST_NODE_INFO_VENDOR, *PARM_AEST_NODE_INFO_VENDOR;
+
+typedef enum _ARM_AEST_NODE_GIC_TYPE {
+    ArmAestGicTypeCpu = 0,
+    ArmAestGicTypeDistributor = 1,
+    ArmAestGicTypeRedistributor = 2,
+    ArmAestGicTypeIts = 3,
+}ARM_AEST_NODE_GIC_TYPE, *PARM_AEST_NODE_GIC_TYPE;
+
+typedef struct _ARM_AEST_NODE_INFO_GIC {
+    UINT32 InterfaceType;
+    UINT32 InstanceIdentifier;
+}ARM_AEST_NODE_INFO_GIC, *PARM_AEST_NODE_INFO_GIC;
+
+typedef enum _ARM_AEST_NODE_INTERFACE_TYPE {
+    AestInterfaceSystemRegister = 0,
+    AestInterfaceMmio = 1
+} ARM_AEST_NODE_INTERFACE_TYPE, *PARM_AEST_NODE_INTERFACE_TYPE;
+
+#define ARM_AEST_NODE_INTERFACE_FLAG_SHARED 0b1;
+#define ARM_AEST_NODE_INTERFACE_FLAG_CLEAR_MISC 0b10;
+
+typedef union _ARM_AEST_NODE_INTERFACE_FLAGS {
+    UINT8 AsUINT32;
+    struct {
+        UINT32 SharedInterface:1;
+        UINT32 ClearMisc:1;
+        UINT32 Reserved:30;
+    };
+} ARM_AEST_NODE_INTERFACE_FLAGS, *PARM_AEST_NODE_INTERFACE_FLAGS;
+
+#if _MSC_VER >= 1200
+#pragma warning(pop)
+#endif
+
+typedef struct _ARM_AEST_NODE_INTERFACE {
+    UINT8 InterfaceType;
+    UINT8 Reserved[3];
+    ARM_AEST_NODE_INTERFACE_FLAGS Flags;
+    UINT64 BaseAddress;
+    UINT32 StartErrorRecordIndex;
+    UINT32 NumberOfErrorRecords;
+    UINT64 ErrorRecordImplementedMap;
+    UINT64 ErrorRecordStatusReportingMap;
+    UINT64 ErrorRecordAddressModeMap;
+} ARM_AEST_NODE_INTERFACE, *PARM_AEST_NODE_INTERFACE;
+
+typedef enum _ARM_AEST_NODE_INTERRUPT_TYPE {
+    AestInterruptTypeFhi = 0,
+    AestInterruptTypeEri = 1
+} ARM_AEST_NODE_INTERRUPT_TYPE, *PARM_AEST_NODE_INTERRUPT_TYPE;
+
+typedef struct _ARM_AEST_NODE_INTERRUPT {
+    UINT8 InterruptType;
+    UINT16 Reserved;
+    UINT8 InterruptFlags;
+    UINT32 InterruptGsiv;
+    UINT8 MsiId;
+    UINT8 Reserved1[3];
+} ARM_AEST_NODE_INTERRUPT, *PARM_AEST_NODE_INTERRUPT;
+
+// ---------------------------------------------------------------- EINJ Defines
+
+#define EINJ_SIGNATURE 0x4A4E4945 // "EINJ"
+
+typedef struct _PLATFORM_INSTRUCTION_ENTRY {
+    UCHAR Action;
+    UCHAR Instruction;
+    UCHAR Flags;
+    UCHAR Reserved;
+    GEN_ADDR GenericAddress;
+    ULONGLONG Value;
+    ULONGLONG Mask;
+} PLATFORM_INSTRUCTION_ENTRY, *PPLATFORM_INSTRUCTION_ENTRY;
+
+//
+// This structure represents the EINJ ACPI table. This table is implemented by
+// the system to support error injection.
+//
+typedef struct _EINJ {
+    DESCRIPTION_HEADER Header;
+    ULONG InjectionHeaderSize;
+    UCHAR InjectionFlags;
+    UCHAR Reserved[3];
+    ULONG ActionEntryCount;
+    PLATFORM_INSTRUCTION_ENTRY Actions[1];
+} EINJ, *PEINJ;
+
+#define INJECT_ACTION_BEGININJECTION             0x00
+#define INJECT_ACTION_GETTRIGGERACTIONTABLE      0x01
+#define INJECT_ACTION_SETERRORTYPE               0x02
+#define INJECT_ACTION_GETERRORTYPE               0x03
+#define INJECT_ACTION_ENDOPERATION               0x04
+#define INJECT_ACTION_EXECUTEOPERATION           0x05
+#define INJECT_ACTION_CHECKBUSYSTATUS            0x06
+#define INJECT_ACTION_GETCOMMANDSTATUS           0x07
+#define INJECT_ACTION_SETERRORTYPEWITHADDRESS    0x08
+#define INJECT_ACTION_GETEXECUTEOPERATIONTIMINGS 0x09
+#define INJECT_ACTION_TRIGGERERROR               0xFF
+
+#define INJECT_INSTR_READREGISTER               0x00
+#define INJECT_INSTR_READREGISTERVALUE          0x01
+#define INJECT_INSTR_WRITEREGISTER              0x02
+#define INJECT_INSTR_WRITEREGISTERVALUE         0x03
+#define INJECT_INSTR_NOOP                       0x04
+#define INJECT_INSTR_CLFLUSH                    0x05
+
+#define INJECT_INSTR_FLAG_PRESERVEREGISTER   0x01
+
+//
+// CXL Early Discovery Table (CEDT), (Reserved starting in ACPI 6.5, structure definitions based on CXL 3.1)
+//
+
+#define CEDT_TABLE_SIGNATURE 0x54444543 // 'CEDT'
+
+typedef struct _CEDT_TABLE {
+    DESCRIPTION_HEADER Header;
+
+    UCHAR Structures[ANYSIZE_ARRAY];
+} CEDT_TABLE, *PCEDT_TABLE;
+
+//
+// CEDT Structure common header
+//
+
+typedef struct _CEDT_STRUCT_HEADER {
+    UCHAR Type;
+    UCHAR Reserved;
+    USHORT Length;
+} CEDT_STRUCT_HEADER, *PCEDT_STRUCT_HEADER;
+
+//
+// CEDT Structure Types
+//
+
+typedef enum _CEDT_STRUCTURE_TYPE {
+    CxlHostBridgeStructure                  = 0,
+    CxlFixedMemoryWindowStructure           = 1,
+    CxlXorInterleaveMathStructure           = 2,
+    RcecDownStreamPortAssociationStructure  = 3,
+    CxlSystemDescriptionStructure           = 4,
+    CedtStructureTypeMax
+} CEDT_STRUCTURE_TYPE, *PCEDT_STRUCTURE_TYPE;
+
+typedef enum _CXL_HOST_BRIDGE_VERSION {
+    CxlHostBridgeVersion0_RCH   = 0,
+    CxlHostBridgeVersion1       = 1,
+    CxlHostBridgeVersionMax
+} CXL_HOST_BRIDGE_VERSION, *PCXL_HOST_BRIDGE_VERSION;
+
+typedef struct _CXL_HOST_BRIDGE_STRUCTURE {
+    CEDT_STRUCT_HEADER Header;
+    ULONG UID;
+    ULONG CxlVersion;
+    ULONG Reserved;
+    ULONG64 Base;
+    ULONG64 Length;
+} CXL_HOST_BRIDGE_STRUCTURE, *PCXL_HOST_BRIDGE_STRUCTURE;
+
+typedef enum _CXL_INTERLEAVE_ARITHMETIC {
+    CxlStandartModuloArithmetic         = 0,
+    CxlModuloArithmeticCombinedWithXor  = 1,
+    CxlInterleaveArithmeticMax
+} CXL_INTERLEAVE_ARITHMETIC, *PCXL_INTERLEAVE_ARITHMETIC;
+
+#define MAX_CXL_ENCODED_NUMBER_OF_INTERLEAVE_WAYS   0xA
+
+typedef enum CXL_ENCODED_NUMBER_OF_INTERLEAVE_WAYS {
+    CxlInterleave1Way   = 0x0,
+    CxlInterleave2Way   = 0x1,
+    CxlInterleave4Way   = 0x2,
+    CxlInterleave8Way   = 0x3,
+    CxlInterleave16Way  = 0x4,
+    CxlInterleave3Way   = 0x8,
+    CxlInterleave6Way   = 0x9,
+    CxlInterleave12Way  = 0xa,
+    CxlInterleaveWayMax
+} CXL_ENCODED_NUMBER_OF_INTERLEAVE_WAYS, *PCXL_ENCODED_NUMBER_OF_INTERLEAVE_WAYS;
+
+typedef enum CXL_ENCODED_INTERLEAVE_GRANULARITY {
+    CxlInterleaveGranularity256Bytes      = 0x0,
+    CxlInterleaveGranularity512Bytes      = 0x1,
+    CxlInterleaveGranularity1024Bytes     = 0x2,
+    CxlInterleaveGranularity2048Bytes     = 0x3,
+    CxlInterleaveGranularity4096Bytes     = 0x4,
+    CxlInterleaveGranularity8192Bytes     = 0x5,
+    CxlInterleaveGranularity16384Bytes    = 0x6,
+    CxlInterleaveGranularityMax
+} CXL_ENCODED_INTERLEAVE_GRANULARITY, *PCXL_ENCODED_INTERLEAVE_GRANULARITY;
+
+#if _MSC_VER >= 1200
+#pragma warning(push)
+#endif
+
+#pragma warning(disable: 4214) // nonstandard extension used : bit field types other than int
+
+typedef struct _CXL_FIXED_MEMORY_WINDOW_STRUCTURE {
+    CEDT_STRUCT_HEADER Header;
+    ULONG Reserved;
+    ULONG64 BaseHPA;
+    ULONG64 WindowSize;
+    UCHAR EncodedNumberOfInterleaveWays;        // ENIW
+    UCHAR InterleaveArithmetic;
+    USHORT Reserved2;
+    ULONG HostBridgeInterleaveGranularity;      // HBIG
+    struct {
+        USHORT DeviceCoherent : 1;
+        USHORT HostOnlyCoherent : 1;
+        USHORT Volatile : 1;
+        USHORT Persistent : 1;
+        USHORT FixedDeviceConfiguration : 1;
+        USHORT BackInvalidateFlows : 1;         // BI
+        USHORT Reserved : 10;
+    } WindowRestrictions;
+    USHORT QtgId;
+    UCHAR InterleaveTargetList[ANYSIZE_ARRAY];  // length is 4 * NIW, offset 24h
+} CXL_FIXED_MEMORY_WINDOW_STRUCTURE, *PCXL_FIXED_MEMORY_WINDOW_STRUCTURE;
+
+#if _MSC_VER >= 1200
+#pragma warning(pop)
+#endif
+
+typedef struct _CXL_XOR_INTERLEAVE_MATH_STRUCTURE {
+    CEDT_STRUCT_HEADER Header;
+    USHORT Reserved;
+    UCHAR HostBridgeInterleaveGranularity;  // HBIG
+    UCHAR NumberOfBitmapEntries;            // NIB
+    UCHAR XormapList[ANYSIZE_ARRAY];        // length is 8 * NIB, offset 08h
+} CXL_XOR_INTERLEAVE_MATH_STRUCTURE, *PCXL_XOR_INTERLEAVE_MATH_STRUCTURE;
+
+typedef enum _CXL_RCEC_PROTOCOL_TYPE {
+    RcecErrorSourceCxlIo,
+    RcecErrorSourceCxlCachemem,
+    RcecErrorSourceMax
+} CXL_RCEC_PROTOCOL_TYPE, *PCXL_RCEC_PROTOCOL_TYPE;
+
+#if _MSC_VER >= 1200
+#pragma warning(push)
+#endif
+
+#pragma warning(disable: 4214) // nonstandard extension used : bit field types other than int
+
+typedef struct _RCEC_DOWNSTREAM_PORT_ASSOCIATION_STRUCTURE {
+    CEDT_STRUCT_HEADER Header;
+    USHORT RcecSegmentNumber;
+    struct {
+        USHORT RcecFunctionNumber : 3;
+        USHORT RcecDeviceNumber : 5;
+        USHORT RcecBusNumber : 8;
+    } RcecBdf;
+    UCHAR ProtocolType;
+    ULONG64 BaseAddress;
+} RCEC_DOWNSTREAM_PORT_ASSOCIATION_STRUCTURE, *PRCEC_DOWNSTREAM_PORT_ASSOCIATION_STRUCTURE;
+
+typedef struct _CXL_SYSTEM_DESCRIPTION_STRUCTURE {
+    CEDT_STRUCT_HEADER Header;
+    struct {
+        USHORT CmpM : 1;
+        USHORT NoCleanWriteBack : 1;
+        USHORT Reserved : 14;
+    } SystemCapabilities;
+    USHORT Reserved;
+} CXL_SYSTEM_DESCRIPTION_STRUCTURE, *PCXL_SYSTEM_DESCRIPTION_STRUCTURE;
+
+#if _MSC_VER >= 1200
+#pragma warning(pop)
+#endif
 
 //
 // Resume normal structure packing

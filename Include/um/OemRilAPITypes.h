@@ -1,5 +1,5 @@
 //
-// Copyright (c) Microsoft Corporation.  All rights reserved.
+// Copyright (C) Microsoft Corporation. All rights reserved.
 //
 //
 // Use of this source code is subject to the terms of the Microsoft
@@ -16,20 +16,22 @@
 
 // define an offset so we don't collide with
 // other OEM uses of the RIL_DevSpecific API
-typedef enum RILDEVSSPECIFICCLASSES {
+typedef enum RILDEVSSPECIFICCLASSES
+{
     RIL_DSCLASS_OEM_GBA = 0xFFFF0000
 } RILDEVSSPECIFICCLASSES;
 
 typedef enum RIL_DEVSPECIFIC_CMD
 {
-    RIL_DEVSPECIFIC_CMD_OEM_GBA_UNKNOWN             = ( 0x00000000 | RIL_DSCLASS_OEM_GBA ),
-    RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_CAPABLE     = ( 0x00000001 | RIL_DSCLASS_OEM_GBA ),
-    RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_TOKEN       = ( 0x00000002 | RIL_DSCLASS_OEM_GBA ),
-    RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_TOKEN_FORCE = ( 0x00000003 | RIL_DSCLASS_OEM_GBA ),
-    RIL_DEVSPECIFIC_CMD_OEM_MAX                     = RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_TOKEN_FORCE
+    RIL_DEVSPECIFIC_CMD_OEM_GBA_UNKNOWN = (0x00000000 | RIL_DSCLASS_OEM_GBA),
+    RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_CAPABLE = (0x00000001 | RIL_DSCLASS_OEM_GBA),
+    RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_TOKEN = (0x00000002 | RIL_DSCLASS_OEM_GBA),
+    RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_TOKEN_FORCE = (0x00000003 | RIL_DSCLASS_OEM_GBA),
+    RIL_DEVSPECIFIC_CMD_OEM_MAX = RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_TOKEN_FORCE
 } RIL_DEVSPECIFIC_CMD;
 
-typedef enum RILGETTOKENPARAMMASK {
+typedef enum RILGETTOKENPARAMMASK
+{
     RIL_PARAM_GETTOKEN_TIMEOUT = 0x00000001,
     RIL_PARAM_GETTOKEN_HEADER = 0x00000002,
     RIL_PARAM_GETTOKEN_PROTOCOL_ID = 0x00000004,
@@ -37,11 +39,12 @@ typedef enum RILGETTOKENPARAMMASK {
 } RILDEVSPECIFICPARAMMASK;
 
 // value returned asynchronously for GET_GBA_CAPABLE
-typedef enum RILGBACAPABLE {
-    RIL_GBA_UNKNOWN       = 0x00000000,
+typedef enum RILGBACAPABLE
+{
+    RIL_GBA_UNKNOWN = 0x00000000,
     RIL_GBA_NOT_SUPPORTED = 0x00000001,
-    RIL_GBA_ME_SUPPORTED  = 0x00000002,
-    RIL_GBA_U_SUPPORTED   = 0x00000003
+    RIL_GBA_ME_SUPPORTED = 0x00000002,
+    RIL_GBA_U_SUPPORTED = 0x00000003
 } RILGBACAPABLE;
 
 #pragma warning(push)
@@ -51,33 +54,35 @@ typedef enum RILGBACAPABLE {
 // we need RILDEVSPECIFICREQUEST to match WMRILDEVSPECIFIC in WMRIL
 typedef struct RILDEVSPECIFICREQUEST
 {
-    DWORD dwCmdId;    //!< This is the RIL_DEVSPECIFIC_XXX ID
-    DWORD dwSize;     //!< This is the size of the dev specific byte array below	
-    BYTE  params[];   //!< This is the additional dev specific params passed in
+    DWORD dwCmdId; //!< This is the RIL_DEVSPECIFIC_XXX ID
+    DWORD dwSize;  //!< This is the size of the dev specific byte array below
+    BYTE params[]; //!< This is the additional dev specific params passed in
 } RILDEVSPECIFICREQUEST, *LPRILDEVSPECIFICREQUEST;
 
 // Ua protocol Id defined to be 5 octets - 3GPP 33.220, Annex H
 static const int GBA_PROTOCOL_ID_SIZE = 5;
 
 // struct passed in params[] for RIL_DEVSPECIFIC_CMD_OEM_GBA_GET_GBA_TOKEN
-typedef struct RILDEVSPECIFICGETTOKEN {
+typedef struct RILDEVSPECIFICGETTOKEN
+{
     DWORD cbSize;
     DWORD dwParams; // combination of RILDEVSPECIFICPARAMMASK values indicating which fields are valid
     DWORD dwTimeout; // timeout value in seconds after which the bootstrapping will be canceled and the RILDevspecific command will return an error
-    BYTE  bProtocolId[GBA_PROTOCOL_ID_SIZE]; // Ua protocol Id - please see  3GPP 33.220, Annex H for details
+    BYTE bProtocolId[GBA_PROTOCOL_ID_SIZE]; // Ua protocol Id - please see  3GPP 33.220, Annex H for details
     DWORD cbHeaderSize;
     BYTE bHeader[]; // ASCII representation of received HTTP header
 } RILDEVSPECIFICGETTOKEN, *LPRILDEVSPECIFICGETTOKEN;
 
-typedef struct RILGBATOKEN {
+typedef struct RILGBATOKEN
+{
     DWORD cbSize;
     DWORD cbBTIDSize;
-    DWORD dwBTIDOffset;          // offset from the end of the struct
-    DWORD cbNAFKeyLifetimeSize;   // size in bytes of the string representation of the lifetime
+    DWORD dwBTIDOffset;         // offset from the end of the struct
+    DWORD cbNAFKeyLifetimeSize; // size in bytes of the string representation of the lifetime
     DWORD dwNAFKeyLifetimeOffset;
     DWORD cbNAFKeySize;
     DWORD dwNAFKeyOffset;
-	BYTE bData[]; // ASCII representation of BTID, key and key lifetime
+    BYTE bData[]; // ASCII representation of BTID, key and key lifetime
 } RILGBATOKEN, *LPRILGBATOKEN;
 
 #pragma warning(pop)

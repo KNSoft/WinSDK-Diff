@@ -61,11 +61,12 @@ typedef struct _RIM_USAGE_ANDPAGE
 #if defined(__cplusplus) && !defined(SORTPP_PASS)
 enum RIM_DEVICE_CHANGE : DWORD
 {
-    RIM_DEVICE_CREATED    = 1,
-    RIM_DEVICE_OPENED     = 2,
-    RIM_DEVICE_CLOSED     = 3,
-    RIM_DEVICE_DESTROYED  = 4,
-    RIM_DEVICE_RESET      = 5,
+    RIM_DEVICE_CREATED      = 1,
+    RIM_DEVICE_OPENED       = 2,
+    RIM_DEVICE_CLOSED       = 3,
+    RIM_DEVICE_DESTROYED    = 4,
+    RIM_DEVICE_RESET        = 5,
+    RIM_DEVICE_QUERY_REMOVE = 6,
 };
 #endif // __cplusplus
 

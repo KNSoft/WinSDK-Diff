@@ -34,7 +34,7 @@ Abstract:
 extern "C" {
 #endif
 
-#pragma push
+#pragma warning(push)
 #pragma warning(disable:4214) // bitfield types other than int
 #pragma warning(disable:4201) // nameless struct/union
 
@@ -2722,7 +2722,7 @@ PEP_ACPI_INITIALIZE_EXTENDED_IO_RESOURCE (
 
 #endif // (NTDDI_VERSION >= NTDDI_WINTHRESHOLD)
 
-#pragma pop
+#pragma warning(pop)
 
 #ifdef __cplusplus
 }

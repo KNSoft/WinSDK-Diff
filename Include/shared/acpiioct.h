@@ -89,6 +89,11 @@ Environment:
 #endif
 
 //
+// N.B. ACPI's fuzzing test needs to be in sync with the above IOCTL
+//      definitions.
+//
+
+//
 // -----------------------------V1 Data Structures------------------------------
 //
 

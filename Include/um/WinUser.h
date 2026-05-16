@@ -49,6 +49,7 @@ extern "C" {
 #pragma warning(disable:4309) // truncation of constant value
 #endif
 #pragma warning(disable:4820) // padding added after data member
+#pragma warning(disable:4201) // nonstandard extension used: nameless struct/union
 #endif
 
 #ifndef WINVER
@@ -4901,7 +4902,7 @@ IsZoomed(
 
 #if(WINVER >= 0x0400)
 #define SWP_DEFERERASE      0x2000 // same as SWP_DEFERDRAWING
-#define SWP_ASYNCWINDOWPOS  0x4000 // same as SWP_CREATESPB
+#define SWP_ASYNCWINDOWPOS  0x4000
 #endif /* WINVER >= 0x0400 */
 
 
