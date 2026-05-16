@@ -993,6 +993,95 @@ typedef struct _D3DKMT_CREATEHWQUEUEFORUSERMODESUBMISSION
     D3DDDI_NATIVEFENCELOGDETAIL                     LogBufferInfo;                          // out: Mapping information for log buffers of wait/signal submitted on this hw queue
     BYTE                                            Reserved[64];
 } D3DKMT_CREATEHWQUEUEFORUSERMODESUBMISSION;
+
+typedef struct _D3DKMT_MAPPROCESSDEBUGBLOB_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+} D3DKMT_MAPPROCESSDEBUGBLOB_FLAGS;
+
+typedef struct _D3DKMT_MAPPROCESSDEBUGBLOB
+{
+    D3DKMT_HANDLE hDevice;                          // in: device handle to indicate which debug blob for the current process to map into
+                                                    //     the calling process address space.
+    D3DKMT_MAPPROCESSDEBUGBLOB_FLAGS Flags;
+    SIZE_T BufferSize;                              // out: Size of pBuffer.
+    D3DKMT_PTR(_Field_size_bytes_opt_(BufferSize)
+    PVOID, pBuffer);                                // out: If non-null, a pointer to the process debug blob.
+} D3DKMT_MAPPROCESSDEBUGBLOB;
+
+typedef struct _D3DKMT_UNMAPPROCESSDEBUGBLOB_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+} D3DKMT_UNMAPPROCESSDEBUGBLOB_FLAGS;
+
+typedef struct _D3DKMT_UNMAPPROCESSDEBUGBLOB
+{
+    D3DKMT_HANDLE hDevice;                          // in: device handle to indicate which debug blob for the current process to unmap
+    PVOID pBuffer;                                  // in: pointer to the address returned from pfnAcquireAndMapProcessDebugBlob
+    D3DKMT_UNMAPPROCESSDEBUGBLOB_FLAGS Flags;
+} D3DKMT_UNMAPPROCESSDEBUGBLOB;
+
+typedef enum _D3DKMT_DEVICE_MARKED_AS_ERROR_FAILURE_CODE
+{
+    D3DKMT_DEVICE_MARKED_AS_ERROR_NO_ERROR                                      = 0,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_DEVICE_NOT_RECOVERED                          = 1,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_PREPARE_DMA_BUFFER                            = 2,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_PREPARE_DMA_BUFFER_TRY_AGAIN_LATER            = 3,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_PROCESS_DEFERRED_COMMAND                      = 4,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FLIP_TO_ADDRESS                               = 5,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_DRIVER_FAULTED                                = 6,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_DEVICE_HUNG                                   = 7,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_PREPARE_DMA_BUFFER_SPLIT_PACKET_PREEMPTED     = 8,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_HARDWARE_PAGE_FAULT                           = 9,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_SOFTWARE_PAGE_FAULT                           = 10,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_EVICT_VALIDATION_FAILURE                      = 11,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILED_TO_PAGE_IN_REQUIRED_RESOURCE           = 12,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILED_PROBE_AND_LOCK_TRANSFER                = 13,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_DEVICE_TERMINATED_FOR_PROCESS_CLEANUP         = 14,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_EVICTING_WHILE_IN_USE                         = 15,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_SUBMITTING_RENDER_FOR_NON_RESIDENT_ALLOCATION = 16,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_HISTORY_BUFFER_NOT_RESIDENT                   = 17,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_MISSED_PAGING_FENCE_SYNCHRONIZATION_FOR_RESIDENT_ALLOCATION = 18,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILED_SUBMIT_COMMAND_VIRTUAL                 = 19,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_INVALID_RECLAIM_USAGE                         = 20,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILED_UPDATE_ALLOCATION_PROPERTY             = 21,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_DEVICE_RESET                                  = 22,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILED_MOVE_VA_COMMIT                         = 23,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILED_MOVE_PAGING                            = 24,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILED_ASYNC_VMBUS_COMMAND                    = 25,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_DISPLAY_DISCONNECT                            = 26,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_GPU_VA_COMMITMENT_ERROR                       = 27,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILURE_CODE_KERNEL_MAX                       = 28,
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FROM_USER_MODE                                = 0x80000000
+} D3DKMT_DEVICE_MARKED_AS_ERROR_FAILURE_CODE;
+
+typedef struct _D3DKMT_DEVICE_MARKED_AS_ERROR_INFO
+{
+    D3DKMT_HANDLE hDevice; // The device that is being marked as error. 
+    GUID DumpAssociationGUID; // The GUID that will be added to any LKDs dxgkrnl creates for this error for association purposes.
+    D3DKMT_DEVICE_MARKED_AS_ERROR_FAILURE_CODE FailureCode; // The failure reason for this device marked as error notification.
+} D3DKMT_DEVICE_MARKED_AS_ERROR_INFO;
+
+//
+// This is the payload for WNF_DX_DEVICE_MARKED_AS_ERROR. Ensure the data fits inside the 
+// packet size, specified in minkernel/manifests/wnf/WNF-Names-DirectX-DXGI.man.
+//
+C_ASSERT(sizeof(D3DKMT_DEVICE_MARKED_AS_ERROR_INFO) <= 24);
+
 #endif
 
 
@@ -6003,6 +6092,19 @@ typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_NOTIFYWORKSUBMISSION)(_In_ 
 typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_ISFEATUREENABLED)(_Inout_ D3DKMT_ISFEATUREENABLED*);
 typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_RESIZERINGBUFFER)(_Inout_ D3DKMT_RESIZERINGBUFFER*);
 typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_CREATEHWQUEUEFORUSERMODESUBMISSION)(_Inout_ D3DKMT_CREATEHWQUEUEFORUSERMODESUBMISSION*);
+typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_ENABLEPROCESSDEBUGBLOBCOLLECTION)();
+typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_DISABLEPROCESSDEBUGBLOBCOLLECTION)();
+typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_MAPPROCESSDEBUGBLOB)(_Inout_ D3DKMT_MAPPROCESSDEBUGBLOB*);
+typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_UNMAPPROCESSDEBUGBLOB)(_Inout_ D3DKMT_UNMAPPROCESSDEBUGBLOB*);
+
+typedef struct _DXGK_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_INTERFACE_V1
+{
+    PFND3DKMT_ENABLEPROCESSDEBUGBLOBCOLLECTION pfnEnableProcessDebugBlobCollection;
+    PFND3DKMT_DISABLEPROCESSDEBUGBLOBCOLLECTION pfnDisableProcessDebugBlobCollection;
+    PFND3DKMT_MAPPROCESSDEBUGBLOB pfnMapProcessDebugBlob;
+    PFND3DKMT_UNMAPPROCESSDEBUGBLOB pfnUnmapProcessDebugBlob;
+} DXGK_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_INTERFACE_V1;
+
 
 #endif
 

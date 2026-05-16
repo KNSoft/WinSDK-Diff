@@ -37,6 +37,13 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Haptics
         IKnownSimpleHapticsControllerWaveformsStatics2(std::nullptr_t = nullptr) noexcept {}
         IKnownSimpleHapticsControllerWaveformsStatics2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IKnownSimpleHapticsControllerWaveformsStatics3 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IKnownSimpleHapticsControllerWaveformsStatics3>
+    {
+        IKnownSimpleHapticsControllerWaveformsStatics3(std::nullptr_t = nullptr) noexcept {}
+        IKnownSimpleHapticsControllerWaveformsStatics3(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES ISimpleHapticsController :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<ISimpleHapticsController>

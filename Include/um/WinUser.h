@@ -962,8 +962,6 @@ typedef struct tagWTSSESSION_NOTIFICATION
 
 #if(_WIN32_WINNT >= 0x0602)
 #define HSHELL_MONITORCHANGED            16
-
-// Deprecated by Feature_NoMoreSwpIamNotifyPosChanged
 #if (NTDDI_VERSION >= NTDDI_WIN10_RS3)
 #endif // NTDDI_VERSION >= NTDDI_WIN10_RS3
 

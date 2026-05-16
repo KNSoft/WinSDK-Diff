@@ -4194,6 +4194,63 @@ SeciIsProtectedUser(
 
 ////////////////////////////////////////////////////////////////////////////
 //
+// Agent account model APIs
+//
+////////////////////////////////////////////////////////////////////////////
+
+NTSTATUS
+NTAPI
+LsaCreateAgentAccount(
+    _In_ PSID OwningUser,
+    _In_ PUNICODE_STRING OwningAppPackage,
+    _In_ PUNICODE_STRING AgentName);
+
+typedef struct _LSA_AGENT_LOGON_CREDENTIAL {
+    ULONG Size;
+    PVOID Credential;
+} LSA_AGENT_LOGON_CREDENTIAL, *PLSA_AGENT_LOGON_CREDENTIAL;
+
+NTSTATUS
+NTAPI
+LsaRetrieveAgentLogonCredential(
+    _In_ PSID OwningUser,
+    _In_ PUNICODE_STRING OwningAppPackage,
+    _In_ PUNICODE_STRING AgentName,
+    _Out_ PLSA_AGENT_LOGON_CREDENTIAL Credential);
+
+typedef struct _LSA_AGENT_ACCOUNT_INFO {
+    PSID AgentSid;
+    UNICODE_STRING OwningAppPackage;
+    UNICODE_STRING AgentName;
+    UNICODE_STRING UserName;
+} LSA_AGENT_ACCOUNT_INFO, *PLSA_AGENT_ACCOUNT_INFO;
+
+typedef struct _LSA_AGENT_ACCOUNT_LIST {
+    ULONG Count;
+    LSA_AGENT_ACCOUNT_INFO* Agents;
+} LSA_AGENT_ACCOUNT_LIST, *PLSA_AGENT_ACCOUNT_LIST;
+
+NTSTATUS
+NTAPI
+LsaEnumerateAgentAccounts(
+    _In_ PSID OwningUser,
+    _Out_ PLSA_AGENT_ACCOUNT_LIST AgentList);
+
+NTSTATUS
+NTAPI
+LsaDeleteAgentAccount(
+    _In_ PSID OwningUser,
+    _In_ PUNICODE_STRING OwningAppPackage,
+    _In_ PUNICODE_STRING AgentName);
+
+NTSTATUS
+NTAPI
+LsaGetAgentOwner(
+    _In_ PSID AgentSid,
+    _Outptr_ PSID* OwnerSid);
+
+////////////////////////////////////////////////////////////////////////////
+//
 // Support for AES wire encryption
 //
 ////////////////////////////////////////////////////////////////////////////

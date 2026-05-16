@@ -13055,9 +13055,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CSensors_CIWakeOnApproachOption
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics3 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics2 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics3 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IAccelerometer ** Default Interface **
@@ -13360,8 +13360,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IBarometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IBarometerStatics2 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IBarometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IBarometer ** Default Interface **
@@ -13449,8 +13449,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.ICompassStatics2 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.ICompassStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.ICompassStatics2 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.ICompass ** Default Interface **
@@ -13776,8 +13776,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 15.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IHumanPresenceSensorStatics2 interface starting with version 15.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IHumanPresenceSensorStatics interface starting with version 15.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IHumanPresenceSensorStatics2 interface starting with version 15.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IHumanPresenceSensor ** Default Interface **
@@ -13894,10 +13894,10 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics3 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics4 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics3 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IInclinometer ** Default Interface **
@@ -14210,10 +14210,10 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics3 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics4 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics3 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IOrientationSensor ** Default Interface **
@@ -14370,8 +14370,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IProximitySensorStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IProximitySensorStatics2 interface starting with version 2.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IProximitySensorStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IProximitySensor ** Default Interface **
@@ -34686,9 +34686,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CSensors_CIWakeOnApproachOption
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics3 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics2 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics3 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IAccelerometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IAccelerometer ** Default Interface **
@@ -34991,8 +34991,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IBarometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IBarometerStatics2 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IBarometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IBarometer ** Default Interface **
@@ -35080,8 +35080,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.ICompassStatics2 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.ICompassStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.ICompassStatics2 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.ICompass ** Default Interface **
@@ -35407,8 +35407,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 15.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IHumanPresenceSensorStatics2 interface starting with version 15.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IHumanPresenceSensorStatics interface starting with version 15.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IHumanPresenceSensorStatics2 interface starting with version 15.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IHumanPresenceSensor ** Default Interface **
@@ -35525,10 +35525,10 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics3 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics4 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics3 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IInclinometerStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IInclinometer ** Default Interface **
@@ -35841,10 +35841,10 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics3 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics4 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics3 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IOrientationSensorStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IOrientationSensor ** Default Interface **
@@ -36001,8 +36001,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Sensors.IProximitySensorStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Sensors.IProximitySensorStatics2 interface starting with version 2.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Sensors.IProximitySensorStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Sensors.IProximitySensor ** Default Interface **

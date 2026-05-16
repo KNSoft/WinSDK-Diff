@@ -27367,6 +27367,15 @@ Notes:
 #define STATUS_VSMIDK_MODULUS_MISMATCH   ((NTSTATUS)0xC0450005L)
 
 //
+// MessageId: STATUS_VSM_FW_MEASUREMENTS_SEAL_FAILURE
+//
+// MessageText:
+//
+// VSM failed to seal to measurements included in the firmware update driver package.
+//
+#define STATUS_VSM_FW_MEASUREMENTS_SEAL_FAILURE ((NTSTATUS)0xC0450006L)
+
+//
 // Application Execution (AppExec)
 //
 //

@@ -14686,6 +14686,15 @@
 //
 #define ERROR_VSMIDK_MODULUS_MISMATCH    4565L
 
+//
+// MessageId: ERROR_VSM_FW_MEASUREMENTS_SEAL_FAILURE
+//
+// MessageText:
+//
+// The measurement file included in the firmware update capsule has an invalid format.
+//
+#define ERROR_VSM_FW_MEASUREMENTS_SEAL_FAILURE 4566L
+
 ///////////////////////////////////////////////////
 //                                               //
 //         Platform Manifest Error Codes         //

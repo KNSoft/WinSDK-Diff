@@ -535,6 +535,78 @@ namespace winrt::impl
         }
         return value;
     }
+    template <typename D> auto consume_Windows_Devices_Haptics_IKnownSimpleHapticsControllerWaveformsStatics3<D>::Collide() const
+    {
+        uint16_t value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Collide(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>**)this;
+            check_hresult(_winrt_abi_type->get_Collide(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Devices_Haptics_IKnownSimpleHapticsControllerWaveformsStatics3<D>::Align() const
+    {
+        uint16_t value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Align(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>**)this;
+            check_hresult(_winrt_abi_type->get_Align(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Devices_Haptics_IKnownSimpleHapticsControllerWaveformsStatics3<D>::Step() const
+    {
+        uint16_t value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Step(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>**)this;
+            check_hresult(_winrt_abi_type->get_Step(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Devices_Haptics_IKnownSimpleHapticsControllerWaveformsStatics3<D>::Grow() const
+    {
+        uint16_t value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Grow(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>**)this;
+            check_hresult(_winrt_abi_type->get_Grow(&value));
+        }
+        return value;
+    }
     template <typename D> auto consume_Windows_Devices_Haptics_ISimpleHapticsController<D>::Id() const
     {
         void* value{};
@@ -1118,6 +1190,40 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3> : produce_base<D, winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3>
+    {
+        int32_t __stdcall get_Collide(uint16_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<uint16_t>(this->shim().Collide());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_Align(uint16_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<uint16_t>(this->shim().Align());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_Step(uint16_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<uint16_t>(this->shim().Step());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_Grow(uint16_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<uint16_t>(this->shim().Grow());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Devices::Haptics::ISimpleHapticsController> : produce_base<D, winrt::Windows::Devices::Haptics::ISimpleHapticsController>
     {
         int32_t __stdcall get_Id(void** value) noexcept final try
@@ -1369,6 +1475,22 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Haptics
     {
         return impl::call_factory_cast<uint16_t(*)(IKnownSimpleHapticsControllerWaveformsStatics2 const&), KnownSimpleHapticsControllerWaveforms, IKnownSimpleHapticsControllerWaveformsStatics2>([](IKnownSimpleHapticsControllerWaveformsStatics2 const& f) { return f.Success(); });
     }
+    inline auto KnownSimpleHapticsControllerWaveforms::Collide()
+    {
+        return impl::call_factory_cast<uint16_t(*)(IKnownSimpleHapticsControllerWaveformsStatics3 const&), KnownSimpleHapticsControllerWaveforms, IKnownSimpleHapticsControllerWaveformsStatics3>([](IKnownSimpleHapticsControllerWaveformsStatics3 const& f) { return f.Collide(); });
+    }
+    inline auto KnownSimpleHapticsControllerWaveforms::Align()
+    {
+        return impl::call_factory_cast<uint16_t(*)(IKnownSimpleHapticsControllerWaveformsStatics3 const&), KnownSimpleHapticsControllerWaveforms, IKnownSimpleHapticsControllerWaveformsStatics3>([](IKnownSimpleHapticsControllerWaveformsStatics3 const& f) { return f.Align(); });
+    }
+    inline auto KnownSimpleHapticsControllerWaveforms::Step()
+    {
+        return impl::call_factory_cast<uint16_t(*)(IKnownSimpleHapticsControllerWaveformsStatics3 const&), KnownSimpleHapticsControllerWaveforms, IKnownSimpleHapticsControllerWaveformsStatics3>([](IKnownSimpleHapticsControllerWaveformsStatics3 const& f) { return f.Step(); });
+    }
+    inline auto KnownSimpleHapticsControllerWaveforms::Grow()
+    {
+        return impl::call_factory_cast<uint16_t(*)(IKnownSimpleHapticsControllerWaveformsStatics3 const&), KnownSimpleHapticsControllerWaveforms, IKnownSimpleHapticsControllerWaveformsStatics3>([](IKnownSimpleHapticsControllerWaveformsStatics3 const& f) { return f.Grow(); });
+    }
     inline auto VibrationDevice::RequestAccessAsync()
     {
         return impl::call_factory_cast<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Devices::Haptics::VibrationAccessStatus>(*)(IVibrationDeviceStatics const&), VibrationDevice, IVibrationDeviceStatics>([](IVibrationDeviceStatics const& f) { return f.RequestAccessAsync(); });
@@ -1397,6 +1519,7 @@ namespace std
     template<> struct hash<winrt::Windows::Devices::Haptics::IInputHapticsManagerStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics2> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Devices::Haptics::IKnownSimpleHapticsControllerWaveformsStatics3> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Haptics::ISimpleHapticsController> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Haptics::ISimpleHapticsControllerFeedback> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Devices::Haptics::IVibrationDevice> : winrt::impl::hash_base {};

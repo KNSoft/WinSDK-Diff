@@ -1318,6 +1318,7 @@ typedef struct _STORAGE_FIRMWARE_ACTIVATE {
 #define BOOT_PARTITION_STATUS_INVALID_SLOT                        0x6
 #define BOOT_PARTITION_STATUS_INVALID_IMAGE                       0x7
 #define BOOT_PARTITION_STATUS_INVALID_ALIGNMENT                   0x8
+#define BOOT_PARTITION_STATUS_WRITE_PROHIBITED                    0x9
 
 //
 // Data structure and definitions related to IOCTL_SCSI_MINIPORT_BOOT_PARTITION

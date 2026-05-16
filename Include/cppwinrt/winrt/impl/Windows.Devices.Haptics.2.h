@@ -48,6 +48,10 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Haptics
         [[nodiscard]] static auto MarkerContinuous();
         [[nodiscard]] static auto PencilContinuous();
         [[nodiscard]] static auto Success();
+        [[nodiscard]] static auto Collide();
+        [[nodiscard]] static auto Align();
+        [[nodiscard]] static auto Step();
+        [[nodiscard]] static auto Grow();
     };
     struct WINRT_IMPL_EMPTY_BASES SimpleHapticsController : winrt::Windows::Devices::Haptics::ISimpleHapticsController
     {

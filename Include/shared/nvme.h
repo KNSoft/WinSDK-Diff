@@ -3669,7 +3669,7 @@ typedef enum {
     NVME_LOG_PAGE_FEATURE_IDENTIFIERS_SUPPORTED_AND_EFFECTS = 0x12,
     NVME_LOG_PAGE_NVME_MI_COMMANDS_SUPPORTED_AND_EFFECTS    = 0x13,
     NVME_LOG_PAGE_COMMAND_AND_FEATURE_LOCKDOWN              = 0x14,
-    NVME_LOG_PAGE_BOOT_PARTITON                             = 0x15,
+    NVME_LOG_PAGE_BOOT_PARTITION                            = 0x15,
     NVME_LOG_PAGE_ROTATIONAL_MEDIA_INFORMATION              = 0x16,
     NVME_LOG_PAGE_DISCOVERY                                 = 0x70,
     NVME_LOG_PAGE_RESERVATION_NOTIFICATION                  = 0x80,
@@ -4002,7 +4002,7 @@ typedef struct {
 } NVME_FIRMWARE_SLOT_INFO_LOG, *PNVME_FIRMWARE_SLOT_INFO_LOG;
 
 //
-// Information of log: NVME_LOG_PAGE_BOOT_PARTITON. Size: 512 bytes min recommended.
+// Information of log: NVME_LOG_PAGE_BOOT_PARTITION. Size: 512 bytes min recommended.
 //
 typedef struct {
     UCHAR	 			                LogIdentifier;
