@@ -13867,8 +13867,6 @@ HalTranslateBusAddress (
 //                      0x7 - 0x1F - reserved
 //
 
-#if !defined(XBOX_SYSTEMOS)
-
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
 NTHALAPI
 PVOID
@@ -13877,10 +13875,6 @@ HalAllocateCrashDumpRegisters (
     _Inout_ PULONG NumberOfMapRegisters
     );
 #endif
-
-#endif
-
-#if !defined(XBOX_SYSTEMOS)
 
 #if (NTDDI_VERSION >= NTDDI_WIN8)
 
@@ -13913,8 +13907,6 @@ BOOLEAN
 HalCvmDmaEnabled (
     VOID
     );
-
-#endif
 
 #endif
 
@@ -15197,8 +15189,6 @@ HalPutDmaAdapter(
     );
 #endif
 
-#if !defined(XBOX_SYSTEMOS)
-
 #if (NTDDI_VERSION >= NTDDI_WIN7)
 
 typedef struct _WHEA_ERROR_SOURCE_DESCRIPTOR *PWHEA_ERROR_SOURCE_DESCRIPTOR;
@@ -15220,8 +15210,6 @@ VOID
 HalBugCheckSystem (
     _In_ PWHEA_ERROR_RECORD ErrorRecord
     );
-
-#endif
 
 #endif
 
@@ -23690,7 +23678,6 @@ WheaAttemptRowOffline (
     _In_ PWHEA_RECOVERY_CONTEXT Context
     );
 
-#if !defined(XBOX_SYSTEMOS)
 
 typedef
 NTSTATUS
@@ -23715,7 +23702,6 @@ HvlUnregisterWheaErrorNotification(
     _In_ PHVL_WHEA_ERROR_NOTIFICATION Callback
     );
 
-#endif
 
 
 //------------------------------------------------ PSHED Plug-in Callback Types

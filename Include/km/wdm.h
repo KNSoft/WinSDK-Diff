@@ -1709,28 +1709,28 @@ _interlockedbittestandreset64 (
 _Success_(return!=0)
 BOOLEAN
 _BitScanForward (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
+    _Out_ _Deref_out_range_(0, 31) ULONG *Index,
     _In_ ULONG Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanReverse (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
+    _Out_ _Deref_out_range_(0, 31) ULONG *Index,
     _In_ ULONG Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanForward64 (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
+    _Out_ _Deref_out_range_(0, 63) ULONG *Index,
     _In_ ULONG64 Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanReverse64 (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
+    _Out_ _Deref_out_range_(0, 63) ULONG *Index,
     _In_ ULONG64 Mask
     );
 
@@ -25002,6 +25002,7 @@ KeAcquireInStackQueuedSpinLockAtDpcLevel (
     );
 #endif
 
+
 #if (NTDDI_VERSION >= NTDDI_WINXP)
 _Requires_lock_held_(*LockHandle)
 _Releases_lock_(*LockHandle)
@@ -40775,11 +40776,11 @@ KeFlushWriteBuffer (
 
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
 
-#if !defined(_NTSYSTEM_) || !defined(XBOX_SYSTEMOS)
+#if !defined(_NTSYSTEM_)
 
 NTHALAPI
 
-#endif // !defined(_NTSYSTEM_) || !defined(XBOX_SYSTEMOS)
+#endif // !defined(_NTSYSTEM_)
 
 LARGE_INTEGER
 KeQueryPerformanceCounter (

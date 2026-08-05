@@ -2795,7 +2795,15 @@ private:
             for (int i = 0; i != _string_length; ++i)
             {
                 wchar_t local_buffer[2]{}; // Two wchar_ts to support UTF-16 surrogate pairs
-                size_t const mbc_length = __crt_mbstring::__mbsrtowcs_utf8(local_buffer, &p, 2, &state, _ptd);
+
+                // Do not read past end of input string.
+                size_t char_cnt = 2;
+                if (i == _string_length - 1)
+                {
+                    char_cnt = 1;
+                }
+
+                size_t const mbc_length = __crt_mbstring::__mbsrtowcs_utf8(local_buffer, &p, char_cnt, &state, _ptd);
                 // Unlike other per-character functions used nearby, __mbsrtowcs_utf8 will advance the string pointer.
                 if (mbc_length == __crt_mbstring::INVALID)
                 {

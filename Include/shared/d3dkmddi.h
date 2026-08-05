@@ -11,6 +11,12 @@
 
 #include <d3dkmdt.h>
 
+// Forward declaration for PUNICODE_STRING - only when ntdef.h/ntsecapi.h
+// haven't already provided it.
+#if !defined(_NTDEF_) && !defined(_NTSECAPI_)
+typedef struct _UNICODE_STRING UNICODE_STRING, *PUNICODE_STRING;
+#endif
+
 #ifndef DXGK_ALLOCATIONINFOFLAGS_EXT
 #define DXGK_ALLOCATIONINFOFLAGS_EXT
 #define DXGK_ALLOC_RESERVED0        Reserved0
@@ -2107,6 +2113,20 @@ typedef struct _DXGK_PAGE_TABLE_LEVEL_DESC
     UINT    PageTableAlignmentInBytes;          // 0 means the page size of the memory segment
 } DXGK_PAGE_TABLE_LEVEL_DESC;
 
+#if defined(__cplusplus) && !defined(SORTPP_PASS)
+typedef enum _DXGK_PAGING_TYPE : UINT
+{
+   DXGK_PAGING_TYPE_NONE    = 0,
+   DXGK_PAGING_TYPE_FILL    = 1,
+   DXGK_PAGING_TYPE_DISCARD = 2,
+   DXGK_PAGING_TYPE_INPAGE  = 3,
+   DXGK_PAGING_TYPE_OUTPAGE = 4,
+   DXGK_PAGING_TYPE_MOVE    = 5,
+} DXGK_PAGING_TYPE;
+#else
+typedef UINT DXGK_PAGING_TYPE;
+#endif // defined(__cplusplus) && !defined(SORTPP_PASS)
+
 typedef struct _DXGK_UPDATEPAGETABLEFLAGS
 {
    UINT    Repeat          : 1;
@@ -2116,7 +2136,14 @@ typedef struct _DXGK_UPDATEPAGETABLEFLAGS
 
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
    UINT    NativeFence     : 1;     // When set, specifies that DXGK_BUILDPAGINGBUFFER_UPDATEPAGETABLE::hAllocation is a native GPU fence handle.
-   UINT    Reserved        : 27;
+#if DXGK_FEATURE_PAGING_INTENT_VERSION >= DXGK_FEATURE_PAGING_INTENT_VERSION_INITIAL
+   UINT PagingSource           : 1;
+   UINT PagingDestination      : 1;
+   DXGK_PAGING_TYPE PagingType : 3; // DXGK_PAGING_TYPE
+#else
+   UINT Reserved_PagingIntent  : 5;
+#endif
+   UINT    Reserved        : 22;
 #else
    UINT    Reserved        : 28;
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
@@ -3909,7 +3936,12 @@ typedef struct _DXGK_ALLOCATIONINFOFLAGS2
             UINT    NeedPagingVaAtResidencyNotification : 1; // 0x00000010  KMD needs GPUVA at Residency notification. KMD also needs to set appropriate segment flags at DXGK_NOTIFYRESIDENCY2_CAPS.  
             UINT    Reserved01                      :  1;   // 0x00000020  Reserved for future use
             UINT    FaultAndStall                   :  1;   // 0x00000040  Hardware can do page fault and stall on the allocation
-            UINT    Reserved                        : 25;
+#if DXGK_FEATURE_SYSMEM_PAGING_VERSION >= DXGK_FEATURE_SYSMEM_PAGING_VERSION_INITIAL
+            UINT    SysMemPaging                    :  1;   // 0x00000080  Allocation requires paging operations when placed in system memory
+#else
+            UINT    Reserved_SysMemPaging           :  1;
+#endif
+            UINT    Reserved                        : 24;
 #else
             UINT    Reserved                        : 31;
 #endif // DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2
@@ -4796,9 +4828,12 @@ typedef struct _DXGK_BUILDPAGINGBUFFER_FILLVIRTUAL
 
 typedef enum _DXGK_MEMORY_TRANSFER_DIRECTION
 {
-    DXGK_MEMORY_TRANSFER_LOCAL_TO_SYSTEM = 0,
-    DXGK_MEMORY_TRANSFER_SYSTEM_TO_LOCAL = 1,
-    DXGK_MEMORY_TRANSFER_LOCAL_TO_LOCAL  = 2,
+    DXGK_MEMORY_TRANSFER_LOCAL_TO_SYSTEM     = 0,
+    DXGK_MEMORY_TRANSFER_SYSTEM_TO_LOCAL     = 1,
+    DXGK_MEMORY_TRANSFER_LOCAL_TO_LOCAL      = 2,
+    DXGK_MEMORY_TRANSFER_SYSTEM_TO_SYSTEM    = 3,
+    DXGK_MEMORY_TRANSFER_SYSTEM_TO_PARTITION = 4,
+    DXGK_MEMORY_TRANSFER_PARTITION_TO_SYSTEM = 5,
 } DXGK_MEMORY_TRANSFER_DIRECTION;
 
 typedef struct _DXGK_TRANSFERVIRTUALFLAGS
@@ -11294,6 +11329,446 @@ typedef struct _DXGKDDIINT_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_1
     DXGKDDI_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_COLLECTPROCESSDEBUGBLOB pfnCollectProcessDebugBlob;
 } DXGKDDIINT_FEATURE_PROCESS_DEBUG_BLOB_COLLECTION_1;
 
+#if (DXGK_FEATURE_PARTITION_SEGMENT_VERSION >= DXGK_FEATURE_PARTITION_SEGMENT_VERSION_INITIAL)
+
+typedef struct _DXGK_PARTITION_SEGMENT_CAPS
+{
+    union
+    {
+        struct
+        {
+            UINT HardwarePaging :  1;
+            UINT Reserved       : 31;
+        };
+        UINT Value;
+    };
+} DXGK_PARTITION_SEGMENT_CAPS;
+
+typedef struct _DXGKARG_FEATURE_PARTITION_SEGMENT_GET_CAPS
+{
+    UINT16 PhysicalAdapterIndex; // In
+    DXGK_PARTITION_SEGMENT_CAPS Caps; // Out
+    UINT32 Reserved[3];
+} DXGKARG_FEATURE_PARTITION_SEGMENT_GET_CAPS;
+
+typedef _Inout_ DXGKARG_FEATURE_PARTITION_SEGMENT_GET_CAPS* INOUT_PDXGKARG_FEATURE_PARTITION_SEGMENT_GET_CAPS;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_FEATURE_PARTITION_SEGMENT_GET_CAPS)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY* DXGKDDI_FEATURE_PARTITION_SEGMENT_GET_CAPS)(
+    IN_CONST_HANDLE                                   hAdapter,
+    INOUT_PDXGKARG_FEATURE_PARTITION_SEGMENT_GET_CAPS pArgs
+    );
+
+typedef struct _DXGKDDIINT_PARTITION_SEGMENT_1
+{
+    DXGKDDI_FEATURE_PARTITION_SEGMENT_GET_CAPS pfnGetCaps;
+} DXGKDDIINT_FEATURE_PARTITION_SEGMENT_1;
+
+#endif // DXGK_FEATURE_PARTITION_SEGMENT_VERSION_INITIAL
+
+#if (DXGK_FEATURE_SYSMEM_PAGING_VERSION >= DXGK_FEATURE_SYSMEM_PAGING_VERSION_INITIAL)
+
+typedef struct _DXGK_SYSMEM_PAGING_CAPS
+{
+    union
+    {
+        struct
+        {
+            UINT Supported           :  1;
+            UINT CpuVisibleSupported :  1;
+            UINT Reserved            : 30;
+        };
+        UINT Value;
+    };
+} DXGK_SYSMEM_PAGING_CAPS;
+
+typedef struct _DXGKARG_FEATURE_SYSMEM_PAGING_GET_CAPS
+{
+    UINT16 PhysicalAdapterIndex; // In
+    DXGK_SYSMEM_PAGING_CAPS Caps; // Out
+    UINT32 Reserved[3];
+} DXGKARG_FEATURE_SYSMEM_PAGING_GET_CAPS;
+
+typedef _Inout_ DXGKARG_FEATURE_SYSMEM_PAGING_GET_CAPS* INOUT_PDXGKARG_FEATURE_SYSMEM_PAGING_GET_CAPS;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_FEATURE_SYSMEM_PAGING_GET_CAPS)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY* DXGKDDI_FEATURE_SYSMEM_PAGING_GET_CAPS)(
+    IN_CONST_HANDLE                               hAdapter,
+    INOUT_PDXGKARG_FEATURE_SYSMEM_PAGING_GET_CAPS pArgs
+    );
+
+typedef struct _DXGKDDIINT_SYSMEM_PAGING_1
+{
+    DXGKDDI_FEATURE_SYSMEM_PAGING_GET_CAPS pfnGetCaps;
+} DXGKDDIINT_FEATURE_SYSMEM_PAGING_1;
+
+#endif // DXGK_FEATURE_SYSMEM_PAGING_VERSION_INITIAL
+
+#if (DXGK_FEATURE_INTELLIGENT_CARVEOUT_VERSION >= DXGK_FEATURE_INTELLIGENT_CARVEOUT_VERSION_INITIAL)
+
+typedef struct _DXGK_INTELLIGENT_CARVEOUT_PREFERENCES_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT UseHardwareTransfer :  1;
+            UINT Reserved            : 31;
+        };
+        UINT Value;
+    };
+} DXGK_INTELLIGENT_CARVEOUT_PREFERENCES_FLAGS;
+
+typedef struct _DXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES
+{
+    SIZE_T RecommendedSize;
+    DXGK_INTELLIGENT_CARVEOUT_PREFERENCES_FLAGS Flags;
+} DXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES;
+
+typedef _Inout_ DXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES* INOUT_PDXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY* DXGKDDI_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES)(
+    IN_CONST_HANDLE                                               hAdapter,
+    INOUT_PDXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES pArgs
+    );
+
+typedef struct _DXGKDDIINT_INTELLIGENT_CARVEOUT_1
+{
+    DXGKDDI_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES pfnQueryPreferences;
+} DXGKDDIINT_FEATURE_INTELLIGENT_CARVEOUT_1;
+
+#endif // DXGK_FEATURE_INTELLIGENT_CARVEOUT_VERSION_INITIAL
+
+#if (DXGK_FEATURE_INTELLIGENT_CARVEOUT_VERSION >= DXGK_FEATURE_INTELLIGENT_CARVEOUT_VERSION_2)
+
+typedef struct _DXGK_INTELLIGENT_CARVEOUT_PREFERENCES_FLAGS_2
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+} DXGK_INTELLIGENT_CARVEOUT_PREFERENCES_FLAGS_2;
+
+typedef struct _DXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES_2
+{
+    SIZE_T RecommendedSize;
+    DXGK_INTELLIGENT_CARVEOUT_PREFERENCES_FLAGS_2 Flags;
+} DXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES_2;
+
+typedef _Inout_ DXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES_2* INOUT_PDXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES_2;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES_2)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY* DXGKDDI_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES_2)(
+    IN_CONST_HANDLE                                                 hAdapter,
+    INOUT_PDXGKARG_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES_2 pArgs
+    );
+
+typedef struct _DXGKDDIINT_INTELLIGENT_CARVEOUT_2
+{
+    DXGKDDI_FEATURE_INTELLIGENT_CARVEOUT_QUERY_PREFERENCES_2 pfnQueryPreferences;
+} DXGKDDIINT_FEATURE_INTELLIGENT_CARVEOUT_2;
+
+#endif // DXGK_FEATURE_INTELLIGENT_CARVEOUT_VERSION_VERSION_2
+
+typedef void* DXGK_PROPERTYMAP_HANDLE;
+typedef _In_ CONST DXGK_PROPERTYMAP_HANDLE IN_CONST_DXGK_PROPERTYMAP_HANDLE;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_TARGET_PROPERTYMAP_QUERY)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY *DXGKDDI_TARGET_PROPERTYMAP_QUERY)(
+    IN_CONST_DXGK_PROPERTYMAP_HANDLE        PropertyMapHandle,
+    IN_CONST_D3DKMDT_ADAPTER                hAdapter,
+    IN_CONST_D3DDDI_VIDEO_PRESENT_TARGET_ID VidPnTargetId
+    );
+
+typedef struct _DXGKDDIINT_FEATURE_TARGET_PROPERTY_MAP_1
+{
+    DXGKDDI_TARGET_PROPERTYMAP_QUERY pfnQueryTargetPropertyMap;
+} DXGKDDIINT_FEATURE_TARGET_PROPERTY_MAP_1;
+
+typedef enum _DXGK_PROPERTY_STATUS
+{
+    DXGK_PROPERTY_STATUS_SUCCESS = 0,
+    DXGK_PROPERTY_STATUS_NOT_RECOGNIZED = 1,
+    DXGK_PROPERTY_STATUS_NOT_APPLICABLE = 2,
+    DXGK_PROPERTY_STATUS_ERROR = 3,
+} DXGK_PROPERTY_STATUS;
+
+typedef struct _DXGK_PROPERTY_VERSION
+{
+    UINT Major;
+    UINT Minor;
+    UINT Update;
+    UINT HotFix;
+} DXGK_PROPERTY_VERSION, *PDXGK_PROPERTY_VERSION;
+
+typedef struct _DXGK_PROPERTY_DATATYPE_UINT32_VECTOR3
+{
+    UINT X;
+    UINT Y;
+    UINT Z;
+} DXGK_PROPERTY_DATATYPE_UINT32_VECTOR3, *PDXGK_PROPERTY_DATATYPE_UINT32_VECTOR3;
+
+typedef void* DXGK_PROPERTYMAP_INTERFACE_HANDLE;
+
+typedef
+UINT
+(APIENTRY *DXGK_PROPERTYMAP_GETPROPERTYCOUNT)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_FINDPROPERTYINDEXFROMID)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _Out_ UINT* pPropertyIndex
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_GETPROPERTYIDFROMINDEX)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ UINT PropertyIndex,
+    _Out_ GUID* pPropertyId
+    );
+
+typedef
+BOOL
+(APIENTRY *DXGK_PROPERTYMAP_ISEXPANDABLE)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle
+    );
+
+typedef
+BOOL
+(APIENTRY *DXGK_PROPERTYMAP_ISREADONLY)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_ADDPROPERTY)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_SETPROPERTYDATAUINT32)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _In_ UINT Value
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_SETPROPERTYDATAUINT64)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _In_ UINT64 Value
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_SETPROPERTYDATAVERSION)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _In_ PDXGK_PROPERTY_VERSION pVersion
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_SETPROPERTYDATAVECTOR3)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _In_ PDXGK_PROPERTY_DATATYPE_UINT32_VECTOR3 pVector3
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_SETPROPERTYDATAUNICODESTRING)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _In_ const UNICODE_STRING* pString
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_SETPROPERTYDATAUINT8ARRAY)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _In_ UINT DataSize,
+    _In_ PBYTE pData
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_QUERYPROPERTYDATAUINT32)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _Out_ UINT* pValue
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_QUERYPROPERTYDATAUINT64)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _Out_ UINT64* pValue
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_QUERYPROPERTYDATAVERSION)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _Out_ PDXGK_PROPERTY_VERSION pVersion
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_QUERYPROPERTYDATAVECTOR3)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _Out_ PDXGK_PROPERTY_DATATYPE_UINT32_VECTOR3 pVector3
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_QUERYPROPERTYDATAUNICODESTRING)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _Inout_ PUNICODE_STRING pString
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_QUERYPROPERTYDATAUINT8ARRAY)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _Inout_ UINT* pDataSizeInBytes,
+    _Out_opt_ PBYTE pData
+    );
+
+typedef
+NTSTATUS
+(APIENTRY *DXGK_PROPERTYMAP_SETPROPERTYSTATUS)(
+    _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE Handle,
+    _In_ GUID PropertyId,
+    _In_ DXGK_PROPERTY_STATUS Status
+    );
+
+typedef struct _DXGK_PROPERTYMAP_INTERFACE
+{
+    // Returns the current size of the property map
+    DXGK_PROPERTYMAP_GETPROPERTYCOUNT                pfnGetPropertyCount;
+
+    // Allow driver to query if a given property is in the map, if so pPropertyIndex will indicate its position
+    // STATUS_NOT_FOUND - indicates the property is not in the map
+    // STATUS_SUCCESS - indicates the property is in the map and pPropertyIndex updated
+    // NOTE: Properties are stored sorted internally so returned index from this call will be invalid if AddProperty is called
+    DXGK_PROPERTYMAP_FINDPROPERTYINDEXFROMID         pfnFindPropertyIndexFromId;
+
+    // Allows driver to query the index in the map of a given property Id
+    // STATUS_ARRAY_BOUNDS_EXCEEDED - indicates the index provided is out of bounds
+    DXGK_PROPERTYMAP_GETPROPERTYIDFROMINDEX          pfnGetPropertyIdFromIndex;
+
+    // Indicates to driver if driver can use AddProperty() to add relevant IHV specific property
+    // about the target to this property map
+    DXGK_PROPERTYMAP_ISEXPANDABLE                    pfnIsExpandable;
+
+    // Indicates to the driver if set SetXxxxx() calls can be made to update the values of the properties in this map
+    DXGK_PROPERTYMAP_ISREADONLY                      pfnIsReadOnly;
+
+    // If IsExpandable() is true then driver can use this to add a property to the map
+    // As the driver is adding this property the OS will set its status to DXGK_PROPERTY_STATUS_SUCCESS
+    // When first created the property will not have defined type (null type) and its property will be set from the
+    // the first SetPropertyDataXxxx call
+    // NOTE: Properties are stored sorted internally so after successful add all previously queried index's are invalid
+    DXGK_PROPERTYMAP_ADDPROPERTY                     pfnAddProperty;
+
+    // Provide way for driver to set the data for a property
+    // STATUS_ACCESS_DENIED if IsReadOnly() return TRUE
+    // STATUS_NOT_FOUND if the provided property Id is not in the property map
+    DXGK_PROPERTYMAP_SETPROPERTYDATAUINT32           pfnSetPropertyDataUint32;
+    DXGK_PROPERTYMAP_SETPROPERTYDATAUINT64           pfnSetPropertyDataUint64;
+    DXGK_PROPERTYMAP_SETPROPERTYDATAVERSION          pfnSetPropertyDataVersion;
+    DXGK_PROPERTYMAP_SETPROPERTYDATAVECTOR3          pfnSetPropertyDataVector3;
+    DXGK_PROPERTYMAP_SETPROPERTYDATAUNICODESTRING    pfnSetPropertyDataUnicodeString;
+    DXGK_PROPERTYMAP_SETPROPERTYDATAUINT8ARRAY       pfnSetPropertyDataUint8Array;
+
+    // Provide way for driver to read the data for a property
+    // STATUS_NOT_FOUND if the provided property Id is not in the property map
+    DXGK_PROPERTYMAP_QUERYPROPERTYDATAUINT32         pfnQueryPropertyDataUint32;
+    DXGK_PROPERTYMAP_QUERYPROPERTYDATAUINT64         pfnQueryPropertyDataUint64;
+    DXGK_PROPERTYMAP_QUERYPROPERTYDATAVERSION        pfnQueryPropertyDataVersion;
+    DXGK_PROPERTYMAP_QUERYPROPERTYDATAVECTOR3        pfnQueryPropertyDataVector3;
+
+    // Driver can call with pString->Buffer as null-ptr to get the size of the data buffer needed in pString->MaximumLength
+    DXGK_PROPERTYMAP_QUERYPROPERTYDATAUNICODESTRING  pfnQueryPropertyDataUnicodeString;
+
+    // Driver can call with pData as null-ptr to get the size of the data
+    DXGK_PROPERTYMAP_QUERYPROPERTYDATAUINT8ARRAY     pfnQueryPropertyDataUint8Array;
+
+    // Allow driver to set the status of a property
+    DXGK_PROPERTYMAP_SETPROPERTYSTATUS               pfnSetPropertyStatus;
+} DXGK_PROPERTYMAP_INTERFACE_1, *PDXGK_PROPERTYMAP_INTERFACE_1;
+
+typedef _Outptr_ CONST DXGK_PROPERTYMAP_INTERFACE_1** DEREF_OUT_CONST_PPDXGK_PROPERTYMAP_INTERFACE_1;
+typedef _Out_ DXGK_PROPERTYMAP_INTERFACE_HANDLE* OUT_PDXGK_PROPERTYMAP_INTERFACE_HANDLE;
+
+typedef
+    _Check_return_
+    _Function_class_DXGK_(DXGKDDI_PROPERTY_ACQUIREPROPERTYMAPINTERFACE)
+    _IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY *DXGKDDI_PROPERTY_ACQUIREPROPERTYMAPINTERFACE)(
+    IN_CONST_DXGK_PROPERTYMAP_HANDLE                       PropertyMapHandle,
+    OUT_PDXGK_PROPERTYMAP_INTERFACE_HANDLE                 pPropertyMapInterfaceHandle,
+    DEREF_OUT_CONST_PPDXGK_PROPERTYMAP_INTERFACE_1         ppPropertyMapInterface
+    );
+
+typedef _In_ DXGK_PROPERTYMAP_INTERFACE_HANDLE IN_DXGK_PROPERTYMAP_INTERFACE_HANDLE;
+
+typedef
+    _Check_return_
+    _Function_class_DXGK_(DXGKDDI_PROPERTY_RELEASEPROPERTYMAPINTERFACE)
+    _IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY *DXGKDDI_PROPERTY_RELEASEPROPERTYMAPINTERFACE)(
+    IN_DXGK_PROPERTYMAP_INTERFACE_HANDLE PropertyMapInterfaceHandle
+    );
+
+typedef struct _DXGKCBINT_FEATURE_PROPERTY_MAP_1
+{
+    DXGKDDI_PROPERTY_ACQUIREPROPERTYMAPINTERFACE pfnAcquirePropertyMapInterface;
+    DXGKDDI_PROPERTY_RELEASEPROPERTYMAPINTERFACE pfnReleasePropertyMapInterface;
+} DXGKCBINT_FEATURE_PROPERTY_MAP_1;
+
 typedef enum _DXGK_TDR_TYPE
 {
     DXGK_TDR_TYPE_UNKNOWN = 0,
@@ -11436,6 +11911,7 @@ typedef enum _DXGK_SEGMENTTYPE
     DXGK_SEGMENTTYPE_SYSMEM     = 0,
     DXGK_SEGMENTTYPE_LOCAL      = 1,
     DXGK_SEGMENTTYPE_APERTURE   = 2,
+    DXGK_SEGMENTTYPE_PARTITION  = 3,
 } DXGK_SEGMENTTYPE;
 
 typedef enum _DXGK_PAGESIZE

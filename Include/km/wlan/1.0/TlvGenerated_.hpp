@@ -941,18 +941,52 @@ typedef struct _WDI_STATION_CAPABILITIES
     BOOLEAN AutoPowerSaveMode; // {0,1} if Auto Power Save is supported. Yes = 1.
     BOOLEAN BSSListCachemanagement; // {0,1} If the adapter would maintain the Station BSS List cache. Yes = 1
     BOOLEAN ConnectBSSSelectionOverride; // {0,1} If on a Station connect the adapter may attempt association to a BSSID that is not specified in the Preferred BSSID list. Yes = 1
-    UINT32 uMaxNetworkOffloadListSize; // Support number of Network Offload entries
+    UINT32 uMaxNetworkOffloadListSize; // Number of supported Network Offload entries
+    BOOLEAN HESSIDConnectionSupported; // {0,1} If ability to connect to HESSIDs is supported. Yes = 1.
+    BOOLEAN DisconnectedStandbySupported; // If disconnected standby is supported. Yes = 1
+    BOOLEAN FTMAsInitiatorSupport; // {0,1} If FTM procedures as Initiator are supported. Yes = 1.
+    UINT32 FTMNumberOfSupportedTargets; // Number of target STAs supported per FTM request task.
+    BOOLEAN HostWPA3FIPSModeEnabled; // Host-FIPS mode for WPA3 is enabled or not
+    BOOLEAN rsnOverrideSupported; // Whether or not Rsn-Override is supported
+#ifdef __cplusplus
+    _WDI_STATION_CAPABILITIES() : ScanSSIDListSize( 0 ), DesiredBSSIDListSize( 0 ), DesiredSSIDListSize( 0 ), PrivacyExemptionListSize( 0 ), KeyMappingTableSize( 0 ), DefaultKeyTableSize( 0 ), WEPKeyValueMaxLength( 0 ), MaxNumPerSTA( 0 ), SupportedQOSFlags( 0 ), HostFIPSModeImplemented( 0 ), MFPCapable( 0 ), AutoPowerSaveMode( FALSE ), BSSListCachemanagement( FALSE ), ConnectBSSSelectionOverride( FALSE ), uMaxNetworkOffloadListSize( 0 ), HESSIDConnectionSupported( FALSE ), DisconnectedStandbySupported( FALSE ), FTMAsInitiatorSupport( FALSE ), FTMNumberOfSupportedTargets( 0 ), HostWPA3FIPSModeEnabled( FALSE ), rsnOverrideSupported( FALSE )
+    {
+    };
+#endif // __cplusplus
+} WDI_STATION_CAPABILITIES, *PWDI_STATION_CAPABILITIES;
+
+
+//
+// Structure definition for Station capabilities
+//
+typedef struct _WDI_STATION_CAPABILITIESV1_1_9
+{
+    UINT32 ScanSSIDListSize; // Scan SSID List size
+    UINT32 DesiredBSSIDListSize; // Desired BSSID List size
+    UINT32 DesiredSSIDListSize; // Desired SSID List size
+    UINT32 PrivacyExemptionListSize; // Privacy Exemption List size
+    UINT32 KeyMappingTableSize; // Key Mapping List size
+    UINT32 DefaultKeyTableSize; // Default Key table size
+    UINT32 WEPKeyValueMaxLength; // WEP Key value Max length
+    UINT32 MaxNumPerSTA; // Max num per STA Default key tables
+    UINT8 SupportedQOSFlags; // Whether or not WMM QOS is supported
+    UINT8 HostFIPSModeImplemented; // Whether or not host FIPS mode is supported
+    UINT8 MFPCapable; // Whether or not MFP is supported
+    BOOLEAN AutoPowerSaveMode; // {0,1} if Auto Power Save is supported. Yes = 1.
+    BOOLEAN BSSListCachemanagement; // {0,1} If the adapter would maintain the Station BSS List cache. Yes = 1
+    BOOLEAN ConnectBSSSelectionOverride; // {0,1} If on a Station connect the adapter may attempt association to a BSSID that is not specified in the Preferred BSSID list. Yes = 1
+    UINT32 uMaxNetworkOffloadListSize; // Number of supported Network Offload entries
     BOOLEAN HESSIDConnectionSupported; // {0,1} If ability to connect to HESSIDs is supported. Yes = 1.
     BOOLEAN DisconnectedStandbySupported; // If disconnected standby is supported. Yes = 1
     BOOLEAN FTMAsInitiatorSupport; // {0,1} If FTM procedures as Initiator are supported. Yes = 1.
     UINT32 FTMNumberOfSupportedTargets; // Number of target STAs supported per FTM request task.
     BOOLEAN HostWPA3FIPSModeEnabled; // Host-FIPS mode for WPA3 is enabled or not
 #ifdef __cplusplus
-    _WDI_STATION_CAPABILITIES() : ScanSSIDListSize( 0 ), DesiredBSSIDListSize( 0 ), DesiredSSIDListSize( 0 ), PrivacyExemptionListSize( 0 ), KeyMappingTableSize( 0 ), DefaultKeyTableSize( 0 ), WEPKeyValueMaxLength( 0 ), MaxNumPerSTA( 0 ), SupportedQOSFlags( 0 ), HostFIPSModeImplemented( 0 ), MFPCapable( 0 ), AutoPowerSaveMode( FALSE ), BSSListCachemanagement( FALSE ), ConnectBSSSelectionOverride( FALSE ), uMaxNetworkOffloadListSize( 0 ), HESSIDConnectionSupported( FALSE ), DisconnectedStandbySupported( FALSE ), FTMAsInitiatorSupport( FALSE ), FTMNumberOfSupportedTargets( 0 ), HostWPA3FIPSModeEnabled( FALSE )
+    _WDI_STATION_CAPABILITIESV1_1_9() : ScanSSIDListSize( 0 ), DesiredBSSIDListSize( 0 ), DesiredSSIDListSize( 0 ), PrivacyExemptionListSize( 0 ), KeyMappingTableSize( 0 ), DefaultKeyTableSize( 0 ), WEPKeyValueMaxLength( 0 ), MaxNumPerSTA( 0 ), SupportedQOSFlags( 0 ), HostFIPSModeImplemented( 0 ), MFPCapable( 0 ), AutoPowerSaveMode( FALSE ), BSSListCachemanagement( FALSE ), ConnectBSSSelectionOverride( FALSE ), uMaxNetworkOffloadListSize( 0 ), HESSIDConnectionSupported( FALSE ), DisconnectedStandbySupported( FALSE ), FTMAsInitiatorSupport( FALSE ), FTMNumberOfSupportedTargets( 0 ), HostWPA3FIPSModeEnabled( FALSE )
     {
     };
 #endif // __cplusplus
-} WDI_STATION_CAPABILITIES, *PWDI_STATION_CAPABILITIES;
+} WDI_STATION_CAPABILITIESV1_1_9, *PWDI_STATION_CAPABILITIESV1_1_9;
 
 
 //
@@ -1737,6 +1771,7 @@ typedef struct _WDI_CONNECTION_SETTINGS
     UINT32 RoamNeededReason; // Roaming needed reason
     WDI_ROAM_TRIGGER RoamTrigger; // Whether this roam is a critical roam because the AP has set the DisassociationImminent bit set in its BSS Transition Request action frame
     BOOLEAN BSSTransitionSupported; // Whether or not 11v BSS transition is supported. The Station must set the BSS Transition field of the Extended capabilities element (Bit 19) to 1 in the association request if this field is non-zero.
+    BOOLEAN IsRsnOverrideSupported; // Whether Rsn Override is supported by the OS for this connection. If set to true, driver can use Rsn Override settings on the AP.
 #ifdef __cplusplus
     _WDI_CONNECTION_SETTINGS()
     {
@@ -1744,6 +1779,28 @@ typedef struct _WDI_CONNECTION_SETTINGS
     };
 #endif // __cplusplus
 } WDI_CONNECTION_SETTINGS, *PWDI_CONNECTION_SETTINGS;
+
+
+//
+// Structure definition for connection settings.
+//
+typedef struct _WDI_CONNECTION_SETTINGS1_0_1
+{
+    BOOLEAN RoamRequest; // Specifies if this is a first time connection or a roam request
+    BOOLEAN HiddenNetwork; // Specifies if this is a hidden network or not
+    BOOLEAN ExcludeUnencrypted; // Sets the dot11ExcludeUnencrypted MIB
+    BOOLEAN MFPEnabled; // 802.11w capabilities must be advertised only if this is TRUE
+    BOOLEAN HostFIPSModeEnabled; // Host-FIPS mode is enabled or not
+    UINT32 RoamNeededReason; // Roaming needed reason
+    WDI_ROAM_TRIGGER RoamTrigger; // Whether this roam is a critical roam because the AP has set the DisassociationImminent bit set in its BSS Transition Request action frame
+    BOOLEAN BSSTransitionSupported; // Whether or not 11v BSS transition is supported. The Station must set the BSS Transition field of the Extended capabilities element (Bit 19) to 1 in the association request if this field is non-zero.
+#ifdef __cplusplus
+    _WDI_CONNECTION_SETTINGS1_0_1()
+    {
+        memset( this, 0, sizeof( _WDI_CONNECTION_SETTINGS1_0_1 ) );
+    };
+#endif // __cplusplus
+} WDI_CONNECTION_SETTINGS1_0_1, *PWDI_CONNECTION_SETTINGS1_0_1;
 
 
 //
@@ -3222,6 +3279,8 @@ typedef struct ArrayOfElementsOfWDI_ALGO_PAIRS WDI_ALGO_PAIRS_LIST_CONTAINER;
 
 typedef WDI_STATION_CAPABILITIES WDI_STATION_CAPABILITIES_CONTAINER;
 
+typedef WDI_STATION_CAPABILITIESV1_1_9 WDI_STATION_CAPABILITIES_CONTAINERV1_1_9;
+
 typedef WDI_STATION_CAPABILITIESV1_1_8 WDI_STATION_CAPABILITIES_CONTAINERV1_1_8;
 
 typedef WDI_STATION_CAPABILITIESV1_0 WDI_STATION_CAPABILITIES_CONTAINERV1_0;
@@ -3496,6 +3555,8 @@ typedef WDI_RADIO_STATUS WDI_RADIO_STATUS_CONTAINER;
 typedef WDI_GET_AUTO_POWER_SAVE_STRUCT WDI_GET_AUTO_POWER_SAVE_CONTAINER;
 
 typedef WDI_CONNECTION_SETTINGS WDI_CONNECTION_SETTINGS_CONTAINER;
+
+typedef WDI_CONNECTION_SETTINGS1_0_1 WDI_CONNECTION_SETTINGS_CONTAINER_V1_0_1;
 
 typedef WDI_CONNECTION_SETTINGSV1_0 WDI_CONNECTION_SETTINGS_CONTAINER_V1_0;
 

@@ -1733,28 +1733,28 @@ _interlockedbittestandreset64 (
 _Success_(return!=0)
 BOOLEAN
 _BitScanForward (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
+    _Out_ _Deref_out_range_(0, 31) ULONG *Index,
     _In_ ULONG Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanReverse (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
+    _Out_ _Deref_out_range_(0, 31) ULONG *Index,
     _In_ ULONG Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanForward64 (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
+    _Out_ _Deref_out_range_(0, 63) ULONG *Index,
     _In_ ULONG64 Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanReverse64 (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) ULONG *Index,
+    _Out_ _Deref_out_range_(0, 63) ULONG *Index,
     _In_ ULONG64 Mask
     );
 

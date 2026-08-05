@@ -1365,6 +1365,13 @@
     </container>
 
     <container
+      name="StationCapabilitiesContainerV1_1_9"
+      description="Container for Station capabilities"
+      type="WDI_STATION_CAPABILITIES_CONTAINERV1_1_9">
+      <groupRef name="WifiStationCapabilities" ref="WifiStationCapabilitiesStructV1_1_9" description="Parameters for Station capabilities" />
+    </container>
+
+    <container
       name="StationCapabilitiesContainerV1_1_8"
       description="Container for Station capabilities"
       type="WDI_STATION_CAPABILITIES_CONTAINERV1_1_8">
@@ -1494,7 +1501,8 @@
     </container> 
 
     <aggregateContainer name="StationAttributesContainer" type="WDI_STATION_ATTRIBUTES_CONTAINER" description="Container for Station attributes.">
-      <containerRef id="WDI_TLV_STATION_CAPABILITIES" name="StationCapabilities" type="StationCapabilitiesContainer" versionAdded="WDI_VERSION_1_1_9"/>
+      <containerRef id="WDI_TLV_STATION_CAPABILITIES" name="StationCapabilities" type="StationCapabilitiesContainer" versionAdded="WDI_VERSION_1_1_13"/>
+      <containerRef id="WDI_TLV_STATION_CAPABILITIES" name="StationCapabilities" type="StationCapabilitiesContainerV1_1_9" versionAdded="WDI_VERSION_1_1_9" versionRemoved="WDI_VERSION_1_1_13" />
       <containerRef id="WDI_TLV_STATION_CAPABILITIES" name="StationCapabilities" type="StationCapabilitiesContainerV1_1_8" versionAdded="WDI_VERSION_1_1_8" versionRemoved="WDI_VERSION_1_1_9" />
       <containerRef id="WDI_TLV_STATION_CAPABILITIES" name="StationCapabilities" type="StationCapabilitiesContainerV1_0" versionRemoved="WDI_VERSION_1_1_8"/>
       <containerRef id="WDI_TLV_UNICAST_ALGORITHM_LIST" name="UnicastAlgorithms" type="AlgorithmPairsContainer" optional="true" />
@@ -1571,6 +1579,13 @@
     </container>
 
     <container
+      name="ConnectionSettingsContainerV1_0_1"
+      description="Container for connection settings"
+      type="WDI_CONNECTION_SETTINGS_CONTAINER_V1_0_1">
+      <groupRef name="ConnectionSettings" ref="ConnectionSettingsStructV1_0_1" description="Connection settings"/>
+    </container>
+
+    <container
       name="ConnectionSettingsContainerV1_0"
       description="Container for connection settings"
       type="WDI_CONNECTION_SETTINGS_CONTAINER_V1_0">
@@ -1624,7 +1639,8 @@
      </aggregateContainer>  
 
     <aggregateContainer name="ConnectParametersContainer" type="WDI_CONNECT_PARAMETERS_CONTAINER" description="Container for connect parameters.">
-      <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainer" versionAdded="WDI_VERSION_1_0_1"/>
+      <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainer" versionAdded="WDI_VERSION_1_1_13"/>
+      <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainerV1_0_1" versionAdded="WDI_VERSION_1_0_1" versionRemoved="WDI_VERSION_1_1_13"/>
       <containerRef id="WDI_TLV_CONNECTION_SETTINGS" name="ConnectionSettings" type="ConnectionSettingsContainerV1_0" versionRemoved="WDI_VERSION_1_0_1"/>
       <containerRef id="WDI_TLV_SSID" name="SSIDList" type="WiFiSSID" multiContainer="true" />
       <containerRef id="WDI_TLV_HESSID_INFO" name="HESSIDInfo" type="HESSIDInfoContainer" optional="true" />
@@ -2353,7 +2369,31 @@
       <bool name="AutoPowerSaveMode" description="{0,1} if Auto Power Save is supported. Yes = 1." />
       <bool name="BSSListCachemanagement" description="{0,1} If the adapter would maintain the Station BSS List cache. Yes = 1" />
       <bool name="ConnectBSSSelectionOverride" description="{0,1} If on a Station connect the adapter may attempt association to a BSSID that is not specified in the Preferred BSSID list. Yes = 1" />
-      <uint32 name="uMaxNetworkOffloadListSize" description="Support number of Network Offload entries" />
+      <uint32 name="uMaxNetworkOffloadListSize" description="Number of supported Network Offload entries" />
+      <bool name="HESSIDConnectionSupported" description="{0,1} If ability to connect to HESSIDs is supported. Yes = 1." />
+      <bool name="DisconnectedStandbySupported" description="If disconnected standby is supported. Yes = 1" />
+      <bool name="FTMAsInitiatorSupport" description="{0,1} If FTM procedures as Initiator are supported. Yes = 1." />
+      <uint32 name="FTMNumberOfSupportedTargets" description="Number of target STAs supported per FTM request task." />
+      <bool name="HostWPA3FIPSModeEnabled" description="Host-FIPS mode for WPA3 is enabled or not"/>
+      <bool name="rsnOverrideSupported" description="Whether or not Rsn-Override is supported"/>
+    </propertyGroup>
+
+    <propertyGroup name="WifiStationCapabilitiesStructV1_1_9" type="WDI_STATION_CAPABILITIESV1_1_9" description="Structure definition for Station capabilities">
+      <uint32 name="ScanSSIDListSize" description="Scan SSID List size" />
+      <uint32 name="DesiredBSSIDListSize" description="Desired BSSID List size" />
+      <uint32 name="DesiredSSIDListSize" description="Desired SSID List size" />
+      <uint32 name="PrivacyExemptionListSize" description="Privacy Exemption List size" />
+      <uint32 name="KeyMappingTableSize" description="Key Mapping List size" />
+      <uint32 name="DefaultKeyTableSize" description="Default Key table size" />
+      <uint32 name="WEPKeyValueMaxLength" description="WEP Key value Max length" />
+      <uint32 name="MaxNumPerSTA" description="Max num per STA Default key tables" />
+      <uint8 name="SupportedQOSFlags" description="Whether or not WMM QOS is supported" />
+      <uint8 name="HostFIPSModeImplemented" description="Whether or not host FIPS mode is supported" />
+      <uint8 name="MFPCapable" description="Whether or not MFP is supported" />
+      <bool name="AutoPowerSaveMode" description="{0,1} if Auto Power Save is supported. Yes = 1." />
+      <bool name="BSSListCachemanagement" description="{0,1} If the adapter would maintain the Station BSS List cache. Yes = 1" />
+      <bool name="ConnectBSSSelectionOverride" description="{0,1} If on a Station connect the adapter may attempt association to a BSSID that is not specified in the Preferred BSSID list. Yes = 1" />
+      <uint32 name="uMaxNetworkOffloadListSize" description="Number of supported Network Offload entries" />
       <bool name="HESSIDConnectionSupported" description="{0,1} If ability to connect to HESSIDs is supported. Yes = 1." />
       <bool name="DisconnectedStandbySupported" description="If disconnected standby is supported. Yes = 1" />
       <bool name="FTMAsInitiatorSupport" description="{0,1} If FTM procedures as Initiator are supported. Yes = 1." />
@@ -2734,6 +2774,18 @@
     </propertyGroup>
 
     <propertyGroup name="ConnectionSettingsStruct" type="WDI_CONNECTION_SETTINGS" description="Structure definition for connection settings.">
+      <bool name="RoamRequest" description="Specifies if this is a first time connection or a roam request"/>
+      <bool name="HiddenNetwork" description="Specifies if this is a hidden network or not"/>
+      <bool name="ExcludeUnencrypted" description="Sets the dot11ExcludeUnencrypted MIB"/>
+      <bool name="MFPEnabled" description="802.11w capabilities must be advertised only if this is TRUE"/>
+      <bool name="HostFIPSModeEnabled" description="Host-FIPS mode is enabled or not"/>
+      <uint32 name="RoamNeededReason" description="Roaming needed reason"/>
+      <namedType name="RoamTrigger" type="WDI_ROAM_TRIGGER" description="Whether this roam is a critical roam because the AP has set the DisassociationImminent bit set in its BSS Transition Request action frame"/>
+      <bool name="BSSTransitionSupported" description="Whether or not 11v BSS transition is supported. The Station must set the BSS Transition field of the Extended capabilities element (Bit 19) to 1 in the association request if this field is non-zero."/>
+      <bool name="IsRsnOverrideSupported" description="Whether Rsn Override is supported by the OS for this connection. If set to true, driver can use Rsn Override settings on the AP."/>
+    </propertyGroup>
+
+    <propertyGroup name="ConnectionSettingsStructV1_0_1" type="WDI_CONNECTION_SETTINGS1_0_1" description="Structure definition for connection settings.">
       <bool name="RoamRequest" description="Specifies if this is a first time connection or a roam request"/>
       <bool name="HiddenNetwork" description="Specifies if this is a hidden network or not"/>
       <bool name="ExcludeUnencrypted" description="Sets the dot11ExcludeUnencrypted MIB"/>

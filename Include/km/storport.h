@@ -10601,7 +10601,9 @@ typedef enum _STORPORT_FUNCTION_CODE {
     ExtFunctionNvmeIceQueryNvmeCapabilities,
     ExtFunctionNvmeIceConfigureExclusionRanges,
     ExtFunctionNvmeIceEnableNvmeDevice,
-    ExtFunctionGetRequestCryptoInfoEx
+    ExtFunctionGetRequestCryptoInfoEx,
+    ExtFunctionNvmeIceIoStart2,
+    ExtFunctionNvmeIceIoComplete2
 
 } STORPORT_FUNCTION_CODE, *PSTORPORT_FUNCTION_CODE;
 
@@ -10628,6 +10630,7 @@ typedef enum _STORPORT_FUNCTION_CODE {
 #define STOR_STATUS_TIMEOUT                     (0xC100000EL)
 #define STOR_STATUS_INVALID_DATA                (0xC100000FL)
 #define STOR_STATUS_RESET_REQUIRED              (0xC1000010L)
+#define STOR_STATUS_NOT_SUPPORTED               (0xC1000011L)
 
 //
 // Port driver error codes
@@ -10699,6 +10702,7 @@ typedef enum _SCSI_NOTIFICATION_TYPE {
     TerminateSystemThread,
     NvmeofNotification,
     StorMQControllerStartInitialization,
+    CryptoKeysInvalidated,
 
 
     //
@@ -15113,6 +15117,39 @@ StorPortNvmeIceIoStart(
     _Inout_ PULONGLONG Prp2,
     _Inout_ PULONGLONG PrpList
     )
+/*++
+
+Routine Description:
+
+    Starts a hardware accelerated crypto I/O operation using an NVMe ICE.
+    This routine prepares and issues an NVMe ICE I/O request corresponding
+    to the supplied SRB.
+
+    This routine is used for both read and write operations. The I/O
+    direction is derived from the SRB.
+
+Arguments:
+
+    HwDeviceExtension - Supplies the miniport driver's adapter data storage
+    Srb - Pointer to the SRB to start NVMe ICE /O.
+    LbaCount - Number of LBAs transferred by this I/O.
+    PrpCount - Number of PRPs describing the data buffer for this I/O
+    Prp1 - First PRP:
+            If PrpCount == 1, this is the only PRP.
+            If PrpCount >= 2, this is the first PRP.
+    Prp2 - Second PRP if PrpCount == 2. Must be NULL otherwise
+    PrpList - Array of PRP entries if PrpCount > 2. The array contains 
+              PrpCount-1 entries and does not include Prp1. Must be NULL
+              if PrpCount <= 2.
+               
+Return Value:
+
+    STATUS_SUCCESS - The ICE I/O was successfully started.
+    STOR_STATUS_NOT_SUPPORTED - This I/O does not use NVMe ICE.
+
+    Other STOR error codes
+
+--*/   
 {
     ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
 
@@ -15182,6 +15219,93 @@ StorPortNvmeIceIoStartEx(
 
 ULONG
 FORCEINLINE
+StorPortNvmeIceIoStart2(
+    _In_ PVOID HwDeviceExtension,
+    _In_ ULONG SegmentAndBus,
+    _In_ ULONG SlotNumber,
+    _In_ PSCSI_REQUEST_BLOCK Srb,
+    _In_ ULONGLONG LbaOffset,
+    _In_ ULONG LbaCount,
+    _In_ ULONG PrpCount,
+    _Inout_ PULONGLONG Prp1,
+    _Inout_ PULONGLONG Prp2,
+    _Inout_ PULONGLONG PrpList
+    )
+/*++
+
+Routine Description:
+
+    Starts a hardware accelerated crypto I/O operation using an NVMe ICE.
+    This routine prepares and issues an NVMe ICE I/O request corresponding
+    to the supplied SRB.
+
+    This routine is used for both read and write operations. The I/O
+    direction is derived from the SRB.
+
+    This routine supports NVMe ICE interfaces that implement PIO_START_V2
+    as well as those that implement PIO_START. Storport determines the
+    appropriate NVMe ICE interface function to invoke based on the NVMe ICE
+    version in use.
+
+Arguments:
+
+    HwDeviceExtension - Supplies the miniport driver's adapter data storage.
+    SegmentAndBus - Supplies the bus address in the format of PCI_SEGMENT_BUS_NUMBER::u.AsULONG.
+    SlotNumber - Supplies PCI slot number in the format for PCI_SLOT_NUMBER::u.AsULONG.
+    Srb - Pointer to the SRB to start NVMe ICE I/O.
+    LbaOffset - Starting LBA offset for this I/O.
+    LbaCount - Number of LBAs transferred by this I/O.
+    PrpCount - Number of PRPs describing the data buffer for this I/O.
+    Prp1 - First PRP:
+            If PrpCount == 1, this is the only PRP.
+            If PrpCount >= 2, this is the first PRP.
+    Prp2 - Second PRP if PrpCount == 2. Must be NULL otherwise.
+    PrpList - Array of PRP entries if PrpCount > 2. The array contains
+              PrpCount-1 entries and does not include Prp1. Must be NULL
+              if PrpCount <= 2.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS - The ICE I/O was successfully started.
+    STOR_STATUS_NOT_SUPPORTED - This I/O does not use NVMe ICE.
+
+    Other STOR error codes.
+
+--*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
+    status = StorPortExtendedFunction(ExtFunctionNvmeIceIoStart2,
+                                      HwDeviceExtension,
+                                      SegmentAndBus,
+                                      SlotNumber,
+                                      Srb,
+                                      LbaOffset,
+                                      LbaCount,
+                                      PrpCount,
+                                      Prp1,
+                                      Prp2,
+                                      PrpList);
+#else
+    UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(SegmentAndBus);
+    UNREFERENCED_PARAMETER(SlotNumber);
+    UNREFERENCED_PARAMETER(Srb);
+    UNREFERENCED_PARAMETER(LbaOffset);
+    UNREFERENCED_PARAMETER(LbaCount);
+    UNREFERENCED_PARAMETER(PrpCount);
+    UNREFERENCED_PARAMETER(Prp1);
+    UNREFERENCED_PARAMETER(Prp2);
+    UNREFERENCED_PARAMETER(PrpList);
+#endif
+
+    return status;
+}
+
+ULONG
+FORCEINLINE
 StorPortNvmeIceIoComplete(
     _In_ PVOID HwDeviceExtension,
     _In_ PSCSI_REQUEST_BLOCK Srb
@@ -15196,6 +15320,61 @@ StorPortNvmeIceIoComplete(
                                       Srb);
 #else
     UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(Srb);
+#endif
+
+    return status;
+}
+
+ULONG
+FORCEINLINE
+StorPortNvmeIceIoComplete2(
+    _In_ PVOID HwDeviceExtension,
+    _In_ ULONG SegmentAndBus,
+    _In_ ULONG SlotNumber,
+    _In_ PSCSI_REQUEST_BLOCK Srb
+    )
+/*++
+
+Routine Description:
+
+    Completes a hardware accelerated crypto I/O operation using an NVMe ICE.
+    This routine completes an NVMe ICE I/O request corresponding to the
+    supplied SRB.
+
+    This routine supports NVMe ICE interfaces that implement PIO_COMPLETE_V2
+    as well as those that implement PIO_COMPLETE. Storport determines the
+    appropriate NVMe ICE interface function to invoke based on the NVMe ICE
+    version in use.
+
+Arguments:
+
+    HwDeviceExtension - Supplies the miniport driver's adapter data storage.
+    SegmentAndBus - Supplies the bus address in the format of PCI_SEGMENT_BUS_NUMBER::u.AsULONG.
+    SlotNumber - Supplies PCI slot number in the format for PCI_SLOT_NUMBER::u.AsULONG.
+    Srb - Pointer to the SRB to complete NVMe ICE I/O.
+
+Return Value:
+
+    STOR_STATUS_SUCCESS - The ICE I/O was successfully completed.
+
+    Other STOR error codes.
+
+--*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
+    status = StorPortExtendedFunction(ExtFunctionNvmeIceIoComplete2,
+                                      HwDeviceExtension,
+                                      SegmentAndBus,
+                                      SlotNumber,
+                                      Srb);
+#else
+    UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(SegmentAndBus);
+    UNREFERENCED_PARAMETER(SlotNumber);
     UNREFERENCED_PARAMETER(Srb);
 #endif
 

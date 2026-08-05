@@ -3763,7 +3763,7 @@ NdisWriteRegisterUchar(
     )
 --*/
 
-#if defined(_M_IX86) || defined(_M_AMD64) || defined(_M_ARM)
+#if defined(_M_IX86) || defined(_M_AMD64) || defined(_M_ARM) || defined(_M_ARM64)
 #define NdisWriteRegisterUchar(Register,Data)                               \
         WRITE_REGISTER_UCHAR((Register),(Data))
 #else
@@ -3782,7 +3782,7 @@ NdisWriteRegisterUshort(
     )
 --*/
 
-#if defined(_M_IX86) || defined(_M_AMD64) || defined(_M_ARM)
+#if defined(_M_IX86) || defined(_M_AMD64) || defined(_M_ARM) || defined(_M_ARM64)
 #define NdisWriteRegisterUshort(Register,Data)                              \
         WRITE_REGISTER_USHORT((Register),(Data))
 #else
@@ -3801,7 +3801,7 @@ NdisWriteRegisterUlong(
     )
 --*/
 
-#if defined(_M_IX86) || defined(_M_AMD64) || defined(_M_ARM)
+#if defined(_M_IX86) || defined(_M_AMD64) || defined(_M_ARM) || defined(_M_ARM64)
 #define NdisWriteRegisterUlong(Register,Data)   WRITE_REGISTER_ULONG((Register),(Data))
 #else
 #define NdisWriteRegisterUlong(Register,Data)                               \
@@ -5112,12 +5112,6 @@ typedef struct _NDIS_SWITCH_NIC_STATUS_INDICATION
 
 #pragma warning(pop)
 
-
-//
-//    Copyright (C) Microsoft.  All rights reserved.
-//
-#pragma once
-
 #if (NDIS_SUPPORT_NDIS650)
 
 #pragma warning(push)
@@ -6372,11 +6366,6 @@ typedef struct DECLSPEC_ALIGN(8) _NDIS_PD_CLOSE_PROVIDER_PARAMETERS {
 #endif // (NDIS_SUPPORT_NDIS650)
 
 
-//
-//    Copyright (C) Microsoft.  All rights reserved.
-//
-#pragma once
-
 #pragma warning(push)
 
 #pragma warning(disable:4201) // (nonstandard extension used : nameless struct/union)
@@ -6912,10 +6901,6 @@ typedef struct _NDIS_NET_BUFFER_LIST_FILTERING_INFO
 #pragma warning(pop)
 
 
-//
-//    Copyright (C) Microsoft.  All rights reserved.
-//
-#pragma once
 #pragma warning(push)
 
 #pragma warning(disable:4201) // (nonstandard extension used : nameless struct/union)
@@ -7465,12 +7450,6 @@ typedef struct _IPSEC_OFFLOAD_V2_UPDATE_SA
 #include <ndis/nbluro.h>
 
 #pragma warning(pop)
-
-
-//
-//    Copyright (C) Microsoft.  All rights reserved.
-//
-#pragma once
 
 #if NDIS_LEGACY_PROTOCOL
 
@@ -9018,15 +8997,6 @@ NdisSynchronousOidRequest(
 #endif // NDIS_LEGACY_PROTOCOL
 #endif // NDIS_WRAPPER
 
-
-
-
-//
-//    Copyright (C) Microsoft.  All rights reserved.
-//
-#if defined(_MSC_VER) && (_MSC_VER > 1000)
-#pragma once
-#endif
 
 #include <xfilter.h>
 
@@ -12494,7 +12464,7 @@ NdisMNetPnPEvent(
 
 #if NDIS_SUPPORT_NDIS6
 _IRQL_requires_max_(DISPATCH_LEVEL)
-#endif
+#endif // NDIS_SUPPORT_NDIS6
 EXPORT
 VOID
 NdisMResetComplete(
@@ -13158,11 +13128,6 @@ NdisMTriggerPDDrainNotification(
 #pragma warning(default:4214) /* nonstandard extension used : bit field types other then int */
 #endif
 #endif
-
-//
-//    Copyright (C) Microsoft.  All rights reserved.
-//
-#pragma once
 
 typedef struct _CO_CALL_PARAMETERS      CO_CALL_PARAMETERS, *PCO_CALL_PARAMETERS;
 typedef struct _CO_MEDIA_PARAMETERS     CO_MEDIA_PARAMETERS, *PCO_MEDIA_PARAMETERS;
@@ -14194,11 +14159,6 @@ NdisClNotifyCloseAddressFamilyComplete (
 #endif // NDIS_SUPPORT_NDIS6
 
 
-//
-//    Copyright (C) Microsoft.  All rights reserved.
-//
-#pragma once
-
 #if NDIS_SUPPORT_NDIS6
 //
 // Ndis Light Weight filters
@@ -14882,11 +14842,6 @@ NdisFSynchronousOidRequest(
 #endif // NDIS_SUPPORT_NDIS684
 
 #endif // NDIS_SUPPORT_NDIS6
-
-//
-//    Copyright (C) Microsoft.  All rights reserved.
-//
-#pragma once
 
 #if NDIS_SUPPORT_NDIS6
 

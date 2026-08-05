@@ -3943,6 +3943,7 @@ typedef enum _PO_SLEEP_DISABLE_REASON {
     PoSleepDisableReasonPortableWorkspace,
     PoSleepDisableReasonPolicy,
     PoSleepDisableReasonGuardedHost,
+    PoSleepDisableReasonTpmClear,
     PoSleepDisableReasonMax
 
 } PO_SLEEP_DISABLE_REASON, *PPO_SLEEP_DISABLE_REASON;

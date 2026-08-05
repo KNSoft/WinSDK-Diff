@@ -1289,7 +1289,10 @@ RTL_SIZEOF_THROUGH_FIELD(NDIS_MINIPORT_DRIVER_WDI_CHARACTERISTICS, LeCancelIdleN
 // For 1.1.12 compliant drivers
 #define WDI_VERSION_1_1_12                  ((1 << 16) | (1 << 8) | 0xc)
 
-#define WDI_VERSION_LATEST                  WDI_VERSION_1_1_12
+// For 1.1.13 compliant drivers
+#define WDI_VERSION_1_1_13                  ((1 << 16) | (1 << 8) | 0xd)
+
+#define WDI_VERSION_LATEST                  WDI_VERSION_1_1_13
 
 #ifndef NDIS_EXPORTED_ROUTINE
 #  define NDIS_EXPORTED_ROUTINE
